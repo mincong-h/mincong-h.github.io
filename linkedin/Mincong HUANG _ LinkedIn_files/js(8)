@@ -1,0 +1,239 @@
+(function(d,k){var f=window.LI_JS_TEST,g=k.requires("jquery"),l=window.Inject,m=k.requires("i18n"),c=k.imports("Bidi"),h=window.globalNav&&window.globalNav.tourManager,a;
+try{a=k.requires("CookieManager")
+}catch(j){a={readCookie:k.requires("readCookie"),createCookie:k.requires("createCookie"),eraseCookie:k.requires("eraseCookie")}
+}var i=function(){var r="li_hs",q=(r+"-origin-page"),B=(r+"-data-url"),z=(r+"-ref-recovery"),w="disable",y=(typeof window.sessionStorage!=="undefined"),G=30,J={step:0,samePage:true,inProgress:false,hasHelpers:false},F=this;
+F.ERROR_CODES={INVALID_INPUT:"INVALID_INPUT",MISSING_CONFIG:"NO_CFG",RESOURCE_MISSING:"404_ERR",HOPSCOTCH_FAIL:"HS_FAIL"};
+F.isTourRunning=function(){return F.checkTourState()!==null
+};
+F.checkTourState=function(){var N=E(r),Q,P,O;
+if(N){Q=N.split(":");
+P=E(B);
+O=E(z);
+return{tourId:Q[0],step:((Q.length>1)?parseInt(Q[1],10):0),dataUrl:P,disableRefresh:O===w}
+}return null
+};
+F.clearTourState=function(){D(r);
+D(B);
+D(q);
+D(z)
+};
+F.registerTour=function(P){var O,N;
+if(!P||!P.tourId||!P.tourText){return F.ERROR_CODES.INVALID_INPUT
+}F.tourCache[P.tourId]=P;
+O=h.register(P);
+if(!O){return F.ERROR_CODES.RESOURCE_MISSING
+}N=g(O);
+N.on("click",x);
+return"OK"
+};
+F.startTour=function(Q,P,N){var O;
+if(typeof Q==="object"){if(Q.tourId){return H(C(Q,{trkSrc:P,step:N}))
+}else{if(Q.id){return H({tourData:Q,trkSrc:P,step:N})
+}else{return g.Deferred().reject(F.ERROR_CODES.INVALID_INPUT)
+}}}else{O=F.tourCache[Q];
+if(O){return H(C(O,{trkSrc:P,step:N}))
+}else{return H({tourId:Q,trkSrc:P,step:N})
+}}};
+F.loadHopscotch=function(){return o({samePage:true})
+};
+function x(N){var O=g(this),P=O.attr("id");
+N.preventDefault();
+if(P){F.startTour(P)
+}}function H(N){N=C(N,J);
+if(window.hopscotch&&(window.hopscotch.getCurrTour()!==null)){window.hopscotch.endTour(true,false)
+}return K(N).then(function(){return g.when(o(N),v(N),I(N))
+}).then(function(){p(N).then(function(){t(N)
+})
+})
+}function K(N){if(N.samePage&&!N.tourData&&!N.dataUrl){if(N.tourId){N.dataUrl="/chrome/quickhelp-"+N.tourId.replace(/_/g,"-")
+}else{return g.Deferred().reject(F.ERROR_CODES.INVALID_INPUT)
+}}else{if(!N.samePage&&!N.pageUrl){return g.Deferred().reject(F.ERROR_CODES.INVALID_INPUT)
+}}return g.Deferred().resolve()
+}function o(N){if(!N.samePage){return g.Deferred().resolve()
+}if(!window.HOPSCOTCH_JS_DEPS||!window.HOPSCOTCH_CSS_DEPS){return g.Deferred().reject(F.ERROR_CODES.MISSING_CONFIG)
+}if(window.hopscotch){return M()
+}if(F.hsPromise){return F.hsPromise
+}e();
+F.hsPromise=g.when(L(window.HOPSCOTCH_JS_DEPS),n(window.HOPSCOTCH_CSS_DEPS)).then(M);
+return F.hsPromise
+}function e(){var Q=window.HOPSCOTCH_JS_DEPS,N=Q.length,P,O;
+if(!window.HOPSCOTCH_SCDS_JSPATH){return
+}P=function(R){return window.HOPSCOTCH_SCDS_JSPATH+"&f="+R
+};
+for(O=0;
+O<N;
+O++){if(l.addRule){l.addRule(Q[O],{path:P})
+}else{l.addFileRule(LI.JSContentBasePath+"&f="+Q[O],P)
+}}}function M(){var N={bubblePadding:0,isRtl:false,onEnd:F.clearTourState,i18n:{nextBtn:m.get("QuickHelp-next"),prevBtn:m.get("QuickHelp-prev"),closeTooltip:m.get("QuickHelp-close"),skipBtn:m.get("QuickHelp-skip"),doneBtn:m.get("QuickHelp-done")}};
+if(!window.hopscotch){return g.Deferred().reject(F.ERROR_CODES.RESOURCE_MISSING)
+}if(c){c.applyWhenRTL(function(){N.isRtl=true
+})
+}window.hopscotch.configure(N).setCookieName(r);
+return g.Deferred().resolve()
+}function p(O){var N=[];
+if(!O.samePage){return g.Deferred().resolve()
+}if(!window.HOPSCOTCH_HELPERS_PATH){return g.Deferred().reject(F.ERROR_CODES.RESOURCE_MISSING)
+}N.push(window.HOPSCOTCH_HELPERS_PATH+"/li_hopscotch_helpers");
+if(O.hasHelpers||O.tourData.hasHelpers){N.push(window.HOPSCOTCH_HELPERS_PATH+"/"+O.tourId+"_helpers")
+}return L(N)
+}function v(N){var O=g.Deferred();
+if(N.tourData||!N.samePage){O.resolve();
+return O
+}g.get(N.dataUrl,{renderServer:"rhino"}).then(function(Q){if(typeof Q==="string"){Q=Q.replace(/(\\')/g,"'").replace(/(\\\/)/g,"/").replace(/(\\&)/g,"&");
+try{N.tourData=JSON.parse(Q)
+}catch(P){O.reject(F.ERROR_CODES.RESOURCE_MISSING);
+return
+}}else{N.tourData=Q.content||Q
+}O.resolve()
+},function(){O.reject(F.ERROR_CODES.RESOURCE_MISSING)
+});
+return O
+}function I(O){var P=0,N;
+if(!O.inProgress){F.clearTourState();
+if(O.dataUrl){u(B,O.dataUrl)
+}if(!O.goBackUrl){P=(typeof window.pageYOffset!=="undefined"?window.pageYOffset:document.documentElement.scrollTop)
+}N=O.goBackUrl?O.goBackUrl:window.location.href;
+u(q,N+"::"+P);
+if(O.samePage&&O.disableRefresh){u(z,w)
+}}return g.Deferred().resolve()
+}function t(N){if(N.trkCode&&N.trkSrc){N.trkCode=N.trkCode+"_"+N.trkSrc
+}if(N.samePage){if(N.trkCode&&!N.inProgress&&window.WebTracking){window.WebTracking.trackUserAction(N.trkCode)
+}try{if(N.step){window.hopscotch.startTour(N.tourData,N.step)
+}else{window.hopscotch.startTour(N.tourData)
+}}catch(O){return g.Deferred().reject(F.ERROR_CODES.HOPSCOTCH_FAIL)
+}}else{A(N)
+}return g.Deferred().resolve()
+}function A(P){var R=P.trkCode,Q=P.pageUrl,O=P.step||0;
+function N(S){if(!f){window.location.href=S
+}else{window.fakeLocation=S
+}}u(r,P.tourId+":"+O);
+if(typeof Q!=="string"){if(Q.length>O){Q=Q[O]
+}else{P.step=0;
+P.pageUrl=Q[0];
+return A(P)
+}}if(R&&(Q.indexOf("?")!==-1)){if(Q.indexOf("trk=")!==-1){Q=Q.replace(/(&|\?)trk=[^&]*/i,"$1trk="+R+"&");
+Q=Q.replace("&&","&");
+if(Q.charAt(Q.length-1)==="&"){Q=Q.substr(0,(Q.length-1))
+}N(Q)
+}else{N(Q+"&trk="+R)
+}}else{if(R){N(Q+"?trk="+R)
+}else{N(Q)
+}}}function E(O){var N;
+if(y){N=sessionStorage.getItem(O);
+if(N){return N
+}}return a.readCookie(O)
+}function u(N,O){if(y&&F.canWriteToSessionStorage){try{sessionStorage.setItem(N,O)
+}catch(P){F.canWriteToSessionStorage=false;
+u(N,O)
+}}else{if(y){sessionStorage.removeItem(N)
+}a.createCookie(N,O,G)
+}}function D(N){if(y){sessionStorage.removeItem(N)
+}a.eraseCookie(N)
+}function C(O,N){var P;
+if(typeof O!=="object"){return N
+}for(P in N){if(O[P]===void 0){O[P]=N[P]
+}}return O
+}function L(P){var N=g.Deferred();
+if(!P){N.resolve();
+return N.promise()
+}try{l.require.ensure(P,function(Q){N.resolve(Q)
+})
+}catch(O){return N.reject(F.ERROR_CODES.RESOURCE_MISSING)
+}return N.promise()
+}function n(P){var N=new g.Deferred();
+try{l.require.ensure(P,function(R){var Q=P.length,S;
+for(S=0;
+S<Q;
+S++){R(P[S]).attach()
+}N.resolve()
+})
+}catch(O){return N.reject(F.ERROR_CODES.RESOURCE_MISSING)
+}return N.promise()
+}function s(){var N;
+F.tourCache={};
+F.canWriteToSessionStorage=true;
+N=F.checkTourState();
+if(N&&N.dataUrl&&!N.disableRefresh){N.inProgress=true;
+H(N).fail(F.clearTourState)
+}else{if(N&&(!N.dataUrl||N.disableRefresh)){F.clearTourState()
+}}}s()
+};
+var b=new i();
+k.exports("HopscotchTourRunner",b);
+if(f){window.reinitTourRunner=function(){b=new i();
+k.exports("HopscotchTourRunner",b)
+}
+}k.exports("QuickHelpManager",{startTour:function(o,n,e){return b.startTour(o,n,e)
+},fetchAndStartTour:function(n,e){return b.startTour({tourId:n,dataUrl:e})
+},isReady:function(){return true
+},loadHopscotch:function(n,e){return b.loadHopscotch().then(function(){if(n){n.call(e)
+}})
+},tourRunning:function(){return b.isTourRunning()
+}});
+if(!h){h={el:document.querySelector(".qh-page-tours"),register:function(e){e=e||{};
+e.tourText=e.tourText||"TOUR_NAME";
+e.tourUrl=e.tourUrl||"#";
+e.tourId=e.tourId||"TOUR_ID";
+this._hydrate(e);
+g(".help-center").removeClass("help-center").addClass("quick-help");
+return this.el.querySelector("#"+e.tourId)
+},_hydrate:function(o){var n=document.createElement("a"),e=document.createElement("li");
+this.currentFrag=document.createDocumentFragment();
+n.href=o.tourUrl;
+n.textContent=o.tourText;
+n.id=o.tourId;
+n.className="qh-tour-link";
+e.appendChild(n);
+this.currentFrag.appendChild(e);
+this.fragCache=this.currentFrag.cloneNode(true);
+this.el.appendChild(this.currentFrag)
+}}
+}if(f){window.test={};
+window.test.TourManager=h
+}}(window.require,window.LIModules));/*
+ *  THE "NAV START" | "non-js" file
+ *  ----------------------------------------------------------------------------
+ *  My purpose in life:
+ *  -------------------
+ *  I know what you're thinking, "What in the flying F#@! is this," - yeah. I'm
+ *  a bit for an odd-ball; my entire purpose in life is to "open" an annonymous
+ *  function for the global-nav sandbox.
+ *
+ *  While I am javascript, technically I'm *not* javascript - because I'm not
+ *  a valid js file.  This is why I have the funky .nocheck.js extension.  There's
+ *  no way I can EVER pass JSHint.  I also am equally destructive without my
+ *  navend counter-part.
+ *
+ *  I'm included by:              - SCDS remote-nav concat group within remote-nav fizzy embed
+ *
+ *  File PRE-CONDITIONS:          - SCDS changes to allow .nocheck.js files must be in place.
+ *                                - must be the VERY FIRST file called in the sandbox concat group
+ *
+ *  File POST-CONDITIONS:
+ *
+ *  CAVEATS/GOTCHAS:
+ */
+(function (){var remote_nav=window.remote_nav,LI=remote_nav.sandbox.LI,LIModules=LI.LIModules;
+LI.sandboxFromWindow(window.LI.getPageKey,"getPageKey");
+LI.sandboxFromWindow(window.LI.Bidi,"Bidi");(function(){var a=document.getElementById("footer");
+remote_nav.setUp(a);
+remote_nav.initializeControls()
+}());
+/*  THE "NAV END" | "no js" file
+ *  ----------------------------------------------------------------------------
+ *  My purpose in life:
+ *  --------------------------
+ *  I finish the job of navstart.nocheck.js - closing the anonymous function
+ *  scope for the sandbox.  Like navstart.nocheck.js, I'm also not technically
+ *  valid javascript, and therefore won't pass JSHint.  We both exist, however,
+ *  so that logic modifications to SCDS do not have to be made.
+ *
+ *  I'm included by:                - remote_nav SCDS concat group
+ *
+ *  I'm styled by:                  - N/A; JS plumbing/infrastructure
+ *
+ *  File PRE-CONDITIONS:
+ *  File POST-CONDITIONS:
+ *  CAVEATS/GOTCHAS:
+ */
+}());

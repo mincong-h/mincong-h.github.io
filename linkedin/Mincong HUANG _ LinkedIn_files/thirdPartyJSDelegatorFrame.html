@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!-- saved from url=(0124)https://platform.linkedin.com/js/thirdPartyJSDelegatorFrame.html?e_origin=https://www.linkedin.com&e_channel=e_1436876834910 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body>
+
+<!-- writes content of Espany.min.js -->
+<script type="text/javascript" async="" src="analytics.js"></script><script type="text/javascript">/* Version Path: dev */
+
+/* res://connect-min/dev/lib/espany/1.0.0/espany.min.js */
+
+!function(B){function A(){this.nodes={},this.requests={},o.addListener(B,t,o.bind(this.receiveMessage,this))
+}function z(a){var f,d=o.getQueryParams();
+a=a||{},f=a.remote,this.channel=a.channel||d[q]||"e_"+(new Date).getTime(),this.container=f?new y(this.channel,f,a.container):null,f||(this.remoteWindow=B.parent),this.remoteOrigin=this._getRemoteOrigin(f)||d[r],this.methods=a.methods||{},this.methods[s]=this._buildReady(a.ready),this.container||this._sendDiscovery()
+}function y(a,j,i){var h=B.document,g=this.el=h.createElement("iframe");
+j&&j.match(p)&&(g.name=g.id=a,g.src=this.buildFrameSrc(j),i?this.setAttributes(i):(this.setDefaults(),h.getElementsByTagName("body")[0].appendChild(g)))
+}function x(f,e,h){var g={method:f};
+e&&(g.params=e),h||(this.id=g.id=this._generateId()),this.payload=g
+}function w(b){function j(a){function e(c){return function(){var f=v.addRequest(c,[].slice.call(arguments));
+return i.send(f.payload),f
+}
+}for(var d=a.length;
+d--;
+){h[a[d]]=e(a[d])
+}b.methods&&i.container&&i._sendDiscovery()
+}var i,h=this,g=b.ready;
+v||(v=new A),g?b.ready=function(c){j(c),g()
+}:b.ready=j,i=v.addNode(b),this.$destroy=function(){v.removeNode(i)
+},this.$container=function(){return i.container&&i.container.el
+},this.VERSION="0.3.1"
+}var v,u="2.0",t="message",s="rpc.discover",r="e_origin",q="e_channel",p=/^https?:\/\//,o={bind:function(d,c){return function(){d.apply(c,arguments)
+}
+},isArray:function(b){return"[object Array]"===Object.prototype.toString.call(b)
+},getQueryParams:function(){function a(b){return b.replace(/[\x00'"<\\]/g,"ï¿½")
+}for(var j,i,h=B.location.search.slice(1).split("&"),g={};
+h.length;
+){i=h.pop(),i&&(j=i.split("="),j.length>1&&(g[decodeURIComponent(j[0])]=a(decodeURIComponent(j[1]))))
+}return g
+}};
+B.addEventListener?o.addListener=function(e,d,f){e.addEventListener(d,f,!1)
+}:B.attachEvent&&(o.addListener=function(e,d,f){e.attachEvent("on"+d,f)
+}),A.prototype={addNode:function(d){var c=new z(d);
+return this.nodes[c.channel]=c,c
+},addRequest:function(e,d){var f=new x(e,d);
+return this.requests[f.id]=f,f
+},removeNode:function(b){delete this.nodes[b.channel],b.destroy()
+},_parseJSONMessage:function(d){try{return JSON.parse(d)
+}catch(c){return null
+}},receiveMessage:function(e){var d,f;
+d=this._parseJSONMessage(e.data),d&&(f=this.nodes[d.channel],f&&e.origin===f.remoteOrigin&&(d.method?this.processMessage(f,d):(this.requests[d.id].process(d),delete this.requests[d.id])))
+},processMessage:function(i,h){var n,m=i.methods[h.method],l=i.buildCallback(this._buildResultPayload,h.id),k=i.buildCallback(this._buildErrorPayload,h.id),j=h.params;
+j=o.isArray(j)?j:[j],n=m.apply(i,j.concat(l,k)),n&&l(n)
+},_buildResultPayload:function(d,c){return{result:d,id:c}
+},_buildErrorPayload:function(d,c){return{error:{code:-32099,message:d},id:c}
+}},z.prototype={send:function(a){var d=this;
+a.jsonrpc=u,a.channel=d.channel,B.setTimeout(function(){d.remoteWindow.postMessage(JSON.stringify(a),d.remoteOrigin)
+},10)
+},destroy:function(){this.container&&(this.container.destroy(),this.container=null)
+},buildCallback:function(e,d){var f=this;
+return function(){f.send(e(arguments[0],d))
+}
+},_buildReady:function(d){var c=this;
+return function(){var b=c.container,a=b&&b.el;
+return c.remoteWindow||!b||(c.remoteWindow=a.contentWindow,c.remoteWindow)?void d.apply(c,arguments):void o.addListener(a,"load",function(){c.remoteWindow=a.contentWindow,d.apply(c,arguments)
+})
+}
+},_sendDiscovery:function(){var b=new x(s,[this._getMethodNames()],!0);
+this.send(b.payload)
+},_getMethodNames:function(){var e,d=this.methods,f=[];
+for(e in d){f.push(e)
+}return f
+},_getRemoteOrigin:function(d){var c;
+return d&&"string"==typeof d?(c=d.split("/"),c[0]+"//"+c[2]):""
+}},y.prototype={destroy:function(){var b=this.el;
+b&&b.parentNode&&b.parentNode.removeChild(b),this.el=null
+},setAttributes:function(e){var d,f=this.el;
+for(d in e){"style"===d?f.style.cssText=e[d]:f[d]=e[d]
+}},setDefaults:function(){var b=this.el.style;
+b.visibility="hidden",b.width="1px",b.height="1px",b.position="absolute",b.left="-999px",b.top="0"
+},buildFrameSrc:function(a){var l=B.location,k=l.origin?l.origin:l.protocol+"//"+l.host,j=r+"="+k,i=a.split("#"),h=i[0].split("?");
+return a=(h[1]?h.join("?")+"&":h[0]+"?")+j,a+="&"+q+"="+this.el.id,i[1]&&(a+="#"+i[1]),a
+}},x.prototype={process:function(b){b.result&&this._resultCallback?this._resultCallback(b.result):b.error&&this._errorCallback&&this._errorCallback(b.error)
+},result:function(b){return this._resultCallback=b,this
+},error:function(b){return this._errorCallback=b,this
+},_generateId:function(){var b=0;
+return function(){return ++b
+}
+}()},B.Espany=w
+}(window);</script>
+
+<script>
+  window._gaq = window._gaq || [];
+
+
+  // IMPORTANT: this file will be cached in cdn for about a year.
+  // if you make the changes, make sure to email SRE to flush this file out of cdn so newer version gets picked up
+
+  // IMPORTANT: only use script urls from this list.. ****DO NOT supply any url from parent to be used by this file.***
+  // this kind of practice can be exploited and may cause security issues for LinkedIn users.
+  window.URL_WHITELIST = {
+    ga: ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js',
+    gaExperiment: '//www.google-analytics.com/cx/api.js',
+    analyticsjs: '//www.google-analytics.com/analytics.js'
+  };
+
+  /**
+   * loads script with white-listed url
+   * Note: objects are available only after script has been loaded (except _gaq for ga.js).
+   * for ex: analytics.js has ga method available after its loaded
+   *
+   * espanyInstance.loadScript(**).result(function(){
+   *  // analytics.js already loaded
+    * espanyInstance.run('ga', args);
+   * })
+   *
+   * @param url
+   * @return {}
+   */
+  function loadScript(scriptName, success, error) {
+    var useUrl = window.URL_WHITELIST[scriptName] || false;
+    if (!useUrl) {
+      return error('url not valid');
+    }
+
+    (function() {
+      var _ga = document.createElement('script');
+      _ga.type = 'text/javascript';
+      _ga.async = true;
+      _ga.src = useUrl;
+
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(_ga, s);
+      _ga.onload = function () {
+        success('script loaded '+ scriptName);
+      }
+    })();
+  }
+
+  /**
+   * finds the leaf object
+   *
+   * @param name, ex: 'obj.obj1.obj2.method'
+   * @param inside, object to be searched in
+   * @returns {obj, method}
+   */
+  function find(name, inside) {
+    var obj;
+    inside = inside || window;
+    name = name.split('.');
+    for (var i = 0, len = name.length; i < len && inside; i++) {
+      obj = inside;
+      inside = inside[name[i]] || false;
+    }
+    if (!inside) {
+      return false;
+    }
+    return {
+      obj: obj,
+      method: inside
+    };
+  }
+
+  /**
+   * Calls the specified object method with supplied arguments
+   *
+   * @param objectMethodName: ex: '_gaq.push'
+   * @param argumentArr: must be an array
+   * @returns {*}
+   */
+  function objectMethodCaller(objectMethodName, argumentArr) {
+    if(objectMethodName.match(/[\[]/)) {
+      return error('you cannot call an array index [0] method. Please use dot notation');
+    }
+
+    var fn = find(objectMethodName, window);
+    if (!fn || !fn.method) {
+      return error('method not found: ' + objectMethodName);
+    }
+
+    if(!Array.isArray(argumentArr)) {
+      argumentArr = [];
+    }
+
+    return fn.method.apply(fn.obj, argumentArr);
+  }
+
+  // available methods for consumer to execute
+  var methods = {
+    loadScript: loadScript,
+    run: objectMethodCaller
+  };
+
+  var espProvider =  new Espany({
+    methods: methods
+  });
+
+
+</script>
+
+
+
+</body></html>

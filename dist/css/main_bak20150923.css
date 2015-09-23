@@ -1,0 +1,46 @@
+html {
+	height: 100%;
+	padding: 0;
+}
+body {
+	height: 200%;
+	margin: 0;
+	padding: 0;
+}
+.container {
+	height: 100%;
+	background-color: #999;
+}
+.slide {
+    height: 50%;   
+}
+.content {
+}
+a,
+a:visited {
+	text-decoration: none;
+}
+#introduction {
+	background-color: #FF6900;
+}
+#introduction .content {
+	display: block;
+}
+#general-body {
+}
+#experience {
+	height: 50%;
+	background-color: #666;
+}
+
+@media(min-width: 320px) {
+
+}
+
+@media(min-width: 600px) {
+
+}
+
+@media(min-width: 1025px) {
+
+}

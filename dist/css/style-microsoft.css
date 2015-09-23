@@ -1,0 +1,71 @@
+@font-face {
+	font-family: 'Font Roman';
+	src: url('../font/font-microsoft/latest.woff');
+}
+@font-face {
+	font-family: 'Font Light';
+	src: url('../font/font-microsoft/latest1.woff');
+}
+@font-face {
+	font-family: 'Font Thin';
+	src: url('../font/font-microsoft/latest2.woff');
+}
+@font-face {
+	font-family: 'Font Medium';
+	src: url('../font/font-microsoft/2.woff');
+}
+p {
+	font-family: 'Font Roman', sans-serif;
+}
+#introduction {
+	background-color: #999;
+	background-image: url('../../resource/image/background-windows-8-1440x900.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+#introduction .content {
+	margin-left: 80px;
+	max-width: 50%;
+}
+#general-heading {
+	padding-top: 26.1%;
+}
+#general-heading .title {
+	color: #FFFFFF;
+	font-family: 'Font Thin', sans-serif;
+	font-size: 70px;
+	margin-bottom: 0;
+}
+#general-heading p {
+	color: #B3B3B3;
+	font-family: 'Font Thin', sans-serif;
+	font-size: 25px;
+	margin-top: 0;
+}
+#general-body {
+	padding-top: 1%;
+}
+#general-body p {
+	color: #FFFFFF;
+	font-family: 'Font Light', sans-serif;
+	font-size: 20px;
+}
+#general-body a,
+#general-body a:visited {
+	color: #000000;
+}
+#general-body .btn {
+	background-color: #0078D7;
+	border: 2px solid transparent;
+	color: #FFFFFF;
+	font-family: 'Font Light', sans-serif;
+	font-size: 20px;
+	padding: 5px 10px;
+}
+#general-body .btn:hover {
+	/*background-color: #999999;*/
+	color: rgba(255, 255, 255, 0.9);
+	cursor: pointer;
+	border: 2px solid rgba(255, 255, 255, 0.2);
+}

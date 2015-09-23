@@ -1,0 +1,71 @@
+@font-face {
+	font-family: 'Helvetica 35 Thin';
+	src: url('../font/font-orange/HelvNeue35_Cyr.ttf');
+}
+@font-face {
+	font-family: 'Helvetica 45 Light';
+	src: url('../font/font-orange/Helvetica 45 Light.ttf');
+}
+@font-face {
+	font-family: 'Helvetica 55 Roman';
+	src: url('../font/font-orange/HelvNeue55_Cyr.ttf');
+}
+@font-face {
+	font-family: 'Helvetica 65 Medium';
+	src: url('../font/font-orange/HelvNeue65_Cyr.ttf');
+}
+@font-face {
+	font-family: 'Helvetica 75 Bold';
+	src: url('../font/font-orange/HelvNeue75_Cyr.ttf');
+}
+p {
+	font-family: 'Helvetiva 55 Roman', sans-serif;
+}
+#introduction {
+	background-color: #999;
+	background-image: url('../../resource/image/background-apple-2560x1440.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+#introduction .content {
+	margin-left: 80px;
+	max-width: 50%;
+}
+#general-heading {
+	padding-top: 28.1%;
+}
+#general-heading .title {
+	color: #FFFFFF;
+	font-family: 'Helvetica 35 Thin', sans-serif;
+	font-size: 70px;
+	margin-bottom: 0;
+}
+#general-heading p {
+	color: #B3B3B3;
+	font-family: 'Helvetica 45 Light', sans-serif;
+	font-size: 25px;
+	margin-top: 0;
+}
+#general-body p {
+	color: #FFFFFF;
+	font-family: 'Helvetica 45 Light', sans-serif;
+	font-size: 20px;
+}
+#general-body a,
+#general-body a:visited {
+	color: #000000;
+}
+#general-body .btn {
+	background-color: #FF6900;
+	border: 0;
+	color: #FFFFFF;
+	font-family: 'Helvetica 45 Light', sans-serif;
+	font-size: 20px;
+	padding: 5px 10px;
+}
+#general-body .btn:hover {
+	background-color: #999999;
+	color: #FFFFFF;
+	cursor: pointer;
+}

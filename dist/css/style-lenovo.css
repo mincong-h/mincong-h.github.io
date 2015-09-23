@@ -1,0 +1,73 @@
+@font-face {
+	font-family: 'LENOVO BD';
+	src: url('../font/font-lenovo/LENOVOBD.otf');
+}
+@font-face {
+	font-family: 'LENOVO LG';
+	src: url('../font/font-lenovo/LENOVOLG.otf');
+}
+@font-face {
+	font-family: 'LENOVO MD';
+	src: url('../font/font-lenovo/LENOVOMD.otf');
+}
+@font-face {
+	font-family: 'LENOVO RG';
+	src: url('../font/font-lenovo/LENOVORG.otf');
+}
+h1,
+h2 {
+	font-family: 'LENOVO LG', sans-serif;
+	padding: 0;
+	margin: 0;
+}
+h3,
+h4,
+.h3,
+.h4,
+.subtitle,
+.date {
+	font-family: 'LENOVO MD', sans-serif;
+}
+p,
+li {
+	font-family: 'LENOVO RG', sans-serif;
+}
+#introduction {
+	background-image: url('../../resource/image/background-lenovo-red-large.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+}
+#introduction-heading p {
+	color: rgba(255, 255, 255, .85);
+	font-family: 'LENOVO MD', sans-serif;
+}
+#introduction-body p {
+	color: #FFFFFF;
+	font-family: 'LENOVO MD', sans-serif;
+}
+#introduction-body a,
+#introduction-body a:visited {
+	color: #000000;
+}
+#introduction-body .btn {
+	background-color: #FF6900;
+	border: 0;
+	color: #FFFFFF;
+	font-family: 'LENOVO MD', sans-serif;
+}
+#introduction-body .btn:hover {
+	background-color: #999999;
+	color: #FFFFFF;
+}
+#experience .subtitle {
+	color: rgba(0, 0, 0, 0.6);
+}
+#project h3 {
+	color: #FFFFFF;
+	background-color: rgba(255, 0, 0, .85);
+}
+#project p,
+#project li {
+	color: rgba(255, 255, 255, 0.9);
+}

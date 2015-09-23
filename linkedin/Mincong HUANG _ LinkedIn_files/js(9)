@@ -1,0 +1,257 @@
+(function(){var c=LIModules.requires("jquery"),b=function(h){var d="[\\?&]"+h+"=([^&]*)",g=new RegExp(d),f=window.location.search,e=g.exec(f);
+return(e&&e[1])
+};
+var a=function(e,n){var f="",s="_",j="-",g=n||{},o=g.origin||f,m=g.trackingUrl,h=g.impressionId||c(e).find("[name=abookImportImpressionId]").val()||f,q=b("trk")||f,r;
+if(!m||!h){return
+}else{if(q){m=m+"&trk="+q
+}}function d(u,v,t,x,w,z){var y={source:u,autofilledEmail:v,autoselectedEmailProvider:t,orderOfEmailProviders:x,socialProofType:w,socialProofCount:z,impressionId:h};
+c.ajax({type:"POST",url:m,headers:{"X-IsAJAXForm":1},data:y})
+}function i(){var t=c("#addconnections .providers,#addconnections .emailProviders"),u=[];
+if(t.length){t.find(">li").each(function(){u.push(c.trim(c(this).attr("class").replace("one-click",f)))
+});
+d(o,f,f,u.toString(),f,f)
+}}function l(){var u=c('input[name="email"]').val(),w=c(".wmi-katy"),t=w.length&&w.hasClass("social"),x=0,v=f;
+if(t){x=w.find(".profile-pics img").length;
+v=c.trim(w[0].className.replace(/\bwmi-katy\b|\s\bsocial\b/gi,f))
+}d(o,u,f,f,v,x)
+}function p(){var t="li-origin",v=[],w=f,u=c('.service-forms .selected input[name="email"]').val();
+w=c(".service-filters > li.selected").data(t)||f;
+c(".service-filters > li").each(function(){v.push(c(this).data(t))
+});
+d(o,u,w,v.toString(),f,f)
+}function k(){var u="data-li-email-origin",x=[],t=c("#email-origin-container"),A=t.find(".card"),w="connections",z=c("#social-proof .social-proof-photo-item").length,y=A.filter(".selected").attr(u)||f,v=c(".import-invite-form input[name=email]").val()||f;
+A.each(function(){x.push(c(this).attr(u))
+});
+d(o,v,y,x.toString(),w,z)
+}o=o.toLowerCase().replace(s,j);
+r=o+h;
+if(o&&!a[r]){a[r]=true;
+switch(o){case"desktop-global-nav-add-connections-dropdown":i();
+break;
+case"desktop-add-connections-v2":p();
+break;
+case"desktop-add-connections-v4":k();
+break;
+default:l();
+break
+}}};
+LIModules.exports("AbookExpandedTracking",a)
+})();function SaveUISetting(b,a){a={setting:{name:(a.setting&&a.setting.name)?a.setting.name:null,value:(a.setting&&a.setting.value)?a.setting.value:"false",url:(a.setting&&a.setting.url)?a.setting.url:null},triggerID:a.triggerID||null,preventDefault:(a.preventDefault===false)?false:true,saveOnLoad:(a.saveOnLoad===true)?true:false,saveCustomOnLoad:(a.saveCustomOnLoad===true),container:b};
+if(a.triggerID){YEvent.on(a.triggerID,"click",this.saveSetting,a)
+}if(a.saveOnLoad){if(typeof(oUISettings)!=="undefined"&&oUISettings.saveSettings){oUISettings.saveSettings(a.setting.name,a.setting.value)
+}}if(a.saveCustomOnLoad){this.saveSetting(null,{setting:a.setting})
+}}SaveUISetting.prototype={saveSetting:function(a,c){if(typeof(oUISettings)!=="undefined"&&oUISettings.saveSettings){if(c.setting.name){oUISettings.saveSettings(c.setting.name,c.setting.value)
+}}if(c.setting&&c.setting.url){LI.asyncRequest("POST",c.setting.url,{custom:{exception:function(){return false
+}}})
+}if(c.preventDefault){YEvent.preventDefault(a)
+}var b=YDom.get(c.triggerID);
+if(!c.preventDefault&&b&&b.tagName.toLowerCase()==="a"){YEvent.preventDefault(a);
+window.setTimeout(function(){location.href=b.href
+},1)
+}var d=YDom.get(c.container);
+LI.fade(d)
+}};LI.define("FrontierAJAXForm");
+LI.FrontierAJAXForm=function(c,e){e=e||{};
+e.backgroundColor=e.backgoundColor||"#fff";
+e.injectAfter=e.injectAfter||".actions .btn-primary";
+e.enableAJAX=(e.enableAJAX!==false)?true:false;
+e.enableDemo=e.enableDemo||false;
+e.errorId=e.errorId||YDom.generateId();
+e.useGlobalError=e.useGlobalError||false;
+e.injectGlobalError=(e.injectGlobalError!=="undefined"&&e.injectGlobalError===false)?false:true;
+e.injectGlobalErrorOnly=e.injectGlobalErrorOnly||false;
+e.successCallback=e.successCallback||null;
+e.successCallbackScope=e.successCallbackScope||window;
+e.exceptionCallback=e.exceptionCallback||null;
+e.errorCallback=e.errorCallback||null;
+e.failureCallback=e.failureCallback||null;
+e.failureCallbackScope=e.failureCallbackScope||window;
+e.scrollIntoViewOnError=(e.scrollIntoViewOnError!==undefined)?e.scrollIntoViewOnError:true;
+e.showCloseInError=(e.showCloseInError!==undefined)?e.showCloseInError:false;
+e.successParameters=(e.successParameters!==undefined)?e.successParameters:{};
+e.addProgressIndicator=(e.addProgressIndicator!==undefined)?e.addProgressIndicator:true;
+e.enableResizeScreen=(e.enableResizeScreen!==undefined)?e.enableResizeScreen:true;
+e.useDecodeURIComponent=!!e.useDecodeURIComponent;
+if(e.useGlobalError){e.errorId="global-error"
+}var b=this;
+var j=YDom.getRegion(c);
+var l=16;
+b.successHandlers=[];
+b.failureHandlers=[];
+var f=Y$(e.injectAfter,c,true);
+var k=f;
+if(k){while(k.nextSibling){if(k.nextSibling.nodeType===1){YDom.addClass(k.nextSibling,"hidden")
+}k=k.nextSibling
+}}var o=document.createElement("div");
+YDom.addClass(o,"screen");
+c.appendChild(o);
+if(e.addProgressIndicator){var g=document.createElement("div");
+var n=YDom.getRegion(f).height;
+n=(n>l)?n:l;
+if(f){if(f.nextSibling){f.parentNode.insertBefore(g,f.nextSibling)
+}else{f.parentNode.appendChild(g)
+}}YDom.addClass(g,"progress-indicator");
+YDom.setStyle(g,"lineHeight",n+"px")
+}var a=function(r){var q=YDom.get(e.errorId);
+if(!q){q=document.createElement("div");
+q.id=e.errorId;
+c.parentNode.insertBefore(q,c)
+}LI.injectAlert(r,"error",q,false,e.showCloseInError);
+if(e.scrollIntoViewOnError){q.scrollIntoView()
+}};
+var m=function(){YDom.removeClass(c,"form-submit-processing");
+YDom.removeClass(f,"disabled");
+YDom.setStyle(o,"display","none")
+};
+var d=function(){var q=YDom.getRegion(c);
+if(!j||!j.width){j=YDom.getRegion(c)
+}YDom.setStyle(o,"width",j.width+"px");
+YDom.setStyle(o,"height",q.height+"px");
+YDom.setStyle(o,"margin-top",(q.height*-1)+"px")
+};
+var i=function(q){location.href=q
+};
+var p=function(t){if(YDom.hasClass(c,"form-submit-processing")){YEvent.preventDefault(t);
+return
+}YDom.addClass(c,"form-submit-processing");
+YDom.addClass(f,"disabled");
+var s=YDom.getRegion(c);
+YDom.setStyle(o,"backgroundColor",e.backgroundColor);
+YDom.setStyle(o,"display","block");
+if(e.enableResizeScreen){d()
+}var q=document.createElement("input");
+YDom.setStyle(q,"opacity",0);
+YDom.setStyle(q,"height","1px");
+YDom.setStyle(q,"width","1px");
+YDom.setStyle(q,"display","inline");
+c.appendChild(q);
+q.focus();
+c.removeChild(q);
+delete (q);
+if(e.enableDemo){if(t){YEvent.stopEvent(t)
+}var r=(e.enableDemo=="success")?LI.FrontierAJAXForm.DEMO_SUCCESS:LI.FrontierAJAXForm.DEMO_FAILURE;
+b.handleFormSuccess=i;
+b.injectGlobalFormError=a;
+b.markFormErrors=markFormErrors;
+b.resetFormSubmission=m;
+window.setTimeout(function(){r.call(b)
+},5000);
+return false
+}if(e.enableAJAX){if(t){YEvent.preventDefault(t)
+}window.setTimeout(function(){h()
+},1);
+return false
+}};
+var h=function(){YAHOO.util.Connect.setForm(c);
+LI.asyncRequest("POST",YDom.getAttribute(c,"action"),{custom:{error:function(q){LI.removeAlert();
+if(e.injectGlobalError||e.injectGlobalErrorOnly){if(q.globalError){a(q.globalError)
+}else{if(!e.injectGlobalErrorOnly){a(LI.i18n.get("oneOrMoreErrors"))
+}}}if(e.errorCallback){e.errorCallback(q)
+}m();
+if(e.enableResizeScreen){d()
+}},exception:function(){if(e.exceptionCallback){e.exceptionCallback()
+}}},success:function(t){t.successParameters=e.successParameters;
+for(var r=0,q=b.successHandlers.length;
+r<q;
+r++){var s=b.successHandlers[r];
+s.fn.call(s.scope,t)
+}},failure:function(t){for(var r=0,q=b.failureHandlers.length;
+r<q;
+r++){var s=b.failureHandlers[r];
+s.fn.call(s.scope,t)
+}},timeout:25000},null,e.useDecodeURIComponent)
+};
+this.addSuccessHandler=function(r,q){b.successHandlers.push({fn:r||function(){},scope:q||window})
+};
+this.addFailureHandler=function(r,q){b.failureHandlers.push({fn:r||function(){},scope:q||window})
+};
+if(e.successCallback){e.successCallback=(typeof(e.successCallback)=="string")?LI.Controls.resolveName(e.successCallback):e.successCallback;
+if(!e.successCallback){throw new Error(e.successCallback+" is not defined")
+}this.addSuccessHandler(e.successCallback,e.successCallbackScope)
+}if(e.failureCallback){this.addFailureHandler(e.failureCallback,e.failureCallbackScope)
+}this.resetFormSubmit=m;
+this.submitForm=p;
+YEvent.on(c,"submit",p)
+};LI.Feedback=function(e,c){c=c||{};
+c.id=c.id||"feedback_info";
+c.containerId=c.containerId||"feedback-form";
+function d(){LI.Dialog().closeEvent.unsubscribe(d)
+}function a(){LI.hide(c.containerId);
+LI.show("feedback-success");
+LI.Dialog().closeEvent.subscribe(d)
+}LI.Dialog().contentChangeEvent.subscribe(function(g,i){var f=i[1];
+if(i[0]!="feedback-dialog"){return
+}if(f&&f.feedbackSubjectLine){var h=YDom.get("subject-feedbackInfoForm");
+h.value=YAHOO.lang.trim(f.feedbackSubjectLine)
+}});
+var b=LI.Controls.getControl(c.id,"FrontierAJAXForm");
+if(b){b.addSuccessHandler(function(){a()
+})
+}};(function(m,o,c){var b=YDom.get("header"),d=o.body,l="position",a="fixed",n=false,f=null,k=10;
+if(!b&&(YDom.getStyle(b,l)===a)){return n
+}function h(){var p=parseInt(YDom.getStyle(b,"height"),10),q=(parseInt(YDom.getStyle(b,"margin-bottom"),10)===0)?k:parseInt(YDom.getStyle(b,"margin-bottom"),10);
+return(p+q)
+}function i(){if(!m.location.hash){return f
+}return m.location.hash.substr(1)
+}function g(p){if(!p.href&&p.href.indexOf("#")<=0){return f
+}return p.href.substr(p.href.indexOf("#")+1)
+}function e(q){var r,p;
+if(!YDom.get(q)){return n
+}r=YDom.getY(YDom.get(q));
+p=r-h();
+m.scroll(0,p)
+}function j(){YEvent.on(d,"click",function(p){var v=YEvent.getTarget(p),t=null,q,u,s,w,r;
+if(v.tagName.toLowerCase()!=="a"){t=YDom.getAncestorByTagName(v,"a");
+if(t){v=t
+}else{return
+}}q=v.href;
+u=q.indexOf("#")>0;
+s=q.indexOf(location.pathname)>0;
+w=g(v);
+r=p.defaultPrevented||(p.returnValue===false)||(p.getPreventDefault&&p.getPreventDefault());
+if(q&&u&&s&&YDom.get(w)&&!r){YEvent.preventDefault(p);
+e(w)
+}})
+}YEvent.onDOMReady(function(){if(i()!==f){e(i())
+}j()
+})
+}(this,this.document));var langSwitch=function(){var d,a;
+function c(){var l;
+var h=YDom.get("nav-utility-lang");
+var k=h.getElementsByTagName("a");
+YEvent.on(h,"click",function(){var i=this;
+if(YDom.hasClass(i,"hover")){return
+}l=setTimeout(function(){YDom.addClass(i,"hover")
+},0)
+});
+YEvent.on(h,"mouseout",function(m){var n=this;
+var i=YEvent.getRelatedTarget(m);
+if(n!=i&&!YDom.isAncestor(n,i)){YDom.removeClass(n,"hover")
+}clearTimeout(l)
+});
+k[0].onclick=function(){return false
+};
+var e=YDom.get("lang-list"),g=e.getElementsByTagName("a"),j=YDom.get("instant-language-switch");
+for(var f=0;
+g.length>f;
+f++){g[f].onclick=function(){b(d,this.lang.replace("-","_"));
+return false
+}
+}if(j){j.onclick=function(){b(a,this.lang.replace("-","_"));
+return false
+}
+}}function b(e,f){e.i18nLang.value=f;
+e.submit()
+}return{init:function(){if(!document.languageSelectorForm&&!document.instantLangForm){return false
+}d=document.languageSelectorForm;
+a=document.instantLanguageSwitchForm;
+c()
+}}
+}();
+YEvent.on(window,"load",langSwitch.init);/*!
+ * openerFix - a library for removing window.opener when opening a new context for security
+ * @version v0.2.3
+ * @link go/openerfix
+ * @license none
+ */
+!function(e){function t(e){"object"==typeof e&&(e.realClick=!0)}var n,d,r,o,a=document.body;o=function(e){for(;e;){if(!e.tagName)return null;if("a"===e.tagName.toLowerCase())return e;e=e.parentElement}},d=function(t){var n=e.open(t);n&&(n.opener=null)},r=function(e){var t=null;return e.target&&("click"===e.type||"keydown"===e.type&&13===e.keyCode)&&(t=o(e.target)||null),t},n=function(e){if(e.realClick){var t=r(e);t&&"_blank"===t.target&&!e.defaultPrevented&&(e.preventDefault(),d(t.href))}},document&&document.addEventListener&&document.addEventListener("click",n),a&&a.addEventListener?a.addEventListener("click",t):document&&document.addEventListener&&document.addEventListener("DOMContentLoaded",function(){document.body.addEventListener("click",t)})}(this);
