@@ -60,7 +60,7 @@ li {
 	color: #FFFFFF;
 	font-family: 'Helvetica 45 Light', sans-serif;
 }
-#introduction-body .btn:hover {
+#introduction-body .btn:active {
 	background-color: #999999;
 	color: #FFFFFF;
 }

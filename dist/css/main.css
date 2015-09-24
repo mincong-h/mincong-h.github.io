@@ -84,6 +84,12 @@ code {
 	vertical-align: top;
 	padding: 3%;
 }
+#profile {
+	height: 100px;
+	width: 100px;
+	box-shadow: .1em .1em .3em #000000;
+	margin-bottom: 1em;
+}
 #introduction {
 	background-color: #999;
 }
