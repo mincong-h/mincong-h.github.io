@@ -15,6 +15,24 @@
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="dist/jquery/jquery-1.11.2.min.js"></script>
+    <script>
+      // CSS-TRICKS: Smooth Scrolling
+      // https://css-tricks.com/snippets/jquery/smooth-scrolling/
+      $(function() {
+        $('a[href*=#]:not([href=#])').click(function() {
+          if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+            if (target.length) {
+              $('html,body').animate({
+                scrollTop: target.offset().top
+              }, 1000);
+              return false;
+            }
+          }
+        });
+      });
+    </script>
   </head>
   <body>
     <div class="container">
@@ -130,7 +148,7 @@
         <h2 class="category">Contact</h2>
         <div class="content">
           <div class="tags">
-            <a class="tag" href="http://stackexchange.com/users/5516910/mincong-huang" target="_blank"><i class="fa fa-stack-overflow"></i></a>
+            <a class="tag" href="http://stackoverflow.com/users/4381330/mincong-huang?tab=profile" target="_blank"><i class="fa fa-stack-overflow"></i></a>
             <a class="tag" href="https://www.github.com/mincong-h" target="_blank"><i class="fa fa-github fa-3x"></i></a>
             <a class="tag" href="https://fr.linkedin.com/pub/mincong-huang/a6/737/148" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a>
             <a class="tag" href="mailto:mincong.h@gmail.com?subject=Hi from github&body=Hi Mincong, nice to meet you! I've just visited your website on github ..."><i class="fa fa-envelope fa-3x"></i></a>
