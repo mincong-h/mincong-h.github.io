@@ -65,6 +65,11 @@ li {
 	text-transform: uppercase;
 	color: rgba(0, 0, 0, 0.1);
 }
+.helper {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
 code {
 	padding: .25em;
 	background-color: rgba(0, 0, 0, 0.15);
@@ -111,9 +116,6 @@ code {
 #experience {
 	background-color: rgba(255, 255, 255, 0.9);
 }
-#experience:hover img{
-	opacity: 0;
-}
 #experience .content {
 	display: block;
 	text-align: left;
@@ -141,13 +143,13 @@ code {
 #experience .media .media-img img {
 	max-width: 40px;
 }
-#experience .media .media-content {
+#experience .media .media-body {
 	display: inline-block;
 	vertical-align: middle;
 	min-width: 150px;
 }
 #project {
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, .4);
 }
 #project img {
 	margin-bottom: 10px;
@@ -162,16 +164,34 @@ code {
 	font-size: 0.8em;
 }
 #project .content {
-	padding: 20% 15% 0 15%;
+	padding: 20% 13% 0 13%;
 	text-align: left;
+	height: 80%;
+	width: 74%;
 }
-#project .content img {
-	height: 100px;
+#project .project {
+	display: inline-block;
+	vertical-align: top;
+	width: 49%;
+	height: 49%;
+	text-align: center;
+}
+#project .project img {
+	height: 70px;
+	margin-left: auto;
+	margin-right: auto;
 	width: auto;
+	display: block;
 }
-#project .subtitle {
+#project .project .subtitle {
 	font-size: 12px;
 	color: rgba(255, 255, 255, 1);
+	display: block;
+	max-width: 100%;
+}
+#project .project p {
+	display: block;
+	max-width: 100%;
 }
 #project .date {
 	font-size: 10px;
@@ -186,41 +206,31 @@ code {
 }
 #education h2 {
 	position: relative;
-	z-index: 101;
-}
-#education .img-background {
-	height: 100%;
-	width: auto;
 }
 #education .content {
 	position: absolute;
-	padding: 20% 10% 0 10%;
-	z-index: 100;
-}
-#education .timeline {
-	height: auto;
-}
-#education .timeline-point {
-	display: none;
-}
-#education .img-background {
-	background-color: none;
-	position: absolute;
-	float: left;
-	z-index: 50;
-	-webkit-filter: blur(3px) brightness(0.8);
+	padding: 20% 13% 0 13%;
+	width: 74%;
 }
 #education .media {
 	margin-top: 1.5em;
 	padding: 3%;
 }
-#education .media-img{
-	background-color: rgba(255, 255, 255, .8);
+#education .media-img {
+	background-color: rgba(255, 255, 255, 1);
 	display: inline-block;
 	vertical-align: middle;
-	height: 2.1em; 
-	width: auto;
-	margin-bottom: .5em;
+	height: 3.7em; 
+	width: 3.7em;
+	text-align: center;
+	margin-right: .5em; 
+}
+#education .media-img img {
+	width: 3.4em;
+	height: auto;
+	vertical-align: middle;
+	display: inline-block;
+	margin: 0;
 }
 #education .media-body {
 	display: inline-block;
@@ -246,7 +256,7 @@ code {
 	font-size: 2em;
 }
 #contact .tag:hover {
-	color: rgba(255, 0, 0, 0.8);
+	color: rgb(255, 102, 0);
 	cursor: pointer;
 }
 #contact .tags {
@@ -337,7 +347,7 @@ code {
 	#experience .media .media-img img {
 		max-width:60px;
 	}
-	#experience .media .media-content {
+	#experience .media .media-body {
 		display: inline-block;
 		max-width: 250px;
 	}
