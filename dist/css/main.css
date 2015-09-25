@@ -13,7 +13,6 @@ h1 {
 h2 {
 	font-size: 2.5em;
 }
-h3,
 h4,
 .h3,
 .h4,
@@ -24,8 +23,8 @@ h4,
 }
 h3 {
 	font-size: 1.2em;
-	margin-bottom: .2em;
-	padding: 0 1px 0 1px;
+	margin: 0 0 .2em 0;
+	padding: 0;
 }
 a,
 a:visited {
@@ -58,12 +57,41 @@ li {
 }
 .slide {
     height: 20%;
+    position: relative;
+    text-align: center;
 }
 .slide .category {
 	position: absolute;
 	float: left;
 	text-transform: uppercase;
 	color: rgba(0, 0, 0, 0.1);
+}
+.down {
+	position: absolute;
+	bottom: 0;
+	float: left;
+	text-align: center;
+	width: 100%;
+	height: 2em;
+	margin: auto;
+	background-color: none;
+	-webkit-transition: background-color 200ms ease-out;
+    -moz-transition: background-color 200ms ease-out;
+    -o-transition: background-color 200ms ease-out;
+    transition: background-color 200ms ease-out;
+}
+.down:hover {
+	background-color: #FF6900;
+}
+.down a,
+.down a:visited {
+	color: #000;
+	position: relative;
+}
+.fa-angle-double-down {
+	vertical-align: middle;
+	height: 100%;
+	position: relative;
 }
 .helper {
 	display: inline-block;
@@ -73,9 +101,9 @@ li {
 code {
 	padding: .25em;
 	background-color: rgba(0, 0, 0, 0.15);
-	margin: 0 1px 2px 1px;
+	margin: 0 .2em 2px .2em;
 	display: inline-block;
-	font-size: .94em;
+	font-size: 1em;
 	border-radius: 2px;
 }
 .col-xs-12{
@@ -83,6 +111,37 @@ code {
 	display: inline-block;
 	vertical-align: top;
 	padding: 3%;
+}
+.content {
+	padding: 5em 2em 0 2em;
+	text-align: left;
+	height: 80%;
+	width: 75%;
+	display: inline-block;
+}
+.media {
+	margin-top: 1.5em;
+	padding: 3%;
+}
+.media-img {
+	background-color: rgba(255, 255, 255, 1);
+	display: inline-block;
+	vertical-align: middle;
+	height: 4em; 
+	width: 4em;
+	text-align: center;
+	margin-right: .5em; 
+}
+.media-img img {
+	width: 3.5em;
+	height: auto;
+	vertical-align: middle;
+	display: inline-block;
+	margin-left: -.2em;
+}
+.media-body {
+	display: inline-block;
+	vertical-align: middle;
 }
 #profile {
 	height: 100px;
@@ -94,10 +153,8 @@ code {
 	background-color: #999;
 }
 #introduction {
-	padding: 0 20%;
 }
 #introduction .content {
-	display: block;
 	text-align: center;
 }
 #introduction-heading {
@@ -122,43 +179,26 @@ code {
 #experience {
 	background-color: rgba(255, 255, 255, 0.9);
 }
-#experience .content {
-	display: block;
-	text-align: left;
-	padding: 15% 13% 0 13%;
-}
-#experience-content-1 {
-	padding-top: 20%;
-}
 #experience .content h1 {
 	font-size: 1.6em;
 }
 #experience .content ul {
 	padding: 0 1em;
 }
-#experience .media {
-	display: inline-block;
-	vertical-align: middle;
-	min-width: 250px;
+#experience1 {
+	padding-bottom: 2em;
 }
-#experience .media .media-img {
-	display: inline-block;
-	vertical-align: middle;
-	margin-right: 14px;
+#experience1 .media {
+	margin-top: 0;
 }
-#experience .media .media-img img {
-	max-width: 40px;
-}
-#experience .media .media-body {
-	display: inline-block;
-	vertical-align: middle;
-	min-width: 150px;
+#experience .media-img {
+	background-color: transparent;
 }
 #project {
 	background-color: rgba(0, 0, 0, .4);
 }
-#project img {
-	margin-bottom: 10px;
+#project .media-img {
+	margin: 0 0 10px 0;
 }
 #project ul {
 	margin: 7px 0;
@@ -168,26 +208,14 @@ code {
 	display: inline-block;
 	vertical-align: top;
 	font-size: 0.8em;
-}
-#project .content {
-	padding: 20% 13% 0 13%;
-	text-align: left;
-	height: 80%;
-	width: 74%;
+	padding: 0 .2em;
 }
 #project .project {
 	display: inline-block;
 	vertical-align: top;
 	width: 49%;
-	height: 49%;
+	height: 39%;
 	text-align: center;
-}
-#project .project img {
-	height: 70px;
-	margin-left: auto;
-	margin-right: auto;
-	width: auto;
-	display: block;
 }
 #project .project .subtitle {
 	font-size: 12px;
@@ -203,54 +231,28 @@ code {
 	font-size: 10px;
 	color: rgba(255, 255, 255, 0.65);
 }
+#project code {
+	display: none;
+}
 #education {
-	background-color: rgba(255, 255, 255, 0.9);
+	background-color: rgba(255, 255, 255, 1);
 }
 #education h3,
 #education p {
 	color: #000000;
 }
-#education h2 {
-	position: relative;
-}
-#education .content {
-	position: absolute;
-	padding: 20% 13% 0 13%;
-	width: 74%;
-}
-#education .media {
-	margin-top: 1.5em;
-	padding: 3%;
-}
-#education .media-img {
-	background-color: rgba(255, 255, 255, 1);
-	display: inline-block;
-	vertical-align: middle;
-	height: 3.7em; 
-	width: 3.7em;
-	text-align: center;
-	margin-right: .5em; 
-}
-#education .media-img img {
-	width: 3.4em;
-	height: auto;
-	vertical-align: middle;
-	display: inline-block;
-	margin: 0;
-}
-#education .media-body {
-	display: inline-block;
-	vertical-align: middle;
-}
 #education .date,
 #education .subtitle {
 	color: rgba(0, 0, 0, .7);
 }
+#education1 {
+	margin-top: 6em;
+}
 #contact {
-	background-color: rgba(0, 0, 0, 0.4);
+	background-color: #666;
 }
 #contact .content {
-	padding: 45% 12%;
+	text-align: center;
 }
 #contact .tag,
 #contact .tag:visited {
@@ -266,9 +268,18 @@ code {
 	cursor: pointer;
 }
 #contact .tags {
-	padding: 10px 0;
+	display: inline-block;
+	width: 190px;
+	margin-top: 90px;
+	padding: 20px 0;
 	border-bottom: 1px solid #000;
-	text-align: center;
+}
+#contact img {
+	margin: 20px 0 15px 0;
+	height: 180px;
+	width: auto;
+}
+#contact p {
 }
 @media(min-width: 600px) {
 	#experience-content,
@@ -417,7 +428,7 @@ code {
 		max-width: 500px;
 	}
 	#contact {
-		background-color: rgba(0, 0, 0, 0.4);
+		background-color: #BDBDBD;
 	}
 	#contact .content {
 		padding: 25% 30%;

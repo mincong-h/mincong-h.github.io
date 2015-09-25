@@ -62,14 +62,13 @@ li {
 }
 #introduction-body .btn:active {
 	background-color: #999999;
-	color: #FFFFFF;
 }
 #experience .subtitle {
 	color: rgba(0, 0, 0, 0.6);
 }
 #project h3 {
 	color: #FFFFFF;
-	background-color: rgba(255, 0, 0, .85);
+	background-color: rgb(255, 102, 0);
 }
 #project p,
 #project li {
