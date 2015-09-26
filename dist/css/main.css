@@ -121,7 +121,6 @@ code {
 }
 .media {
 	margin-top: 1.5em;
-	padding: 3%;
 }
 .media-img {
 	background-color: rgba(255, 255, 255, 1);
@@ -280,6 +279,108 @@ code {
 	width: auto;
 }
 #contact p {
+	font-size: 15px;
+}
+/* iphone-4::PORTRAIT(320x480) */
+@media(min-width: 320px) and (max-height: 480px) {
+	h1 {
+		font-size: 1.6em;
+	}
+	h2 {
+		font-size: 2em;
+	}
+	h3 {
+		font-size: .96em;
+		margin: 0 0 .2em 0;
+		padding: 0;
+	}
+	p,
+	li {
+		font-size: .68em;
+		margin-top: 0;
+		margin-bottom: .1em;
+	}
+	.subtitle,
+	.date {
+		font-size: .6em;
+	}
+	.content {
+		padding-top: 50px;
+	}
+	.media-img {
+		width: 3em;
+		height: 3em;
+	}
+	.media-img img {
+		width: 2.7em;
+		height: auto;
+	}
+	#profile {
+		width: 80px;
+		height: auto;
+	}
+	#experience .media {
+		margin-top: 0;
+	}
+	#experience .content ul {
+		margin: 12px 0;
+	}
+	#contact .tags {
+		margin-top: 20px;
+	}
+	#contact .tag i {
+		font-size: 1.6em;
+	}
+	#contact img {
+		width: 160px;
+		height: auto;
+	}
+}
+/* iphone-5::PORTRAIT(320x568) */
+@media(min-width: 320px) and (min-width: 481px) and (max-height: 568px) {
+	h1 {
+		font-size: 1.6em;
+	}
+	h2 {
+		font-size: 2em;
+	}
+	h3 {
+		font-size: .96em;
+		margin: 0 0 .2em 0;
+		padding: 0;
+	}
+	p,
+	li {
+		font-size: .68em;
+		margin-top: 0;
+		margin-bottom: .1em;
+	}
+	.subtitle,
+	.date {
+		font-size: .6em;
+	}
+	#experience .media {
+		margin-top: 0;
+	}
+	#contact .tags {
+		margin-top: 20px;
+	}
+}
+/* iphone-6::PORTRAIT_NAVBAR(375x558) */
+@media(min-width: 375px) and (max-height: 599px) {
+	#experience .content {
+		padding-top: 65px;
+	}
+	#experience .content ul {
+		margin: 12px 0;
+	}
+	#experience1 {
+		padding-bottom: 0;
+	}
+}
+/* iphone-6::PORTRAIT_DEFAULT(375x627) */
+@media(min-width: 375px) and (min-height: 600px) {
+	/* TODO */
 }
 @media(min-width: 600px) {
 	#experience-content,
@@ -287,7 +388,6 @@ code {
 		padding: 20% 14% 0 14%;
 	}
 }
-
 @media(min-width: 800px) {
 	h1 {
 		font-size: 3em;
