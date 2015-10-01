@@ -43,6 +43,7 @@ li,
 }
 ul {
 	padding-left: 0;
+	margin: 0;
 }
 li {
 	list-style-type: disc;
@@ -122,6 +123,11 @@ code {
 .media {
 	margin-top: 1.5em;
 }
+/*
+.media:hover .description{
+	border-bottom-color: #BBB;
+	height: 80px;
+}*/
 .media-img {
 	background-color: rgba(255, 255, 255, 1);
 	display: inline-block;
@@ -137,6 +143,16 @@ code {
 	vertical-align: middle;
 	display: inline-block;
 	margin-left: -.2em;
+}
+.description {
+	height: 1px;
+	margin: 0 25px;
+	text-align: center;
+	padding-top: 16px;
+}
+.description li {
+	list-style-type: none;
+	display: none;
 }
 .media-body {
 	display: inline-block;

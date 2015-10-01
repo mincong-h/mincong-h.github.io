@@ -33,6 +33,26 @@
         });
       });
     </script>
+    <script>
+      $(function(){
+        $('.media').click(function(){
+          var target = $(this).children('.description');
+          if(target.css('height') == '1px') {
+            target.find('li').css('display', 'block');
+            target.animate({height: '120px'}, 1300);
+            setTimeout(function(){
+              target.css('border-bottom', '1px solid #CCC');
+            }, 100);
+          } else {
+            target.animate({height: '1px'}, 1300);
+            setTimeout(function(){
+              target.find('li').css('display', 'none');
+              target.css('border-bottom', 'none');
+            }, 1300);
+          }
+        });
+      });
+    </script>
   </head>
   <body>
     <div class="container">
@@ -174,6 +194,17 @@
                 <p class="date">Sept. 2013 – Now</p>
                 <p class="subtitle">ESIGELEC | Rouen, France.</p>
               </div>
+              <div class="description">
+                <ul>
+                  <li>Project management</li>
+                  <li>Network et security</li>
+                  <li>Java frameworks</li>
+                  <li>Website design</li>
+                  <li>SQL/PL</li>
+                  <li>XML</li>
+                  <li>C#</li>
+                </ul>
+              </div>
             </div>
           </div>
           <div id="education2" class="education">
@@ -186,6 +217,13 @@
                 <h3>Preparatory Cycle</h3>
                 <p class="date">Sept. 2011 - Jul. 2013</p>
                 <p class="subtitle">ESIGELEC | Rouen, France.</p>
+              </div>
+              <div class="description">
+                <ul>
+                  <li>mathematics</li>
+                  <li>electronic</li>
+                  <li>physics</li>
+                </ul>
               </div>
             </div>
           </div>
