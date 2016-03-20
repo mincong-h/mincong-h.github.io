@@ -45,4 +45,4 @@ public class MainActivity extends AppCompatActivity {
 
 Let's check the result :
 
-![OnClick screenshot]({{ site.url }}/assets/20160320-165100-screenshot.png)
+<img src="{{ site.url }}/assets/20160320-165100-screenshot.png" width="300" alt="OnClick screenshot"/>
