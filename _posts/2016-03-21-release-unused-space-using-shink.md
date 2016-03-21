@@ -21,7 +21,6 @@ USE [your_database]
 GO
 DBCC SHRINKDATABASE(N'your_database')
 GO
-}
 {% endhighlight %}
 
 Sometimes SSMS estimates that there's only few avaible free space (less than 1%)
