@@ -8,5 +8,4 @@ categories: sql-server
 {% highlight sql %}
 ALTER SCHEMA TargetSchema 
     TRANSFER SourceSchema.TableName;
-}
 {% endhighlight %}
