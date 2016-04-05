@@ -3,17 +3,18 @@
 # mincong-h.github.io
 
 Hi, welcome to my blog ! I'm a postgraduate CS student who love programming. My blogs represent some problems or 
-expriences that I met during projects or intern. Most of them will be related to `java`, `android`, `excel-vba` 
+expriences that I met during my projects or my internships. Most of them are related to `java`, `android`, `excel-vba` 
 and `sql-server`. Hope you enjoy them ! 
 
 This blog is powered by [Jekyll][1], a simple, blog-aware, static sites solution.
 
-## Run the blog in localhost
+## Run this blog in localhost
 
 In linux, the jekyll can be launched by the following command :
 
 ```sh
-jekyll serve
+$ rvm use 2.3.0
+$ jekyll serve
 ```
 
 Once it is launched, open the web browser and tape the URL <http://localhost:4000>
