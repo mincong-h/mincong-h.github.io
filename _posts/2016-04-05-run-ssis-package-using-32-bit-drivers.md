@@ -26,11 +26,11 @@ referencing the 32-bit dlls :
 * Go to _Configuration Properties_ > _Debugging_
 * Set `Run64BitRunTime` to `False`
 
-<img src="{{ site.url }}/assets/20160405-solution-properties.png" width="300" alt="SSIS package properties"/>
+<img src="{{ site.url }}/assets/20160405-solution-properties.png" width="300" alt="SSIS package properties">
 
 Here's the result :
 
-<img src="{{ site.url }}/assets/20160405-result.png" width="300" alt="SSIS execution result in Visual Studio"/>
+<img src="{{ site.url }}/assets/20160405-result.png" width="300" alt="SSIS execution result in Visual Studio">
 
 However, I doubt whether we should set the whole project to run under 32-bit or
 should we just install the MS Access driver in 64-bit ? But is it available for 
