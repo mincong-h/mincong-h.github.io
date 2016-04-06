@@ -26,11 +26,16 @@ referencing the 32-bit dlls :
 * Go to _Configuration Properties_ > _Debugging_
 * Set `Run64BitRunTime` to `False`
 
-<img src="{{ site.url }}/assets/20160405-solution-properties.png" width="300" alt="SSIS package properties">
+<img src="{{ site.url }}/assets/20160405-solution-properties.png" width="500" alt="SSIS package properties">
 
 Here's the result :
 
-<img src="{{ site.url }}/assets/20160405-result.png" width="300" alt="SSIS execution result in Visual Studio">
+<img src="{{ site.url }}/assets/20160405-result.png" width="500" alt="SSIS execution result in Visual Studio">
+
+The above configuration does make SSIS run in 32 bit runtime in debug mode, but for production environment, we need 
+to configure the execution step in 32-bit in Job Step Properties:
+
+<img src="{{ site.url }}/assets/20160405-solution-properties-2.png" width="500" alt="SSIS execution result in SQL Server">
 
 However, I doubt whether we should set the whole project to run under 32-bit or
 should we just install the MS Access driver in 64-bit ? But is it available for 
