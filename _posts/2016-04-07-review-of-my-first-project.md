@@ -36,5 +36,17 @@ occurs.
 The last part is task assignment. Do not place too many tasks to the one person. If he is ill, 
 or for any reason, cannot participate in the project, we will therefore pay a heavy price.
 
+At the end, I'd like to thanks my teammates. No matter the result, we've been working together
+days and nights (we all have an intern for weekdays as well). Really appreciate the motivation
+of everyone !! Great team ESIGELEC. #FantasticFour
+
+Commits of the server side _erally_server_:
+
+<img src="{{ site.url }}/assets/20160408-erally-server.png" width="600" alt="Commits of erally_server">
+
+Commits of the client side _erally_android_:
+
+<img src="{{ site.url }}/assets/20160408-erally-android.png" width="600" alt="Commits of erally_android">
+
 [1]: https://jenkins.io/
 [2]: https://travis-ci.org/
