@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Install Apache Lucene"
-date:   2016-04-07 22:47:00 +0100
+date:   2016-04-10 22:47:00 +0100
 categories: apache-lucene
 ---
 
