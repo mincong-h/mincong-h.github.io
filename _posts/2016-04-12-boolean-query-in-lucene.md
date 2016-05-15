@@ -14,6 +14,8 @@ we should use `BooleanQuery.Builder` to build queries.
 
 <img src="{{ site.url }}/assets/logo-lucene.png" width="200" alt="Logo of Apache Lucene">
 
+<!--more-->
+
 This change has been annonced at the Apache Lucene's news at 24 August 2015,
 the release of [Apache Lucene 5.3.0][2] :
 

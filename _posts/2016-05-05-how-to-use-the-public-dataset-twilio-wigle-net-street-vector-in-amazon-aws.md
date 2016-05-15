@@ -20,6 +20,7 @@ an overview before getting started :
 6. Copy the data into MySQL server
 7. Use it via any MySQL client
 
+<!--more-->
 
 ## Create an AWS account
 

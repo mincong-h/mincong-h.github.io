@@ -8,6 +8,8 @@ categories: sql-server
 Database's size can be optimized using Shrink command. It helps to release
 unused space. There're 2 ways to do it : by GUI or by T-SQL.
 
+<!--more-->
+
 __By GUI__
 
 * Connect to SSMS

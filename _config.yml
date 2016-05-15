@@ -26,6 +26,10 @@ twitter_username: mincong_h
 github_username:  mincong-h
 tagline: 'blog' # lanyon theme
 paginate: 5
+# Each post automatically takes the first block of text, from the beginning of
+# the content of the first occurrence of excerpt_separator, and sets it as the 
+# post.excerpt. Take the above example of an index of posts.
+excerpt_separator: <!--more-->
 # About/contact
 # author:
 # name: Mincong Huang

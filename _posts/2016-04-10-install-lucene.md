@@ -19,6 +19,7 @@ As I was submitted to the Google Summer of Code 2016 (GSoC), I tried to install
 Apache Lucene 6.0.0 for learning basical concept before the final answer at 25th
 April.
 
+<!--more-->
 
 ## Download Apache Lucene 6.0.0
 

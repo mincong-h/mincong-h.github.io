@@ -16,6 +16,8 @@ order to get all the functionality one is used to from the Hibernate API.
 In this article, I will focus on the Apache Lucene queries and find out what 
 features can we use on it.
 
+<!--more-->
+
 The first step it to obtain a `org.hibernate.search.query.dsl.QueryBuilder`
 object, configured for seraching on a given entity:
 

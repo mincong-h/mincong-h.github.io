@@ -21,6 +21,8 @@ available. This is caused by the MS Access provider.
 In order to resolve this problem, I configured the SSIS pakcages to run by
 referencing the 32-bit dlls : 
 
+<!--more-->
+
 * Right click on _Project solution_
 * Click _Properties_
 * Go to _Configuration Properties_ > _Debugging_

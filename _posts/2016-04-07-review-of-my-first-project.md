@@ -12,6 +12,7 @@ techinicienne ... un métier pour moi**_ destined for teenagers, participants an
 rally hosts use our app for several usages: find goals in the city, play quizzes
 using QR code, score check, share photos, read companies’ info etc.
 
+<!-- more -->
 
 For the review, there're many things to talk about. The most important must be test.
 Testing, like unit testing, integration testing is really necessary. We've made a huge

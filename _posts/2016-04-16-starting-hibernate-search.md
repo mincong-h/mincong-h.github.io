@@ -16,6 +16,8 @@ some methods are deprecated now. The essential of book reading, is to
 understand the mechanism about how hibernate search works, with hibernate ORM, 
 JPA and Apache Lucene.
 
+<!--more-->
+
 Sanne has assgined me to the issue [HSEARCH-2207 Treat BooleanQuery as an 
 immutable Query][HS2207] at the beginning of this week. Now, there're some
 advances: some modifications were made to these classes :
