@@ -5,6 +5,9 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
+# Parlalinks
+permalink: pretty # URL template /:categories/:year/:month/:day/:title/
+
 # Site settings
 title: Mincong HUANG
 email: mincong.h@gmail.com
@@ -21,6 +24,19 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://mincong-h.github.io" # the base hostname & protocol for your site
 twitter_username: mincong_h
 github_username:  mincong-h
+tagline: 'blog' # lanyon theme
+paginate: 5
+# About/contact
+# author:
+# name: Mincong Huang
+# url: https://twitter.com/mincong_h
+# email: mincong.h@gmail.com
 
 # Build settings
-markdown: kramdown
+markdown: kramdown # basic theme
+
+# Custom vars
+version: 1.1.0
+
+# Gems
+gems: [jekyll-paginate]
