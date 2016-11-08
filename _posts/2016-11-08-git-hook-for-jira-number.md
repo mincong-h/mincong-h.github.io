@@ -17,6 +17,8 @@ achieve it without cursing at each meeting? Today, I want to share with you an
 easy method to enforce the JIRA number, as the prefix of a git commit message.
 I'm using a Git hook to do this, inspired by [Wenfeng's blog][wenfeng-blog].
 
+<!--more-->
+
 First, let's create a new git project and add a README file.
 
     $ git init
