@@ -4,7 +4,7 @@ title:  "Git Hook for JIRA Number"
 date:   2016-11-08 12:00:00 +0100
 categories: git
 redirect_from:
-  - /git/
+  - /git/2016/11/08/git-hook-for-jira-number/
 ---
 
 Did you try to enforce the Git commit message to respect a pattern, but you feel

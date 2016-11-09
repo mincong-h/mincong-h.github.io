@@ -4,7 +4,7 @@ title:  "How to use the public dataset Twilio Wigle.net Street Vector in Amazon 
 date:   2016-05-05 11:00:00 +0100
 categories: open-data
 redirect_from:
-  - /open-data/
+  - /open-data/2016/05/05/how-to-use-the-public-dataset-twilio-wigle-net-street-vector-in-amazon-aws
 ---
 
 The Twilio/Wigle.net Street Vector data set provides a complete database of US 

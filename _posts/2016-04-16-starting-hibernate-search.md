@@ -4,7 +4,7 @@ title:  "Starting Hibernate Search"
 date:   2016-04-16 23:00:00 +0100
 categories: hibernate-search
 redirect_from:
-  - /hibernate-search/
+  - /hibernate-search/2016/04/16/starting-hibernate-search/
 ---
 
 

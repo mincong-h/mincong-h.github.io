@@ -4,7 +4,7 @@ title:  "Lucene queries in Hibernate Search"
 date:   2016-05-05 23:00:00 +0100
 categories: hibernate-search
 redirect_from:
-  - /hibernate-search/
+  - /hibernate-search/2016/05/05/lucene-queries/
 ---
 
 Today, I want to share something about the search feature in Hiberante Search.

@@ -4,7 +4,7 @@ title:  "MassIndexer in Hibernate Search"
 date:   2016-05-19 19:00:00 +0100
 categories: hibernate-search
 redirect_from:
-  - /hibernate-search/
+  - /hibernate-search/2016/05/19/massindexer-in-hibernate-search/
 ---
 
 In this chapitre, I'll focus on how batch indexing is implemented in hibernate 

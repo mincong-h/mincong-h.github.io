@@ -4,7 +4,7 @@ title:  "Add listener to Android ListView"
 date:   2016-03-20 17:56:15 +0100
 categories: android
 redirect_from:
-  - /android/
+  - /android/2016/03/20/listview-onclicklistner/
 ---
 
 In a recent Android project, I work with `ListView` component. At the beginning,
