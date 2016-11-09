@@ -3,6 +3,8 @@ layout: post
 title:  "New repo: Java Example"
 date:   2016-08-09 22:15:00 +0100
 categories: java
+redirect_from:
+  - /java/
 ---
 
 I’ve been learning different Java frameworks since my last intern in Beijing.

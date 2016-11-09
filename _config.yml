@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Parlalinks
-permalink: pretty # URL template /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
 
 # Site settings
 title: Mincong HUANG
@@ -22,7 +22,7 @@ description: >
 # line in _config.yml. It will appear in your document head meta (for
 # Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://mincong-h.github.io" # the base hostname & protocol for your site
+url: "http://mincong-h.github.io"
 twitter_username: mincong_h
 github_username:  mincong-h
 tagline: 'blog' # lanyon theme
@@ -40,4 +40,6 @@ markdown: kramdown # basic theme
 version: 1.1.0
 
 # Gems
-gems: [jekyll-paginate]
+gems:
+  - jekyll-paginate
+  - jekyll-redirect-from

@@ -3,6 +3,8 @@ layout: post
 title:  "Boolean query in Apache Lucene"
 date:   2016-04-12 21:34:00 +0100
 categories: apache-lucene
+redirect_from:
+  - /apache-lucene/
 ---
 
 

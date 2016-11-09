@@ -3,6 +3,8 @@ layout: post
 title:  "Projects Highlight 2015-2016"
 date:   2016-09-01 00:00:00 +0100
 categories: project
+redirect_from:
+  - /project/
 ---
 
 Today, I want to share with you all the projects that I’ve done during the last
