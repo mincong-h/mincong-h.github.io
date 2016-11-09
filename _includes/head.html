@@ -4,14 +4,19 @@
   <!-- Enable responsiveness on mobile devices-->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <!-- Twitter card
-       https://dev.twitter.com/cards/types/summary
-   -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:site" content="@{{ site.twitter_username }}"/>
   <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
   <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}"/>
   <meta name="twitter:image" content="http://www.gravatar.com/avatar/e9760ae831cb65cf1b7453c98701aae1?s=200"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
+  <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}"/>
+  <meta property="og:site_name" content="Mincong Huang's blog"/>
+  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}"/>
+  <meta property="og:image" content="http://www.gravatar.com/avatar/e9760ae831cb65cf1b7453c98701aae1?s=200"/>
 
   <title>
     {% if page.title == "Home" %}
