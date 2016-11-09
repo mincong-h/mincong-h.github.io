@@ -9,15 +9,18 @@
   <meta name="twitter:site" content="@{{ site.twitter_username }}"/>
   <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
   <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}"/>
-  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/logo-github.png"/>
+  <meta name="twitter:image" content="{{ site.url }}/assets/logo-github.png"/>
 
   <!-- Open Graph -->
   <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
   <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}"/>
   <meta property="og:site_name" content="Mincong Huang's blog"/>
   <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}"/>
-  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/logo-github.png"/>
-  <meta property="fb:admins" content="{{ site.facebook_id }}"/>
+  <meta property="og:image" content="{{ site.url }}/assets/logo-github.png"/>
+  <meta property="og:image:width" content="300"/>
+  <meta property="og:image:height" content="300"/>
+  <meta property="fb:app_id" content="{{ site.facebook_id }}"/>
 
   <title>
     {% if page.title == "Home" %}
