@@ -39,6 +39,7 @@ markdown: kramdown # basic theme
 # Custom vars
 version: 1.1.0
 google_analytics: UA-87129300-1
+facebook_id: 1788552244732928
 
 # Gems
 gems:
