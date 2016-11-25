@@ -18,6 +18,8 @@ are staged for the next commit. `--cached` means show the changes in the cache /
 index against the current `HEAD`. `--staged` is a synonym for `--cached`.
 Therefore, we don't need to launch a GUI to check the staged files anymore!
 
+<!--more-->
+
 Source: [Stack Overflow - How do I show the changes which have been staged?][1]
 
 <hr>
