@@ -2,7 +2,7 @@
 layout: post
 title:  "Miscellaneous Tips for Development"
 date:   2016-11-24 21:46:00 +0100
-categories: git, maven
+categories: git, maven, linux
 ---
 
 I'm currently learning many different programming languages and frameworks.
@@ -78,5 +78,15 @@ I tested both solutions on my Windows 10, both work.
 
 Source: [Stack Overflow - File.separator vs Slash in Paths][2]
 
+<hr>
+
+## Linux: configure Maven in Ubuntu
+
+1. [Install OpenJDK 8][l1]
+2. [Set JAVA_HOME][l2]
+3. Download Maven using `sudo apt-get install maven`
+
 [1]: http://stackoverflow.com/questions/1587846/how-do-i-show-the-changes-which-have-been-staged
 [2]: http://stackoverflow.com/questions/2417485/file-separator-vs-slash-in-paths
+[l1]: http://askubuntu.com/questions/464755/how-to-install-openjdk-8-on-14-04-lts
+[l2]: http://askubuntu.com/questions/175514/how-to-set-java-home-for-java
