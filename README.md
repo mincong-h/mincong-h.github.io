@@ -8,4 +8,12 @@ internships. Most of them are related to `java`, `android`, `excel-vba`  and
 This blog is powered by [Jekyll][1], a simple, blog-aware, static sites
 solution.
 
+## Run
+
+    # install gem if not exists
+    gem install jekyll-paginate
+    gem install jekyll-redirect-from
+    # run
+    jekyll serve
+
 [1]: https://jekyllrb.com/
