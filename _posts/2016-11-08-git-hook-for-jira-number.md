@@ -80,9 +80,9 @@ empty space should be allowed between JIRA number and colon.
 After the implementation, every developer need to hook the commit by
 following the pattern. The commit logs become more elegant now.
 
-    $ git log --pretty=oneline
-    1b39e03e32144da13b51a1cbb2d76f86adf7909a JIRA-3: I
-    3e7162e50319ec1532e57f6a525fca5681695160 JIRA-2: Love
-    5626d870e69b462122df5febfaedb1763fb3a8e9 JIRA-1: Git Hooks.
+    $ git log --oneline
+    1b39e03 JIRA-3: I
+    3e7162e JIRA-2: Love
+    5626d87 JIRA-1: Git Hooks.
 
 [wenfeng-blog]: http://wenfeng-gao.github.io/2016/09/28/Simple-Commit-Msg-hook.html
