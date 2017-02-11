@@ -8,6 +8,8 @@ Done:
 
 * [Effective Java][effective-java]
 * [Git Pro][git-pro]
+* [英国文字设计教科书：文字的编排、色彩、符号传达设计与实验][how-to-use-type]
+* [Designing Design 设计中的设计（全本）][designing-design]
 
 In progress:
 
@@ -29,3 +31,5 @@ To read:
 [git-pro]: https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772
 [haskell]: https://www.amazon.com/Learn-You-Haskell-Great-Good/dp/1593272839
 [ocajp]: https://www.amazon.fr/OCA-Certified-Associate-Programmer-1Z0-808/dp/1118957407
+[how-to-use-type]: https://www.amazon.cn/dp/B00L7NC6MY
+[designing-design]: https://www.amazon.cn/dp/B0046ZS8XG
