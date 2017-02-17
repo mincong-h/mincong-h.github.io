@@ -149,8 +149,8 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
   top: 0;
   bottom: 0;
-  left: -14rem;
-  width: 14rem;
+  left: -15rem;
+  width: 15rem;
   visibility: hidden;
   overflow-y: auto;
   font-family: "PT Sans", Helvetica, Arial, sans-serif;
@@ -299,9 +299,9 @@ a.sidebar-nav-item:focus {
 #sidebar-checkbox:checked ~ .sidebar,
 #sidebar-checkbox:checked ~ .wrap,
 #sidebar-checkbox:checked ~ .sidebar-toggle {
-  -webkit-transform: translateX(14rem);
-      -ms-transform: translateX(14rem);
-          transform: translateX(14rem);
+  -webkit-transform: translateX(15rem);
+      -ms-transform: translateX(15rem);
+          transform: translateX(15rem);
 }
 
 
@@ -423,7 +423,7 @@ a.pagination-item:hover {
 
 .layout-reverse .sidebar {
   left: auto;
-  right: -14rem;
+  right: -15rem;
 }
 .layout-reverse .sidebar-toggle {
   left: auto;
@@ -433,9 +433,9 @@ a.pagination-item:hover {
 .layout-reverse #sidebar-checkbox:checked ~ .sidebar,
 .layout-reverse #sidebar-checkbox:checked ~ .wrap,
 .layout-reverse #sidebar-checkbox:checked ~ .sidebar-toggle {
-  -webkit-transform: translateX(-14rem);
-      -ms-transform: translateX(-14rem);
-          transform: translateX(-14rem);
+  -webkit-transform: translateX(-15rem);
+      -ms-transform: translateX(-15rem);
+          transform: translateX(-15rem);
 }
 
 
