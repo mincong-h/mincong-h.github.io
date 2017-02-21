@@ -22,7 +22,7 @@ description: >
 # line in _config.yml. It will appear in your document head meta (for
 # Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://mincong-h.github.io"
+url: "https://mincong-h.github.io"
 twitter_username: mincong_h
 github_username:  mincong-h
 tagline: 'blog' # lanyon theme
