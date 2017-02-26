@@ -54,12 +54,12 @@ html {
 }
 @media (min-width: 38em) {
   html {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
 body {
-  color: #515151;
+  color: #595959;
   background-color: #fff;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
@@ -97,7 +97,7 @@ h1 {
 }
 h2 {
   margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
 }
 h3 {
   margin-top: 1.5rem;
