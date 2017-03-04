@@ -1,8 +1,10 @@
 ---
 layout: post
-title:  "Things You Didn't Know About Java"
+title:  "OCA Review 1 - Java Basics"
 date:   2017-02-23 20:00:00 +0100
 categories: java, weekly, ocajp
+redirect_from:
+  - /2017/02/23/things-you-didnt-know-about-java/
 ---
 
 I'm preparing the OCAJP: Oracle Certified Associate Java SE 8 Programmer.
