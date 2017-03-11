@@ -2,7 +2,7 @@
 layout: post
 title:  "MassIndexer in Hibernate Search"
 date:   2016-05-19 19:00:00 +0100
-categories: hibernate-search
+categories: [hibernate-search]
 redirect_from:
   - /hibernate-search/2016/05/19/massindexer-in-hibernate-search/
 ---

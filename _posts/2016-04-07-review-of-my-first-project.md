@@ -2,7 +2,7 @@
 layout: post
 title:  "Review of my first project"
 date:   2016-04-07 08:10:00 +0100
-categories: project
+categories: [project]
 redirect_from:
   - /project/2016/04/07/review-of-my-first-project/
 ---

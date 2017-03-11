@@ -2,7 +2,7 @@
 layout: post
 title:  "Setup GitLab Sever Locally"
 date:   2017-03-10 21:00:00 +0100
-categories: git, weekly, docker
+categories: [git, weekly, docker]
 ---
 
 Here's the guide about how to setup a GitLab server locally using Docker under

@@ -2,7 +2,7 @@
 layout: post
 title:  "Release unused space using Shrink"
 date:   2016-03-21 09:46:00 +0100
-categories: sql-server
+categories: [sql-server]
 redirect_from:
   - /sql-server/2016/03/21/release-unused-space-using-shink/
 ---

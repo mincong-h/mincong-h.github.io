@@ -2,7 +2,7 @@
 layout: post
 title:  "HI to Jekyll!"
 date:   2016-03-20 03:01:15 +0100
-categories: fun
+categories: [fun]
 redirect_from:
   - /fun/
 ---
@@ -11,7 +11,7 @@ OMG, everything is so cool :)
 
 {% highlight java %}
 public class User {
-    
+
     private String id;
     private String password;
 

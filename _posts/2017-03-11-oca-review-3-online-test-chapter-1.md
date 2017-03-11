@@ -1,8 +1,8 @@
 ---
-layout: post
-title: "OCA Review 3 - Online Test Chapter 1"
-date: 2017-03-11 20:00:00 +0100
-categories: java, weekly, ocajp
+layout:      post
+title:       'OCA Review 3 - Online Test Chapter 1'
+date:        2017-03-11 20:00:00 +0100
+categories:  [java, weekly, ocajp]
 ---
 
 Today, I'm going to review my online test, chapter 1 of Oracle Certified

@@ -154,15 +154,21 @@ abbr[title] {
 
 /* Code */
 code,
+.code,
 pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
+.code,
 code {
   padding: .25em .5em;
   font-size: 85%;
   color: #bf616a;
   background-color: #f9f9f9;
   border-radius: 3px;
+}
+span.category.code {
+  color: #595959;
+  background-color: #f0f0f0;
 }
 pre {
   display: block;

@@ -2,7 +2,7 @@
 layout: post
 title:  "Welcome to Jekyll!"
 date:   2016-03-20 02:53:15 +0100
-categories: jekyll update
+categories: [jekyll, update]
 redirect_from:
   - /jekyll/update/2016/03/20/welcome-to-jekyll/
 ---

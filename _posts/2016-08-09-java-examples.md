@@ -2,7 +2,7 @@
 layout: post
 title:  "New repo: Java Example"
 date:   2016-08-09 22:15:00 +0100
-categories: java
+categories: [java]
 redirect_from:
   - /java/2016/08/09/java-examples/
 ---
