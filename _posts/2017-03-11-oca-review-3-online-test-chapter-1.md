@@ -7,7 +7,7 @@ categories: java, weekly, ocajp
 
 Today, I'm going to review my online test, chapter 1 of Oracle Certified
 Associate (OCA), provided by SYBEX. If you need to access to this online
-resouces, you need to by their book first. See
+resources, you need to buy their book first. See
 <http://www.sybex.com/go/ocajavase8>.
 
 <!--more-->
@@ -42,13 +42,13 @@ public class BirdDisplay {
 5. `java BirdDisplay.class Sparrow "Blue Jay"`
 6. `java BirdDisplay.class "Blue Jay" Sparrow`
 
-**The answer is B.** Choice A is wrong because the program takes 3 arguments, and
-the argument at index 1, `Blue`, will be printed. Choice B is correct because
-`"Blue Jay"` is a string which is considered as one argument. The same logic:
-the choice C will print `Jay`; the choice D will print `Sparrow`. As for choices
-E and F, they won't work because java uses the compiled class' name without
-extension, so `java BirdDisplay.class` is illegal. If you do so, you'll see the
-error message:
+**The answer is B.** Choice A is wrong because the program takes 3 arguments,
+and the argument at index 1, `Blue`, will be printed. Choice B is correct
+because `"Blue Jay"` is a string which is considered as one argument. The same
+logic: the choice C will print `Jay`; the choice D will print `Sparrow`. As for
+choices E and F, they won't work because java uses the compiled class' name
+without extension, so `java BirdDisplay.class` is illegal. If you do so, you'll
+see the error message:
 
 > Error: Could not find or load main class BirdDisplay.class.
 
@@ -64,7 +64,7 @@ public class Rabbit {
     Rabbit two = new Rabbit();
     Rabbit three = one;
     one = null;
-    Rabbit fout = one;
+    Rabbit four = one;
     three = null;
     two = null;
     two = new Rabbit();
