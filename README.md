@@ -13,4 +13,8 @@ sites solution.
     # run
     jekyll serve
 
+## Create New Post
+
+    ./newpost.sh "My New Post"
+
 [1]: https://jekyllrb.com/
