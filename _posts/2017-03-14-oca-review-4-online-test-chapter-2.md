@@ -8,7 +8,7 @@ categories:  [java, weekly, ocajp]
 Today, I'm going to review my online test, chapter 2 of Oracle Certified
 Associate (OCA), provided by SYBEX. If you need to access to this online
 resources, you need to buy their book first. See
-<http://www.sybex.com/go/ocajavase8>.
+<https://sybextestbanks.wiley.com/>.
 
 <!--more-->
 
