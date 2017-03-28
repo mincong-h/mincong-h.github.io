@@ -1,7 +1,7 @@
 ---
-layout: post
-title:  "Configuring IntelliJ for Nuxeo"
-date:   2017-02-09 20:00:00 +0100
+layout:     post
+title:      "Configuring IntelliJ for Nuxeo"
+date:       "2017-02-09 20:00:00 +0100"
 categories: [nuxeo, idea, weekly]
 ---
 
@@ -17,38 +17,46 @@ like to share with you the IntelliJ configuration for Nuxeo.<!--more--> After
 reading this blog, you'll understand how to:
 
 1. [Download and Install IntelliJ](#download-and-install-intellij)
-2. [Getting The Nuxeo Source Code](#getting-the-nuxeo-source-code)
-3. [Import Nuxeo Source Code Into IntelliJ](#import-nuxeo-source-code-into-intellij)
+2. [Getting the Nuxeo Source Code](#getting-the-nuxeo-source-code)
+3. [Import Nuxeo Source Code into IntelliJ](#import-nuxeo-source-code-into-intellij)
 4. [Configure Nuxeo Code Style](#configure-nuxeo-code-style)
+
+## Prerequisite
+
+Before getting started, you need to ensure your computer has installed the
+following software:
+
+- Git
+- Java 8
+- Maven 3
+- Python 2.7
 
 ## Download and Install IntelliJ
 
 You can [download][idea-download] the latest version of IntelliJ IDEA from Jet
 Brains, the official website. It supports all the platforms including Mac OS,
-Windows and Linux. There're two editions of IntelliJ: Community Edition and
-Ultimate Edition. Nuxeo sources code work with both of them. Once downloaded,
-install IntelliJ IDEA with your own preferences.
+Windows, and Linux. IntelliJ has two editions: Community Edition and Ultimate
+Edition. Nuxeo sources code work with both of them. Once downloaded, install
+IntelliJ IDEA with your own preferences.
 
-## Getting The Nuxeo Source Code
+## Getting the Nuxeo Source Code
 
-The next step is to get the Nuxeo source code. Before continuing, please ensure
-you've Git and Python 2.7 installed in your computer. We need to clone manually
-the Nuxeo principal repository and all the other repositories using Python
-script `clone.py`:
+The next step is to get the Nuxeo source code. We need to clone manually the
+Nuxeo principal repository and all the other repositories using Python script
+`clone.py`.
 
-    git clone git://github.com/nuxeo/nuxeo.git  # read-only
-    git clone git@github.com:nuxeo/nuxeo.git    # read write
+    git clone git@github.com:nuxeo/nuxeo.git
     cd nuxeo
-    python clone.py master -a
+    python2 clone.py master -a
 
-## Import Nuxeo Source Code Into IntelliJ
+## Import Nuxeo Source Code into IntelliJ
 
 Before importing Nuxeo source code, you need to configure the VM options for
 importer to increase the importation capacity. Open IntelliJ, a welcome menu
 will be shown. On the right bottom of menu, click _Configure_ > _Preferences_.
 Then search `VM options for importer` and set it to:
 
-    -Xmx4096m -Xms1024m
+    -Xms1g -Xmx4g
 
 <img
   src="{{ site.url }}/assets/20170209-vm-options-for-importer.png"
@@ -69,7 +77,7 @@ Later, you will need to:
 - Choose Project SDK: use JDK 8
 - Edit name to create a new IntelliJ project: default
 
-After that, the configuraiton is finished. IntelliJ will create a project for
+After that, the configuration is finished. IntelliJ will create a project for
 you, the entire process (Maven import) will take a few minutes, please be
 patient. Here's the final view:
 
