@@ -3,6 +3,7 @@ layout:      post
 title:       'OCA Review 5 - Online Test Chapter 3'
 date:        2017-03-15 22:00:00 +0100
 categories:  [java, weekly, ocajp]
+comments:    true
 ---
 
 Today, I'm going to review my online test, chapter 3 of Oracle Certified

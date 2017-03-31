@@ -3,6 +3,7 @@ layout: post
 title:  "Learning Git Basics"
 date:   2017-01-20 22:00:00 +0100
 categories: [git, weekly]
+comments:    true
 ---
 
 It’s been six weeks since my arrival at Nuxeo now. I learned a lot of things and
