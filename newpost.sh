@@ -30,6 +30,7 @@ layout:      post
 title:       "$title"
 date:        "$(date +"%Y-%m-%d %H:%M:%S %z")"
 categories:  [weekly]
+comments:    true
 ---
 EOF
 
