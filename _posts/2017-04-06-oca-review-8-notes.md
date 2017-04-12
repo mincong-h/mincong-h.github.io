@@ -18,6 +18,8 @@ be separated into several subjects. They're:
 6. Inheritance
 7. Exception Handling
 
+<!--more-->
+
 ## Java Basics
 
 - Check access modifier
@@ -36,7 +38,7 @@ public static void main(String[] args) { ... }
 // +- access modifier
 {% endhighlight %}
 
-Java packages:
+**Java Packages**
 
 - An `import` statement allows to import a class or interface.
 - An `import` statement allows to import a package using wildcard `*`.
@@ -46,16 +48,17 @@ target class using wildcard `*`.
 - If a `package` statement is present, it must be the first non-commented line
   of code in the file.
 
-Compilation:
+**Compilation**
 
 - If a variable declaration fails to compile, then all the following lines
   which use this variable will fail to compile, because variable is undefined.
 - A local variable must be initialized before being used. Otherwise, Java fails
   to compile at those lines where this variable is used.
+- A local variable is not required to be initialized if it is not used.
 
 ## Java Data Types
 
-Primitives
+**Primitives**
 
 - Characters `char` can be concatenated, such as `'a' + 'b'`. When doing so,
   they are considered as integer using their corresponding value in ASCII
@@ -75,14 +78,14 @@ Primitives
 - Wrapper class `Boolean` has 2 cached instances, `Boolean.TRUE` and
   `Boolean.FALSE`. They're accessible directly because only two exist.
 
-Operators
+**Operators**
 
 - The logical operator AND `&&` has a higher operator precedence than the
   operator `||`.
 
 ## Methods and Encapsulation
 
-Constructor
+**Constructor**
 
 - Initializer blocks are used to initialize the variables of anonymous classes.
 - A constructor must not define any return type.
@@ -91,8 +94,10 @@ Constructor
 - A constructor does not have return type, e.g. `void`
 - If a subclass does not make an explicit call to a parent constructor, the
   compiler attempts to compensate for this by insert a call to the default
-  no-argument constructor `super()`. However, this will fail if there's no such
-  constructor in the parent class.
+  no-argument constructor `super()`. **However, this will fail if there's no
+  such constructor in the parent class.**
+- Subclass must make an explicit call to the parent constructor with the
+  `super()` command if parent does not have a no-argument constructor.
 - Overloaded constructors cannot be defined by just a change in the access
   levels.
 - A constructor can call another overloaded constructor by using the keyword
@@ -111,13 +116,15 @@ public class A {
 }
 {% endhighlight %}
 
-Interface
+**Interface**
 
 - Interface methods are assumed to be `public` and `abstract` even if they're
   not written as modifier. Therefore, a class implementing the methods of an
   interface must follow the same accessibility: `public`.
+- Interface method cannot be marked `static` or `default` if it is already
+  marked `abstract`.
 
-Method
+**Method**
 
 - Overloaded method means the method name is the same and the method parameter
   list is different. Anything else is allowed to vary. Remember that Java is
@@ -127,6 +134,9 @@ Method
 - Return type is not part of a method signature.
 - If you try to execute a method using values that can be passed to multiple
   overloaded methods, in this case, the code will fail to compile.
+- Java prefers the most specific overloaded signature it can find.
+- Java prefers a single object over a vararg parameter.
+- Java prefers an autoboxed parameter over a vararg parameter.
 - The `return` statement need not be the last statement in a method, but it
   must be the last statement to execute in a method.
 - If the compiler determines that a `return` statement isn't the last
@@ -138,32 +148,61 @@ Method
 - If the return type of a method is `int`, the method can return a value of
   type `byte`.
 
-Garbage Collection
+**Garbage Collection**
 
 - You can only determine which objects are eligible to be garbage collected.
 - You cannot determine when a particular object will be garbage collected. The
   execution of a garbage collector is controlled by the JVM.
+- Removing all references to an object makes the object eligible for garbage
+  collection, but the rules of garbage collection do not guarantee when the this
+  deletion from memory will occur.
 - The method `java.lang.Object#finalize()` has `protected` modifier.
+- The method `finalize` is called when the object is first attempted to be
+  garbage collected.
+- The method `finalize` will not be called more than once for the same instance.
 - A group of instances with no external references forms an island of
   isolation. which is eligible for garbage collection.
 
 ## Java Core APIs
 
-String
+**String**
 
 - All the string literals are automatically instantiated into a `String`
   object.
+- Whenever the JRE receives a new request to initialize a `String` variable
+  using the assignment operator, it checks whether a `String` object with the
+  same value already exists in the string pool.
+- `String` objects created using the operator `new` are never placed in the
+  string pool.
+- The method `substring` does not include the character at the end position.
 
-String Builder
+**String Builder**
 
 - `StringBuilder` and `StringBuffer` have the same methods.
 - `StringBuilder` has a constructor without any parameter.
 - `StringBuilder` has a constructor with a customized capacity as `int`.
 - `StringBuilder` has a constructor with a default capacity and an initial word
   as `String`.
+- `StringBuilder` does not have method `trim`.
+- `StringBuilder#subSequence(int, int)` does not modify the content of builder,
+  a new string is returned.
 
-Arrays
+**Arrays**
 
+- An array itself is an object.
+- The creation of an array involves three steps: declaration of an array,
+  allocation of an array, and initialization of array elements.
+- An array is an object, so it's allocated using the keyword `new`.
+- Elements of an array that store primitive data types store `0` for integer
+  types (`byte`, `short`, `int`, `long`).
+- Elements of an array that store primitive data types store `0.0` for decimal
+  types (`float`, `double`).
+- Elements of an array that store primitive data types store `false` for
+  `boolean`.
+- Elements of an array that store primitive data types store `/u0000` for
+  `char` data.
+- A multidimensional array can be asymmetrical. it may or may not define the
+  same number of columns for each of its rows.
 - Array anonymous initializer is only allowed in the declaration.
 
 {% highlight java %}
@@ -171,37 +210,68 @@ String[] arr = { "A", "B", "C" }; // OK
 arr = { "C", "B", "A" }; // Does not compile!
 {% endhighlight %}
 
-Date
+**ArrayList**
 
+- `ArrayList#remove(Object o)` removes the first occurrence of the specified
+  element from this list, if it is present.
+- Using generics only on one side in a declaration is allowed, so
+  `List<Integer> nums = new ArrayList();` compiles. However, this is not
+  suggested. An unchecked warning will be issued by the compiler.
+- It's not possible to remove elements from an `ArrayList` while iterating
+  through it using a `for` loop.
+- `indexOf(Object o)` returns the index of the first occurrence of the specified
+  element in the list, or `-1` if the list doesn't contain the element.
+- An `ArrayList` can store any type of object.
+- `ArrayList#contains(Object)` compares value and not reference.
+- `ArrayList` has overridden the default `toString` method, so an empty array
+  list prints `[]`.
+
+**Date**
+
+- `LocalDate` instances are immutable.
+- All the methods that seem to manipulate `LocalDate`'s value return a copy of
+  the `LocalDate` instance on which it's called.
+- The `withXX` methods return a copy of `LocalDate`'s value replacing the
+  specified day, month, or year in it.
+- `LocalTime` stores time to nanosecond precision.
 - Cannot use a `DateTimeFormatter` to format a date object, because it has no
   time.
 
-Lambda Expression
+**Lambda Expression**
 
 - Parentheses can be omitted ONLY if there's one parameter and the parameter
   type is not declared. So, `(String s) -> ...` or `s -> ...`.
+- When braces are used around the body, the `return` keyword and the semicolon
+  are required. For example, `p -> { return p.getAge() < 5; }`
 
 ## Flow control
 
 - The braces `{}` are required for methods, `try` blocks, and `catch` blocks
   even if there's only one statement inside.
+- If there're duplicate constant values in a `switch` statements, all the
+  duplicate cases will raise a compile error.
 
 ## Inheritance
 
-Interface
+**Interface**
 
 - All interface variables are implicitly assumed `public static final`. For
   these variables, they mush declare a value when they are initialized.
   Otherwise, the compilation fails.
 
+**Method**
+
+- The access modifier of an inherited method cannot be more restrictive than
+  its parent.
+
 ## Exception Handling
 
-Checked exception
+**Checked exception**
 
 - When calling a method having checked exception(s), you must handle them
   properly, e.g. `throws` from method or adding a `try ... catch` block.
 
-Errors
+**Errors**
 
 - Error is not a checked or unchecked exception.
 
