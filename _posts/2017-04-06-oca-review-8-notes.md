@@ -77,6 +77,10 @@ target class using wildcard `*`.
 - Wrapper class `Character` caches objects with values `0` to `127`.
 - Wrapper class `Boolean` has 2 cached instances, `Boolean.TRUE` and
   `Boolean.FALSE`. They're accessible directly because only two exist.
+- `Int` is not defined in the Java API, the correct wrapper class for `int` is
+  `Integer`.
+- `Bool` is not defined in the Java API, the correct wrapper class for `boolean`
+  is `Boolean`.
 
 **Operators**
 
@@ -123,6 +127,10 @@ public class A {
   interface must follow the same accessibility: `public`.
 - Interface method cannot be marked `static` or `default` if it is already
   marked `abstract`.
+- A `static` method in an interface can't be called using a reference variable.
+  It must be called using the interface name.
+- Unlike an interface, if you define a `static` method in a base class, it can
+  be accessed using either a reference variable or the class name.
 
 **Method**
 
@@ -162,6 +170,9 @@ public class A {
 - The method `finalize` will not be called more than once for the same instance.
 - A group of instances with no external references forms an island of
   isolation. which is eligible for garbage collection.
+- A garbage collector is a low-priority thread, and its exact execution time
+  will depend on the OS. The OS will start this thread if it needs to claim
+  unused space. You can only be sure how many objects are eligible for GC.
 
 ## Java Core APIs
 
@@ -184,6 +195,7 @@ public class A {
 - `StringBuilder` has a constructor with a default capacity and an initial word
   as `String`.
 - `StringBuilder` does not have method `trim`.
+- `StringBuilder` does not have method `concat`.
 - `StringBuilder#subSequence(int, int)` does not modify the content of builder,
   a new string is returned.
 
@@ -234,6 +246,9 @@ arr = { "C", "B", "A" }; // Does not compile!
 - The `withXX` methods return a copy of `LocalDate`'s value replacing the
   specified day, month, or year in it.
 - `LocalTime` stores time to nanosecond precision.
+- `LocalDate` doesn't define a `plus()` method, which accepts an integer value
+  to be added to it. You should use `plusXXX` where the expression can be days,
+  weeks, months, years.
 - Cannot use a `DateTimeFormatter` to format a date object, because it has no
   time.
 
@@ -243,6 +258,21 @@ arr = { "C", "B", "A" }; // Does not compile!
   type is not declared. So, `(String s) -> ...` or `s -> ...`.
 - When braces are used around the body, the `return` keyword and the semicolon
   are required. For example, `p -> { return p.getAge() < 5; }`
+- Lambdas work only with functional interfaces—interfaces that define exactly
+  one `abstract` method.
+- Each lambda expression has multiple optional and mandatory sections:
+  - Parameter type (optional)
+  - Parameter name (mandatory)
+  - Arrow (mandatory)
+  - Curly braces (optional)
+  - Keyword `return` (optional)
+  - Lambda body (mandatory)
+- The return type of the functional method `test` in the functional interface
+  `Predicate` is `boolean`. If you try to return another type, the code fails to
+  compile. So `Predicate<String> p = (s) -> s == null ? "A" : "B";` is
+  incorrect.
+- A simple lambda expression could be written in one line:
+  `Validate v = p -> p.getAge() <= 26;`
 
 ## Flow control
 
@@ -250,6 +280,8 @@ arr = { "C", "B", "A" }; // Does not compile!
   even if there's only one statement inside.
 - If there're duplicate constant values in a `switch` statements, all the
   duplicate cases will raise a compile error.
+- The `default` case executes only of no matching values are found. In this
+  case.
 
 ## Inheritance
 
@@ -266,14 +298,24 @@ arr = { "C", "B", "A" }; // Does not compile!
 
 ## Exception Handling
 
-**Checked exception**
-
+- Exceptions are divided into three categories: checked exceptions, runtime
+  (unchecked) exceptions, and errors.
+- You should not handle errors.
+- If a method throws a checked exception, it must be either handled by the
+  method or specified in its `throws` clause.
+- If a method throws a runtime exception, it may include the exception in its
+  `throws` clause.
+- An exception is an object of the class `java.lang.Throwable`.
 - When calling a method having checked exception(s), you must handle them
   properly, e.g. `throws` from method or adding a `try ... catch` block.
-
-**Errors**
-
+- If a method declares to throw a checked exception, its body can't throw a more
+  general exception.
 - Error is not a checked or unchecked exception.
+- If the creation of an object calls itself recursively without an exit
+  condition, it will result a `java.lang.StackOverflowError`. For example:
+  `class MyClass { MyClass my = new MyClass(); }`.
+- `ExceptionInInitializerError` may be thrown by the JVM when a `static`
+  initializer in your code throws a `NullPointerException`.
 
 ## Other notes
 
@@ -282,6 +324,8 @@ arr = { "C", "B", "A" }; // Does not compile!
   context.
 - Read all the options before answer a question. Sometimes multiple choices are
   correct.
+- Be careful about the name of variable, e.g. `s1` and `s2` may be used in a
+  mixed way to confuse you.
 - You cannot assume the `import` statement if the code snippet displayed starts
   from line 1. (No previous lines can be hidden in this case.)
 - Be careful about the application entry point, it must be `public static void`
