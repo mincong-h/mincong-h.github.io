@@ -40,7 +40,6 @@ from the Docker Hub.
 ```console
 $ docker run \
     --detach \
-    --hostname gitlab-localhost \
     --publish 443:443 --publish 80:80 --publish 22:22 \
     --name gitlab \
     --restart always \
@@ -55,14 +54,8 @@ Now, the GitLab container `gitlab` is created and running. Go to
 
 ## Setup GitLab Container
 
-In this step, we'll see how to configure GitLab properly, including hostname
-mapping, SSH mapping, docker container external URL.
-
-- Add hostname alias `gitlab-localhost` to IP address 127.0.0.1 in `/etc/hosts`.
-
-  ```sh
-  127.0.0.0    localhost    gitlab-localhost
-  ```
+In this step, we'll see how to configure GitLab properly, including SSH mapping,
+and docker container external URL.
 
 - Create a SSH key passphrase for SSH connection with GitLab. Name it as
   `gitlab_rsa`.
@@ -71,10 +64,10 @@ mapping, SSH mapping, docker container external URL.
   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
   ```
 
-- Add SSH port mapping to `gitlab-localhost` in `~/.ssh/config`
+- Add SSH port mapping to `localhost` in `~/.ssh/config`
 
   ```sh
-  Host gitlab-localhost
+  Host localhost
     IdentityFile ~/.ssh/gitlab_rsa
   ```
 
