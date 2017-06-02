@@ -9,10 +9,10 @@ comments:    true
 During your study or in your daily job, you might need to use Git as your
 versioning system. Sometimes, you might also need to transfer your Git
 repository based on different reasons: backup, ownership transfer, Git server
-migration, etc. No matter for which reason, you'll need to ensure the entirety
-of the Git repository during the transfer, including all the branches and tags.
-This article explains how to achieve it step-by-step, and the mechanism behind
-the screen.
+migration, etc. **No matter for which reason, you'll need to ensure the entirety
+of the Git repository during the transfer, including all the branches and
+tags.** This article explains how to achieve it step-by-step, and the mechanism
+behind the screen.
 
 <!--more-->
 
@@ -90,7 +90,7 @@ tracking is no longer the old repository, but the new one.
 $ git remote set-url origin https://mhuang@gitlab.com/mhuang/backup.git
 ```
 
-### Push the Local Mirror to the New Remote
+## Push the Local Mirror to the New Remote
 
 We're ready for the transfer in this step. Let's do it! A simple `git-push`
 command to the origin would be enough.
