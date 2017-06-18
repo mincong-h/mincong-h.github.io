@@ -316,6 +316,9 @@ a.sidebar-nav-item:focus {
 .post {
   margin-bottom: 4em;
 }
+.post.archive {
+  margin-bottom: 0em;
+}
 
 /* Blog post or page title */
 .page-title,
@@ -328,12 +331,17 @@ a.sidebar-nav-item:focus {
   margin-top: 0;
 }
 
-/* Meta data line below post title */
+/* Meta data line below post title (default) */
 .post-date {
   display: block;
   margin-top: -.5rem;
   margin-bottom: 1rem;
   color: #9a9a9a;
+}
+/* Meta data line is the same line of post title (archive) */
+.post-date.archive {
+  display: inline-block;
+  margin-bottom: 0rem;
 }
 
 /* Related posts */
