@@ -86,6 +86,10 @@ patient. Here's the final view:
   src="{{ site.url }}/assets/20170209-final-view.png"
   alt="IntelliJ - Final view" />
 
+This part is optional. If you wish to work with add-ons, you need to integrate
+them as Maven modules: in the project view, expand the `addons` folder, right
+click its `pom.xml`, click _"Add as Maven Project"_.
+
 This part is optional. If you want to improve the performance of IntelliJ, you
 can customize the VM options. Click _Help_ > _Edit Custom VM Options..._. If
 there's no existing configuration file, IntelliJ will help you to create one.
