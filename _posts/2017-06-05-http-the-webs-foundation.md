@@ -3,7 +3,7 @@ layout:      post
 title:       "HTTP: The Web's Foundation"
 date:        "2017-06-05 09:09:01 +0200"
 categories:  [weekly, http, web]
-comments:    false
+comments:    true
 ---
 
 It's been some days that I read the book [HTTP - The Definite Guide][book].
