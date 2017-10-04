@@ -67,7 +67,7 @@ of the branch file:
     $ cat .git/refs/heads/master
     56f0a2324c87464be433b0aa34c0faa4c4eb761f
 
-As you can see, it is a SHA1 value, the hash of the commit I mentionned in the
+As you can see, it is a SHA1 value, the hash of the commit I mentioned in the
 "preparation" section. Thanks to this commit hash, Git is able to find the type
 and content of this commit-object:
 
@@ -102,8 +102,8 @@ as a lightweight movable pointer, it moves forward automatically.
 
 ## Creating A Branch
 
-What happends if you create a new branch? Well, Git will create a new pointer
-for you to move around. Let's say you creat a new issue-branch for bugfix,
+What happens if you create a new branch? Well, Git will create a new pointer
+for you to move around. Let's say you create a new issue-branch for bugfix,
 called `issue1`. You can do this with the `git branch` command:
 
     $ git branch issue1
