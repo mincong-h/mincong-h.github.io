@@ -29,6 +29,8 @@ To read:
 * [Learn You a Haskell for Great Good!][haskell]
 * [Algorithms][algs4]
 * [Java Concurrency in Practice][java-concurrency]
+* [Concurrent Programming in Java, 2nd Edition][java-concurrent2]
+* [Java Performance][java-perf]
 * [OCP: Oracle Certified Professional Java SE 8 Programmer II][ocpjp]
 * [OSGi in Action][osgi-in-action]
 * [Mastering Regular Expressions][mastering-regex]
@@ -57,3 +59,5 @@ To read:
 [web-app-security]: https://www.amazon.com/Web-Application-Security-Beginners-Guide/dp/0071776168
 [pragmatic-programmer]: https://www.amazon.com/Pragmatic-Programmer-Journeyman-Master/dp/020161622X
 [legacy-code]: https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052
+[java-concurrent2]: https://www.amazon.com/Concurrent-Programming-Java-Principles-Pattern/dp/0201310090
+[java-perf]: https://www.amazon.com/Java-Performance-Charlie-Hunt/dp/0137142528
