@@ -36,6 +36,10 @@ To read:
 * [Mastering Regular Expressions][mastering-regex]
 * [Java 8 in Action][java8-manning]
 * [Working Effectively with Legacy Code][legacy-code]
+* [Microservice Patterns (Mar 30, 2018)][microservice-patterns]
+* [Head First Design Patterns: A Brain-Friendly Guide][design-patterns]
+* [Cracking the Coding Interview][coding-interview]
+* [The Garbage Collection Handbook][gc-handbook]
 
 [algs4]: https://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X
 [clean-code]: https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882
@@ -61,3 +65,7 @@ To read:
 [legacy-code]: https://www.amazon.com/Working-Effectively-Legacy-Michael-Feathers/dp/0131177052
 [java-concurrent2]: https://www.amazon.com/Concurrent-Programming-Java-Principles-Pattern/dp/0201310090
 [java-perf]: https://www.amazon.com/Java-Performance-Charlie-Hunt/dp/0137142528
+[microservice-patterns]: https://www.amazon.com/Microservice-Patterns-Chris-Richardson/dp/1617294543
+[design-patterns]: https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124
+[coding-interview]: https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850
+[gc-handbook]: https://www.amazon.com/dp/1420082795
