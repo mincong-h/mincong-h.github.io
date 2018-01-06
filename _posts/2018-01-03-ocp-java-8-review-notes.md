@@ -482,7 +482,7 @@ class's overloaded methods `indexOf`.
   this string. If no match is found, they return -1.
 - `contains` searches for an exact match in this string. Becuase `contains`
   accepts a method parameter of interface `CharSequence`, you can pass to it
-  both `String` and `StringBuilder` object.
+  _both_ `String` and `StringBuilder` object.
 - `substring` defines 2 overloaded versions, which accept one or two parameters
   for the start and end positions.<sup>[5.3]</sup> While `subSequence()` defines
   only one variant, the one that accepts two int method parameters for the start
@@ -543,6 +543,17 @@ s[1:2]: P
 - If the number of arguments _exceeds_ the required count, the extra variables
   are quietly _ignored_ by the compiler and JVM.
 - If the number of arguments falls short, the JVM throws a runtime exception.
+- The `-` indicates to left-justify this arguments; you must specify width as
+  well. Number flags<sup>[5.5]</sup> (only applicable for numbers, conversion
+  chars `d` and `f`) are as follows:
+  - The `+` indicates to include a sign (`+`, `-`) with this argument.
+  - `0` indicates to pad this arguments with zeros. Must pecify width as well.
+  - `,` indicates to use local-specific grouping separators, e.g. the comma in
+    123,456.
+  - `(` is used to enclose negative numbers in parentheses.
+- The floags `+`, `0`, `(`, and `,` can be specified only with the numeric
+  specifiers `%d` and `%f`. Using it with other specifier will raise a runtime
+  exception.
 - Format specifier `%b`
   - `null` -> false
   - Boolean, boolean -> itself
@@ -563,6 +574,32 @@ s[1:2]: P
   - `%s` outputs the value for a primitvie variable. It calles `toString` behind
     the screen, and outputs "null" for null values.
   - It accepts all types.
+
+<sup>[5.5]</sup> Example:
+
+{% highlight java %}
+import static java.lang.System.out;
+
+public class NumberFlags {
+  public static void main(String... args) {
+    out.printf("%+d%n", 1000);
+    out.printf("%05d%n", 1000);
+    out.printf("%,d%n", 1000);
+    out.printf("%(d%n", -1000);
+  }
+}
+{% endhighlight %}
+
+Compile and execute:
+
+```
+$ javac NumberFlags.java
+$ java NumberFlags
++1000
+01000
+1,000
+(1000)
+```
 
 [ocp]: https://www.manning.com/books/ocp-java-se-7-programmer-ii-certification-guide
 [java8]: https://www.manning.com/books/java-8-in-action
