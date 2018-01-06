@@ -390,6 +390,180 @@ Constructor
 Static init
 ```
 
+## Generics and Collections
+
+**Creating generic entities:**
+
+- Java's naming conventions limit the use of _single uppercase_ letters for type
+  parameters. Though not recommended, using any valid identifier name for type
+  parameters is acceptable code.
+- When a non-generic class extends a generic class, the derived class doesn't
+  define any type parameters but passes arguments to all type parameters of its
+  generic base class.
+
+// TODO...
+
+## String Processing
+
+**Regular expressions:**
+
+- Regular expressions, or regex, are used to define patterns of datat to be
+  found in a stream.
+- Character classes aren't classes defined in the Java API. The term refers to
+  _a set of characters_ that you can enclose within square brackets `[]`.
+- You can create a custom character class by enclosing a set of characters
+  within square brackets `[]`.
+  - `[fdn]` can be used to find an exact match of f, d, or n.
+  - `[^fdn]` can be used to find a character that does not match either f, d, or
+    n.
+  - `[a-cA-C]` can be used to find a exact match of either a, b, c, A, B, or C.
+- Use predefined character classes:
+  - A dot `.` matches any character
+  - `\d` matches any digit: `[0-9]`
+  - `\D` matches any non-digit: `[^0-9]`
+  - `\s` matches a whitespace character: spaces, `\t` tab, `\n` new line, `\x0B`
+    end of line, `\f` form feed, `\r` carriage.
+  - `\S` matches a non-whitespace character: `[^\s]`
+  - `\w` matches a word character: `[a-zA-Z_0-9]`
+  - `\W` matches a non-word character: `[^\w]`
+- Boundary metchers:
+  - `\b` indicates a word boundary
+  - `\B` indicates a non-word boundary
+  - `^` indicates the beginning of a line
+  - `$` indicates the end of a line
+- Specify the number of occurrences of a pattern to match in a target value by
+  using quantifiers:
+  - `X?` matches X, once or not at all
+  - `X*` matches X, zero or more times
+  - `X+` matches X, one or more times
+  - `X{min,max}` matches X, which the specified range
+- Regex in Java supports Unicode, as it matches against the `CharSequence`
+  objects.
+- Class `Pattern` is a compiled representation of a regular expression.
+  Instantiate a `Pattern` by using its factory method `compile()`.
+  <sup>[5.1]</sup>
+- Class `Matcher` is referred to as an engine that scans a target `CharSequence`
+  for a metching regex pattern. You can create a `Matcher` object by calling the
+  instance method `Pattern#matcher(CharSequence)`.<sup>[5.2]</sup>
+
+<sup>[5.1],[5.2]</sup> Example:
+
+{% highlight java %}
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Regex {
+  public static void main(String... args) {
+    Pattern p = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
+    Matcher m = p.matcher("2018-01-06");
+    System.out.println("2018-01-06: " + m.matches());
+  }
+}
+{% endhighlight %}
+
+Then compile and execute:
+
+```
+$ javac Regex.java
+$ java Regex
+2018-01-06: true
+```
+
+**Search, parse, and build strings:**
+
+You can search strings for exact matches of characters or string, at the
+beginning of a string, or starting at a specified position, using `String`
+class's overloaded methods `indexOf`.
+
+- `indexOf` increases position numbers
+- `lastIndexOf` decreases position numbers
+- `indexOf` and `lastIndexOf` _don't_ throw a compilation error or runtime
+  exception if the search position is negative or greater than the length of
+  this string. If no match is found, they return -1.
+- `contains` searches for an exact match in this string. Becuase `contains`
+  accepts a method parameter of interface `CharSequence`, you can pass to it
+  both `String` and `StringBuilder` object.
+- `substring` defines 2 overloaded versions, which accept one or two parameters
+  for the start and end positions.<sup>[5.3]</sup> While `subSequence()` defines
+  only one variant, the one that accepts two int method parameters for the start
+  and end positions.<sup>[5.4]</sup>
+- `subSequence` is defined in interface `CharSequence`, it returns an object of
+  type `CharSequence`.
+- `subSequence` and `substring` do not include the character at the _end_
+  position in the result `String`.
+- The combination of the `replace`, `replaceAll`, and `replaceFirst` overloaded
+  methods can be confusing on the exam. Be aware of `StringBuilder`, which
+  implements `CharSequence`:
+  - `replace(char oldChar, char newChar)`
+  - `replace(CharSequence oldVal, CharSequence newVal)`
+  - `replaceAll(String regex, String replacement)`
+  - `replaceFirst(String regex, String replacement)`
+- `Scanner` can be used to parse and tokenize strings.
+
+<sup>[5.3],[5.4]</sup> Example:
+
+{% highlight java %}
+import static java.lang.System.out;
+
+public class Process {
+  public static void main(String... args) {
+    String s = args[0];
+    out.println("s:      " + s);
+    out.println("s[1:]:  " + s.substring(1));
+    out.println("s[1:2]: " + s.substring(1, 2));
+    out.println("s[1:2]: " + s.subSequence(1, 2));
+  }
+}
+{% endhighlight %}
+
+Compile and execute:
+
+```
+$ javac Process.java
+$ java Process xPath
+s:      xPath
+s[1:]:  Path
+s[1:2]: P
+s[1:2]: P
+```
+
+**Formatting strings:**
+
+- The format specifier takes the following form:
+
+      %[argument_index$][flags][width][.precision]conversion
+
+- A format specification must start with a `%` sign and end with a conversion
+  character:
+  - `b` for boolean
+  - `c` for char
+  - `d` for int, byte, short, and long
+  - `f` for float, and double
+  - `s` for string
+- If the number of arguments _exceeds_ the required count, the extra variables
+  are quietly _ignored_ by the compiler and JVM.
+- If the number of arguments falls short, the JVM throws a runtime exception.
+- Format specifier `%b`
+  - `null` -> false
+  - Boolean, boolean -> itself
+  - Else -> true
+- Format specifier `%c`
+  - Accepted inputs: char, byte, short, int, and their related non-primitive
+    types. The result is a unicode character.
+  - Refused inputs: boolean, _long_, float, and their related non-primitive
+    types. An `IllegalFormatConversionException` will be thrown.
+- Format specifier `%f`
+  - Accepted inputs: float, double, and their related non-primitive types.
+  - By default, `%f` prints six digits after the decimal.
+- Format specifier `%d`
+  - Accepted inputs: byte, short, int, long and their related non-primitive
+    types.
+  - Refused inputs: float, double and their related non-primitive types.
+- Format specifier `%s`
+  - `%s` outputs the value for a primitvie variable. It calles `toString` behind
+    the screen, and outputs "null" for null values.
+  - It accepts all types.
+
 [ocp]: https://www.manning.com/books/ocp-java-se-7-programmer-ii-certification-guide
 [java8]: https://www.manning.com/books/java-8-in-action
 [jls-4.12.4]: https://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.12.4
