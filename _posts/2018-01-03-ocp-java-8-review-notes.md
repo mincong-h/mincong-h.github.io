@@ -601,6 +601,78 @@ $ java NumberFlags
 (1000)
 ```
 
+## Localization
+
+**Internationalization and localization:**
+
+- Class `Locale` does not itself provide any moethod to format the numbers,
+  dates or currencies. You use `Locale` objects to pass locale-specific
+  information to other classes like `NumberFormat` or `DateFormat` to format
+  data.
+- You can create and access objects of class `Locale` by using constructors,
+  methods, constants, and builder.
+- Overloaded constructors of `Locale`
+
+      Locale(String language)
+      Locale(String language, String country)
+      Locale(String language, String country, String variant)
+
+- Variant is a vendor- or browser-specific code, such as WIN for Windows and MAC
+  for Macintosh.
+- Language is the most important parameter that you pass to a `Locale` object.
+- You can access the current value of a JVM's default locale by using method
+  `Locale#getDefault`.
+
+**Resource bundles:**
+
+- An abstract class `ResourceBundle` represents locale-specific resources.
+
+      ResourceBundle r = ResourceBundle.getBundle("i18n.foo", Locale.FRANCE);
+
+- You can call methods `getString()`, `getObject()`, `keySet()`, `getKeys()`,
+  and `getStringArray()` from class `ResourceBundle` to access its keys and
+  values.
+- The order in which Java searches for a matching:
+
+      bundle_localeLang_localeCountry_localeVariant
+      bundle_localeLang_localeCountry
+      bundle_localeLang
+      bundle_defaultLang_defaultCountry_defaultVariant
+      bundle_defaultLang_defaultCountry
+      bundle_defaultLang
+      bundle
+
+- If there's no matching resource bundle for the target language, neither a
+  default resource bundle, then the application throws a
+  `MissingResourceException` at runtime.
+
+**Formatting dates, numbers, and currencies for locales:**
+
+- Format currency
+
+      NumberFormat numberFormat = NumberFormat.getCurrencyInstance(Locale.FRANCE);
+      assertThat(numberFormat.format(10000L)).isEqualTo("10 000,00 €");
+
+- Format date using `DateFormat`
+
+      DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM, Locale.US);
+      assertThat(dateFormat.format(date)).isEqualTo("Nov 26, 2017");
+
+- Format date using `SimpleDateFormat`
+
+      SimpleDateFormat iso = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss.SSSZ");
+      assertThat(iso.format(date)).isEqualTo("2017-11-26T10:15:49.000+0000");
+
+- Create a `Calendar`:
+
+      private static Calendar newCalendar() {
+        Calendar calendar = Calendar.getInstance(Locale.US);
+        calendar.set(2017, Calendar.NOVEMBER, 26, 10, 15, 49);
+        calendar.set(Calendar.MILLISECOND, 0);
+        calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
+        return calendar;
+      }
+
 [ocp]: https://www.manning.com/books/ocp-java-se-7-programmer-ii-certification-guide
 [java8]: https://www.manning.com/books/java-8-in-action
 [jls-4.12.4]: https://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.12.4
