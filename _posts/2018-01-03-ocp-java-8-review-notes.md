@@ -601,6 +601,94 @@ $ java NumberFlags
 (1000)
 ```
 
+## Threads
+
+**Create and use threads:**
+
+- Implementation of Java threads is JVM-specific.
+- To create your own thread objects using class `Thread`, you must extend it and
+  override its method `run()`.
+- When you call `start()` on a `Thread` instance, it creates a new thread of
+  execution. When a new thread of execution starts, it will execute the code
+  defined in the thread instance's method `run()`. Method `start()` will trigger
+  the creation of a new thread of execution, allocating resources to it.
+- When you create a thread class by extending class `Thread`, you _lose_ the
+  fexibility of inheriting any other class.
+- When you implement the `Runnable` interface, you must implement its method
+  `run()`.
+- The `Thread` constructor accepts a `Runnable` object. A `Thread` instance
+  stores a reference to a `Runnable` object and uses it when you start its
+  execution (by calling `start()`).
+- You _cannot_ guarantee that a thread with a higher priority will always
+  execute before a thread with a lower priority.
+
+**Thread lifecycle:**
+
+<p align="center">
+  <img src="{{ site.url }}/assets/20180106-thread-states.png"
+       alt="Thread states in Java"
+       style="max-width: 450px" />
+</p>
+
+- Thread states: new, runnable, wait, timed, timed-waiting, blocked, or
+  terminated.
+- Calling `start()` on a new thread instance implicitly calls its method
+  `run()`, which transitions its state from "new" to "ready".
+- A running thread might enter the blocked state when it's waiting for other
+  system resources like network connections or to acquire an object lock to
+  execute a synchronized method or code block. Depending on whether the thread
+  is able to acquire the monitor lock or resources, it returns back to the ready
+  state.
+
+**Methods of class Thread:**
+
+- Calling `run()` on a `Thread` instance doesn't start a new thread of
+  execution. The `run()` continues to execute in the same thread.
+- Method `yield()` makes the currently executing thread pause its execution and
+  give up its current use of the processor. But it only acts as a hint to the
+  scheduler. The scheduler might also ignore it.
+- A thread that's suspended due to a call to `sleep()` doesn't lose ownership of
+  any monitors.
+
+**Protect shared data:**
+
+- A simple statement like incrementing a variable value might involve multiple
+  steps like loading of the variable value from memory to registers (working
+  space), incrementing the value, and reloading the new value in memory.
+- When multiple threads execute this seemingly atomic statement, they might
+  interleave, resulting in incorrect variable values.
+- Thread safety is about safe-guarding your shared data that might be accessible
+  to multiple threads.
+- To execute synchronized statements, a thread must acquire a lock on an object
+  monitor. For instance methods an implicit lock is acquired on the object on
+  which it's called. For synchronized statements, you can specify an object to
+  acquire a lock on.
+- A thread releases the lock on the object monitor once it exits the
+  synchronized statement block due to successful completion or an exception.
+- Immutable objects are thread-safe, because they cannot be modified.
+- Using `valatile` ensures objects are accessed from the main memory, as opposed
+  to storing its copy in the thread's cache memory. It prevents data consistency
+  problem caused by local copy.
+
+**Identify and fix code in a multi-threaded environment:**
+
+- Local variables, method params, and exception handler params are always safe.
+- Class and instance variables might not always be safe.
+- Use `wait()`, `notify()`, and `notifyAll()` for inter-thread notification.
+- A thread can starve to be scheduled when it's waiting to acquire a lock on an
+  object monitor that has been acquired by another thread that usually takes
+  long to execute and is invoked frequently.
+- Java language uses _"happens-before"_ relationship, which is when one task is
+  guaranteed to happen before another.
+- The execution of `start()` happens-before any action in a thread is started.
+- When code is defined in a sequence, step 1 happens-before step 2.
+- Unlocking of an object monitor heppens-before any other thread acquires a
+  lock on it.
+- A write to a volatile field happens-before every subsequent read of that
+  field.
+- All actions in a thread happens-before any other thread returns from a join on
+  that thread.
+
 ## Localization
 
 **Internationalization and localization:**
@@ -673,6 +761,11 @@ $ java NumberFlags
         return calendar;
       }
 
+## References
+
+- [CodeRanch - The new state][coderanch]
+
+[coderanch]: https://coderanch.com/t/616837/certification/state
 [ocp]: https://www.manning.com/books/ocp-java-se-7-programmer-ii-certification-guide
 [java8]: https://www.manning.com/books/java-8-in-action
 [jls-4.12.4]: https://docs.oracle.com/javase/specs/jls/se8/html/jls-4.html#jls-4.12.4
