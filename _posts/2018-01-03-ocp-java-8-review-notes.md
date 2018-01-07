@@ -38,7 +38,7 @@ They are excellent resources for learning Java, which I highly recommend!
   compiler is unable to resolve the call to an overloaded method.
 - Overloaded methods might define a different return type or access or
   non-access modifier, but they cannot be defined with _only_ a change in
-  their return types or access or non-access modifiers.
+  their return types or access or non-access modifiers.<sup>[1.1]</sup>
 - Overloaded constructors must be defined using different argument lists.
 - Overloaded constructors cannot be defined by _just_ a change in the access
   modifiers.
@@ -66,6 +66,31 @@ They are excellent resources for learning Java, which I highly recommend!
 - _Constructor cannot be overridden_ because a base class constructor is not
   inherited by a derived class.
 - A method that can be overridden by a derived class is call a _virtual method_.
+
+<sup>[1.1]</sup> Example:
+
+{% highlight java %}
+class A {
+  static int age() { return 0; }
+}
+interface B {
+  int age();
+}
+class C extends A implements B {
+  // ...
+}
+{% endhighlight %}
+
+Compile failure:
+
+```
+$ javac A.java
+A.java:7: error: age() in A cannot implement age() in B
+class C extends A implements B {
+^
+  overriding method is static
+1 error
+```
 
 <sup>[1]</sup> Example: Dog extends animal, and the return type of method
 `getChild()` is covariant.
@@ -137,6 +162,34 @@ Class 2 won't compile because it cannot access the `name` variable on line 3.
 The base class `Class1` and derived class `Class2` are in separate packages, so
 you cannot access protected members of the base class by using reference
 variables.
+
+Question ME-75: What is the result of the following code? (Choose the best
+option.)
+
+{% highlight java %}
+class Metal {
+  {
+    try {
+      throw new RuntimeException();
+    } finally {
+      System.out.println("finally-");
+    }
+  }
+  Metal() {
+    System.out.println("Metal-");
+  }
+}
+{% endhighlight %}
+
+The compilation will fail, becuase instance initializer of a class must complete
+normally to enable the class to compile. The code in `Metal`'s instance
+initializer throws a `RuntimeException`, which is not handled. So compilation of
+class `Metal` fails with the follwing message:
+
+    Metal.java:2: error: initializer must be able to complete normally
+      {
+      ^
+    1 error
 
 ## Advanced Class Design
 
@@ -533,6 +586,8 @@ s[1:2]: P
 
       %[argument_index$][flags][width][.precision]conversion
 
+  Width specifier indicates the _minimum_ number of characters to be written to
+  the output.
 - A format specification must start with a `%` sign and end with a conversion
   character:
   - `b` for boolean
@@ -600,6 +655,33 @@ $ java NumberFlags
 1,000
 (1000)
 ```
+
+## Exceptions and Assertions
+
+**Using the throw statement and the throws clause:**
+
+- When you use a method that throws a _checked_ exception, you must either
+  enclose the code within a `try` block or declare it to be rethrown in the
+  calling method's declaration. This is also known as the _handle-or-declare_
+  rule.
+
+## Building Database Applications with JDBC
+
+JDBC 4.0 and its later version support automatic loading and registration of all
+JDBC drivers accessible via an application's classpath. For all earlier versions
+of JDBC, you must manually load the JDBC drivers using `Class.forName()`, before
+you can access the driver.
+
+{% highlight java %}
+// JDBC 4.0+
+DriverManager.getConnection("jdbc:h2:mem:test");
+{% endhighlight %}
+
+**JDBC transactions:**
+
+- When connection's auto-commit mode is changed _during_ a transaction, the
+  transaction is committed. So when auto-commit is enabled, all the "pending"
+  changes in the current transaction are commited.
 
 ## Threads
 
@@ -675,6 +757,14 @@ $ java NumberFlags
 - Local variables, method params, and exception handler params are always safe.
 - Class and instance variables might not always be safe.
 - Use `wait()`, `notify()`, and `notifyAll()` for inter-thread notification.
+- To call `wait()` or `notify()` a thread _must_ own the object's monitor lock.
+  So calls to these methods should be placed within _synchronized_ methods or
+  blocks or else an `IllegalMonitorStateException` will be thrown by the JVM.
+
+  <img src="{{ site.url }}/assets/20180106-java-monitor.gif"
+       alt="Java Thread Monitor"
+       style="max-width: 400px" />
+
 - A thread can starve to be scheduled when it's waiting to acquire a lock on an
   object monitor that has been acquired by another thread that usually takes
   long to execute and is invoked frequently.
@@ -688,6 +778,8 @@ $ java NumberFlags
   field.
 - All actions in a thread happens-before any other thread returns from a join on
   that thread.
+
+## Concurrency
 
 ## Localization
 
@@ -761,10 +853,29 @@ $ java NumberFlags
         return calendar;
       }
 
+## Frequently Asked Java API
+
+Method | Return Type | Checked Exception
+:----- | :---------- | :----------------
+`Thread#sleep()` | - | `InterruptedException`
+`Runnable#run()` | - | -
+`Callable#call()` | V | `Exception`
+
+## Tricky points
+
+Some tricky points that can happen in OCP exam.
+
+- The method name can be mis-spelled. For example, `hashcode()` is _not_ the
+  correct method for providing a hash-code in Java. The correct one is
+  camel-case: `hashCode()`.
+- The default locale defined in JVM might not be `Locale.US`.
+
 ## References
 
 - [CodeRanch - The new state][coderanch]
+- [artima - Thread synchronization][artima]
 
+[artima]: https://www.artima.com/insidejvm/ed2/threadsynch.html
 [coderanch]: https://coderanch.com/t/616837/certification/state
 [ocp]: https://www.manning.com/books/ocp-java-se-7-programmer-ii-certification-guide
 [java8]: https://www.manning.com/books/java-8-in-action
