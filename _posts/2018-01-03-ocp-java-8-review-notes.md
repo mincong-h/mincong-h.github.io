@@ -664,6 +664,46 @@ $ java NumberFlags
   enclose the code within a `try` block or declare it to be rethrown in the
   calling method's declaration. This is also known as the _handle-or-declare_
   rule.
+- A method can throw a runtime exception or error irrespective of whether its
+  name is included in the `throws` clause.
+- A method can throw a _subclass_ of the exception mentioned in its `throws`
+  clause but not a superclass.
+- A method can declare to throw any type of exception, checked or unchecked,
+  even if it doesn't.
+- But a `try` block _cannot_ define a `catch` block for a checked exception
+  (other than `Exception`) if the `try` block doesn't throw that checked
+  exception or use a method that declares to throw that checked exception.
+
+**Custom exceptions:**
+
+- Custom exceptions help you restrict the escalation of implementation-specific
+  exceptions to higher layers. For example, `SQLException` thrown by data access
+  code can be wrapped within a custom exception and rethrown.
+
+**Overriding methods that throw exceptions:**
+
+- If a method in the base class doesn't declare to throw any checked exception,
+  the overriding method in the derived class _cannot_ throw any checked
+  exception.
+- If a method in the base class declares to throw a checked exception, the
+  overriding method in the derived class can choose _not to_ declare to throw
+  any checked exception.
+- Subclass _cannot_ override a method in the base class, if it declares to throw
+  a more generic checked exception.
+- Moethod overriding rules apply only to checked exceptions. They don't apply to
+  runtime exceptions or errors.
+
+**try statement with multi-catch and finally clauses:**
+
+- The exceptions that you catch in a multi-`catch` block cannot share an
+  _inheritance_ relationship. If you try to do so, your code won't compile.
+- Declare more specific exceptions at the top, more general ones at the bottom.
+
+**Auto-close resources with try-with-resources statement:**
+
+- A try-with-resources block might not be followed by a `catch` or a `finally`
+  block. This is unlike a regular `try` block, which must be followed by either
+  a `catch` or a `finally` block.
 
 **Assertions:**
 
