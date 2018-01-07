@@ -770,7 +770,7 @@ DriverManager.getConnection("jdbc:h2:mem:test");
 <p align="center">
   <img src="{{ site.url }}/assets/20180106-thread-states.png"
        alt="Thread states in Java"
-       style="max-width: 450px" />
+       style="max-height: 310px" />
 </p>
 
 - Thread states: new, runnable, wait, timed, timed-waiting, blocked, or
@@ -824,7 +824,7 @@ DriverManager.getConnection("jdbc:h2:mem:test");
 
   <img src="{{ site.url }}/assets/20180106-java-monitor.gif"
        alt="Java Thread Monitor"
-       style="max-width: 400px" />
+       style="max-height: 300px" />
 
 - A thread can starve to be scheduled when it's waiting to acquire a lock on an
   object monitor that has been acquired by another thread that usually takes
