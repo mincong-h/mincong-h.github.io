@@ -665,6 +665,67 @@ $ java NumberFlags
   calling method's declaration. This is also known as the _handle-or-declare_
   rule.
 
+**Assertions:**
+
+An _assertion_ is an assert statement containing a boolean expression. An
+assertion is either _enabled_ or _disabled_. If the assertion is enabled,
+execution of the assertion causes evaluation of the boolean expression and an
+error is reported if the expression evaluates to `false`. If the assertion is
+disabled, execution of the assertion has no effect whatsoever.
+
+    AssertStatement:
+      assert Expression1 ;
+      assert Expression1 : Expression2 ;
+
+It is a compile-time error if _Expression1_ does not have type `boolean` or
+`Boolean`. In the second form of the `assert` statement, it is a compile-time
+error if _Expression2_ is `void`.
+
+- The second form, when the boolean expression evaluates to `false`, the JRE
+  creates an object of `AssertError` by passing the value of the second
+  expression to `AssertionError`'s constructor.
+- From the Javadoc of [`AssertionError`][assertion-error]: the seven
+  one-argument public constructors provided by this class ensure that the
+  assertion error returned by the invoation:
+
+      new AssertionError(expression)
+
+  has as its detail message the _string conversion_ of _expression_, regardless
+  of the type of _expression_. (JLS §15.18.1.1)
+- Assertions can be enabled or disabled at the launche of a
+  program.<sup>[6.1]</sup>
+- Use the command-line option `-ea` or `-enableassertions` to enable assertions
+- Use the command-line option `-da` or `-disableassertions` to disable
+  assertions
+- A generalized `-da` switch (no assertions enabled) corresponds to the default
+  JRE behavior.
+
+<sup>[6.1]</sup> Example:
+
+{% highlight java %}
+public class App {
+  private static boolean isHappy;
+
+  public static void main(String... args) {
+    assert isHappy : "You should be happy :)";
+    System.out.println("Finished.");
+  }
+}
+{% endhighlight %}
+
+Compile and execute:
+
+```
+$ javac App.java
+$ java App
+Finished.
+$ java -da App
+Finished.
+$ java -ea App
+Exception in thread "main" java.lang.AssertionError: You should be happy :)
+	at App.main(App.java:5)
+```
+
 ## Building Database Applications with JDBC
 
 JDBC 4.0 and its later version support automatic loading and registration of all
@@ -875,6 +936,7 @@ Some tricky points that can happen in OCP exam.
 - [CodeRanch - The new state][coderanch]
 - [artima - Thread synchronization][artima]
 
+[assertion-error]: https://docs.oracle.com/javase/8/docs/api/java/lang/AssertionError.html
 [artima]: https://www.artima.com/insidejvm/ed2/threadsynch.html
 [coderanch]: https://coderanch.com/t/616837/certification/state
 [ocp]: https://www.manning.com/books/ocp-java-se-7-programmer-ii-certification-guide
