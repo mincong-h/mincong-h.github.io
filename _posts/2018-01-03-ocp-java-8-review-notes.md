@@ -443,6 +443,15 @@ Constructor
 Static init
 ```
 
+## Object-Oriented Design Principles
+
+**Interfaces**
+
+- The methods of an interface are implicitly abstract and public.
+- The vairables of an interface are implicitly public, static, and final.
+- Because the methods in an interface are implicitly public, if you try to
+  assign a weaker access to the implemented method in a class, it won't compile.
+
 ## Generics and Collections
 
 **Creating generic entities:**
@@ -552,6 +561,11 @@ class's overloaded methods `indexOf`.
   - `replaceAll(String regex, String replacement)`
   - `replaceFirst(String regex, String replacement)`
 - `Scanner` can be used to parse and tokenize strings.
+- If no delimiter specified, a pattern that matches _whitespace_ is used by
+  default.
+- Use customized pattern by calling `userDelimiter` with a _regex_.
+- `next()` returns a string.
+- `nextXXX()` returns a primitive type `XXX`.
 
 <sup>[5.3],[5.4]</sup> Example:
 
