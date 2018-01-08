@@ -462,6 +462,14 @@ Static init
 - When a non-generic class extends a generic class, the derived class doesn't
   define any type parameters but passes arguments to all type parameters of its
   generic base class.
+- A method's type parameter list is placed just after its access and non-access
+  modifiers and before its return type. Because a type parameter could be used
+  to define the return type, it should be known before the return type is used.
+- For a bounded type parameter, the bound can be a class, an interface, or an
+  enum.
+- For a bounded type parameter, the bound cannot be primitive types or array.
+- All cases use the keyword `extends` to specify the bound, even if the bound is
+  an interface.
 
 // TODO...
 
