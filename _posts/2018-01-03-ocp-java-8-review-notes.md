@@ -726,6 +726,13 @@ $ java NumberFlags
 - A try-with-resources block might not be followed by a `catch` or a `finally`
   block. This is unlike a regular `try` block, which must be followed by either
   a `catch` or a `finally` block.
+- The variables used to refer to resources are implicitly final variables. You
+  must _declare_ and _initialize_ resources in the try-with-resources statement.
+- Resources are closed in the reverse order from that in which they were
+  initialized. A resource is closed only if it initialized to a non-null value.
+  An exception from the closing of one resource does not prevent the closing of
+  other resources. Such an exception is _suppressed_ if an exception was thrown
+  previously by an initializer, the try block, or the closing of a resource.
 
 **Assertions:**
 
@@ -904,6 +911,19 @@ DriverManager.getConnection("jdbc:h2:mem:test");
 
 ## Concurrency
 
+**Locks:**
+
+- `Lock` and `ReadWriteLock` are interface.
+- `ReentrantLock` and `ReentrantReadWriteLock` are concrete classes.
+- `Lock` objects offer multiple advantages over the implicit locking of an
+  object's monitor. Unlike an implicit lock, a thread can use explicit lock
+  objects to wait to acquire a lock until a time duration elapses.
+- Method `lock()` acquires a lock on a `Lock` object. If the lock is not
+  available, it waits until the lock can be acquired.
+- Call `unlock` on a `Lock` object to release its lock when you no longer need
+  it.
+- The `ReadWriteLock` interface doesn't extend `Lock` or any other interface.
+
 ## Localization
 
 **Internationalization and localization:**
@@ -992,6 +1012,8 @@ Some tricky points that can happen in OCP exam.
   correct method for providing a hash-code in Java. The correct one is
   camel-case: `hashCode()`.
 - The default locale defined in JVM might not be `Locale.US`.
+- Be careful whether the method output is assigned to a variable, e.g.
+  `String#replaceAll(String, String)` returns another string.
 
 ## References
 
