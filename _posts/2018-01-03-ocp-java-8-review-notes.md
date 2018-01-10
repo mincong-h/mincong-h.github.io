@@ -875,12 +875,29 @@ DriverManager.getConnection("jdbc:h2:mem:test");
   monitor. For instance methods an implicit lock is acquired on the object on
   which it's called. For synchronized statements, you can specify an object to
   acquire a lock on.
+- For instance synchronized methods, a thread locks the instance's monitor
+- For static synchronized methods, a thread locks the `Class` object's
+  monitor.<sup>[10.1]</sup>
 - A thread releases the lock on the object monitor once it exits the
   synchronized statement block due to successful completion or an exception.
 - Immutable objects are thread-safe, because they cannot be modified.
 - Using `valatile` ensures objects are accessed from the main memory, as opposed
   to storing its copy in the thread's cache memory. It prevents data consistency
   problem caused by local copy.
+
+<sup>[10.1]</sup> Example:
+
+{% highlight java %}
+public class MultithreadClass {
+  public static synchronized void foo(byte[] data) {
+    // ...
+  }
+  public void bar(byte[] data) {
+    synchronized(MultithreadClass.class) {
+    // ...
+  }
+}
+{% endhighlight %}
 
 **Identify and fix code in a multi-threaded environment:**
 
@@ -909,6 +926,30 @@ DriverManager.getConnection("jdbc:h2:mem:test");
 - All actions in a thread happens-before any other thread returns from a join on
   that thread.
 
+**Miscellaneous:**
+
+- Livelock occurs when two or more threads are so busy responding to each other
+  that they are unable to complete their tasks. Technically, these threads are
+  _running_ and not _waiting_, but the locking mechanism consumes their
+  execution.
+- Starvation occurs when one or more threads access a shared resource so
+  frequently that other threads are unable to gain needed access. Those threads
+  with access to the shared resource are not waiting.
+- 3 methods affect the frequency and/or duration of a running thread. They're
+  `setDaemon`, `setPriority`, and `yield`.
+- The `setPriority` method indicates the relative likelihood and frequency that
+  a thread will be given a time slice to execute. Possible values: max, norm, or
+  min.
+- The `yield` method will cause the current thread to give up its time slice, so
+  that another thread can execute. 
+- If true is specified for `setDaemon`, then the JVM may exit before the thread
+  terminates. The JVM exits only when all non-daemon threads terminate.
+- `java.util.ConcurrentModificationException` can be thrown by threads when
+  modifying `ArrayList` which is not thread-safe. Use the thread-safe variant of
+  `ArrayList`: `CopyOnWriteArrayList` is a good alternative.
+- `ThreadLocalRandom` can be used to create random numbers in a multi-threaded
+  application with the least amount of contention and best performance
+
 ## Concurrency
 
 **Locks:**
@@ -923,6 +964,14 @@ DriverManager.getConnection("jdbc:h2:mem:test");
 - Call `unlock` on a `Lock` object to release its lock when you no longer need
   it.
 - The `ReadWriteLock` interface doesn't extend `Lock` or any other interface.
+
+**Parallel fork/join framework:**
+
+- Method `compute()` determines whether the task is small enough to be executed
+  or if it needs to be divided into multiple tasks.
+- If the task needs to be split, a new `RecursiveAction` or `RecursiveTask`
+  object is created, calling `fork` on it.
+- Calling `join` on these tasks returns their result.
 
 ## Localization
 
@@ -1003,6 +1052,8 @@ Method | Return Type | Checked Exception
 `Thread#sleep()` | - | `InterruptedException`
 `Runnable#run()` | - | -
 `Callable#call()` | V | `Exception`
+`RecursiveAction#compute()` | - | -
+`RecursiveTask#compute()` | V | -
 
 ## Tricky points
 
