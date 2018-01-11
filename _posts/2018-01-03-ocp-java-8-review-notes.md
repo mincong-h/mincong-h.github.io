@@ -795,6 +795,24 @@ Exception in thread "main" java.lang.AssertionError: You should be happy :)
 	at App.main(App.java:5)
 ```
 
+## Java File IO
+
+- `RandomAccessFile#readLine()` successively reads bytes from the file, starting
+  at the current file pointer, until it reaches a line terminator or the end of
+  the file.
+- `FileInputStream` accepts `File` as constructor input parameter.
+- `FileInputStream` accepts `String` as constructor input parameter.
+- `BufferedInputStream` accepts `InputStream` as constructor input parameter.
+- Concatenating int and `StringBuilder` _fails_ to compile. E.g.
+  `String s = 1 + sb;`. Although using the additive operator for concatenation
+  is implemented by invoking the append method on the `StringBuilder` or
+  `StringBuffer` class, this operator is not supported for the `StringBuilder`
+  or `StringBuffer` operands.
+- `InputStream#read()` returns the next byte of data, or `-1` if the end of the
+  stream is reached. 
+- `InputStream#skip()` skips over and discards _n_ bytes of data from this input
+  stream.
+
 ## Building Database Applications with JDBC
 
 JDBC 4.0 and its later version support automatic loading and registration of all
