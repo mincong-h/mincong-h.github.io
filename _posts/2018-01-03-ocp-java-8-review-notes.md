@@ -12,7 +12,15 @@ exam. They're highly inspired by the following books:
 - [OCP Java SE 7 Certification Guide][ocp]
 - [Java 8 in Action][java8]
 
-They are excellent resources for learning Java, which I highly recommend!
+They are excellent resources for learning Java, which I highly recommend. In
+particular, the OCP Java SE 7 Programmer II Certification Guide is really the
+best resource that you can have for learning Java and pass the certification!
+
+<p align="center">
+  <img src="{{ site.url }}/assets/20180106-manning.jpg"
+       alt="OCP Java SE 7"
+       style="max-height:400px; border-radius: 0; box-shadow: 2px 2px 10px #BBB;" />
+</p>
 
 ## Java Class Design
 
@@ -27,6 +35,25 @@ They are excellent resources for learning Java, which I highly recommend!
 - A top-level class, interface, or enum can only be defined using the `public`
   or default access. They cannot be defined using `protected` or `private`
   access.
+- There are two kinds of class declarations: normal class declarations and enum
+  declarations.
+- A class declaration may include class modifiers.
+
+      ClassModifiers:
+        ClassModifier
+        ClassModifiers ClassModifier
+
+      ClassModifier: one of
+        Annotation public protected private
+        abstract static final strictfp
+
+  The access modifiers `protected` and `private` (§6.6) pertain only to member
+  classes within a directly enclosing class or enum declaration (§8.5). The
+  modifier `static` pertains only to member classes (§8.5.1), not to top level
+  or local or anonymous classes.
+- If two or more (distinct) class modifiers appear in a class declaration, then
+  it is customary, though not required, that they appear in the order consistent
+  with that shown above in the production for ClassModifier.
 
 **Overloaded methods and constructors:**
 
@@ -54,7 +81,7 @@ They are excellent resources for learning Java, which I highly recommend!
   annotation `@Override`. It will warn you if a method cannot be overridden or
   if you're actually overloading a method rather than overriding it.
 - Overridden methods can define the same or covariant return types.
-  <sup>[1]</sup>
+  <sup>[1.2]</sup>
 - A derived class cannot override a base class method to make it _less
   accessible_.
 - Static methods cannot be overridden. They're not polymorphic and they are
@@ -92,7 +119,7 @@ class C extends A implements B {
 1 error
 ```
 
-<sup>[1]</sup> Example: Dog extends animal, and the return type of method
+<sup>[1.2]</sup> Example: Dog extends animal, and the return type of method
 `getChild()` is covariant.
 
 {% highlight java %}
@@ -113,7 +140,7 @@ public class Dog extends Animal {
 Compilation is successful:
 
 {% highlight bash %}
-~ $ javac Animal.java Dog.java -verbose
+$ javac Animal.java Dog.java -verbose
 ...
 [wrote RegularFileObject[Animal.class]]
 [checking Dog]
@@ -263,10 +290,10 @@ class `Metal` fails with the follwing message:
   enumerated types in natural order. (Probably defined by the private member
   `ordinal` of `java.lang.Enum`)
 - You can define an enum as a top-level enum or within another class or
-  interface.<sup>[2]</sup>
-- You cannot define an enum local to a method.<sup>[3]</sup>
+  interface.<sup>[2.1]</sup>
+- You cannot define an enum local to a method.<sup>[2.2]</sup>
 
-<sup>[2],[3]</sup> Example:
+<sup>[2.1],[2.2]</sup> Example:
 
 {% highlight java %}
 // Top-level
@@ -352,8 +379,8 @@ public class App {
 Compile and execute:
 
 ```
-~ $ javac Outer.java App.java
-~ $ java App
+$ javac Outer.java App.java
+$ java App
 Outside: Inner
 Outer: Inner
 ```
@@ -470,8 +497,38 @@ Static init
 - For a bounded type parameter, the bound cannot be primitive types or array.
 - All cases use the keyword `extends` to specify the bound, even if the bound is
   an interface.
+- Use method `Class#newInstance()` can create a new instance of the class
+  represented by this `Class` object.<sup>[4.1]</sup>
 
-// TODO...
+<sup>[4.1]</sup> Example:
+
+{% highlight java %}
+public class App {
+
+  public static void main(String... args) throws Exception {
+    User u = create(User.class);
+    u.name = "Tom";
+    System.out.println("Hi, " + u.name);
+  }
+
+  static <T> T create(Class<T> cls) throws Exception {
+    return cls.newInstance();
+  }
+
+  static class User {
+    String name;
+  }
+
+}
+{% endhighlight %}
+
+Compile and execution:
+
+```
+$ javac App.java
+$ java App
+Hi, Tom
+```
 
 ## String Processing
 
@@ -1066,12 +1123,16 @@ public class MultithreadClass {
 ## Frequently Asked Java API
 
 Method | Return Type | Checked Exception
-:----- | :---------- | :----------------
-`Thread#sleep()` | - | `InterruptedException`
-`Runnable#run()` | - | -
+:----- | :---------: | :----------------
+`Thread#sleep()` | void | `InterruptedException`
+`Runnable#run()` | void | -
 `Callable#call()` | V | `Exception`
-`RecursiveAction#compute()` | - | -
+`RecursiveAction#compute()` | void | -
 `RecursiveTask#compute()` | V | -
+`Predicate#test(T)` | boolean | -
+`Consumer#accept(T)` | void | -
+`Supplier#get()` | T | -
+`Function#apply(T)` | R | -
 
 ## Tricky points
 
