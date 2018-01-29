@@ -4,13 +4,13 @@
 #    folder. Date will be generated according to the current time in
 #    the system. Usage:
 #
-#        ./newpost.sh "My Blog Post Title"
+#        ./newpost.sh My Blog Post Title
 #
 
-title=$1
+title="${*:1}"
 
 if [[ -z "$title" ]]; then
-    echo "usage: newpost.sh \"My New Blog\""
+    echo 'usage: newpost.sh My New Blog'
     exit 1
 fi
 
@@ -29,7 +29,7 @@ cat << EOF >> "$filepath"
 layout:      post
 title:       "$title"
 date:        "$(date +"%Y-%m-%d %H:%M:%S %z")"
-categories:  [weekly]
+categories:  []
 comments:    true
 ---
 EOF

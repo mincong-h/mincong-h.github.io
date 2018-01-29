@@ -17,7 +17,7 @@ jekyll serve
 ## Create New Post
 
 ```sh
-./newpost.sh "My New Post"
+./newpost.sh My New Post
 ```
 
 [1]: https://jekyllrb.com/
