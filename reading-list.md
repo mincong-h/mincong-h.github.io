@@ -17,10 +17,11 @@ Done:
 * [Learning the Bash Shell][bash-shell]
 * [Code Complete: A Practical Handbook of Software Construction][code-complete]
 * [The Pragmatic Programmer][pragmatic-programmer]
+* [OCP: Java SE 7 Programmer II Certification Guide][ocpjp-manning]
+* [Java 8 in Action][java8-manning]
 
 In progress:
 
-* [OCP: Java SE 7 Programmer II Certification Guide][ocpjp-manning]
 * [HTTP: The Definitive Guide][http]
 * [Web Application Security][web-app-security]
 
@@ -31,10 +32,8 @@ To read:
 * [Java Concurrency in Practice][java-concurrency]
 * [Concurrent Programming in Java, 2nd Edition][java-concurrent2]
 * [Java Performance][java-perf]
-* [OCP: Oracle Certified Professional Java SE 8 Programmer II][ocpjp]
 * [OSGi in Action][osgi-in-action]
 * [Mastering Regular Expressions][mastering-regex]
-* [Java 8 in Action][java8-manning]
 * [Working Effectively with Legacy Code][legacy-code]
 * [Microservice Patterns (Mar 30, 2018)][microservice-patterns]
 * [Head First Design Patterns: A Brain-Friendly Guide][design-patterns]
@@ -49,7 +48,6 @@ To read:
 [git-pro]: https://www.amazon.com/Pro-Git-Scott-Chacon/dp/1484200772
 [haskell]: https://www.amazon.com/Learn-You-Haskell-Great-Good/dp/1593272839
 [ocajp]: https://www.amazon.com/OCA-Certified-Associate-Programmer-1Z0-808/dp/1118957407
-[ocpjp]: https://www.amazon.com/OCP-Certified-Professional-Programmer-1Z1-809/dp/1119067901
 [ocajp-manning]: https://www.manning.com/books/oca-java-se-8-programmer-i-certification-guide
 [ocpjp-manning]: https://www.manning.com/books/ocp-java-se-7-programmer-ii-certification-guide
 [how-to-use-type]: https://www.amazon.com/How-Use-Type-Lindsey-Marshall/dp/1856698971
