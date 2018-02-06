@@ -10,13 +10,12 @@ permalink: /about/
     alt="Mincong Huang's Gravatar" />
 </p>
 
-Junior software engineer at Nuxeo. My principal interests are web development,
-UI design, QA, security, and database. I love beautiful things, such as amazing
-UI design and elegant code. Code quality has significant effect on many fields.
-I occasionally spend time on [Stack Overflow][so] to answer questions and
-[Code Review][cr] community to review code. Reading books is my preferred way
-to strengthen existing skills and learn new ones. You can see my reading list
-[here][reading-list].
+Junior software engineer at Nuxeo. I'm passionated by Java development, testing,
+and continous integration. I spend a lot of time on legacy code refactoring,
+testing and CI improvement. Currently working with GWT, JGit, AssertJ, Selenium,
+Sonar, and Checkstyle. I occasionally answer questions on [Stack Overflow][so].
+Reading books is my preferred way to strengthen existing skills and learn new
+ones. You can see my reading list [here][reading-list].
 
 I'm convinced that strong typed language makes our life safer and easier. They
 are not handy for small programs, but absolutely worth their value in complex

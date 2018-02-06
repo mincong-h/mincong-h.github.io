@@ -12,10 +12,9 @@ permalink: /:year/:month/:day/:title/
 title: Mincong HUANG
 email: mincong.h@gmail.com
 description: > 
-  Hi, welcome to my blog ! I'm a postgraduate CS student who love programming.
-  My blogs represent some problems or expriences that I met during projects or 
-  intern. Most of them will be related to Java, Android, Excel VBA and SQL. 
-  Hope you enjoy them !
+  Hi, welcome to my blog! I'm junior software engineer at Nuxeo. My blogs are
+  expriences that I met during different projects. Most of them will be related
+  to Java. My opinions are my own, not Nuxeo's.
 
 # this means to ignore newlines until "baseurl:"
 # Write an awesome description for your new site here. You can edit this
