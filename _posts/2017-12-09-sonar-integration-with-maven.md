@@ -154,6 +154,19 @@ on Sonar cloud. Notice that, if the target project does not exist on SonarQube,
 SonarQube will create it for you automatically after the first analysis report
 upload.
 
+## SonarCloud Configuration
+
+If you're using [SonarCloud][sonar-cloud], you might be interested in the
+following configuration too.
+
+- If you're going to store your code analysis as _private_ project in
+  SonarCloud, you need to ask the organization administrator to create this
+  project first. Then, you can upload the code analysis via Jenkins.
+- It's preferable to use a machine account to upload code analysis via Jenkins.
+  Before uploading, ensure that the machine account has enough permission to do
+  it. In other words, this account need to be a member of the target
+  organization.
+
 ## Next Steps
 
 Now we've successfully configured the Sonar scanner in Maven for the first
@@ -162,6 +175,7 @@ analysis. As for the next steps, I think you might be interested in:
 - Exploring the analysis results in Sonar
 - Replace classical Jenkins job by [`Jenkinsfiles`][jenkinsfiles] pipeline
 - Configure GitHub integration of Sonar auto-reply in pull requests
+- Enable SonarLint in your IDE
 
 They're the future topics that I might be presented in my blog. Thanks for your
 attention. Please stay tuned!
