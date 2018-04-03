@@ -1,0 +1,159 @@
+---
+layout:      post
+title:       "Learning Selenium WebDriver"
+date:        "2018-04-03 20:50:21 +0200"
+categories:  [java, qa, testing, study-note]
+comments:    true
+---
+
+Here're some study notes for selenium. Selenium is a portable software-testing
+framework for web applications. Selenium WebDriver is the successor to Selenium
+RC. Selenium WebDriver accepts commands (sent in Selenese, or via a Client API)
+and sends them to a browser. This is implemented through a browser-specific
+browser driver, which sends commands to a browser, and retrieves results. Most
+browser drivers actually launch and access a browser application (such as
+Firefox, Chrome, Internet Explorer, Safari, or Microsoft Edge); there is also an
+HtmlUnit browser driver, which simulates a browser using the headless browser
+HtmlUnit.
+
+In this post, I'm using Selenium WebDriver 3.8 in Mac OS with Firefox 58.
+
+## Installation
+
+GeckoDriver is a proxy for using W3C WebDriver-compatible clients to interact
+with Gecko-based browsers. GeckoDriver provides HTTP API described by the
+WebDriver protocol to communicate with Gecko browsers, such as Firefox version
+above 47.
+
+Install GeckoDriver via brew, then check the version.
+
+    $ brew install geckodriver
+    $ geckodriver --version
+    geckodriver 0.20.0
+
+## Initialize WebDriver
+
+{% highlight java %}
+import org.junit.*;
+import org.openqa.selenium.*;
+import org.openqa.selenium.firefox.*;
+
+/**
+ * Integration test for an awesome page.
+ */
+public class AwesomePageIT {
+
+  private static WebDriver driver;
+
+  @BeforeClass
+  public static void beforeAll() {
+    FirefoxProfile profile = new FirefoxProfile();
+    profile.setPreference(R.FIREFOX_SAFE_MODE, "-1");
+
+    FirefoxOptions options = new FirefoxOptions();
+    options.setProfile(profile);
+
+    driver = new FirefoxDriver(options);
+    driver.get(NUXEO_URL);
+  }
+
+  @AfterClass
+  public static void afterAll() {
+    driver.close();
+  }
+
+  // TODO Add tests here...
+}
+{% endhighlight %}
+
+## WebElement Selection
+
+Create a page for storing all the information related to a page, equivalent to
+a HTML document object, but in Java.
+
+{% highlight java %}
+import org.openqa.selenium.*;
+
+public class AwesomePage {
+
+  private WebDriver driver;
+
+  public AwesomePage(WebDriver driver) {
+    this.driver = driver;
+  }
+
+  public WebElement getElementFoo() { ... }
+
+  ...
+}
+{% endhighlight %}
+
+Once you've created such page, you can retrieve web element in different ways:
+by class name, by CSS selector, by ID, by link text, by partial link text, by
+name, by tag, and by xpath. Here're some examples for querying the following
+HTML content.
+
+{% highlight html %}
+<div>
+  <button id="confirm-btn" name="confirm-button">Confirm</button>
+  <a class="red" href="#">Cancel</a>
+</div>
+{% endhighlight %}
+
+Let's take a look:
+
+{% highlight java %}
+WebElement e1 = driver.findElement(By.className("red"));
+WebElement e2 = driver.findElement(By.id("btn-id"));
+WebElement e3 = driver.findElement(By.linkText("Cancel"));
+WebElement e4 = driver.findElement(By.name("confirm-button"));
+WebElement e5 = driver.findElement(By.tag("div"));
+WebElement e6 = driver.findElement(By.xpath("//a[contains(@class, 'red')]"));
+{% endhighlight %}
+
+## Execute Native JavaScript Command
+
+You might want to execute native JavaScript code in Java via WebDriver. For
+example, scrolling the document so that the target element in on the top of the
+viewport. You can achieve it by doing:
+
+{% highlight java %}
+WebDriver driver = ...;
+WebElement element = driver.findElement(By.id("foo"));
+JavascriptExecutor executor = (JavascriptExecutor) driver;
+executor.executeScript("arguments[0].scrollIntoView(true);", element);
+{% endhighlight %}
+
+This can be simplified if you're using a remote web driver. No cast is required:
+
+{% highlight java %}
+RemoteWebDriver driver = ...;
+WebElement element = driver.findElement(By.id("foo"));
+driver.executeScript("arguments[0].scrollIntoView(true);", element);
+{% endhighlight %}
+
+## Trouble Shooting
+
+Some points that need to be careful.
+
+### Scrolling
+
+If you need to scroll the document before clicking an element, do not scroll the
+element directly, scroll its container:
+
+{% highlight java %}
+public void clickButton(WebElement container, WebElement button) {
+  driver.executeScript("arguments[0].scrollIntoView(true);", container);
+  button.click();
+}
+{% endhighlight %}
+
+Method [Element.scrollIntoView()][element-scrollIntoView] scrolls the element
+on which it's called into the visible area of the browser window. If set to
+true, the element will be scrolled and be aligned to the top of the viewport.
+
+## References
+
+- [MDN: Element.scrollIntoView()][element-scrollIntoView]
+
+[element-scrollIntoView]: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
