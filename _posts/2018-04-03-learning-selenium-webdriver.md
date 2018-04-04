@@ -83,8 +83,6 @@ public class AwesomePage {
   }
 
   public WebElement getElementFoo() { ... }
-
-  ...
 }
 {% endhighlight %}
 
@@ -132,6 +130,35 @@ WebElement element = driver.findElement(By.id("foo"));
 driver.executeScript("arguments[0].scrollIntoView(true);", element);
 {% endhighlight %}
 
+## Send Keys to Element
+
+You can send keys to input HTML elements, e.g. \<input\> and \<textarea\>.
+
+{% highlight java %}
+WebElement input = ...;
+input.sendKeys(Keys.BACK_SPACE);
+input.sendKeys(Keys.ESCAPE);
+{% endhighlight %}
+
+## Wait WebElement
+
+Use `FluentWait` to wait a web element, until a predicate is satisfied. The
+generic type `<F>` is the input type for each condition used with this instance.
+
+{% highlight java %}
+Wait<WebDriver> wait = new FluentWait<>(driver);
+wait.until(ExpectedConditions.visibilityOf(myElement));
+{% endhighlight %}
+
+## XPath
+
+Here's a list of XPath that I used frequently.
+
+XPath | Description
+:--- | :---
+`//a[text()='foo']` | Select tag \<a\> having text "foo".
+`//a[contains(@class, 'red')]` | Select tag \<a\> having "red" in its attribute _class_.
+
 ## Trouble Shooting
 
 Some points that need to be careful.
@@ -152,8 +179,16 @@ Method [Element.scrollIntoView()][element-scrollIntoView] scrolls the element
 on which it's called into the visible area of the browser window. If set to
 true, the element will be scrolled and be aligned to the top of the viewport.
 
+### Other Points
+
+Question/answer available on StackOverflow:
+
+- [Element \<xxx\> could not be scrolled into view](https://stackoverflow.com/questions/22588096/selenium-web-driver-cannot-be-scrolled-into-view)
+- [How to test blur?](https://stackoverflow.com/questions/12337046/selenium-driver-how-to-test-blur)
+
 ## References
 
 - [MDN: Element.scrollIntoView()][element-scrollIntoView]
+- [How to wait until an element is present in Selenium?](https://stackoverflow.com/questions/20903231/how-to-wait-until-an-element-is-present-in-selenium)
 
 [element-scrollIntoView]: https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
