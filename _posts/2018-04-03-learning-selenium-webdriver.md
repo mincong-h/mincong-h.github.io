@@ -154,10 +154,25 @@ wait.until(ExpectedConditions.visibilityOf(myElement));
 
 Here's a list of XPath that I used frequently.
 
-XPath | Description
+Expression | Description
 :--- | :---
+`//*[@id='foo']` | Select any tag having id "foo".
 `//a[text()='foo']` | Select tag \<a\> having text "foo".
 `//a[contains(@class, 'red')]` | Select tag \<a\> having "red" in its attribute _class_.
+`//a[contains(text(), 'foo')]` | Select tag \<a\> having "foo" in its text.
+
+You can test the xpath expression in your browsers. First, open the console via
+shortcut:
+
+- <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>C</kbd> for Firefox
+- <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>C</kbd> for Chrome
+
+Then write the xpath expression. If the browser returns a non-empty results,
+then the xpath works:
+
+{% highlight javascript %}
+$x("//*[@id='logo']");
+{% endhighlight %}
 
 ## Trouble Shooting
 
