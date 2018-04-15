@@ -37,15 +37,27 @@ Bit Pattern | Integer Value | Explanation
 
 ## Storage
 
-```
-    /**
-     * The table, initialized on first use, and resized as
-     * necessary. When allocated, length is always a power of two.
-     * (We also tolerate length zero in some operations to allow
-     * bootstrapping mechanics that are currently not needed.)
-     */
-    transient Node<K,V>[] table;
-```
+Key-value paires are stored in a table. This table is
+initialized on first use, and resized as necessary. When allocated, length is
+_always_ a power of two. The table is accessible via hash value of the key K.
+The keyword "transient" is declared, because as a class member, `table` is
+unnecessary to reconstruct the object from its serialized form.
+
+{% highlight java %}
+transient Node<K,V>[] table;
+{% endhighlight %}
+
+Here's a figure illustrating the internal table structure:
+
+<figure align="center">
+  <img src="{{ site.url }}/assets/2018-04-08-hashmap-storage.png"
+       alt="HashMap Storage" />
+  <figcaption>
+    <a href="http://www.itcuties.com/java/hashmap-hashtable/">
+      HashMap vs. Hashtable, ITCuties.com
+    </a>
+  </figcaption>
+</figure>
 
 ## Put Operation
 
@@ -220,5 +232,6 @@ return null;
 - [Stack Overflow: Why HashMap insert new Node on index (n - 1) & hash?](https://stackoverflow.com/questions/27230938/why-hashmap-insert-new-node-on-index-n-1-hash)
 - [Oracle: Collections Framework Enhancements in Java SE 8](https://docs.oracle.com/javase/8/docs/technotes/guides/collections/changes8.html)
 - [JEP 180: Handle Frequent HashMap Collisions with Balanced Trees][jep180]
+- [HashMap vs. Hashtable, ITCuties](http://www.itcuties.com/java/hashmap-hashtable/)
 
 [jep180]: http://openjdk.java.net/jeps/180
