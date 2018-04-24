@@ -167,6 +167,26 @@ following configuration too.
   it. In other words, this account need to be a member of the target
   organization.
 
+## Suppress Sonar Warnings
+
+Sometimes you might want to suppress Sonar warnings in a specific scope. It
+allows to disable inappropriate analyze results.
+
+Suppress all warnings at one line:
+
+{% highlight java %}
+System.out.println("Hi"); // NOSONAR
+{% endhighlight %}
+
+Suppress one specific warning at method level:
+
+{% highlight java %}
+@SuppressWarnings("squid:S106")
+public void sayHi() {
+  System.out.println("Hi");
+}
+{% endhighlight %}
+
 ## Next Steps
 
 Now we've successfully configured the Sonar scanner in Maven for the first
