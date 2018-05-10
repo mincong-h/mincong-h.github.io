@@ -6,8 +6,8 @@ categories:  [java, java9, maven]
 comments:    true
 ---
 
-Today I'd like to share with you about how to migrate an existing Maven project
-to Java 9, including Java 9 installation, IDE update, Maven project update, CI
+Today, I'd like to talk about Java 9 migration for Maven project. It consists
+Java 9 installation, IDE update, Maven project update, CI
 update and fixing tests. I'm using macOS and IntelliJ IDEA. Perhaps some of the
 content will not fit your situation. Please be ware of the diffretence. Now,
 let's get started.
@@ -56,15 +56,10 @@ Maven compiler plugin:
 
 ### Maven Dependency Plugin
 
-Maven dependency plugin does not support Java 9 bytecode analysis yet, due to:
-[MDEP-559 Java 9 bytecode cannot be parsed][MDEP-559]. The issue is fixed in
-3.1.0, which is not released yet. As a result, the goal `dependency:analyze` and
-`dependency:analyze-only` cannot be used. And we need to disable the plugin
-completely:
-
-```xml
-<mdep.analyze.skip>true</mdep.analyze.skip>
-```
+For Maven dependency plugin, only version 3.1.0+ supports Java 9 bytecode
+analysis. See [MDEP-559 Java 9 bytecode cannot be parsed][MDEP-559]. As a
+result, you need to upgrade the version to ensure goals `dependency:analyze`
+and `dependency:analyze-only` can be executed correctly.
 
 ## Update Travis CI
 
@@ -122,8 +117,12 @@ principally related the mocking frameworks and byte-code manipulation.
 
 ## References
 
-- [MDEP-559: Java 9 bytecode cannot be parsed][MDEP-559]
+- [MDEP-559: Java 9 bytecode cannot be parsed (resolved)][MDEP-559]
 - [StackOverflow: How to resolve java.lang.NoClassDefFoundError: javax/xml/bind/JAXBException in Java 9](https://stackoverflow.com/questions/43574426)
+
+---
+
+Update 2018-05-10: Maven Dependency Plugin 3.1.0 supports Java 9.
 
 [befc891]: https://github.com/mincong-h/java-examples/commit/befc8915de7b2fcaef7fba0acb16ef4f4bc558dd
 [MDEP-559]: https://issues.apache.org/jira/browse/MDEP-559
