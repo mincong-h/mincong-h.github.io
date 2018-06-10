@@ -39,8 +39,9 @@ public class App {
 }
 {% endhighlight %}
 
-Note that the shared library is loaded during class initialization. And the
-method `sayHello` is native. Now compile the Java file:
+Note that: shared library _hello_ is loaded during class initialization; method
+`sayHello` is native, so its behavior is unknown during the compilation phase,
+and only be defined in runtime. Now compile the Java file:
 
 ```
 $ javac App.java
@@ -82,7 +83,7 @@ JNIEXPORT void JNICALL Java_App_sayHello
 {% endhighlight %}
 
 As you can see, the method generated is called `Java_App_sayHello`, composed by
-the language _"Java"_, class name _"App"_, and method name _"sayHello"_.
+language _"Java"_, class name _"App"_, and method name _"sayHello"_.
 
 ## Create Implementation in C
 
