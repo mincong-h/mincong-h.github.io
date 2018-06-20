@@ -41,6 +41,8 @@ keep update on the next months.
 - Use upper-case for enum members.
 - Marks a enum variable as `public` if it is immutable and needs to be
   referenced from outside. This avoids unnecessary getter method.
+- Avoid using `switch` to implement logic. It can cause errors when new
+  member(s) added into the enum. Attach the logic directly into the enum.
 
 ## Nullability
 
@@ -55,18 +57,26 @@ keep update on the next months.
 - Use only one exception type for one module. It helps to handle unexpected
   cases.
 
+## Lambda
+
+- Use one-line lambda
+- Use method reference for lambda whenever possible
+
 ## References
 
 1. [Scala - `scala.util.Try[+T]`][1]
 2. [EGit/Contributor Guide - Coding Standards][2]
 3. [Google Gerrit Code Review - Contributing, Style][3]
+4. [Devoxx FR 2018: Clean Code with Java8 4 years later (V. Rentea)][4]
 
 ---
 
 Updates:
 
 1. 2018-06-19: Add EGit and Google style
+2. 2018-06-20: Add lambda and enum
 
 [1]: https://www.scala-lang.org/api/2.12.3/scala/util/Try.html
 [2]: https://wiki.eclipse.org/EGit/Contributor_Guide#Coding_standards
 [3]: https://gerrit-review.googlesource.com/Documentation/dev-contributing.html#style
+[4]: https://youtu.be/-WInMyeAqTE
