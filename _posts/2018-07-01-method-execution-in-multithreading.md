@@ -97,28 +97,28 @@ public class App {
 Execution:
 
 ```
-$ java -Djava.util.logging.SimpleFormatter.format='%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS.%1$tL %4$-6s %2$s: %5$s%6$s%n' App
-2018-07-01 16:34:17.209 INFO   App main: [main] Main thread started.
-2018-07-01 16:34:17.240 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:17.445 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:17.650 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:17.853 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:18.059 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:18.264 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:18.469 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:18.675 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:18.881 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:19.086 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:19.242 INFO   App$Master run: [Master] Closing slave...
-2018-07-01 16:34:19.242 INFO   App$Slave close: [Master] Closed in 1 second.
-2018-07-01 16:34:19.289 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:19.493 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:19.699 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:19.905 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:20.109 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:20.245 INFO   App$Slave close: [Master] Slave is closed.
-2018-07-01 16:34:20.246 INFO   App$Master run: [Master] Slave is closed.
-2018-07-01 16:34:20.247 INFO   App main: [main] Main thread finished.
+$ java -Djava.util.logging.SimpleFormatter.format='%1$tS.%1$tLs %2$s: %5$s%6$s%n' App
+01.081s App main: [main] Main thread started.
+01.111s App$Slave run: [Slave] Slave is running
+01.315s App$Slave run: [Slave] Slave is running
+01.516s App$Slave run: [Slave] Slave is running
+01.719s App$Slave run: [Slave] Slave is running
+01.925s App$Slave run: [Slave] Slave is running
+02.130s App$Slave run: [Slave] Slave is running
+02.334s App$Slave run: [Slave] Slave is running
+02.535s App$Slave run: [Slave] Slave is running
+02.737s App$Slave run: [Slave] Slave is running
+02.940s App$Slave run: [Slave] Slave is running
+03.116s App$Master run: [Master] Closing slave...
+03.116s App$Slave close: [Master] Closed in 1 second.
+03.143s App$Slave run: [Slave] Slave is running
+03.350s App$Slave run: [Slave] Slave is running
+03.554s App$Slave run: [Slave] Slave is running
+03.759s App$Slave run: [Slave] Slave is running
+03.962s App$Slave run: [Slave] Slave is running
+04.122s App$Slave close: [Master] Slave is closed.
+04.122s App$Master run: [Master] Slave is closed.
+04.123s App main: [main] Main thread finished.
 ```
 
 ## Thread.join()
@@ -137,10 +137,10 @@ last forever without timeout. This can be verified by the log trace, too—main
 thread did not quit until master is finished:
 
 ```
-2018-07-01 16:34:17.209 INFO   App main: [main] Main thread started.
+01.081s App main: [main] Main thread started.
 ...
-2018-07-01 16:34:20.246 INFO   App$Master run: [Master] Slave is closed.
-2018-07-01 16:34:20.247 INFO   App main: [main] Main thread finished.
+04.122s App$Master run: [Master] Slave is closed.
+04.123s App main: [main] Main thread finished.
 ```
 
 This can be used for any scenario where a thread needs to wait for another
@@ -173,14 +173,14 @@ defined after the log level is the location of the logic; the value in the
 square bracket _\[...\]_ is the name of the thread:
 
 ```
-2018-07-01 16:34:19.242 INFO   App$Master run: [Master] Closing slave...
-2018-07-01 16:34:19.242 INFO   App$Slave close: [Master] Closed in 1 second.
-2018-07-01 16:34:19.289 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:19.493 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:19.699 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:19.905 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:20.109 INFO   App$Slave run: [Slave] Slave is running
-2018-07-01 16:34:20.245 INFO   App$Slave close: [Master] Slave is closed.
+03.116s App$Master run: [Master] Closing slave...
+03.116s App$Slave close: [Master] Closed in 1 second.
+03.143s App$Slave run: [Slave] Slave is running
+03.350s App$Slave run: [Slave] Slave is running
+03.554s App$Slave run: [Slave] Slave is running
+03.759s App$Slave run: [Slave] Slave is running
+03.962s App$Slave run: [Slave] Slave is running
+04.122s App$Slave close: [Master] Slave is closed.
 ```
 
 Even though object `slave` is submit to thread `Slave`, thread `Master` is the
