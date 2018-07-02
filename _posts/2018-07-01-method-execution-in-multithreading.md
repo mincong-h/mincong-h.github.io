@@ -23,15 +23,14 @@ the following steps:
 My mini Java program:
 
 {% highlight java %}
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.logging.*;
 
 public class App {
 
-  private static final Logger logger = Logger.getLogger("App");
+  private static final Logger log = Logger.getLogger("App");
 
   public static void main(String[] args) throws Exception {
-    logger.info("[" + Thread.currentThread().getName() + "] Main thread started.");
+    log.info(str("Main thread started."));
     Slave slave = new Slave();
     Master master = new Master(slave);
     Thread sThread = new Thread(slave, "Slave");
@@ -41,7 +40,12 @@ public class App {
     Thread.sleep(2000);
     mThread.start();
     mThread.join();
-    logger.info("[" + Thread.currentThread().getName() + "] Main thread finished.");
+    log.info(str("Main thread finished."));
+  }
+
+  private static String str(String msg) {
+    String s = Thread.currentThread().getName();
+    return "[" + s + "] " + msg;
   }
 
   private static class Master implements Runnable {
@@ -54,9 +58,9 @@ public class App {
 
     @Override
     public void run() {
-      logger.info("[" + Thread.currentThread().getName() + "] Closing slave...");
+      log.info(str("Closing slave..."));
       slave.close();
-      logger.info("[" + Thread.currentThread().getName() + "] Slave is closed.");
+      log.info(str("Slave is closed."));
     }
   }
 
@@ -66,29 +70,29 @@ public class App {
 
     @Override
     public void run() {
-      // do an infinite loop and wait master's call
+      // do forever and wait master's call
       while (running) {
-        logger.info("[" + Thread.currentThread().getName() + "] Slave is running");
+        log.info(str("Slave is running"));
         try {
           Thread.sleep(200);
         } catch (InterruptedException e) {
-          logger.log(Level.SEVERE, "Sleep interrupted.", e);
+          e.printStackTrace();
           Thread.currentThread().interrupt();
         }
       }
     }
 
     public void close() {
-      logger.info("[" + Thread.currentThread().getName() + "] Closed in 1 second.");
+      log.info(str("Closed in 1 second."));
       try {
         Thread.sleep(1000);
       } catch (InterruptedException e) {
-        logger.log(Level.SEVERE, "Sleep interrupted.", e);
+        e.printStackTrace();
         Thread.currentThread().interrupt();
       }
       Thread.yield();
       running = false;
-      logger.info("[" + Thread.currentThread().getName() + "] Slave is closed.");
+      log.info(str("Slave is closed."));
     }
   }
 }
@@ -161,9 +165,7 @@ private static class Master implements Runnable {
 
   @Override
   public void run() {
-    logger.info("[" + Thread.currentThread().getName() + "] Closing slave...");
     slave.close();
-    logger.info("[" + Thread.currentThread().getName() + "] Slave is closed.");
   }
 }
 {% endhighlight %}
@@ -212,11 +214,10 @@ slave watches the variable `running`, and quit when it turns to false:
 
 {% highlight java %}
 while (running) {  // 1
-  logger.info("[" + Thread.currentThread().getName() + "] Slave is running");
   try {
     Thread.sleep(200);
   } catch (InterruptedException e) {  // 2
-    logger.log(Level.SEVERE, "Sleep interrupted.", e);
+    e.printStackTrace();
     Thread.currentThread().interrupt();
   }
 }
