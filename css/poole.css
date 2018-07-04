@@ -170,6 +170,10 @@ span.category.code {
   color: #595959;
   background-color: #f0f0f0;
 }
+.archive span.category.code {
+  color: #999;
+  background-color: #f6f6f6;
+}
 pre {
   display: block;
   margin-top: 0;
@@ -375,14 +379,14 @@ tbody tr:nth-child(odd) th {
   font-size: 14px;
 }
 .post-date.archive {
-  width: 5.7rem;
+  /* width: 5.7rem; */
 }
 @media (min-width: 30em) {
   .post.archive {
-    font-size: 16px;
+    font-size: 0.9rem;
   }
   .post-date.archive {
-    width: 6.8rem;
+    /* width: 6.8rem; */
   }
 }
 

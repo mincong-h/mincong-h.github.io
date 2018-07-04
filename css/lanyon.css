@@ -317,7 +317,10 @@ a.sidebar-nav-item:focus {
   margin-bottom: 4em;
 }
 .post.archive {
-  margin-bottom: 0em;
+  margin-bottom: 1.5em;
+}
+.post .description {
+  color: #9a9a9a;
 }
 
 /* Blog post or page title */

@@ -6,10 +6,19 @@ title: Home
 <div class="posts">
   {% for post in site.posts %}
   <div class="post archive">
-    <p class="post-title archive">
-      <span class="post-date archive">{{ post.date | date: "%b %d, %Y" }}</span>
-      <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
-    </p>
+    <div>
+      <h3 class="post-title archive">
+        <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
+      </h3>
+    </div>
+    <div class="description">
+      <span class="post-date archive">{{ post.date | date: "%b %d, %Y" }}</span> |
+      <span>
+      {% for category in post.categories %}
+         <span class="category code">{{ category }}</span>
+      {% endfor %}
+      </span>
+    </div>
   </div>
   {% endfor %}
 </div>
