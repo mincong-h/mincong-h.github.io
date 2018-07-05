@@ -3,6 +3,7 @@ layout:      post
 title:       "Learning Selenium WebDriver"
 date:        "2018-04-03 20:50:21 +0200"
 categories:  [java, qa, testing, study-note]
+tags:        [java, qa, testing, study-note]
 comments:    true
 ---
 

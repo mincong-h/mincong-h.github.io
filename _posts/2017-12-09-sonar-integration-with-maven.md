@@ -3,6 +3,7 @@ layout:      post
 title:       "Sonar Integration with Maven"
 date:        "2017-12-09 17:23:09 +0100"
 categories:  [maven, java, code-quality, jenkins, sonar]
+tags:        [maven, java, code-quality, jenkins, sonar]
 comments:    true
 ---
 

@@ -3,6 +3,7 @@ layout:      post
 title:       "Learning JNI"
 date:        "2018-01-31 21:18:24 +0100"
 categories:  [java, c, jni]
+tags:        [java, c, jni]
 comments:    true
 ---
 

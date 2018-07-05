@@ -3,6 +3,7 @@ layout:      post
 title:       "JavaScript Cheat Sheet"
 date:        "2018-07-13 21:17:11 +0200"
 categories:  [javascript, study-note]
+tags:        [javascript, study-note]
 comments:    true
 ---
 

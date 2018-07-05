@@ -3,6 +3,7 @@ layout:      post
 title:       "Sending HTTP Request from Browser"
 date:        "2018-06-19 15:07:31 +0200"
 categories:  [javascript, http, jquery]
+tags:        [javascript, http, jquery]
 comments:    true
 ---
 

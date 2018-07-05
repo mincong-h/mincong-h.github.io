@@ -3,6 +3,7 @@ layout:      post
 title:       "Java 9 Migration"
 date:        "2018-02-28 20:18:23 +0100"
 categories:  [java, java9, maven]
+tags:        [java, java9, maven]
 comments:    true
 ---
 

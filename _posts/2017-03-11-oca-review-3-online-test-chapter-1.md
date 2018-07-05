@@ -3,6 +3,7 @@ layout:      post
 title:       'OCA Review 3 - Online Test Chapter 1'
 date:        2017-03-11 20:00:00 +0100
 categories:  [java, weekly, ocajp]
+tags:  [java, weekly, ocajp]
 comments:    true
 ---
 

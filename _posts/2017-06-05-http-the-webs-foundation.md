@@ -3,6 +3,7 @@ layout:      post
 title:       "HTTP: The Web's Foundation"
 date:        "2017-06-05 09:09:01 +0200"
 categories:  [weekly, http, web]
+tags:        [weekly, http, web]
 comments:    true
 ---
 

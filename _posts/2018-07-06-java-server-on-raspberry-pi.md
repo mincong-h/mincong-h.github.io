@@ -3,6 +3,7 @@ layout:      post
 title:       "Java Server on Raspberry Pi"
 date:        "2018-07-06 05:51:00 +0200"
 categories:  [java, raspberry-pi, systemd]
+tags:        [java, raspberry-pi, systemd]
 comments:    true
 ---
 

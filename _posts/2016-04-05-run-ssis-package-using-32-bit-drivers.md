@@ -3,6 +3,7 @@ layout: post
 title:  "Run SSIS package using 32-bit drivers"
 date:   2016-04-05 13:13:00 +0100
 categories: [sql-server]
+tags:       [sql-server]
 redirect_from:
   - /sql-server/2016/04/05/run-ssis-package-using-32-bit-drivers/
 ---

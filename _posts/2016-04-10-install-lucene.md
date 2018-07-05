@@ -3,6 +3,7 @@ layout: post
 title:  "Install Apache Lucene"
 date:   2016-04-10 22:47:00 +0100
 categories: [apache-lucene]
+tags:       [apache-lucene]
 redirect_from:
   - /apache-lucene/2016/04/10/install-lucene/
 ---

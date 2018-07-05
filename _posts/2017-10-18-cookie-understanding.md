@@ -3,6 +3,7 @@ layout:      post
 title:       "Cookie Understanding"
 date:        "2017-10-18 22:04:16 +0200"
 categories:  [weekly, cookie, http]
+tags:        [weekly, cookie, http]
 comments:    true
 ---
 

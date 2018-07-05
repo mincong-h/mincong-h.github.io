@@ -3,6 +3,7 @@ layout:      post
 title:       "Create Systemd Unit File for Java"
 date:        "2018-07-03 21:33:29 +0200"
 categories:  [java, systemd]
+tags:        [java, systemd]
 comments:    true
 ---
 

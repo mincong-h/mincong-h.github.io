@@ -3,6 +3,7 @@ layout: post
 title:  "OCA Review 2 - Java Core APIs"
 date:   2017-03-04 08:30:00 +0100
 categories: [java, weekly, ocajp]
+tags: [java, weekly, ocajp]
 comments:    true
 ---
 

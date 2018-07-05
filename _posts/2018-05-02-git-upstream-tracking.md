@@ -3,6 +3,7 @@ layout:      post
 title:       "Git Upstream Tracking"
 date:        "2018-05-02 20:41:53 +0200"
 categories:  [git, java, jgit]
+tags:        [git, java, jgit]
 comments:    true
 ---
 

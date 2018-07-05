@@ -3,6 +3,7 @@ layout:      post
 title:       "Git and HTTP"
 date:        "2018-05-04 17:31:59 +0200"
 categories:  [git, http]
+tags:        [git, http]
 comments:    true
 ---
 

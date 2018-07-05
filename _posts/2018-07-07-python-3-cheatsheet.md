@@ -3,6 +3,7 @@ layout:      post
 title:       "Python 3 Cheat sheet"
 date:        "2018-07-07 09:57:16 +0200"
 categories:  [python, study-note]
+tags:        [python, study-note]
 comments:    true
 ---
 

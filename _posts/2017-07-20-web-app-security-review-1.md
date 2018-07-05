@@ -3,6 +3,7 @@ layout:      post
 title:       "Web App Security - Review 1"
 date:        "2017-07-20 14:07:30 +0200"
 categories:  [weekly, security, web]
+tags:        [weekly, security, web]
 comments:    true
 ---
 

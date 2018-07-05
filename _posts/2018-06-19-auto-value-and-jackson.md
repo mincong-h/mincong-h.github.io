@@ -3,6 +3,7 @@ layout:      post
 title:       "Auto Value and Jackson"
 date:        "2018-06-19 07:43:18 +0200"
 categories:  [java, serialization, json, jackson, auto-value]
+tags:        [java, serialization, json, jackson, auto-value]
 comments:    true
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title:  "Code Quality Improvement For Newbies"
 date:   2017-01-26 22:46:00 +0100
 categories: [code-quality, weekly]
+tags: [code-quality, weekly]
 comments:    true
 ---
 

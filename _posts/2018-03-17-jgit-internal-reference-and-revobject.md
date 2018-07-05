@@ -3,6 +3,7 @@ layout:      post
 title:       "JGit Internal: Reference and RevObject"
 date:        "2018-03-17 08:24:10 +0100"
 categories:  [jgit, git, java]
+tags:        [jgit, git, java]
 comments:    true
 ---
 

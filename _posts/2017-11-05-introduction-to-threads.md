@@ -3,6 +3,7 @@ layout:      post
 title:       "Introduction to Threads"
 date:        "2017-11-05 13:47:29 +0100"
 categories:  [java, multithreading]
+tags:        [java, multithreading]
 comments:    true
 ---
 

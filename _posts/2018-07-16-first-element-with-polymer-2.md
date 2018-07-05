@@ -3,6 +3,7 @@ layout:      post
 title:       "First Element with Polymer 2"
 date:        "2018-07-16 21:31:12 +0200"
 categories:  [javascript, polymer, dom]
+tags:        [javascript, polymer, dom]
 comments:    true
 ---
 

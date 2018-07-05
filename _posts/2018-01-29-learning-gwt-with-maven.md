@@ -3,6 +3,7 @@ layout:      post
 title:       "Learning GWT with Maven"
 date:        "2018-01-29 21:23:26 +0100"
 categories:  [java, gwt, maven, javascript]
+tags:        [java, gwt, maven, javascript]
 comments:    true
 ---
 

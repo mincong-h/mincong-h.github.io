@@ -3,6 +3,7 @@ layout:      post
 title:       "OCA Review 8 - Notes"
 date:        "2017-04-06 21:01:34 +0200"
 categories:  [java, ocajp, weekly]
+tags:        [java, ocajp, weekly]
 comments:    true
 ---
 

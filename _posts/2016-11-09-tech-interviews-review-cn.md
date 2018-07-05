@@ -3,6 +3,7 @@ layout: post
 title:  "2016技术面试总结"
 date:   2016-11-09 18:00:00 +0100
 categories: [interview]
+tags: [interview]
 comments:    true
 ---
 

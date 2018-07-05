@@ -3,6 +3,7 @@ layout:      post
 title:       "Learning Checkstyle"
 date:        "2018-02-06 17:31:07 +0100"
 categories:  [java, maven, checkstyle, code-quality]
+tags:        [java, maven, checkstyle, code-quality]
 comments:    true
 ---
 

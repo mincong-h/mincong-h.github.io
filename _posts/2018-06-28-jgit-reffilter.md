@@ -3,6 +3,7 @@ layout:      post
 title:       "JGit RefFilter"
 date:        "2018-06-28 20:42:48 +0200"
 categories:  [java, jgit, git]
+tags:        [java, jgit, git]
 comments:    true
 ---
 

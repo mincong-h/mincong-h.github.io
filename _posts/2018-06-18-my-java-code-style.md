@@ -3,6 +3,7 @@ layout:      post
 title:       "My Java Code Style"
 date:        "2018-06-18 09:14:50 +0200"
 categories:  [java]
+tags:        [java]
 comments:    true
 ---
 

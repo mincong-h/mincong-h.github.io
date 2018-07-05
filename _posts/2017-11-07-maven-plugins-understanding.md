@@ -2,7 +2,8 @@
 layout:      post
 title:       "Maven Plugins Understanding"
 date:        "2017-11-07 20:43:06 +0100"
-categories:  [Maven]
+categories:  [maven]
+tags:        [maven]
 comments:    true
 ---
 
