@@ -11,6 +11,7 @@ go through the following steps: Raspbian installation, Java installation, SSH
 configuration, data transfer and Java server setup.
 
 ## Install Raspbian on Raspberry Pi
+
 <br>
 <p align="center">
   <img src="{{ site.url }}/assets/logo-raspbian.png" alt="Logo Raspbian">
@@ -112,6 +113,29 @@ please check my previous post:
 <a href="{{ site.url }}/2018/07/03/create-systemd-unit-file-for-java/">
 how to create a system unit file for Java</a>.
 
+## Shutdown
+
+You can shutdown your Respberry PI via SSH command. Once connected, use command
+`sudo shutdown`, the shutdown will be scheduled in 60 seconds. You can use
+`shutdown -c` to cancel it.
+
+{% highlight shell %}
+sudo shutdown
+{% endhighlight %}
+
+Note that `sudo` is required. A system shutdown needs **root**/`sudo` or other
+special permissions (usually handled by polkit and/or systemd). In its default
+configuration, systemd allows for a root-less shutdown if the user is local (so
+no SSH) and there's currently no other user loggin in.
+
+> Failed to set wall message, ignoring: Interactive authentication required.
+>
+> Failed to call ScheduleShutdown in logind, proceeding with immediate
+> shutdown: Interactive authentication required.
+
+Systemd is complaining because it tries to get authentication but it can't
+because you're logged in via SSH. `sudo shutdown` will do the trick.
+
 ## Conclusion
 
 In this post, we discussed the Raspbian OS, SSH enabling, data
@@ -124,6 +148,8 @@ automatically. Hope you enjoy this one, see you the next time.
 - [Raspberry Pi: Installation][1]
 - [Raspberry Pi: NOOBS][1]
 - [Raspberry Pi: A security update for Raspbian Pixel][8]
+- [Reddit: Getting errors whenever I try to reboot or shutdown through
+  terminal][9]
 
 [1]: https://www.raspberrypi.org/documentation/installation
 [2]: https://www.raspberrypi.org/documentation/installation/noobs.md
@@ -133,6 +159,7 @@ automatically. Hope you enjoy this one, see you the next time.
 [6]: https://www.raspberrypi.org/documentation/remote-access/ip-address.md
 [7]: https://raspberrypi.stackexchange.com/questions/13936/find-raspberry-pi-address-on-local-network
 [8]: https://www.raspberrypi.org/blog/a-security-update-for-raspbian-pixel/
+[9]: https://www.reddit.com/r/linux4noobs/comments/5vbmq8/getting_errors_whenever_i_try_to_reboot_or/
 
 ---
 
