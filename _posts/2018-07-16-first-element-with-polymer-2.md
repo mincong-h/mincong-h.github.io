@@ -1,0 +1,132 @@
+---
+layout:      post
+title:       "First Element with Polymer 2"
+date:        "2018-07-16 21:31:12 +0200"
+categories:  [javascript, polymer, dom]
+comments:    true
+---
+
+Today I'd like to share how I created my first element with Polymer 2.
+
+<!--more-->
+
+Before getting started, you need to ensure you've npm, bower and Polymer CLI
+installed in your machine. For example, in Mac OS:
+
+```
+brew install node
+npm install -g polymer-cli@1.6.0
+npm install -g bower@1.8.4
+```
+
+I fixed the version of Polymer and bower to adapt Nuxeo's requirement. However,
+you might want to adjust them, or simply take the latest version.
+
+## Init Polymer Element
+
+Initialize a Polymer element using Polymer CLI:
+
+```
+$ polymer init
+```
+
+It will ask you _"Which starter template would you like to use?"_, you can
+choose:
+
+- polymer-2-element - A simple Polymer 2.0 element template
+- polymer-2-application - A simple Polymer 2.0 application
+- polymer-2-starter-kit - A Polymer 2.x starter application template, with
+  navigation and "PRPL pattern" loading
+- shop - The "Shop" Progressive Web App demo
+
+I chose _polymer-2-element_. Once chosen, Polymer CLI will run `bower install`
+for you to install the required dependencies. Now, you can start the development
+using polymer-serve:
+
+```
+polymer-demo $ polymer serve
+info:    Files in this directory are available under the following URLs
+      applications: http://127.0.0.1:8081
+      reusable components: http://127.0.0.1:8081/components/polymer-demo/
+```
+
+## Useful Resources
+
+**Web components** (<https://www.webcomponents.org/>) are a set of web platform
+APIs that allow you to create new custom, reusable, encapsulated HTML tags to
+use in web pages and web apps. Custom components and widgets build on the Web
+Component standards, will work across modern browsers, and can be used with any
+JavaScript library or framework that works with HTML. You can find the elements
+you want on this website, see its documentation, demos, dependencies, and its
+popularity. It helps you to measure how close a component fits your requirement.
+
+- documentation
+- demos
+- dependencies
+- popularity
+
+**MDN Web APIs** (<https://developer.mozilla.org/en-US/docs/Web/API>). When writing
+code for the Web with JavaScript, there are a great many APIs available. MDN
+provides a list of all the interfaces (that is, types of objects) that you may
+be able to use while developing your Web app or site.
+
+- documentation
+- demos
+- browser supports
+
+## Understand Polymer Element
+
+Once you've create the structure of a Polymer Element, you will want to
+understand how it works. This sections describes how to do it using your browser
+console (I'm taking Chrome as example).
+
+### Inspect Elements
+
+You can inspect the elements inside the shadow DOM. The
+source code is available in browser console:
+
+{% highlight html %}
+<polymer-demo>
+  #shadow-root (open)
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <h2>Hello polymer-demo!</h2>
+</polymer-demo>
+{% endhighlight %}
+
+### Query Shadow DOM
+
+You can test you element by querying its shadow DOM.
+This is also done in the browser console:
+
+{% highlight javascript %}
+$('polymer-demo').shadowRoot
+{% endhighlight %}
+
+Query host property `prop1`:
+
+{% highlight javascript %}
+$('polymer-demo').shadowRoot.root.prop1
+// polymer-demo
+{% endhighlight %}
+
+Query local DOM style sheets:
+
+{% highlight javascript %}
+$('polymer-demo').shadowRoot.styleSheets
+// StyleSheetList {0: CSSStyleSheet, length: 1}
+{% endhighlight %}
+
+
+More information can be checked on [MDN: ShadowRoot - Web APIs][1].
+
+## References
+
+- [MDN: ShadowRoot - Web APIs][1]
+- [Polymer 2.x Cheat Sheet][2]
+
+[2]: https://meowni.ca/posts/polymer-2-cheatsheet/
+[1]: https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot
