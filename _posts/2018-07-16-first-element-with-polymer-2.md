@@ -6,6 +6,12 @@ categories:  [javascript, polymer, dom]
 comments:    true
 ---
 
+<p align="center">
+  <img src="{{ site.url }}/assets/logo-polymer.png"
+       style="max-width:100px; width:100%; margin-top: 30px;"
+       alt="Polymer Logo">
+</p>
+
 Today I'd like to share how I created my first element with Polymer 2. This post
 covers the following topics:
 
