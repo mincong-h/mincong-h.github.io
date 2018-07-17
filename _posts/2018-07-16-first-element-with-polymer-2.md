@@ -19,6 +19,7 @@ covers the following topics:
 - Useful resources for development
 - Understand Polymer Element
 - Dependency Management
+- AJAX Request <small style="color: #AAA">(advanced)</small>
 
 <!--more-->
 
@@ -171,6 +172,24 @@ New developers (like me) might feel difficult to understand the semantic
 versioning of npm — for example `^2.0.0`, or `~2.2`. The best way to start is to
 use npm semver calculator (<https://semver.npmjs.com/>), which provides concrete
 examples for you.
+
+---
+
+The following sections are advanced configurations.
+
+## AJAX Request
+
+**Proxy in Polymer CLI.** When developing AJAX in element with Polymer CLI, you
+need to provide a proxy to redirect all requests. Use `--proxy-path` to define
+the top-level path that should be redirected to the proxy-target. e.g.
+`api/v1` when you want to redirect all requests of <https://localhost/api/v1/>;
+use `--proxy-target` to define host URL to proxy to:
+
+```
+$ polymer serve \
+  --proxy-path='api/v1' \
+  --proxy-target='https://localhost:8080/api/v1/'
+```
 
 ## References
 
