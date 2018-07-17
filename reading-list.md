@@ -19,6 +19,8 @@ Done:
 * [The Pragmatic Programmer][pragmatic-programmer]
 * [OCP: Java SE 7 Programmer II Certification Guide][ocpjp-manning]
 * [Java 8 in Action][java8-manning]
+* [Working Effectively with Legacy Code][legacy-code]
+* [Java Concurrency in Practice][java-concurrency]
 
 In progress:
 
@@ -29,12 +31,10 @@ To read:
 
 * [Learn You a Haskell for Great Good!][haskell]
 * [Algorithms][algs4]
-* [Java Concurrency in Practice][java-concurrency]
 * [Concurrent Programming in Java, 2nd Edition][java-concurrent2]
 * [Java Performance][java-perf]
 * [OSGi in Action][osgi-in-action]
 * [Mastering Regular Expressions][mastering-regex]
-* [Working Effectively with Legacy Code][legacy-code]
 * [Microservice Patterns (Mar 30, 2018)][microservice-patterns]
 * [Head First Design Patterns: A Brain-Friendly Guide][design-patterns]
 * [Cracking the Coding Interview][coding-interview]
