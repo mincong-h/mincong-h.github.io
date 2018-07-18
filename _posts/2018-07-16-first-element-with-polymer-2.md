@@ -133,7 +133,35 @@ $('polymer-demo').shadowRoot.styleSheets
 // StyleSheetList {0: CSSStyleSheet, length: 1}
 {% endhighlight %}
 
-More information can be checked on [MDN: ShadowRoot - Web APIs][1].
+More information can be found on [MDN: ShadowRoot - Web APIs][1].
+
+### Automatic Node Binding
+
+Polymer automatically builds a map of statically created instance nodes in its
+local DOM, to provide convenient access to frequently used nodes without the
+need to query for them manually. Any node specified in the element's template
+with an id is stored on the `this.$` hash by `id`.
+
+For example, given the following template:
+
+{% highlight html %}
+<template>
+  <p id="description">Hello Polymer.</p>
+</template>
+{% endhighlight %}
+
+You can find the description inside the local DOM:
+
+{% highlight javascript %}
+this.$.description.textContent;
+{% endhighlight %}
+
+Or outside the local DOM, such as in browser console:
+
+{% highlight javascript %}
+$('polymer-demo').$.description.textContent;
+// "Hello Polymer."
+{% endhighlight %}
 
 ## Dependency Management
 
@@ -194,7 +222,9 @@ $ polymer serve \
 ## References
 
 - [MDN: ShadowRoot - Web APIs][1]
+- [MDN: Node.textContent][6]
 - [Polymer 2.x Cheat Sheet][2]
+- [Polymer 1.0: Local DOM » Automatic node finding][5]
 - [Stack Overflow: Bower and devDependencies vs dependencies][3]
 - [npm semver calculator][4]
 
@@ -202,3 +232,5 @@ $ polymer serve \
 [1]: https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot
 [3]: https://stackoverflow.com/questions/19339227/
 [4]: https://semver.npmjs.com/
+[5]: https://www.polymer-project.org/1.0/docs/devguide/local-dom#node-finding
+[6]: https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
