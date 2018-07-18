@@ -14,7 +14,8 @@ demonstration purpose, the Chrome DevTool is used.
 
 ## Variable Declaration
 
-Normal variable:
+**Variable.** The `var` statement declares a variable, optionally initializing
+it to a value:
 
 {% highlight javascript %}
 var a = 1;             // typeof(a): "number"
@@ -22,7 +23,9 @@ var b = Number(1);     // typeof(b): "number"
 var c = new Number(1); // typeof(c): "object"
 {% endhighlight %}
 
-Constant variable:
+**Constant.** The `const` declaration creates a _read-only_ reference to a
+value. The value of a constant cannot change through re-assignment, and it
+cannot be redeclared:
 
 {% highlight javascript %}
 const SECRET = 'whatever';
@@ -32,33 +35,32 @@ SECRET = 'hacked?';
 
 ## Class
 
-**Define a new class.** You can define input parameters for constructor (1);
-define a computed variable in constructor (2). An instance method such as
-`toEmail()` (3). In an instance method, when referencing an instance
+**Define a new class.** You can 1) define input parameters for constructor;
+2) define a computed variable in constructor; 3) define an instance method such
+as `toEmail()`;  In an instance method, when referencing an instance
 variable, you must use the keyword `this` — it cannot be omitted.
 
 {% highlight javascript %}
 class User {
-  constructor(firstName, lastName) { // 1
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.fullName = firstName + ' ' + lastName; // 2
+  constructor(name, age) { // 1
+    this.name = name;
+    this.age = age;
+    this.username = name + '_' + age; // 2
   }
 
-  toEmail() { // 3
-    var s = this.firstName + '.' + this.lastName; // 4
-    return s.toLowerCase() + '@example.com';
+  getLabel() { // 3
+    return this.name + ' (' + this.age + ')';
   }
 }
 {% endhighlight %}
 
-**Instantiate an class object.**
+**Instantiate a class instance.**
 
 {% highlight javascript %}
-var u = new User('Foo', 'BAR');
+var u = new User('Foo', 10);
 {% endhighlight %}
 
-**Query instance members.** Instance variable are accessible using the following
+**Query instance members.** Instance variables are accessible using the following
 syntax. Method can be called in similar way, however, don't forget the
 parentheses "`()`":
 
@@ -68,14 +70,12 @@ instance.<i>method()</i>
 </pre>
 
 {% highlight javascript %}
-console.log(u.firstName); // "Foo"
-console.log(u.lastName);  // "BAR"
-console.log(u.fullName);  // "Foo BAR"
-console.log(u.toEmail()); // "foo.bar@example.com"
-console.log(u.toEmail));
-// f toEmail() {
-//     var s = this.firstName + '.' + this.lastName;
-//     return s.toLowerCase() + '@example.com';
+console.log(u.name); // "Foo"
+console.log(u.age);  // 10
+console.log(u.getLabel());  // "Foo (10)"
+console.log(u.getLabel));
+// f getLabel() {
+//     return this.name + '( ' + this.age + ')';
 //   }
 {% endhighlight %}
 
