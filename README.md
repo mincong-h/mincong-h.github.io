@@ -9,15 +9,22 @@ sites solution.
 
 ```sh
 # install gem if not exists
-gem install jekyll-paginate jekyll-redirect-from
+$ gem install jekyll-paginate jekyll-redirect-from
 # run
-jekyll serve
+$ jekyll serve
 ```
 
 ## Create New Post
 
 ```sh
-./newpost.sh My New Post
+$ ./newpost.sh My New Post
+```
+
+## Create New Tag
+
+```sh
+$ ./newtag.sh Java EE
+Tag page created: /Users/mincong/github/mincong-h.github.io/tags/java-ee.md
 ```
 
 [1]: https://jekyllrb.com/
