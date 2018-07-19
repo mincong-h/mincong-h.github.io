@@ -2,8 +2,8 @@
 layout:      post
 title:       "HTTP Proxy 代理服务器"
 date:        "2017-07-20 21:13:31 +0200"
-categories:  [weekly, http, proxy, web, translation]
-tags:        [weekly, http, proxy, web, translation]
+categories:  [http, proxy, web, translation]
+tags:        [http, proxy, web, translation]
 comments:    true
 ---
 

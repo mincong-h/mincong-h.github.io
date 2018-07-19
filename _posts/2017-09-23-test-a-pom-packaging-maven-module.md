@@ -2,8 +2,8 @@
 layout:      post
 title:       "Test a POM-Packaging Maven Module"
 date:        "2017-09-23 08:59:24 +0200"
-categories:  [weekly, maven, java]
-tags:        [weekly, maven, java]
+categories:  [maven, java]
+tags:        [maven, java]
 comments:    true
 ---
 

@@ -1,8 +1,6 @@
 ---
-layout: default
-title: Tags
+layout: page
+title:  Tags
 ---
-
-# Tags
 
 {% include tag-cloud.html %}

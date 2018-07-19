@@ -14,8 +14,10 @@ title: Home
     <div class="description">
       <span class="post-date archive">{{ post.date | date: "%b %d, %Y" }}</span> |
       <span>
-      {% for category in post.categories %}
-         <span class="category code">{{ category }}</span>
+      {% for tag in post.tags %}
+        <a href="/tags/{{ tag }}">
+          <span class="tag code">{{ tag }}</span>
+        </a>
       {% endfor %}
       </span>
     </div>

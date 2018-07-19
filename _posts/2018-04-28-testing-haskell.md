@@ -2,8 +2,8 @@
 layout:      post
 title:       "Testing Haskell"
 date:        "2018-04-28 07:19:14 +0200"
-categories:  [haskell, test, ci, travis-ci]
-tags:        [haskell, test, ci, travis-ci]
+categories:  [haskell, testing, ci, travis-ci]
+tags:        [haskell, testing, ci, travis-ci]
 comments:    true
 ---
 

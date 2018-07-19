@@ -10,10 +10,12 @@ layout: default
         {{ page.date | date: "%b %-d, %Y" }}
       </time>
       <br>
-      Categories:
+      Tags:
       <span itemprop="categories" itemscope itemtype="https://schema.org/category">
-        {% for category in page.categories %}
-          <span itemprop="name" class="category code">{{ category }}</span>
+        {% for tag in page.tags %}
+          <a href="/tags/{{ tag }}">
+            <span itemprop="name" class="tag code">{{ tag }}</span>
+          </a>
         {% endfor %}
       </span>
     </p>

@@ -2,7 +2,8 @@
 layout:     post
 title:      "Configuring IntelliJ for Nuxeo"
 date:       "2017-02-09 20:00:00 +0100"
-categories: [nuxeo, idea, weekly]
+categories: [nuxeo, intellij]
+tags:       [nuxeo, intellij]
 comments:    true
 ---
 

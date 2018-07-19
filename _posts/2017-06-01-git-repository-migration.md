@@ -2,8 +2,8 @@
 layout:      post
 title:       "Git Repository Migration"
 date:        "2017-06-01 09:02:14 +0200"
-categories:  [weekly, git]
-tags:        [weekly, git]
+categories:  [git]
+tags:        [git]
 comments:    true
 ---
 
