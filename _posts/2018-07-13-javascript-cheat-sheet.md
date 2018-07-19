@@ -144,14 +144,33 @@ arr.pop(); // 2
 // [1]
 {% endhighlight %}
 
+## Serialization
+
+`JSON.stringify()` allows you to serialize an instance to string.
+
+{% highlight javascript %}
+JSON.stringify({ id: 1, v: "2" });
+// "{"id":1,"v":"2"}"
+{% endhighlight %}
+
+`JSON.parse()` allows you to deserialize a string into an instance.
+
+
+{% highlight javascript %}
+JSON.parse('{"id":1,"v":"2"}');
+// {id: 1, v: "2"}
+{% endhighlight %}
+
 ## References
 
 - [MDN: Comparison operators][1]
 - [MDN: Array.prototype.forEach()][2]
 - [MDN: for...of][3]
 - [MDN: Classes][4]
+- [MDN: JSON][5]
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Comparison_Operators
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
 [3]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
 [4]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+[5]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON
