@@ -8,15 +8,14 @@ comments:    true
 ---
 
 In Java, converting date objects to string is difficult, because the built-in
-API is hard to understand and hard to use. However, as a developer, we cannot
-escape this problem: manipulating date objects is so important and it's actually
-part of our daily work. So let's take a look, to see how to convert different
-dates to string correctly.
+APIs are similar and confusing. However, as a developer, we cannot avoid
+this topic — manipulating date objects is essential in our daily mission.
+Let's see how to convert different dates to string correctly.
 
 <!--more-->
 
-In the following paragraphs, I'll use the [ISO 8601][8601], an international
-standard covering the exchange of date and time-related data, for the string
+In the following paragraphs, I'll use [ISO 8601][8601], an international
+standard covering the exchange of date and time-related data, as the string
 format. Date and time expressed according to ISO 8601 is:
 
     2017-02-16T20:22:28+00:00
@@ -31,14 +30,17 @@ which is the easiest use-case. For other cases, I believe using
 You can see the difference in the following paragraphs.
 
 {% highlight java %}
+// Input
 Date date = new Date(System.currentTimeMillis());
 
+// Conversion
 SimpleDateFormat sdf;
 sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 sdf.setTimeZone(TimeZone.getTimeZone("CET"));
-
-// "2017-02-16T21:00:00.000+01:00"
 String text = sdf.format(date);
+
+// Output
+// "2017-02-16T21:00:00.000+01:00"
 {% endhighlight %}
 
 ## java.util.Calendar
@@ -49,17 +51,20 @@ such line will lead to an erroneous value for millisecond. A non-zero value will
 be filled.
 
 {% highlight java %}
+// Input
 Calendar calendar = Calendar.getInstance();
 calendar.set(2017, Calendar.FEBRUARY, 16, 20, 22, 28);
 calendar.set(Calendar.MILLISECOND, 0);
 Date date = calendar.getTime();
 
+// Conversion
 SimpleDateFormat sdf;
 sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 sdf.setTimeZone(TimeZone.getTimeZone("CET"));
-
-// "2017-02-16T20:22:28.000+01:00"
 String text = sdf.format(date);
+
+// Output
+// "2017-02-16T20:22:28.000+01:00"
 {% endhighlight %}
 
 ## java.util.GregorianCalendar
@@ -69,16 +74,19 @@ to 0, which is better than calendar. However, we still need to use
 `java.util.Date` as an intermediate to format the date.
 
 {% highlight java %}
+// Input
 GregorianCalendar calendar;
 calendar = new GregorianCalendar(2017, Calendar.FEBRUARY, 16, 20, 22, 28);
 Date date = calendar.getTime();
 
+// Conversion
 SimpleDateFormat sdf;
 sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
 sdf.setTimeZone(TimeZone.getTimeZone("CET"));
-
-// "2017-02-16T20:22:28.000+01:00"
 String text = sdf.format(date);
+
+// Output
+// "2017-02-16T20:22:28.000+01:00"
 {% endhighlight %}
 
 ## java.time.ZonedDateTime
@@ -91,10 +99,17 @@ means that _January_ is equal to 1 instead of 0, so you can use the digit
 instead of the static Java field. Let's see the code:
 
 {% highlight java %}
-ZonedDateTime dateTime = LocalDate.of(2017, 2, 16)
-                                  .atTime(20, 22, 28)
-                                  .atZone(ZoneId.of("CET"));
+// Input
+ZonedDateTime dateTime = LocalDate
+    .of(2017, 2, 16)
+    .atTime(20, 22, 28)
+    .atZone(ZoneId.of("CET"));
+
+// Conversion
 String text = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX"));
+
+// Output
+// "2017-02-16T20:22:28.000+01:00"
 {% endhighlight %}
 
 ## Conclusion
