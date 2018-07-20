@@ -107,10 +107,26 @@ h4, h5, h6 {
   margin-top: 1rem;
   font-size: 1rem;
 }
-
 h1 small.monospace {
   color: #BBB;
   font-family: Menlo, Monaco, "Courier New", monospace;
+}
+article h2,
+article h3,
+article h4 {
+  display: inline-block;
+}
+article h2:hover:after,
+article h3:hover:after,
+article h4:hover:after {
+  color: #AAA;
+  content: "§";
+  display: inline-block;
+  margin-left: .5rem;
+}
+
+a.header {
+  display: block;
 }
 
 /* Body text */

@@ -28,6 +28,17 @@ layout: default
   {% if page.comments %}
   <hr>
 
+  <script>
+    var headers = document.querySelectorAll('article h2, article h3, article h4');
+    for (var header of headers) {
+      var p = header.parentNode;
+      var a = document.createElement('a');
+      p.replaceChild(a, header);
+      a.classList.add('header');
+      a.appendChild(header);
+      a.setAttribute('href', '#' + header.id);
+    }
+  </script>
   <div id="disqus_thread"></div>
   <script>
     var disqus_config = function () {
