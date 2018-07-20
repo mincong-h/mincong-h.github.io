@@ -100,17 +100,30 @@ instead of the static Java field. Let's see the code:
 
 {% highlight java %}
 // Input
-ZonedDateTime dateTime = LocalDate
+ZonedDateTime d = LocalDate
     .of(2017, 2, 16)
     .atTime(20, 22, 28)
     .atZone(ZoneId.of("CET"));
 
 // Conversion
-String text = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX"));
+String text = DateTimeFormatter.ISO_DATE_TIME.format(d);
+
+// Output
+// "2017-02-16T20:22:28+01:00[CET]"
+{% endhighlight %}
+
+Use customized date-time pattern:
+
+{% highlight java %}
+// Conversion
+DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").format(d);
 
 // Output
 // "2017-02-16T20:22:28.000+01:00"
 {% endhighlight %}
+
+Patterns for formatting and parsing are available in the Javadoc of
+[DateTimeFormatter (Java 8)][1].
 
 ## Conclusion
 
@@ -126,3 +139,4 @@ use them and adapt into your own code. Happy coding and have a nive weekend!
 
 [8601]: https://en.wikipedia.org/wiki/ISO_8601
 [joda]: http://www.joda.org/joda-time/
+[1]: https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns
