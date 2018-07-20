@@ -1,8 +1,9 @@
 ---
-layout: post
-title:  "Git Hook for JIRA Number"
-date:   2016-11-08 12:00:00 +0100
-categories: [git]
+layout:      post
+title:       "Git Hook for JIRA Number"
+date:        2016-11-08 12:00:00 +0100
+categories:  [git]
+tags:        [git]
 redirect_from:
   - /git/2016/11/08/git-hook-for-jira-number/
 ---
