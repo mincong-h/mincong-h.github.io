@@ -29,9 +29,14 @@ cat << EOF >> "$filepath"
 layout:      post
 title:       "$title"
 date:        "$(date +"%Y-%m-%d %H:%M:%S %z")"
-categories:  []
+categories:  [tech]
+tags:        []
 comments:    true
 ---
+
+<!--more-->
+
+## References
 EOF
 
 echo "Blog created: $filepath"
