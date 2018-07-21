@@ -2,8 +2,8 @@
 layout:      post
 title:       "OCA Review 1 - Java Basics"
 date:        2017-02-23 20:00:00 +0100
-categories:  [java, ocajp]
-tags:        [java, ocajp]
+categories:  [oca]
+tags:        [java, oca]
 comments:    true
 redirect_from:
   - /2017/02/23/things-you-didnt-know-about-java/

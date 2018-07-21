@@ -2,8 +2,8 @@
 layout:      post
 title:       'OCA Review 4 - Online Test Chapter 2'
 date:        2017-03-14 22:50:00 +0100
-categories:  [java, ocajp]
-tags:        [java, ocajp]
+categories:  [tech]
+tags:        [java, oca]
 comments:    true
 ---
 
