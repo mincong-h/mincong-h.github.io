@@ -32,4 +32,8 @@ $ ./newtag.sh Java EE
 Tag page created: /Users/mincong/github/mincong-h.github.io/tags/java-ee.md
 ```
 
+## Useful Resources
+
+- Jekyll cheatsheet (<https://devhints.io/jekyll>)
+
 [1]: https://jekyllrb.com/

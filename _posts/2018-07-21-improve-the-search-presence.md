@@ -1,10 +1,11 @@
 ---
-layout:      post
-title:       "Improve the Search Presence"
-date:        "2018-07-21 06:37:11 +0200"
-categories:  [tech]
-tags:        [search, seo, google-search-console, google-analytics]
-comments:    true
+layout:            post
+title:             "Improve the Search Presence"
+date:              "2018-07-21 06:37:11 +0200"
+last_modified_at:  "2018-07-21 19:10:00 +0200"
+categories:        [tech]
+tags:              [search, seo, google-search-console, google-analytics]
+comments:          true
 ---
 
 Today I want to talk about how to do SEO (Search Engine Optimazation) for your
