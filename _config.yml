@@ -30,3 +30,4 @@ facebook_id: 1788552244732928
 
 plugins:
   - jekyll-redirect-from
+  - jekyll-sitemap

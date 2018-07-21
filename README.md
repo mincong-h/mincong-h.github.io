@@ -7,10 +7,15 @@ sites solution.
 
 ## Install and Run
 
+Install required Jekyll plugins:
+
 ```sh
-# install gem if not exists
-$ gem install jekyll-redirect-from
-# run
+$ bundle install
+```
+
+Run Jekyll:
+
+```
 $ jekyll serve
 ```
 

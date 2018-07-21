@@ -26,12 +26,13 @@ fi
 
 cat << EOF >> "$filepath"
 ---
-layout:      post
-title:       "$title"
-date:        "$(date +"%Y-%m-%d %H:%M:%S %z")"
-categories:  [tech]
-tags:        []
-comments:    true
+layout:            post
+title:             "$title"
+date:              "$(date +"%Y-%m-%d %H:%M:%S %z")"
+last_modified_at:  "$(date +"%Y-%m-%d %H:%M:%S %z")"
+categories:        [tech]
+tags:              []
+comments:          true
 ---
 
 <!--more-->
