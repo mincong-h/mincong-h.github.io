@@ -35,7 +35,6 @@ layout:            tag
 title:             "${title}"
 tag:               ${tag}
 date:              "$(date +"%Y-%m-%d %H:%M:%S %z")"
-last_modified_at:  "$(date +"%Y-%m-%d %H:%M:%S %z")"
 ---
 
 Add description here.
