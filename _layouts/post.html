@@ -11,10 +11,10 @@ layout: default
       </time>
       <br>
       Tags:
-      <span itemprop="categories" itemscope itemtype="https://schema.org/category">
+      <span>
         {% for tag in page.tags %}
           <a href="/tags/{{ tag }}">
-            <span itemprop="name" class="tag code">{{ tag }}</span>
+            <span class="tag code">{{ tag }}</span>
           </a>
         {% endfor %}
       </span>
@@ -31,6 +31,7 @@ layout: default
               itemtype="https://schema.org/Person">
           <data itemprop="name">Mincong Huang</data>
         </data>
+        <data itemprop="keywords">{{ post.tags | join: ',' }}</data>
       </div>
     </p>
   </header>
