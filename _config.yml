@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 
 # Parlalinks
-permalink: /:year/:month/:day/:title
+permalink: /:year/:month/:day/:title/
 
 # Site settings
 title: Mincong HUANG
