@@ -9,7 +9,7 @@ sites solution.
 
 ```sh
 # install gem if not exists
-$ gem install jekyll-paginate jekyll-redirect-from
+$ gem install jekyll-redirect-from
 # run
 $ jekyll serve
 ```

@@ -17,7 +17,6 @@ url: "https://mincong-h.github.io"
 twitter_username: mincong_h
 github_username:  mincong-h
 tagline: 'blog' # lanyon theme
-paginate: 5
 
 excerpt_separator: <!--more-->
 
@@ -30,5 +29,4 @@ google_analytics: UA-87129300-1
 facebook_id: 1788552244732928
 
 plugins:
-  - jekyll-paginate
   - jekyll-redirect-from
