@@ -1,7 +1,8 @@
 permalink: /:year/:month/:day/:title/
 
 # Site settings
-title: Mincong HUANG
+title: Mincong Huang
+title_suffix: Mincong's Blog
 email: mincong.h@gmail.com
 description: > 
   Hi, welcome to my blog! I'm junior software engineer at Nuxeo. My blogs are
@@ -16,7 +17,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://mincong-h.github.io"
 twitter_username: mincong_h
 github_username:  mincong-h
-tagline: 'blog' # lanyon theme
+tagline: 'Blog'
 
 excerpt_separator: <!--more-->
 
