@@ -9,13 +9,6 @@ layout: default
       <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
         {{ page.date | date: "%b %-d, %Y" }}
       </time>
-      {% if page.last_modified_at != null %}
-        <time itemprop="dateModified"
-              style="display: none;"
-              datetime="{{ page.last_modified_at | date_to_xmlschema }}">
-          {{ page.page.last_modified_at | date: "%b %-d, %Y" }}
-        </time>
-      {% endif %}
       <br>
       Tags:
       <span itemprop="categories" itemscope itemtype="https://schema.org/category">
@@ -25,6 +18,20 @@ layout: default
           </a>
         {% endfor %}
       </span>
+      <div style="display:none">
+        {% if page.last_modified_at != null %}
+        <time itemprop="dateModified"
+              style="display: none;"
+              datetime="{{ page.last_modified_at | date_to_xmlschema }}">
+          {{ page.page.last_modified_at | date: "%b %-d, %Y" }}
+        </time>
+        {% endif %}
+        <data itemprop="author"
+              itemscope
+              itemtype="https://schema.org/Person">
+          <data itemprop="name">Mincong Huang</data>
+        </data>
+      </div>
     </p>
   </header>
 
