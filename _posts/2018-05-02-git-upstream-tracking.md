@@ -1,10 +1,16 @@
 ---
-layout:      post
-title:       "Git Upstream Tracking"
-date:        "2018-05-02 20:41:53 +0200"
-categories:  [git, java, jgit]
-tags:        [git, java, jgit]
-comments:    true
+layout:            post
+title:             "Git: Upstream Tracking Understanding"
+date:              2018-05-02 20:41:53 +0200
+last_modified_at:  2018-07-22 17:47:53 +0200
+categories:        [tech]
+tags:              [git, java, jgit]
+comments:          true
+excerpt:           >
+    A quick introduction about Git upstream tracking. In this post, I explain
+    how to set and unset upstream, what does it mean in regards to Git
+    configuration (.git/config), and finally, the associated implementation
+    in Java (JGit).
 ---
 
 Today, I'd like to talk about tracking upstream branch in Git.
