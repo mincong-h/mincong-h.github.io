@@ -1,10 +1,15 @@
 ---
-layout:      post
-title:       "Java Server on Raspberry Pi"
-date:        "2018-07-06 05:51:00 +0200"
-categories:  [java, raspberry-pi, systemd]
-tags:        [java, raspberry-pi, systemd]
-comments:    true
+layout:            post
+title:             Java Server on Raspberry Pi
+date:              2018-07-06 05:51:00 +0200
+last_modified_at:  2018-07-22 15:19:16 +0200
+categories:        [tech]
+tags:              [java, raspberry-pi, systemd]
+comments:          true
+excerpt:           >
+    A step-by-step guide for installing Java server on Raspberry Pi: install
+    Raspbian OS, install JRE, configure SSH, transfer data, and setup Java
+    server with Systemd.
 ---
 
 Today I'll talk about how to install a Java server on Raspberry Pi. We'll
