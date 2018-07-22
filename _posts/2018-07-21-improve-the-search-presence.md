@@ -1,11 +1,16 @@
 ---
 layout:            post
-title:             "Improve the Search Presence"
-date:              "2018-07-21 06:37:11 +0200"
-last_modified_at:  "2018-07-22 07:07:30 +0200"
+title:             "SEO: improve blog ranking in Google Search"
+date:              2018-07-21 06:37:11 +0200
+last_modified_at:  2018-07-22 18:00:40 +0200
 categories:        [tech]
 tags:              [search, seo, google-search-console, google-analytics]
 comments:          true
+excerpt:           >
+    This post explains how to improve your blog ranking in Google Search when
+    you know nothing about SEO. I'm using my Jekyll blog as an example, to
+    implement everything step-by-step: add robots.txt, sitemap, structured data;
+    improve title tags, meta description; use Google Search Console...
 ---
 
 Today I want to talk about how to do SEO (Search Engine Optimization) for your
@@ -19,8 +24,6 @@ It covers:
 - [Fix URL errors](#fix-url-errors)
 - [Understand what keywords users are searching](#understand-user-queries)
 - [Use SEO analyzer](#use-seo-analyzer)
-
-<!--more-->
 
 ## Add robots.txt
 
