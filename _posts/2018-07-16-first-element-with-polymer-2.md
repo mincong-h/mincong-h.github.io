@@ -1,10 +1,15 @@
 ---
-layout:      post
-title:       "First Element with Polymer 2"
-date:        "2018-07-16 21:31:12 +0200"
-categories:  [javascript, polymer, dom]
-tags:        [javascript, polymer, dom]
-comments:    true
+layout:            post
+title:             "Create Element with Polymer 2"
+date:              "2018-07-16 21:31:12 +0200"
+last_modified_at:  "2018-07-22 07:59:09 +0200"
+categories:        [tech]
+tags:              [javascript, polymer, dom]
+comments:          true
+excerpt:           >
+    Want to create your first web element with Polymer 2? This post provides
+    a step-by-step tutorial for you: Polymer CLI, useful websites, Polymer
+    element's structure, dependency management, AJAX request and more.
 ---
 
 <p align="center">

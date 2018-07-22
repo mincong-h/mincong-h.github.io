@@ -23,7 +23,7 @@ layout: default
         <time itemprop="dateModified"
               style="display: none;"
               datetime="{{ page.last_modified_at | date_to_xmlschema }}">
-          {{ page.page.last_modified_at | date: "%b %-d, %Y" }}
+          {{ page.last_modified_at | date: "%b %-d, %Y" }}
         </time>
         {% endif %}
         <data itemprop="author"
@@ -36,7 +36,10 @@ layout: default
               itemtype="https://schema.org/Person">
           <data itemprop="name">Mincong Huang</data>
         </data>
-        <data itemprop="keywords">{{ post.tags | join: ',' }}</data>
+        <data itemprop="keywords">{{ page.tags | join: ',' }}</data>
+        {% if page.excerpt %}
+          <data itemprop="description">{{ page.excerpt }}</data>
+        {% endif %}
       </div>
     </p>
   </header>

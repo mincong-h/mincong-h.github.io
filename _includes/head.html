@@ -29,7 +29,7 @@
       {{ page.title | escape }} | {{ site.title_suffix | escape }}
     {% endif %}
   </title>
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 300 }}{% else %}{{ site.description }}{% endif %}">
 
   <!-- CSS -->
   <!-- CSS Basic theme -->
