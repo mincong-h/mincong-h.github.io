@@ -1,10 +1,14 @@
 ---
-layout:      post
-title:       "Sonar Integration with Maven"
-date:        "2017-12-09 17:23:09 +0100"
-categories:  [maven, java, code-quality, jenkins, sonar]
-tags:        [maven, java, code-quality, jenkins, sonar]
-comments:    true
+layout:            post
+title:             Sonar Integration with Maven
+date:              2017-12-09 17:23:09 +0100
+last_modified_at:  2018-07-22 14:23:29 +0200
+categories:        [tech]
+tags:              [maven, java, code-quality, jenkins, sonar]
+comments:          true
+excerpt:           >
+    A concret Sonar integration example for your Java project, using
+    Maven + JaCoCo + SonarCloud + Jenkins.
 ---
 
 <p align="center">

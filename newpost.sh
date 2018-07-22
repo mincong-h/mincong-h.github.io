@@ -27,15 +27,14 @@ fi
 cat << EOF >> "$filepath"
 ---
 layout:            post
-title:             "$title"
-date:              "$(date +"%Y-%m-%d %H:%M:%S %z")"
-last_modified_at:  "$(date +"%Y-%m-%d %H:%M:%S %z")"
+title:             $title
+date:              $(date +"%Y-%m-%d %H:%M:%S %z")
 categories:        [tech]
 tags:              []
 comments:          true
+excerpt:           >
+    TODO
 ---
-
-<!--more-->
 
 ## References
 EOF
