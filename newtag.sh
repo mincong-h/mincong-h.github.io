@@ -32,9 +32,9 @@ fi
 cat << EOF >> "$filepath"
 ---
 layout:            tag
-title:             "${title}"
+title:             ${title}
 tag:               ${tag}
-date:              "$(date +"%Y-%m-%d %H:%M:%S %z")"
+date:              $(date +"%Y-%m-%d %H:%M:%S %z")
 ---
 
 Add description here.
