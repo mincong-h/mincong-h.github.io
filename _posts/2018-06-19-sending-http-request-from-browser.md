@@ -1,10 +1,15 @@
 ---
-layout:      post
-title:       "Sending HTTP Request from Browser"
-date:        "2018-06-19 15:07:31 +0200"
-categories:  [javascript, http, jquery]
-tags:        [javascript, http, jquery]
-comments:    true
+layout:            post
+title:             Create a HTTP Request in JS
+date:              2018-06-19 15:07:31 +0200
+last_modified_at:  2018-07-22 16:55:24 +0200
+categories:        [tech]
+tags:              [javascript, http, jquery]
+comments:          true
+excerpt:           >
+    Today, I'll explain how to send HTTP request from your browser. You can
+    achieve that by using builtin JavaScript (XML HTTP Request, or "XHR") or
+    jQuery (1.4, 1.5+).
 ---
 
 Today, I want to share how to send HTTP request from browser using builtin
