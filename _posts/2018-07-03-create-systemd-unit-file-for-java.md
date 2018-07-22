@@ -1,15 +1,20 @@
 ---
-layout:      post
-title:       "Create Systemd Unit File for Java"
-date:        "2018-07-03 21:33:29 +0200"
-categories:  [java, systemd]
-tags:        [java, systemd]
-comments:    true
+layout:            post
+title:             Create Systemd Unit File for Java
+date:              2018-07-03 21:33:29 +0200
+last_modified_at:  2018-07-22 16:26:48 +0200
+categories:        [tech]
+tags:              [java, systemd]
+comments:          true
+excerpt:           >
+    This post explains how to create a systemd unit file for Java, so that you
+    can run your Java application as a service in Linux. It also explains the
+    structure of a service file, and tells your the useful commands after
+    service's creation.
 ---
 
 Today, I want to talk about how to create a Systemd unit file for Java program.
 
-<!--more-->
 ## Unit File Structure
 
 Unit files typically consist of three sections:
