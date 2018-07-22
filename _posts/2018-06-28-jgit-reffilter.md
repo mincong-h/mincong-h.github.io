@@ -1,10 +1,15 @@
 ---
-layout:      post
-title:       "JGit RefFilter"
-date:        "2018-06-28 20:42:48 +0200"
-categories:  [java, jgit, git]
-tags:        [java, jgit, git]
-comments:    true
+layout:            post
+title:             "JGit: Customize Git references using RefFilter"
+date:              2018-06-28 20:42:48 +0200
+last_modified_at:  2018-07-22 16:42:41 +0200
+categories:        [tech]
+tags:              [java, jgit, git]
+comments:          true
+excerpt:           >
+    This post explains how to apply a Git reference filter to your Git server
+    in Java. It allows you to customize Git references before sending data to
+    clients (upload-pack).
 ---
 
 This post explains how to apply a reference filter to your Git server using
