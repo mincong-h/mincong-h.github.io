@@ -2,30 +2,25 @@
 layout:            post
 title:             "Improve the Search Presence"
 date:              "2018-07-21 06:37:11 +0200"
-last_modified_at:  "2018-07-21 19:10:00 +0200"
+last_modified_at:  "2018-07-22 07:07:30 +0200"
 categories:        [tech]
 tags:              [search, seo, google-search-console, google-analytics]
 comments:          true
 ---
 
-Today I want to talk about how to do SEO (Search Engine Optimazation) for your
+Today I want to talk about how to do SEO (Search Engine Optimization) for your
 website. Note that I didn't finish everything. This is an ongoing post.
 It covers:
 
-- Select target country
-- Add `robots.txt` for web robots
-- Submit a sitemap file
-- Use structured data (schema markup)
-- Fix URL errors
-- Use SEO Analyzer
+- [Add robots.txt for web robots](#add-robotstxt)
+- [Submit a sitemap file](#submit-a-sitemap-file)
+- [Use structured data (schema markup)](#use-structured-data-schema-markup)
+- [Optimize title tags](#optimize-title-tags)
+- [Fix URL errors](#fix-url-errors)
+- [Understand what keywords users are searching](#understand-user-queries)
+- [Use SEO analyzer](#use-seo-analyzer)
 
 <!--more-->
-
-## Select Target Country
-
-**Target your audience based on location and language settings.** It's very
-useful when your website support multiple locales. However, in my case, my
-website does not have such support and needs, so I simply skipped the this part.
 
 ## Add robots.txt
 
@@ -118,17 +113,17 @@ avoiding cannibalizing your own efforts.
 
 6 tips from [Neil Patel's blog][10] for title tag optimization:
 
-> - Use pipes ( `|` ) and dashes ( `–` ) between terms to maximize your real
->   estate.
-> - Avoid ALL CAPS titles. They’re just obnoxious.
-> - Never keep default title tags like "Product Page" or "Home." They trigger
->   Google into thinking you have duplicate content, and they’re also not very
->   convincing to users who are looking for specific information.
-> - Put the most important and unique keywords first.
-> - Don't overstuff your keywords. Google increasingly values relevant,
-    contextual, and natural strings over mechanical or forced keyword phrases.
-> - Put your potential visitors before Google – title tags can make-or-break
->   traffic and conversions.
+- Use pipes ( `|` ) and dashes ( `–` ) between terms to maximize your real
+  estate.
+- Avoid ALL CAPS titles. They’re just obnoxious.
+- Never keep default title tags like "Product Page" or "Home." They trigger
+  Google into thinking you have duplicate content, and they’re also not very
+  convincing to users who are looking for specific information.
+- Put the most important and unique keywords first.
+- Don't overstuff your keywords. Google increasingly values relevant,
+  contextual, and natural strings over mechanical or forced keyword phrases.
+- Put your potential visitors before Google – title tags can make-or-break
+  traffic and conversions.
 
 ## Fix URL Errors
 
@@ -139,10 +134,35 @@ Web crawlers can show you which URLs are broken:
        alt="Fix URL errors">
 </p>
 
+## Understand User Queries
+
+Once you've configured the sitemap and structured data, you can see the Search
+Analytics on Google Search Console - [Search Analytics][sa]. For example, the
+summary of your website:
+
+- **Total clicks.** How many times a user clicked through to your site. How
+  this is counted can depend on the type of search result type.
+- **Total impressions.** How many times a user saw a link to your site in search
+  results. This is calculated differently for images and other search result
+  types.
+- **Average CTR.** It is the percentage of impressions that resulted in a click.
+- **Average position.** It is the average position in search results for you
+  site.
+
+You can also see the search queries used:
+
+<p align="center">
+  <img src="/assets/20180722-search-analytics.png"
+       alt="Understand User Queries">
+</p>
+
+Once you've understood the user queries, you can improve the post title and post
+description accordingly.
+
 ## Use SEO Analyzer
 
 Use online SEO Analyzers to analyze and get suggestions for your website. I used
-<https://neilpatel.com/>, but you can use others as you wish. An SEO
+<https://neilpatel.com>, but you can use others as you wish. An SEO
 analyzer helps you to know:
 
 - Website level SEO analysis (errors, warnings, and advices)
@@ -176,3 +196,4 @@ analyzer helps you to know:
 [BlogPosting]: https://schema.org/BlogPosting
 [sd-testing]: https://search.google.com/structured-data/testing-tool/
 [gs]: https://schema.org/docs/gs.html
+[sa]: https://www.google.com/webmasters/tools/search-analytics
