@@ -354,6 +354,10 @@ tbody tr:nth-child(odd) th {
   margin-top: 0;
   margin-bottom: 0;
   color: #505050;
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: -0.025rem;
+  line-height: 1.25;
 }
 .masthead-title a {
   color: #505050;
