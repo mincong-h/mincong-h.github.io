@@ -111,14 +111,14 @@ h1 small.monospace {
   color: #BBB;
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
-article h2,
-article h3,
-article h4 {
+a.header h2,
+a.header h3,
+a.header h4 {
   display: inline-block;
 }
-article h2:hover:after,
-article h3:hover:after,
-article h4:hover:after {
+a.header h2:hover:after,
+a.header h3:hover:after,
+a.header h4:hover:after {
   color: #AAA;
   content: "§";
   display: inline-block;

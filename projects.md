@@ -1,7 +1,8 @@
 ---
-layout:    page
-title:     Projects
-permalink: /projects/
+layout:     page
+title:      Projects
+permalink:  /projects/
+comments:   true
 ---
 
 Here's a list of projects I've done in my work or my spare time.
@@ -13,10 +14,12 @@ this project aims to improve the SEO (Search Engine Optimization) by adding
 crawlers-friendly's files, improve the title and meta description of blog posts,
 add structured data, understand search queries, and more.
 
-- **Date:** July 2018
-- **Effor:** S
-- **Owner:** Mincong Huang
-- **Tags:** `jekyll`, `seo`, `google-search-console`
+Item   | Description
+:----- | :----------
+Date   | July 2018
+Effort | S
+Type   | Personal Project
+Tags   | `jekyll`, `seo`, `google-search-console`
 
 ## Gitty Server
 
@@ -28,7 +31,9 @@ The Git component is implemented using JGit HTTP.
 The API component is implemented by Jersey 1.0 (JAX-RS 1.0). Both components are
 hosted inside a Jetty container.
 
-- **Date:** March 2018 - June 2018
-- **Effort:** M
-- **Owner:** Nuxeo
-- **Tags:** `git`, `java`, `jgit`, `jax-rs`, `jersey`
+Item   | Description
+:----- | :----------
+Date   | March 2018 - June 2018
+Effort | M
+Type   | Company Project
+Tags   | `git`, `java`, `jgit`, `jax-rs`, `jersey`

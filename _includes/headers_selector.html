@@ -1,0 +1,11 @@
+  <script>
+    var headers = document.querySelectorAll('h2, h3, h4');
+    for (var header of headers) {
+      var p = header.parentNode;
+      var a = document.createElement('a');
+      p.replaceChild(a, header);
+      a.classList.add('header');
+      a.appendChild(header);
+      a.setAttribute('href', '#' + header.id);
+    }
+  </script>

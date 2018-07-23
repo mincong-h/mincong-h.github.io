@@ -49,33 +49,8 @@ layout: default
   </div>
 
   {% if page.comments %}
-  <hr>
-
-  <script>
-    var headers = document.querySelectorAll('article h2, article h3, article h4');
-    for (var header of headers) {
-      var p = header.parentNode;
-      var a = document.createElement('a');
-      p.replaceChild(a, header);
-      a.classList.add('header');
-      a.appendChild(header);
-      a.setAttribute('href', '#' + header.id);
-    }
-  </script>
-  <div id="disqus_thread"></div>
-  <script>
-    var disqus_config = function () {
-      this.page.url = "{{ site.url }}{{ page.url }}";
-      this.page.identifier = "{{ page.id }}";
-    };
-    (function() { // DON'T EDIT BELOW THIS LINE
-      var d = document, s = d.createElement('script');
-      s.src = 'https://mincong-h.disqus.com/embed.js';
-      s.setAttribute('data-timestamp', +new Date());
-      (d.head || d.body).appendChild(s);
-    })();
-  </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    {% include sidebar.html %}
   {% endif %}
 
+  {% include headers_selector.html %}
 </article>
