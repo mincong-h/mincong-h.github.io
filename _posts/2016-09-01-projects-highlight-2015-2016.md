@@ -1,10 +1,10 @@
 ---
-layout: post
-title:  "Projects Highlight 2015-2016"
-date:   2016-09-01 00:00:00 +0100
-categories: [project]
-tags: [project]
-comments:    true
+layout:         post
+title:          Projects Highlight 2015-2016
+date:           2016-09-01 07:00:00 +0100
+categories:     [tech]
+tags:           [project]
+comments:       true
 redirect_from:
   - /project/2016/09/01/projects-highlight-2015-2016/
 ---
