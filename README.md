@@ -10,6 +10,12 @@ sites solution.
 Install required Jekyll plugins:
 
 ```sh
+# if `bundle` command is not available
+# install bundler first
+$ gem install bundler
+
+# install Jekyll plugins (gems) required
+# by this blog using bundler
 $ bundle install
 ```
 
