@@ -6,6 +6,18 @@ permalink: /projects/
 
 Here's a list of projects I've done in my work or my spare time.
 
+## Jekyll Blog SEO Improvement
+
+Improve the search ranking of my personal blog. My blog is written in Jekyll,
+this project aims to improve the SEO (Search Engine Optimization) by adding
+crawlers-friendly's files, improve the title and meta description of blog posts,
+add structured data, understand search queries, and more.
+
+- **Date:** July 2018
+- **Effor:** S
+- **Owner:** Mincong Huang
+- **Tags:** `jekyll`, `seo`, `google-search-console`
+
 ## Gitty Server
 
 Gitty server is a lightweight Git server written in Java. It is fast and
@@ -17,6 +29,6 @@ The API component is implemented by Jersey 1.0 (JAX-RS 1.0). Both components are
 hosted inside a Jetty container.
 
 - **Date:** March 2018 - June 2018
-- **Effort:** L
+- **Effort:** M
 - **Owner:** Nuxeo
 - **Tags:** `git`, `java`, `jgit`, `jax-rs`, `jersey`
