@@ -2,7 +2,7 @@
 layout:             post
 title:              JavaScript Cheat Sheet
 date:               2018-07-13 21:17:11 +0200
-last_modified_at:   2018-07-24 09:23:01 +0200
+last_modified_at:   2018-07-24 17:17:38 +0200
 categories:         [tech]
 tags:               [javascript, study-note]
 comments:           true
@@ -156,6 +156,27 @@ var users = [{id: 1}, {id: 2}];
 var ids = users.map(u => u.id);
 // (2) [1, 2]
 {% endhighlight javascript %}
+
+**Sorting.** Sort by natural order, by numeric value, by string:
+
+{% highlight javascript %}
+// natural order
+[1, 3, 2].sort();
+// (3) [1, 2, 3]
+
+// numeric order
+[{v:1},{v:3},{v:2}].sort((a, b) => a.v - b.v);
+// (3)
+// 0: {v: 1}
+// 1: {v: 2}
+// 2: {v: 3}
+
+// alphabetical order
+[{v:'b'},{v:'a'}].sort((a, b) => a.v.localeCompare(b.v));
+// (2)
+// 0: {v: "a"}
+// 1: {v: "b"}
+{% endhighlight %}
 
 ## Serialization
 
