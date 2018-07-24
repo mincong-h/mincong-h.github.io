@@ -111,11 +111,6 @@ h1 small.monospace {
   color: #BBB;
   font-family: Menlo, Monaco, "Courier New", monospace;
 }
-a.header h2,
-a.header h3,
-a.header h4 {
-  display: inline-block;
-}
 a.header h2:hover:after,
 a.header h3:hover:after,
 a.header h4:hover:after {
