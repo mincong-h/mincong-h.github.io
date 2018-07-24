@@ -1,17 +1,18 @@
 ---
-layout:      post
-title:       "JavaScript Cheat Sheet"
-date:        "2018-07-13 21:17:11 +0200"
-categories:  [javascript, study-note]
-tags:        [javascript, study-note]
-comments:    true
+layout:             post
+title:              JavaScript Cheat Sheet
+date:               2018-07-13 21:17:11 +0200
+last_modified_at:   2018-07-24 09:23:01 +0200
+categories:         [tech]
+tags:               [javascript, study-note]
+comments:           true
+excerpt:            >
+    A simple JS cheat sheet for newbies, containing the basic syntax of commonly
+    used statements: variable, class, array, JSON, ...
 ---
 
-I started writing JavaScript this week. There're many funny points during the
-implementation. I decide to write them down and share with you. For the
-demonstration purpose, the Chrome DevTool is used.
-
-<!--more-->
+In this post, I'll share the basic syntax that I used during the my work. For
+the demonstration purpose, the Chrome DevTool (v67.0) is used.
 
 ## Variable Declaration
 
@@ -54,6 +55,9 @@ class User {
   }
 }
 {% endhighlight %}
+
+There can be **only one** method called `constructor` in a class. Having more
+than one occurence will throw a `SyntaxError` error.
 
 **Instantiate a class instance.**
 
@@ -143,6 +147,15 @@ var arr = [1, 2];
 arr.pop(); // 2
 // [1]
 {% endhighlight %}
+
+**Function map().** Use `map()` to create a new array from the
+existing one:
+
+{% highlight javascript %}
+var users = [{id: 1}, {id: 2}];
+var ids = users.map(u => u.id);
+// (2) [1, 2]
+{% endhighlight javascript %}
 
 ## Serialization
 
