@@ -1,8 +1,8 @@
 ---
 layout:            post
 title:             "Create Element with Polymer 2"
-date:              "2018-07-16 21:31:12 +0200"
-last_modified_at:  "2018-07-22 07:59:09 +0200"
+date:              2018-07-16 21:31:12 +0200
+last_modified_at:  2018-07-27 12:30:34 +0200
 categories:        [tech]
 tags:              [javascript, polymer, dom]
 comments:          true
@@ -21,13 +21,12 @@ excerpt:           >
 Today I'd like to share how I created my first element with Polymer 2. This post
 covers the following topics:
 
-- Create a new element using Polymer CLI
-- Useful resources for development
-- Understand Polymer Element
-- Dependency Management
-- AJAX Request <small style="color: #AAA">(advanced)</small>
-
-<!--more-->
+- [Create a new element using Polymer CLI](#init-polymer-element)
+- [Useful resources for development](#useful-resources)
+- [Understand Polymer element](#understand-polymer-element)
+- [Handle and fire events](#events)
+- [Dependency management](#dependency-management)
+- [AJAX request](#ajax-request) <small style="color: #AAA">(advanced)</small>
 
 Before getting started, you need to ensure you've npm, bower and Polymer CLI
 installed in your machine. For example, in Mac OS:
@@ -169,6 +168,64 @@ $('polymer-demo').$.description.textContent;
 // "Hello Polymer."
 {% endhighlight %}
 
+## Events
+
+Elements use events to communicate state changes up the DOM tree to parent
+elements. Polymer elements can use the standard DOM APIs for creating,
+dispatching, and listening for events. Polymer also provides annotated event
+listeners, which allow you to specify even listeners declaratively as part of
+the element's DOM template.
+
+To add even listener to local DOM children, user `on-<event>` annotatons in your
+template:
+
+<pre class="highlight">
+<span class="nt">&lt;myElement <span class="na">on-<b>myEvent</b>=</span><span class="s">"myFunc"</span>&gt;</span>
+<span>  ...</span>
+<span class="nt">&lt;/myElement&gt;</span>
+</pre>
+
+Then write a function the handle such event in your element:
+
+{% highlight javascript %}
+class MyElement extends Polymer.Element {
+  myFunc(myEvent) { ... }
+}
+{% endhighlight %}
+
+_But, which events can I use?_
+
+There're several resources that can help you. Firstly, [MDN: Event
+reference][8]. This article offers a list of events that can be sent; some are
+standard events defined in official specifications, while others are events used
+internally by specific browsers. Secondly, check the JSDoc of the target element
+(or its parent element), all the events are document as `@event`. For example,
+the
+[iron-overlay-behavior](https://www.webcomponents.org/element/PolymerElements/iron-overlay-behavior),
+it has events `iron-overlay-opened`, `iron-overlay-canceled`, and
+`iron-overlay-closed`:
+
+{% highlight javascript %}
+/**
+ * Fired after the overlay opens.
+ * @event iron-overlay-opened
+ */
+
+/**
+ * Fired when the overlay is canceled, but before it is closed.
+ * @event iron-overlay-canceled
+ * ...
+ */
+
+/**
+ * Fired after the overlay closes.
+ * @event iron-overlay-closed
+ * ...
+ */
+{% endhighlight %}
+
+For more detail, see [Polymer 2.0 - Handle and fire events][7].
+
 ## Dependency Management
 
 Polymer CLI 1.6 uses Bower for dependency management. You need to declare your
@@ -229,8 +286,10 @@ $ polymer serve \
 
 - [MDN: ShadowRoot - Web APIs][1]
 - [MDN: Node.textContent][6]
+- [MDN: Event reference][8]
 - [Polymer 2.x Cheat Sheet][2]
 - [Polymer 1.0: Local DOM » Automatic node finding][5]
+- [Polymer 2.0: Handle and fire events][7]
 - [Stack Overflow: Bower and devDependencies vs dependencies][3]
 - [npm semver calculator][4]
 
@@ -240,3 +299,5 @@ $ polymer serve \
 [4]: https://semver.npmjs.com/
 [5]: https://www.polymer-project.org/1.0/docs/devguide/local-dom#node-finding
 [6]: https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent
+[7]: https://www.polymer-project.org/2.0/docs/devguide/events
+[8]: https://developer.mozilla.org/en-US/docs/Web/Events
