@@ -39,6 +39,8 @@ To read:
 * [Head First Design Patterns: A Brain-Friendly Guide][design-patterns]
 * [Cracking the Coding Interview][coding-interview]
 * [The Garbage Collection Handbook][gc-handbook]
+* [The Art of Scalability: Scalable Web Architecture, Processes, and
+   Organizations for the Modern Enterprise (2nd Edition)][scalability]
 
 [algs4]: https://www.amazon.com/Algorithms-4th-Robert-Sedgewick/dp/032157351X
 [clean-code]: https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882
@@ -67,3 +69,4 @@ To read:
 [design-patterns]: https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124
 [coding-interview]: https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850
 [gc-handbook]: https://www.amazon.com/dp/1420082795
+[scalability]: https://www.amazon.com/Art-Scalability-Architecture-Organizations-Enterprise/dp/0134032802/
