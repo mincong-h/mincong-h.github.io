@@ -1,10 +1,13 @@
 ---
-layout:      post
-title:       "My Java Code Style"
-date:        "2018-06-18 09:14:50 +0200"
-categories:  [java]
-tags:        [java]
-comments:    true
+layout:            post
+title:             My Java Code Style
+date:              2018-06-18 09:14:50 +0200
+last_modified_at:  2018-07-29 22:36:01 +0200
+categories:        [tech]
+tags:              [java]
+comments:          true
+excerpt:           >
+    My Java code style: a collection of Java good practices.
 ---
 
 Today I want to talk about my own Java code style. It's been 2 years that I
@@ -17,6 +20,8 @@ keep update on the next months.
 - Marks utility class as `final`. All methods in a utility class are static,
   extending such class does not make sense: static methods cannot be overridden.
 - Use `private` constructor for utility class.
+- Data class should be immutable. The less mutable state, the easier it is to
+  ensure thread safe. (Immutable objects are automatically thread-safe)
 
 ## Variable
 
@@ -69,13 +74,7 @@ keep update on the next months.
 2. [EGit/Contributor Guide - Coding Standards][2]
 3. [Google Gerrit Code Review - Contributing, Style][3]
 4. [Devoxx FR 2018: Clean Code with Java8 4 years later (V. Rentea)][4]
-
----
-
-Updates:
-
-1. 2018-06-19: Add EGit and Google style
-2. 2018-06-20: Add lambda and enum
+5. Java Concurrency in Priactice, chapter 5 summary (page 110)
 
 [1]: https://www.scala-lang.org/api/2.12.3/scala/util/Try.html
 [2]: https://wiki.eclipse.org/EGit/Contributor_Guide#Coding_standards
