@@ -2,6 +2,7 @@
 layout:            post
 title:             "JGit: Protect Branches on Git Server"
 date:              2018-07-30 21:06:35 +0200
+last_modified_at:  2018-07-31 09:58:33 +0200
 categories:        [tech]
 tags:              [java, git, jgit]
 comments:          true
@@ -14,7 +15,7 @@ excerpt:           >
 This post explains how to protect branches on your Git server (implemented by
 JGit HTTP server). It needs to be done in two steps:
 
-- Set a [pre-receive-hook](#pre-receive-hook) in your receive-pack factory
+- Setup [pre-receive-hook](#pre-receive-hook)
 - Add a new property in [git-config](#git-config)
 
 ## Pre-receive-hook
@@ -84,19 +85,14 @@ pre-receive-hook. For example, protecting only the master branch
 (`refs/heads/master`) can be done as follows:
 
 {% highlight java %}
-@Override
-public void onPreReceive(ReceivePack rp, Collection<ReceiveCommand> commands) {
-  for (ReceiveCommand c : commands) {
-    // protect master branch
-    if (c.getType() == Type.UPDATE_NONFASTFORWARD
-        && "refs/heads/master".equals(c.getRefName())) {
-      c.setResult(Result.REJECTED_NONFASTFORWARD);
-    }
-  }
+// public void onPreReceive(...) {
+if (c.getType() == Type.UPDATE_NONFASTFORWARD
+    && "refs/heads/master".equals(c.getRefName())) {
+  c.setResult(Result.REJECTED_NONFASTFORWARD);
 }
 {% endhighlight %}
 
-For the 2nd point, let's see the next section: git-config.
+For the 2nd point, let's see the next section.
 
 ## Git Config
 
@@ -109,7 +105,7 @@ understand how to deny the non-fast-forward updates:
 [receive]
   ; Deny non-fast-forward updates
   ; property is case-insensitive
-  denynonfastforwards = false
+  denynonfastforwards = true
 {% endhighlight %}
 
 The equivalent Java code which writes this property into Git configuration file:
