@@ -24,7 +24,9 @@
 
   <title>
     {% if page.title == "Home" %}
-      {{ site.title | escape }} | {{ site.tagline }}
+      {{ site.title | escape }} &middot; {{ site.tagline }}
+    {% elsif page.layout == "tag" %}
+      Tag: {{ page.tag | escape }} | {{ site.title_suffix | escape }}
     {% else %}
       {{ page.title | escape }} | {{ site.title_suffix | escape }}
     {% endif %}

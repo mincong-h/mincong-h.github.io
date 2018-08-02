@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div class="post">
-  <h1>{{ page.title}} <small class="monospace">({{ page.tag }})</small></h1>
+  <h1>{{ page.title }} <small class="monospace">({{ page.tag }})</small></h1>
   <p>{{ content }}</p>
   <ul>
   {% for post in site.tags[page.tag] %}
