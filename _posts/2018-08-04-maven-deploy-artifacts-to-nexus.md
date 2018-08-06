@@ -2,8 +2,9 @@
 layout:            post
 title:             "Maven: Deploy Artifacts to Nexus"
 date:              2018-08-04 15:02:00 +0200
+last_modified_at:  2018-08-06 15:43:31 +0200
 categories:        [tech]
-tags:              [maven]
+tags:              [java, maven]
 comments:          true
 excerpt:           >
     Declare Maven deploy plugin in the parent POM. It's the same no matter
@@ -128,15 +129,16 @@ encryption guideline.
 
 There're 2 possible solutions: one-step deploy or multi-steps deploy.
 
-**One step deploy** runs tests, installation, and deploy in a single command:
+**One-step deploy** runs tests, installation, and deploy in a single command:
 
     $ mvn clean deploy
 
-**Multi-steps deploy** runs different commands in different steps. First,
-compile and test. Once verified, install and deploy:
+**Multi-steps deploy** runs different commands in different steps. Firstly, run
+install command (which implies comile, test, and install). Once done
+sucessfully, deploy the results:
 
-    $ mvn clean verify
-    $ mvn deploy -DskipTests
+    $ mvn clean install
+    $ mvn deploy -DskipTests -Dmaven.install.skip=true
 
 Here's the comparison of these two solutions:
 
@@ -145,58 +147,6 @@ Item | One-Step Deploy | Multi-Steps Deploy
 Maven commands | 1 commands | ≥ 2 commands
 If no test failures, then… | All artifacts deployed | All artifacts deployed
 If test failures, then… | Some artifacts deployed ⚠️  | No artifacts deployed
-
-The execution outputs look like:
-
-```
-demo $ mvn deploy -DskipTests
-[INFO] Scanning for projects...
-[INFO]
-[INFO] -------------------------< com.mycompany:demo >-------------------------
-[INFO] Building demo 1.0-SNAPSHOT
-[INFO] --------------------------------[ jar ]---------------------------------
-[INFO]
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ demo ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /Users/mincong/demo/src/main/resources
-[INFO]
-[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ demo ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO]
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ demo ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] skip non existing resourceDirectory /Users/mincong/demo/src/test/resources
-[INFO]
-[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ demo ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO]
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ demo ---
-[INFO] Tests are skipped.
-[INFO]
-[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ demo ---
-[INFO]
-[INFO] --- maven-install-plugin:2.4:install (default-install) @ demo ---
-[INFO] Installing /Users/mincong/demo/target/demo-1.0-SNAPSHOT.jar to /Users/mincong/.m2/repository/com/mycompany/demo/1.0-SNAPSHOT/demo-1.0-SNAPSHOT.jar
-[INFO] Installing /Users/mincong/demo/pom.xml to /Users/mincong/.m2/repository/com/mycompany/demo/1.0-SNAPSHOT/demo-1.0-SNAPSHOT.pom
-[INFO]
-[INFO] --- maven-deploy-plugin:2.8.2:deploy (default-deploy) @ demo ---
-Downloading from nexus-snapshots: http://localhost:8081/repository/maven-snapshots/com/mycompany/demo/1.0-SNAPSHOT/maven-metadata.xml
-Uploading to nexus-snapshots: http://localhost:8081/repository/maven-snapshots/com/mycompany/demo/1.0-SNAPSHOT/demo-1.0-20180804.135929-1.jar
-Uploaded to nexus-snapshots: http://localhost:8081/repository/maven-snapshots/com/mycompany/demo/1.0-SNAPSHOT/demo-1.0-20180804.135929-1.jar (2.3 kB at 8.3 kB/s)
-Uploading to nexus-snapshots: http://localhost:8081/repository/maven-snapshots/com/mycompany/demo/1.0-SNAPSHOT/demo-1.0-20180804.135929-1.pom
-Uploaded to nexus-snapshots: http://localhost:8081/repository/maven-snapshots/com/mycompany/demo/1.0-SNAPSHOT/demo-1.0-20180804.135929-1.pom (1.2 kB at 7.5 kB/s)
-Downloading from nexus-snapshots: http://localhost:8081/repository/maven-snapshots/com/mycompany/demo/maven-metadata.xml
-Uploading to nexus-snapshots: http://localhost:8081/repository/maven-snapshots/com/mycompany/demo/1.0-SNAPSHOT/maven-metadata.xml
-Uploaded to nexus-snapshots: http://localhost:8081/repository/maven-snapshots/com/mycompany/demo/1.0-SNAPSHOT/maven-metadata.xml (761 B at 7.9 kB/s)
-Uploading to nexus-snapshots: http://localhost:8081/repository/maven-snapshots/com/mycompany/demo/maven-metadata.xml
-Uploaded to nexus-snapshots: http://localhost:8081/repository/maven-snapshots/com/mycompany/demo/maven-metadata.xml (275 B at 3.2 kB/s)
-[INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
-[INFO] ------------------------------------------------------------------------
-[INFO] Total time: 2.803 s
-[INFO] Finished at: 2018-08-04T15:59:30+02:00
-[INFO] ------------------------------------------------------------------------
-```
 
 ## Check Deployed Artifacts
 
