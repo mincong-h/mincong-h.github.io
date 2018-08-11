@@ -5,6 +5,10 @@ date:              2018-08-09 20:25:41 +0200
 categories:        [tech]
 tags:              [javascript, node]
 comments:          true
+sd_json:           true
+img_url:           /assets/logo-nodejs.png
+img_height:        1843
+img_width:         1129
 excerpt:           >
     The basics of creating a script in Node.JS, including execution syntax,
     dependency declaration, arguments, template literals, iterations and

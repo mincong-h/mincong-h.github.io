@@ -40,8 +40,17 @@ $ ./newtag.sh Java EE
 Tag page created: /Users/mincong/github/mincong-h.github.io/tags/java-ee.md
 ```
 
+## Blog Post
+
+This section descibes blog post configuration.
+
+Property | Value | Description
+:--- | :--- | :---
+`sd-json` | `true` or `false` | Whether a blog post should include a [JSON-LD][json-ld] strctured data snippet.
+
 ## Useful Resources
 
 - Jekyll cheatsheet (<https://devhints.io/jekyll>)
 
 [1]: https://jekyllrb.com/
+[json-ld]: https://json-ld.org/
