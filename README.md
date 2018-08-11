@@ -25,13 +25,15 @@ Run Jekyll:
 $ jekyll serve
 ```
 
-## Create New Post
+## Create New Pages
+
+Create new post page:
 
 ```sh
 $ ./newpost.sh My New Post
 ```
 
-## Create New Tag
+Create new tag page:
 
 ```sh
 $ ./newtag.sh Java EE
