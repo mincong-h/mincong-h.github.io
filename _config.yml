@@ -12,15 +12,14 @@ description: >
   expriences that I met during different projects. Most of them will be related
   to Java. My opinions are my own, not Nuxeo's.
 
-# this means to ignore newlines until "baseurl:"
-# Write an awesome description for your new site here. You can edit this
-# line in _config.yml. It will appear in your document head meta (for
-# Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://mincong-h.github.io"
 twitter_username: mincong_h
 github_username:  mincong-h
 tagline: 'Blog'
+img_url: /assets/logo-github.png
+img_width: 300
+img_height: 300
 
 excerpt_separator: <!--more-->
 
