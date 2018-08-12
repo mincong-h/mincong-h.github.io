@@ -6,7 +6,6 @@ last_modified_at:  2018-08-11 23:36:28 +0200
 categories:        [tech]
 tags:              [java, maven]
 comments:          true
-sd_json:           true
 excerpt:           >
     Declare Maven deploy plugin in the parent POM. It's the same no matter
     your project is a single module project or a multi-modules project. Then,

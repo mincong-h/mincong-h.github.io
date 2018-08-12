@@ -2,7 +2,6 @@
 layout: default
 ---
 
-{% if page.sd_json %}
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -65,7 +64,7 @@ layout: default
   </header>
 
   <div class="post-content">
-    {{ content }}
+    {{ page.content }}
   </div>
 
   {% if page.comments %}
@@ -74,61 +73,3 @@ layout: default
 
   {% include headers_selector.html %}
 </article>
-
-{% else %}
-
-<article class="post" itemscope itemtype="https://schema.org/BlogPosting">
-
-  <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
-    <p class="post-meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date: "%b %-d, %Y" }}
-      </time>
-      <br>
-      Tags:
-      <span>
-        {% for tag in page.tags %}
-          <a href="/tags/{{ tag }}">
-            <span class="tag code">{{ tag }}</span>
-          </a>
-        {% endfor %}
-      </span>
-      <div style="display:none">
-        {% if page.last_modified_at != null %}
-        <time itemprop="dateModified"
-              style="display: none;"
-              datetime="{{ page.last_modified_at | date_to_xmlschema }}">
-          {{ page.last_modified_at | date: "%b %-d, %Y" }}
-        </time>
-        {% endif %}
-        <data itemprop="author"
-              itemscope
-              itemtype="https://schema.org/Person">
-          <data itemprop="name">Mincong Huang</data>
-        </data>
-        <data itemprop="publisher"
-              itemscope
-              itemtype="https://schema.org/Person">
-          <data itemprop="name">Mincong Huang</data>
-        </data>
-        <data itemprop="keywords">{{ page.tags | join: ',' }}</data>
-        {% if page.excerpt %}
-          <data itemprop="description">{{ page.excerpt }}</data>
-        {% endif %}
-      </div>
-    </p>
-  </header>
-
-  <div class="post-content" itemprop="articleBody">
-    {{ content }}
-  </div>
-
-  {% if page.comments %}
-    {% include comments.html %}
-  {% endif %}
-
-  {% include headers_selector.html %}
-</article>
-
-{% endif %}

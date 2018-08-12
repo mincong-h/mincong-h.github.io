@@ -46,7 +46,7 @@ This section descibes blog post configuration.
 
 Property | Value | Description
 :--- | :--- | :---
-`sd-json` | `true` or `false` | Whether a blog post should include a [JSON-LD][json-ld] strctured data snippet.
+_(TODO)_ | - | -
 
 ## Useful Resources
 
