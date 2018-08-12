@@ -2,19 +2,18 @@
 layout:            post
 title:             "Git: Communication over HTTP"
 date:              2018-05-04 17:31:59 +0200
-last_modified_at:  2018-07-22 17:30:32 +0200
+last_modified_at:  2018-08-12 10:34:35 +0200
 categories:        [tech]
 tags:              [git, http]
 comments:          true
 excerpt:           >
-    What happens when Git communicates to a remote repository over HTTP? In
-    order to understand the internal mechanism, we'll intercept HTTP data
-    sent/received by Git. This demo uses two commands: git-fetch and
-    git-push...
+    What happens when Git communicates over HTTP protocol? In this post, I'll
+    intercept the HTTP traffic to discover git-receive-pack, git-upload-pack and
+    more.
 ---
 
-This post aims to answer a question: _"What happens when Git communicates to a
-remote repository over HTTP?"_. In order to understand the internal mechanism,
+This post aims to answer a question: _"What happens when Git communicates over
+HTTP protocol?"_. In order to understand the internal mechanism,
 we need to use a proxy to intercept HTTP data sent/received by Git.
 
 ## Prerequisites
