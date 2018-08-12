@@ -46,7 +46,7 @@ This section descibes blog post configuration.
 
 Property | Value | Description
 :--- | :--- | :---
-_(TODO)_ | - | -
+`lang` | A valid language abbreviation | The language for the HTML page, see [MDN: lang][lang]. Defaults to `en-us`.
 
 ## Useful Resources
 
@@ -54,3 +54,4 @@ _(TODO)_ | - | -
 
 [1]: https://jekyllrb.com/
 [json-ld]: https://json-ld.org/
+[lang]: https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang

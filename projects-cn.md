@@ -39,14 +39,20 @@ J）。输入不同的关键词，它会显示不同的结果。如果没有关�
 
 ## 个人博客搜索优化
 
-从开始写博客到现在有两年了，点击量却一直很低。为了提高博客的知名度以及每篇博文的点击率，我决定对我的个人博客进行 Google 搜索排名优化。其中涉及到对 Jekyll 的理解、添加 robots.txt 和 sitemap 等网络蜘蛛文件、收集用户的搜索关键词、改善文章标题与内容、添加 schemas 等。详情见我的博文：[SEO:
+从开始写博客到现在有两年了，点击量却一直很低。为了提高博客的知名度以及每篇博文的点击率，我决定对我的个人博客进行Google搜索排名优化：其中涉及到对博客引擎Jekyll和搜索引擎的理解。在Jekyll里面，添加robots.txt和sitemap等文件提高爬虫识别度；收集用户的搜索关键词、改善文章标题与内容；添加Structured
+Data（schemas和JSON-LD）。更多细节请见博文：[SEO:
 Improve Blog Ranking in Google
 Search](https://mincong-h.github.io/2018/07/21/improve-the-search-presence/)
+
+<p align="center">
+  <img src="/assets/20180812-seo-improvement.png"
+       alt="SEO Improvement">
+</p>
 
 &#35;  | 描述
 :----- | :----------
 日期   | 2018年7月
-规模   | 小
+规模   | 中
 类型   | 个人项目
 标签   | `jekyll`, `seo`, `google-search-console`
 
