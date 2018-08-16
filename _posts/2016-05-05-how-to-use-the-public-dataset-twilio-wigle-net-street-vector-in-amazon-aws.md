@@ -2,7 +2,7 @@
 layout: post
 title:  "How to use the public dataset Twilio Wigle.net Street Vector in Amazon AWS"
 date:   2016-05-05 11:00:00 +0100
-categories: [open-data]
+categories: [tech]
 tags:       [open-data]
 redirect_from:
   - /open-data/2016/05/05/how-to-use-the-public-dataset-twilio-wigle-net-street-vector-in-amazon-aws
