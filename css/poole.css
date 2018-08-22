@@ -493,3 +493,22 @@ a.pagination-item:hover {
     border-bottom-right-radius: 4px;
   }
 }
+
+/* Background image */
+article .bg-img {
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+@media (min-width: 30em) {
+  article .bg-img {
+    height: 250px;
+  }
+}
+@media (min-width: 38em) {
+  article .bg-img {
+    height: 300px;
+  }
+}
