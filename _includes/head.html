@@ -17,9 +17,9 @@
   <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}"/>
   <meta property="og:site_name" content="Mincong Huang's blog"/>
   <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}"/>
-  <meta property="og:image" content="{{ site.url }}/assets/logo-github.png"/>
-  <meta property="og:image:width" content="300"/>
-  <meta property="og:image:height" content="300"/>
+  <meta property="og:image" content="{{ site.url }}{{ page.img_url | default: site.img_url }}"/>
+  <meta property="og:image:width" content="{{ page.img_width | default: site.img_width }}"/>
+  <meta property="og:image:height" content="{{ page.img_width | default: site.img_height }}"/>
 
   <title>
     {% if page.title == "Home" %}
@@ -30,6 +30,7 @@
       {{ page.title | escape }} | {{ site.title_suffix | escape }}
     {% endif %}
   </title>
+  <meta name="author" content="{{ site.author_name }}">
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 300 }}{% else %}{{ site.description }}{% endif %}">
 
   <!-- CSS -->
