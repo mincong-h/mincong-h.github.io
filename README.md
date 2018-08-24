@@ -48,6 +48,14 @@ Property | Value | Description
 :--- | :--- | :---
 `lang` | A valid language abbreviation | The language for the HTML page, see [MDN: lang][lang]. Defaults to `en-us`.
 
+## Social Network Sharing
+
+Website | Preview Tool
+:---: | :---
+Facebook | <https://developers.facebook.com/tools/debug/sharing/>
+LinkedIn | <https://www.linkedin.com/post-inspector/>
+Twitter | <https://cards-dev.twitter.com/validator>
+
 ## Useful Resources
 
 - Jekyll cheatsheet (<https://devhints.io/jekyll>)
