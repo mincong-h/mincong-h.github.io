@@ -2,11 +2,12 @@
 layout:            post
 title:             Maven Compiler Plugin Understanding
 date:              2018-08-29 19:08:27 +0200
+last_modified_at:  2018-08-30 09:11:14 +0200
 categories:        [tech, series]
 tags:              [maven, java]
 comments:          true
 excerpt:           >
-    A step-by-step guide for understanding Maven Compiler Plugin.
+    A step-by-step guide for understanding Maven Compiler Plugin in Java 11.
 img_url:           /assets/bg-coffee-84624_1280.jpg
 img_width:         1280
 img_height:        960
@@ -22,7 +23,7 @@ respectively.
 ## How to Use Maven Compiler Plugin?
 
 Since Maven Compiler Plugin is bound automatically to Maven phrases, you don't
-need to declare anything. The only thing you need to override might be target
+need to declare anything. The only thing you need to override might be the target
 version and the source version of the class files: Option `source` indicates
 which Java programming language version is used to compile the source code, and
 option `target` indicates which JVM version will the generated class files be
@@ -82,14 +83,16 @@ A full demo written in Java 11 is available in my GitHub:
 ## PluginManagement
 
 If you're using multiple Maven modules in your Maven project, you might want to
-manage the plugin version in `PluginManagement` section of the parent POM
-<sup>(1)</sup>, and split the configuration into other locations of the POM,
+manage your plugin differently—split the plugin version and plugin
+configuration. Plugin version can be declared in `PluginManagement` section of
+the parent POM
+<sup>(1)</sup>, and the configuration can be defined into other locations,
 such as `properties` section <sup>(2.1)</sup> or `plugins` section
 <sup>(2.2)</sup>:
 
 {% highlight xml %}
 <properties>
-  <!-- 2.2 configure plugins -->
+  <!-- 2.1 configure plugin -->
 </properties>
 
 <build>
@@ -118,7 +121,7 @@ Now, let's talk about some advanced features.
 
 ## Advanced: Use 2 Java Versions on Maven Modules
 
-You can target two different versions of Java in Maven modules, just be changing
+You can target two different versions of Java in Maven modules, just by changing
 the Maven properties:
 
 pom.xml:
