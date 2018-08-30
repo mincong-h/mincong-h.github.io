@@ -2,7 +2,7 @@
 layout:            post
 title:             Maven Compiler Plugin Understanding
 date:              2018-08-29 19:08:27 +0200
-last_modified_at:  2018-08-30 09:11:14 +0200
+last_modified_at:  2018-08-30 18:23:44 +0200
 categories:        [tech, series]
 tags:              [maven, java]
 comments:          true
@@ -124,7 +124,7 @@ Now, let's talk about some advanced features.
 You can target two different versions of Java in Maven modules, just by changing
 the Maven properties:
 
-pom.xml:
+pom.xml (Java 11):
 
 {% highlight xml %}
 <properties>
@@ -133,7 +133,23 @@ pom.xml:
 </properties>
 {% endhighlight %}
 
-shop-legacy/pom.xml:
+shop-api/pom.xml (Java 11):
+
+{% highlight xml %}
+<properties>
+  <!-- no changes -->
+</properties>
+{% endhighlight %}
+
+shop-core/pom.xml (Java 11):
+
+{% highlight xml %}
+<properties>
+  <!-- no changes -->
+</properties>
+{% endhighlight %}
+
+shop-legacy/pom.xml (Java 8):
 
 {% highlight xml %}
 <properties>
