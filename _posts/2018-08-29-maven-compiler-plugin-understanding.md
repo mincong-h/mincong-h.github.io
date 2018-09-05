@@ -2,15 +2,15 @@
 layout:            post
 title:             Maven Compiler Plugin Understanding
 date:              2018-08-29 19:08:27 +0200
-last_modified_at:  2018-08-30 18:23:44 +0200
+last_modified_at:  2018-09-05 23:58:28 +0200
 categories:        [tech, series]
 tags:              [maven, java]
 comments:          true
 excerpt:           >
     A step-by-step guide for understanding Maven Compiler Plugin in Java 11.
-img_url:           /assets/bg-coffee-84624_1280.jpg
+img_url:           /assets/bg-tools-1209764_1280.jpg
 img_width:         1280
-img_height:        960
+img_height:        853
 ---
 
 [Maven Compiler Plugin][1] might be the most important plugin in Maven. It is
