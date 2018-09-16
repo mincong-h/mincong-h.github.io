@@ -39,7 +39,11 @@ img_width:         1280
 img_height:        960
 ---
 
+## Overview
+
 ## Conclusion
+
+Hope you enjoy this article, see you the next time!
 
 ## References
 EOF
