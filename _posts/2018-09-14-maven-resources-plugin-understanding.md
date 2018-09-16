@@ -1,7 +1,7 @@
 ---
 layout:            post
 title:             Maven Resources Plugin Understanding
-date:              2018-09-15 05:51:48 +0800
+date:              2018-09-14 05:51:48 +0200
 categories:        [tech, series]
 tags:              [java, maven]
 comments:          true
@@ -22,6 +22,8 @@ resources copying to the output directory. It has 3 goals: `resources`,
 `testResources` and `copy-resources`. The 3 variations only differ in how the
 resource and output directory elements are specified or defaulted. In this post,
 I'll show you these goals and some common use-cases of this plugin.
+
+The source code is available on GitHub: [mincong-h/maven-resources-pluin-demo][git].
 
 ## Resource Directories
 
@@ -264,13 +266,15 @@ directory for GWT transpilation.
 
 In this post, we learnt what is Maven Resources Plugin, how to inject variables
 using filtering mechanism, define customized resources directories, include or
-exclude directories/files, and copying resources. Hope your enjoy this one, see
-you the next time!
+exclude directories/files, and copying resources. As usual, the source code is
+available on GitHub: [mhuang/maven-resources-plugin-demo][git]. Hope your enjoy
+this one, see you the next time!
 
 ## References
 
 - [Maven: Standard Directory Layout][layout]
 - [Maven: Resources Plugin][plugin]
 
+[git]: https://github.com/mincong-h/maven-resources-plugin-demo/
 [plugin]: https://maven.apache.org/plugins/maven-resources-plugin/
 [layout]: https://maven.apache.org/guides/introduction/introduction-to-the-standard-directory-layout.html
