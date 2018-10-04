@@ -64,7 +64,7 @@ first step is to add JUnit as Maven dependency:
 {% endhighlight %}
 
 Then, write your tests as follows in test source directory (`src/test/java`). For
-class name, make sure it matches the testing patterns mentionned before, so
+class name, make sure it matches the testing patterns mentioned before, so
 starts with `Test`, ends with `Test` or any other matching pattern. As for the
 assertion methods, use those in class `org.junit.Assert`. IDEs might propose
 methods in class `junit.framework.Assert`, please don't use them, they are
