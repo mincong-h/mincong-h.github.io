@@ -46,7 +46,7 @@ This section descibes blog post configuration.
 
 Property | Value | Description
 :--- | :--- | :---
-`lang` | A valid language abbreviation | The language for the HTML page, see [MDN: lang][lang]. Defaults to `en-us`.
+`series` | A meaningful name for the series. | The value will be `slugify` for generating the URL. For example, giving value _"Maven Plugins" will generate `maven-plugins` for the URL.
 
 ## Social Network Sharing
 

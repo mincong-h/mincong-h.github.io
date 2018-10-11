@@ -11,6 +11,7 @@ excerpt:           >
 img_url:           /assets/bg-tools-1209764_1280.jpg
 img_width:         1280
 img_height:        853
+series:            Maven Plugins
 ---
 
 [Maven JAR Plugin][maven] is one of the core plugins of the Maven build

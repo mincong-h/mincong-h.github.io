@@ -67,6 +67,31 @@ layout: default
   <div class="bg-img" style="background-image: url({{ page.img_url }});">
   </div>
   {% endif %}
+
+  {% if page.series %}
+  <div class="series">
+    <p>
+      This article is part the
+      <a href="/series/{{ page.series | slugify }}">{{ page.series }}</a> series:
+    </p>
+    <ul>
+    {% for post in site.posts reversed %}
+      {% if post.series == page.series %}
+        {% if page.url == post.url %}
+          <li class="selected">
+            {{ page.title }} <span>(this article)</span>
+          </li>
+        {% else %}
+          <li>
+            <a href="{{ post.url }}">{{ post.title }}</a>
+          </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
   <div class="post-content">
     {{ page.content }}
   </div>

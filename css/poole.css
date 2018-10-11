@@ -512,3 +512,25 @@ article .bg-img {
     height: 300px;
   }
 }
+
+/* Series block */
+div.series {
+  background-color: #EEE;
+  padding: 1rem 1.3rem;
+  margin-bottom: 1rem;
+  border-left: 0.5rem solid #CCC;
+}
+div.series p {
+  margin-bottom: .7rem;
+}
+div.series ul {
+  margin-bottom: 0.2rem;
+}
+div.series li.selected span {
+  font-weight: 700;
+}
+@media (max-width: 30em) {
+  div.series ul {
+    padding-inline-start: 25px;
+  }
+}
