@@ -499,8 +499,8 @@ article .bg-img {
   height: 200px;
   background-position: center;
   background-size: cover;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 @media (min-width: 30em) {
   article .bg-img {
