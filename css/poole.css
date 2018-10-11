@@ -518,7 +518,7 @@ div.series {
   background-color: #EEE;
   padding: 1rem 1.3rem;
   margin-bottom: 1rem;
-  border-left: 0.5rem solid #CCC;
+  border-left: 0.25rem solid #CCC;
 }
 div.series p {
   margin-bottom: .7rem;
