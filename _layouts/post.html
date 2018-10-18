@@ -63,7 +63,7 @@ layout: default
     </p>
   </header>
 
-  {% if page.img_url %}
+  {% if page.img_url and page.img_excerptOnly != true %}
   <div class="bg-img" style="background-image: url({{ page.img_url }});">
   </div>
   {% endif %}
