@@ -6,3 +6,4 @@ File | Size | URL | License
 `bg-home-office-336373_1280.jpg` | 1280 x 853 | <https://pixabay.com/en/home-office-workstation-office-336373/> | CC0 Creative Commons
 `bg-tools-1209764_1280.jpg` | 1280 x 853 | <https://pixabay.com/en/tools-vintage-woodworking-saw-1209764/> | CC0 Creative Commons
 `bg-money-2724241_1280.jpg` | 1280 x 864 | <https://pixabay.com/en/money-coin-investment-business-2724241/> | CC0 Creative Commons
+`bg-board-2450236_1280.jpg` | 1280 x 927 | <https://pixabay.com/en/board-school-uni-learn-work-test-2450236/> | CC0 Creative Commons

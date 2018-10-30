@@ -1,15 +1,24 @@
 ---
 layout:      post
-title:       "Learning Selenium WebDriver"
+title:       "Introduction to Selenium WebDriver"
 date:        "2018-04-03 20:50:21 +0200"
 categories:  [java, qa, testing, study-note]
-tags:        [java, qa, testing, study-note]
+tags:        [java, qa, testing, study-note, selenium]
 comments:    true
+excerpt:     >
+  A quick introduction to Selenium WebDriver, a practical tool for running
+  functional tests and browser automation. The sample is written with Firefox 58
+  and GeckoDriver 0.20.
+img_url:     /assets/bg-board-2450236_1280.jpg
+img_width:   1280
+img_height:  927
 ---
 
-Here're some study notes for selenium. Selenium is a portable software-testing
+## Overview
+
+Selenium is a portable software-testing
 framework for web applications. Selenium WebDriver is the successor to Selenium
-RC. Selenium WebDriver accepts commands (sent in Selenese, or via a Client API)
+RC: it accepts commands
 and sends them to a browser. This is implemented through a browser-specific
 browser driver, which sends commands to a browser, and retrieves results. Most
 browser drivers actually launch and access a browser application (such as
@@ -17,7 +26,17 @@ Firefox, Chrome, Internet Explorer, Safari, or Microsoft Edge); there is also an
 HtmlUnit browser driver, which simulates a browser using the headless browser
 HtmlUnit.
 
-In this post, I'm using Selenium WebDriver 3.8 in Mac OS with Firefox 58.
+In this post, I'll use Selenium WebDriver 3.8 in Mac OS with Firefox 58. After
+reading this post, you'll understand:
+
+- How to install GeckoDriver (for Firefox)
+- How to initialize WebDriver in Java
+- How to select WebElement
+- How to execute native JS command
+- How to send keys to element
+- How to wait
+- How to use basic XPath (XML Path Language)
+- Troubleshooting
 
 ## Installation
 
