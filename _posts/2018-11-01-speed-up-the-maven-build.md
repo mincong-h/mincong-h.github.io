@@ -217,7 +217,7 @@ terminal:
 #
 #   Estimate: 18s
 #
-alias mvncc='mvn clean compiler:compile compiler:testCompiler -nsu -T 1C'
+alias mvncc='mvn clean compiler:compile compiler:testCompile -nsu -T 1C'
 
 # Maven NSU (no snapshot update)
 #
