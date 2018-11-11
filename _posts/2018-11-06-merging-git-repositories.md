@@ -16,10 +16,10 @@ img_height:        800
 ## Overview
 
 Today I would like to share my recent experience about merging two Git
-repositories, and share the hidden tasks with you which you might not be aware of.
+repositories, and share the hidden tasks which you might not be aware of.
 Our team just merged two repositories into one. Initially, I thought it
-was very simple and should take one morning to finish. However, the reality is
-that the merge has a lot of implications during the whole sprint. In our
+was simple and should take one morning to finish. However, the reality is,
+the merge has a lot of implications during the whole sprint. In our
 case, we use Java and Maven, so I'll mainly talk about them.
 
 After reading this article, you'll understand:
@@ -51,6 +51,12 @@ the entire operation. If I remember correctly, I did the following steps:
 7. Add Git remote
 8. Improve the merge commit description if needed
 9. Push to upstream
+
+Step 2 and 3 are important. You need to clone projects in mirror or bare mode.
+Otherwise, in normal mode, the `git-merge-repos` script will not understand the
+distinction between remote branches and local branches. It results to a
+unsuccessful merge: only the `master` branch will be present in the new repo. In
+order to preserve all the branches, use Git bare repository.
 
 ## Existing Branches
 
