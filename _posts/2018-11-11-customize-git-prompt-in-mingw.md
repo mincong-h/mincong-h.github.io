@@ -6,7 +6,9 @@ categories:        [tech]
 tags:              [git, windows, bash]
 comments:          true
 excerpt:           >
-    TODO
+    Customize Git prompt to show dirty-state, untracked files, stash,
+    upstream in your Bash console: MinGW64 (Minimalist GNU for Windows
+    x64).
 img_url:           /assets/20181111-title.png
 img_width:         581
 img_height:        306
@@ -65,7 +67,7 @@ detailed answer. In the following paragraphs, I will explain:
 
 ## PS1
 
-In MinGW, you can see the value of custom promt (PS1) by printing variable
+In MinGW, you can see the value of custom prompt (PS1) by printing variable
 `$PS1`. And there're two important notions here, they're
 [Bash prompt escape sequences][bash-prompt-escape-sequences] and [shell
 coloring][shell-color]. We will use them to understand the secrets behind PS1 :)
@@ -83,7 +85,7 @@ The first line is the header of the window:
 - The first line starts with the title prefix of the terminal. In my case, it's
   _"MINGW64"_. Then, followed by colon (`:`).
 - The first line continues with the current directory using PWD (print work
-  directory). Note that the result is filered by an ASCII filter, where other
+  directory). Note that the result is filtered by an ASCII filter, where other
   characters will be displayed as a question mark (`?`).
 
 The second line:
@@ -111,7 +113,7 @@ start of the user command.
 The Bash/Zsh Git prompt support is handled by script [git-prompt.sh][1].
 This script allows you to see repository status in your prompt. You can define
 your own preferences by providing expressions `GIT_PS1_*` to your terminal.
-As far as expression `__git_ps1` is called in your PS1 subsistuation, the
+As far as expression `__git_ps1` is called in your PS1 substitution, the
 Git status will show in your prompt.
 
 In MinGW, we have already seen that `__git_ps1` is called in PS1 substitution:
@@ -124,7 +126,7 @@ So that's why we can see the Git status.
 ## Conclusion
 
 In this article, we learnt how to customize Git prompt in Bash prompt using
-expresssions `GIT_PS1.*`. It allows us to see more than the current branch name
+expressions `GIT_PS1.*`. It allows us to see more than the current branch name
 in Bash prompt: dirty-state, untracked files, stash and upstream. We also
 understand how Bash prompt is displayed via variable `$PS1`; what is Git Prompt
 and how it is linked to Bash prompt via `__git_ps1`.
