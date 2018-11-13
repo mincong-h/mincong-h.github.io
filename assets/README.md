@@ -9,3 +9,4 @@ File | Size | URL | License
 `bg-board-2450236_1280.jpg` | 1280 x 927 | <https://pixabay.com/en/board-school-uni-learn-work-test-2450236/> | CC0 Creative Commons
 `bg-dog-2785074_1280.jpg` | 1280 x 853 | <https://pixabay.com/en/dog-sad-waiting-floor-sad-dog-pet-2785074/> | CC0 Creative Commons
 `railway-1245906_1280.jpg` | 1280 x 800 | <https://pixabay.com/en/railway-railroad-tracks-train-tracks-1245906/> | CC0 Creative Commons
+`bg-cup-of-coffee-1280537_1280.jpg` | 1280 x 851 | <https://pixabay.com/en/cup-of-coffee-laptop-office-macbook-1280537/> | CC0 Creative Commons
