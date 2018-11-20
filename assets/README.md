@@ -10,3 +10,4 @@ File | Size | URL | License
 `bg-dog-2785074_1280.jpg` | 1280 x 853 | <https://pixabay.com/en/dog-sad-waiting-floor-sad-dog-pet-2785074/> | CC0 Creative Commons
 `railway-1245906_1280.jpg` | 1280 x 800 | <https://pixabay.com/en/railway-railroad-tracks-train-tracks-1245906/> | CC0 Creative Commons
 `bg-cup-of-coffee-1280537_1280.jpg` | 1280 x 851 | <https://pixabay.com/en/cup-of-coffee-laptop-office-macbook-1280537/> | CC0 Creative Commons
+`bg-coffee-1030971_1280.jpg` | 1280 x 960 | <https://pixabay.com/en/coffee-wood-table-wooden-espresso-1030971/> | CC0 Creative Commons

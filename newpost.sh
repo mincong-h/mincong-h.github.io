@@ -41,6 +41,8 @@ img_height:        960
 
 ## Overview
 
+After reading this article, you will understand:
+
 ## Conclusion
 
 Hope you enjoy this article, see you the next time!
