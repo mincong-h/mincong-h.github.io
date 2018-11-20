@@ -26,6 +26,12 @@ After reading this post, you will understand:
 - Create a JAX-RS application
 - Running JAX-RS application in Jersey
 
+Before getting started, just want to let you know: the source code of this
+article on GitHub as [mincong-h/jaxrs-2.x-demo][github]. You can also clone it
+using the following command:
+
+    git clone https://github.com/mincong-h/jaxrs-2.x-demo.git
+
 ## What is JAX-RS
 
 According to [Wikipedia][wiki], JAX-RS: Java API for RESTful Web Services
@@ -216,6 +222,27 @@ Our resource method "ping" does not return anything, that's why did not receive
 any content. However, 204 means the ping is successful. :) Congratulations, you
 just created the first resource method!
 
+## Reproduction
+
+If you want to reproduce the demo of this article, follow the instructions
+below.
+
+Open one terminal:
+
+```
+~ $ git clone https://github.com/mincong-h/jaxrs-2.x-demo.git
+~ $ cd jaxrs-2.x-demo/quickstart
+quickstart $ mvn clean install
+quickstart $ java -jar target/jaxrs-quickstart-1.0-SNAPSHOT-jar-with-dependencies.jar
+```
+
+Open another terminal:
+
+```
+~ $ curl -I http://localhost:8080/ping
+HTTP/1.1 204 No Content
+```
+
 ## Conclusion
 
 In this article, we learnt the history of JAX-RS and different basic
@@ -248,3 +275,4 @@ next time!
 [jersey]: https://jersey.github.io/
 [wiki]: https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services
 [1]: https://github.com/mincong-h/jaxrs-2.x-demo
+[github]: https://github.com/mincong-h/jaxrs-2.x-demo
