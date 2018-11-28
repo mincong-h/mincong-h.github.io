@@ -12,6 +12,7 @@ excerpt:           >
 img_url:           /assets/bg-coffee-2306471_1280.jpg
 img_width:         1280
 img_height:        853
+series:            JAX-RS Basics
 ---
 
 ## Overview
