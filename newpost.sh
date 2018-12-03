@@ -41,6 +41,8 @@ img_height:        960
 
 ## Overview
 
+Explain context here...
+
 After reading this article, you will understand:
 
 ## Conclusion
