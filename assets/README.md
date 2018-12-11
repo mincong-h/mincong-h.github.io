@@ -13,3 +13,4 @@ File | Size | URL | License
 `bg-coffee-1030971_1280.jpg` | 1280 x 960 | <https://pixabay.com/en/coffee-wood-table-wooden-espresso-1030971/> | CC0 Creative Commons
 `bg-coffee-2306471_1280.jpg` | 1280 x 853 | <https://pixabay.com/en/coffee-pen-notebook-caffeine-cup-2306471/> | CC0 Creative Commons
 `bg-coffee-983955_1280.jpg` | 1280 x 810 | <https://pixabay.com/en/coffee-cafe-mug-decorative-drink-983955/> | CC0 Creative Commons
+`bg-notebook-1280538_1280.jpg` | 1280 x 850 | <https://pixabay.com/en/notebook-laptop-macbook-conceptual-1280538/> | CC0 Creative Commons
