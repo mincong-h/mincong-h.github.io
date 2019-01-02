@@ -1,0 +1,73 @@
+/*
+ * The Type System - Type Scale
+ * https://material.io/design/typography/the-type-system.html#type-scale
+ *
+ *   H1: 96 (x6)
+ *   H2: 60 (x3.75)
+ *   H3: 48 (x3)
+ *   H4: 34 (x2.125)
+ *   H5: 24 (x1.5)
+ *   H6: 20 (x1.25)
+ *
+ */
+
+/*
+ * Article
+ *
+ * For articles, these font sizes are too big. Just keep the ratio but swift 2
+ * levels for all heaeders: H1->H3, H2->H4, etc.
+ */
+article.post h1 {
+  font-size: 3rem;
+  font-weight: normal;
+}
+article.post h2 {
+  font-size: 2.125rem;
+  font-weight: normal;
+}
+article.post h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+article.post h4,
+article.post h5,
+article.post h6 {
+  font-size: 1.25rem;
+  font-weight: medium;
+}
+article.post p {
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+/*
+ * Archive
+ *
+ * For archive (article listing) page, these font sizes are too big. Just keep
+ * the ratio but swift 2 levels for all headers: H1->H3, H2->H4, etc.
+ */
+.post.archive h1 {
+  font-size: 3rem;
+  font-weight: normal;
+}
+.post.archive h2 {
+  font-size: 2.125rem;
+  font-weight: normal;
+}
+.post.archive h3 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+.post.archive h4,
+.post.archive h5 {
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+.post.archive h6 {
+  font-size: 1.25rem;
+  font-weight: medium;
+}
+.post.archive p {
+  font-size: 1rem;
+  font-weight: normal;
+}
