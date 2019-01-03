@@ -11,6 +11,9 @@ title: Home
         <a href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
       </h3>
     </div>
+    <div>
+      <p>{{ post.excerpt }}</p>
+    </div>
     <div class="description">
       <span class="post-date archive">{{ post.date | date: "%b %d, %Y" }}</span> |
       <span>
@@ -22,6 +25,7 @@ title: Home
       </span>
     </div>
   </div>
+  <hr>
   {% endfor %}
 </div>
 
