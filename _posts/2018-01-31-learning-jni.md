@@ -4,6 +4,13 @@ title:       "Learning JNI"
 date:        "2018-01-31 21:18:24 +0100"
 categories:  [java, c, jni]
 tags:        [java, c, jni]
+excerpt:     >
+  Today I would like share my very first experience about JNI—Java Native
+  Interface. The Java Native Interface (JNI) is a programming framework that
+  enables Java code running in a Java Virtual Machine (JVM) to call and be called
+  by native applications and libraries written in other languages such as C, C++
+  and assembly. This post uses a Hello-world example to demonstrate the
+  communication between Java and C on Mac OS X.
 comments:    true
 ---
 

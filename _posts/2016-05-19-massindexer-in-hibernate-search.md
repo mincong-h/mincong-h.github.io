@@ -1,14 +1,17 @@
 ---
-layout: post
-title:  "MassIndexer in Hibernate Search"
-date:   2016-05-19 19:00:00 +0100
-categories: [hibernate-search]
-tags: [hibernate-search]
+layout:         post
+title:          "MassIndexer in Hibernate Search"
+date:           2016-05-19 19:00:00 +0100
+categories:     [hibernate-search]
+tags:           [hibernate-search]
+excerpt:        >
+  In this article, I'll focus on how batch indexing is implemented in Hibernate
+  Search.
 redirect_from:
   - /hibernate-search/2016/05/19/massindexer-in-hibernate-search/
 ---
 
-In this chapitre, I'll focus on how batch indexing is implemented in hibernate 
+In this article, I'll focus on how batch indexing is implemented in hibernate
 search via the package `org.hibernate.search.batchindexing`. These details can
 be found in GitHub - Hibernate/hibernate-search, under folder 
 
@@ -18,8 +21,6 @@ be found in GitHub - Hibernate/hibernate-search, under folder
 
 Under this folder, there're 2 folders, called `impl` and `spi`. So, what are 
 the differences between them ? 
-
-<!--more-->
 
 *  __impl__  
    This package is the current implementation of mass indexing. And it is the

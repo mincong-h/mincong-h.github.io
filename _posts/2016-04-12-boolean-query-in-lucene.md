@@ -4,13 +4,16 @@ title:  "Boolean query in Apache Lucene"
 date:   2016-04-12 21:34:00 +0100
 categories: [apache-lucene]
 tags:       [apache-lucene]
+excerpt:    >
+  Today, I created an example to demostrate how BooleanQuery works and two
+  different ways to construct a boolean query, using default constructor and
+  using query builder.
 redirect_from:
   - /apache-lucene/2016/04/12/boolean-query-in-lucene/
 ---
 
-
-Today, I created an example to demonstrate how `BooleanQuery` works and its
-two difference ways to construct a boolean query, using default constructor and 
+Today, I created an example to demonstrate how `BooleanQuery` works and
+two different ways to construct a boolean query, using default constructor and
 using query builder. The construction using default constructor has been 
 deprecated after _Apache Lucene 5.3.0_ and deleted in _Apache Lucene 6.0.0_. So 
 we should use `BooleanQuery.Builder` to build queries.

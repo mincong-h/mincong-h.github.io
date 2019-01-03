@@ -5,6 +5,12 @@ date:           2016-09-01 07:00:00 +0100
 categories:     [tech]
 tags:           [project]
 comments:       true
+excerpt:        >
+  Today, I want to share with you all the projects that I've done during the last
+  365 days. They’ve special meaning for me because it’s the first time that I kept
+  a very active status in programming during a whole year. There're many projects
+  that have been done in various contexts, including IoT, Mobile, Web, blog,
+  Business Intelligence and open-source framework.
 redirect_from:
   - /project/2016/09/01/projects-highlight-2015-2016/
 ---
@@ -17,8 +23,6 @@ Business Intelligence and open-source framework. Now, let’s take a look into
 them.
 
 <p align="center"><img src="{{ site.url }}/assets/20160901-github-contribution.png" width="600" alt="Github Contributions 2015 - 2016"></p>
-
-<!--more-->
 
 ## Smart P3
 

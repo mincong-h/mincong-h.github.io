@@ -4,6 +4,10 @@ title:       "GWT SafeCSS Internal"
 date:        "2018-03-25 09:13:01 +0200"
 categories:  [java, gwt, study-note]
 tags:        [java, gwt, study-note]
+excerpt:     >
+  Recently, I helped the GWT community for porting module gwt-safecss to
+  GitHub. I think it’s also a good opportunity to learn more about GWT SafeCss.
+  That’s why I’m writing this study note.
 comments:    true
 ---
 

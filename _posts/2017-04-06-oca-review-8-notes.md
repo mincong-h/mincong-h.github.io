@@ -4,6 +4,12 @@ title:       "OCA Review 8 - Notes"
 date:        "2017-04-06 21:01:34 +0200"
 categories:  [tech]
 tags:        [java, oca]
+excerpt:     >
+  Today, I want to write blog post to summarize all the important review notes
+  for Oracle Certification Associate (OCA) - Java SE 8 Programmer. This article
+  will be separated into several subjects: Java basics, Java data types, methods
+  and encapsulation, core APIs, flow control, inheritance, and exception
+  handling.
 comments:    true
 ---
 
@@ -18,8 +24,6 @@ be separated into several subjects. They're:
 5. Flow control
 6. Inheritance
 7. Exception Handling
-
-<!--more-->
 
 ## Java Basics
 

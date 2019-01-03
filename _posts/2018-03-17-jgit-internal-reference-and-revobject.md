@@ -4,6 +4,10 @@ title:       "JGit Internal: Reference and RevObject"
 date:        "2018-03-17 08:24:10 +0100"
 categories:  [jgit, git, java]
 tags:        [jgit, git, java]
+excerpt:     >
+  Today, I want to discuss Git internal mechanism with you: How Git resolves
+  references? How JGit, a pure Java implementation of Git, resolves references
+  in Java? Then, how to use them via class RevObject and its subtypes.
 comments:    true
 ---
 

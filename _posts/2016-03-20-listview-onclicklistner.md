@@ -4,6 +4,8 @@ title:  "Add listener to Android ListView"
 date:   2016-03-20 17:56:15 +0100
 categories: [android]
 tags:       [java, android]
+excerpt:    >
+  How to add listener to Android ListView.
 redirect_from:
   - /android/2016/03/20/listview-onclicklistner/
 ---

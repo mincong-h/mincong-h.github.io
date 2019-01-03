@@ -4,6 +4,11 @@ title:       "HTTP: The Web's Foundation"
 date:        "2017-06-05 09:09:01 +0200"
 categories:  [http, web]
 tags:        [http, web]
+excerpt:     >
+  My reading note about book "HTTP - The Definite Guide", part I: The Web's
+  Foundation. After reading this article, you'll understand the definition of
+  HTTP, URL and resources, the flow of messages, and the different status codes
+  in HTTP.
 comments:    true
 ---
 

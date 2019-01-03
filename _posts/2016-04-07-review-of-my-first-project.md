@@ -4,6 +4,11 @@ title:  "Review of my first project"
 date:   2016-04-07 08:10:00 +0100
 categories: [project]
 tags:       [project]
+excerpt:    >
+  After 8 weeks intensive works in nights and weekends, we've finally released
+  the first application of our life: "eRallye". This Android application is
+  an app built for French association "Elles bougent". This article reviews what
+  have been done and how to do better in the future.
 redirect_from:
   - /project/2016/04/07/review-of-my-first-project/
 ---

@@ -4,6 +4,8 @@ title:       "Git Hook for JIRA Number"
 date:        2016-11-08 12:00:00 +0100
 categories:  [git]
 tags:        [git]
+excerpt:     >
+  Git commit hook for checking the JIRA number before commiting.
 redirect_from:
   - /git/2016/11/08/git-hook-for-jira-number/
 ---
@@ -19,8 +21,6 @@ It's important to keep a clean and unique message pattern. However, how can you
 achieve it without cursing at each meeting? Today, I want to share with you an
 easy method to enforce the JIRA number, as the prefix of a git commit message.
 I'm using a Git hook to do this, inspired by [Wenfeng's blog][wenfeng-blog].
-
-<!--more-->
 
 First, let's create a new git project and add a README file.
 

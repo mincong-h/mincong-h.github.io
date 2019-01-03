@@ -4,6 +4,11 @@ title:       "Learning Checkstyle"
 date:        "2018-02-06 17:31:07 +0100"
 categories:  [java, maven, checkstyle, code-quality]
 tags:        [java, maven, checkstyle, code-quality]
+excerpt:     >
+  Checkstyle is a development tool to help programmers write Java code that
+  adheres to a coding standard. By default it supports the Google Java Style
+  Guide and Sun Code Conventions, but is highly configurable. It can be
+  invoked with an ANT task and a command line program.
 comments:    true
 ---
 

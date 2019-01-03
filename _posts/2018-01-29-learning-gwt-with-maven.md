@@ -4,6 +4,13 @@ title:       "Learning GWT with Maven"
 date:        "2018-01-29 21:23:26 +0100"
 categories:  [java, gwt, maven, javascript]
 tags:        [java, gwt, maven, javascript]
+excerpt:     >
+  Today, I want to share how to learn GWT 2.8 with Maven GWT Plugin. I wrote
+  this post because the official GWT tutorial has some inconvenience: source code
+  and resources are stored as GWT standard structure, commands must be launched
+  from Apache Ant, JARs and classpath must be handled explicitly etc. I found
+  it more comfortable to start with Maven, the tool which many Java developers
+  are familiar with.
 comments:    true
 ---
 

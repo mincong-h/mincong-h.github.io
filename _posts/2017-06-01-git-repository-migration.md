@@ -1,9 +1,13 @@
 ---
 layout:      post
-title:       "Git Repository Migration"
+title:       "Git Repository Transfer"
 date:        "2017-06-01 09:02:14 +0200"
 categories:  [git]
 tags:        [git]
+excerpt:     >
+  A step-by-step guide for transferring a Git repository from one place to
+  another while keeping the entirety of the data, including all branches and
+  tags.
 comments:    true
 ---
 
@@ -14,8 +18,6 @@ migration, etc. **No matter for which reason, you'll need to ensure the entirety
 of the Git repository during the transfer, including all the branches and
 tags.** This article explains how to achieve it step-by-step, and the mechanism
 behind the screen.
-
-<!--more-->
 
 In this example, we've 2 Git repositories:
 

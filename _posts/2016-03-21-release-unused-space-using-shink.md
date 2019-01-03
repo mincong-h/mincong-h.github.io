@@ -4,14 +4,15 @@ title:  "Release unused space using Shrink"
 date:   2016-03-21 09:46:00 +0100
 categories: [sql-server]
 tags:       [sql-server]
+excerpt:    >
+  Database's size can be optimized using Shrink command. It helps to release
+  unused space. There're 2 ways to do it: via GUI or via T-SQL.
 redirect_from:
   - /sql-server/2016/03/21/release-unused-space-using-shink/
 ---
 
 Database's size can be optimized using Shrink command. It helps to release
-unused space. There're 2 ways to do it : by GUI or by T-SQL.
-
-<!--more-->
+unused space. There're 2 ways to do it: via GUI or via T-SQL.
 
 __By GUI__
 

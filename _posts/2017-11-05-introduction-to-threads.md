@@ -4,6 +4,12 @@ title:       "Introduction to Threads"
 date:        "2017-11-05 13:47:29 +0100"
 categories:  [java, multithreading]
 tags:        [java, multithreading]
+excerpt:     >
+  Today, I want to share with you an introduction to multithreading in Java. In
+  order to make the blog post more fun, I'll use the roles of "Game of Thrones" in
+  my examples: white walkers and the Night King. After reading the blog post,
+  you'll understand: How to create and run a thread, use wait(), notify(),
+  notifyAll() and join().
 comments:    true
 ---
 

@@ -1,10 +1,14 @@
 ---
-layout: post
-title:  "New repo: Java Example"
-date:   2016-08-09 22:15:00 +0100
-categories: [java]
-tags: [java]
-comments:    true
+layout:        post
+title:         "New repo: Java Examples"
+date:          2016-08-09 22:15:00 +0100
+categories:    [java]
+tags:          [java]
+excerpt:       >
+  I’ve been learning different Java frameworks since my last intern in Beijing.
+  Today, I want to share my new GitHub repository: Java Examples. This
+  repository is built on Maven, modularized and extensible.
+comments:      true
 redirect_from:
   - /java/2016/08/09/java-examples/
 ---
@@ -15,7 +19,7 @@ lucky enough, they'll get a chance to be published on Github. Today, I want to
 create a unique repository to store these small pieces. Ideally, this repo is
 modularized and extensible, so other frameworks can also be integrated in the
 future. Then I think about [Maven][mvn]! Maven supports project aggregation in
-addition to project inheritance, <!--more--> which means that one project can
+addition to project inheritance, which means that one project can
 contain multiple modules. So different examples can go to different modules.
 Thanks to Maven aggregator, the project (repo) can still be built using one
 command: 

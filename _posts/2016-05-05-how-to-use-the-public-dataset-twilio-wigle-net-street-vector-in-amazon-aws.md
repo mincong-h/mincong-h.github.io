@@ -4,6 +4,12 @@ title:  "How to use the public dataset Twilio Wigle.net Street Vector in Amazon 
 date:   2016-05-05 11:00:00 +0100
 categories: [tech]
 tags:       [open-data]
+excerpt:    >
+  The Twilio/Wigle.net Street Vector data set provides a complete database of
+  US street names and address ranges mapped to zip codes and latitude/longitude
+  ranges, with DTMF key mappings for all street names. The complete description
+  about this data set can be found on Amazon Web Service. This article will
+  mainly focus on how to use the install and this data set in Amazon AWS.
 redirect_from:
   - /open-data/2016/05/05/how-to-use-the-public-dataset-twilio-wigle-net-street-vector-in-amazon-aws/
 ---

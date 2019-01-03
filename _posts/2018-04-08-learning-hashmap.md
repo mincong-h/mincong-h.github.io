@@ -4,6 +4,8 @@ title:       "Learning HashMap"
 date:        "2018-04-08 09:42:26 +0200"
 categories:  [java, study-note]
 tags:        [java, study-note]
+excerpt:     >
+  Learning java.util.Hashmap with my own study notes.
 comments:    true
 ---
 

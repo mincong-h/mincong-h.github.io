@@ -4,6 +4,11 @@ title:       "OCP Java 8 Review Notes"
 date:        "2018-01-03 19:37:53 +0100"
 categories:  [tech]
 tags:        [java, java8, ocp, study-note]
+excerpt:     >
+  Here're some review notes before my Oracle Certified Professional Java SE 8
+  exam. They're highly inspired by the following books: OCP Java SE 7
+  Certification Guide and Java 8 in Action. They are excellent resources for
+  learning Java, which I highly recommend.
 comments:    true
 ---
 

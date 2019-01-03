@@ -4,6 +4,8 @@ title:       "Cookie Understanding"
 date:        "2017-10-18 22:04:16 +0200"
 categories:  [cookie, http]
 tags:        [cookie, http]
+excerpt:     >
+  The 8 different fields in an HTTP cookie.
 comments:    true
 ---
 
