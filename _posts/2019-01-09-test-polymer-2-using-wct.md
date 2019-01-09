@@ -43,7 +43,6 @@ After reading this article, you will understand:
 - Launch tests on Jenkins CI
 - Understand the test structure
 - Write your own tests
-- Choose the right version for tools
 - Why using Web Component Tester (WCT)?
 
 As usual, you can see the source code on GitHub:
