@@ -15,3 +15,4 @@ File | Size | URL | License
 `bg-coffee-983955_1280.jpg` | 1280 x 810 | <https://pixabay.com/en/coffee-cafe-mug-decorative-drink-983955/> | CC0 Creative Commons
 `bg-notebook-1280538_1280.jpg` | 1280 x 850 | <https://pixabay.com/en/notebook-laptop-macbook-conceptual-1280538/> | CC0 Creative Commons
 `bg-coffee-171653_1280.jpg` | 1280 x 853 | <https://pixabay.com/en/coffee-cup-coffee-beans-coffee-cup-171653/> | CC0 Creative Commons
+`bg-security-265130_1280.jpg` | 1280 x 853 | <https://pixabay.com/en/security-protection-anti-virus-265130/> | CC0 Creative Commons
