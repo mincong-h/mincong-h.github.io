@@ -3,7 +3,7 @@ layout:            post
 title:             Testing JAX-RS Resources
 date:              2018-12-18 20:49:46 +0100
 categories:        [tech]
-tags:              [http, java, jax-rs, rest]
+tags:              [http, java, jax-rs, rest, testing]
 comments:          true
 excerpt:           >
     This article explains how to set up and tear down a Grizzly Server for

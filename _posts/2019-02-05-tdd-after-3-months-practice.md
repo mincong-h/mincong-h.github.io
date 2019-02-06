@@ -3,7 +3,7 @@ layout:            post
 title:             "TDD: After 3 Months' Practice"
 date:              2019-02-05 20:57:42 +0800
 categories:        [tech]
-tags:              [test, java, maven]
+tags:              [testing, java, maven]
 comments:          true
 excerpt:           >
    I started TDD in all my personal projects 3 months ago. Here're some
