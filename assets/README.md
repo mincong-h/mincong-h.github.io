@@ -16,5 +16,6 @@ File | Size | URL | License
 `bg-notebook-1280538_1280.jpg` | 1280 x 850 | <https://pixabay.com/en/notebook-laptop-macbook-conceptual-1280538/> | CC0 Creative Commons
 `bg-coffee-171653_1280.jpg` | 1280 x 853 | <https://pixabay.com/en/coffee-cup-coffee-beans-coffee-cup-171653/> | CC0 Creative Commons
 `bg-security-265130_1280.jpg` | 1280 x 853 | <https://pixabay.com/en/security-protection-anti-virus-265130/> | CC0 Creative Commons
-`bg-fallow-deer-984573_1280.jpg` | 1280x800 | <https://pixabay.com/photos/fallow-deer-stag-deer-dama-dama-984573/> | Pixabay License
-`bg-ferris-wheel-2575709_1280.jpg` | 1280x853 | <https://pixabay.com/photos/ferris-wheel-amusement-park-ride-2575709/> | Pixabay License
+`bg-fallow-deer-984573_1280.jpg` | 1280 x 800 | <https://pixabay.com/photos/fallow-deer-stag-deer-dama-dama-984573/> | Pixabay License
+`bg-ferris-wheel-2575709_1280.jpg` | 1280 x 853 | <https://pixabay.com/photos/ferris-wheel-amusement-park-ride-2575709/> | Pixabay License
+`bg-autumn-2815427_1280.jpg` | 1280 x 720 | <https://pixabay.com/photos/autumn-fall-foliage-oak-leaf-wood-2815427/> | Pixabay License
