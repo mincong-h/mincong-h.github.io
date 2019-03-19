@@ -19,3 +19,4 @@ File | Size | URL | License
 `bg-fallow-deer-984573_1280.jpg` | 1280 x 800 | <https://pixabay.com/photos/fallow-deer-stag-deer-dama-dama-984573/> | Pixabay License
 `bg-ferris-wheel-2575709_1280.jpg` | 1280 x 853 | <https://pixabay.com/photos/ferris-wheel-amusement-park-ride-2575709/> | Pixabay License
 `bg-autumn-2815427_1280.jpg` | 1280 x 720 | <https://pixabay.com/photos/autumn-fall-foliage-oak-leaf-wood-2815427/> | Pixabay License
+`bg-coffee-2242213_1280.jpg` | 1280 x 853 | <https://pixabay.com/photos/coffee-cafe-table-drink-work-2242213/> | Pixabay License
