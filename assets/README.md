@@ -21,3 +21,4 @@ File | Size | URL | License
 `bg-autumn-2815427_1280.jpg` | 1280 x 720 | <https://pixabay.com/photos/autumn-fall-foliage-oak-leaf-wood-2815427/> | Pixabay License
 `bg-coffee-2242213_1280.jpg` | 1280 x 853 | <https://pixabay.com/photos/coffee-cafe-table-drink-work-2242213/> | Pixabay License
 `bg-salmon-1107404_1280.jpg` | 1280 x 811 | <https://pixabay.com/photos/salmon-fish-run-jump-upstream-1107404/> | Pixabay License
+`bg-single-file-1534558_1280.jpg` | 1280 x 617 | <https://pixabay.com/photos/single-file-geese-theater-yard-gate-1534558/> | Pixabay License
