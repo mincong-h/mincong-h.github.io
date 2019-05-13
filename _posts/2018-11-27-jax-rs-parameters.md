@@ -240,7 +240,7 @@ foo
 ## FormParam
 
 `@FormParam` can be used in parameter, field, or method. It specifies that the
-value is to be extracted form a form parameter in a request entity body. The
+value is to be extracted from a form parameter in a request entity body. The
 value of the annotation identifies the name of a form parameter. Note that
 whilst the annotation target allows use on fields and methods, the specification
 only requires support for use on resource method parameters. (Spec 2.1, page 76)
