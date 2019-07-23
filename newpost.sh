@@ -37,6 +37,7 @@ excerpt:           >
 img_url:           /assets/bg-coffee-84624_1280.jpg
 img_width:         1280
 img_height:        960
+ads:               Ads idea
 ---
 
 ## Overview
