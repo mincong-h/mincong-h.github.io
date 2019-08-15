@@ -207,6 +207,8 @@ parameters, the commit sources, some implementation detail about Git reference
 and regular expression. And finally, the demo screenshot and some additional
 tips. Hope your enjoy this article, see you next time!
 
+{% include book-git-pro.html %}
+
 ## References
 
 - Wikipedia, "Shebang (Unix)", _Wikipedia_, 2019.

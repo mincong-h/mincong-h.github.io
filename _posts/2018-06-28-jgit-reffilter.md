@@ -76,6 +76,8 @@ gitServlet.setUploadPackFactory(new MyUploadPackFactory());
 
 That's it. Now it should work :)
 
+{% include book-git-pro.html %}
+
 ## References
 
 - [org.eclipse.jgit.transport.RefFilter][1]

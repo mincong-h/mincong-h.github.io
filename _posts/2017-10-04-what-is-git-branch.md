@@ -145,6 +145,8 @@ this post is to understand:
 
 Hope your enjoy this one. See you the next time!
 
+{% include book-git-pro.html %}
+
 ## References
 
 - [Pro Git (2nd Edition), Chapter 3 Git Branching][1]

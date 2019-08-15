@@ -297,6 +297,8 @@ history rewrite, merge, and post operation check.
 tool. You might want to try for your team too. Hope you enjoy this article, see
 you the next time!
 
+{% include book-git-pro.html %}
+
 ## References
 
 - Robin Stocker, "git-merge-repos", 2019. <https://github.com/robinst/git-merge-repos>

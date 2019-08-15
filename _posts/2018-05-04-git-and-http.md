@@ -361,6 +361,8 @@ The response contains N pkt-lines with 47 characters (`0x002F`) in total:
 - `0x0085` 133 chars, 4 for the pkt-len, 129 for the merge-request
 - `0x0000` 4 chars for flush-pkt
 
+{% include book-git-pro.html %}
+
 ## References
 
 - [Stack Overflow: Getting git to work with a proxy server][2]

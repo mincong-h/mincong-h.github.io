@@ -190,6 +190,8 @@ tasks are also dependent on others, so planning is ready important when
 merging repositories.
 Hope you enjoy this article, see you the next time!
 
+{% include book-git-pro.html %}
+
 ## References
 
 - [Nuxeo: Git Usage - Merging Two Repositories][1]

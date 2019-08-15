@@ -33,6 +33,8 @@ configuration file; the scope of different configuration files.
 
 Now, let's get started.
 
+{% include book-git-pro.html %}
+
 ## Preparation
 
 First of all, create a new project (done in macOS):

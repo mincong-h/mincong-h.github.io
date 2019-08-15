@@ -132,6 +132,8 @@ understand how Bash prompt is displayed via variable `$PS1`; what is Git Prompt
 and how it is linked to Bash prompt via `__git_ps1`.
 Hope you enjoy this article, see you the next time!
 
+{% include book-git-pro.html %}
+
 ## References
 
 - [Wikipedia: MinGW][wiki-minGW]

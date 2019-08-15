@@ -231,6 +231,8 @@ try (RevWalk walk = new RevWalk(repo)) {
 }
 {% endhighlight %}
 
+{% include book-git-pro.html %}
+
 ## References
 
 - [Git documentation: git-show-ref][git-show-ref]
