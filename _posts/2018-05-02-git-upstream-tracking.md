@@ -33,23 +33,7 @@ git branch --set-upstream-to=origin/topic
 
 More detail is available in the following sections.
 
-<hr class="book-banner before">
-<div class="book-banner">
- <div class="image">
-  <a href="https://amzn.to/31CKi27" target="_blank">
-   <img src="/assets/icon-pro-git.jpg" alt="Pro Git" />
-  </a>
- </div>
- <div class="desc">
-  <p>
-    "Pro Git (2nd Edition)" contains everything you need to know about Git,
-written by Scott Chacon and Ben Straub.
-    The print version is available on Amazon:
-    <a href="https://amzn.to/31CKi27" target="_blank">https://amzn.to/31CKi27</a>
-  </p>
-  </div>
-</div>
-<hr class="book-banner after">
+{% include book-git-pro.html %}
 
 ## Set Upstream
 
