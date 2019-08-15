@@ -2,7 +2,7 @@
 layout:            post
 title:             "Git: Upstream Tracking Understanding"
 date:              2018-05-02 20:41:53 +0200
-last_modified_at:  2019-04-02 22:08:55 +0200
+last_modified_at:  2019-08-15 15:54:04 +0200
 categories:        [tech]
 tags:              [git, java, jgit]
 comments:          true
@@ -32,6 +32,24 @@ git branch --set-upstream-to=origin/topic
 ```
 
 More detail is available in the following sections.
+
+<hr class="book-banner before">
+<div class="book-banner">
+ <div class="image">
+  <a href="https://amzn.to/31CKi27" target="_blank">
+   <img src="/assets/icon-pro-git.jpg" alt="Pro Git" />
+  </a>
+ </div>
+ <div class="desc">
+  <p>
+    "Pro Git (2nd Edition)" contains everything you need to know about Git,
+written by Scott Chacon and Ben Straub.
+    The print version is available on Amazon:
+    <a href="https://amzn.to/31CKi27" target="_blank">https://amzn.to/31CKi27</a>
+  </p>
+  </div>
+</div>
+<hr class="book-banner after">
 
 ## Set Upstream
 

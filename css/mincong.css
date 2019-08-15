@@ -71,3 +71,53 @@ article.post p {
   font-size: 1rem;
   font-weight: normal;
 }
+
+/*
+ * Book Banner
+ */
+div.book-banner {
+  overflow: auto;
+}
+div.book-banner .image {
+  float: left;
+}
+
+hr.book-banner.before {
+  margin: 25px 0 9px 0;
+}
+hr.book-banner.after {
+  margin: 9px 0 15px 0;
+}
+div.book-banner .image img {
+  max-height: 64px;
+  padding: 3px 16px 3px 8px;
+  margin: 0;
+}
+div.book-banner p {
+  margin: 0
+}
+
+@media (min-width: 38em) {
+  hr.book-banner.before {
+    margin: 25px 0 15px 0;
+  }
+  hr.book-banner.after {
+    margin: 15px 0 25px 0;
+  }
+  div.book-banner .image img {
+    max-height: 80px;
+    padding: 5px 20px;
+    margin: 0;
+  }
+  div.book-banner .image p {
+    margin: 0;
+  }
+  div.book-banner .desc {
+    margin-right: 40px;
+  }
+}
+@media (min-width: 60em) {
+  div.book-banner .desc {
+    margin-right: 80px;
+  }
+}
