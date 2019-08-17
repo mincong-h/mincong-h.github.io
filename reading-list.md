@@ -21,11 +21,11 @@ Done:
 * [Cracking the Coding Interview](https://amzn.to/2Z1S8Rf)
 * [HTTP: The Definitive Guide](https://amzn.to/2Z5oo63)
 * [Web Application Security, A Beginner's Guide](https://amzn.to/2YODhhR)
+* [Introducing Go: Build Reliable, Scalable Programs](https://amzn.to/2KyXHm8)
 
 In progress:
 
 * [Cracking the PM Interview](https://amzn.to/2Z8P5GK)
-* [Introducing Go: Build Reliable, Scalable Programs](https://amzn.to/2KyXHm8)
 
 To read:
 
