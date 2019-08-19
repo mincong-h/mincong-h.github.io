@@ -1,6 +1,6 @@
 ---
 layout:            post
-title:             6 tips for fixing bug with legacy framework
+title:             6 Tips for Fixing Bugs with Legacy FrameworkS
 date:              2019-08-13 20:34:58 +0200
 categories:        [legacy]
 tags:              [java, rest, gwt, git, javascript]
@@ -21,7 +21,7 @@ Bug-fixing is one of the most common things to do in software development.
 Any experienced developer has already done this before: somewhere in the
 codebase is broken, and you need to fix it. Regardless you know the framework or
 you don't, you have to fix it. Whoever wrote the code, it is now on your duty...
-This does not sound fun, especially come to legacy framework.
+This does not sound fun, especially come to legacy frameworks.
 
 I have been in this situation for three years. Today, I would like to share my
 tips about learning and fixing bugs with legacy framework. After reading this
@@ -36,7 +36,7 @@ codebase, we use Jersey 1.x as Java RESTful APIs framework. Actually, Jersey
 2.0+ have been available since
 [2013](https://github.com/jersey/jersey/releases/tag/2.0), but we are still
 using Jersey 1.x because of Nuxeo Server: we develop on top of it. So as far as
-Nuxeo don't upgrade to Jersey 2.x, we cannot upgrade.
+Nuxeo doesn't upgrade to Jersey 2.x, we cannot upgrade.
 
 **Read Javadoc**. Reading Javadoc is a good way to understand the code. For
 Jersey 1.x, I found Javadoc in
@@ -78,7 +78,7 @@ also very useful for mastering some parts of it.
 
 ## Search in the Codebase
 
-Search and read the source code is another efficient way for understanding how
+Searching and reading the source code is another efficient way for understanding how
 legacy framework works. Here I want to introduce 3 different tools:
 
 1. git
@@ -164,7 +164,7 @@ two parts:
 - Learning the framework
 - Fixing the bug
 
-**At learning phrase**, you can write tests in your own paces. They can be
+**At learning phrase**, you can write tests in your own pace. They can be
 hosted in your personal repository. You are free to modify the code without
 colleagues permissions and review. It's a very efficient way to learn.
 Personally, I did it for some frameworks / technologies:
