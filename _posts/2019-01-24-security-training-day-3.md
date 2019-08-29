@@ -10,8 +10,6 @@ excerpt:           >
     references, broken access control, improper input validation, and software
     best practices.
 image:             /assets/bg-security-265130_1280.jpg
-img_width:         1280
-img_height:        853
 ---
 
 ## Overview

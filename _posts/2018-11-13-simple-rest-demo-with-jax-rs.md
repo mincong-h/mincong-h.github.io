@@ -9,8 +9,6 @@ excerpt:           >
     A quickstart demo for creating REST service in Java using JAX-RS 2.0. The
     sample is implemented by Jersey, the reference implementation of JAX-RS.
 image:             /assets/bg-cup-of-coffee-1280537_1280.jpg 
-img_width:         1280
-img_height:        851
 series:            JAX-RS Basics
 ---
 

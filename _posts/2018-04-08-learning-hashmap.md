@@ -10,8 +10,6 @@ excerpt:           >
   using hash code, index calculation, and more.
 comments:    true
 image:             /assets/bg-coffee-2242213_1280.jpg
-img_width:         1280
-img_height:        853
 ads:               Cracking The Coding Interview
 ---
 

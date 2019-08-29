@@ -9,8 +9,6 @@ excerpt:           >
     Engineering story: how I merge two Git repositories and what are the hidden
     tasks you didn't think about.
 image:             /assets/railway-1245906_1280.jpg
-img_width:         1280
-img_height:        800
 ---
 
 ## Overview

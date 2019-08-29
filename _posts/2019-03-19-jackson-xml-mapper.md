@@ -10,8 +10,6 @@ excerpt:           >
     the annotations used for root element, property, and collection mapping.
     Also, the basic configuration of Jackson XML Mapper.
 image:             /assets/bg-coffee-2242213_1280.jpg
-img_width:         1280
-img_height:        853
 ---
 
 ## Overview

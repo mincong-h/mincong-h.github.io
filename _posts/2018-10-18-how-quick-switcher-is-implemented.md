@@ -9,8 +9,6 @@ excerpt:           >
     The internal mechanism of Quick Switcher, a Polymer element allowing you to
     jump into any feature, layout, or menu option in Nuxeo Studio.
 image:             /assets/20181018-kapture-quick-switcher.jpg
-img_width:         1200
-img_height:        780
 img_excerptOnly:   true
 ---
 

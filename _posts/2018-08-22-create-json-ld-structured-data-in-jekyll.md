@@ -9,8 +9,6 @@ excerpt:           >
     In this post, I will explain how to create JSON-LD structured data for
     Jekyll blog.
 image:             /assets/bg-home-office-336373_1280.jpg
-img_width:         1280
-img_height:        853
 ---
 
 Google uses structured data that it finds on the web to understand the content
@@ -69,8 +67,6 @@ layout: default
   },
   "image": {
     "@type": "ImageObject",
-    "width": {% raw %}{{ page.img_width | default: site.img_width }}{% endraw %},
-    "height": {% raw %}{{ page.img_height | default: site.img_height }}{% endraw %},
     "url": "{% raw %}{{ site.url }}{{ page.img_url | default: site.img_url }}{% endraw %}"
   }
 }

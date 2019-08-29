@@ -8,8 +8,6 @@ comments:          true
 excerpt:           >
     Use option "maven.repo.local" to specify the Maven local repository path.
 image:             /assets/bg-old-books-436498_1280.jpg
-img_width:         1280
-img_height:        853
 ---
 
 ## Overview

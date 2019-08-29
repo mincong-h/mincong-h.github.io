@@ -10,8 +10,6 @@ excerpt:           >
     configuring the duration to keep builds / artifacts, and the quantity of
     builds / artifacts to keep.
 image:             /assets/bg-jenkins.jpg
-img_width:         1000
-img_height:        1000
 ---
 
 ## Overview

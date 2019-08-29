@@ -9,8 +9,6 @@ excerpt:           >
     Glob expression syntax, and its usage in Java through Path Matcher and
     Directory Stream.
 image:             /assets/bg-coffee-2306471_1280.jpg
-img_width:         1280
-img_height:        853
 ---
 
 ## Overview

@@ -10,8 +10,6 @@ excerpt:           >
     Client API. We will talk about the Maven dependencies, Client, WebTarget,
     and HTTP response.
 image:             /assets/bg-notebook-1280538_1280.jpg
-img_width:         1280
-img_height:        850
 series:            JAX-RS Basics
 ---
 

@@ -10,8 +10,6 @@ excerpt:           >
     application programmatically or via annotation, the exception
     matching mechanism (nearest-superclass), and more.
 image:             /assets/bg-coffee-983955_1280.jpg
-img_width:         1280
-img_height:        810
 series:            JAX-RS Basics
 ---
 

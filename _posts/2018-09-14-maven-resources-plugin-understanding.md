@@ -11,8 +11,6 @@ excerpt:           >
   "testResources", and "copy-resources". In this post, I'll show you some
   common use-cases of this plugin.
 image:             /assets/bg-tools-1209764_1280.jpg
-img_width:         1280
-img_height:        853
 series:            Maven Plugins
 ---
 

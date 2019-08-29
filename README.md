@@ -47,9 +47,12 @@ This section descibes blog post configuration.
 Property | Value | Description
 :--- | :--- | :---
 `image` | Image URL | Related path to image resource, such as `/assets/my-image.jpg`. Jekyll will complete it as an absolute path. Used by [Jekyll Feed](https://github.com/jekyll/jekyll-feed#optional-front-matter) plugin and my own structured data generation.
-`img_height` | Image height | Image height in pixel (px). Used as HTML metadata, in particular for post sharing.
-`img_width` | Image width | Image width in pixel (px). Used as HTML metadata, in particular for post sharing.
 `series` | A meaningful name for the series. | The value will be `slugify` for generating the URL. For example, giving value _"Maven Plugins" will generate `maven-plugins` for the URL.
+
+## Assets
+
+When adding a new image to the website, you need to register the its metadata in
+`_data/images.yml`.
 
 ## Social Network Sharing
 

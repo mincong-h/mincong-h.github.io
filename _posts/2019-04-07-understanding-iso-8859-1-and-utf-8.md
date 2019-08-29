@@ -10,8 +10,6 @@ excerpt:           >
     string and bytes, and file I/O operations including MIME encoding detection.
     All examples are written in Java and Python 3.
 image:             /assets/bg-single-file-1534558_1280.jpg
-img_width:         1280
-img_height:        617
 ---
 
 ## Overview

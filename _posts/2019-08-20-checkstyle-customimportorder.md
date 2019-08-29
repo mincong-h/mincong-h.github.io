@@ -9,8 +9,6 @@ excerpt:           >
     Fix import order in Java class using Checkstyle's CustomImportOrder module.
     This article explains how I did it for Nuxeo Online Services.
 image:             /assets/bg-notebook-1280538_1280.jpg
-img_width:         1280
-img_height:        850
 ads:               None
 ---
 

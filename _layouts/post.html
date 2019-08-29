@@ -38,8 +38,8 @@ layout: default
     },
     "image": {
       "@type": "ImageObject",
-      "width": {{ page.img_width | default: site.img_width }},
-      "height": {{ page.img_height | default: site.img_height }},
+      "width": {% if page.image %}{{ site.data.images[page.image].width }}{% else %}{{ site.img_width }}{% endif %},
+      "height": {% if page.image %}{{ site.data.images[page.image].height }}{% else %}{{ site.img_height }}{% endif %},
       "url": "{{ site.url }}{{ page.image | default: site.image }}"
     }
   }

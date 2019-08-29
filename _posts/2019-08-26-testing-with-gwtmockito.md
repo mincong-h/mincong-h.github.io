@@ -11,8 +11,6 @@ excerpt:           >
     testing, and comparison between GwtMockito and GWTTestCase.
 image:             /assets/bg-board-2450236_1280.jpg
 image:             /assets/bg-board-2450236_1280.jpg
-img_width:         1280
-img_height:        927
 ads:               None
 ---
 

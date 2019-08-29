@@ -9,8 +9,6 @@ excerpt:           >
     Fun experience on fixing a custom comparator by identifying the sub-problems,
     testing different combinations, and finally fix it.
 image:             /assets/bg-cup-of-coffee-1280537_1280.jpg
-img_width:         1280
-img_height:        851
 ---
 
 ## Overview

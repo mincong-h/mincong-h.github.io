@@ -10,8 +10,6 @@ excerpt:           >
     that I summarized for bug-fixing, including documentation, searching,
     testing, patching library and more.
 image:             /assets/bg-boy-666803_1280.jpg
-img_width:         1280
-img_height:        851
 ads:               Book - Working Effectively with Legacy Code
 ---
 

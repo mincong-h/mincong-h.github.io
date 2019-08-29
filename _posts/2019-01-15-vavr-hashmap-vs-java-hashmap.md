@@ -11,8 +11,6 @@ excerpt:           >
     and HashMap, including the map creation, entries iteration, streaming, and
     the side effect.
 image:             /assets/bg-coffee-983955_1280.jpg
-img_width:         1280
-img_height:        810
 ---
 
 ## Overview

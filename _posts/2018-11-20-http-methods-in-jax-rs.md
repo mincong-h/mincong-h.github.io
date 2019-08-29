@@ -9,8 +9,6 @@ excerpt:           >
     This article explains the common HTTP methods in JAX-RS: annotation @GET,
     @POST, @PUT, and @DELETE.
 image:             /assets/bg-coffee-1030971_1280.jpg
-img_width:         1280
-img_height:        960
 series:            JAX-RS Basics
 ---
 

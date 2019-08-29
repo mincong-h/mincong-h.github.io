@@ -8,8 +8,6 @@ comments:          true
 excerpt:           >
     How to speed up a Maven project by using different tips.
 image:             /assets/bg-dog-2785074_1280.jpg
-img_width:         1280
-img_height:        853
 ---
 
 ## Overview

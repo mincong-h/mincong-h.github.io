@@ -10,8 +10,6 @@ excerpt:           >
     testing JAX-RS resources, how to create a HTTP request and assert the
     response using JUnit 4. And finally, the limits of testing API in reality.
 image:             /assets/bg-coffee-171653_1280.jpg
-img_width:         1280
-img_height:        853
 series:            JAX-RS Basics
 ---
 

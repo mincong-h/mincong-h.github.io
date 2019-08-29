@@ -9,8 +9,6 @@ comments:          true
 excerpt:           >
     A step-by-step guide for understanding Maven Compiler Plugin in Java 11.
 image:             /assets/bg-tools-1209764_1280.jpg
-img_width:         1280
-img_height:        853
 series:            Maven Plugins
 ---
 

@@ -9,8 +9,6 @@ excerpt:           >
     My study notes of security training (Day 1), including web thread landscape
     (Java in particular), security tools, and some Juice shop training answers.
 image:             /assets/bg-security-265130_1280.jpg
-img_width:         1280
-img_height:        853
 ---
 
 ## Overview
