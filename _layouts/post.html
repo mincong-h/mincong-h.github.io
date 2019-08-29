@@ -64,8 +64,15 @@ layout: default
   </header>
 
   {% if page.image and page.img_excerptOnly != true %}
-  <div class="bg-img" style="background-image: url({{ page.image }});">
-  </div>
+    {% assign image = site.data.images[page.image] %}
+    <div class="bg-img" style="background-image: url({{ page.image }});">
+    </div>
+    <div>
+      <p align="center">
+        <a href="{{ image.url }}">Image</a> by {{ image.author }},
+        <a href="{{ image.license_url }}">{{ image.license }}</a>
+      </p>
+    </div>
   {% endif %}
 
   {% if page.series %}
