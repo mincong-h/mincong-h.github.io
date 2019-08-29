@@ -30,7 +30,7 @@
       {{ page.title | escape }} | {{ site.title_suffix | escape }}
     {% endif %}
   </title>
-  <meta name="author" content="{{ site.author_name }}">
+  <meta name="author" content="{{ site.author }}">
   <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 300 }}{% else %}{{ site.description }}{% endif %}">
 
   <!-- CSS -->

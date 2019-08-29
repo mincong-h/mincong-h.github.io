@@ -3,7 +3,7 @@ permalink: /:year/:month/:day/:title/
 # Site settings
 title: Mincong Huang
 title_suffix: Mincong's Blog
-author_name: Mincong Huang
+author: Mincong Huang
 author_first_name: Mincong
 author_last_name: Huang
 email: mincong.h@gmail.com

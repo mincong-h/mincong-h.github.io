@@ -16,7 +16,7 @@ layout: default
     "dateModified": {{ page.last_modified_at | default: page.date | jsonify }},
     "author": {
       "@type": "Person",
-      "name": {{ site.author_name | jsonify }},
+      "name": {{ site.author | jsonify }},
       "givenName": {{ site.author_first_name | jsonify }},
       "familyName": {{ site.author_last_name | jsonify }},
       "email": {{ site.email | jsonify }}
