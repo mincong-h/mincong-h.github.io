@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Understand static factory method pattern in Java with concrete examples
     from Selenium WebDriver, Jackson JSON object mapper, and SAX reader for XML.
-img_url:           /assets/bg-coffee-2306471_1280.jpg
+image:             /assets/bg-coffee-2306471_1280.jpg
 img_width:         1280
 img_height:        853
 ---

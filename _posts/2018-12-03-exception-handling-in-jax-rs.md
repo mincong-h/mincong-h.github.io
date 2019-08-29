@@ -9,7 +9,7 @@ excerpt:           >
     This post explains exception mapper, how to register it in JAX-RS
     application programmatically or via annotation, the exception
     matching mechanism (nearest-superclass), and more.
-img_url:           /assets/bg-coffee-983955_1280.jpg
+image:             /assets/bg-coffee-983955_1280.jpg
 img_width:         1280
 img_height:        810
 series:            JAX-RS Basics

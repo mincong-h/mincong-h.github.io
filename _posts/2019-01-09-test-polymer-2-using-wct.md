@@ -9,7 +9,7 @@ excerpt:           >
     Web Component Tester (WCT) allows you to test your Polymer elements easily.
     This article explains how to launch tests locally, set up the tests on CI,
     detect browsers, and write unit tests using WCT.
-img_url:           /assets/bg-board-2450236_1280.jpg
+image:             /assets/bg-board-2450236_1280.jpg
 img_width:         1280
 img_height:        927
 ---

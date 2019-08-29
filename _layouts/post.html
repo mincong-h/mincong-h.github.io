@@ -40,7 +40,7 @@ layout: default
       "@type": "ImageObject",
       "width": {{ page.img_width | default: site.img_width }},
       "height": {{ page.img_height | default: site.img_height }},
-      "url": "{{ site.url }}{{ page.img_url | default: site.img_url }}"
+      "url": "{{ site.url }}{{ page.image | default: site.image }}"
     }
   }
 </script>
@@ -63,8 +63,8 @@ layout: default
     </p>
   </header>
 
-  {% if page.img_url and page.img_excerptOnly != true %}
-  <div class="bg-img" style="background-image: url({{ page.img_url }});">
+  {% if page.image and page.img_excerptOnly != true %}
+  <div class="bg-img" style="background-image: url({{ page.image }});">
   </div>
   {% endif %}
 

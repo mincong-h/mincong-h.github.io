@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Engineering story: how I merge two Git repositories and what are the hidden
     tasks you didn't think about.
-img_url:           /assets/railway-1245906_1280.jpg
+image:             /assets/railway-1245906_1280.jpg
 img_width:         1280
 img_height:        800
 ---

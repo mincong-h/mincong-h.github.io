@@ -10,7 +10,7 @@ excerpt:           >
     A quick introduction about Git upstream tracking: set upstream with git-push
     or git-branch, the internal mechanism inside Git config (.git/config),
     unset upstream, and related implementation in Java (JGit).
-img_url:           /assets/bg-salmon-1107404_1280.jpg
+image:             /assets/bg-salmon-1107404_1280.jpg
 img_width:         1280
 img_height:        811
 ---

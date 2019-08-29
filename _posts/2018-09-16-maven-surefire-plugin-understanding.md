@@ -10,7 +10,7 @@ excerpt:           >
     lifecycle to execute unit tests. It can be used with JUnit, TestNG or other
     frameworks. This article explains what is Surefire plugin and its common use
     cases.
-img_url:           /assets/bg-tools-1209764_1280.jpg
+image:             /assets/bg-tools-1209764_1280.jpg
 img_width:         1280
 img_height:        853
 series:            Maven Plugins

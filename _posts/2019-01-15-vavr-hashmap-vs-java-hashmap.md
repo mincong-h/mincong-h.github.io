@@ -10,7 +10,7 @@ excerpt:           >
     Why should you give it a try? Today, we will start comparing them via Map
     and HashMap, including the map creation, entries iteration, streaming, and
     the side effect.
-img_url:           /assets/bg-coffee-983955_1280.jpg
+image:             /assets/bg-coffee-983955_1280.jpg
 img_width:         1280
 img_height:        810
 ---

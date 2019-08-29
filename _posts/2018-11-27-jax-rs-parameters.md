@@ -9,7 +9,7 @@ excerpt:           >
     This post explains different param annotations in JAX-RS 2.1 and their
     use-cases, including @QueryParam, @MatrixParam, @PathParam, @HeaderParam,
     @CookieParam, @FormParam and @BeanParam.
-img_url:           /assets/bg-coffee-2306471_1280.jpg
+image:             /assets/bg-coffee-2306471_1280.jpg
 img_width:         1280
 img_height:        853
 series:            JAX-RS Basics

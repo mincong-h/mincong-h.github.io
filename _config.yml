@@ -17,7 +17,7 @@ url: "https://mincong-h.github.io"
 twitter_username: mincong_h
 github_username:  mincong-h
 tagline: 'Blog'
-img_url: /assets/logo-github.png
+image: /assets/logo-github.png
 img_width: 300
 img_height: 300
 

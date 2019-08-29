@@ -9,7 +9,8 @@ excerpt:           >
     My recent bug fixing experience on Google Web Kit (GWT) with GwtMockito:
     problem understanding, code refactoring, mocking framework preparation,
     testing, and comparison between GwtMockito and GWTTestCase.
-img_url:           /assets/bg-board-2450236_1280.jpg
+image:             /assets/bg-board-2450236_1280.jpg
+image:             /assets/bg-board-2450236_1280.jpg
 img_width:         1280
 img_height:        927
 ads:               None

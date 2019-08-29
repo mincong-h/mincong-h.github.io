@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     In this post, I will explain how to create JSON-LD structured data for
     Jekyll blog.
-img_url:           /assets/bg-home-office-336373_1280.jpg
+image:             /assets/bg-home-office-336373_1280.jpg
 img_width:         1280
 img_height:        853
 ---

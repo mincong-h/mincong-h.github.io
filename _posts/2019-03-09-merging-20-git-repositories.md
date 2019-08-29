@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Recently, I merged 20 Git repositories into a single one while keeping the
     history. Here's how I did it.
-img_url:           /assets/bg-ferris-wheel-2575709_1280.jpg
+image:             /assets/bg-ferris-wheel-2575709_1280.jpg
 img_width:         1280
 img_height:        853
 ---

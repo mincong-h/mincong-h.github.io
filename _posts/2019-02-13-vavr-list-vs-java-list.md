@@ -9,7 +9,7 @@ excerpt:           >
     Difference between Vavr List and Java List? I'll compare them via CRUD
     operations, immutability, performance, streaming, and thread safety in
     this article.
-img_url:           /assets/bg-coffee-1030971_1280.jpg
+image:             /assets/bg-coffee-1030971_1280.jpg
 img_width:         1280
 img_height:        960
 ---

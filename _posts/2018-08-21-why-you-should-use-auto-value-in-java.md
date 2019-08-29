@@ -9,7 +9,7 @@ excerpt:           >
     Auto Value generates immutable value classes during Java compilation,
     including equals(), hashCode(), toString(). It lighten your load from
     writing these boilerplate source code.
-img_url:           /assets/bg-coffee-84624_1280.jpg
+image:             /assets/bg-coffee-84624_1280.jpg
 img_width:         1280
 img_height:        960
 ---
