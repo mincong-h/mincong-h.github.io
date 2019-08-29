@@ -51,7 +51,7 @@ Property | Value | Description
 
 ## Assets
 
-When adding a new image to the website, you need to register the its metadata in
+When adding a new image to the website, you need to register its metadata in
 `_data/images.yml`.
 
 ## Social Network Sharing
