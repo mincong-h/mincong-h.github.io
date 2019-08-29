@@ -10,7 +10,6 @@ excerpt:           >
     problem understanding, code refactoring, mocking framework preparation,
     testing, and comparison between GwtMockito and GWTTestCase.
 image:             /assets/bg-board-2450236_1280.jpg
-image:             /assets/bg-board-2450236_1280.jpg
 ads:               None
 ---
 
