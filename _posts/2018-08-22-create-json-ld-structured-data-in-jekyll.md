@@ -67,6 +67,8 @@ layout: default
   },
   "image": {
     "@type": "ImageObject",
+    "width": {% raw %}{{ page.img_width | default: site.img_width }}{% endraw %},
+    "height": {% raw %}{{ page.img_height | default: site.img_height }}{% endraw %},
     "url": "{% raw %}{{ site.url }}{{ page.img_url | default: site.img_url }}{% endraw %}"
   }
 }
