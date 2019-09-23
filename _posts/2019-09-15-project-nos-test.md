@@ -218,6 +218,13 @@ private ProcessBuilder newProcess(String... args) {
 }
 ```
 
+## Report
+
+After each execution, a text block is generated using JIRA syntax, which
+contains the essential information about each tests.
+
+<img src="/assets/20190915-nos-test-report.png" alt="NOS Test Report in JIRA" />
+
 ## Impact
 
 Thanks to project "NOS Test", the verification process becomes much easier than
