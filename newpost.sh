@@ -46,28 +46,11 @@ After reading this article, you will understand:
 
 ## Conclusion
 
-Hope you enjoy this article, see you the next time!
+Interested to know more? You can subscribe to [my feed](/feed.xml), follow me
+on [Twitter](https://twitter.com/mincong_h) or
+[GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
-
-Use IEEE citation style to write references (https://ieee-dataport.org/sites/default/files/analysis/27/IEEE%20Citation%20Guidelines.pdf):
-
-Professional Internet Site:
-
-- European Telecommunications Standards Institute, "Digital Video Broadcasting
-  (DVB): Implementation guide for DVB terrestrial services; transmission aspects,"
-  _European Telecommunications Standards Institute_, ETSI-TR-101, 2007. [Online].
-  Available: http://www.etsi.org.
-
-General Internet Site:
-
-- J. Geralds, "Sega Ends Production of Dreamcast," _vnunet.com_, para. 2,
-  Jan. 31, 2007. [Online]. Available: http://nli.vnunet.com/news/1116995.
-
-Personal Internet Site
-
-- G. Sussman, "Home Page-Dr. Gerald Sussman," July, 2002. [Online]. Available:
-  http://www.comm.edu.faculty/sussman/sussmanpage.htm.
 
 EOF
 
