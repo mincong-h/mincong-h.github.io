@@ -44,20 +44,23 @@ stored at `~/Downloads/tomcat`.
  * @throws IOException if any I/O error occurs
  */
 public void exec() throws IOException {
-  try (FileInputStream fis = new FileInputStream(sourceZip.toFile());
-      ZipInputStream zis = new ZipInputStream(fis)) {
+  Path root = targetDir.normalize();
+  try (InputStream is = Files.newInputStream(sourceZip);
+      ZipInputStream zis = new ZipInputStream(is)) {
     ZipEntry entry = zis.getNextEntry();
     while (entry != null) {
+      Path path = root.resolve(entry.getName()).normalize();
+      if (!path.startsWith(root)) {
+        throw new IOException("Invalid ZIP");
+      }
       if (entry.isDirectory()) {
-        Path dir = targetDir.resolve(entry.getName());
-        Files.createDirectories(dir);
+        Files.createDirectories(path);
       } else {
-        File file = targetDir.resolve(entry.getName()).toFile();
-        try (FileOutputStream fos = new FileOutputStream(file)) {
+        try (OutputStream os = Files.newOutputStream(path)) {
           byte[] buffer = new byte[1024];
           int len;
           while ((len = zis.read(buffer)) > 0) {
-            fos.write(buffer, 0, len);
+            os.write(buffer, 0, len);
           }
         }
       }
@@ -116,10 +119,9 @@ GitHub](https://github.com/mincong-h/java-examples/blob/blog/2019-10-27-unzip/io
 ```java
 package io.mincongh.io;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Objects;
@@ -206,20 +208,23 @@ public class UnzipCommand {
    * @throws IOException if any I/O error occurs
    */
   public void exec() throws IOException {
-    try (FileInputStream fis = new FileInputStream(sourceZip.toFile());
-        ZipInputStream zis = new ZipInputStream(fis)) {
+    Path root = targetDir.normalize();
+    try (InputStream is = Files.newInputStream(sourceZip);
+        ZipInputStream zis = new ZipInputStream(is)) {
       ZipEntry entry = zis.getNextEntry();
       while (entry != null) {
+        Path path = root.resolve(entry.getName()).normalize();
+        if (!path.startsWith(root)) {
+          throw new IOException("Invalid ZIP");
+        }
         if (entry.isDirectory()) {
-          Path dir = targetDir.resolve(entry.getName());
-          Files.createDirectories(dir);
+          Files.createDirectories(path);
         } else {
-          File file = targetDir.resolve(entry.getName()).toFile();
-          try (FileOutputStream fos = new FileOutputStream(file)) {
+          try (OutputStream os = Files.newOutputStream(path)) {
             byte[] buffer = new byte[byteSize];
             int len;
             while ((len = zis.read(buffer)) > 0) {
-              fos.write(buffer, 0, len);
+              os.write(buffer, 0, len);
             }
           }
         }
@@ -240,6 +245,11 @@ visited once. In other words, the list will be exhauste when the next entry
 will be _null_. Note that ZIP entry can be either a directory or a regular
 file, they need to be treated differently. The size of the output buffer
 (byte array) is controlled by the parameter `bufferSize`. It defaults to 1024 bytes.
+
+Update: my friend [Florent Guillaume](https://github.com/efge) pointed out that
+the previous version was vulnerable for [Zip
+Slip](https://snyk.io/research/zip-slip-vulnerability) attack. Now the source
+code has been updated and the problem has been fixed.
 
 ## Limitations
 
