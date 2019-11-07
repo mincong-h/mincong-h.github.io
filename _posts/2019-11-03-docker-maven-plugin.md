@@ -218,8 +218,8 @@ Naming stategy (`<namingStrategy>`). After having created a Docker image called
 "debezium/postgres-server-test-database" via goal "docker:build", a
 Docker container can be created from this image. Naming strategy
 defines the name of the container. Here, Debezium uses the
-default mechanism: "none", which uses a randamly assigned names from Docker.
-Note that this option is decprecated, you should use option "containerNamePattern"
+default mechanism: "none", which uses a randomly assigned names from Docker.
+Note that this option is deprecated, you should use option "containerNamePattern"
 instead.
 
 Environment variables (`<env>`). Set environment variables in the container you
