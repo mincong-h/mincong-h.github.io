@@ -1,8 +1,9 @@
 # mincong-h.github.io
 
-Hi, welcome to my blog! I'm a software engineer at Nuxeo. I write blog posts in
-my free time, most of which are related to `java`, `git`, and `web`. Hope you
-enjoy them! This blog is powered by [Jekyll][1], a simple, blog-aware, static
+Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in
+my free time. My blogs are bits and pieces of my tech journey. Most of them are
+related to Java. Hope you enjoy them! My opionions are my own, not Datadog's.
+This blog is powered by [Jekyll][1], a simple, blog-aware, static
 sites solution.
 
 ## Install and Run

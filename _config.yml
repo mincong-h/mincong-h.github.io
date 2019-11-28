@@ -8,9 +8,11 @@ author_first_name: Mincong
 author_last_name: Huang
 email: mincong.h@gmail.com
 description: > 
-  Hi, welcome to my blog! I'm junior software engineer at Nuxeo. My blogs are
-  expriences that I met during different projects. Most of them will be related
-  to Java. My opinions are my own, not Nuxeo's.
+  Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts
+  in my free time. My blogs are
+  bits and pieces of my tech journey. Most of them are related
+  to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog
+  is powered by Jekyll, a simple, blog-aware, static sites solution.
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://mincong-h.github.io"
