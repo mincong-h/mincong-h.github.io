@@ -291,7 +291,8 @@ their [source code](https://github.com/AVSystem/intellij-hocon).
 
 In this article, I shared with you the basic features of Typesafe Config: its
 structure, loading mechanism, substitution, include, unit format support
-and IDE support.
+and IDE support. The source code of this article is available on
+[GitHub](https://github.com/mincong-h/java-examples/tree/blog/2019-12-08-config/typesafe-config).
 Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
