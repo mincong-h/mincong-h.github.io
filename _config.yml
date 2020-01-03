@@ -15,7 +15,7 @@ description: >
   is powered by Jekyll, a simple, blog-aware, static sites solution.
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://mincong-h.github.io"
+url: "https://mincong.io"
 twitter_username: mincong_h
 github_username:  mincong-h
 tagline: 'Blog'
