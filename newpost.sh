@@ -35,7 +35,7 @@ comments:          true
 excerpt:           >
     TODO
 image:             /assets/bg-coffee-84624_1280.jpg
-ads:               Ads idea
+ads:               none
 ---
 
 ## Overview
@@ -43,6 +43,10 @@ ads:               Ads idea
 Explain context here...
 
 After reading this article, you will understand:
+
+## Going Further
+
+How to go further from here?
 
 ## Conclusion
 
