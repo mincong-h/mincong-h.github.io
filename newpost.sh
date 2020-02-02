@@ -44,6 +44,10 @@ Explain context here...
 
 After reading this article, you will understand:
 
+## Motivation
+
+Why it is important to understand...?
+
 ## Going Further
 
 How to go further from here?
