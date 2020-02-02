@@ -1,6 +1,6 @@
 /assets/bg-dylan-nolte-wYEj-xonKcg-unsplash.jpg:
     author:      dylan nolte
-    author_url:  https://unsplash.com/@dylan_nolte
+    url:         https://unsplash.com/@dylan_nolte
     height:      1280
     width:       853
     license:     Unplash License
@@ -8,7 +8,7 @@
 
 /assets/bg-new-year-3672872_1280.jpg:
     author:      Pete Linforth
-    author_url:  https://pixabay.com/users/thedigitalartist-202249/
+    url:         https://pixabay.com/users/thedigitalartist-202249/
     height:      1280
     width:       896
     license:     Pixabay License
@@ -16,7 +16,7 @@
 
 /assets/bg-c-dustin-91AQt9p4Mo8-unsplash.jpg:
     author:      C Dustin
-    author_url:  https://unsplash.com/@dianamia
+    url:         https://unsplash.com/@dianamia
     height:      1280
     width:       720
     license:     Unplash License
@@ -24,7 +24,7 @@
 
 /assets/bg-romet-tagobert-ytrbFQSJBxw-unsplash.jpg:
     author:      Romet Tagobert
-    author_url:  https://unsplash.com/@romet
+    url:         https://unsplash.com/@romet
     height:      1280
     width:       853
     license:     Unplash License
@@ -32,7 +32,7 @@
 
 /assets/bg-anthony-roberts-82wJ10pX1Fw-unsplash.jpg:
     author:      Anthony Roberts
-    author_url:  https://unsplash.com/@arcreates
+    url:         https://unsplash.com/@arcreates
     height:      1280
     width:       853
     license:     Unplash License
@@ -40,7 +40,7 @@
 
 /assets/bg-josh-rakower-zBsXaPEBSeI-unsplash.jpg:
     author:      Josh Rakower
-    author_url:  https://unsplash.com/@joshrako
+    url:         https://unsplash.com/@joshrako
     height:      1280
     width:       960
     license:     Unplash License
@@ -48,7 +48,7 @@
 
 /assets/bg-vitto-sommella-CrDnEQE_9vY-unsplash.jpg:
     author:      Vitto Sommella
-    author_url:  https://unsplash.com/@vitto_s
+    url:         https://unsplash.com/@vitto_s
     width:       1280
     height:      850
     license:     Unplash License
@@ -56,7 +56,7 @@
 
 /assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg:
     author:      Erwan Hesry
-    author_url:  https://unsplash.com/@erwanhesry
+    url:         https://unsplash.com/@erwanhesry
     width:       1280
     height:      853
     license:     Unplash License
@@ -64,7 +64,7 @@
 
 /assets/bg-cristian-escobar-abkEAOjnY0s-unsplash.jpg:
     author:      Cristian Escobar
-    author_url:  https://unsplash.com/@cristian1
+    url:         https://unsplash.com/@cristian1
     width:       1280
     height:      853
     license:     Unplash License
@@ -72,7 +72,7 @@
 
 /assets/bg-veri-ivanova-p3Pj7jOYvnM-unsplash.jpg:
     author:      Veri Ivanova
-    author_url:  https://unsplash.com/@veri_ivanova
+    url:         https://unsplash.com/@veri_ivanova
     width:       1280
     height:      853
     license:     Unplash License
@@ -80,7 +80,7 @@
 
 /assets/bg-alex-block-eicoRD590x4-unsplash.jpg:
     author:      Alex Block
-    author_url:  https://unsplash.com/@alexblock
+    url:         https://unsplash.com/@alexblock
     width:       1280
     height:      890
     license:     Unplash License
@@ -88,7 +88,7 @@
 
 /assets/bg-mathew-schwartz-OjQgsR1oyEw-unsplash.jpg:
     author:      Mathew Schwartz
-    author_url:  https://unsplash.com/@cadop
+    url:         https://unsplash.com/@cadop
     width:       1280
     height:      853
     license:     Unplash License
@@ -96,7 +96,7 @@
 
 /assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg:
     author:      Mike Kenneally
-    author_url:  https://unsplash.com/@asthetik
+    url:         https://unsplash.com/@asthetik
     width:       1280
     height:      840
     license:     Unplash License
@@ -104,7 +104,7 @@
 
 /assets/bg-josh-calabrese-zcYRw547Dps-unsplash.jpg:
     author:      Josh Calabrese
-    author_url:  https://unsplash.com/@joshcala
+    url:         https://unsplash.com/@joshcala
     width:       1280
     height:      853
     license:     Unplash License

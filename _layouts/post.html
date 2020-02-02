@@ -69,8 +69,7 @@ layout: default
     </div>
     <div>
       <p align="center">
-        <a href="{{ image.url }}">Image</a> by {{ image.author }},
-        <a href="{{ image.license_url }}">{{ image.license }}</a>
+        Photo by <a href="{{ image.url }}">{{ image.author }}</a> on <a href="{{ image.license_url }}">{{ image.license | remove: "License" }}</a>
       </p>
     </div>
   {% endif %}
