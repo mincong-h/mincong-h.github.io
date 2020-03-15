@@ -41,12 +41,10 @@ ads:               none
 ## Overview
 
 Explain context here...
+and why it is important to understand this topic (motivation)?
 
 After reading this article, you will understand:
 
-## Motivation
-
-Why it is important to understand...?
 
 ## Going Further
 
