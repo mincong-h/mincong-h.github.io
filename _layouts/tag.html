@@ -2,14 +2,28 @@
 layout: default
 ---
 
-<div class="post">
+<div class="page monthly">
   <h1>{{ page.title }} <small class="monospace">({{ page.tag }})</small></h1>
   <p>{{ content }}</p>
-  <ul>
+  <div class="monthly items">
   {% for post in site.tags[page.tag] %}
-    <li><a href="{{ post.url }}">{{ post.title }}</a> ({{ post.date | date_to_string }})<br>
-      {{ post.description }}
-    </li>
+
+    <table class="item">
+      <tr>
+        <td class="image">
+          <a href="{{ post.id }}">
+            <div class="image" style="background-image: url('{{ post.image }}')"></div>
+          </a>
+        </td>
+        <td class="desc">
+          <a class="header" href="{{ post.id }}">{{ post.title }}</a>
+          <p class="body">{{ post.excerpt }}</p>
+          <p class="footer">
+            {{ post.date | date_to_long_string }} | {{ post.tags | join: ', ' }}
+          </p>
+        </td>
+      </tr>
+    </table>
   {% endfor %}
-  </ul>
+  </div>
 </div>
