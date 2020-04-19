@@ -36,11 +36,6 @@ title:             ${title}
 tag:               ${tag}
 date:              $(date +"%Y-%m-%d %H:%M:%S %z")
 ---
-
-Add description here.
-For more detail, see [Wikipedia][wiki]
-
-[wiki]:
 EOF
 
 echo "Tag page created: $filepath"
