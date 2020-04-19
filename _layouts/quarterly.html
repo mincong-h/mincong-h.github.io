@@ -6,15 +6,16 @@ layout: default
 {% assign pageQuarter = page.quarter | plus: 0 %}
 
 <div class="page monthly">
-  <h1 class="page-title">{{ page.year }} {{ page.quarter }}</h1>
-  <p>My blog posts of {{ page.year }} {{ page.quarter}}.</p>
+  <h1 class="page-title">{{ page.year }} Q{{ page.quarter }}</h1>
+  <p>My blog posts of {{ page.year }} Q{{ page.quarter}}.</p>
   <div class="monthly items">
   {% for post in site.posts %}
     {% assign postYear = post.date | date: "%Y" | plus: 0 %}
     {% assign postMonth = post.date | date: "%m" | plus: 0 %}
+    {% assign postQuarter = postMonth | minus: 1 | divided_by: 3 | floor | plus: 1 %}
 
     {% if postYear == pageYear %}
-      {% if postMonth / 3 == pageQuarter %}
+      {% if postQuarter == pageQuarter %}
         <table class="item">
           <tr>
             <td class="image">

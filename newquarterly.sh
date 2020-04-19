@@ -23,7 +23,7 @@ fi
 bloghome=$(cd "$(dirname "$0")" || exit; pwd)
 year="${yq%-*}"
 quarter="${yq#*Q}"
-targetdir="${bloghome}/${year}/${quarter}"
+targetdir="${bloghome}/${year}/Q${quarter}"
 filepath="${targetdir}/index.md"
 
 mkdir -p "${targetdir}"
@@ -34,7 +34,7 @@ then
     exit 1
 fi
 
-title="Monthly Digest $(date -jf '%F' "${year}-${month}-01" +'%B %Y')"
+title="${year} Q${quarter}"
 cat << EOF >> "$filepath"
 ---
 layout:            quarterly
