@@ -2,10 +2,11 @@
 layout:            post
 title:             Create Systemd Unit File for Java
 date:              2018-07-03 21:33:29 +0200
-last_modified_at:  2018-07-22 16:26:48 +0200
+last_modified_at:  2020-05-08 09:10:39 +0200
 categories:        [tech]
-tags:              [java, systemd]
+tags:              [java, systemd, raspberry-pi]
 comments:          true
+image:             /assets/bg-coffee-2242213_1280.jpg
 excerpt:           >
     This post explains how to create a systemd unit file for Java, so that you
     can run your Java application as a service in Linux. It also explains the
@@ -13,7 +14,10 @@ excerpt:           >
     service's creation.
 ---
 
-Today, I want to talk about how to create a Systemd unit file for Java program.
+Recently I created a Systemd unit file to manage a Java program in Raspberry Pi.
+Today, I want to share about the structure of a service file and some
+commands useful after the service's creation. This article is written under
+Raspbian GNU/Linux 10 (buster) and systemd 241.
 
 ## Unit File Structure
 
@@ -30,19 +34,19 @@ Unit files typically consist of three sections:
 
 ## Service Unit File Sample
 
-Here's the Systemd unit file `gitty.service` that I've created:
+Here's the Systemd unit file `my-server.service` that I've created:
 
-```
+```ini
 [Unit]
-Description=Gitty Server
+Description=My Server
 
 [Service]
 ExecStart=/usr/bin/java \
-  -Dgitty.basePath='/opt/gitty/repositories' \
-  -Dgitty.bindAddr='0.0.0.0' \
-  -Dgitty.bindPort='18080' \
-  -Dgitty.hostName='kira' \
-  -jar '/opt/gitty/gitty-server.jar'
+  -Dmyserver.basePath='/opt/my-server/repositories' \
+  -Dmyserver.bindAddr='0.0.0.0' \
+  -Dmyserver.bindPort='18080' \
+  -Dmyserver.hostName='A pretty name' \
+  -jar '/opt/my-server/my-server.jar'
 SuccessExitStatus=143
 
 [Install]
@@ -53,56 +57,45 @@ In this sample, several options are defined. Let's take a look together:
 
 - `Description` is a meaningful description of the unit. This text is
   displayed for example in the output of the `systemctl status` command.
-
 - `ExecStart` specifies commands or scripts to be executed when the unit
   is started. `ExecStartPre` and `ExecStartPost` specify custom commands to be
-  executed before and after `ExecStart`. Note that execution requires absolute
+  executed before and after `ExecStart`. Note that execution requires an absolute
   path for command, you need to specify **/usr/bin/java** instead of **java**.
-
 - `ExecStop` specifies commands or scripts to be executed when the unit
   is stopped. If not specified, the basic way for systemd to stop a running
   service is by sending the `SIGTERM` signal (a regular `kill`) to the process
   control group of the service, and after a configurable timeout, a `SIGKILL` to
   make things really go away if not responding. As for Java application, the JVM
-  process is setup so that it gracefully shuts down the service upon reception of
+  process is set up so that it gracefully shuts down the service upon reception of
   the `SIGTERM` signal using shutdown hooks. However, the JVM will still exit with
-  code `143` in the end due to receiving `SIGTERM`. Modify systemd success status
-  to `SuccessExitStatus=143`.
-
+  code `143` in the end due to receiving `SIGTERM`. 143 = 128 + 15 (SIGTERM).
+  Therefore, we need to modify systemd success exit status (`SuccessExitStatus`)
+  to 143.
 - `WantedBy` is a list of units that weakly depend on the unit. When this
   unit is enabled, the units listed in `WantedBy` gain a `Want` dependency on the
   unit.
 
 ## Create the Systemd Unit File
 
-The systemd unit file <code><i>name</i>.service</code> needs to be created in
-directory **/etc/systemd/system** and have 644 permission as root. Note that
-it does not need to be executable. You need to fill options as I did in the
-previous section.
+The systemd unit file `my-server.service` needs to be created in
+directory **/etc/systemd/system** and has 644 permission as root. Note that
+it does not need to be executable. Fill the file with the options mentioned in
+the previous section.
 
-Once done, notify systemd that a new <code><i>name</i>.service</code> file is
+Once done, notify systemd that a new `my-server.service` file is
 created by reloading the daemon as root:
 
     systemctl daemon-reload
 
-After that, you can either testing the service startup using command <code>
-systemctl start <i>name</i>.service</code> (the suffix `.service` can be
-omitted), or enable the service startup using command <code>systemctl enable
-<i>name</i>.service</code>. You can also check the status of the service using
-command <code>systemctl status <i>name</i>.service</code>.
+After that, you can start, enable, stop a service, or check its status using the
+following command:
 
-    systemctl start name.service
-    systemctl enable name.service
-    systemctl status name.service
+    systemctl start my-server
+    systemctl enable my-server
+    systemctl status my-server
+    systemctl stop my-server
 
 ## Trouble Shooting
-
-### JAR File Accessibility
-
-> Jul 03 21:29:00 mincong-KIRA-102 java[934]: Error: Unable to access jarfile /home/mincong/.m2/repository/gitty/gitty-server/1.0-SNAPSHOT/gitty-server-1.0-SNAPSHOT-jar-with-dependencies.jar
-
-The JAR file is not accessible from Systemd as `root`. Move the JAR file to
-another directory owned by `root`, such as `/opt`.
 
 ### Service Failed to Start
 
@@ -117,10 +110,34 @@ another directory owned by `root`, such as `/opt`.
 Using symbolic link for Systemd unit file might cause problem during the
 service enabling. I suggest to use regular file directly.
 
+## Going Further
+
+- To know more about Systemctl, read "How to Use Systemctl to Manage Systemd
+  Services and Units" by Justin Ellingwood.<br>
+  <https://www.digitalocean.com/community/tutorials/how-to-use-systemctl-to-manage-systemd-services-and-units>
+- To understand how JVM reacts to various kill signals, read "JVMs and kill
+  signals" written by Tobias Lindaaker.<br>
+  <http://journal.thobe.org/2013/02/jvms-and-kill-signals.html>
+- To understand signals, a limited form of inter-process communication (IPC),
+  read wikipedia page "Signal (IPC)".<br>
+  <https://en.wikipedia.org/wiki/Signal_(IPC)>
+
+## Conclusion
+
+Today we saw about how to create a systemd unit file to manage a Java program
+in Raspberry Pi by exploring the basic structure of a unit file
+(Unit, Service, Install) and the particularity about exit code 143. We also
+checked to basic `systemctl` commands to manage the service (start, enable,
+status, stop). Interested to know more? You can
+subscribe to [the feed of my blog](/feed.xml), follow me
+on [Twitter](https://twitter.com/mincong_h) or
+[GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
+
 ## References
 
-- [Øyvind Stegard: Gracefully killing a Java process managed by systemd][2]
-- [RedHat - System Administrator's Guide: §10.6. Creating and Modifying systemd Unit Files][1]
-
-[1]: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_files]
-[2]: https://stegard.net/2016/08/gracefully-killing-a-java-process-managed-by-systemd/
+- Øyvind Stegard, "Gracefully killing a Java process managed by systemd",
+  _stegard.net_, 2016.
+  <https://stegard.net/2016/08/gracefully-killing-a-java-process-managed-by-systemd/>
+- RedHat, "System Administrator's Guide: §10.6. Creating and Modifying systemd
+  Unit Files", _RedHat_.
+  <https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/sect-managing_services_with_systemd-unit_files>
