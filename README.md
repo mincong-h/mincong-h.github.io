@@ -8,22 +8,30 @@ sites solution.
 
 ## Install and Run
 
-Install required Jekyll plugins:
+Install required Jekyll plugins, then run Jekyll:
 
 ```sh
 # if `bundle` command is not available
 # install bundler first
-$ gem install bundler
+gem install bundler
 
 # install Jekyll plugins (gems) required
 # by this blog using bundler
-$ bundle install
+bundle install
+
+# run Jekyll
+jekyll serve
 ```
 
-Run Jekyll:
+Or run via Docker:
 
-```
-$ jekyll serve
+```sh
+export JEKYLL_VERSION=3.8
+docker run --rm \
+  -p 4000:4000
+  --volume="$PWD:/srv/jekyll" \
+  -it jekyll/builder:$JEKYLL_VERSION \
+  jekyll serve
 ```
 
 ## Generators
