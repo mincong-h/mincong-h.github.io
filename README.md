@@ -30,8 +30,8 @@ export JEKYLL_VERSION=3.8
 docker run --rm \
   -p 4000:4000 \
   --volume="$PWD:/srv/jekyll" \
-  -it jekyll/builder:$JEKYLL_VERSION \
-  jekyll serve
+  -it jekyll/jekyll:$JEKYLL_VERSION \
+  jekyll build && jekyll serve --incremental
 ```
 
 ## Generators
