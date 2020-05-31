@@ -2,6 +2,7 @@
 layout:            post
 title:             "3 Ways to Handle Exception In Completable Future"
 date:              2020-05-30 07:14:44 +0200
+last_modified_at:  2020-05-31 18:57:21 +0200
 categories:        [tech]
 tags:              [java, concurrency]
 comments:          true
@@ -250,6 +251,35 @@ Answer: In this case, the preferred API is `exceptionally` because it takes only
 the exception as input. Since normal result (success) is not important,
 ignoring it brings additional benefit: it simplifies the input arguments, and
 the if-statement for exception null-check can be avoided.
+
+### Exception-Only Without Recovery
+
+Question: _"I want to focus exclusively on exception handling as above. However,
+I don't want to recover from failure. By the way, I need to chain the current
+completable future with another stage by applying a funtion."_
+
+Answer: In thise case, you can create two dependents on the completable future.
+One dependent handles the exception using `exceptionally()` and the other dependent applies the function.
+Therefore, the recovery of the first dependent will not affect the second
+dependent, since they are two separated downstreams.
+
+```java
+var cf = asyncCode();
+
+// dependent 1
+cf.exceptionally(ex -> {
+  logger.error("Something failed", ex);
+  return null;
+});
+// dependent 2
+cf.thenApply(user -> "Hi, " + user);
+```
+
+Do not chain both dependents together because `exceptionally()` will recover
+from failure and return a _null_ in the case above. This is probably not want
+you want in `thenApply`. I found this use-case on DZone: [Asynchronous Timeouts with
+CompletableFuture](https://dzone.com/articles/asynchronous-timeouts), written by
+Tomasz Nurkiewicz.
 
 ### Transformation
 
