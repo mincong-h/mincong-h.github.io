@@ -2,6 +2,7 @@
 layout:            post
 title:             "Logback: Test Logging Event"
 date:              2020-02-02 15:46:36 +0100
+last_modified_at:  2020-06-01 22:20:25 +0200
 categories:        [tech]
 tags:              [java, logging, test]
 comments:          true
@@ -102,7 +103,7 @@ public class AppTest {
     App.sayHi("Logback");
 
     assertThat(appender.list)
-        .flatExtracting(ILoggingEvent::getFormattedMessage)
+        .extracting(ILoggingEvent::getFormattedMessage)
         .containsExactly("Hi, Java!", "Hi, Logback!");
   }
 }
