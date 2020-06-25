@@ -1,10 +1,12 @@
 ---
-layout:      post
-title:       "OCA Review 1 - Java Basics"
-date:        2017-02-23 20:00:00 +0100
-categories:  [oca]
-tags:        [java, oca]
-comments:    true
+layout:            post
+title:             "OCA Review 1 - Java Basics"
+date:              2017-02-23 20:00:00 +0100
+last_modified_at:  2020-06-25 21:44:14 +0200
+categories:        [oca]
+tags:              [java, oca]
+comments:          true
+image:             /assets/bg-coffee-983955_1280.jpg
 redirect_from:
   - /2017/02/23/things-you-didnt-know-about-java/
 ---
@@ -84,23 +86,27 @@ Given the following classes, which of the following snippets can be inserted in
 place of `INSERT IMPORTS HERE` and have the code compile? (Choose all that
 apply)
 
-{% highlight java %}
+```java
 package aquarium;
 public class Water {
   boolean salty = false;
 }
+```
 
+```java
 package aquarium.jellies;
 public class Water {
   boolea salty = true;
 }
+```
 
+```java
 package employee;
 // INSERT IMPORTS HERE
 public class WaterFiller {
   Water water;
 }
-{% endhighlight %}
+```
 
 1. `import aquarium.*;`
 2. `import aquarium.Water; import aquarium.jellies.*;`
@@ -111,5 +117,10 @@ public class WaterFiller {
 
 The answer is 123. Option 1 is correct because it imports all the classes in the
 `aquarium` package including `aquarium.Water`. Option 2 and 3 are correct
-because they import `Water` by classname. Since __importing by classname takes
-precedence over wildcards__, these compile.
+because they import `Water` by classname. This is called single-type-import
+declaration (JLS §7.5.1). Since importing by classname takes
+precedence over wildcards, these statements compile. More precisely, type-import-on-demand
+declarations are shadowed by the single-type-import declaration. Option 4
+defines two type-import-on-demand declarations, both contain type `Water`:
+`aquarium.Water` and `aquarium.jellies.Water`. This is ambiguous so it does not
+compile. Similar for option 5.
