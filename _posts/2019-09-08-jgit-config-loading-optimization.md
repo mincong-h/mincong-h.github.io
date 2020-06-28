@@ -2,7 +2,7 @@
 layout:            post
 title:             'JGit: Config Loading Optimization'
 date:              2019-09-08 15:52:08 +0200
-categories:        [tech]
+categories:        [git]
 tags:              [java, git, jgit]
 comments:          true
 excerpt:           >
