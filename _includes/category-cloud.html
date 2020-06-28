@@ -1,0 +1,24 @@
+{% comment %}
+Solution 1:
+Order by alphabetic order
+https://superdevresources.com/tag-cloud-jekyll/
+{% endcomment %}
+
+{% comment %}
+Solution 2:
+Order by related post count
+See: https://stackoverflow.com/questions/24700749/
+{% endcomment %}
+
+{% capture categories %}
+  {% for category in site.categories %}
+    {{ category[1].size | minus: 1000 }}#{{ category[0] }}#{{ category[1].size }}
+  {% endfor %}
+{% endcapture %}
+{% assign sortedcategories = categories | split:' ' | sort %}
+<ul>
+{% for category in sortedcategories %}
+    {% assign categoryitems = category | split: '#' %}
+    <li><a href="/categories/{{ categoryitems[1] }}">{{ categoryitems[1] }}</a> ({{ categoryitems[2] }} posts)</li>
+{% endfor %}
+</ul>
