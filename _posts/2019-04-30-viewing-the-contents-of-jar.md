@@ -2,7 +2,7 @@
 layout:            post
 title:             Viewing the Contents of JAR
 date:              2019-04-30 19:58:52 +0200
-categories:        [tech]
+categories:        [java-core]
 tags:              [java]
 comments:          true
 excerpt:           >

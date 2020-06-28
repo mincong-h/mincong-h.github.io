@@ -2,7 +2,7 @@
 layout:            post
 title:             JAX-RS Param Annotations
 date:              2018-11-27 22:22:23 +0100
-categories:        [tech]
+categories:        [java-rest]
 tags:              [http, java, jax-rs, rest]
 comments:          true
 excerpt:           >

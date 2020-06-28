@@ -2,7 +2,7 @@
 layout:      post
 title:       "Learning Checkstyle"
 date:        "2018-02-06 17:31:07 +0100"
-categories:  [java, maven, checkstyle, code-quality]
+categories:  [build]
 tags:        [java, maven, checkstyle, code-quality]
 excerpt:     >
   Checkstyle is a development tool to help programmers write Java code that

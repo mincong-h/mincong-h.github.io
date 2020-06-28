@@ -2,7 +2,7 @@
 layout:            post
 title:             "Git: Understanding Git Config"
 date:              2018-07-29 14:45:46 +0200
-categories:        [tech]
+categories:        [git]
 tags:              [git, study-note]
 comments:          true
 excerpt:           >

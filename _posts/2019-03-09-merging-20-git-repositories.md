@@ -2,7 +2,7 @@
 layout:            post
 title:             Merging 20 Git Repositories
 date:              2019-03-09 07:41:39 +0100
-categories:        [tech]
+categories:        [git]
 tags:              [git]
 comments:          true
 excerpt:           >

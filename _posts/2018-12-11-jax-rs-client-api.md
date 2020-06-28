@@ -2,7 +2,7 @@
 layout:            post
 title:             JAX-RS Client API
 date:              2018-12-11 20:11:39 +0100
-categories:        [tech]
+categories:        [java-rest]
 tags:              [http, java, jax-rs, rest]
 comments:          true
 excerpt:           >

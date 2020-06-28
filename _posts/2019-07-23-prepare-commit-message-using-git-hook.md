@@ -2,7 +2,7 @@
 layout:            post
 title:             Prepare Commit Message using Git Hook
 date:              2019-07-23 20:46:37 +0200
-categories:        [tech]
+categories:        [git]
 tags:              [git]
 comments:          true
 excerpt:           >

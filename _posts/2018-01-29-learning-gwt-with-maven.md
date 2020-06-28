@@ -2,7 +2,7 @@
 layout:      post
 title:       "Learning GWT with Maven"
 date:        "2018-01-29 21:23:26 +0100"
-categories:  [java, gwt, maven, javascript]
+categories:  [build]
 tags:        [java, gwt, maven, javascript]
 excerpt:     >
   Today, I want to share how to learn GWT 2.8 with Maven GWT Plugin. I wrote

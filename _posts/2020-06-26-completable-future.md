@@ -2,7 +2,7 @@
 layout:            post
 title:             Why Do We Need Completable Future?
 date:              2020-06-26 21:33:12 +0200
-categories:        [tech]
+categories:        [java-concurrency]
 tags:              [java, concurrency]
 comments:          true
 excerpt:           >

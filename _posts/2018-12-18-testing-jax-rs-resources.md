@@ -2,7 +2,7 @@
 layout:            post
 title:             Testing JAX-RS Resources
 date:              2018-12-18 20:49:46 +0100
-categories:        [tech]
+categories:        [java-rest, java-testing]
 tags:              [http, java, jax-rs, rest, testing]
 comments:          true
 excerpt:           >

@@ -2,7 +2,7 @@
 layout:            post
 title:             Maven Surefire Plugin Understanding
 date:              2018-09-16 16:29:22 +0800
-categories:        [tech, series]
+categories:        [build]
 tags:              [java, maven]
 comments:          true
 excerpt:           >

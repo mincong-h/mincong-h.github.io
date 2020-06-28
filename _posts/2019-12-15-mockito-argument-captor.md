@@ -2,7 +2,7 @@
 layout:            post
 title:             "Mockito: ArgumentCaptor"
 date:              2019-12-15 21:03:20 +0100
-categories:        [tech]
+categories:        [java-testing]
 tags:              [java, mockito, testing]
 comments:          true
 excerpt:           >

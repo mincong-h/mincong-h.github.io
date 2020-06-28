@@ -2,8 +2,8 @@
 layout:            post
 title:             'Akka: Testing Actor with TestActorRef'
 date:              2020-01-08 20:56:26 +0100
-categories:        [tech]
-tags:              [java, akka]
+categories:        [java-concurrency]
+tags:              [java, akka, concurrency]
 comments:          true
 excerpt:           >
     Unit testing Akka actor with "TestActorRef", which gives you access to

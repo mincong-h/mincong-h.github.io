@@ -2,7 +2,7 @@
 layout:            post
 title:             Merging Git Repositories
 date:              2018-11-06 20:02:35 +0100
-categories:        [tech]
+categories:        [git]
 tags:              [git, java, engineering, ci]
 comments:          true
 excerpt:           >

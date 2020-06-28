@@ -2,7 +2,7 @@
 layout:            post
 title:             "Elasticsearch: Scroll API in Java"
 date:              2020-01-19 13:32:29 +0100
-categories:        [tech]
+categories:        [elasticsearch]
 tags:              [java, elasticsearch]
 comments:          true
 excerpt:           >

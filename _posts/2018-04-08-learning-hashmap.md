@@ -3,7 +3,7 @@ layout:            post
 title:             "Learning HashMap"
 date:              "2018-04-08 09:42:26 +0200"
 last_modified_at:  "2019-04-14 19:34:46 +0200"
-categories:        [java, study-note]
+categories:        [java-core]
 tags:              [java, study-note]
 excerpt:           >
   Understand java.util.HashMap in Java 11: bitwise operations, hash computation

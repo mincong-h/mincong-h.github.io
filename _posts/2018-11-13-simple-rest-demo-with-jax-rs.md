@@ -2,7 +2,7 @@
 layout:            post
 title:             Simple REST Demo With JAX-RS
 date:              2018-11-13 21:08:54 +0100
-categories:        [tech]
+categories:        [java-rest]
 tags:              [jax-rs, java, rest]
 comments:          true
 excerpt:           >

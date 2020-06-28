@@ -2,7 +2,7 @@
 layout:            post
 title:             Vavr List vs Java List
 date:              2019-02-13 20:22:57 +0100
-categories:        [tech]
+categories:        [java-core]
 tags:              [java, vavr, functional-programming]
 comments:          true
 excerpt:           >

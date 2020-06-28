@@ -2,7 +2,7 @@
 layout:            post
 title:             VAVR HashMap vs Java HashMap
 date:              2019-01-15 21:17:34 +0100
-categories:        [tech]
+categories:        [java-core]
 tags:              [java, vavr, functional-programming]
 comments:          true
 excerpt:           >

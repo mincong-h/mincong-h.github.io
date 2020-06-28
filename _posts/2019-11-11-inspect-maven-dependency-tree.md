@@ -2,7 +2,7 @@
 layout:            post
 title:             Inspect Maven Dependency Tree
 date:              2019-11-11 14:13:13 +0100
-categories:        [tech]
+categories:        [build]
 tags:              [java, maven]
 comments:          true
 excerpt:           >

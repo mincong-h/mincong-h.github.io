@@ -2,7 +2,7 @@
 layout:            post
 title:             How CompletableFuture is tested in OpenJDK?
 date:              2020-05-10 17:04:39 +0200
-categories:        [tech]
+categories:        [java-concurrency, java-testing]
 tags:              [java, concurrency]
 comments:          true
 excerpt:           >

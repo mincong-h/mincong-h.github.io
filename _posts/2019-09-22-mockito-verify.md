@@ -2,7 +2,7 @@
 layout:            post
 title:             "Mockito: 4 Ways to Verify Interactions"
 date:              2019-09-22 16:37:15 +0200
-categories:        [tech]
+categories:        [java-testing]
 tags:              [java, mockito, testing]
 comments:          true
 excerpt:           >

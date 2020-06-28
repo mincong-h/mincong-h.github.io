@@ -2,7 +2,7 @@
 layout:      post
 title:       "OCP Java 8 Review Notes"
 date:        "2018-01-03 19:37:53 +0100"
-categories:  [tech]
+categories:  [java-core]
 tags:        [java, java8, ocp, study-note]
 excerpt:     >
   Here're some review notes before my Oracle Certified Professional Java SE 8

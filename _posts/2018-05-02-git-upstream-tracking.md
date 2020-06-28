@@ -3,7 +3,7 @@ layout:            post
 title:             "Git: Upstream Tracking Understanding"
 date:              2018-05-02 20:41:53 +0200
 last_modified_at:  2019-08-15 15:54:04 +0200
-categories:        [tech]
+categories:        [git]
 tags:              [git, java, jgit]
 comments:          true
 excerpt:           >

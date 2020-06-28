@@ -2,7 +2,7 @@
 layout:            post
 title:             Fixing Comparator
 date:              2019-07-18 20:47:15 +0200
-categories:        [tech]
+categories:        [java-core]
 tags:              [java, testing]
 comments:          true
 excerpt:           >

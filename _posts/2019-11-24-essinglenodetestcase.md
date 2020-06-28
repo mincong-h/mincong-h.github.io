@@ -2,7 +2,7 @@
 layout:            post
 title:             Testing Elasticsearch with ESSingleNodeTestCase
 date:              2019-11-24 10:01:48 +0100
-categories:        [tech]
+categories:        [elasticsearch]
 tags:              [java, elasticsearch, testing]
 comments:          true
 excerpt:           >

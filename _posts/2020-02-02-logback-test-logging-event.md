@@ -3,7 +3,7 @@ layout:            post
 title:             "Logback: Test Logging Event"
 date:              2020-02-02 15:46:36 +0100
 last_modified_at:  2020-06-01 22:20:25 +0200
-categories:        [tech]
+categories:        [java-testing]
 tags:              [java, logging, test]
 comments:          true
 excerpt:           >

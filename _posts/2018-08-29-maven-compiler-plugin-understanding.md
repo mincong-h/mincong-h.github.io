@@ -3,7 +3,7 @@ layout:            post
 title:             Maven Compiler Plugin Understanding
 date:              2018-08-29 19:08:27 +0200
 last_modified_at:  2018-09-05 23:58:28 +0200
-categories:        [tech, series]
+categories:        [build]
 tags:              [maven, java]
 comments:          true
 excerpt:           >

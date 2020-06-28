@@ -2,7 +2,7 @@
 layout:            post
 title:             Exception Handling in JAX-RS
 date:              2018-12-03 07:15:28 +0100
-categories:        [tech]
+categories:        [java-rest]
 tags:              [http, java, jax-rs, rest]
 comments:          true
 excerpt:           >

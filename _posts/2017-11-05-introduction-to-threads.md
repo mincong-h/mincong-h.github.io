@@ -2,7 +2,7 @@
 layout:      post
 title:       "Introduction to Threads"
 date:        "2017-11-05 13:47:29 +0100"
-categories:  [java, multithreading]
+categories:  [java-concurrency]
 tags:        [java, multithreading]
 excerpt:     >
   Today, I want to share with you an introduction to multithreading in Java. In

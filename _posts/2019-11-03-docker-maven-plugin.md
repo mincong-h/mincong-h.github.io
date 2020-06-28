@@ -2,7 +2,7 @@
 layout:            post
 title:             Docker Maven Plugin
 date:              2019-11-03 17:31:28 +0100
-categories:        [tech]
+categories:        [build]
 tags:              [java, docker, maven]
 comments:          true
 excerpt:           >

@@ -2,7 +2,7 @@
 layout:            post
 title:             Measure Coverage with Coverage.py
 date:              2019-09-02 21:09:21 +0200
-categories:        [tech]
+categories:        [python]
 tags:              [python, testing, code-quality]
 comments:          true
 excerpt:           >

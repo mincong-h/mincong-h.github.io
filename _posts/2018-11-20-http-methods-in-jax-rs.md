@@ -2,7 +2,7 @@
 layout:            post
 title:             HTTP Methods in JAX-RS
 date:              2018-11-20 21:04:14 +0100
-categories:        [tech]
+categories:        [java-rest]
 tags:              [http, java, jax-rs, rest]
 comments:          true
 excerpt:           >

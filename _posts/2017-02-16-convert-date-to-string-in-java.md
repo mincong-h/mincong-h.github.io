@@ -3,7 +3,7 @@ layout:            post
 title:             Convert Date to ISO 8601 String in Java
 date:              2017-02-16 20:00:00 +0100
 last_modified_at:  2018-07-22 13:45:28 +0200
-categories:        [tech]
+categories:        [java-core]
 tags:              [java, date, iso-8601]
 comments:          true
 excerpt:           >
