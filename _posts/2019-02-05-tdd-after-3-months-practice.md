@@ -2,7 +2,7 @@
 layout:            post
 title:             "TDD: After 3 Months' Practice"
 date:              2019-02-05 20:57:42 +0800
-categories:        [tech]
+categories:        [java-testing]
 tags:              [testing, java, maven]
 comments:          true
 excerpt:           >

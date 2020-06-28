@@ -2,7 +2,7 @@
 layout:            post
 title:             "ExecutorService.invokeAll()"
 date:              2019-01-29 20:22:31 +0100
-categories:        [tech]
+categories:        [java-concurrency]
 tags:              [java, concurrency]
 comments:          true
 excerpt:           >

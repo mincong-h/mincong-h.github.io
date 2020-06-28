@@ -2,7 +2,7 @@
 layout:            post
 title:             "Design Pattern: Static Factory Method"
 date:              2019-02-19 20:25:15 +0100
-categories:        [tech]
+categories:        [java-core]
 tags:              [java, design-pattern, selenium, json, jackson, xml, testing]
 comments:          true
 excerpt:           >
