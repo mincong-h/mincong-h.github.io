@@ -2,7 +2,7 @@
 layout:            post
 title:             Unzipping File in Java
 date:              2019-10-27 22:07:58 +0100
-categories:        [tech]
+categories:        [java-core]
 tags:              [java]
 comments:          true
 excerpt:           >
