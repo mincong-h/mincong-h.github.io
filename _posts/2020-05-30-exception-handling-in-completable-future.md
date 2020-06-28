@@ -3,7 +3,7 @@ layout:            post
 title:             "3 Ways to Handle Exception In Completable Future"
 date:              2020-05-30 07:14:44 +0200
 last_modified_at:  2020-05-31 18:57:21 +0200
-categories:        [java-core]
+categories:        [java-concurrency]
 tags:              [java, concurrency]
 comments:          true
 excerpt:           >
