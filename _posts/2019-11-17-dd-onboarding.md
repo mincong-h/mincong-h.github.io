@@ -2,7 +2,7 @@
 layout:            post
 title:             Datadog Onboarding Recap
 date:              2019-11-17 09:01:50 +0100
-categories:        [tech]
+categories:        [review]
 tags:              [review]
 comments:          true
 excerpt:           >

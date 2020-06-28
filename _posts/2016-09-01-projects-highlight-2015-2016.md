@@ -2,7 +2,7 @@
 layout:         post
 title:          Projects Highlight 2015-2016
 date:           2016-09-01 07:00:00 +0100
-categories:     [tech]
+categories:     [review]
 tags:           [project]
 comments:       true
 excerpt:        >
