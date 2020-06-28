@@ -2,7 +2,7 @@
 layout:            post
 title:             Testing with GwtMockito
 date:              2019-08-26 22:16:23 +0200
-categories:        [tech]
+categories:        [java-core]
 tags:              [testing, mockito, gwt]
 comments:          true
 excerpt:           >
