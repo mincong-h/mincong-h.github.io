@@ -2,7 +2,7 @@
 layout: post
 title:  "Install Apache Lucene"
 date:   2016-04-10 22:47:00 +0100
-categories: [apache-lucene]
+categories: [tech]
 tags:       [apache-lucene]
 excerpt:    >
   Apache Lucene is a high-performance, full-featured text search engine library

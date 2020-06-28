@@ -2,7 +2,7 @@
 layout:      post
 title:       "Testing Haskell"
 date:        "2018-04-28 07:19:14 +0200"
-categories:  [haskell, testing, ci, travis-ci]
+categories:  [tech]
 tags:        [haskell, testing, ci, travis-ci]
 excerpt:     >
   This post explains how to configure your Haskell project for testing, using

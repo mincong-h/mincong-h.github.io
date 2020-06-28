@@ -2,7 +2,7 @@
 layout: post
 title:  "Release unused space using Shrink"
 date:   2016-03-21 09:46:00 +0100
-categories: [sql-server]
+categories: [tech]
 tags:       [sql-server]
 excerpt:    >
   Database's size can be optimized using Shrink command. It helps to release

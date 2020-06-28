@@ -2,7 +2,7 @@
 layout: post
 title:  "Review of my first project"
 date:   2016-04-07 08:10:00 +0100
-categories: [project]
+categories: [tech]
 tags:       [project]
 excerpt:    >
   After 8 weeks intensive works in nights and weekends, we've finally released

@@ -2,7 +2,7 @@
 layout:      post
 title:       "Web App Security - Review 1"
 date:        "2017-07-20 14:07:30 +0200"
-categories:  [security, web]
+categories:  [tech]
 tags:        [security, web]
 excerpt:     >
   My review note about book "Web Application Security: A Beginner's Guide",

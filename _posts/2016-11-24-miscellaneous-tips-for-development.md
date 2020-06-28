@@ -2,7 +2,7 @@
 layout:        post
 title:         "Miscellaneous Tips for Development"
 date:          2016-11-24 21:46:00 +0100
-categories:    [git, maven, linux]
+categories:    [tech]
 tags:          [git, maven, linux]
 excerpt:       >
   Miscellaneous tips for development in Git and Maven.

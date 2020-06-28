@@ -2,7 +2,7 @@
 layout:        post
 title:         "New repo: Java Examples"
 date:          2016-08-09 22:15:00 +0100
-categories:    [java]
+categories:    [tech]
 tags:          [java]
 excerpt:       >
   I’ve been learning different Java frameworks since my last intern in Beijing.

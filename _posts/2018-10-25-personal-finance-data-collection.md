@@ -2,7 +2,7 @@
 layout:            post
 title:             "Personal Finance: Data Collection"
 date:              2018-10-25 19:58:38 +0200
-categories:        [tech, finance]
+categories:        [tech]
 tags:              [personal-finance, python, data-processing]
 comments:          true
 excerpt:           >

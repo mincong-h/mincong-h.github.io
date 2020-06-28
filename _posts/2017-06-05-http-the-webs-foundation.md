@@ -2,7 +2,7 @@
 layout:      post
 title:       "HTTP: The Web's Foundation"
 date:        "2017-06-05 09:09:01 +0200"
-categories:  [http, web]
+categories:  [tech]
 tags:        [http, web]
 excerpt:     >
   My reading note about book "HTTP - The Definite Guide", part I: The Web's
