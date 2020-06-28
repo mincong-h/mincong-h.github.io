@@ -2,7 +2,7 @@
 layout:            post
 title:             Introduction of Immutables
 date:              2020-04-13 08:54:44 +0200
-categories:        [tech]
+categories:        [java-core]
 tags:              [java, immutables, jackson]
 comments:          true
 excerpt:           >
