@@ -2,7 +2,7 @@
 layout:            post
 title:             Specifying Maven Local Repository From CLI
 date:              2019-07-16 20:46:48 +0200
-categories:        [tech]
+categories:        [build]
 tags:              [java, maven]
 comments:          true
 excerpt:           >

@@ -2,7 +2,7 @@
 layout:            post
 title:             Jackson XML Mapper
 date:              2019-03-19 20:47:13 +0100
-categories:        [tech]
+categories:        [java-serialization]
 tags:              [java, xml, jackson]
 comments:          true
 excerpt:           >

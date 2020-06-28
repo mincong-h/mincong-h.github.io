@@ -2,7 +2,7 @@
 layout:            post
 title:             Checkstyle CustomImportOrder
 date:              2019-08-20 20:27:05 +0200
-categories:        [tech]
+categories:        [build]
 tags:              [java, checkstyle, code-quality]
 comments:          true
 excerpt:           >
