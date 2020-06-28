@@ -3,7 +3,7 @@ layout:            post
 title:             "Maven: Deploy Artifacts to Nexus"
 date:              2018-08-04 15:02:00 +0200
 last_modified_at:  2018-08-11 23:36:28 +0200
-categories:        [tech]
+categories:        [build]
 tags:              [java, maven]
 comments:          true
 excerpt:           >

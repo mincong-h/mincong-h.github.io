@@ -2,7 +2,7 @@
 layout:      post
 title:       "Python 3 Cheat sheet"
 date:        "2018-07-07 09:57:16 +0200"
-categories:  [python, study-note]
+categories:  [python]
 tags:        [python, study-note]
 excerpt:     >
   I occasionally write Python scripts, but I always forget those very basic

@@ -2,7 +2,7 @@
 layout:            post
 title:             Customize Git Prompt in MinGW
 date:              2018-11-11 09:30:48 +0100
-categories:        [tech]
+categories:        [git]
 tags:              [git, windows, bash]
 comments:          true
 excerpt:           >

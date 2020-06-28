@@ -3,7 +3,7 @@ layout:            post
 title:             "JGit: Protect Branches on Git Server"
 date:              2018-07-30 21:06:35 +0200
 last_modified_at:  2018-07-31 09:58:33 +0200
-categories:        [tech]
+categories:        [git]
 tags:              [java, git, jgit]
 comments:          true
 excerpt:           >
