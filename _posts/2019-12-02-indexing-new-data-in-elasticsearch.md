@@ -2,7 +2,7 @@
 layout:            post
 title:             Indexing New Data in Elasticsearch
 date:              2019-12-02 21:17:48 +0100
-categories:        [tech]
+categories:        [elasticsearch]
 tags:              [java, elasticsearch]
 comments:          true
 excerpt:           >
