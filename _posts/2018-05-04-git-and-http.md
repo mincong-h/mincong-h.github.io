@@ -3,7 +3,7 @@ layout:            post
 title:             "Git: Communication over HTTP"
 date:              2018-05-04 17:31:59 +0200
 last_modified_at:  2018-08-12 10:34:35 +0200
-categories:        [tech]
+categories:        [git]
 tags:              [git, http]
 comments:          true
 excerpt:           >

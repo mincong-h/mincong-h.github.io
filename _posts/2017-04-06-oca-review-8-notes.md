@@ -2,7 +2,7 @@
 layout:      post
 title:       "OCA Review 8 - Notes"
 date:        "2017-04-06 21:01:34 +0200"
-categories:  [tech]
+categories:  [java-core]
 tags:        [java, oca]
 excerpt:     >
   Today, I want to write blog post to summarize all the important review notes

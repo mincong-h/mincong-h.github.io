@@ -2,7 +2,7 @@
 layout:      post
 title:       "OCA Review 7 - Online Test Chapter 5"
 date:        "2017-03-21 22:34:47 +0100"
-categories:  [tech]
+categories:  [java-core]
 tags:        [java, oca]
 comments:    true
 ---

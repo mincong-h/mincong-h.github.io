@@ -2,7 +2,7 @@
 layout:      post
 title:       "Java 9 Migration"
 date:        "2018-02-28 20:18:23 +0100"
-categories:  [java, java9, maven]
+categories:  [java-core, build]
 tags:        [java, java9, maven]
 excerpt:     >
   Java 9 migration for Maven project. It consists Java 9 installation, IDE

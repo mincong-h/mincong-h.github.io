@@ -2,7 +2,7 @@
 layout:      post
 title:       "Maven Plugins Understanding"
 date:        "2017-11-07 20:43:06 +0100"
-categories:  [maven]
+categories:  [build]
 tags:        [maven]
 excerpt:     >
   Some interesting facts that I discovered about Maven plugins.
