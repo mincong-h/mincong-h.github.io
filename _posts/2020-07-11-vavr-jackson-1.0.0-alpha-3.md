@@ -91,7 +91,7 @@ by the user. To support this, we implemented two Jackson interfaces,
 respectively for VAVR serializers and VAVR deserializers:
 
 - `com.fasterxml.jackson.databind.ser.ContextualSerializer`
-- `com.fasterxml.jackson.databing.deser.ContextualDeserializer`
+- `com.fasterxml.jackson.databind.deser.ContextualDeserializer`
 
 Now, all the serializers and deserializers of VAVR Jackson supports
 contextualization: ArraySerializer, LazySerializer, MapSerializer,
