@@ -28,7 +28,7 @@ layout: default
               <a class="header" href="{{ post.id }}">{{ post.title }}</a>
               <p class="body">{{ post.excerpt }}</p>
               <p class="footer">
-                {{ post.last_modified_at | date_to_long_string }} (updated) | {{ post.tags | join: ', ' }}
+                {{ post.date | date_to_long_string }} (updated) | {{ post.tags | join: ', ' }}
               </p>
             </td>
           </tr>
