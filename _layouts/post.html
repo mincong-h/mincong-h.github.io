@@ -49,16 +49,13 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">
       {% if page.last_modified_at %}
-        <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">
-          {{ page.last_modified_at | date: "%b %-d, %Y" }}
-        </time> (modified)
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+        (edited: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%Y-%m-%d" }}</time>)
       {% else %}
-        <time datetime="{{ page.date | date_to_xmlschema }}">
-          {{ page.date | date: "%b %-d, %Y" }}
-        </time>
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
       {% endif %}
-      <br>
-      Tags:
+
+      | Tags:
       <span>
         {% for tag in page.tags %}
           <a href="/tags/{{ tag }}">
