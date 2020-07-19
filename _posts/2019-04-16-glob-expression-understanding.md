@@ -2,13 +2,14 @@
 layout:            post
 title:             Glob Expression Understanding
 date:              2019-04-16 22:21:18 +0200
+last_modified_at:  2020-07-19 11:45:26 +0200
 categories:        [java-core]
 tags:              [java, glob]
 comments:          true
 excerpt:           >
     Glob expression syntax, and its usage in Java through Path Matcher and
     Directory Stream.
-image:             /assets/bg-coffee-2306471_1280.jpg
+image:             /assets/bg-markus-winkler-afW1hht0NSs-unsplash.jpg
 ---
 
 ## Overview
@@ -25,6 +26,8 @@ After reading this article, you will understand:
 - Glob in Path Matcher
 - Glob in Directory Stream
 
+Now, let's get started!
+
 ## Basic Glob Syntax
 
 Wildcard | Description
@@ -37,7 +40,9 @@ Wildcard | Description
 In all cases, the path separator (`/` on Unix or `\` on Windows) will never be
 matched. Now, let's take a look on some examples:
 
-__The `*` character__ matches ≥ 0 characters of a name component without crossing
+### The \* Character
+
+The `*` character matches ≥ 0 characters of a name component without crossing
 directory boundaries. For example, given the following expression:
 
 ```glob
@@ -46,12 +51,16 @@ directory boundaries. For example, given the following expression:
 
 The matched / unmatched items are:
 
+- ~~`/bar.txt`~~
+- ~~`/bar.md`~~
 - ~~`/foo/bar.txt`~~
 - ~~`/foo/bar.md`~~
 - `bar.txt`
-- `bar.md`
+- ~~`bar.md`~~
 
-__The `**` characters__ matches ≥ 0 characters crossing directory boundaries. For
+### The \*\* Characters
+
+The `**` characters matches ≥ 0 characters crossing directory boundaries. For
 example, given the following expression:
 
 ```glob
@@ -60,12 +69,16 @@ example, given the following expression:
 
 The matched / unmatched items are:
 
+- `/bar.txt`
+- ~~`/bar.md`~~
 - `/foo/bar.txt`
 - ~~`/foo/bar.md`~~
 - `bar.txt`
-- `bar.md`
+- ~~`bar.md`~~
 
-**The `?` character** matches exactly one character of a name component. For
+### The ? Character
+
+The `?` character matches exactly one character of a name component. For
 example, given the following expression:
 
 ```glob
@@ -81,7 +94,9 @@ The matched / unmatched items are:
 - ~~`.txt`~~
 - ~~`foo.txt`~~
 
-**The `[ ]` characters** are a _bracket expression_ that match a single character of
+### The \[\] Characters
+
+The `[ ]` characters are a _bracket expression_ that match a single character of
 a name component out of a set of characters. For example, `[abc]` matches "a",
 "b", or "c". The hyphen (-) may be used to specify a range so `[a-z]` specifies
 a range that matches from "a" to "z" (inclusive). These forms can be mixed so
@@ -129,6 +144,23 @@ Within a bracket expression the `*`, `?` and `\` characters match themselves.
 The (`-`) character matches itself if it is the first character within the
 brackets, or the first character after the `!` if negating.
 
+## Wildcard Expressions
+
+After all these examples, we have a basic understanding of how different glob
+syntax works individually. But it's still not clear how their combination works.
+In particular, the wildcard expressions looks very similiar and confusing. Here
+is a table of comparison to clarify the usage of wildcard expressions `*.txt`,
+`**.txt`, `**/*.txt`, and `/**/*.txt`. Character "M" means matched and "-"
+means unmatched:
+
+Path               | \*.txt | \*\*.txt | \*\*/\*.txt | /\*\*/\*.txt
+:----------------- | :----: | :------: | :---------: | :----------:
+`/bar.txt`         | -      | M        | M           | -
+`/foo/bar.txt`     | -      | M        | M           | M
+`/foo/bar/baz.txt` | -      | M        | M           | M
+`foo/bar.txt`      | -      | M        | M           | -
+`bar.txt`          | M      | M        | -           | -
+
 ## Glob in Path Matcher
 
 In Java, you can match the path with glob expression via
@@ -171,10 +203,29 @@ target directory, without going through the child directories recursively.
 - ~~`sub/a.txt`~~
 - ~~`sub/b.txt`~~
 
+## Going Further
+
+How to go further from here?
+
+- To better understand "glob" patterns in computer programming in general, read Wikipedia
+  page "glob (programming)".<br>
+  <https://en.wikipedia.org/wiki/Glob_%28programming%29>
+- To better understand the rules defined by `java.nio.file.PathMatcher` and the meaning of
+  different characters, read the Javadoc of method
+  `FileSystem#getPathMatcher(String syntaxAndPattern)`.<br>
+  <https://docs.oracle.com/javase/8/docs/api/java/nio/file/FileSystem.html#getPathMatcher-java.lang.String->
+
+You can also find the source code of this article on
+[GitHub](https://github.com/mincong-h/java-examples/blob/blog/glob/basic/src/test/java/io/mincongh/io/GlobExpressionTest.java).
+
 ## Conclusion
 
-In this article, we learnt the basic syntax of glob expression with examples,
-how to use glob via `PathMatcher`, and how to use glob via `DirectoryStream`.
+In this article, we learnt the basic syntax of glob expression with examples, we
+compared different wildcard expressions, we saw how to use glob via
+`PathMatcher`, and how to use glob via `DirectoryStream`.
+Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
+on [Twitter](https://twitter.com/mincong_h) or
+[GitHub](https://github.com/mincong-h/).
 Hope you enjoy this article, see you the next time!
 
 ## References
