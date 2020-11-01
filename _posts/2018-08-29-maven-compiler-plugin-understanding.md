@@ -39,16 +39,16 @@ which Java programming language version is used to compile the source code, and
 option `target` indicates which JVM version will the generated class files be
 targeted. You can declare them as Maven properties:
 
-{% highlight xml %}
+```xml
 <properties>
   <maven.compiler.source>11</maven.compiler.source>
   <maven.compiler.target>11</maven.compiler.target>
 </properties>
-{% endhighlight %}
+```
 
 Another way is to configure the plugin directly:
 
-{% highlight xml %}
+```xml
 <plugins>
   <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -60,7 +60,7 @@ Another way is to configure the plugin directly:
     </configuration>
   </plugin>
 </plugins>
-{% endhighlight %}
+```
 
 In most cases, the values of both options are the same. Here, we're using Java
 11 to compile our source code (`-source 11`) and we're targeting to JVM 11
@@ -96,13 +96,13 @@ prior to 3.8.0, you might have the following error:
 
 Changing the existing version to 3.8.0 should work.
 
-{% highlight xml %}
+```xml
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
   <artifactId>maven-compiler-plugin</artifactId>
   <version>3.8.0</version>
 </plugin>
-{% endhighlight %}
+```
 
 A full demo written in Java 11 is available in my GitHub:
 [mincong-h/maven-compiler-plugin-demo][3].
@@ -117,7 +117,7 @@ the parent POM
 such as `properties` section <sup>(2.1)</sup> or `plugins` section
 <sup>(2.2)</sup>:
 
-{% highlight xml %}
+```xml
 <properties>
   <!-- 2.1 configure plugin -->
 </properties>
@@ -142,7 +142,7 @@ such as `properties` section <sup>(2.1)</sup> or `plugins` section
     </plugins>
   </pluginManagement>
 </build>
-{% endhighlight %}
+```
 
 Now, let's talk about some advanced features.
 
@@ -153,37 +153,37 @@ the Maven properties:
 
 pom.xml (Java 11):
 
-{% highlight xml %}
+```xml
 <properties>
   <maven.compiler.source>11</maven.compiler.source>
   <maven.compiler.target>11</maven.compiler.target>
 </properties>
-{% endhighlight %}
+```
 
 shop-api/pom.xml (Java 11):
 
-{% highlight xml %}
+```xml
 <properties>
   <!-- no changes -->
 </properties>
-{% endhighlight %}
+```
 
 shop-core/pom.xml (Java 11):
 
-{% highlight xml %}
+```xml
 <properties>
   <!-- no changes -->
 </properties>
-{% endhighlight %}
+```
 
 shop-legacy/pom.xml (Java 8):
 
-{% highlight xml %}
+```xml
 <properties>
   <maven.compiler.source>8</maven.compiler.source>
   <maven.compiler.target>8</maven.compiler.target>
 </properties>
-{% endhighlight %}
+```
 
 ## Advanced: Use Annotation Processor
 
@@ -192,7 +192,8 @@ compiler plugin has a configuration for you, called `annotationProcessorPath`.
 It defines classpath elements to supply as annotation processor path. If
 specified, the compiler will detect annotation processors only in those
 classpath elements.
-{% highlight xml %}
+
+```xml
 <plugin>
   <artifactId>maven-compiler-plugin</artifactId>
   <version>3.8.0</version>
@@ -206,7 +207,7 @@ classpath elements.
     </annotationProcessorPaths>
   </configuration>
 </plugin>
-{% endhighlight %}
+```
 
 The main benefit of using `annotationProcessorPath` is that the dependencies
 declared here is _not_ included in your dependency tree. Therefore, it won't be
