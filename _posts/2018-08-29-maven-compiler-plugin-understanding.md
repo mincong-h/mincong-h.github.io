@@ -2,7 +2,7 @@
 layout:            post
 title:             Maven Compiler Plugin Understanding
 date:              2018-08-29 19:08:27 +0200
-last_modified_at:  2018-09-05 23:58:28 +0200
+last_modified_at:  2020-11-01 16:45:48 +0100
 categories:        [build]
 tags:              [maven, java]
 comments:          true
@@ -12,12 +12,23 @@ image:             /assets/bg-tools-1209764_1280.jpg
 series:            Maven Plugins
 ---
 
+## Introduction
+
+This article shows you how to use Maven Compiler Plugin for your Maven project.
 [Maven Compiler Plugin][1] might be the most important plugin in Maven. It is
 used to compile the sources of your project, which transform Java files
-(\*.java) into class files (\*.class).  This plugin has two goals:
-**compile** and **testCompile**. Both are bound to the Maven Lifecycle and are
+(`*.java`) into class files (`*.class`).  This plugin has two goals:
+"compile" and "testCompile". Both are bound to the Maven Lifecycle and are
 automatically executed: during `compile` phrase and `test-compile` phrase
 respectively.
+
+After reading this article, you will understand:
+
+* How to configure Maven Compiler Plugin in POM?
+* How to choose the right Java version?
+* The Java 11 support in Maven Compiler Plugin
+* How to configure Maven Compiler Plugin for a multi-module project?
+* How to add annotation processor to the compiler?
 
 ## How to Use Maven Compiler Plugin?
 
@@ -28,16 +39,16 @@ which Java programming language version is used to compile the source code, and
 option `target` indicates which JVM version will the generated class files be
 targeted. You can declare them as Maven properties:
 
-{% highlight xml %}
+```xml
 <properties>
   <maven.compiler.source>11</maven.compiler.source>
   <maven.compiler.target>11</maven.compiler.target>
 </properties>
-{% endhighlight %}
+```
 
 Another way is to configure the plugin directly:
 
-{% highlight xml %}
+```xml
 <plugins>
   <plugin>
     <groupId>org.apache.maven.plugins</groupId>
@@ -49,7 +60,7 @@ Another way is to configure the plugin directly:
     </configuration>
   </plugin>
 </plugins>
-{% endhighlight %}
+```
 
 In most cases, the values of both options are the same. Here, we're using Java
 11 to compile our source code (`-source 11`) and we're targeting to JVM 11
@@ -57,22 +68,41 @@ In most cases, the values of both options are the same. Here, we're using Java
 Now, if you do `mvn compile`, `mvn install` or any other command which invokes
 the phrase _compile_, the Maven Compiler Plugin will be triggered correctly.
 
+If you are using IntelliJ IDEA, the first approach
+`maven.compiler.{source,target}` should be a better idea. It makes IntelliJ
+understand that we really want this Java version everywhere. Without it,
+IntelliJ uses Java 5 for some modules after Maven re-import.
+
 ## Choose Java Version
 
-Here's a table for valid release versions for Java Compiler (`javac`) from
-[Oracle Documentation][6]:
+Here's a table for valid release versions for Java Compiler (`javac`):
 
-Release | Java Version
-:---: | :---:
-1.6 | Java SE 6
-6 | Java SE 6
-1.7 | Java SE 7
-7 | Java SE 7
-1.8 | Java SE 8
-8 | Java SE 8
-9 | Java SE 9
-10 | Java SE 10
-11 | Java SE 11
+Java Version | Release
+:----------: | :---:
+Java SE 6    | 1.6
+Java SE 6    | 6
+Java SE 7    | 1.7
+Java SE 7    | 7
+Java SE 8    | 1.8
+Java SE 8    | 8
+Java SE 9    | 9
+Java SE 10   | 10
+Java SE 11   | 11
+Java SE 12   | 12
+Java SE 13   | 13
+Java SE 14   | 14
+
+You can find them in the help of the command line `javac` under the description
+of option `--source`:
+
+```
+$ javac --help | grep '\-\-source' -A 2
+  --source <release>, -source <release>
+        Provide source compatibility with the specified Java SE release. Supported releases: 7, 8, 9, 10, 11, 12, 13, 14
+  --source-path <path>, -sourcepath <path>
+        Specify where to find input source files
+  --system <jdk>|none          Override location of system modules
+```
 
 ## Java 11 Support
 
@@ -85,18 +115,18 @@ prior to 3.8.0, you might have the following error:
 
 Changing the existing version to 3.8.0 should work.
 
-{% highlight xml %}
+```xml
 <plugin>
   <groupId>org.apache.maven.plugins</groupId>
   <artifactId>maven-compiler-plugin</artifactId>
   <version>3.8.0</version>
 </plugin>
-{% endhighlight %}
+```
 
 A full demo written in Java 11 is available in my GitHub:
 [mincong-h/maven-compiler-plugin-demo][3].
 
-## PluginManagement
+## Plugin Management
 
 If you're using multiple Maven modules in your Maven project, you might want to
 manage your plugin differently—split the plugin version and plugin
@@ -106,7 +136,7 @@ the parent POM
 such as `properties` section <sup>(2.1)</sup> or `plugins` section
 <sup>(2.2)</sup>:
 
-{% highlight xml %}
+```xml
 <properties>
   <!-- 2.1 configure plugin -->
 </properties>
@@ -131,48 +161,9 @@ such as `properties` section <sup>(2.1)</sup> or `plugins` section
     </plugins>
   </pluginManagement>
 </build>
-{% endhighlight %}
+```
 
 Now, let's talk about some advanced features.
-
-## Advanced: Use 2 Java Versions on Maven Modules
-
-You can target two different versions of Java in Maven modules, just by changing
-the Maven properties:
-
-pom.xml (Java 11):
-
-{% highlight xml %}
-<properties>
-  <maven.compiler.source>11</maven.compiler.source>
-  <maven.compiler.target>11</maven.compiler.target>
-</properties>
-{% endhighlight %}
-
-shop-api/pom.xml (Java 11):
-
-{% highlight xml %}
-<properties>
-  <!-- no changes -->
-</properties>
-{% endhighlight %}
-
-shop-core/pom.xml (Java 11):
-
-{% highlight xml %}
-<properties>
-  <!-- no changes -->
-</properties>
-{% endhighlight %}
-
-shop-legacy/pom.xml (Java 8):
-
-{% highlight xml %}
-<properties>
-  <maven.compiler.source>8</maven.compiler.source>
-  <maven.compiler.target>8</maven.compiler.target>
-</properties>
-{% endhighlight %}
 
 ## Advanced: Use Annotation Processor
 
@@ -181,7 +172,8 @@ compiler plugin has a configuration for you, called `annotationProcessorPath`.
 It defines classpath elements to supply as annotation processor path. If
 specified, the compiler will detect annotation processors only in those
 classpath elements.
-{% highlight xml %}
+
+```xml
 <plugin>
   <artifactId>maven-compiler-plugin</artifactId>
   <version>3.8.0</version>
@@ -195,7 +187,7 @@ classpath elements.
     </annotationProcessorPaths>
   </configuration>
 </plugin>
-{% endhighlight %}
+```
 
 The main benefit of using `annotationProcessorPath` is that the dependencies
 declared here is _not_ included in your dependency tree. Therefore, it won't be
@@ -203,15 +195,25 @@ used by your clients transitively by mistake. A typical usage is when you use
 Google's AutoValue Processor. If you don't want Google AutoValue is, check my
 blog: [Why You Should Use Auto Value in Java?][7]
 
+## Going Further
+
+How to go further from here?
+
+- To learn more about Maven Compiler Plugin, visit official documentation page
+  <https://maven.apache.org/plugins/maven-compiler-plugin/>
+- To toubleshoot Maven issues in IntelliJ, take a look at IntelliJ IDEA support
+  page "Troubleshooting common Maven issue". <https://www.jetbrains.com/help/idea/troubleshooting-common-maven-issues.html>
+
+The source code of this article is available on GitHub in project
+`mincong-h/maven-demo`
+([link](https://github.com/mincong-h/maven-demo/tree/blog-maven-compiler-plugin/maven-compiler-plugin)).
+
 ## Conclusion
 
 In this post, we've learnt how to use Maven Compiler plugin: declaration in Maven
 POM, the _source_ and _target_ options, valid Java versions, Java 11 support, and locations for
 configuration. We've also seen some advanced configuration for this plugins.
 Hope you enjoy this one, see you next time!
-
-The source code is available on GitHub:
-[mincong-h/maven-compiler-plugin-demo][3].
 
 ## References
 
