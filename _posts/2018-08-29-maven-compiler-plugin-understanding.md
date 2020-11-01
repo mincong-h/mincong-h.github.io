@@ -68,6 +68,11 @@ In most cases, the values of both options are the same. Here, we're using Java
 Now, if you do `mvn compile`, `mvn install` or any other command which invokes
 the phrase _compile_, the Maven Compiler Plugin will be triggered correctly.
 
+If you are using IntelliJ IDEA, the first approach
+`maven.compiler.{source,target}` should be a better idea. It makes IntelliJ
+understand that we really want this Java version everywhere. Without it,
+IntelliJ uses Java 5 for some modules after Maven re-import.
+
 ## Choose Java Version
 
 Here's a table for valid release versions for Java Compiler (`javac`) from
@@ -214,6 +219,13 @@ declared here is _not_ included in your dependency tree. Therefore, it won't be
 used by your clients transitively by mistake. A typical usage is when you use
 Google's AutoValue Processor. If you don't want Google AutoValue is, check my
 blog: [Why You Should Use Auto Value in Java?][7]
+
+## Going Further
+
+How to go further from here?
+
+- To toubleshoot Maven issues in IntelliJ, take a look at IntelliJ IDEA support
+  page "Troubleshooting common Maven issue". <https://www.jetbrains.com/help/idea/troubleshooting-common-maven-issues.html>
 
 ## Conclusion
 
