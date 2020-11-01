@@ -199,8 +199,14 @@ blog: [Why You Should Use Auto Value in Java?][7]
 
 How to go further from here?
 
+- To learn more about Maven Compiler Plugin, visit official documentation page
+  <https://maven.apache.org/plugins/maven-compiler-plugin/>
 - To toubleshoot Maven issues in IntelliJ, take a look at IntelliJ IDEA support
   page "Troubleshooting common Maven issue". <https://www.jetbrains.com/help/idea/troubleshooting-common-maven-issues.html>
+
+The source code of this article is available on GitHub in project
+`mincong-h/maven-demo`
+([link](https://github.com/mincong-h/maven-demo/tree/blog-maven-compiler-plugin/maven-compiler-plugin)).
 
 ## Conclusion
 
@@ -208,9 +214,6 @@ In this post, we've learnt how to use Maven Compiler plugin: declaration in Mave
 POM, the _source_ and _target_ options, valid Java versions, Java 11 support, and locations for
 configuration. We've also seen some advanced configuration for this plugins.
 Hope you enjoy this one, see you next time!
-
-The source code is available on GitHub:
-[mincong-h/maven-compiler-plugin-demo][3].
 
 ## References
 
