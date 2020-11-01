@@ -165,45 +165,6 @@ such as `properties` section <sup>(2.1)</sup> or `plugins` section
 
 Now, let's talk about some advanced features.
 
-## Advanced: Use 2 Java Versions on Maven Modules
-
-You can target two different versions of Java in Maven modules, just by changing
-the Maven properties:
-
-pom.xml (Java 11):
-
-```xml
-<properties>
-  <maven.compiler.source>11</maven.compiler.source>
-  <maven.compiler.target>11</maven.compiler.target>
-</properties>
-```
-
-shop-api/pom.xml (Java 11):
-
-```xml
-<properties>
-  <!-- no changes -->
-</properties>
-```
-
-shop-core/pom.xml (Java 11):
-
-```xml
-<properties>
-  <!-- no changes -->
-</properties>
-```
-
-shop-legacy/pom.xml (Java 8):
-
-```xml
-<properties>
-  <maven.compiler.source>8</maven.compiler.source>
-  <maven.compiler.target>8</maven.compiler.target>
-</properties>
-```
-
 ## Advanced: Use Annotation Processor
 
 If your Maven project contains code generation using annotation processor, Maven
