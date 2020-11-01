@@ -12,12 +12,23 @@ image:             /assets/bg-tools-1209764_1280.jpg
 series:            Maven Plugins
 ---
 
+## Introduction
+
+This article shows you how to use Maven Compiler Plugin for your Maven project.
 [Maven Compiler Plugin][1] might be the most important plugin in Maven. It is
 used to compile the sources of your project, which transform Java files
-(\*.java) into class files (\*.class).  This plugin has two goals:
-**compile** and **testCompile**. Both are bound to the Maven Lifecycle and are
+(`*.java`) into class files (`*.class`).  This plugin has two goals:
+"compile" and "testCompile". Both are bound to the Maven Lifecycle and are
 automatically executed: during `compile` phrase and `test-compile` phrase
 respectively.
+
+After reading this article, you will understand:
+
+* How to configure Maven Compiler Plugin in POM?
+* How to choose the right Java version?
+* The Java 11 support in Maven Compiler Plugin
+* How to configure Maven Compiler Plugin for a multi-module project?
+* How to add annotation processor to the compiler?
 
 ## How to Use Maven Compiler Plugin?
 
@@ -96,7 +107,7 @@ Changing the existing version to 3.8.0 should work.
 A full demo written in Java 11 is available in my GitHub:
 [mincong-h/maven-compiler-plugin-demo][3].
 
-## PluginManagement
+## Plugin Management
 
 If you're using multiple Maven modules in your Maven project, you might want to
 manage your plugin differently—split the plugin version and plugin
