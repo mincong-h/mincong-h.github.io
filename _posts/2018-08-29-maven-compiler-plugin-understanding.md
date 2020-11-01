@@ -75,20 +75,34 @@ IntelliJ uses Java 5 for some modules after Maven re-import.
 
 ## Choose Java Version
 
-Here's a table for valid release versions for Java Compiler (`javac`) from
-[Oracle Documentation][6]:
+Here's a table for valid release versions for Java Compiler (`javac`):
 
-Release | Java Version
-:---: | :---:
-1.6 | Java SE 6
-6 | Java SE 6
-1.7 | Java SE 7
-7 | Java SE 7
-1.8 | Java SE 8
-8 | Java SE 8
-9 | Java SE 9
-10 | Java SE 10
-11 | Java SE 11
+Java Version | Release
+:----------: | :---:
+Java SE 6    | 1.6
+Java SE 6    | 6
+Java SE 7    | 1.7
+Java SE 7    | 7
+Java SE 8    | 1.8
+Java SE 8    | 8
+Java SE 9    | 9
+Java SE 10   | 10
+Java SE 11   | 11
+Java SE 12   | 12
+Java SE 13   | 13
+Java SE 14   | 14
+
+You can find them in the help of the command line `javac` under the description
+of option `--source`:
+
+```
+$ javac --help | grep '\-\-source' -A 2
+  --source <release>, -source <release>
+        Provide source compatibility with the specified Java SE release. Supported releases: 7, 8, 9, 10, 11, 12, 13, 14
+  --source-path <path>, -sourcepath <path>
+        Specify where to find input source files
+  --system <jdk>|none          Override location of system modules
+```
 
 ## Java 11 Support
 
