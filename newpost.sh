@@ -29,7 +29,7 @@ cat << EOF >> "$filepath"
 layout:            post
 title:             $title
 date:              $(date +"%Y-%m-%d %H:%M:%S %z")
-categories:        [tech]
+categories:        [java-core]
 tags:              []
 comments:          true
 excerpt:           >
