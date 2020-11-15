@@ -2,7 +2,7 @@
 layout:            post
 title:             "Feature Flag: Making Your Application More Reliable"
 date:              2020-11-11 14:35:10 +0100
-categories:        [java-core]
+categories:        [reliability]
 tags:              [java, reliability]
 comments:          true
 excerpt:           >

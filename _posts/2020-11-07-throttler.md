@@ -2,7 +2,7 @@
 layout:            post
 title:             Create A Throttler In Java
 date:              2020-11-07 14:12:25 +0100
-categories:        [java-core]
+categories:        [reliability]
 tags:              [java, reliability]
 comments:          true
 excerpt:           >
