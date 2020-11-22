@@ -212,7 +212,7 @@ Gets a value as a duration in a specified
 If the value is already a number, then it's taken as milliseconds and then
 converted to the requested TimeUnit; if it's a string, it's parsed understanding units
  suffixes like "10m" or "5ns" as documented in the
-[HOCON](https://github.com/lightbend/config/blob/master/HOCON.md") spec.
+[HOCON](https://github.com/lightbend/config/blob/master/HOCON.md) spec.
 
 Java                  | Unit
 :-------------------- | :-----------------------
