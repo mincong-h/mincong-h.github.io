@@ -6,7 +6,7 @@ categories:        [tech]
 tags:              [data]
 comments:          true
 excerpt:           >
-    8 lessions learned from data deletion: data organization, naming convention,
+    8 lessons learned from data deletion: data organization, naming convention,
     deletion checks, multi-step deleiton, dangling resources, observability,
     tecnical constraints and verification.
 image:             /assets/bg-gary-chan-YzSZN3qvHeo-unsplash.jpg
