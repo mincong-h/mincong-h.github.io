@@ -3,7 +3,7 @@ layout:            post
 title:             Introduction of Immutables
 date:              2020-04-13 08:54:44 +0200
 categories:        [java-core]
-tags:              [java, immutables, jackson]
+tags:              [java, javac, immutables, jackson]
 comments:          true
 excerpt:           >
     Introduction of Java framework Immutables which creates immutable objects
