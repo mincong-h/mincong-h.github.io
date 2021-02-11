@@ -1,52 +1,24 @@
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- Enable responsiveness on mobile devices-->
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:site" content="@{{ site.twitter_username }}"/>
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
-  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}"/>
-  <meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/logo-github.png{% endif %}"/>
+{%- include snippets/get-article-title.html article=page -%}
+<title>{%- if __return -%}{{ __return }} - {{ site.title }}{%- else -%}{{ site.title }}{%- endif -%}</title>
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
-  <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}"/>
-  <meta property="og:site_name" content="Mincong Huang's blog"/>
-  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}"/>
-  <meta property="og:image" content="{{ site.url }}{{ page.image | default: site.image }}"/>
-  <meta property="og:image:width" content="{% if page.image %}{{ site.data.images[page.image].width }}{% else %}{{ site.img_width }}{% endif %}"/>
-  <meta property="og:image:height" content="{% if page.image %}{{ site.data.images[page.image].height }}{% else %}{{ site.img_height }}{% endif %}"/>
+<meta name="description" content="{%- if page.excerpt -%}{{ page.excerpt | strip_html | strip_newlines | strip | truncate: 160 }}{%- else -%}{{ site.description }}{%- endif -%}">
+<link rel="canonical" href="{%- include snippets/page-url.html -%}">
 
-  <title>
-    {% if page.title == "Home" %}
-      {{ site.title | escape }} &middot; {{ site.tagline }}
-    {% elsif page.layout == "tag" %}
-      Tag: {{ page.tag | escape }} | {{ site.title_suffix | escape }}
-    {% else %}
-      {{ page.title | escape }} | {{ site.title_suffix | escape }}
-    {% endif %}
-  </title>
-  <meta name="author" content="{{ site.author }}">
-  <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 300 }}{% else %}{{ site.description }}{% endif %}">
+{%- assign _paths_rss = site.paths.rss | default: site.data.variables.default.paths.rss -%}
+{%- include snippets/get-nav-url.html path=_paths_rss -%}
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ __return }}">
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/poole.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/syntax.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/lanyon.css">
-  <link rel="stylesheet" href="{{ site.baseurl }}/css/mincong.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i" rel="stylesheet">
+{%- include head/favicon.html -%}
 
-  <!-- Icons -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ site.baseurl }}/icon/apple-touch-icon-precomposed.png">
-  <link rel="shortcut icon" href="{{ site.baseurl }}/icon/favicon.ico">
+{%- include snippets/prepend-baseurl.html path='/assets/css/main.css' -%}
+<link rel="stylesheet" href="{{ __return }}">
 
-  <!-- ? -->
-  <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+{%- include snippets/get-sources.html -%}
+{%- assign _sources = __return -%}
+<link rel="stylesheet" href="{{ _sources.font_awesome }}" >
 
-  <!-- RSS -->
-  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}">
-</head>
+{%- include head/custom.html -%}
