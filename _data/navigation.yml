@@ -47,4 +47,4 @@ header:
       fr-FR   : *FR
       fr-LU   : *FR
       # @end locale config
-    url: /about.html
+    url: /about
