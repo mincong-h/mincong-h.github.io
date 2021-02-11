@@ -11,6 +11,15 @@ excerpt:           >
     about parameterized tests. Also, when you should or shouldn't use it and how
     to go further from here.
 image:             /assets/bg-jean-louis-paulin-lHwmE58fW4Y-unsplash.jpg
+article_header:
+  type: overlay
+  theme: dark
+  background_color: '#203028'
+  background_image:
+    src: /assets/bg-jean-louis-paulin-lHwmE58fW4Y-unsplash.jpg
+    gradient: 'linear-gradient(135deg, rgba(34, 139, 87 , .4), rgba(139, 34, 139, .4))'
+  image:
+    src: /assets/bg-jean-louis-paulin-lHwmE58fW4Y-unsplash.jpg
 ads:               none
 ---
 
