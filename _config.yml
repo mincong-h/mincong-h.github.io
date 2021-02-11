@@ -21,9 +21,12 @@ highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "t
 url     : https://mincong.io  # the base hostname & protocol for your site e.g. https://www.someone.com
 baseurl : # does not include hostname
 title   : Mincong Huang
-description: > # this means to ignore newlines until "Language & timezone"
-  Your Site Description
-
+description: >  # this means to ignore newlines until "Language & timezone"
+  Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts
+  in my free time. My blogs are
+  bits and pieces of my tech journey. Most of them are related
+  to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog
+  is powered by Jekyll, a simple, blog-aware, static sites solution.
 
 ## => Language and Timezone
 ##############################
