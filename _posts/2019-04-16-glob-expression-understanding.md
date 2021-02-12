@@ -2,7 +2,7 @@
 layout:            post
 title:             Glob Expression Understanding
 date:              2019-04-16 22:21:18 +0200
-last_modified_at:  2020-07-19 11:45:26 +0200
+date_modified:     2020-07-19 11:45:26 +0200
 categories:        [java-core]
 tags:              [java, glob]
 comments:          true

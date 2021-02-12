@@ -2,7 +2,7 @@
 layout:            post
 title:             My Java Code Style
 date:              2018-06-18 09:14:50 +0200
-last_modified_at:  2018-07-29 22:36:01 +0200
+date_modified:     2018-07-29 22:36:01 +0200
 categories:        [tech]
 tags:              [java]
 comments:          true

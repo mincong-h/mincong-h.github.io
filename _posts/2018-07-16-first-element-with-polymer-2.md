@@ -2,7 +2,7 @@
 layout:            post
 title:             "Create Element with Polymer 2"
 date:              2018-07-16 21:31:12 +0200
-last_modified_at:  2018-07-27 12:30:34 +0200
+date_modified:     2018-07-27 12:30:34 +0200
 categories:        [tech]
 tags:              [javascript, polymer, dom]
 comments:          true

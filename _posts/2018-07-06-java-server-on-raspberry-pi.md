@@ -2,7 +2,7 @@
 layout:            post
 title:             Java Server on Raspberry Pi
 date:              2018-07-06 05:51:00 +0200
-last_modified_at:  2018-07-22 15:19:16 +0200
+date_modified:     2018-07-22 15:19:16 +0200
 categories:        [tech]
 tags:              [java, raspberry-pi, systemd]
 comments:          true

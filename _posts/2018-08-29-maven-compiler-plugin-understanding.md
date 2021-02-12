@@ -2,7 +2,7 @@
 layout:            post
 title:             Maven Compiler Plugin Understanding
 date:              2018-08-29 19:08:27 +0200
-last_modified_at:  2020-11-01 16:45:48 +0100
+date_modified:     2020-11-01 16:45:48 +0100
 categories:        [build]
 tags:              [maven, java]
 comments:          true

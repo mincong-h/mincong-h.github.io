@@ -2,7 +2,7 @@
 layout:            post
 title:             "OCA Review 1 - Java Basics"
 date:              2017-02-23 20:00:00 +0100
-last_modified_at:  2020-06-25 21:44:14 +0200
+date_modified:     2020-06-25 21:44:14 +0200
 categories:        [java-core]
 tags:              [java, oca]
 comments:          true
