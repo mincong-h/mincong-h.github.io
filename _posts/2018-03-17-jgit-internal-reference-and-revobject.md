@@ -9,6 +9,12 @@ excerpt:     >
   references? How JGit, a pure Java implementation of Git, resolves references
   in Java? Then, how to use them via class RevObject and its subtypes.
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I want to discuss Git internal mechanism with you: How Git resolves

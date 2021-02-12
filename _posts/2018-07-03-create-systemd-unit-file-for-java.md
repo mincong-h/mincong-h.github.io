@@ -12,6 +12,12 @@ excerpt:           >
     can run your Java application as a service in Linux. It also explains the
     structure of a service file, and tells your the useful commands after
     service's creation.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Recently I created a Systemd unit file to manage a Java program in Raspberry Pi.

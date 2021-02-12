@@ -11,6 +11,12 @@ excerpt:           >
 comments:    true
 cover:             /assets/bg-coffee-2242213_1280.jpg
 ads:               Cracking The Coding Interview
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today I'm learning the implementation of `java.util.HashMap` in Java. Here're

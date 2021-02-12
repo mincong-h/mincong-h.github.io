@@ -10,6 +10,12 @@ excerpt:           >
     snapshots and reduces unnecessary file I/O?
 cover:             /assets/bg-josh-calabrese-zcYRw547Dps-unsplash.jpg
 ads:               Ads idea
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

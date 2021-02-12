@@ -9,6 +9,12 @@ excerpt:           >
     How to make your web application more reliable with feature flags?
 cover:             /assets/bg-lance-grandahl-hF6TtT-xz80-unsplash.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Introduction

@@ -10,6 +10,12 @@ excerpt:           >
     substitutions, merging, inclusion, unit format support, IDE plugin, and more.
 cover:             /assets/bg-anthony-roberts-82wJ10pX1Fw-unsplash.jpg
 ads:               Ads idea
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

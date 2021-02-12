@@ -8,6 +8,12 @@ excerpt:     >
   Git commit hook for checking the JIRA number before commiting.
 redirect_from:
   - /git/2016/11/08/git-hook-for-jira-number/
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Did you try to enforce the Git commit message to respect a pattern, but you feel

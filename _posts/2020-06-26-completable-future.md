@@ -10,6 +10,12 @@ excerpt:           >
     synchronous code and classic future in Java? How to remember its APIs?
 cover:             /assets/bg-park-troopers-RAtKWVlfdf4-unsplash.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Introduction

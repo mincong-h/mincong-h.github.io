@@ -10,6 +10,12 @@ excerpt:    >
   using query builder.
 redirect_from:
   - /apache-lucene/2016/04/12/boolean-query-in-lucene/
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I created an example to demonstrate how `BooleanQuery` works and

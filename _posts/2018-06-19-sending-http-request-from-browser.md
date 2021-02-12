@@ -10,6 +10,12 @@ excerpt:           >
     Today, I'll explain how to send HTTP request from your browser. You can
     achieve that by using builtin JavaScript (XML HTTP Request, or "XHR") or
     jQuery (1.4, 1.5+).
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I want to share how to send HTTP request from browser using builtin

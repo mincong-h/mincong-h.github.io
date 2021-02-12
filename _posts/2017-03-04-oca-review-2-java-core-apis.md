@@ -5,6 +5,12 @@ date:        2017-03-04 08:30:00 +0100
 categories:  [java-core]
 tags:        [java, oca]
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 I'm preparing the OCAJP: Oracle Certified Associate Java SE 8 Programmer. Here's

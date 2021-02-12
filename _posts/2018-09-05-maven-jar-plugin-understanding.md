@@ -10,6 +10,12 @@ excerpt:           >
     11.
 cover:             /assets/bg-tools-1209764_1280.jpg
 series:            Maven Plugins
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 [Maven JAR Plugin][maven] is one of the core plugins of the Maven build

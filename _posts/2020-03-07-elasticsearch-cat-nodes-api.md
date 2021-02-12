@@ -10,6 +10,12 @@ excerpt:           >
     Elasticsearch: id, name, IP address, CPU, load, memory, and much more.
 cover:             /assets/bg-eric-han-WJ6fmN1D-h0-unsplash.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

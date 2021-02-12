@@ -12,6 +12,12 @@ excerpt:           >
     define the Nexus repository id and url in distributionManagement. After
     that, add your credentials in ~/.m2/settings.xml. Finally, execute
     command `mvn deploy` to deploy your artifacts.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today I'll talk about how to deploy artifacts to Sonatype Nexus repository using

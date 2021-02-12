@@ -8,6 +8,12 @@ excerpt:    >
   How to add listener to Android ListView.
 redirect_from:
   - /android/2016/03/20/listview-onclicklistner/
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 In a recent Android project, I work with `ListView` component. At the beginning,

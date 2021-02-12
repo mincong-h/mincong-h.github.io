@@ -10,6 +10,12 @@ excerpt:           >
     jump into any feature, layout, or menu option in Nuxeo Studio.
 cover:             /assets/20181018-kapture-quick-switcher.jpg
 img_excerptOnly:   true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 <p align="center">

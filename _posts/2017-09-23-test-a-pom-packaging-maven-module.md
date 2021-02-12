@@ -5,6 +5,12 @@ date:        "2017-09-23 08:59:24 +0200"
 categories:  [build]
 tags:        [maven, java]
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Recently, I need to write tests for resources inside a Maven module and I met

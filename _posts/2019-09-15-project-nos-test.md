@@ -10,6 +10,12 @@ excerpt:           >
     command line. In this article, I will explain how I implemented it.
 cover:             /assets/bg-mathew-schwartz-OjQgsR1oyEw-unsplash.jpg
 ads:               Ads idea
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

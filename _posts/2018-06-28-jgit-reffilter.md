@@ -10,6 +10,12 @@ excerpt:           >
     This post explains how to apply a Git reference filter to your Git server
     in Java. It allows you to customize Git references before sending data to
     clients (upload-pack).
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 This post explains how to apply a reference filter to your Git server using

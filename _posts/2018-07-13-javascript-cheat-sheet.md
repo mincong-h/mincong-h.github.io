@@ -9,6 +9,12 @@ comments:           true
 excerpt:            >
     A simple JS cheat sheet for newbies, containing the basic syntax of commonly
     used statements: variable, class, array, JSON, ...
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 In this post, I'll share the basic syntax that I used during the my work. For

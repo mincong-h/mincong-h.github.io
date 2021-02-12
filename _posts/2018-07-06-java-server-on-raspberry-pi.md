@@ -10,6 +10,12 @@ excerpt:           >
     A step-by-step guide for installing Java server on Raspberry Pi: install
     Raspbian OS, install JRE, configure SSH, transfer data, and setup Java
     server with Systemd.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today I'll talk about how to install a Java server on Raspberry Pi. We'll

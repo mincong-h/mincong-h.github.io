@@ -11,6 +11,12 @@ excerpt:           >
     you know nothing about SEO. I'm using my Jekyll blog as an example, to
     implement everything step-by-step: add robots.txt, sitemap, structured data;
     improve title tags, meta description; use Google Search Console...
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today I want to talk about how to do SEO (Search Engine Optimization) for your

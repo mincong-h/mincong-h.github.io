@@ -12,6 +12,12 @@ excerpt:     >
   and assembly. This post uses a Hello-world example to demonstrate the
   communication between Java and C on Mac OS X.
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today I would like share my very first experience about JNI—Java Native

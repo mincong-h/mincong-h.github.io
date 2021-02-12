@@ -5,6 +5,12 @@ date:        "2017-03-21 22:34:47 +0100"
 categories:  [java-core]
 tags:        [java, oca]
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I'm going to review my online test, chapter 5 of Oracle Certified

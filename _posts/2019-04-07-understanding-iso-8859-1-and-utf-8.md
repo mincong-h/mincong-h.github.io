@@ -10,6 +10,12 @@ excerpt:           >
     string and bytes, and file I/O operations including MIME encoding detection.
     All examples are written in Java and Python 3.
 cover:             /assets/bg-single-file-1534558_1280.jpg
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

@@ -5,6 +5,12 @@ date:       2017-03-10 21:00:00 +0100
 categories: [git]
 tags:       [git, docker]
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Here's the guide about how to setup a GitLab server locally using Docker under

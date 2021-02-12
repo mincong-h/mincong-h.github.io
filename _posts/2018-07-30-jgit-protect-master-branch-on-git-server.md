@@ -10,6 +10,12 @@ excerpt:           >
     If you're using JGit for your Git server, you can combine Git config
     (.git/config) and a customized pre-receive hook to protect branches on a
     specific Git repository.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 This post explains how to protect branches on your Git server (implemented by

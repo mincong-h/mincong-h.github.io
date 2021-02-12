@@ -11,6 +11,12 @@ excerpt:     >
   you'll understand: How to create and run a thread, use wait(), notify(),
   notifyAll() and join().
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I want to share with you an introduction to multithreading in Java. In

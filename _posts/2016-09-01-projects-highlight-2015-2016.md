@@ -13,6 +13,12 @@ excerpt:        >
   Business Intelligence and open-source framework.
 redirect_from:
   - /project/2016/09/01/projects-highlight-2015-2016/
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I want to share with you all the projects that I’ve done during the last

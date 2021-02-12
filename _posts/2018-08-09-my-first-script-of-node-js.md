@@ -10,6 +10,12 @@ excerpt:           >
     The basics of creating a script in Node.JS, including execution syntax,
     dependency declaration, arguments, template literals, iterations and
     promises for asynchronous operations.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 I recently created my first script in Node JS, which automates user creation on

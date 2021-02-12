@@ -5,6 +5,12 @@ date:        "2018-05-03 21:06:33 +0200"
 categories:  [tech]
 tags:        [java, java-ee, tomcat]
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I'd like to talk about the famous `HttpServlet` and `Filter`, in

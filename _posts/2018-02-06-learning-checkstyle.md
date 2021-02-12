@@ -10,6 +10,12 @@ excerpt:     >
   Guide and Sun Code Conventions, but is highly configurable. It can be
   invoked with an ANT task and a command line program.
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today I'd like to share my experience about Checkstyle setup for a Java/Maven

@@ -8,6 +8,12 @@ tags:              [java]
 comments:          true
 excerpt:           >
     My Java code style: a collection of Java good practices.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today I want to talk about my own Java code style. It's been 2 years that I
