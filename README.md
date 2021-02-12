@@ -50,13 +50,6 @@ $ ./newtag.sh Java EE
 Tag page created: /Users/mincong/github/mincong-h.github.io/tags/java-ee.md
 ```
 
-Create new monthly digest:
-
-```sh
-$ ./newmonthly.sh 2018-12
-Monthly Digest December 2018 created: /Users/mincong/github/mincong-h.github.io/2018/12/index.md
-```
-
 ## Blog Post
 
 This section descibes blog post configuration.
