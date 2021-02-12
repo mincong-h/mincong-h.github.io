@@ -10,7 +10,7 @@ excerpt:           >
   resources copying to the output directory. It has 3 goals: "resources",
   "testResources", and "copy-resources". In this post, I'll show you some
   common use-cases of this plugin.
-image:             /assets/bg-tools-1209764_1280.jpg
+cover:             /assets/bg-tools-1209764_1280.jpg
 series:            Maven Plugins
 ---
 

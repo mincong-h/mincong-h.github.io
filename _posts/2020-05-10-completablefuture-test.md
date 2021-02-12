@@ -7,7 +7,7 @@ tags:              [java, concurrency]
 comments:          true
 excerpt:           >
     How CompletableFuture is tested in OpenJDK 14? What can we learn from it?
-image:             /assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg
+cover:             /assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg
 ads:               none
 ---
 

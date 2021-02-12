@@ -9,7 +9,7 @@ excerpt:           >
     Writing unit tests for Elasticsearch using Elasticsearch Single Node Test
     Case (ESSingleNodeTestCase), a derived class of ESTestCase which simplifies
     the testing set up for you.
-image:             /assets/bg-coffee-2306471_1280.jpg
+cover:             /assets/bg-coffee-2306471_1280.jpg
 ads:               Ads idea
 ---
 

@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Quick introduction of asynchrnous processing in JAX-RS 2.x
     on both server-side and client-side.
-image:             /assets/bg-coffee-983955_1280.jpg
+cover:             /assets/bg-coffee-983955_1280.jpg
 ads:               none
 ---
 

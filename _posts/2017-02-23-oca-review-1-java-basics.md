@@ -6,7 +6,7 @@ last_modified_at:  2020-06-25 21:44:14 +0200
 categories:        [java-core]
 tags:              [java, oca]
 comments:          true
-image:             /assets/bg-coffee-983955_1280.jpg
+cover:             /assets/bg-coffee-983955_1280.jpg
 redirect_from:
   - /2017/02/23/things-you-didnt-know-about-java/
 ---

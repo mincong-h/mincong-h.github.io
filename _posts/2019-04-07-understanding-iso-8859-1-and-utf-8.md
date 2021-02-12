@@ -9,7 +9,7 @@ excerpt:           >
     Character mapping between ISO-8859-1 / UTF-8, decode and encode data between
     string and bytes, and file I/O operations including MIME encoding detection.
     All examples are written in Java and Python 3.
-image:             /assets/bg-single-file-1534558_1280.jpg
+cover:             /assets/bg-single-file-1534558_1280.jpg
 ---
 
 ## Overview

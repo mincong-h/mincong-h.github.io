@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Basic information about garbage collection (GC) in Elasticsearch, including the
     default garbage collector used, JVM options, GC logging, and more.
-image:             /assets/bg-pawel-czerwinski-RkIsyD_AVvc-unsplash.jpg
+cover:             /assets/bg-pawel-czerwinski-RkIsyD_AVvc-unsplash.jpg
 ads:               none
 ---
 

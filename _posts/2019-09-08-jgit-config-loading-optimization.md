@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     How JGit optimizes internally the configuration loading process using file
     snapshots and reduces unnecessary file I/O?
-image:             /assets/bg-josh-calabrese-zcYRw547Dps-unsplash.jpg
+cover:             /assets/bg-josh-calabrese-zcYRw547Dps-unsplash.jpg
 ads:               Ads idea
 ---
 

@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     My study notes of security training (day 2), including some ways of SQL
     injection, Cross-site scripting (XSS), and XML External Entity (XXE).
-image:             /assets/bg-security-265130_1280.jpg
+cover:             /assets/bg-security-265130_1280.jpg
 ---
 
 ## Overview

@@ -9,7 +9,7 @@ excerpt:           >
     How to discard old build artifacts on Jenkins and free the disk space by
     configuring the duration to keep builds / artifacts, and the quantity of
     builds / artifacts to keep.
-image:             /assets/bg-jenkins.jpg
+cover:             /assets/bg-jenkins.jpg
 ---
 
 ## Overview

@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     In this post, I will explain how to create JSON-LD structured data for
     Jekyll blog.
-image:             /assets/bg-home-office-336373_1280.jpg
+cover:             /assets/bg-home-office-336373_1280.jpg
 ---
 
 Google uses structured data that it finds on the web to understand the content

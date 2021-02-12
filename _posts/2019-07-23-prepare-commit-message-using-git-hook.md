@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Create a Git hook prepare-commit-msg for inferring JIRA ticket as commit
     message prefix, based on the branch name.
-image:             /assets/bg-light-bulbs-1125016_1280.jpg
+cover:             /assets/bg-light-bulbs-1125016_1280.jpg
 ads:               Git Pro
 ---
 

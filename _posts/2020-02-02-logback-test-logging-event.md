@@ -9,7 +9,7 @@ comments:          true
 excerpt:           >
     Capture SLF4J + Logback logging events and test them in unit tests using
     ListAppender.
-image:             /assets/bg-adrian-korte-5gn2soeAc40-unsplash.jpg
+cover:             /assets/bg-adrian-korte-5gn2soeAc40-unsplash.jpg
 ads:               none
 ---
 

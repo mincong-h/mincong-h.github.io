@@ -9,7 +9,7 @@ excerpt:           >
     How to do Java / XML mapping using Jackson XML Mapper. This article explains
     the annotations used for root element, property, and collection mapping.
     Also, the basic configuration of Jackson XML Mapper.
-image:             /assets/bg-coffee-2242213_1280.jpg
+cover:             /assets/bg-coffee-2242213_1280.jpg
 ---
 
 ## Overview

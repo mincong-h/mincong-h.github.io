@@ -9,7 +9,7 @@ excerpt:           >
     Customize Git prompt to show dirty-state, untracked files, stash,
     upstream in your Bash console: MinGW64 (Minimalist GNU for Windows
     x64).
-image:             /assets/20181111-title.png
+cover:             /assets/20181111-title.png
 img_excerptOnly:   true
 ---
 

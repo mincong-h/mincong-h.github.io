@@ -9,7 +9,7 @@ excerpt:           >
     How does discovery work in Elasticsearch? This article explains different
     mechanisms of discovery, the key settings, fault detection, related logs,
     and more.
-image:             /assets/bg-tim-graf-ErO0E8wZaTA-unsplash.jpg
+cover:             /assets/bg-tim-graf-ErO0E8wZaTA-unsplash.jpg
 ads:               none
 ---
 

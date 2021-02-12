@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Part 4: How to create a snapshot for index "transactions" of DVF and restore it
     to an Elasticsearch cluster.
-image:             /assets/bg-leonard-cotte-R5scocnOOdM-unsplash.jpg
+cover:             /assets/bg-leonard-cotte-R5scocnOOdM-unsplash.jpg
 cover:             /assets/bg-leonard-cotte-R5scocnOOdM-unsplash.jpg
 ads:               none
 ---

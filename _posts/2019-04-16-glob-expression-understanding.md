@@ -9,7 +9,7 @@ comments:          true
 excerpt:           >
     Glob expression syntax, and its usage in Java through Path Matcher and
     Directory Stream.
-image:             /assets/bg-markus-winkler-afW1hht0NSs-unsplash.jpg
+cover:             /assets/bg-markus-winkler-afW1hht0NSs-unsplash.jpg
 ---
 
 ## Overview

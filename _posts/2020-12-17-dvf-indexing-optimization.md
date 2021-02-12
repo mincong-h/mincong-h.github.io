@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Part 2: Optimize the indexing process using bulk index requests and
     multi-threading.
-image:             /assets/bg-jonathan-velasquez-eUSpDPSFdKU-unsplash.jpg
+cover:             /assets/bg-jonathan-velasquez-eUSpDPSFdKU-unsplash.jpg
 ads:               none
 ---
 

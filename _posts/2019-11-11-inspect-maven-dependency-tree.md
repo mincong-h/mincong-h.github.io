@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Inspecting Maven dependencies via Maven Depenedency Plugin:
     dependency listing, dependency filtering, exporting result to file etc.
-image:             /assets/bg-vitto-sommella-CrDnEQE_9vY-unsplash.jpg
+cover:             /assets/bg-vitto-sommella-CrDnEQE_9vY-unsplash.jpg
 ads:               Ads idea
 ---
 

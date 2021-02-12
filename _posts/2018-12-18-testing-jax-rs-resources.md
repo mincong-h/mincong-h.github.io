@@ -9,7 +9,7 @@ excerpt:           >
     This article explains how to set up and tear down a Grizzly Server for
     testing JAX-RS resources, how to create a HTTP request and assert the
     response using JUnit 4. And finally, the limits of testing API in reality.
-image:             /assets/bg-coffee-171653_1280.jpg
+cover:             /assets/bg-coffee-171653_1280.jpg
 series:            JAX-RS Basics
 ---
 

@@ -10,7 +10,7 @@ excerpt:           >
     learned as a Software Engineer, not only the onboarding part but also the
     strong DevOps culture!
 
-image:             /assets/bg-josh-rakower-zBsXaPEBSeI-unsplash.jpg
+cover:             /assets/bg-josh-rakower-zBsXaPEBSeI-unsplash.jpg
 ads:               Ads idea
 ---
 

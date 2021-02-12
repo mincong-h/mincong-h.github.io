@@ -9,7 +9,7 @@ excerpt:           >
     Introduction of Java framework Immutables which creates immutable objects
     and builders for you. Type-safe, null-safe and thread-safe, with no
     boilerplate.
-image:             /assets/bg-coffee-1030971_1280.jpg
+cover:             /assets/bg-coffee-1030971_1280.jpg
 ads:               none
 ---
 

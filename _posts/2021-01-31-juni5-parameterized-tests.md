@@ -10,7 +10,7 @@ excerpt:           >
     explains the motivation, the basic syntax, different annotations, and IDE-related actions
     about parameterized tests. Also, when you should or shouldn't use it and how
     to go further from here.
-image:             /assets/bg-jean-louis-paulin-lHwmE58fW4Y-unsplash.jpg
+cover:             /assets/bg-jean-louis-paulin-lHwmE58fW4Y-unsplash.jpg
 cover:             /assets/bg-jean-louis-paulin-lHwmE58fW4Y-unsplash.jpg
 article_header:
   type: overlay

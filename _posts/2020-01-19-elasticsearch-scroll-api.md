@@ -9,7 +9,7 @@ excerpt:           >
     Elasticsearch Scroll API sample written in Java, useful for retrieving
     large numbers of results (or even all results) from a single search
     request.
-image:             /assets/bg-dylan-nolte-wYEj-xonKcg-unsplash.jpg
+cover:             /assets/bg-dylan-nolte-wYEj-xonKcg-unsplash.jpg
 ads:               Ads idea
 ---
 

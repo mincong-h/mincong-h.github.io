@@ -9,7 +9,7 @@ excerpt:           >
    I started TDD in all my personal projects 3 months ago. Here're some
    thoughts about it, including architecture, IDE, methodology, execution speed
    up, legacy code, and limits.
-image:             /assets/bg-dog-2785074_1280.jpg
+cover:             /assets/bg-dog-2785074_1280.jpg
 ---
 
 ## Overview

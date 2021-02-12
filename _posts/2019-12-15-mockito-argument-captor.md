@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Three ways to create ArgumentCaptor in unit tests (Mockito JUnit Runner,
     annotations, or factory method) and its different usage.
-image:             /assets/bg-romet-tagobert-ytrbFQSJBxw-unsplash.jpg
+cover:             /assets/bg-romet-tagobert-ytrbFQSJBxw-unsplash.jpg
 ads:               Ads idea
 ---
 

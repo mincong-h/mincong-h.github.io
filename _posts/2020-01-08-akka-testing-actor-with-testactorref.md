@@ -9,7 +9,7 @@ excerpt:           >
     Unit testing Akka actor with "TestActorRef", which gives you access to
     underlying actor instance and runs the logic synchronously in a
     single-threaded environment.
-image:             /assets/bg-board-2450236_1280.jpg
+cover:             /assets/bg-board-2450236_1280.jpg
 ads:               Ads idea
 ---
 

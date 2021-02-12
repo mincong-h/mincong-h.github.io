@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Fun experience on fixing a custom comparator by identifying the sub-problems,
     testing different combinations, and finally fix it.
-image:             /assets/bg-cup-of-coffee-1280537_1280.jpg
+cover:             /assets/bg-cup-of-coffee-1280537_1280.jpg
 ---
 
 ## Overview

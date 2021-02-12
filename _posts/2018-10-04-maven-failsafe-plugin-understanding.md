@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Maven Failsafe Plugin runs integration tests for your Maven project. In this
     article, we will see what is Failsafe plugin and its common use cases.
-image:             /assets/bg-tools-1209764_1280.jpg
+cover:             /assets/bg-tools-1209764_1280.jpg
 series:            Maven Plugins
 ---
 

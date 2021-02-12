@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Simple but common use-cases: create options, create option, parse command
     line arguments, print usage, and more using Apache Commons CLI.
-image:             /assets/bg-coffee-1030971_1280.jpg
+cover:             /assets/bg-coffee-1030971_1280.jpg
 ads:               none
 ---
 

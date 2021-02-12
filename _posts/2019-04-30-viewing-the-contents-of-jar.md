@@ -8,7 +8,7 @@ comments:          true
 excerpt:           >
     Listing files inside a JAR or displaying content of a single file using
     different commands: "jar", "unzip", or "vim".
-image:             /assets/bg-philatelist-1844078_1280.jpg
+cover:             /assets/bg-philatelist-1844078_1280.jpg
 ---
 
 ## Overview

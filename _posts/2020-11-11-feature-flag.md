@@ -7,7 +7,7 @@ tags:              [java, reliability]
 comments:          true
 excerpt:           >
     How to make your web application more reliable with feature flags?
-image:             /assets/bg-lance-grandahl-hF6TtT-xz80-unsplash.jpg
+cover:             /assets/bg-lance-grandahl-hF6TtT-xz80-unsplash.jpg
 ads:               none
 ---
 

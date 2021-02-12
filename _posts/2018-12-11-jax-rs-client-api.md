@@ -9,7 +9,7 @@ excerpt:           >
     This post explains what is JAX-RS Client API and how to use it via Jersey
     Client API. We will talk about the Maven dependencies, Client, WebTarget,
     and HTTP response.
-image:             /assets/bg-notebook-1280538_1280.jpg
+cover:             /assets/bg-notebook-1280538_1280.jpg
 series:            JAX-RS Basics
 ---
 

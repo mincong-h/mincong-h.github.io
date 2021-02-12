@@ -9,7 +9,7 @@ excerpt:           >
     My study notes of security training (day 3), including insecure direct
     references, broken access control, improper input validation, and software
     best practices.
-image:             /assets/bg-security-265130_1280.jpg
+cover:             /assets/bg-security-265130_1280.jpg
 ---
 
 ## Overview
