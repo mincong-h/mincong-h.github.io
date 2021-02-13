@@ -227,3 +227,10 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jemoji
+
+## => Collections
+##############################
+collections:
+  displayed_categories:
+    permalink: /categories/:name
+    output: true
