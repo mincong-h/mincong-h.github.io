@@ -227,3 +227,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jemoji
+
+collections:
+  category_reliability:
+    output: true
