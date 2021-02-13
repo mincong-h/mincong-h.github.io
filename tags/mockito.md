@@ -2,7 +2,6 @@
 layout:            tag
 title:             Mockito
 tag:               mockito
-date:              2019-08-28 07:35:58 +0200
 ---
 
 Mockito is a mocking framework that tastes really good. It lets you write

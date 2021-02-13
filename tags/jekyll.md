@@ -2,7 +2,6 @@
 layout:            tag
 title:             Jekyll
 tag:               jekyll
-date:              2018-08-23 14:00:11 +0200
 ---
 
 Jekyll is a simple, blog-aware, static site generator for personal, project, or
