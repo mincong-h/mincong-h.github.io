@@ -1,5 +1,9 @@
 header:
   - titles:
+      en      : &EN       Categories
+    url: /categories
+
+  - titles:
       # @start locale config
       en      : &EN       Archive
       en-GB   : *EN
