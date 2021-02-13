@@ -15,11 +15,11 @@ fi
 
 bloghome=$(cd "$(dirname "$0")" || exit; pwd)
 category=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-filepath="${bloghome}/categories/${category}.md"
+filepath="${bloghome}/_displayed_categories/${category}.md"
 
-if [[ ! -d "${bloghome}/categories" ]]
+if [[ ! -d "${bloghome}/_displayed_categories ]]
 then
-    echo "Categories directory does not exist: ${bloghome}/categories"
+    echo "Categories directory does not exist: ${bloghome}/_displayed_categories"
     exit 1
 fi
 
@@ -34,7 +34,10 @@ cat << EOF >> "$filepath"
 layout:            category
 title:             ${title}
 category:          ${category}
+sidebar:
+  nav:             categories
 ---
 EOF
 
 echo "Category page created: $filepath"
+echo "Please manually edit _data/navigation.yml"

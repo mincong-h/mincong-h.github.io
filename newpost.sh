@@ -26,16 +26,22 @@ fi
 
 cat << EOF >> "$filepath"
 ---
-layout:            post
-title:             $title
-date:              $(date +"%Y-%m-%d %H:%M:%S %z")
-categories:        [java-core]
-tags:              []
-comments:          true
-excerpt:           >
+layout:              post
+title:               $title
+date:                $(date +"%Y-%m-%d %H:%M:%S %z")
+categories:          [java-core]
+tags:                []
+comments:            true
+excerpt:             >
     TODO
-image:             /assets/bg-coffee-84624_1280.jpg
-ads:               none
+cover:               /assets/bg-coffee-84624_1280.jpg
+article_header:
+  type:              overlay
+  theme:             dark
+  background_color:  "#203028"
+  background_image:
+    gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
+ads:                 none
 ---
 
 ## Introduction
