@@ -10,6 +10,7 @@ excerpt:           >
     Why should you give it a try? Today, we will start comparing them via Map
     and HashMap, including the map creation, entries iteration, streaming, and
     the side effect.
+image:             /assets/bg-coffee-983955_1280.jpg
 cover:             /assets/bg-coffee-983955_1280.jpg
 article_header:
   type: overlay

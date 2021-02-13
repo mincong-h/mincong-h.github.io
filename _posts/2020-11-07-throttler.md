@@ -7,6 +7,7 @@ tags:              [java, reliability]
 comments:          true
 excerpt:           >
     What is throttling and how to write a simple throttler in Java.
+image:             /assets/bg-tian-kuan-9AxFJaNySB8-unsplash.jpg
 cover:             /assets/bg-tian-kuan-9AxFJaNySB8-unsplash.jpg
 ads:               none
 article_header:

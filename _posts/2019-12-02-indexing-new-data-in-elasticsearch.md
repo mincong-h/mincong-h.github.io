@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     Initializing Elasticsearch client, sending a single index request or a bulk
     index request, index response, different content types, refresh policy etc.
+image:             /assets/bg-coffee-2242213_1280.jpg
 cover:             /assets/bg-coffee-2242213_1280.jpg
 ads:               Ads idea
 article_header:

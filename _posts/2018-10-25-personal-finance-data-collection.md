@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     A step-by-step guide sharing how I build my data collection tool in Python
     for personal finance, and why it might also fit your needs.
+image:             /assets/bg-money-2724241_1280.jpg
 cover:             /assets/bg-money-2724241_1280.jpg
 article_header:
   type: overlay

@@ -9,6 +9,7 @@ excerpt:           >
     This article explains the 18 allocation deciders in Elasticsearch: when
     they decide to allow, deny, or throttle the shard allocation under different
     circumstances. Also, a complete list of messages for unassigned shards.
+image:             /assets/bg-robert-ruggiero-X2bcQMMhaow-unsplash.jpg
 cover:             /assets/bg-robert-ruggiero-X2bcQMMhaow-unsplash.jpg
 ads:               none
 article_header:

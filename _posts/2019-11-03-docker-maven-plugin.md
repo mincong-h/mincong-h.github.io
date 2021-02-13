@@ -9,6 +9,7 @@ excerpt:           >
     Introduction to Docker Maven Plugin: how to build and run
     Docker images in Maven via samples from Debezium and Docker Maven
     Plugin itself.
+image:             /assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg
 cover:             /assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg
 ads:               Ads idea
 article_header:

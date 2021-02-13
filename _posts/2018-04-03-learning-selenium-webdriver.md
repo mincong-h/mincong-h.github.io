@@ -9,6 +9,7 @@ excerpt:     >
   A quick introduction to Selenium WebDriver, a practical tool for running
   functional tests and browser automation. The sample is written with Firefox 58
   and GeckoDriver 0.20.
+image:       /assets/bg-board-2450236_1280.jpg
 cover:       /assets/bg-board-2450236_1280.jpg
 article_header:
   type: overlay

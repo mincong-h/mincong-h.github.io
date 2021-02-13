@@ -10,6 +10,7 @@ excerpt:           >
     How to handle exception in CompletableFuture? This
     article explains the difference between handle(), whenComplete(), and
     exceptionally().
+image:             /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg
 cover:             /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg
 ads:               none
 article_header:

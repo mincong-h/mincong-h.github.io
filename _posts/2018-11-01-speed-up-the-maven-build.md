@@ -7,6 +7,7 @@ tags:              [maven, java, javascript, macos]
 comments:          true
 excerpt:           >
     How to speed up a Maven project by using different tips.
+image:             /assets/bg-dog-2785074_1280.jpg
 cover:             /assets/bg-dog-2785074_1280.jpg
 article_header:
   type: overlay

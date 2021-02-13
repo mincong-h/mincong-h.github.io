@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     How NOS team improves the performance of Nuxeoctl, Nuxeo Server's command
     line, recently.
+image:             /assets/bg-veri-ivanova-p3Pj7jOYvnM-unsplash.jpg
 cover:             /assets/bg-veri-ivanova-p3Pj7jOYvnM-unsplash.jpg
 ads:               Ads idea
 article_header:

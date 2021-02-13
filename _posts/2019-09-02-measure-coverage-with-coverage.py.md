@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     Experience sharing on code coverage measurement of Python program using
     Coverage.py.
+image:             /assets/bg-snake-37585_1280.png
 cover:             /assets/bg-snake-37585_1280.png
 ads:               Ads idea
 article_header:

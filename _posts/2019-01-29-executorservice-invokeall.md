@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     Using 100% CPU effortlessly in Java: submit all your tasks to thread
     pool and wait for completion.
+image:             /assets/bg-powerboat-2784250_1280.jpg
 cover:             /assets/bg-powerboat-2784250_1280.jpg
 article_header:
   type: overlay

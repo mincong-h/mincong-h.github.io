@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     NOS Test is a QA project consists of 3 parts: RESTful API, browser, and
     command line. In this article, I will explain how I implemented it.
+image:             /assets/bg-mathew-schwartz-OjQgsR1oyEw-unsplash.jpg
 cover:             /assets/bg-mathew-schwartz-OjQgsR1oyEw-unsplash.jpg
 ads:               Ads idea
 article_header:

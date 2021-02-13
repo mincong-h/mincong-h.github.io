@@ -9,6 +9,7 @@ excerpt:           >
     In my daily work, I have to deal with legacy frameworks. Here are 6 tips
     that I summarized for bug-fixing, including documentation, searching,
     testing, patching library and more.
+image:             /assets/bg-boy-666803_1280.jpg
 cover:             /assets/bg-boy-666803_1280.jpg
 ads:               Book - Working Effectively with Legacy Code
 article_header:

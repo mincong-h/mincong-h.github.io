@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     Verify interaction with mock objects with verify(), verifyZeroInteractions()
     verifyNoMoreInteractions(), and inOrder().
+image:             /assets/bg-alex-block-eicoRD590x4-unsplash.jpg
 cover:             /assets/bg-alex-block-eicoRD590x4-unsplash.jpg
 ads:               Ads idea
 article_header:

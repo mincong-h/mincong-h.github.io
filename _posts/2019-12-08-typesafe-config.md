@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     Typesafe Config library: its basic structure, loading mechanism, parsing,
     substitutions, merging, inclusion, unit format support, IDE plugin, and more.
+image:             /assets/bg-anthony-roberts-82wJ10pX1Fw-unsplash.jpg
 cover:             /assets/bg-anthony-roberts-82wJ10pX1Fw-unsplash.jpg
 ads:               Ads idea
 article_header:

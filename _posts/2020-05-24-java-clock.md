@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     Use java.time.Clock to control time in your unit tests. This article will
     mainly focus on usage of fixed clock and offset clock.
+image:             /assets/bg-sonja-langford-eIkbSc3SDtI-unsplash.jpg
 cover:             /assets/bg-sonja-langford-eIkbSc3SDtI-unsplash.jpg
 ads:               none
 article_header:

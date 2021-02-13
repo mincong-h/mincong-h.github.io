@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     Why do we need CompletableFuture? What is its strength compared to
     synchronous code and classic future in Java? How to remember its APIs?
+image:             /assets/bg-park-troopers-RAtKWVlfdf4-unsplash.jpg
 cover:             /assets/bg-park-troopers-RAtKWVlfdf4-unsplash.jpg
 ads:               none
 article_header:

@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     Initialize Mockito mock objects in JUnit 5 using MockitoExtension,
     MockitoAnnotations#initMocks, or Mockito#mock.
+image:             /assets/bg-edward-howell-hYcriIw0gHc-unsplash.jpg
 cover:             /assets/bg-edward-howell-hYcriIw0gHc-unsplash.jpg
 ads:               none
 article_header:

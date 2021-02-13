@@ -34,6 +34,7 @@ tags:                []
 comments:            true
 excerpt:             >
     TODO
+image:               /assets/bg-coffee-84624_1280.jpg
 cover:               /assets/bg-coffee-84624_1280.jpg
 article_header:
   type:              overlay

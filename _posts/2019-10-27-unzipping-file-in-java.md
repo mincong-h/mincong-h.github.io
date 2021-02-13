@@ -8,6 +8,7 @@ comments:          true
 excerpt:           >
     Unzipping zip file in Java 8 using builtin Java classes: ZipInputStream and
     ZipEntry. Implementation supports sub-directories as well.
+image:             /assets/bg-coffee-2242213_1280.jpg
 cover:             /assets/bg-coffee-2242213_1280.jpg
 ads:               Ads idea
 article_header:
