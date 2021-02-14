@@ -37,6 +37,21 @@
     height: auto;
     border-radius: inherit;
   }
+  & > .card__background_image {
+    display: block;
+    width: 100%;
+    height: 10rem;
+    border-radius: inherit;
+
+    background-size: cover;
+    background-position: center;
+  }
+  & > .card__background_image_sm {
+    height: map-get($image, width-sm);
+  }
+  & > .card__background_image_md {
+    height: map-get($image, width);
+  }
   & > .overlay {
     position: absolute;
     width: 100%;
@@ -93,6 +108,9 @@
   @include box-shadow(0);
   .card__image {
     & > img {
+      border-radius: map-get($base, border-radius);
+    }
+    & > .card__background_image {
       border-radius: map-get($base, border-radius);
     }
   }
