@@ -36,6 +36,7 @@ title:             ${title}
 category:          ${category}
 sidebar:
   nav:             categories
+comments:          false
 ---
 EOF
 
