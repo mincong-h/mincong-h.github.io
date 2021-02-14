@@ -2,7 +2,7 @@
 layout:            post
 title:             "Create Element with Polymer 2"
 date:              2018-07-16 21:31:12 +0200
-last_modified_at:  2018-07-27 12:30:34 +0200
+date_modified:     2018-07-27 12:30:34 +0200
 categories:        [tech]
 tags:              [javascript, polymer, dom]
 comments:          true
@@ -10,6 +10,12 @@ excerpt:           >
     Want to create your first web element with Polymer 2? This post provides
     a step-by-step tutorial for you: Polymer CLI, useful websites, Polymer
     element's structure, dependency management, AJAX request and more.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 <p align="center">

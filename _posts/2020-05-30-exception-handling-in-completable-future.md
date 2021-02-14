@@ -2,7 +2,7 @@
 layout:            post
 title:             "3 Ways to Handle Exception In Completable Future"
 date:              2020-05-30 07:14:44 +0200
-last_modified_at:  2020-05-31 18:57:21 +0200
+date_modified:     2020-05-31 18:57:21 +0200
 categories:        [java-concurrency]
 tags:              [java, concurrency]
 comments:          true
@@ -11,7 +11,14 @@ excerpt:           >
     article explains the difference between handle(), whenComplete(), and
     exceptionally().
 image:             /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg
+cover:             /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

@@ -9,7 +9,14 @@ excerpt:           >
     Quick introduction of asynchrnous processing in JAX-RS 2.x
     on both server-side and client-side.
 image:             /assets/bg-coffee-983955_1280.jpg
+cover:             /assets/bg-coffee-983955_1280.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

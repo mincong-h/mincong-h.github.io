@@ -2,7 +2,7 @@
 layout:            post
 title:             "Git: Communication over HTTP"
 date:              2018-05-04 17:31:59 +0200
-last_modified_at:  2018-08-12 10:34:35 +0200
+date_modified:     2018-08-12 10:34:35 +0200
 categories:        [git]
 tags:              [git, http]
 comments:          true
@@ -10,6 +10,12 @@ excerpt:           >
     What happens when Git communicates over HTTP protocol? In this post, I'll
     intercept the HTTP traffic to discover git-receive-pack, git-upload-pack and
     more.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 This post aims to answer a question: _"What happens when Git communicates over

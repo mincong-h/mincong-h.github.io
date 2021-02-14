@@ -9,6 +9,12 @@ excerpt:     >
   GitHub. I think it’s also a good opportunity to learn more about GWT SafeCss.
   That’s why I’m writing this study note.
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Recently, I helped the GWT community for porting module [`gwt-safecss`][1] to

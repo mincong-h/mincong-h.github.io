@@ -2,7 +2,7 @@
 layout:            post
 title:             "Logback: Test Logging Event"
 date:              2020-02-02 15:46:36 +0100
-last_modified_at:  2020-06-01 22:20:25 +0200
+date_modified:     2020-06-01 22:20:25 +0200
 categories:        [java-testing]
 tags:              [java, logging, test]
 comments:          true
@@ -10,7 +10,14 @@ excerpt:           >
     Capture SLF4J + Logback logging events and test them in unit tests using
     ListAppender.
 image:             /assets/bg-adrian-korte-5gn2soeAc40-unsplash.jpg
+cover:             /assets/bg-adrian-korte-5gn2soeAc40-unsplash.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

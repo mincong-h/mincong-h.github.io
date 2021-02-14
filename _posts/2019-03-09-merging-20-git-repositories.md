@@ -9,6 +9,13 @@ excerpt:           >
     Recently, I merged 20 Git repositories into a single one while keeping the
     history. Here's how I did it.
 image:             /assets/bg-ferris-wheel-2575709_1280.jpg
+cover:             /assets/bg-ferris-wheel-2575709_1280.jpg
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

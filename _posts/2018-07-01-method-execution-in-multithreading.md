@@ -5,6 +5,12 @@ date:        "2018-07-01 16:22:45 +0200"
 categories:  [java-concurrency]
 tags:        [java, multithreading, study-note]
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today I met some multithreading problems. Many Java syntax become very confusing

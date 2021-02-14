@@ -10,7 +10,14 @@ excerpt:           >
     Client API. We will talk about the Maven dependencies, Client, WebTarget,
     and HTTP response.
 image:             /assets/bg-notebook-1280538_1280.jpg
+cover:             /assets/bg-notebook-1280538_1280.jpg
 series:            JAX-RS Basics
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

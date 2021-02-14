@@ -7,6 +7,12 @@ tags:        [git]
 excerpt:     >
   Learning Git Basics.
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 It’s been six weeks since my arrival at Nuxeo now. I learned a lot of things and

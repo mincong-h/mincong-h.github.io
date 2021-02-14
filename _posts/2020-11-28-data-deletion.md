@@ -10,7 +10,14 @@ excerpt:           >
     deletion checks, multi-step deleiton, dangling resources, observability,
     tecnical constraints and verification.
 image:             /assets/bg-gary-chan-YzSZN3qvHeo-unsplash.jpg
+cover:             /assets/bg-gary-chan-YzSZN3qvHeo-unsplash.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Introduction

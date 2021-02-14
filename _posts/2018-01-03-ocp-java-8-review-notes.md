@@ -10,6 +10,12 @@ excerpt:     >
   Certification Guide and Java 8 in Action. They are excellent resources for
   learning Java, which I highly recommend.
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Here're some review notes before my Oracle Certified Professional Java SE 8

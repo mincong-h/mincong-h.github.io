@@ -2,13 +2,20 @@
 layout:            post
 title:             "OCA Review 1 - Java Basics"
 date:              2017-02-23 20:00:00 +0100
-last_modified_at:  2020-06-25 21:44:14 +0200
+date_modified:     2020-06-25 21:44:14 +0200
 categories:        [java-core]
 tags:              [java, oca]
 comments:          true
 image:             /assets/bg-coffee-983955_1280.jpg
+cover:             /assets/bg-coffee-983955_1280.jpg
 redirect_from:
   - /2017/02/23/things-you-didnt-know-about-java/
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 I'm preparing the OCAJP: Oracle Certified Associate Java SE 8 Programmer.

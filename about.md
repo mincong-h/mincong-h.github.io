@@ -10,22 +10,15 @@ permalink: /about/
     alt="Mincong Huang's Gravatar" />
 </p>
 
-Junior software engineer at Nuxeo. I'm passionated by Java development, testing,
-and continous integration. I spend a lot of time on legacy code refactoring,
-testing and CI improvement. Currently working with GWT, JGit, AssertJ, Selenium,
-Sonar, and Checkstyle. I occasionally answer questions on [Stack Overflow][so].
-Reading books is my preferred way to strengthen existing skills and learn new
-ones. You can see my reading list [here][reading-list].
+Hi, welcome to my blog! I'm a software engineer at [Datadog](https://www.datadoghq.com/). I write blog posts
+in my free time. My blogs are bits and pieces of my tech journey. Most of them
+are related to Java. Hope you enjoy them! My opionions are my own, not
+Datadog's. This blog is powered by [Jekyll](https://jekyllrb.com/), a simple, blog-aware, static sites
+solution.
 
-I'm convinced that strong typed language makes our life safer and easier. They
-are not handy for small programs, but absolutely worth their value in complex
-context. I love cross-platform solutions. I respect all the OS: Windows, Mac
-OS, Linux. Hating an OS is easy, writing an OS that fit every user is extremely
-hard.
-
-I love programming because I believe high level abstraction gives birth to
-beauty.
-
-[so]: https://stackoverflow.com/users/4381330/mincong-huang
-[cr]: https://codereview.stackexchange.com/users/101548/mincong-huang
-[reading-list]: {{ site.url }}/reading-list
+<div class="layout--articles">
+  <section class="my-5">
+    <header><h2 id="categories">Categories</h2></header>
+    {%- include article-list.html articles=site.displayed_categories type='grid' size='sm' -%}
+  </section>
+</div>

@@ -10,7 +10,14 @@ excerpt:           >
     directory (src/it/resources) for integration tests in Maven project
     using Build Helper Maven Plugin.
 image:             /assets/bg-c-dustin-91AQt9p4Mo8-unsplash.jpg
+cover:             /assets/bg-c-dustin-91AQt9p4Mo8-unsplash.jpg
 ads:               Ads idea
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

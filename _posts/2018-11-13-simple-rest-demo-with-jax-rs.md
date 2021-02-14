@@ -8,8 +8,15 @@ comments:          true
 excerpt:           >
     A quickstart demo for creating REST service in Java using JAX-RS 2.0. The
     sample is implemented by Jersey, the reference implementation of JAX-RS.
-image:             /assets/bg-cup-of-coffee-1280537_1280.jpg 
+image:             /assets/bg-cup-of-coffee-1280537_1280.jpg
+cover:             /assets/bg-cup-of-coffee-1280537_1280.jpg
 series:            JAX-RS Basics
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

@@ -9,7 +9,14 @@ excerpt:           >
     How to write a new actor in Akka in Java? This post explains actor creation,
     message reception, and testing.
 image:             /assets/bg-coffee-2306471_1280.jpg
+cover:             /assets/bg-coffee-2306471_1280.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

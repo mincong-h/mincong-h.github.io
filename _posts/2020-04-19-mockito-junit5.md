@@ -9,7 +9,14 @@ excerpt:           >
     Initialize Mockito mock objects in JUnit 5 using MockitoExtension,
     MockitoAnnotations#initMocks, or Mockito#mock.
 image:             /assets/bg-edward-howell-hYcriIw0gHc-unsplash.jpg
+cover:             /assets/bg-edward-howell-hYcriIw0gHc-unsplash.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

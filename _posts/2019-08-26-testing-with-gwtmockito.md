@@ -10,7 +10,14 @@ excerpt:           >
     problem understanding, code refactoring, mocking framework preparation,
     testing, and comparison between GwtMockito and GWTTestCase.
 image:             /assets/bg-board-2450236_1280.jpg
+cover:             /assets/bg-board-2450236_1280.jpg
 ads:               None
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

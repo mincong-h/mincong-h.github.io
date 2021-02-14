@@ -11,6 +11,12 @@ excerpt:    >
   have been done and how to do better in the future.
 redirect_from:
   - /project/2016/04/07/review-of-my-first-project/
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 After 8 weeks intensive works in nights and weekends, we've finally released the 

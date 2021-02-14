@@ -4,7 +4,9 @@ Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts i
 my free time. My blogs are bits and pieces of my tech journey. Most of them are
 related to Java. Hope you enjoy them! My opionions are my own, not Datadog's.
 This blog is powered by [Jekyll][1], a simple, blog-aware, static
-sites solution.
+sites solution. It is also powered by [TeXt
+Theme](https://github.com/kitian616/jekyll-TeXt-theme), a super customizable
+Jekyll theme written by Tian Qi ([kitian616](https://github.com/kitian616)).
 
 ## Install and Run
 
@@ -48,13 +50,6 @@ $ ./newtag.sh Java EE
 Tag page created: /Users/mincong/github/mincong-h.github.io/tags/java-ee.md
 ```
 
-Create new monthly digest:
-
-```sh
-$ ./newmonthly.sh 2018-12
-Monthly Digest December 2018 created: /Users/mincong/github/mincong-h.github.io/2018/12/index.md
-```
-
 ## Blog Post
 
 This section descibes blog post configuration.
@@ -62,7 +57,7 @@ This section descibes blog post configuration.
 Property | Value | Description
 :--- | :--- | :---
 `image` | Image URL | Related path to image resource, such as `/assets/my-image.jpg`. Jekyll will complete it as an absolute path. Used by [Jekyll Feed](https://github.com/jekyll/jekyll-feed#optional-front-matter) plugin and my own structured data generation.
-`series` | A meaningful name for the series. | The value will be `slugify` for generating the URL. For example, giving value _"Maven Plugins" will generate `maven-plugins` for the URL.
+`series` | A meaningful name for the series. | The value will be `slugify` for generating the URL. For example, giving value "Maven Plugins" will generate `maven-plugins` for the URL.
 
 ## Assets
 

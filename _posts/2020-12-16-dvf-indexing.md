@@ -9,7 +9,14 @@ excerpt:           >
     Part 1: Indexing new documents into Elasticsearch using French government's open
     data "Demande de valeurs foncières (DVF)".
 image:             /assets/bg-rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg
+cover:             /assets/bg-rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Introduction

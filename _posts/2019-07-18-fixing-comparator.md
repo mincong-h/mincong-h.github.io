@@ -9,6 +9,13 @@ excerpt:           >
     Fun experience on fixing a custom comparator by identifying the sub-problems,
     testing different combinations, and finally fix it.
 image:             /assets/bg-cup-of-coffee-1280537_1280.jpg
+cover:             /assets/bg-cup-of-coffee-1280537_1280.jpg
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

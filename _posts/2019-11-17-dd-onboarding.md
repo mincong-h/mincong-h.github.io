@@ -11,7 +11,14 @@ excerpt:           >
     strong DevOps culture!
 
 image:             /assets/bg-josh-rakower-zBsXaPEBSeI-unsplash.jpg
+cover:             /assets/bg-josh-rakower-zBsXaPEBSeI-unsplash.jpg
 ads:               Ads idea
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

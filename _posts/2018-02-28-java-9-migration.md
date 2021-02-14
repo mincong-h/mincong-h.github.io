@@ -9,6 +9,12 @@ excerpt:     >
   update, Maven project update, CI update, and fixing tests. This article is
   written using macOS and IntelliJ IDEA.
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I'd like to talk about Java 9 migration for Maven project. It consists

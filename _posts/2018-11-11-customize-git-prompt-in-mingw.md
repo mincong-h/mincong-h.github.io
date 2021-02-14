@@ -10,7 +10,14 @@ excerpt:           >
     upstream in your Bash console: MinGW64 (Minimalist GNU for Windows
     x64).
 image:             /assets/20181111-title.png
+cover:             /assets/20181111-title.png
 img_excerptOnly:   true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

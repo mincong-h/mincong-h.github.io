@@ -10,7 +10,14 @@ excerpt:           >
     mechanisms of discovery, the key settings, fault detection, related logs,
     and more.
 image:             /assets/bg-tim-graf-ErO0E8wZaTA-unsplash.jpg
+cover:             /assets/bg-tim-graf-ErO0E8wZaTA-unsplash.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Introduction

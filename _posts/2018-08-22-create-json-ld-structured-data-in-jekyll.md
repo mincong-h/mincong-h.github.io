@@ -9,6 +9,13 @@ excerpt:           >
     In this post, I will explain how to create JSON-LD structured data for
     Jekyll blog.
 image:             /assets/bg-home-office-336373_1280.jpg
+cover:             /assets/bg-home-office-336373_1280.jpg
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Google uses structured data that it finds on the web to understand the content
@@ -27,8 +34,20 @@ handled by:
 So I need to edit the page `post.html` by adding a new HTML element `<script>`:
 
 {% highlight liquid %}
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 layout: default
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 <script type="application/ld+json">

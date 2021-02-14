@@ -9,6 +9,13 @@ excerpt:           >
     Engineering story: how I merge two Git repositories and what are the hidden
     tasks you didn't think about.
 image:             /assets/railway-1245906_1280.jpg
+cover:             /assets/railway-1245906_1280.jpg
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

@@ -2,7 +2,7 @@
 layout:            post
 title:             "Git: Upstream Tracking Understanding"
 date:              2018-05-02 20:41:53 +0200
-last_modified_at:  2019-08-15 15:54:04 +0200
+date_modified:     2019-08-15 15:54:04 +0200
 categories:        [git]
 tags:              [git, java, jgit]
 comments:          true
@@ -11,6 +11,13 @@ excerpt:           >
     or git-branch, the internal mechanism inside Git config (.git/config),
     unset upstream, and related implementation in Java (JGit).
 image:             /assets/bg-salmon-1107404_1280.jpg
+cover:             /assets/bg-salmon-1107404_1280.jpg
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I'd like to talk about tracking upstream branch in Git.

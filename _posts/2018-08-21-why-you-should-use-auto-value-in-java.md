@@ -10,6 +10,13 @@ excerpt:           >
     including equals(), hashCode(), toString(). It lighten your load from
     writing these boilerplate source code.
 image:             /assets/bg-coffee-84624_1280.jpg
+cover:             /assets/bg-coffee-84624_1280.jpg
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Auto Value is a Java library which helps you to generate value types

@@ -9,6 +9,13 @@ excerpt:           >
     A step-by-step guide sharing how I build my data collection tool in Python
     for personal finance, and why it might also fit your needs.
 image:             /assets/bg-money-2724241_1280.jpg
+cover:             /assets/bg-money-2724241_1280.jpg
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

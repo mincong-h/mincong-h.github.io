@@ -9,7 +9,14 @@ excerpt:           >
     Part 2: Optimize the indexing process using bulk index requests and
     multi-threading.
 image:             /assets/bg-jonathan-velasquez-eUSpDPSFdKU-unsplash.jpg
+cover:             /assets/bg-jonathan-velasquez-eUSpDPSFdKU-unsplash.jpg
 ads:               none
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Introduction

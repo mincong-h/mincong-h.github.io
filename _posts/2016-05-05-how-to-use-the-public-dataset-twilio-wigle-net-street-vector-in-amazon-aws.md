@@ -12,6 +12,12 @@ excerpt:    >
   mainly focus on how to use the install and this data set in Amazon AWS.
 redirect_from:
   - /open-data/2016/05/05/how-to-use-the-public-dataset-twilio-wigle-net-street-vector-in-amazon-aws/
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 The Twilio/Wigle.net Street Vector data set provides a complete database of US 

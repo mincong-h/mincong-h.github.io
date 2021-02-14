@@ -2,7 +2,6 @@
 layout:            tag
 title:             Elasticsearch
 tag:               elasticsearch
-date:              2019-11-24 10:03:29 +0100
 ---
 
 Elasticsearch is a distributed, RESTful search and analytics engine capable of

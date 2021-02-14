@@ -12,6 +12,12 @@ excerpt:     >
   it more comfortable to start with Maven, the tool which many Java developers
   are familiar with.
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I want to share how to learn GWT 2.8 with [Maven GWT Plugin][1]. I wrote

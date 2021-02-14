@@ -10,7 +10,14 @@ excerpt:           >
     large numbers of results (or even all results) from a single search
     request.
 image:             /assets/bg-dylan-nolte-wYEj-xonKcg-unsplash.jpg
+cover:             /assets/bg-dylan-nolte-wYEj-xonKcg-unsplash.jpg
 ads:               Ads idea
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

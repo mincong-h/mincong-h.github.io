@@ -2,7 +2,7 @@
 layout:            post
 title:             "Learning HashMap"
 date:              "2018-04-08 09:42:26 +0200"
-last_modified_at:  "2019-04-14 19:34:46 +0200"
+date_modified:     "2019-04-14 19:34:46 +0200"
 categories:        [java-core]
 tags:              [java, study-note]
 excerpt:           >
@@ -10,7 +10,14 @@ excerpt:           >
   using hash code, index calculation, and more.
 comments:    true
 image:             /assets/bg-coffee-2242213_1280.jpg
+cover:             /assets/bg-coffee-2242213_1280.jpg
 ads:               Cracking The Coding Interview
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today I'm learning the implementation of `java.util.HashMap` in Java. Here're

@@ -7,6 +7,12 @@ tags:        [maven]
 excerpt:     >
   Some interesting facts that I discovered about Maven plugins.
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 I created this blog post to share some interesting facts that I discovered about

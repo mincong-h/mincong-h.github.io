@@ -5,6 +5,12 @@ date:        "2017-08-24 15:34:05 +0200"
 categories:  [tech]
 tags:        [security, gwt, web, java]
 comments:    true
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, I would like to share with you about how to secure your GWT application

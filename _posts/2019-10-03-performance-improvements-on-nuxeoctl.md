@@ -9,7 +9,14 @@ excerpt:           >
     How NOS team improves the performance of Nuxeoctl, Nuxeo Server's command
     line, recently.
 image:             /assets/bg-veri-ivanova-p3Pj7jOYvnM-unsplash.jpg
+cover:             /assets/bg-veri-ivanova-p3Pj7jOYvnM-unsplash.jpg
 ads:               Ads idea
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

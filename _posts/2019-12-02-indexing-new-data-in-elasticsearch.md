@@ -9,7 +9,14 @@ excerpt:           >
     Initializing Elasticsearch client, sending a single index request or a bulk
     index request, index response, different content types, refresh policy etc.
 image:             /assets/bg-coffee-2242213_1280.jpg
+cover:             /assets/bg-coffee-2242213_1280.jpg
 ads:               Ads idea
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

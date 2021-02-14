@@ -2,7 +2,6 @@
 layout:            tag
 title:             RESTful API
 tag:               rest
-date:              2018-11-14 22:18:47 +0100
 ---
 
 Representational State Transfer (REST) is a software architectural style that

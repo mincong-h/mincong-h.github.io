@@ -9,6 +9,12 @@ excerpt:           >
     The format of Git internal configuration file (.git/config) is very
     simple: it has multiple sections, each of which contains multiple options.
     An option is indeed a key-value pair...
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 <p align="center">

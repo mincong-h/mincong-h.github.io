@@ -6,6 +6,12 @@ categories: [tech]
 tags:       [hibernate-search]
 redirect_from:
   - /hibernate-search/2016/04/16/starting-hibernate-search/
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 

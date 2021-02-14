@@ -1,6 +1,11 @@
 ---
 layout: page
-title:  Categories
+title: Categories
+permalink: /categories/
 ---
 
-{% include category-cloud.html %}
+<div class="layout--articles">
+  <section class="my-5">
+    {%- include article-list.html articles=site.displayed_categories type='grid' size='md' -%}
+  </section>
+</div>

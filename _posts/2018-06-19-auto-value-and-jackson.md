@@ -2,7 +2,7 @@
 layout:            post
 title:             Use Auto Value and Jackson in REST API
 date:              2018-06-19 07:43:18 +0200
-last_modified_at:  2018-07-22 17:19:19 +0200
+date_modified:     2018-07-22 17:19:19 +0200
 categories:        [java-rest, java-serialization, java-core]
 tags:              [java, serialization, json, jackson, auto-value]
 comments:          true
@@ -11,6 +11,12 @@ excerpt:           >
     alternative for Data Transfer Objects (DTO) in your web service. It shares
     how to apply Jackson annotations on top of Auto Value classes. There're also
     some advanced configurations about this topic.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 It has been about 1 month now since I started writing REST APIs for Nuxeo. We

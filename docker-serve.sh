@@ -3,6 +3,10 @@
 # Jekyll Docker
 # https://github.com/envygeeks/jekyll-docker
 #
+# Enable to simulate production features, e.g. comments
+#
+#     --env JEKYLL_ENV=production
+#
 export JEKYLL_VERSION=3.8
 docker run --rm \
   -p 4000:4000 \

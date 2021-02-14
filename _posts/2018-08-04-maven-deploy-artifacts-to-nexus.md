@@ -2,7 +2,7 @@
 layout:            post
 title:             "Maven: Deploy Artifacts to Nexus"
 date:              2018-08-04 15:02:00 +0200
-last_modified_at:  2018-08-11 23:36:28 +0200
+date_modified:     2018-08-11 23:36:28 +0200
 categories:        [build]
 tags:              [java, maven]
 comments:          true
@@ -12,6 +12,12 @@ excerpt:           >
     define the Nexus repository id and url in distributionManagement. After
     that, add your credentials in ~/.m2/settings.xml. Finally, execute
     command `mvn deploy` to deploy your artifacts.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today I'll talk about how to deploy artifacts to Sonatype Nexus repository using

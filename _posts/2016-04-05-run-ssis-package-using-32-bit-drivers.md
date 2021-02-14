@@ -6,6 +6,12 @@ categories: [tech]
 tags:       [sql-server]
 redirect_from:
   - /sql-server/2016/04/05/run-ssis-package-using-32-bit-drivers/
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Today, when I used an OLD DB source to connect a MS Access database, I met the 

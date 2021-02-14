@@ -2,12 +2,18 @@
 layout:            post
 title:             2016法国技术面试总结
 date:              2016-11-09 18:00:00 +0100
-last_modified_at:  2018-07-22 14:43:35 +0200
+date_modified:     2018-07-22 14:43:35 +0200
 categories:        [tech]
 tags:              [interview]
 comments:          true
 excerpt:           >
     技术面试分享：作为一个IT应届毕业生，如何投简历、准备技术面试？在巴黎有什么好的IT公司，他们的面试流程是怎么样的？小聪以亲身经历与大家一一分享。
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 经过两个月的准备和面试，第一份工作终于找到了。作为一个大学后半段才转学编程的人，深感其中的不易。所以我希望把自己所经历的这些，写下来跟大家分享。

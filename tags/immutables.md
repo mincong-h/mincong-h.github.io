@@ -2,7 +2,6 @@
 layout:            tag
 title:             Immutables
 tag:               immutables
-date:              2020-04-13 08:55:39 +0200
 ---
 
 Annotation processor to create immutable objects and builders. Feels like

@@ -2,13 +2,19 @@
 layout:             post
 title:              JavaScript Cheat Sheet
 date:               2018-07-13 21:17:11 +0200
-last_modified_at:   2018-07-24 17:17:38 +0200
+date_modified:      2018-07-24 17:17:38 +0200
 categories:         [tech]
 tags:               [javascript, study-note]
 comments:           true
 excerpt:            >
     A simple JS cheat sheet for newbies, containing the basic syntax of commonly
     used statements: variable, class, array, JSON, ...
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 In this post, I'll share the basic syntax that I used during the my work. For

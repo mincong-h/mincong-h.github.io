@@ -2,7 +2,7 @@
 layout:            post
 title:             Glob Expression Understanding
 date:              2019-04-16 22:21:18 +0200
-last_modified_at:  2020-07-19 11:45:26 +0200
+date_modified:     2020-07-19 11:45:26 +0200
 categories:        [java-core]
 tags:              [java, glob]
 comments:          true
@@ -10,6 +10,13 @@ excerpt:           >
     Glob expression syntax, and its usage in Java through Path Matcher and
     Directory Stream.
 image:             /assets/bg-markus-winkler-afW1hht0NSs-unsplash.jpg
+cover:             /assets/bg-markus-winkler-afW1hht0NSs-unsplash.jpg
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 ## Overview

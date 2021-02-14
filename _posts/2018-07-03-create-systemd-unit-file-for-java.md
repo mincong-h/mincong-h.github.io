@@ -2,16 +2,23 @@
 layout:            post
 title:             Create Systemd Unit File for Java
 date:              2018-07-03 21:33:29 +0200
-last_modified_at:  2020-05-08 09:10:39 +0200
+date_modified:     2020-05-08 09:10:39 +0200
 categories:        [tech]
 tags:              [java, systemd, raspberry-pi]
 comments:          true
 image:             /assets/bg-coffee-2242213_1280.jpg
+cover:             /assets/bg-coffee-2242213_1280.jpg
 excerpt:           >
     This post explains how to create a systemd unit file for Java, so that you
     can run your Java application as a service in Linux. It also explains the
     structure of a service file, and tells your the useful commands after
     service's creation.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 Recently I created a Systemd unit file to manage a Java program in Raspberry Pi.

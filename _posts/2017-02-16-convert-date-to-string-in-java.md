@@ -2,13 +2,19 @@
 layout:            post
 title:             Convert Date to ISO 8601 String in Java
 date:              2017-02-16 20:00:00 +0100
-last_modified_at:  2018-07-22 13:45:28 +0200
+date_modified:     2018-07-22 13:45:28 +0200
 categories:        [java-core]
 tags:              [java, date, iso-8601]
 comments:          true
 excerpt:           >
     Convert Java dates to ISO-8601 string: this post explains how to convert
     java.util.Date, java.util.Calendar, java.time.ZonedDateTime to string.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 In Java, converting date objects to string is difficult, because the built-in

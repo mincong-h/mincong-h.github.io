@@ -2,13 +2,19 @@
 layout:            post
 title:             Sonar Integration with Maven
 date:              2017-12-09 17:23:09 +0100
-last_modified_at:  2018-12-30 16:11:25 +0100
+date_modified:     2018-12-30 16:11:25 +0100
 categories:        [build]
 tags:              [maven, java, code-quality, jenkins, sonar]
 comments:          true
 excerpt:           >
     A concret Sonar integration example for your Java project, using
     Maven + JaCoCo + SonarCloud + Jenkins.
+article_header:
+  type: overlay
+  theme: dark
+  background_color: "#203028"
+  background_image:
+    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
 <p align="center">
