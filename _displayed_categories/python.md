@@ -5,4 +5,5 @@ category:          python
 cover:             /assets/bg-snake-37585_1280.png
 sidebar:
   nav:             categories
+comments:          false
 ---

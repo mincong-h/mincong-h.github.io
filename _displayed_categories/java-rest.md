@@ -5,4 +5,5 @@ category:          java-rest
 cover:             /assets/bg-park-troopers-RAtKWVlfdf4-unsplash.jpg
 sidebar:
   nav:             categories
+comments:          false
 ---

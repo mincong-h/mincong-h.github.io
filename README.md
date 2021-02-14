@@ -58,6 +58,7 @@ Property | Value | Description
 :--- | :--- | :---
 `image` | Image URL | Related path to image resource, such as `/assets/my-image.jpg`. Jekyll will complete it as an absolute path. Used by [Jekyll Feed](https://github.com/jekyll/jekyll-feed#optional-front-matter) plugin and my own structured data generation.
 `series` | A meaningful name for the series. | The value will be `slugify` for generating the URL. For example, giving value "Maven Plugins" will generate `maven-plugins` for the URL.
+`comments` | Whether the comments section will be enabled. Default to true.
 
 ## Assets
 
