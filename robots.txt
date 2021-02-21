@@ -3,4 +3,4 @@ User-agent: *
 User-agent: Googlebot-Image
 Disallow: /
 
-sitemap: https://mincong-h.github.io/sitemap.xml
+sitemap: https://mincong.io/sitemap.xml
