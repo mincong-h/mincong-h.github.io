@@ -1,6 +1,4 @@
 User-agent: *
-# No pagination any more
-Disallow: /page*
 
 User-agent: Googlebot-Image
 Disallow: /
