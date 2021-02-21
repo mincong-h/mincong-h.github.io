@@ -1,8 +1,6 @@
 User-agent: *
-# No pagination any more
-Disallow: /page*
 
 User-agent: Googlebot-Image
 Disallow: /
 
-sitemap: https://mincong-h.github.io/sitemap.xml
+sitemap: https://mincong.io/sitemap.xml
