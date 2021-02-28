@@ -232,5 +232,6 @@ plugins:
 ##############################
 collections:
   displayed_categories:
+    my_label:  Categories
     permalink: /categories/:name
-    output: true
+    output:    true
