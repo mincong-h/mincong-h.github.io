@@ -11,6 +11,9 @@ excerpt:           >
     alternative for Data Transfer Objects (DTO) in your web service. It shares
     how to apply Jackson annotations on top of Auto Value classes. There're also
     some advanced configurations about this topic.
+
+cover:             /assets/bg-coffee-1030971_1280.jpg
+image:             /assets/bg-coffee-1030971_1280.jpg
 article_header:
   type: overlay
   theme: dark
