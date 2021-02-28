@@ -8,6 +8,8 @@ excerpt:     >
   I occasionally write Python scripts, but I always forget those very basic
   syntax. So I'm writing this Python 3 cheat sheet.
 comments:    true
+image:       /assets/bg-museums-victoria-G9Yy-iitjjg-unsplash.jpg
+cover:       /assets/bg-museums-victoria-G9Yy-iitjjg-unsplash.jpg
 article_header:
   type: overlay
   theme: dark

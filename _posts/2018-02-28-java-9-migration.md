@@ -9,6 +9,8 @@ excerpt:     >
   update, Maven project update, CI update, and fixing tests. This article is
   written using macOS and IntelliJ IDEA.
 comments:    true
+image:       /assets/bg-coffee-2306471_1280.jpg
+cover:       /assets/bg-coffee-2306471_1280.jpg
 article_header:
   type: overlay
   theme: dark

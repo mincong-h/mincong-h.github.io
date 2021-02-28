@@ -12,6 +12,9 @@ excerpt:           >
     define the Nexus repository id and url in distributionManagement. After
     that, add your credentials in ~/.m2/settings.xml. Finally, execute
     command `mvn deploy` to deploy your artifacts.
+
+image:             /assets/bg-andy-li-CpsTAUPoScw-unsplash.jpg
+cover:             /assets/bg-andy-li-CpsTAUPoScw-unsplash.jpg
 article_header:
   type: overlay
   theme: dark

@@ -10,6 +10,8 @@ excerpt:     >
   Guide and Sun Code Conventions, but is highly configurable. It can be
   invoked with an ANT task and a command line program.
 comments:    true
+image:       /assets/bg-coffee-171653_1280.jpg
+cover:       /assets/bg-coffee-171653_1280.jpg
 article_header:
   type: overlay
   theme: dark
