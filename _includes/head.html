@@ -19,7 +19,7 @@
 <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
 <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}"/>
 <meta property="og:site_name" content="Mincong Huang's blog"/>
-<meta property="og:author" content="{{ site.author.name }}">
+<meta name="author" property="og:author" content="{{ site.author.name }}">
 <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}"/>
 {% if page.image %}
   <meta property="og:image" content="{{ site.url }}{{ page.image }}"/>
@@ -27,7 +27,7 @@
   <meta property="og:image:height" content="{{ site.data.images[page.image].height }}"/>
 {% endif %}
 {% if page.date %}
-  <meta property="og:publish_date" content="{{ page.date | date_to_xmlschema }}">
+  <meta name="publish_date" property="og:publish_date" content="{{ page.date | date_to_xmlschema }}">
 {% endif %}
 
 <link rel="canonical" href="{%- include snippets/page-url.html -%}">
