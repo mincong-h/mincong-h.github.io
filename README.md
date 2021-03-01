@@ -54,12 +54,12 @@ Tag page created: /Users/mincong/github/mincong-h.github.io/tags/java-ee.md
 
 This section descibes blog post configuration.
 
-Property | Value | Description
+Property | Type | Description
 :--- | :--- | :---
-`image` | Image URL | Related path to image resource, such as `/assets/my-image.jpg`. Jekyll will complete it as an absolute path. Used by [Jekyll Feed](https://github.com/jekyll/jekyll-feed#optional-front-matter) plugin and [Jekyll SEO tag](https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md).
-`cover` | Image URL | Related path to image resource, such as `/assets/my-image.jpg`. Used for Jekyll TeXt Theme.
-`series` | A meaningful name for the series. | The value will be `slugify` for generating the URL. For example, giving value "Maven Plugins" will generate `maven-plugins` for the URL.
-`comments` | Whether the comments section will be enabled. Default to true.
+`image` | URL | Related path to image resource, such as `/assets/my-image.jpg`. Jekyll will complete it as an absolute path. Used by [Jekyll Feed](https://github.com/jekyll/jekyll-feed#optional-front-matter) plugin, [Jekyll SEO tag](https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md) and Twitter cards.
+`cover` | URL | Related path to image resource, such as `/assets/my-image.jpg`. Used for Jekyll TeXt Theme.
+`series` | String | A meaningful name for the series. The value will be `slugify` for generating the URL. For example, giving value "Maven Plugins" will generate `maven-plugins` for the URL.
+`comments` | Boolean | Whether the comments section will be enabled. Default to true.
 
 ## Assets
 
