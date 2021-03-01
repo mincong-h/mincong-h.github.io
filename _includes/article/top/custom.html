@@ -1,22 +1,4 @@
 <!-- start custom article top snippet -->
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:site" content="@{{ site.author.twitter }}"/>
-  <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
-  <meta name="twitter:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}"/>
-  <meta name="twitter:image" content="{% if page.image %}{{ site.url }}{{ page.image }}{% else %}{{ site.url }}/assets/logo-github.png{% endif %}"/>
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}"/>
-  <meta property="og:url" content="{{ site.url }}{{ page.url }}"/>
-  <meta property="og:type" content="{% if page.title %}article{% else %}website{% endif %}"/>
-  <meta property="og:site_name" content="Mincong Huang's blog"/>
-  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines }}{% else %}{{ site.description }}{% endif %}"/>
-  {% if page.image %}
-    <meta property="og:image" content="{{ site.url }}{{ page.image }}"/>
-    <meta property="og:image:width" content="{{ site.data.images[page.image].width }}"/>
-    <meta property="og:image:height" content="{{ site.data.images[page.image].height }}"/>
-  {% endif %}
 
 <!-- end custom article top snippet -->
