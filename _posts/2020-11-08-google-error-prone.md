@@ -6,7 +6,7 @@ categories:        [build]
 tags:              [java, javac, maven]
 comments:          true
 excerpt:           >
-    Introdution to Google Error-Prone in Maven, which argments the compiler's
+    Introdution to Google Error-Prone in Maven, which augments the compiler's
     type analysis and catches more mistakes at compile time!
 image:             /assets/bg-coffee-983955_1280.jpg
 cover:             /assets/bg-coffee-983955_1280.jpg
