@@ -148,6 +148,9 @@ for blogging: Article VS BlogPosting][4].
 
 ## Test Your Structured Data
 
+> ⚠️  Structure Data Testing Tool (https://search.google.com/structured-data/testing-tool/)
+> will be replaced by Rich Results Test (https://search.google.com/test/rich-results).
+
 [Google Structured Data Testing Tool][7] is an easy and useful tool for
 validating your structured data, and in some cases, previewing a feature in
 Google Search. Try it out:
