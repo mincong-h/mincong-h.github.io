@@ -30,6 +30,8 @@
   <meta name="publish_date" property="og:publish_date" content="{{ page.date | date_to_xmlschema }}">
 {% endif %}
 
+{% seo %}
+
 <link rel="canonical" href="{%- include snippets/page-url.html -%}">
 
 {%- assign _paths_rss = site.paths.rss | default: site.data.variables.default.paths.rss -%}
