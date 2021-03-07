@@ -2,6 +2,7 @@
 layout:            post
 title:             Create JSON-LD Structured Data in Jekyll
 date:              2018-08-22 21:57:07 +0200
+date_modified:     2021-03-07 16:47:00 +0200
 categories:        [tech]
 tags:              [seo, jekyll, google-search-console]
 comments:          true
@@ -230,12 +231,67 @@ remaining tasks to do once JSON-LD is embedded. By doing this, there's chance th
 your blog posts will rank better and have more views in the next months. Hope
 you enjoy this article, see you next time!
 
+## Update
+
+Sunday 7 March, 2021:
+
+Managing the JSON-LD structured data yourself works, but it has some downside.
+After using for 2 years and half, I decided to stop doing this because:
+
+- When migrating to a new Jekyll theme, you will have to know how the layouts
+  are organized in that theme and migrate your code.
+- You have to validate the implementation yourself.
+- The implementation can be error-prone, e.g. using the incorrect liquid
+  filters.
+- It does not take into account other SEO optimization tricks.
+- You may not want to spend time on this topic because you want to save time
+  focus on the actual content of the article.
+
+So what is the better alernative? I believe using Jekyll plugin
+[jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag) is much better. It
+adds the following meta tags to your site:
+
+- Page title, with site title or description appended
+- Page description
+- Canonical URL
+- Next and previous URLs on paginated pages
+- JSON-LD Site and post metadata for richer indexing
+- Open Graph title, description, site title, and URL (for Facebook, LinkedIn, etc.)
+- Twitter Summary Card metadata
+
+There are 3 ways to install it:
+
+1. Add the following to your site's `Gemfile`:
+
+   ```ruby
+   gem 'jekyll-seo-tag'
+   ```
+
+2. Add the following to your site's `_config.yml`:
+
+   ```yml
+   plugins:
+     - jekyll-seo-tag
+   ```
+
+   If you are using a Jekyll version less than `3.5.0`, use the `gems` key instead of `plugins`.
+
+3. Add the following right before `</head>` in your site's template(s):
+
+   <!-- {% raw %} -->```liquid
+   {% seo %}
+   ```
+<!-- {% endraw %} -->
+
+See more details in <https://github.com/jekyll/jekyll-seo-tag>.
+
 ## References
 
 - [JSON-LD: JSON for Linking Data][1]
 - [JSON-LD examples](https://jsonld-examples.com)
 - [Google Search: Introduction to Structured Data][3]
 - [Google Structured Data Testing Tool][7]
+- [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag)
 
 [1]: https://json-ld.org
 [2]: https://jekyllrb.com
