@@ -34,23 +34,7 @@ handled by:
 
 So I need to edit the page `post.html` by adding a new HTML element `<script>`:
 
-{% highlight liquid %}
-article_header:
-  type: overlay
-  theme: dark
-  background_color: "#203028"
-  background_image:
-    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
----
-layout: default
-article_header:
-  type: overlay
-  theme: dark
-  background_color: "#203028"
-  background_image:
-    gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
----
-
+```liquid
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -93,7 +77,7 @@ article_header:
   }
 }
 </script>
-{% endhighlight %}
+```
 
 Once you've added the code above, the generated [JSON-LD][1] structured data
 snippet should be included in your blog post as follows (simplified):
