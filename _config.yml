@@ -55,6 +55,10 @@ author:
   github    : mincong-h      # "user_name" the last part of your profile url, e.g. https://github.com/user_name
   npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
 
+# Jekyll SEO Tag
+twitter:
+  username: mincong_h
+  card:     summary_large_image
 
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################

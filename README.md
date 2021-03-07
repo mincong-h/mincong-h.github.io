@@ -58,6 +58,8 @@ Property | Type | Description
 :--- | :--- | :---
 `image` | URL | Related path to image resource, such as `/assets/my-image.jpg`. Jekyll will complete it as an absolute path. Used by [Jekyll Feed](https://github.com/jekyll/jekyll-feed#optional-front-matter) plugin, [Jekyll SEO tag](https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md) and Twitter cards.
 `cover` | URL | Related path to image resource, such as `/assets/my-image.jpg`. Used for Jekyll TeXt Theme.
+`date` | Date | A humain readable date string (ISO-8601 like) for the creation date time of the blog post, e.g. "2018-08-22 21:57:07 +0200"
+`date_modified` | Date | A humain readable date string (ISO-8601 like) for the latest modification date time of the blog post, e.g. "2021-03-07 16:47:00 +0200"
 `series` | String | A meaningful name for the series. The value will be `slugify` for generating the URL. For example, giving value "Maven Plugins" will generate `maven-plugins` for the URL.
 `comments` | Boolean | Whether the comments section will be enabled. Default to true.
 
