@@ -250,7 +250,7 @@ adds the following meta tags to your site:
 - Open Graph title, description, site title, and URL (for Facebook, LinkedIn, etc.)
 - Twitter Summary Card metadata
 
-There are 3 ways to install it:
+Perform the installation in 3 steps:
 
 1. Add the following to your site's `Gemfile`:
 
