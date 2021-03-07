@@ -19,6 +19,8 @@ article_header:
     gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
+## Overview
+
 Google uses structured data that it finds on the web to understand the content
 of the page, as well as to gather information about the web and the world in
 general. In this post, I will explain how I create JSON-LD structured data for
