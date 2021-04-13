@@ -28,6 +28,9 @@ cat << EOF >> "$filepath"
 ---
 layout:              post
 title:               $title
+subtitle:            >
+    Given one sentence to expand the title or explain why this article may interest your readers.
+
 date:                $(date +"%Y-%m-%d %H:%M:%S %z")
 categories:          [java-core]
 tags:                []

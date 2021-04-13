@@ -62,6 +62,7 @@ Property | Type | Description
 `date_modified` | Date | A humain readable date string (ISO-8601 like) for the latest modification date time of the blog post, e.g. "2021-03-07 16:47:00 +0200"
 `series` | String | A meaningful name for the series. The value will be `slugify` for generating the URL. For example, giving value "Maven Plugins" will generate `maven-plugins` for the URL.
 `comments` | Boolean | Whether the comments section will be enabled. Default to true.
+`subtitle` | String | The subtitle of the blog post in one sentence.
 
 ## Assets
 
