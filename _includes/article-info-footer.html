@@ -42,9 +42,9 @@
         <ul class="left-col menu">
           <li>
             Photo by
-            <a href="https://unsplash.com/@todo">Andre Tan</a>
+            <a href="{{ site.data.images[page.image].url }}">{{ site.data.images[page.image].author }}</a>
             on
-            <a href="https://unsplash.com/">Unsplash</a>
+            <a href="{{ site.data.images[page.image].license_url }}">{{ site.data.images[page.image].license }}</a>
           </li>
         </ul>
       {%- endif -%}
