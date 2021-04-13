@@ -1,6 +1,9 @@
 ---
 layout:              post
 title:               "Elasticsearch: Generate Configuration With Python Jinja 2"
+subtitle:            >
+     Making your Elasticsearch configuration safe and consistent.
+
 date:                2021-04-11 08:31:10 +0800
 categories:          [elasticsearch, python]
 tags:                [elasticsearch, python, jinja]
@@ -9,6 +12,7 @@ excerpt:             >
     This article explains how to generate the configuration for Elasticsearch using
     Python templating engine Jinja 2 by going through a basic use-case. It also
     explains features about Jinja2, testing, and more.
+
 image:               /assets/bg-heiman-ip-iFk8n8ntVDU-unsplash.jpg
 cover:               /assets/bg-heiman-ip-iFk8n8ntVDU-unsplash.jpg
 article_header:
