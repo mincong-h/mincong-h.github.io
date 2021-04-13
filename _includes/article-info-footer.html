@@ -35,10 +35,7 @@
 
   {%- assign _paths_archive = site.paths.archive | default: site.data.variables.default.paths.archive -%}
 
-  {%- if _show_tags or _show_author or _show_date or _pageview -%}
     <div class="article__info clearfix">
-      {%- if _show_tags -%}
-
         <ul class="left-col menu">
           <li>
             <i class="fas fa-camera"></i>
@@ -52,9 +49,7 @@
             </a>
           </li>
         </ul>
-      {%- endif -%}
     </div>
-  {%- endif -%}
 {%- endif -%}
 
 
