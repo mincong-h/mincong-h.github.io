@@ -1,15 +1,15 @@
-    <div class="article__info clearfix">
-        <ul class="left-col menu">
-          <li>
-            <i class="fas fa-camera"></i>
-            Photo by
-            <a href="{{ site.data.images[page.image].url }}">
-              {{ site.data.images[page.image].author }}
-            </a>
-            on
-            <a href="{{ site.data.images[page.image].license_url }}">
-              {{ site.data.images[page.image].license | remove: "License" }}
-            </a>
-          </li>
-        </ul>
-    </div>
+<div class="article__info clearfix">
+  <ul class="left-col menu">
+    <li>
+      <i class="fas fa-camera"></i>
+      Photo by
+      <a href="{{ site.data.images[page.image].url }}">
+        {{ site.data.images[page.image].author }}
+      </a>
+      on
+      <a href="{{ site.data.images[page.image].license_url }}">
+        {{ site.data.images[page.image].license | remove: "License" }}
+      </a>
+    </li>
+  </ul>
+</div>
