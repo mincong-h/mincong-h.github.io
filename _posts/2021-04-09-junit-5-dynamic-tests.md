@@ -1,6 +1,9 @@
 ---
 layout:              post
 title:               "JUnit 5: Dynamic Tests with TestFactory"
+subtitle:            >
+    A new programming model introduced in JUnit 5.
+
 date:                2021-04-09 08:54:59 +0800
 categories:          [java-testing]
 tags:                [java, junit, junit5, testing]
@@ -9,6 +12,7 @@ excerpt:             >
     How to write dynamic tests using @TestFactory in JUnit 5? This article
     explains the syntax, different return types, the test lifecycle, and
     potential use-cases.
+
 image:               /assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg
 cover:               /assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg
 article_header:
