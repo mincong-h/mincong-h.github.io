@@ -149,9 +149,13 @@ layout: base
                     {%- include article-info.html article=page semantic=false -%}
                     {%- include article-header.html article=page semantic=false -%}
                     {%- if page.subtitle -%}
-                      <p class="overlay__excerpt">{{ page.subtitle | strip_html | strip_newlines | strip | truncate: _article_header_excerpt_truncate }}</p>
+                      <div class="article__header">
+                        <p class="overlay__excerpt">{{ page.subtitle | strip_html | strip_newlines | strip | truncate: _article_header_excerpt_truncate }}</p>
+                      </div>
                     {%- elsif page.excerpt -%}
-                      <p class="overlay__excerpt">{{ page.excerpt | strip_html | strip_newlines | strip | truncate: _article_header_excerpt_truncate }}</p>
+                      <div class="article__header">
+                        <p class="overlay__excerpt">{{ page.excerpt | strip_html | strip_newlines | strip | truncate: _article_header_excerpt_truncate }}</p>
+                      </div>
                     {%- endif -%}
                     {%- if page.article_header.actions -%}
                       <ul class="menu">
