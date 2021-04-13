@@ -51,17 +51,3 @@
         </ul>
     </div>
 {%- endif -%}
-
-
-{%- if include.semantic != false -%}
-  {%- if _author -%}
-    <meta itemprop="author" content="{{ _author.name }}"/>
-  {%- endif -%}
-  {%- if include.article.date -%}
-    <meta itemprop="datePublished" content="{{ include.article.date | date_to_xmlschema }}">
-  {%- endif -%}
-  {%- if include.article.tags[0] -%}
-    {%- assign _keywords = include.article.tags | join: ',' %}
-    <meta itemprop="keywords" content="{{ _keywords }}">
-  {%- endif -%}
-{%- endif -%}
