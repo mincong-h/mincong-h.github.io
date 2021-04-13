@@ -1,40 +1,4 @@
-{%- assign _author = site.data.authors[include.article.author] | default: site.author -%}
-
 {%- if include.html != false -%}
-
-  {%- include snippets/assign.html
-    target=site.data.variables.default.page.show_date
-    source0=layout.show_date source1=include.article.show_date -%}
-  {%- assign _show_date = __return -%}
-  {%- if _show_date and include.article.date -%}
-    {%- assign _show_date = true -%}
-  {%- else -%}
-    {%- assign _show_date = false -%}
-  {%- endif -%}
-
-  {%- include snippets/assign.html
-    target=site.data.variables.default.page.show_tags
-    source0=layout.show_tags source1=include.article.show_tags -%}
-  {%- assign _show_tags = __return -%}
-  {%- if _show_tags and include.article.tags[0] -%}
-    {%- assign _show_tags = true -%}
-  {%- else -%}
-    {%- assign _show_tags = false -%}
-  {%- endif -%}
-
-  {%- assign _show_author = include.article.author -%}
-
-  {%- include snippets/assign.html target=site.data.variables.default.page.pageview
-    source0=layout.pageview source1=page.pageview -%}
-  {%- assign _pageview = __return -%}
-  {%- if _pageview or include.show_pageview -%}
-    {%- assign _pageview = true -%}
-  {%- else -%}
-    {%- assign _pageview = false -%}
-  {%- endif -%}
-
-  {%- assign _paths_archive = site.paths.archive | default: site.data.variables.default.paths.archive -%}
-
     <div class="article__info clearfix">
         <ul class="left-col menu">
           <li>
