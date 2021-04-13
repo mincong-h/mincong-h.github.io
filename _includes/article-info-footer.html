@@ -42,9 +42,13 @@
         <ul class="left-col menu">
           <li>
             Photo by
-            <a href="{{ site.data.images[page.image].url }}">{{ site.data.images[page.image].author }}</a>
+            <a href="{{ site.data.images[page.image].url }}">
+              {{ site.data.images[page.image].author }}
+            </a>
             on
-            <a href="{{ site.data.images[page.image].license_url }}">{{ site.data.images[page.image].license }}</a>
+            <a href="{{ site.data.images[page.image].license_url }}">
+              {{ site.data.images[page.image].license | remove: "License" }}
+            </a>
           </li>
         </ul>
       {%- endif -%}
