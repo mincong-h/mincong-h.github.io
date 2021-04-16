@@ -4,6 +4,7 @@ title:             "DVF: Indexing Optimization"
 date:              2020-12-17 15:08:30 +0100
 categories:        [elasticsearch]
 tags:              [elasticsearch, java, concurrency]
+series:            [dvf]
 comments:          true
 excerpt:           >
     Part 2: Optimize the indexing process using bulk index requests and

@@ -57,6 +57,8 @@ header:
       # @end locale config
     url: /about
 
+# TODO(mincong): Can we compute the following lists?
+
 categories:
   - title: Categories
     children:
@@ -86,6 +88,8 @@ categories:
 series:
   - title: Series
     children:
+      - title:  Real Estate Project DVF
+        url:    /series/dvf
       - title:  JAX-RS 2.x Basics
         url:    /series/jax-rs-basics
       - title:  Maven Plugins

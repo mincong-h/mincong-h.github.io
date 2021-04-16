@@ -8,6 +8,7 @@ subtitle:            >
 date:                2021-04-12 07:34:30 +0800
 categories:          [elasticsearch]
 tags:                [elasticsearch, java]
+series:              [dvf]
 comments:            true
 excerpt:             >
     How to write and execute metric and bucket aggregations in Elasticsearch for
