@@ -243,8 +243,8 @@ collections:
     my_label:  Categories
     permalink: /categories/:name
     output:    true
-  # Series are a collection that contains serial articles. A series explains
-  # one target topic from different angles. It is usually around a framework or
+  # Series are a collection that contains several articles. A series explains
+  # one target topic from different angles. It is usually about a framework or
   # a project.
   series:
     my_label:  Series
