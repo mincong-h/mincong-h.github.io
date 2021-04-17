@@ -10,7 +10,7 @@ excerpt:           >
     @POST, @PUT, and @DELETE.
 image:             /assets/bg-coffee-1030971_1280.jpg
 cover:             /assets/bg-coffee-1030971_1280.jpg
-series:            JAX-RS Basics
+series:            [jax-rs-basics]
 article_header:
   type: overlay
   theme: dark

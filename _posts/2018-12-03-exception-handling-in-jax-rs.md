@@ -11,7 +11,7 @@ excerpt:           >
     matching mechanism (nearest-superclass), and more.
 image:             /assets/bg-coffee-983955_1280.jpg
 cover:             /assets/bg-coffee-983955_1280.jpg
-series:            JAX-RS Basics
+series:            [jax-rs-basics]
 article_header:
   type: overlay
   theme: dark

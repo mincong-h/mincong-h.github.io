@@ -4,6 +4,10 @@ header:
     url: /categories
 
   - titles:
+      en     : &EN        Series
+    url: /series
+
+  - titles:
       # @start locale config
       en      : &EN       Archive
       en-GB   : *EN
@@ -78,3 +82,11 @@ categories:
         url:    /categories/reliability
       - title:  Review
         url:    /categories/review
+
+series:
+  - title: Series
+    children:
+      - title:  JAX-RS 2.x Basics
+        url:    /series/jax-rs-basics
+      - title:  Maven Plugins
+        url:    /series/maven-plugins

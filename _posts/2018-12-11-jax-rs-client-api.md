@@ -11,7 +11,7 @@ excerpt:           >
     and HTTP response.
 image:             /assets/bg-notebook-1280538_1280.jpg
 cover:             /assets/bg-notebook-1280538_1280.jpg
-series:            JAX-RS Basics
+series:            [jax-rs-basics]
 article_header:
   type: overlay
   theme: dark
