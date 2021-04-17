@@ -10,7 +10,7 @@ excerpt:           >
     article, we will see what is Failsafe plugin and its common use cases.
 image:             /assets/bg-tools-1209764_1280.jpg
 cover:             /assets/bg-tools-1209764_1280.jpg
-series:            Maven Plugins
+series:            maven-plugins
 article_header:
   type: overlay
   theme: dark
