@@ -10,7 +10,7 @@ excerpt:           >
     sample is implemented by Jersey, the reference implementation of JAX-RS.
 image:             /assets/bg-cup-of-coffee-1280537_1280.jpg
 cover:             /assets/bg-cup-of-coffee-1280537_1280.jpg
-series:            JAX-RS Basics
+series:            [jax-rs-basics]
 article_header:
   type: overlay
   theme: dark

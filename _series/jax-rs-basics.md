@@ -1,8 +1,8 @@
 ---
-layout: series
-date:   "2018-11-22 07:39:00 +0200"
-title:  "JAX-RS 2.x Basics"
-series: "JAX-RS Basics"
+layout:            series
+date:              "2018-11-22 07:39:00 +0200"
+title:             "JAX-RS 2.x Basics"
+series:            "JAX-RS Basics"
 cover:             /assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg
 sidebar:
   nav:             series
