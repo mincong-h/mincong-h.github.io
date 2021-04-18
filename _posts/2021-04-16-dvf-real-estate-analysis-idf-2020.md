@@ -101,11 +101,13 @@ Starting from the next section, we are going to analyze the data of
 
 ## Overview
 
+### Transactions 2020
+
 <img src="/assets/20210416-idf-mutation-count.png"
      alt="2020 Ile-de-France mutation count" />
 
 First of all, let's take a look at the global landscape of the real estate
-market of Île-de-France in 2020. There were 146,084 transactions that
+market of Île-de-France in 2020. There were 146,084 transactions
 happened in this area with 387,425 mutations (\*). From the widget above, we can
 see the number of mutations over the year. The real estate market was active
 despite the pandemic. However, the number of transactions was greatly reduced
@@ -116,6 +118,18 @@ taken by the French government. After that period, the market quickly regained i
 > can be an apartment, a house, a cellar, etc. Each transaction contains one or
 > multiple mutations. For example, you can buy one apartment and one cellar in
 > the same transaction.
+
+### Transactions 2014 To 2020
+
+<img src="/assets/20210416-idf-mutation-count-2014-to-2020.png"
+     alt="2014-2020 Ile-de-France mutation count" />
+
+If we compare to the previous years, we can see that the market was impacted by
+the COVID-19 in 2020. The total number of mutations decreased 19.5% (481,002 in 2019
+vs 387,425 in 2020) in Île-de-France. Some contributing factors may be the COVID-19 measures
+taken by the government (lockdown, curfew), the economic impact (partial
+unemployment, complete unemployment), the psychological factor (uncertainty
+about the future).
 
 Before going further, let's spend some time understanding
 which part of the dataset is the most valuable for the analysis. To do that, we
