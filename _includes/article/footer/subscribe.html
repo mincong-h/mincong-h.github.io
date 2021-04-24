@@ -7,3 +7,13 @@
   <i class="fas fa-rss"></i>
   <a type="application/rss+xml" href="{{ _paths_rss }}">{{ _locale_nav_subscribe }}</a>
 </div>
+
+{%- if page.wechat -%}
+<div style="text-align: center">
+  <img
+    src="/assets/wechat-QR-code.jpg"
+    alt="WeChat QR Code"
+    width="300px"
+    style="max-width: 100%">
+</div>
+{%- endif -%}
