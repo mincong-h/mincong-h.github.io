@@ -30,13 +30,13 @@ Now, let's get started!
 
 _Why do we need throttling?_
 
-When hosting a backend service, it's usually difficult to predict customers'
-traffic. When the business grows, the traffic grows. A huge amount of requests can
+When hosting a backend service, it's usually difficult to predict precisely customers'
+traffic. When the business grows, the traffic of the backend service grows. A huge amount of requests can
 make the system overloaded or even out-of-service. Also, customers' traffic can
-be seasonal, such as there is more traffic in some hours of the day than
+be seasonal, such as there is more traffic during the business hours of the day than
 other hours. When processing requests from different customers, there is also a
-risk that one abusive customer may impact the requests of others and degrade the
-user experience of the product. Therefore, it's important to set up a mechanism
+risk that one abusive customer may impact the requests of others because the service can be shared between those customers. Overloaded system degrades the
+user experience of the product and may lead to unpredictable errors. Therefore, it's important to set up a mechanism
 to protect the system from being overloaded. That's why we need throttling.
 
 A throttling mechanism can be just as simple as rejecting or postpone the
