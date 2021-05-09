@@ -78,6 +78,30 @@ Facebook | <https://developers.facebook.com/tools/debug/sharing/>
 LinkedIn | <https://www.linkedin.com/post-inspector/>
 Twitter | <https://cards-dev.twitter.com/validator>
 
+## WeChat
+
+Edit using 墨滴 https://www.mdnice.com/ which converts markdown into WeChat
+article.
+
+格式：
+
+- 格式化文档，让英文单词和中文字符之间加空格
+- 微信外链转脚注，优雅处理微信中外部链接无法点击的问题。有些时候代码监测不出来，需要手动修改。
+- 取消衬线字体
+
+主题：
+
+- 橙蓝风（axuebin）
+
+代码主题：
+
+- 选择 atom-one-dark
+- 取消 Mac 风格
+
+内容：
+
+- “参考资料”改成“外部链接”
+
 ## Useful Resources
 
 - Jekyll cheatsheet (<https://devhints.io/jekyll>)
