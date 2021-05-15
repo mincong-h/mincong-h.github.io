@@ -58,6 +58,8 @@ and why it is important to understand this topic (motivation)?
 After reading this article, you will understand:
 阅读本文后，你会明白：
 
+事不宜迟，让我们马上开始吧！
+
 ## Going Further 扩展
 
 How to go further from here?
