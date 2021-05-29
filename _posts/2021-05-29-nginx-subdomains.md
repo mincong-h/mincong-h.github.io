@@ -185,3 +185,4 @@ Accept-Ranges: bytes
 - Phoenix NAP, "How to Redirect HTTP to HTTPS in Nginx", _phoenixnap.com_, 2020. <https://phoenixnap.com/kb/redirect-http-to-https-nginx>
 - Andrew B, "Difference in sites-available vs sites-enabled vs conf.d directories (Nginx)?", _Server Fault_, 2013. <https://serverfault.com/questions/527630/>
 - sativaware, "Include HTTP headers in Curl response", 2019. <https://coderwall.com/p/f3avyq/include-http-headers-in-curl-response>
+- Santosh Venkatraman, "Configure nginx to host multiple subdomains", _dev.to_, 2019. <https://dev.to/on_stash/configure-nginx-to-host-multiple-subdomains-2g0b>
