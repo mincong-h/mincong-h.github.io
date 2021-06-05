@@ -10,6 +10,9 @@ excerpt:           >
     This post explains how to apply a Git reference filter to your Git server
     in Java. It allows you to customize Git references before sending data to
     clients (upload-pack).
+
+image:             /assets/bg-wade-austin-ellis-WxNcit-ZDCw-unsplash.jpg
+cover:             /assets/bg-wade-austin-ellis-WxNcit-ZDCw-unsplash.jpg
 article_header:
   type: overlay
   theme: dark
