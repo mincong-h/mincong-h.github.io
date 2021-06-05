@@ -304,6 +304,8 @@ index 00000000..6a19c964
 
 ![GitHub Merge Options](/assets/20210605-git-merge-options.png)
 
+### 撤销单一 commit
+
 撤销单一 commit。适合 GitHub 中通过 squash-and-merge 选项合并的撤销。
 
 ```sh
@@ -315,6 +317,8 @@ $ git revert fb67d981
  1 file changed, 1 insertion(+), 2 deletions(-)
 ```
 
+### 撤销多个 commits
+
 撤销多个 commits，从新到旧、倒序地把 commits 逐一撤销。适合 GitHub 中通过 rebase-and-merge 选项合并的撤销：
 
 ```sh
@@ -322,6 +326,8 @@ $ git revert <commit3>
 $ git revert <commit2>
 $ git revert <commit1>
 ```
+
+### 撤销一个 merge commit
 
 撤销一个 merge commit。这个时候要选择回到哪个父分支（parent branch），比如之前把 test 分支的代码合并到了 master：这个时候 parent 1 是 master，parent 2 是 test。撤销时不明确父分支会报错。这个方法适合 GitHub 中通过 create-a-merge-commit 选项合并的撤销：
 
