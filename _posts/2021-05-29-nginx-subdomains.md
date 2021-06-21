@@ -5,7 +5,7 @@ subtitle:            >
     如何在一台机器上部署多个网站？
 
 date:                2021-05-29 09:46:04 +0200
-categories:          []
+categories:          [devops]
 tags:                [nginx]
 comments:            true
 excerpt:             >
