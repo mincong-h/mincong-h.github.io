@@ -70,7 +70,7 @@ Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), 
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
-在本文中，我们看到了。。。最后，我们还简要讨论了其他的场景，并且分享了一些让大家拓展出去的资源。希望这篇文章能够给你带来一些思考，让你的系统变得。。。谢谢大家！
+在本文中，我们看到了。。。最后，我们还简要讨论了其他的场景，并且分享了一些让大家拓展出去的资源。希望这篇文章能够给你带来一些思考，让你的系统变得。。。如果你有兴趣了解更多的咨询，欢迎关注我的 [GitHub](https://github.com/mincong-h) 或者微信订阅号【码农小黄】。谢谢大家！
 
 ## References 参考文献
 
