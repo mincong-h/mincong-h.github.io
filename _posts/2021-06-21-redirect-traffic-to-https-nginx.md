@@ -61,7 +61,7 @@ sudo snap install --classic certbot
 # Prepare the Certbot command
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
 
-# Get and install your certificates
+# Get and install your certificates in interactive mode
 sudo certbot --nginx
 
 # Test automatic renewal
