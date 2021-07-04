@@ -34,14 +34,6 @@ articles:
   show_info: true
 ---
 
-Collection "zh":
-
-<ul>
-  {% for post in site.cn %}
-  <li>{{ post.title }} ({{post.url}})</li>
-  {% endfor %}
-</ul>
-
 <div class="layout--home">
   {%- include paginator.html -%}
 </div>
@@ -50,5 +42,3 @@ Collection "zh":
 </script>
 
 {{ content }}
-
-
