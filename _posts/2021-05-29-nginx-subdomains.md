@@ -5,6 +5,7 @@ subtitle:            >
     如何在一台机器上部署多个网站？
 
 date:                2021-05-29 09:46:04 +0200
+date_modified:       2021-07-04 09:00:00 +0200
 categories:          [devops]
 tags:                [nginx]
 comments:            true
@@ -30,8 +31,9 @@ ads:                 none
 - 如何在阿里云配置关于 DNS 的“域名解析”
 - 如何在 Nginx 中配置 HTTP 的重定向（redirection）
 - 如何在 Nginx 中配置部署多个子域名（subdomains）
+- 如何在后续阶段，部署新的子域名
 
-在开始之前，先明确一下目的。文章的目的是造出让三个关于吉米数据（<https://jimidata.fr>）的子域名，然后让它们都指向同一个服务器：
+在开始之前，先明确一下目的。文章的目的是造出三个关于吉米数据（<https://jimidata.fr>）的子域名，然后让它们都指向同一个服务器：
 
 | URL                        | IP 地址         | 描述         |
 | :------------------------- | :-------------- | :----------- |
@@ -68,7 +70,7 @@ server {
 解释一下上面的配置：
 
 - `listen 80` 这个命令告诉 Nginx 要监听 80 号端口。所有 HTTP 都是通过 80 号端口抵达的。
-- `server_name _` 这个命令告诉 Nginx 无论什么 hostname 都会被匹配，无论是 `www.jimidata.fr`、`api.jimidata.fr`、`blog.jimidata.fr`还是别的 host。
+- `server_name _` 这个命令告诉 Nginx 无论什么 hostname 都会被匹配，无论是 `www.jimidata.fr`、`api.jimidata.fr`、`blog.jimidata.fr` 还是别的 host。
 - `return 301 https://$host$request_uri` 把用户的 HTTP 请求永久重定向（[301 Moved Permanently](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Status)）到 HTTPS 那边，并且保证链接的剩余部分不变：host 以及 URI 部分都是一样的。唯一改变的就是把 HTTP 变成了 HTTPS。
 
 整个 Nginx 只需要这一个服务器（Server block）监听 80 号端口就可以了。因为它对所有的 hostname 都是匹配的。
@@ -168,6 +170,51 @@ Accept-Ranges: bytes
 ```
 
 你可以看见 curl 一共发送了两个请求：第一个请求被永久地重导向（301 Moved Permanently）到 HTTPS 版的网页；然后第二个请求成功（200 OK）并显示网页。
+
+## 增加新的子域名
+
+当业务增长的时候，你可能需要在后续阶段部署新的子域名。如果你使用阿里云的话，后续部署需要以下两个步骤：一、添加新的子域名到阿里云的云解析DNS；二、更新 SSL 证书。这里用另一个网站“阳光特教”举例。
+
+第一步像上文一样在阿里云平台上增加新的子域名。填写记录类型、主机记录、解析线路、记录值、以及缓存有效期（TTL）。
+
+![增加新的子域名到阿里云的云解析DNS](/assets/20210529-create-subdomain-aliyun-DNS.png)
+
+第二步更新 SSL 证书。如果使用 Certbot 管理 SSL 证书的话，推荐使用它的命令行来操作。Certbot 会自动检测你已经部署在 Nginx 的域名，并请求你确认哪个域名需要激活HTTPS：
+
+```sh
+sudo certbot --nginx
+```
+
+```
+Saving debug log to /var/log/letsencrypt/letsencrypt.log
+
+Which names would you like to activate HTTPS for?
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+1: sunnytj.info
+2: admin.sunnytj.info
+3: api.sunnytj.info
+4: static.sunnytj.info
+5: www.sunnytj.info
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Select the appropriate numbers separated by commas and/or spaces, or leave input
+blank to select all options shown (Enter 'c' to cancel): 4
+```
+
+这里我选择激活第4个域名 `static.sunnytj.info`。确认以后 Certbot 向 Let's Encrypt 申请新的证书。
+
+```
+Requesting a certificate for static.sunnytj.info
+...
+```
+
+结束以后，新的域名就成功地被添加以及可以安全地通过 HTTPS 访问了。下面测试一下：
+
+```
+curl https://static.sunnytj.info/index.txt
+Welcome to Sunny!
+```
+
+成功了，oh yeah！
 
 ## 扩展
 
