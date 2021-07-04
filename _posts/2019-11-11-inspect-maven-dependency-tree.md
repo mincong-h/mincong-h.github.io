@@ -136,6 +136,31 @@ wildcards. An empty pattern segment is treated as an implicit wildcard.
 For example, `org.apache.*` will match all artifacts whose group id starts
 with `org.apache.`, and `:::*-SNAPSHOT` will match all snapshot artifacts.
 
+Here is an example for listing all the `spring-web` dependencies from project
+[linlinjava/litemall](https://github.com/linlinjava/litemall/) for its module
+`litemall-admin-api`:
+
+```
+➜  litemall-admin-api  $ mvn dependency:tree -Dincludes="*:spring-web"
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -----------------< org.linlinjava:litemall-admin-api >------------------
+[INFO] Building litemall-admin-api 0.1.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-dependency-plugin:3.1.1:tree (default-cli) @ litemall-admin-api ---
+[INFO] org.linlinjava:litemall-admin-api:jar:0.1.0
+[INFO] \- org.linlinjava:litemall-core:jar:0.1.0:compile
+[INFO]    \- org.springframework.boot:spring-boot-starter-web:jar:2.1.5.RELEASE:compile
+[INFO]       \- org.springframework:spring-web:jar:5.1.7.RELEASE:compile
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.095 s
+[INFO] Finished at: 2021-06-11T22:15:14+02:00
+[INFO] ------------------------------------------------------------------------
+```
+
 ## Further Reading
 
 For decades, the discussion of software reuse was far more command than actual
@@ -163,3 +188,5 @@ on [Twitter](https://twitter.com/mincong_h) or
   <https://maven.apache.org/plugins/maven-dependency-plugin/index.html>
 - Maven, "Introduction to the Dependency Mechanism", _Maven Documentation_, 2019.
   <https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html>
+- linlinjava, "linlinjava/litemall", _GitHub_, 2021.
+  <https://github.com/linlinjava/litemall/>
