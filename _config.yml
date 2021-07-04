@@ -188,7 +188,7 @@ analytics:
 ##############################
 markdown    : kramdown
 highlighter : rouge
-permalink   : /:year/:month/:day/:title/
+permalink   : /:collection/:title/
 
 exclude:
   - CHANGELOG.md
@@ -249,4 +249,6 @@ collections:
   series:
     my_label:  Series
     permalink: /series/:name
+    output:    true
+  en:
     output:    true
