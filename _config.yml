@@ -188,7 +188,7 @@ analytics:
 ##############################
 markdown    : kramdown
 highlighter : rouge
-permalink   : /:collection/:title/
+permalink   : /en/:title/
 
 exclude:
   - CHANGELOG.md
@@ -222,8 +222,8 @@ defaults:
       show_subscribe: true
       pageview: true
   - scope:
-      path: ""
-      type: zh
+      path: _cn
+      type: cn
     values:
       layout: article
       sharing: true
@@ -261,7 +261,6 @@ collections:
     my_label:  Series
     permalink: /series/:name
     output:    true
-  en:
-    output:    true
-  zh:
+  cn:
+    promalink: /cn/:title
     output:    true
