@@ -33,6 +33,15 @@ articles:
   show_readmore: true
   show_info: true
 ---
+
+Collection "zh":
+
+<ul>
+  {% for post in site.zh %}
+  <li>{{ post.title }} ({{post.url}})</li>
+  {% endfor %}
+</ul>
+
 <div class="layout--home">
   {%- include paginator.html -%}
 </div>
@@ -41,3 +50,5 @@ articles:
 </script>
 
 {{ content }}
+
+
