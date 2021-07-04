@@ -105,8 +105,7 @@ using option `outputFile`:
 
 ```sh
 # single module
-mvn dependency:tree \
-  -DoutputFile=/path/to/deps.txt
+mvn dependency:tree -DoutputFile=/path/to/deps.txt
 ```
 
 When working with a multi-module Maven project, you may also want to use option
