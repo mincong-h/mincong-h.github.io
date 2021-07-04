@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Security Training Day 2
+lang:                en
 date:              2019-01-23 20:41:20 +0100
 categories:        [tech]
 tags:              [security, http, browser]

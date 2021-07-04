@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Introduction to Selenium WebDriver"
+lang:                en
 date:        "2018-04-03 20:50:21 +0200"
 categories:  [java-testing]
 tags:        [java, qa, testing, study-note, selenium]

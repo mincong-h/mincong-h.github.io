@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Why You Should Use Auto Value in Java?"
+lang:                en
 date:              2018-08-21 09:22:49 +0200
 categories:        [java-core]
 tags:              [java, javac, auto-value]

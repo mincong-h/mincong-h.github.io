@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Indexing New Data in Elasticsearch
+lang:                en
 date:              2019-12-02 21:17:48 +0100
 categories:        [elasticsearch]
 tags:              [java, elasticsearch]

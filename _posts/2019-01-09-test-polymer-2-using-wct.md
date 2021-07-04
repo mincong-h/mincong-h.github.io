@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Test Polymer 2 Using WCT
+lang:                en
 date:              2019-01-09 07:35:08 +0100
 categories:        [tech]
 tags:              [polymer, javascript, testing, travis-ci]

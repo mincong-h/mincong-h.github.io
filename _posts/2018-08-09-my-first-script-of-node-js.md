@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             My First Script in Node JS
+lang:                en
 date:              2018-08-09 20:25:41 +0200
 categories:        [tech]
 tags:              [javascript, node]

@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Method Execution In Multithreading"
+lang:                en
 date:        "2018-07-01 16:22:45 +0200"
 categories:  [java-concurrency]
 tags:        [java, multithreading, study-note]

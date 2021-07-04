@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             18 Allocation Deciders in Elasticsearch
+lang:                en
 date:              2020-09-27 11:44:32 +0200
 categories:        [elasticsearch]
 tags:              [elasticsearch, java]

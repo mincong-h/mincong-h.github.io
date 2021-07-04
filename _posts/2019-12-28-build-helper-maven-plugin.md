@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Build Helper Maven Plugin
+lang:                en
 date:              2019-12-28 10:43:03 +0100
 categories:        [build]
 tags:              [java, maven]

@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Maven Compiler Plugin Understanding
+lang:                en
 date:              2018-08-29 19:08:27 +0200
 date_modified:     2020-11-01 16:45:48 +0100
 categories:        [build]

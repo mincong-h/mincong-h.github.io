@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "DVF: Indexing New Documents"
+lang:                en
 date:              2020-12-16 15:27:56 +0100
 categories:        [elasticsearch]
 tags:              [elasticsearch, java, docker]

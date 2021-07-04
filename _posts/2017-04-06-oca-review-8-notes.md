@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "OCA Review 8 - Notes"
+lang:                en
 date:        "2017-04-06 21:01:34 +0200"
 categories:  [java-core]
 tags:        [java, oca]

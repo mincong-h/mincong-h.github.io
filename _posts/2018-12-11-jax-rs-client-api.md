@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             JAX-RS Client API
+lang:                en
 date:              2018-12-11 20:11:39 +0100
 categories:        [java-rest]
 tags:              [http, java, jax-rs, rest]

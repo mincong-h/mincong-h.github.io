@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Why Do We Need Completable Future?
+lang:                en
 date:              2020-06-26 21:33:12 +0200
 categories:        [java-concurrency]
 tags:              [java, concurrency]

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Add listener to Android ListView"
+lang:                en
 date:   2016-03-20 17:56:15 +0100
 categories: [tech]
 tags:       [java, android]

@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Maven JAR Plugin Understanding
+lang:                en
 date:              2018-09-05 20:04:39 +0200
 categories:        [build]
 tags:              [maven, java]

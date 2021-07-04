@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "SEO: Improve Blog Ranking in Google Search"
+lang:                en
 date:              2018-07-21 06:37:11 +0200
 date_modified:     2018-07-22 18:00:40 +0200
 categories:        [tech]

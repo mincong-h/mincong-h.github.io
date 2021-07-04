@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Performance Improvements on Nuxeoctl
+lang:                en
 date:              2019-10-03 21:43:23 +0200
 categories:        [tech]
 tags:              [java, performance, cli, jgit, rest, jersey]

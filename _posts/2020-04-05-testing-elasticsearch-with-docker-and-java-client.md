@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Testing Elasticsearch With Docker And Java High Level REST Client
+lang:                en
 date:              2020-04-05 11:22:57 +0200
 categories:        [elasticsearch, java-testing]
 tags:              [java, elasticsearch, testing, docker]

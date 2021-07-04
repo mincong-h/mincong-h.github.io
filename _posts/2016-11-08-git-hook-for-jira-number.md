@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Git Hook for JIRA Number"
+lang:                en
 date:        2016-11-08 12:00:00 +0100
 categories:  [git]
 tags:        [git]

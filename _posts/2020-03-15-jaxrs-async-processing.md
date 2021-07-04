@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Asynchronous Processing in JAX-RS 2.x"
+lang:                en
 date:              2020-03-15 16:32:31 +0100
 categories:        [java-rest, java-concurrency]
 tags:              [java, jax-rs, jersey, concurrency]

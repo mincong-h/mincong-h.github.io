@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Viewing the Contents of JAR
+lang:                en
 date:              2019-04-30 19:58:52 +0200
 categories:        [java-core]
 tags:              [java]

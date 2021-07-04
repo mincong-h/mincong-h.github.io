@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "DVF: Indexing Optimization"
+lang:                en
 date:              2020-12-17 15:08:30 +0100
 categories:        [elasticsearch]
 tags:              [elasticsearch, java, concurrency]

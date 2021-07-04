@@ -1,6 +1,7 @@
 ---
 layout:             post
 title:              JavaScript Cheat Sheet
+lang:                en
 date:               2018-07-13 21:17:11 +0200
 date_modified:      2018-07-24 17:17:38 +0200
 categories:         [tech]

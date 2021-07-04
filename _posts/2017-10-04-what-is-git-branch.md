@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "What Is Git Branch?"
+lang:                en
 date:        "2017-10-04 16:04:48 +0200"
 categories:  [git]
 tags:        [git]

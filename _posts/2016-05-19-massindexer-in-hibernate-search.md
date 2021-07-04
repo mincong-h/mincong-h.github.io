@@ -1,6 +1,7 @@
 ---
 layout:         post
 title:          "MassIndexer in Hibernate Search"
+lang:                en
 date:           2016-05-19 19:00:00 +0100
 categories:     [tech]
 tags:           [hibernate-search]

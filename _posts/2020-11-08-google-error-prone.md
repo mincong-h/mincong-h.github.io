@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Introduction of Google Error-Prone
+lang:                en
 date:              2020-11-08 16:16:21 +0100
 categories:        [build]
 tags:              [java, javac, maven]
@@ -115,6 +116,7 @@ assertEquals("2009-06-15T13:45:30", d.format(DateTimeFormatter.ISO_LOCAL_DATE_TI
 
 Error:
 
+lang:                en
 > Error:  Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.8.1:testCompile (default-testCompile) on project java-examples-date: Compilation failure
 > Error:  /home/runner/work/java-examples/java-examples/date/src/test/java/io/mincongh/date/so42364818/DateTest.java:[23,13] [ReturnValueIgnored] Return value of this method must be used
 > Error:      (see https://errorprone.info/bugpattern/ReturnValueIgnored)

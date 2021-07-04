@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Exception Handling in JAX-RS
+lang:                en
 date:              2018-12-03 07:15:28 +0100
 categories:        [java-rest]
 tags:              [http, java, jax-rs, rest]

@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             2016法国技术面试总结
+lang:                en
 date:              2016-11-09 18:00:00 +0100
 date_modified:     2018-07-22 14:43:35 +0200
 categories:        [tech]

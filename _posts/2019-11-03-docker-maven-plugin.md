@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Docker Maven Plugin
+lang:                en
 date:              2019-11-03 17:31:28 +0100
 categories:        [build]
 tags:              [java, docker, maven]

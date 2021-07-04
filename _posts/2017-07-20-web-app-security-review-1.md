@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Web App Security - Review 1"
+lang:                en
 date:        "2017-07-20 14:07:30 +0200"
 categories:  [tech]
 tags:        [security, web]

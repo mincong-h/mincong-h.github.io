@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Git: Upstream Tracking Understanding"
+lang:                en
 date:              2018-05-02 20:41:53 +0200
 date_modified:     2019-08-15 15:54:04 +0200
 categories:        [git]

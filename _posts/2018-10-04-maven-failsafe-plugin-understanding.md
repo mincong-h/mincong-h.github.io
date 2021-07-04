@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Maven Failsafe Plugin Understanding
+lang:                en
 date:              2018-10-04 19:50:05 +0200
 categories:        [build]
 tags:              [java, maven]

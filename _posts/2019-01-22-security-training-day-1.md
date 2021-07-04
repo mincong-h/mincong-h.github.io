@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Security Training Day 1
+lang:                en
 date:              2019-01-22 21:04:37 +0100
 categories:        [tech]
 tags:              [security, java, http]

@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Code Quality Improvement For Newbies"
+lang:                en
 date:        2017-01-26 22:46:00 +0100
 categories:  [tech]
 tags:        [code-quality]

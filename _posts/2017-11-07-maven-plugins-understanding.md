@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Maven Plugins Understanding"
+lang:                en
 date:        "2017-11-07 20:43:06 +0100"
 categories:  [build]
 tags:        [maven]

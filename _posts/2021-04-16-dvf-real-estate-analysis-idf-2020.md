@@ -4,6 +4,7 @@ title:               "DVF: Real Estate Analysis For Île-de-France in 2020"
 subtitle:            >
     To buy or not to buy?
 
+lang:                en
 date:                2021-04-16 08:03:43 +0800
 categories:          [elasticsearch]
 tags:                [elasticsearch, kibana, open-data]

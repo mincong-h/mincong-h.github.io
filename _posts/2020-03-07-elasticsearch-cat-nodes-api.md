@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Elasticsearch: cat nodes API"
+lang:                en
 date:              2020-03-07 21:43:53 +0100
 categories:        [elasticsearch]
 tags:              [elasticsearch, cli, http]

@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Elasticsearch: Common Index Exceptions"
+lang:                en
 date:              2020-09-13 17:56:58 +0200
 categories:        [elasticsearch]
 tags:              [elasticsearch, java]

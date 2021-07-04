@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Testing with GwtMockito
+lang:                en
 date:              2019-08-26 22:16:23 +0200
 categories:        [java-core]
 tags:              [testing, mockito, gwt]

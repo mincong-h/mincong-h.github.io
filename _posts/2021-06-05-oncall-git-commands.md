@@ -4,6 +4,7 @@ title:               三个排除故障必备的 Git 命令
 subtitle:            >
     让你的值班之旅更轻松高效。
 
+lang:                en
 date:                2021-06-05 09:33:30 +0200
 categories:          [git]
 tags:                [git]

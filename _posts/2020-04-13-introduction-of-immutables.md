@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Introduction of Immutables
+lang:                en
 date:              2020-04-13 08:54:44 +0200
 categories:        [java-core]
 tags:              [java, javac, immutables, jackson]

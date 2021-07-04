@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "HTTP: The Web's Foundation"
+lang:                en
 date:        "2017-06-05 09:09:01 +0200"
 categories:  [tech]
 tags:        [http, web]

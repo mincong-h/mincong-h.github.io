@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      "Setup GitLab Sever Locally"
+lang:                en
 date:       2017-03-10 21:00:00 +0100
 categories: [git]
 tags:       [git, docker]

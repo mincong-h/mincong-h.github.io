@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Mockito: ArgumentCaptor"
+lang:                en
 date:              2019-12-15 21:03:20 +0100
 categories:        [java-testing]
 tags:              [java, mockito, testing]

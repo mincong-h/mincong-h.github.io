@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "JGit: Customize Git references using RefFilter"
+lang:                en
 date:              2018-06-28 20:42:48 +0200
 date_modified:     2018-07-22 16:42:41 +0200
 categories:        [git]

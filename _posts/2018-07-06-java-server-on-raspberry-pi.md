@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Java Server on Raspberry Pi
+lang:                en
 date:              2018-07-06 05:51:00 +0200
 date_modified:     2018-07-22 15:19:16 +0200
 categories:        [tech]

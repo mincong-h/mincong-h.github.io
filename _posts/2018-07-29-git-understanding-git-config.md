@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Git: Understanding Git Config"
+lang:                en
 date:              2018-07-29 14:45:46 +0200
 categories:        [git]
 tags:              [git, study-note]
