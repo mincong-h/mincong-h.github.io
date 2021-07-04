@@ -2,12 +2,14 @@
 layout:            post
 title:             Inspect Maven Dependency Tree
 date:              2019-11-11 14:13:13 +0100
+date_modified:     2021-07-07 08:00:00 +0100
 categories:        [build]
 tags:              [java, maven]
 comments:          true
 excerpt:           >
     Inspecting Maven dependencies via Maven Depenedency Plugin:
     dependency listing, dependency filtering, exporting result to file etc.
+
 image:             /assets/bg-vitto-sommella-CrDnEQE_9vY-unsplash.jpg
 cover:             /assets/bg-vitto-sommella-CrDnEQE_9vY-unsplash.jpg
 ads:               Ads idea
