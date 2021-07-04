@@ -4,7 +4,7 @@ title:               用Docker和Nginx打包一个Vue.js项目
 subtitle:            >
     如题
 
-lang:                en
+lang:                zh
 date:                2021-05-14 21:28:46 +0200
 categories:          [build]
 tags:                [docker, vue.js, nginx, npm, bash]

@@ -4,7 +4,7 @@ title:               在 Nginx 中配置二级域名
 subtitle:            >
     如何在一台机器上部署多个网站？
 
-lang:                en
+lang:                zh
 date:                2021-05-29 09:46:04 +0200
 date_modified:       2021-07-04 09:00:00 +0200
 categories:          [devops]
