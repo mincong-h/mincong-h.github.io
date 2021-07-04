@@ -14,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-ocean-ng-L0xOtAnv94Y-unsplash.jpg
 cover:               /assets/bg-ocean-ng-L0xOtAnv94Y-unsplash.jpg
+redirect_from:
+  - /2021/04/20/exponential-backoff-in-akka/
 article_header:
   type:              overlay
   theme:             dark

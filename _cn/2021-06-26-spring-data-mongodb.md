@@ -14,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-mohammad-ali-jafarian-NEn-mUKde6I-unsplash.jpg
 cover:               /assets/bg-mohammad-ali-jafarian-NEn-mUKde6I-unsplash.jpg
+redirect_from:
+  - /2021/06/26/spring-data-mongodb/
 article_header:
   type:              overlay
   theme:             dark

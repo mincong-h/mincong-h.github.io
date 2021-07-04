@@ -13,6 +13,8 @@ excerpt:             >
     如何用Docker打包一个Vue.js并且在Nginx上面运行？
 image:               /assets/bg-victoire-joncheray-XsP7GCLMWjM-unsplash.jpg
 cover:               /assets/bg-victoire-joncheray-XsP7GCLMWjM-unsplash.jpg
+redirect_from:
+  - /2021/05/14/packing-a-vue-js-project-using-docker-and-nginx/
 article_header:
   type:              overlay
   theme:             dark

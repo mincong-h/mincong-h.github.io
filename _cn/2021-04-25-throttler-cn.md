@@ -14,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-tian-kuan-9AxFJaNySB8-unsplash.jpg
 cover:               /assets/bg-tian-kuan-9AxFJaNySB8-unsplash.jpg
+redirect_from:
+  - /2021/04/25/throttler-cn/
 article_header:
   type:              overlay
   theme:             dark

@@ -14,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-pablo-garcia-saldana-lPQIndZz8Mo-unsplash.jpg
 cover:               /assets/bg-pablo-garcia-saldana-lPQIndZz8Mo-unsplash.jpg
+redirect_from:
+  - /2021/06/21/redirect-traffic-to-https-nginx/
 article_header:
   type:              overlay
   theme:             dark

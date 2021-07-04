@@ -14,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-parsoa-khorsand-GPwBgILMy3M-unsplash.jpg
 cover:               /assets/bg-parsoa-khorsand-GPwBgILMy3M-unsplash.jpg
+redirect_from:
+  - /2021/05/15/github-actions-acr/
 article_header:
   type:              overlay
   theme:             dark

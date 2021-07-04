@@ -14,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-jonnica-hill-V5nq6u-Ce_U-unsplash.jpg
 cover:               /assets/bg-jonnica-hill-V5nq6u-Ce_U-unsplash.jpg
+redirect_from:
+  - /2021/06/05/oncall-git-commands/
 article_header:
   type:              overlay
   theme:             dark

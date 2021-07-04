@@ -9,6 +9,8 @@ tags:              [http, proxy, web, translation]
 comments:          true
 excerpt:           >
   最近在看一本很有名的关于HTTP的书籍，叫 « HTTP: The Definitive Guide »，以下是第六章“网络代理”的部分翻译。网络代理服务器是介于客户端和服务器之间的中间件，它双向地传送HTTP信息。这一章将讲述所有HTTP代理服务器的类型，对于代理服务器属性的特殊支持，以及一些当你使用HTTP代理时将会遇到的比较棘手的行为。
+redirect_from:
+  - /2017/07/20/http-proxy/
 article_header:
   type: overlay
   theme: dark

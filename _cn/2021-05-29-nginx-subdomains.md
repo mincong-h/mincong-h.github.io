@@ -15,6 +15,8 @@ excerpt:             >
 
 image:               /assets/bg-aaron-burden-GFpxQ2ZyNc0-unsplash.jpg
 cover:               /assets/bg-aaron-burden-GFpxQ2ZyNc0-unsplash.jpg
+redirect_from:
+  - /2021/05/29/nginx-subdomains/
 article_header:
   type:              overlay
   theme:             dark
