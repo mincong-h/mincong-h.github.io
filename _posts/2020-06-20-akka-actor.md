@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Write An Actor In Akka
+lang:                en
 date:              2020-06-20 18:21:23 +0200
 categories:        [java-concurrency]
 tags:              [java, akka, concurrency]

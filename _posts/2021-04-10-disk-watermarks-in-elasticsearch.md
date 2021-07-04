@@ -4,6 +4,7 @@ title:               Disk Watermarks In Elasticsearch
 subtitle:            >
     Three disk watermarks: low, high, and flood-stage in Elasticsearch.
 
+lang:                en
 date:                2021-04-10 07:00:00 +0800
 categories:          [elasticsearch]
 tags:                [elasticsearch]

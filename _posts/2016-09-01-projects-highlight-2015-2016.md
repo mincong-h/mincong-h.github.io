@@ -1,6 +1,7 @@
 ---
 layout:         post
 title:          Projects Highlight 2015-2016
+lang:                en
 date:           2016-09-01 07:00:00 +0100
 categories:     [review]
 tags:           [project]

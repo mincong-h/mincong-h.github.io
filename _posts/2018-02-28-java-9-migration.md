@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Java 9 Migration"
+lang:                en
 date:        "2018-02-28 20:18:23 +0100"
 categories:  [java-core, build]
 tags:        [java, java9, maven]

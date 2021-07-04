@@ -4,6 +4,7 @@ title:               三个排除故障必备的 Git 命令
 subtitle:            >
     让你的值班之旅更轻松高效。
 
+lang:                zh
 date:                2021-06-05 09:33:30 +0200
 categories:          [git]
 tags:                [git]
@@ -13,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-jonnica-hill-V5nq6u-Ce_U-unsplash.jpg
 cover:               /assets/bg-jonnica-hill-V5nq6u-Ce_U-unsplash.jpg
+redirect_from:
+  - /2021/06/05/oncall-git-commands/
 article_header:
   type:              overlay
   theme:             dark

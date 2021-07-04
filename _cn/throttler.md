@@ -4,6 +4,7 @@ title:               用Java创建一个简单的节流阀
 subtitle:            >
     系统瞬时负荷过载？要不试试节流阀（throttler）？
 
+lang:                zh
 date:                2021-04-25 10:41:58 +0800
 categories:          [reliability]
 tags:                [java, reliability]
@@ -13,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-tian-kuan-9AxFJaNySB8-unsplash.jpg
 cover:               /assets/bg-tian-kuan-9AxFJaNySB8-unsplash.jpg
+redirect_from:
+  - /2021/04/25/throttler-cn/
 article_header:
   type:              overlay
   theme:             dark

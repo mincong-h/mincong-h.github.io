@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Learning JNI"
+lang:                en
 date:        "2018-01-31 21:18:24 +0100"
 categories:  [tech]
 tags:        [java, c, jni]

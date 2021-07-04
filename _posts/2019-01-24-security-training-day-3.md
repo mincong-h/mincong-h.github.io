@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Security Training Day 3
+lang:                en
 date:              2019-01-24 18:26:27 +0100
 categories:        [tech]
 tags:              [security, http]

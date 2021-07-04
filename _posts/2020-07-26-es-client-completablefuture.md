@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Wrap Elasticsearch Response Into CompletableFuture
+lang:                en
 date:              2020-07-26 10:42:41 +0200
 categories:        [elasticsearch, java-concurrency]
 tags:              [java, concurrency, elasticsearch]

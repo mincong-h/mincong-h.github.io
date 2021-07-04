@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             How Quick Switcher is implemented?
+lang:                en
 date:              2018-10-18 20:39:47 +0200
 categories:        [tech]
 tags:              [polymer, javascript, nuxeo]

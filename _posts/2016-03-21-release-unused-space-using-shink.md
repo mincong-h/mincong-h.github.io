@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Release unused space using Shrink"
+lang:                en
 date:   2016-03-21 09:46:00 +0100
 categories: [tech]
 tags:       [sql-server]

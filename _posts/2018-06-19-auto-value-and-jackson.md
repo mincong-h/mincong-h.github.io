@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Use Auto Value and Jackson in REST API
+lang:                en
 date:              2018-06-19 07:43:18 +0200
 date_modified:     2018-07-22 17:19:19 +0200
 categories:        [java-rest, java-serialization, java-core]

@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             2016法国技术面试总结
+lang:              zh
 date:              2016-11-09 18:00:00 +0100
 date_modified:     2018-07-22 14:43:35 +0200
 categories:        [tech]
@@ -8,6 +9,8 @@ tags:              [interview]
 comments:          true
 excerpt:           >
     技术面试分享：作为一个IT应届毕业生，如何投简历、准备技术面试？在巴黎有什么好的IT公司，他们的面试流程是怎么样的？小聪以亲身经历与大家一一分享。
+redirect_from:
+  - /2016/11/09/tech-interviews-review-cn/
 article_header:
   type: overlay
   theme: dark

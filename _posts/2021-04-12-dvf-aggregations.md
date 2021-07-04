@@ -5,6 +5,7 @@ subtitle:            >
     Metric aggregations, bucket aggregations, scripted aggregation, and
     sub-aggregations in Elasticsearch.
 
+lang:                en
 date:                2021-04-12 07:34:30 +0800
 categories:          [elasticsearch]
 tags:                [elasticsearch, java]

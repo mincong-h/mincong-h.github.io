@@ -4,6 +4,7 @@ title:               M 语言是什么鬼？
 subtitle:            >
     法国人：为了收税，冲鸭！
 
+lang:                zh
 date:                2021-06-01 18:33:07 +0200
 categories:          []
 tags:                [mlang]
@@ -13,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-ben-white-qDY9ahp0Mto-unsplash.jpg
 cover:               /assets/bg-ben-white-qDY9ahp0Mto-unsplash.jpg
+redirect_from:
+  - /2021/06/01/lang-m/
 article_header:
   type:              overlay
   theme:             dark

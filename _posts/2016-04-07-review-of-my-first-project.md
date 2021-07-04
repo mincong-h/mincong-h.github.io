@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Review of my first project"
+lang:                en
 date:   2016-04-07 08:10:00 +0100
 categories: [tech]
 tags:       [project]

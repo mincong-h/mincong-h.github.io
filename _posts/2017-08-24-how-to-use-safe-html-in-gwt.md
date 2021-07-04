@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "How to Use Safe HTML in GWT"
+lang:                en
 date:        "2017-08-24 15:34:05 +0200"
 categories:  [tech]
 tags:        [security, gwt, web, java]

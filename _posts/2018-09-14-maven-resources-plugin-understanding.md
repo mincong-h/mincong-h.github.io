@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Maven Resources Plugin Understanding
+lang:                en
 date:              2018-09-14 05:51:48 +0200
 categories:        [build]
 tags:              [java, maven]

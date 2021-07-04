@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Create a HTTP Request in JS
+lang:                en
 date:              2018-06-19 15:07:31 +0200
 date_modified:     2018-07-22 16:55:24 +0200
 categories:        [tech]

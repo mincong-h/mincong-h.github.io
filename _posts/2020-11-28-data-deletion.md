@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             8 Lessons Learned From Data Deletion
+lang:                en
 date:              2020-11-28 18:59:29 +0100
 categories:        [tech]
 tags:              [data]

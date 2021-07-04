@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             GC in Elasticsearch
+lang:                en
 date:              2020-08-30 14:32:49 +0200
 categories:        [elasticsearch]
 tags:              [elasticsearch, java]

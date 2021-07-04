@@ -4,6 +4,7 @@ title:               "通过Akka学习指数退避（Exponential Backoff）"
 subtitle:            >
     程序总出错，光重试还不行？
 
+lang:                zh
 date:                2021-04-20 11:21:16 +0800
 categories:          [java-core]
 tags:                [java, akka]
@@ -13,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-ocean-ng-L0xOtAnv94Y-unsplash.jpg
 cover:               /assets/bg-ocean-ng-L0xOtAnv94Y-unsplash.jpg
+redirect_from:
+  - /2021/04/20/exponential-backoff-in-akka/
 article_header:
   type:              overlay
   theme:             dark

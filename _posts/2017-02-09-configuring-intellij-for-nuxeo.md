@@ -1,6 +1,7 @@
 ---
 layout:     post
 title:      "Configuring IntelliJ for Nuxeo"
+lang:                en
 date:       "2017-02-09 20:00:00 +0100"
 categories: [tech]
 tags:       [nuxeo, intellij]

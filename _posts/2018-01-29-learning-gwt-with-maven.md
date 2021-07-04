@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Learning GWT with Maven"
+lang:                en
 date:        "2018-01-29 21:23:26 +0100"
 categories:  [build]
 tags:        [java, gwt, maven, javascript]

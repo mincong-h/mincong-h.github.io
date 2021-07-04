@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Test a POM-Packaging Maven Module"
+lang:                en
 date:        "2017-09-23 08:59:24 +0200"
 categories:  [build]
 tags:        [maven, java]

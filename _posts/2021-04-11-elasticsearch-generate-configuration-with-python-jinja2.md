@@ -4,6 +4,7 @@ title:               "Elasticsearch: Generate Configuration With Python Jinja 2"
 subtitle:            >
      Making your Elasticsearch configuration safe and consistent.
 
+lang:                en
 date:                2021-04-11 08:31:10 +0800
 categories:          [elasticsearch, python]
 tags:                [elasticsearch, python, jinja]

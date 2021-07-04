@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "GWT SafeCSS Internal"
+lang:                en
 date:        "2018-03-25 09:13:01 +0200"
 categories:  [tech]
 tags:        [java, gwt, study-note]

@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             'Akka: Testing Actor with TestActorRef'
+lang:                en
 date:              2020-01-08 20:56:26 +0100
 categories:        [java-concurrency]
 tags:              [java, akka, concurrency]

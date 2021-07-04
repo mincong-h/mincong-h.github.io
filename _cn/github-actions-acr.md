@@ -4,6 +4,7 @@ title:               GitHub Actions持续集成阿里云容器镜像服务（ACR
 subtitle:            >
     如何通过GitHub Actions创建Docker image，并且持续集成到阿里云容器镜像服务（Aliyun Container Registry）？
 
+lang:                zh
 date:                2021-05-15 11:50:13 +0200
 categories:          [build]
 tags:                [docker, github-actions, aliyun]
@@ -13,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-parsoa-khorsand-GPwBgILMy3M-unsplash.jpg
 cover:               /assets/bg-parsoa-khorsand-GPwBgILMy3M-unsplash.jpg
+redirect_from:
+  - /2021/05/15/github-actions-acr/
 article_header:
   type:              overlay
   theme:             dark

@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Prepare Commit Message using Git Hook
+lang:                en
 date:              2019-07-23 20:46:37 +0200
 categories:        [git]
 tags:              [git]

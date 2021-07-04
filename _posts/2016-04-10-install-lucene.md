@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Install Apache Lucene"
+lang:                en
 date:   2016-04-10 22:47:00 +0100
 categories: [tech]
 tags:       [apache-lucene]

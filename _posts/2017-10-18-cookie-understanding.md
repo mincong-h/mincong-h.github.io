@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Cookie Understanding"
+lang:                en
 date:        "2017-10-18 22:04:16 +0200"
 categories:  [tech]
 tags:        [cookie, http]

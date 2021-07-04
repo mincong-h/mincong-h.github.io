@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Typesafe Config Introduction
+lang:                en
 date:              2019-12-08 17:58:50 +0100
 categories:        [tech]
 tags:              [java, config]

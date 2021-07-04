@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Learning HashMap"
+lang:                en
 date:              "2018-04-08 09:42:26 +0200"
 date_modified:     "2019-04-14 19:34:46 +0200"
 categories:        [java-core]

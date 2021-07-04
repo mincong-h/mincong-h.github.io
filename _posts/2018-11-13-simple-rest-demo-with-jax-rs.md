@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Simple REST Demo With JAX-RS
+lang:                en
 date:              2018-11-13 21:08:54 +0100
 categories:        [java-rest]
 tags:              [jax-rs, java, rest]

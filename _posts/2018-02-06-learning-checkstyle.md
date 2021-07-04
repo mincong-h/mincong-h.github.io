@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Learning Checkstyle"
+lang:                en
 date:        "2018-02-06 17:31:07 +0100"
 categories:  [build]
 tags:        [java, maven, checkstyle, code-quality]

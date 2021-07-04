@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Mockito: 3 Ways to Init Mock in JUnit 5"
+lang:                en
 date:              2020-04-19 17:25:16 +0200
 categories:        [java-testing]
 tags:              [mockito, java, testing, junit]

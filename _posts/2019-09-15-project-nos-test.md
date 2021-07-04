@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Project: NOS Test"
+lang:                en
 date:              2019-09-15 15:50:33 +0200
 categories:        [tech]
 tags:              [java, testing, api, selenium, cli]

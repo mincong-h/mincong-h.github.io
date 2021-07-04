@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "Testing Haskell"
+lang:                en
 date:        "2018-04-28 07:19:14 +0200"
 categories:  [tech]
 tags:        [haskell, testing, ci, travis-ci]

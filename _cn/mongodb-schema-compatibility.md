@@ -4,6 +4,7 @@ title:               在MongoDB中增删字段真的这么简单？
 subtitle:            >
     在MongoDB中实现向后兼容的结构（schema）变化。
 
+lang:                zh
 date:                2021-04-30 23:09:38 +0800
 categories:          [java-serialization, reliability]
 tags:                [java, mongodb, serialization, jackson, reliability]
@@ -12,6 +13,8 @@ excerpt:             >
     本文探讨如何在MongoDB中实现向后兼容的结构（schema）变化，也就是如何在保证生产环境安全的情况下从MongoDB集合中添加或删除字段？
 image:               /assets/bg-bence-sandor-sztrecska-wIs-mjKMiw4-unsplash.jpg
 cover:               /assets/bg-bence-sandor-sztrecska-wIs-mjKMiw4-unsplash.jpg
+redirect_from:
+  - /2021/04/30/mongodb-schema-compatibility/
 article_header:
   type:              overlay
   theme:             dark

@@ -1,6 +1,7 @@
 ---
 layout:              post
 title:               Making Backward-Compatible Schema Changes in MongoDB
+lang:                en
 date:                2021-02-27 17:07:27 +0100
 categories:          [java-serialization, reliability]
 tags:                [java, mongodb, serialization, jackson, reliability]

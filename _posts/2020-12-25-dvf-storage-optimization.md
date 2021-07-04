@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "DVF: Storage Optimization"
+lang:                en
 date:              2020-12-25 18:36:01 +0100
 categories:        [elasticsearch]
 tags:              [java, elasticsearch]

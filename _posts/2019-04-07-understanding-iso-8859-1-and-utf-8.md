@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Understanding ISO-8859-1 / UTF-8
+lang:                en
 date:              2019-04-07 17:22:30 +0200
 categories:        [java-core, python]
 tags:              [java, python, encoding]

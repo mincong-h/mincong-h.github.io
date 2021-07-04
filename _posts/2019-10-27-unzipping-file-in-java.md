@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Unzipping File in Java
+lang:                en
 date:              2019-10-27 22:07:58 +0100
 categories:        [java-core]
 tags:              [java]
@@ -253,6 +254,7 @@ will be _null_. Note that ZIP entry can be either a directory or a regular
 file, they need to be treated differently. The size of the output buffer
 (byte array) is controlled by the parameter `bufferSize`. It defaults to 1024 bytes.
 
+lang:                en
 Update: my friend [Florent Guillaume](https://github.com/efge) pointed out that
 the previous version was vulnerable for [Zip
 Slip](https://snyk.io/research/zip-slip-vulnerability) attack. Now the source

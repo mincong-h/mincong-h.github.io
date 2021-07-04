@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             "Logback: Test Logging Event"
+lang:                en
 date:              2020-02-02 15:46:36 +0100
 date_modified:     2020-06-01 22:20:25 +0200
 categories:        [java-testing]

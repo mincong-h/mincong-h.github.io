@@ -1,6 +1,7 @@
 ---
 layout:        post
 title:         "Miscellaneous Tips for Development"
+lang:                en
 date:          2016-11-24 21:46:00 +0100
 categories:    [tech]
 tags:          [git, maven, linux]

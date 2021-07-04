@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Create JSON-LD Structured Data in Jekyll
+lang:                en
 date:              2018-08-22 21:57:07 +0200
 date_modified:     2021-03-07 16:47:00 +0200
 categories:        [tech]

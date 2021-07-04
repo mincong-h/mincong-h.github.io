@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Controlling Time with Java Clock
+lang:                en
 date:              2020-05-24 15:27:19 +0200
 categories:        [java-core, java-testing]
 tags:              [java, date, testing]

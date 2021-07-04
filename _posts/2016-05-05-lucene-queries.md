@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Lucene queries in Hibernate Search"
+lang:                en
 date:   2016-05-05 23:00:00 +0100
 categories: [tech]
 tags:       [hibernate-search]

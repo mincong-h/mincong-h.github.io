@@ -4,6 +4,7 @@ title:               Spring Data MongoDB 入门
 subtitle:            >
     在 Java 项目中使用 Spring Data MongoDB 框架与 MongoDB 交流。
 
+lang:                zh
 date:                2021-06-26 10:30:30 +0200
 categories:          [java-core]
 tags:                [java, spring, mongodb, lombok]
@@ -13,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-mohammad-ali-jafarian-NEn-mUKde6I-unsplash.jpg
 cover:               /assets/bg-mohammad-ali-jafarian-NEn-mUKde6I-unsplash.jpg
+redirect_from:
+  - /2021/06/26/spring-data-mongodb/
 article_header:
   type:              overlay
   theme:             dark

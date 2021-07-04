@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Discard Old Build Artifacts on Jenkins
+lang:                en
 date:              2018-12-25 20:43:25 +0100
 categories:        [tech]
 tags:              [jenkins, engineering]

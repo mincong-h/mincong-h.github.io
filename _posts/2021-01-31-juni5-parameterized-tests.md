@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Writing Parameterized Tests in JUnit 5
+lang:                en
 date:              2021-01-31 16:12:25 +0100
 categories:        [java-core]
 tags:              [java, junit, junit5, testing]

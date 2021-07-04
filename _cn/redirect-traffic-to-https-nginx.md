@@ -4,6 +4,7 @@ title:               使用 Nginx 将 HTTP 重定向到 HTTPS
 subtitle:            >
     实现 HTTPS，其实真的不难！
 
+lang:                zh
 date:                2021-06-21 22:03:52 +0200
 categories:          [devops]
 tags:                [nginx]
@@ -13,6 +14,8 @@ excerpt:             >
 
 image:               /assets/bg-pablo-garcia-saldana-lPQIndZz8Mo-unsplash.jpg
 cover:               /assets/bg-pablo-garcia-saldana-lPQIndZz8Mo-unsplash.jpg
+redirect_from:
+  - /2021/06/21/redirect-traffic-to-https-nginx/
 article_header:
   type:              overlay
   theme:             dark

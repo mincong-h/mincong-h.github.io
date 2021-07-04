@@ -1,6 +1,7 @@
 ---
 layout:        post
 title:         "New repo: Java Examples"
+lang:                en
 date:          2016-08-09 22:15:00 +0100
 categories:    [tech]
 tags:          [java]

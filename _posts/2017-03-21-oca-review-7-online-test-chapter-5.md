@@ -1,6 +1,7 @@
 ---
 layout:      post
 title:       "OCA Review 7 - Online Test Chapter 5"
+lang:                en
 date:        "2017-03-21 22:34:47 +0100"
 categories:  [java-core]
 tags:        [java, oca]

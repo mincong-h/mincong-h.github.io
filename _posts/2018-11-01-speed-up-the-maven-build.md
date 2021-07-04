@@ -1,6 +1,7 @@
 ---
 layout:            post
 title:             Speed Up The Maven Build
+lang:                en
 date:              2018-11-01 12:13:55 +0100
 categories:        [build]
 tags:              [maven, java, javascript, macos]
