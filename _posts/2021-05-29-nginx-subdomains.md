@@ -173,13 +173,47 @@ Accept-Ranges: bytes
 
 ## 增加新的子域名
 
-当业务增长的时候，你可能需要在后续阶段部署新的子域名。如果你使用阿里云的话，后续部署需要以下两个步骤：一、添加新的子域名到阿里云的云解析DNS；二、更新 SSL 证书。这里用另一个网站“阳光特教”举例。
+当业务增长的时候，你可能需要在后续阶段部署新的子域名。如果你使用阿里云的话，后续部署需要以下几个步骤：
 
-第一步像上文一样在阿里云平台上增加新的子域名。填写记录类型、主机记录、解析线路、记录值、以及缓存有效期（TTL）。
+1. 部署你的应用
+2. 修改 Nginx 配置
+3. 添加新的子域名到阿里云的云解析 DNS
+4. 更新 SSL 证书
+
+这里用另一个网站“阳光特教”举例。
+
+第一步部署新的应用，比如：
+
+```sh
+docker run \
+    --name sunny-static \
+    --publish 18000:80 \
+    --rm \
+    --detach \
+    --volume "${SUNNY_STATIC_PATH}:/usr/share/nginx/html:ro" \
+    "$image"
+```
+
+第二步，修改 Nginx 配置。把新的应用注册到反向代理（reverse proxy）：
+
+```conf
+server {
+    listen               443 ssl;
+    server_name          static.sunnytj.info;
+
+    location / {
+        proxy_pass       http://localhost:18000;
+        # ...
+    }
+    # ...
+}
+```
+
+第三步像上文一样在阿里云平台上增加新的子域名。填写记录类型、主机记录、解析线路、记录值、以及缓存有效期（TTL）。
 
 ![增加新的子域名到阿里云的云解析DNS](/assets/20210529-create-subdomain-aliyun-DNS.png)
 
-第二步更新 SSL 证书。如果使用 Certbot 管理 SSL 证书的话，推荐使用它的命令行来操作。Certbot 会自动检测你已经部署在 Nginx 的域名，并请求你确认哪个域名需要激活HTTPS：
+第四步更新 SSL 证书。如果使用 Certbot 管理 SSL 证书的话，推荐使用它的命令行来操作。Certbot 会自动检测你已经部署在 Nginx 的域名，并请求你确认哪个域名需要激活 HTTPS：
 
 ```sh
 sudo certbot --nginx
