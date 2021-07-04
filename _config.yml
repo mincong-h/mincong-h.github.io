@@ -252,3 +252,5 @@ collections:
     output:    true
   en:
     output:    true
+  zh:
+    output:    true
