@@ -234,7 +234,7 @@ Select the appropriate numbers separated by commas and/or spaces, or leave input
 blank to select all options shown (Enter 'c' to cancel): 4
 ```
 
-这里我选择激活第4个域名 `static.sunnytj.info`。确认以后 Certbot 向 Let's Encrypt 申请新的证书。
+这里我选择激活第 4 个域名 `static.sunnytj.info`。确认以后 Certbot 向 Let's Encrypt 申请新的证书。
 
 ```
 Requesting a certificate for static.sunnytj.info
