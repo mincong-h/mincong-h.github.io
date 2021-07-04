@@ -6,7 +6,7 @@ header:
     url: /categories
 
   - titles:
-      en      : &EN        Series
+      en      : &EN       Series
       zh-Hans : &ZH_HANS  系列
       zh      : *ZH_HANS
     url: /series
