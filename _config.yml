@@ -101,10 +101,13 @@ mermaid: # false (default), true
 chart: # false (default), true
 
 
-## => Paginate
+## => Paginate (v2)
 ##############################
-paginate: 8
-paginate_path: /page:num # don't change this unless for special need
+## paginate v1 does not support pagination for all collections, e.g. "cn"
+pagination:
+  enabled: true
+  per_page: 8
+  permalink: '/page:num' # don't change this unless for special need
 
 
 ## => Sources
