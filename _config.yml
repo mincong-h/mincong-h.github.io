@@ -241,7 +241,7 @@ defaults:
 ##############################
 plugins:
   - jekyll-feed
-  - jekyll-paginate
+  - jekyll-paginate-v2
   - jekyll-redirect-from
   - jekyll-seo-tag
   - jekyll-sitemap
