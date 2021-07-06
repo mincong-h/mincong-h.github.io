@@ -107,7 +107,6 @@ chart: # false (default), true
 pagination:
   enabled: true
   per_page: 8
-  permalink: '/page:num' # don't change this unless for special need
 
 
 ## => Sources
