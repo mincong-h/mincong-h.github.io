@@ -51,7 +51,7 @@
             </li>
 
           {%- elsif page == 1 -%}
-            {%- assign _home_path = site.paths.home | default: site.data.variables.default.paths.home -%}
+            {%- assign _home_path = site.paths.home | default: site.data.variables.default.paths.home | append: include.baseurl -%}
             {%- include snippets/prepend-baseurl.html path=_home_path -%}
             {%- assign _href = __return -%}
             <li>
@@ -65,14 +65,14 @@
               {%- elsif page > _n1 and page < _length -%}
                 {%- if page == _length_mimus_one -%}<li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li>{%- endif -%}
               {%- else -%}
-                {%- include snippets/prepend-baseurl.html path=site.paginate_path -%}
+                {%- include snippets/prepend-baseurl.html path=include.paginate_pattern -%}
                 {%- assign _href = __return -%}
                 <li>
                   <a class="button button--secondary button--circle" href="{{ _href | replace: ':num', page }}"><span>{{ page }}</span></a>
                 </li>
               {%- endif -%}
             {%- else -%}
-              {%- include snippets/prepend-baseurl.html path=site.paginate_path -%}
+              {%- include snippets/prepend-baseurl.html path=include.paginate_pattern -%}
               {%- assign _href = __return -%}
               <li>
                 <a class="button button--secondary button--circle" href="{{ _href | replace: ':num', page }}"><span>{{ page }}</span></a>

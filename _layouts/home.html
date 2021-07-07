@@ -35,7 +35,7 @@ articles:
 ---
 
 <div class="layout--home">
-  {%- include paginator.html -%}
+  {%- include paginator.html paginate_pattern=page.paginate_pattern baseurl=page.baseurl -%}
 </div>
 <script>
   {%- include scripts/home.js -%}

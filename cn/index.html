@@ -6,5 +6,11 @@ pagination:
   collection: cn
   sort_field: date
   sort_reverse: true
-  permalink: '/cn/page:num/'
+  permalink: '/page:num/'  # relative to /cn/
+
+# hack for "pagination.permalink"
+paginate_pattern: '/cn/page:num/'
+
+# hack for home path
+baseurl: '/cn/'
 ---
