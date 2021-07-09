@@ -253,7 +253,7 @@ collections:
   # one category should be very different from the articles from another
   # category. One article should avoid having more than 2 categories. It
   # represents an important part of your technical stack (skill-tree).
-  displayed_categories:
+  displayed_en_categories:
     my_label:  Categories
     permalink: /categories/:name
     output:    true

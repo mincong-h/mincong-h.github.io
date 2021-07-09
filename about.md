@@ -19,6 +19,6 @@ solution.
 <div class="layout--articles">
   <section class="my-5">
     <header><h2 id="categories">Categories</h2></header>
-    {%- include article-list.html articles=site.displayed_categories type='grid' size='sm' cover_type='background' -%}
+    {%- include article-list.html articles=site.displayed_en_categories type='grid' size='sm' cover_type='background' -%}
   </section>
 </div>
