@@ -61,9 +61,7 @@ header:
       # @end locale config
     url: /about
 
-# TODO(mincong): Can we compute the following lists?
-
-categories:
+en_categories:
   - title: Categories
     children:
       - title:  Build Tools

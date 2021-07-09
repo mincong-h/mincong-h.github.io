@@ -2,8 +2,9 @@
 layout:            category
 title:             Java Concurrency
 category:          java-concurrency
+lang:              en
 cover:             /assets/bg-powerboat-2784250_1280.jpg
 sidebar:
-  nav:             categories
+  nav:             en_categories
 comments:          false
 ---
