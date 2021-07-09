@@ -5,6 +5,6 @@ category:          java-core
 lang:              zh
 cover:             /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg
 sidebar:
-  nav:             categories
+  nav:             cn_categories
 comments:          false
 ---

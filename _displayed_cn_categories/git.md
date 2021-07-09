@@ -5,6 +5,6 @@ category:          git
 lang:              zh
 cover:             /assets/bg-josh-calabrese-zcYRw547Dps-unsplash.jpg
 sidebar:
-  nav:             categories
+  nav:             cn_categories
 comments:          false
 ---

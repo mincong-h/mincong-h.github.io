@@ -5,6 +5,6 @@ category:          elasticsearch
 lang:              zh
 cover:             /assets/bg-cristian-escobar-abkEAOjnY0s-unsplash.jpg
 sidebar:
-  nav:             categories
+  nav:             cn_categories
 comments:          false
 ---

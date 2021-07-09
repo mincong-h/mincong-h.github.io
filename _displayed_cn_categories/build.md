@@ -5,6 +5,6 @@ category:          build
 lang:              zh
 cover:             /assets/bg-c-dustin-91AQt9p4Mo8-unsplash.jpg
 sidebar:
-  nav:             categories
+  nav:             cn_categories
 comments:          false
 ---

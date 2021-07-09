@@ -5,6 +5,6 @@ category:          java-testing
 lang:              zh
 cover:             /assets/bg-board-2450236_1280.jpg
 sidebar:
-  nav:             categories
+  nav:             cn_categories
 comments:          false
 ---
