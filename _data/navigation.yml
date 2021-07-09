@@ -62,7 +62,7 @@ header:
     url: /about
 
 en_categories:
-  - title: Categories
+  - title:      Categories
     children:
       - title:  Build Tools
         url:    /categories/build
@@ -86,6 +86,33 @@ en_categories:
         url:    /categories/reliability
       - title:  Review
         url:    /categories/review
+
+cn_categories:
+  - title:      文章类别
+    children:
+      - title:  构建工具
+        url:    /cn/categories/build
+      - title:  Elasticsearch
+        url:    /cn/categories/elasticsearch
+      - title:  Git
+        url:    /cn/categories/git
+      - title:  Java Concurrency
+        url:    /cn/categories/java-concurrency
+      - title:  Java 核心
+        url:    /cn/categories/java-core
+      - title:  Java RESTful APIs
+        url:    /cn/categories/java-rest
+      - title:  Java 序列化
+        url:    /cn/categories/java-serialization
+      - title:  Java 测试
+        url:    /cn/categories/java-testing
+      - title:  Python
+        url:    /cn/categories/python
+      - title:  可靠性
+        url:    /cn/categories/reliability
+      - title:  总结
+        url:    /cn/categories/review
+
 
 series:
   - title: Series
