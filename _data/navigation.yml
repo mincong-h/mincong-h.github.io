@@ -5,13 +5,17 @@ header:
       en      : &EN       Categories
       zh-Hans : &ZH_HANS  分类
       zh      : *ZH_HANS
-    url: /categories
+    urls:
+      en      : /categories
+      zh      : /cn/categories
 
   - titles:
       en      : &EN       Series
       zh-Hans : &ZH_HANS  系列
       zh      : *ZH_HANS
-    url: /series
+    urls:
+      en      : /series
+      zh      : /series  # TODO
 
   - titles:
       # @start locale config
@@ -36,7 +40,9 @@ header:
       fr-FR   : *FR
       fr-LU   : *FR
       # @end locale config
-    url: /archive
+    urls:
+      en      : /archive
+      zh      : /archive  # TODO
 
   - titles:
       # @start locale config
@@ -61,7 +67,9 @@ header:
       fr-FR   : *FR
       fr-LU   : *FR
       # @end locale config
-    url: /about
+    urls:
+      en      : /about
+      zh      : /about  # TODO
 
 en_categories:
   - title:      Categories

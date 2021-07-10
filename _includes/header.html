@@ -23,8 +23,12 @@
       <nav class="navigation">
         <ul>
           {%- for _item in site.data.navigation.header -%}
-            {%- include snippets/get-nav-url.html path=_item.url -%}
+            {%- include snippets/get-string-from-locale-config.html locale=_item.urls -%}
+            {%- assign _item_url = __return -%}
+
+            {%- include snippets/get-nav-url.html path=_item_url -%}
             {%- assign _nav_url = __return -%}
+
             {%- include snippets/get-nav-url.html path=page.url -%}
             {%- assign _page_url = __return -%}
             {%- include snippets/get-string-from-locale-config.html locale=_item.titles -%}
