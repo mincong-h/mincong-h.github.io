@@ -32,9 +32,7 @@
                      locale=site.data.navigation.site.urls2_alt %}
           {% assign _site_root2_alt = __return %}
 
-          <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="{{ _site_root }}">
-            {{ _site_title }}
-          </a>
+          <a href="{{ _site_root }}">{{ _site_title }}</a>
         </div>
         {%- if site.search.provider -%}
           <button class="button button--secondary button--circle search-button js-search-toggle">
