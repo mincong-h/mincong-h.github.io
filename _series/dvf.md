@@ -7,6 +7,7 @@ cover:             /assets/bg-rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg
 sidebar:
   nav:             series
 comments:          false
+redirect_from:     /series/dvf/
 ---
 
 Open data ["Demande de valeurs foncières géolocalisées
