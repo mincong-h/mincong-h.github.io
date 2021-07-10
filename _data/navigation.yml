@@ -69,7 +69,7 @@ header:
       # @end locale config
     urls:
       en      : /about/
-      zh      : /about/  # TODO
+      zh      : /cn/about/
 
 en_categories:
   - title:      Categories
