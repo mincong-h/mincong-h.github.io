@@ -14,8 +14,8 @@ header:
       zh-Hans : &ZH_HANS  系列
       zh      : *ZH_HANS
     urls:
-      en      : /series
-      zh      : /series  # TODO
+      en      : /series/
+      zh      : /cn/series/
 
   - titles:
       # @start locale config
