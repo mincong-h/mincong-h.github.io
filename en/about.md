@@ -1,6 +1,7 @@
 ---
-layout:     page
-title:      About
+layout:         page
+title:          About
+redirect_from:  /about/
 ---
 
 <p align="center">
