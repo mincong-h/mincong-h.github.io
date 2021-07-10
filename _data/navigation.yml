@@ -1,3 +1,11 @@
+site:
+  titles:
+    en        : Mincong Huang
+    zh        : 码农小黄
+  urls:
+    en        : /
+    zh        : /cn/
+
 header:
   - titles:
       en      : &EN       Categories
