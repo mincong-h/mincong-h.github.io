@@ -6,8 +6,8 @@ header:
       zh-Hans : &ZH_HANS  分类
       zh      : *ZH_HANS
     urls:
-      en      : /categories
-      zh      : /cn/categories
+      en      : /categories/
+      zh      : /cn/categories/
 
   - titles:
       en      : &EN       Series
@@ -41,8 +41,8 @@ header:
       fr-LU   : *FR
       # @end locale config
     urls:
-      en      : /archive
-      zh      : /archive  # TODO
+      en      : /archive/
+      zh      : /archive/  # TODO
 
   - titles:
       # @start locale config
@@ -68,8 +68,8 @@ header:
       fr-LU   : *FR
       # @end locale config
     urls:
-      en      : /about
-      zh      : /about  # TODO
+      en      : /about/
+      zh      : /about/  # TODO
 
 en_categories:
   - title:      Categories
