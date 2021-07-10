@@ -19,7 +19,7 @@ solution.
 
 <div class="layout--articles">
   <section class="my-5">
-    <header><h2 id="categories">Categories</h2></header>
+    <header><h2 id="categories">文章类别</h2></header>
     {% include article-list.html
                articles=site.displayed_cn_categories
                type='grid'
