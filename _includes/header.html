@@ -11,14 +11,17 @@
           {%- include svg/logo.svg -%}
 
           {% include snippets/get-string-from-locale-config.html
-                     locale=site.data.navigation.site.titles
-          %}
+                     locale=site.data.navigation.site.titles %}
           {% assign _site_title = __return %}
 
-          {%- assign _paths_root = site.paths.root | default: site.data.variables.default.paths.root  -%}
-          {%- include snippets/get-nav-url.html path=_paths_root -%}
+          {% include snippets/get-string-from-locale-config.html
+                     locale=site.data.navigation.site.urls %}
+          {% assign _paths_root = __return %}
 
-          <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="{{ __return }}">
+          {% include snippets/get-nav-url.html path=_paths_root %}
+          {% assign _site_root = __return %}
+
+          <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="{{ _site_root }}">
             {{ _site_title }}
           </a>
         </div>
