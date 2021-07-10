@@ -42,7 +42,7 @@ header:
       # @end locale config
     urls:
       en      : /archive/
-      zh      : /archive/  # TODO
+      zh      : /cn/archive/
 
   - titles:
       # @start locale config
