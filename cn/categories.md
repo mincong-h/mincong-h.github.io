@@ -1,6 +1,7 @@
 ---
 layout:     page
 title:      分类
+lang:       zh
 permalink:  /cn/categories/
 ---
 
