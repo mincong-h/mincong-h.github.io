@@ -5,6 +5,10 @@ site:
   urls:
     en        : /
     zh        : /cn/
+  # switch to the other langage
+  urls2:
+    en        : /cn/
+    zh        : /
 
 header:
   - titles:

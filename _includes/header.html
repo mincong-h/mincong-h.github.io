@@ -16,10 +16,13 @@
 
           {% include snippets/get-string-from-locale-config.html
                      locale=site.data.navigation.site.urls %}
-          {% assign _paths_root = __return %}
-
-          {% include snippets/get-nav-url.html path=_paths_root %}
+          {% include snippets/get-nav-url.html path=__return %}
           {% assign _site_root = __return %}
+
+          {% include snippets/get-string-from-locale-config.html
+                     locale=site.data.navigation.site.urls2 %}
+          {% include snippets/get-nav-url.html path=__return %}
+          {% assign _site_root2 = __return %}
 
           <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="{{ _site_root }}">
             {{ _site_title }}
@@ -30,6 +33,7 @@
             <i class="fas fa-search"></i>
           </button>
         {%- endif -%}
+        <a href="{{ _site_root2 }}">Change</a>
       </div>
       {%- if site.data.navigation.header -%}
       <nav class="navigation">
