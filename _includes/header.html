@@ -24,6 +24,14 @@
           {% include snippets/get-nav-url.html path=__return %}
           {% assign _site_root2 = __return %}
 
+          {% include snippets/get-string-from-locale-config.html
+                     locale=site.data.navigation.site.urls2_src %}
+          {% assign _site_root2_src = __return %}
+
+          {% include snippets/get-string-from-locale-config.html
+                     locale=site.data.navigation.site.urls2_alt %}
+          {% assign _site_root2_alt = __return %}
+
           <a title="{%- if site.description -%}{{ site.description }}{%- endif -%}" href="{{ _site_root }}">
             {{ _site_title }}
           </a>
@@ -33,7 +41,6 @@
             <i class="fas fa-search"></i>
           </button>
         {%- endif -%}
-        <a href="{{ _site_root2 }}">Change</a>
       </div>
       {%- if site.data.navigation.header -%}
       <nav class="navigation">
@@ -58,6 +65,11 @@
           {%- if site.search.provider -%}
             <li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li>
           {%- endif -%}
+          <li>
+            <a href="{{ _site_root2 }}">
+             <img src="{{ _site_root2_src }}" alt="{{ _site_roo2_alt }}">
+            </a>
+          </li>
         </ul>
       </nav>
       {%- endif -%}

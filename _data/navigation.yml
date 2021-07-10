@@ -9,6 +9,12 @@ site:
   urls2:
     en        : /cn/
     zh        : /
+  urls2_src:
+    en        : /assets/flag-CN.png
+    zh        : /assets/flag-US.png
+  urls2_alt:
+    en        : "切换到中文"
+    zh        : "Switch to English"
 
 header:
   - titles:
