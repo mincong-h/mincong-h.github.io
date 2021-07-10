@@ -256,11 +256,11 @@ collections:
   # Examples: build, java, python
   displayed_en_categories:
     my_label:  Categories
-    permalink: /categories/:name
+    permalink: /en/categories/:name/
     output:    true
   displayed_cn_categories:
-    my_label:  分类
-    permalink: /cn/categories/:name
+    my_label:  文章类别
+    permalink: /cn/categories/:name/
     output:    true
 
   # Series are a collection that contains several articles. A series explains
@@ -268,8 +268,8 @@ collections:
   # a project.
   series:
     my_label:  Series
-    permalink: /series/:name
+    permalink: /en/series/:name/
     output:    true
   cn:
-    promalink: /cn/:title
+    promalink: /cn/:title/
     output:    true

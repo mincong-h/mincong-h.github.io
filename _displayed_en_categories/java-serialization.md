@@ -7,4 +7,5 @@ cover:             /assets/bg-lance-grandahl-hF6TtT-xz80-unsplash.jpg
 sidebar:
   nav:             en_categories
 comments:          false
+redirect_from:     /categories/java-serialization/
 ---

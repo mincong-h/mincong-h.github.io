@@ -7,4 +7,5 @@ cover:             /assets/bg-c-dustin-91AQt9p4Mo8-unsplash.jpg
 sidebar:
   nav:             en_categories
 comments:          false
+redirect_from:     /categories/build/
 ---

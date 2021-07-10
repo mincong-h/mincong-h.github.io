@@ -22,7 +22,7 @@ header:
       zh-Hans : &ZH_HANS  分类
       zh      : *ZH_HANS
     urls:
-      en      : /categories/
+      en      : /en/categories/
       zh      : /cn/categories/
 
   - titles:
@@ -30,7 +30,7 @@ header:
       zh-Hans : &ZH_HANS  系列
       zh      : *ZH_HANS
     urls:
-      en      : /series/
+      en      : /en/series/
       zh      : /cn/series/
 
   - titles:
@@ -57,7 +57,7 @@ header:
       fr-LU   : *FR
       # @end locale config
     urls:
-      en      : /archive/
+      en      : /en/archive/
       zh      : /cn/archive/
 
   - titles:
@@ -84,7 +84,7 @@ header:
       fr-LU   : *FR
       # @end locale config
     urls:
-      en      : /about/
+      en      : /en/about/
       zh      : /cn/about/
 
 en_categories:

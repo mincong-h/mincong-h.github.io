@@ -1,7 +1,7 @@
 ---
-layout:     page
-title:      Categories
-permalink:  /categories/
+layout:         page
+title:          Categories
+redirect_from:  /categories/
 ---
 
 <div class="layout--articles">

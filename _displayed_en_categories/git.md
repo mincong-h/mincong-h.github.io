@@ -7,4 +7,5 @@ cover:             /assets/bg-josh-calabrese-zcYRw547Dps-unsplash.jpg
 sidebar:
   nav:             en_categories
 comments:          false
+redirect_from:     /categories/git/
 ---

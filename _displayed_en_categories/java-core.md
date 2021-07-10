@@ -7,4 +7,5 @@ cover:             /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplas
 sidebar:
   nav:             en_categories
 comments:          false
+redirect_from:     /categories/java-core/
 ---

@@ -1,7 +1,7 @@
 ---
-layout:     page
-title:      Series
-permalink:  /series/
+layout:         page
+title:          Series
+redirect_from:  /series/
 ---
 
 <div class="layout--articles">

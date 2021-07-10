@@ -6,4 +6,5 @@ cover:             /assets/bg-cristian-escobar-abkEAOjnY0s-unsplash.jpg
 sidebar:
   nav:             en_categories
 comments:          false
+redirect_from:     /categories/elasticsearch/
 ---
