@@ -1,6 +1,4 @@
 header:
-  # FIXME Currently, no matter which lang is chosen, the url for each title is fixed to /{type}.
-  #   I want it to change depending on the language.
   - titles:
       en      : &EN       Categories
       zh-Hans : &ZH_HANS  分类
