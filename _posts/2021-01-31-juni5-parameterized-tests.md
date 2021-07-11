@@ -5,6 +5,7 @@ lang:                en
 date:              2021-01-31 16:12:25 +0100
 categories:        [java-core]
 tags:              [java, junit, junit5, testing]
+permalink:         /2021/01/31/juni5-parameterized-tests/
 comments:          true
 excerpt:           >
     Improving code quality using parameterized tests of JUnit 5! This article

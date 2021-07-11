@@ -5,6 +5,7 @@ lang:                en
 date:              2019-01-15 21:17:34 +0100
 categories:        [java-core]
 tags:              [java, vavr, functional-programming]
+permalink:         /2019/01/15/vavr-hashmap-vs-java-hashmap/
 comments:          true
 excerpt:           >
     What is the difference between VAVR Collection API and Java Collection API?

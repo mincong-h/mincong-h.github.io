@@ -5,6 +5,7 @@ lang:                en
 date:              2018-10-25 19:58:38 +0200
 categories:        [tech]
 tags:              [personal-finance, python, data-processing]
+permalink:         /2018/10/25/personal-finance-data-collection/
 comments:          true
 excerpt:           >
     A step-by-step guide sharing how I build my data collection tool in Python

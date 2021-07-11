@@ -9,6 +9,7 @@ excerpt:     >
   Java 9 migration for Maven project. It consists Java 9 installation, IDE
   update, Maven project update, CI update, and fixing tests. This article is
   written using macOS and IntelliJ IDEA.
+permalink:         /2018/02/28/java-9-migration/
 comments:    true
 image:       /assets/bg-coffee-2306471_1280.jpg
 cover:       /assets/bg-coffee-2306471_1280.jpg

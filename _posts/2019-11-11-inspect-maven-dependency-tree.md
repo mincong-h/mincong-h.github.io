@@ -6,6 +6,7 @@ date:              2019-11-11 14:13:13 +0100
 date_modified:     2021-07-07 08:00:00 +0100
 categories:        [build]
 tags:              [java, maven]
+permalink:         /2019/11/11/inspect-maven-dependency-tree/
 comments:          true
 excerpt:           >
     Inspecting Maven dependencies via Maven Depenedency Plugin:

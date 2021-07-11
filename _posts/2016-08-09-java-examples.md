@@ -9,6 +9,7 @@ excerpt:       >
   I’ve been learning different Java frameworks since my last intern in Beijing.
   Today, I want to share my new GitHub repository: Java Examples. This
   repository is built on Maven, modularized and extensible.
+permalink:         /2016/08/09/java-examples/
 comments:      true
 redirect_from:
   - /java/2016/08/09/java-examples/

@@ -6,6 +6,7 @@ date:              2017-02-23 20:00:00 +0100
 date_modified:     2020-06-25 21:44:14 +0200
 categories:        [java-core]
 tags:              [java, oca]
+permalink:         /2017/02/23/oca-review-1-java-basics/
 comments:          true
 image:             /assets/bg-coffee-983955_1280.jpg
 cover:             /assets/bg-coffee-983955_1280.jpg

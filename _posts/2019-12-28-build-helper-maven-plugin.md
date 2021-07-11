@@ -5,6 +5,7 @@ lang:                en
 date:              2019-12-28 10:43:03 +0100
 categories:        [build]
 tags:              [java, maven]
+permalink:         /2019/12/28/build-helper-maven-plugin/
 comments:          true
 excerpt:           >
     How to set up additional source directory (src/it/java) and resource

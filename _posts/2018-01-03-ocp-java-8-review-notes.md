@@ -10,6 +10,7 @@ excerpt:     >
   exam. They're highly inspired by the following books: OCP Java SE 7
   Certification Guide and Java 8 in Action. They are excellent resources for
   learning Java, which I highly recommend.
+permalink:         /2018/01/03/ocp-java-8-review-notes/
 comments:    true
 article_header:
   type: overlay

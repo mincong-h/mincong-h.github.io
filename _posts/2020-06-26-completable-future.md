@@ -5,6 +5,7 @@ lang:                en
 date:              2020-06-26 21:33:12 +0200
 categories:        [java-concurrency]
 tags:              [java, concurrency]
+permalink:         /2020/06/26/completable-future/
 comments:          true
 excerpt:           >
     Why do we need CompletableFuture? What is its strength compared to

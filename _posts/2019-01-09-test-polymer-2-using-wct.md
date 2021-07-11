@@ -5,6 +5,7 @@ lang:                en
 date:              2019-01-09 07:35:08 +0100
 categories:        [tech]
 tags:              [polymer, javascript, testing, travis-ci]
+permalink:         /2019/01/09/test-polymer-2-using-wct/
 comments:          true
 excerpt:           >
     Web Component Tester (WCT) allows you to test your Polymer elements easily.

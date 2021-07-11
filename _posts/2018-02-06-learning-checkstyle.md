@@ -10,6 +10,7 @@ excerpt:     >
   adheres to a coding standard. By default it supports the Google Java Style
   Guide and Sun Code Conventions, but is highly configurable. It can be
   invoked with an ANT task and a command line program.
+permalink:         /2018/02/06/learning-checkstyle/
 comments:    true
 image:       /assets/bg-coffee-171653_1280.jpg
 cover:       /assets/bg-coffee-171653_1280.jpg

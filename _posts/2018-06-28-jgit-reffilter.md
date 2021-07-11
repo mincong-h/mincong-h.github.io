@@ -6,6 +6,7 @@ date:              2018-06-28 20:42:48 +0200
 date_modified:     2018-07-22 16:42:41 +0200
 categories:        [git]
 tags:              [java, jgit, git]
+permalink:         /2018/06/28/jgit-reffilter/
 comments:          true
 excerpt:           >
     This post explains how to apply a Git reference filter to your Git server

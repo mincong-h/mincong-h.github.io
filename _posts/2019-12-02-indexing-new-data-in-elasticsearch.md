@@ -5,6 +5,7 @@ lang:                en
 date:              2019-12-02 21:17:48 +0100
 categories:        [elasticsearch]
 tags:              [java, elasticsearch]
+permalink:         /2019/12/02/indexing-new-data-in-elasticsearch/
 comments:          true
 excerpt:           >
     Initializing Elasticsearch client, sending a single index request or a bulk

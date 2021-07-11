@@ -5,6 +5,7 @@ lang:                en
 date:        "2017-10-04 16:04:48 +0200"
 categories:  [git]
 tags:        [git]
+permalink:         /2017/10/04/what-is-git-branch/
 comments:    true
 article_header:
   type: overlay

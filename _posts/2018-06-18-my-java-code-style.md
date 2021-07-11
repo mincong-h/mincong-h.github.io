@@ -6,6 +6,7 @@ date:              2018-06-18 09:14:50 +0200
 date_modified:     2018-07-29 22:36:01 +0200
 categories:        [tech]
 tags:              [java]
+permalink:         /2018/06/18/my-java-code-style/
 comments:          true
 excerpt:           >
     My Java code style: a collection of Java good practices.

@@ -5,6 +5,7 @@ lang:                en
 date:              2018-08-09 20:25:41 +0200
 categories:        [tech]
 tags:              [javascript, node]
+permalink:         /2018/08/09/my-first-script-of-node-js/
 comments:          true
 image:             /assets/logo-nodejs.png
 cover:             /assets/logo-nodejs.png

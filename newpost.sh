@@ -1,30 +1,30 @@
 #!/bin/bash
 #
-#    This script creates a new blog post with metadata in ./_posts
-#    folder. Date will be generated according to the current time in
-#    the system. Usage:
+# Description:
+#
+#    This script creates two new blog post with metadata, one in English and the
+#    other in Chinese. They are stored in two different directories for two
+#    different collections:
+#
+#      - EN: _posts/
+#      - CN: _cn/
+#
+#    Both articles mush the same name because the internationalization (i18n)
+#    system relies on this name to find the other version, if exists.
+#    Date will be generated according to the current time in the system.
+#
+# Usage:
 #
 #        ./newpost.sh My Blog Post Title
 #
 
-title="${*:1}"
+# Functions
+# -----
 
-if [[ -z "$title" ]]; then
-    echo 'usage: newpost.sh My New Blog'
-    exit 1
-fi
-
-bloghome=$(cd "$(dirname "$0")" || exit; pwd)
-url=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-filename="$(date +"%Y-%m-%d")-$url.md"
-filepath="$bloghome/_posts/$filename"
-
-if [[ -f "$filepath" ]]; then
-    echo "$filepath already exists."
-    exit 1
-fi
-
-cat << EOF >> "$filepath"
+function append_metadata_en {
+  path="$1"
+  title="$2"
+  cat << EOF >> "$path"
 ---
 layout:              post
 title:               $title
@@ -46,10 +46,47 @@ article_header:
   background_color:  "#203028"
   background_image:
     gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
+wechat:              false
+ads:                 none
+---
+
+EOF
+}
+
+function append_metadata_cn {
+  path="$1"
+  title="$2"
+  cat << EOF >> "$path"
+---
+layout:              post
+title:               $title
+subtitle:            >
+    Given one sentence to expand the title or explain why this article may interest your readers.
+
+lang:                zh
+date:                $(date +"%Y-%m-%d %H:%M:%S %z")
+categories:          [java-core]
+tags:                []
+comments:            true
+excerpt:             >
+    TODO
+image:               /assets/bg-coffee-84624_1280.jpg
+cover:               /assets/bg-coffee-84624_1280.jpg
+article_header:
+  type:              overlay
+  theme:             dark
+  background_color:  "#203028"
+  background_image:
+    gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 wechat:              true
 ads:                 none
 ---
 
+EOF
+}
+
+function append_content {
+  cat << EOF >> "$1"
 ## Introduction 前言
 
 Explain context here...
@@ -77,5 +114,40 @@ on [Twitter](https://twitter.com/mincong_h) or
 
 写作不易，希望大家点个赞、点个在看支持一下，谢谢(花)
 EOF
+}
 
-echo "Blog created: $filepath"
+# Main
+# -----
+
+title="${*:1}"
+
+if [[ -z "$title" ]]; then
+    echo 'usage: newpost.sh My New Blog'
+    exit 1
+fi
+
+bloghome=$(cd "$(dirname "$0")" || exit; pwd)
+url=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+filename="$(date +"%Y-%m-%d")-$url.md"
+filepath_en="${bloghome}/_posts/${filename}"
+filepath_cn="${bloghome}/_cn/${filename}"
+
+if [[ -f "$filepath_en" ]]; then
+    echo "${filepath_en} already exists."
+    exit 1
+fi
+
+if [[ -f "$filepath_cn" ]]; then
+    echo "${filepath_cn} already exists."
+    exit 1
+fi
+
+append_metadata_en "$filepath_en" "$title"
+append_metadata_cn "$filepath_cn" "$title"
+
+# Not for EN, because EN post is translated.
+append_content "$filepath_cn"
+
+echo "Blog posts created!"
+echo "  EN: ${filepath_en}"
+echo "  CN: ${filepath_cn}"

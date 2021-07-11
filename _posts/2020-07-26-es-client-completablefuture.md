@@ -5,6 +5,7 @@ lang:                en
 date:              2020-07-26 10:42:41 +0200
 categories:        [elasticsearch, java-concurrency]
 tags:              [java, concurrency, elasticsearch]
+permalink:         /2020/07/26/es-client-completablefuture/
 comments:          true
 excerpt:           >
     Wrap Elasticsearch client response into CompletableFuture in Java for

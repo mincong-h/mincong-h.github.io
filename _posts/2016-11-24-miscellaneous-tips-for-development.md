@@ -7,6 +7,7 @@ categories:    [tech]
 tags:          [git, maven, linux]
 excerpt:       >
   Miscellaneous tips for development in Git and Maven.
+permalink:         /2016/11/24/miscellaneous-tips-for-development/
 comments:      true
 article_header:
   type: overlay

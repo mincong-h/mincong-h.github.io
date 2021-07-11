@@ -8,6 +8,7 @@ tags:        [haskell, testing, ci, travis-ci]
 excerpt:     >
   This post explains how to configure your Haskell project for testing, using
   Cabal and Travis CI.
+permalink:         /2018/04/28/testing-haskell/
 comments:    true
 article_header:
   type: overlay

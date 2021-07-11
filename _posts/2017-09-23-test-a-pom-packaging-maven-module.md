@@ -5,6 +5,7 @@ lang:                en
 date:        "2017-09-23 08:59:24 +0200"
 categories:  [build]
 tags:        [maven, java]
+permalink:         /2017/09/23/test-a-pom-packaging-maven-module/
 comments:    true
 article_header:
   type: overlay

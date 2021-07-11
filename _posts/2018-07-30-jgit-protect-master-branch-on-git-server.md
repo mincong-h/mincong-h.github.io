@@ -6,6 +6,7 @@ date:              2018-07-30 21:06:35 +0200
 date_modified:     2018-07-31 09:58:33 +0200
 categories:        [git]
 tags:              [java, git, jgit]
+permalink:         /2018/07/30/jgit-protect-master-branch-on-git-server/
 comments:          true
 excerpt:           >
     If you're using JGit for your Git server, you can combine Git config

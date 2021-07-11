@@ -8,6 +8,7 @@ tags:        [security, web]
 excerpt:     >
   My review note about book "Web Application Security: A Beginner's Guide",
   written by Bryan Sullivan and Vincent Liu.
+permalink:         /2017/07/20/web-app-security-review-1/
 comments:    true
 article_header:
   type: overlay

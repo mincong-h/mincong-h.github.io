@@ -6,6 +6,7 @@ date:              2018-06-19 07:43:18 +0200
 date_modified:     2018-07-22 17:19:19 +0200
 categories:        [java-rest, java-serialization, java-core]
 tags:              [java, serialization, json, jackson, auto-value]
+permalink:         /2018/06/19/auto-value-and-jackson/
 comments:          true
 excerpt:           >
     This post explains what is Google Auto Value and why it is the best

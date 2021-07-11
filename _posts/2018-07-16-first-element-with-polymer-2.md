@@ -6,6 +6,7 @@ date:              2018-07-16 21:31:12 +0200
 date_modified:     2018-07-27 12:30:34 +0200
 categories:        [tech]
 tags:              [javascript, polymer, dom]
+permalink:         /2018/07/16/first-element-with-polymer-2/
 comments:          true
 excerpt:           >
     Want to create your first web element with Polymer 2? This post provides

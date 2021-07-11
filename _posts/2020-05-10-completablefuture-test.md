@@ -5,6 +5,7 @@ lang:                en
 date:              2020-05-10 17:04:39 +0200
 categories:        [java-concurrency, java-testing]
 tags:              [java, concurrency]
+permalink:         /2020/05/10/completablefuture-test/
 comments:          true
 excerpt:           >
     How CompletableFuture is tested in OpenJDK 14? What can we learn from it?

@@ -5,6 +5,7 @@ lang:                en
 date:              2020-11-08 16:16:21 +0100
 categories:        [build]
 tags:              [java, javac, maven]
+permalink:         /2020/11/08/google-error-prone/
 comments:          true
 excerpt:           >
     Introdution to Google Error-Prone in Maven, which augments the compiler's

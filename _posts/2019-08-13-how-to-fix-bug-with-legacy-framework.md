@@ -5,6 +5,7 @@ lang:                en
 date:              2019-08-13 20:34:58 +0200
 categories:        [java-core, java-testing]
 tags:              [java, rest, gwt, git, javascript]
+permalink:         /2019/08/13/how-to-fix-bug-with-legacy-framework/
 comments:          true
 excerpt:           >
     In my daily work, I have to deal with legacy frameworks. Here are 6 tips

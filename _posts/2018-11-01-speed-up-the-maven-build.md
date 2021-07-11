@@ -5,6 +5,7 @@ lang:                en
 date:              2018-11-01 12:13:55 +0100
 categories:        [build]
 tags:              [maven, java, javascript, macos]
+permalink:         /2018/11/01/speed-up-the-maven-build/
 comments:          true
 excerpt:           >
     How to speed up a Maven project by using different tips.

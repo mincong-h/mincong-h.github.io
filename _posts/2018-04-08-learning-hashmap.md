@@ -9,6 +9,7 @@ tags:              [java, study-note]
 excerpt:           >
   Understand java.util.HashMap in Java 11: bitwise operations, hash computation
   using hash code, index calculation, and more.
+permalink:         /2018/04/08/learning-hashmap/
 comments:    true
 image:             /assets/bg-coffee-2242213_1280.jpg
 cover:             /assets/bg-coffee-2242213_1280.jpg

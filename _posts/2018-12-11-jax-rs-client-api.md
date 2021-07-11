@@ -5,6 +5,7 @@ lang:                en
 date:              2018-12-11 20:11:39 +0100
 categories:        [java-rest]
 tags:              [http, java, jax-rs, rest]
+permalink:         /2018/12/11/jax-rs-client-api/
 comments:          true
 excerpt:           >
     This post explains what is JAX-RS Client API and how to use it via Jersey

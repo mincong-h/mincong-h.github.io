@@ -5,6 +5,7 @@ lang:                en
 date:       2017-03-10 21:00:00 +0100
 categories: [git]
 tags:       [git, docker]
+permalink:         /2017/03/10/setup-gitlab-server-locally/
 comments:    true
 article_header:
   type: overlay

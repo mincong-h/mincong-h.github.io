@@ -5,6 +5,7 @@ lang:                en
 date:              2020-08-30 14:32:49 +0200
 categories:        [elasticsearch]
 tags:              [elasticsearch, java]
+permalink:         /2020/08/30/gc-in-elasticsearch/
 comments:          true
 excerpt:           >
     Basic information about garbage collection (GC) in Elasticsearch, including the

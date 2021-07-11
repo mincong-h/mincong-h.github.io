@@ -5,6 +5,7 @@ lang:                en
 date:              2019-08-06 20:44:23 +0200
 categories:        [tech]
 tags:              [java, cli]
+permalink:         /2019/08/06/introduction-to-commons-cli/
 comments:          true
 excerpt:           >
     Simple but common use-cases: create options, create option, parse command

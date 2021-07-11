@@ -5,6 +5,7 @@ lang:                en
 date:              2018-10-04 19:50:05 +0200
 categories:        [build]
 tags:              [java, maven]
+permalink:         /2018/10/04/maven-failsafe-plugin-understanding/
 comments:          true
 excerpt:           >
     Maven Failsafe Plugin runs integration tests for your Maven project. In this

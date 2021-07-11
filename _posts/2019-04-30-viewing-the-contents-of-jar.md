@@ -5,6 +5,7 @@ lang:                en
 date:              2019-04-30 19:58:52 +0200
 categories:        [java-core]
 tags:              [java]
+permalink:         /2019/04/30/viewing-the-contents-of-jar/
 comments:          true
 excerpt:           >
     Listing files inside a JAR or displaying content of a single file using

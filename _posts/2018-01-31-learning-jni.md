@@ -12,6 +12,7 @@ excerpt:     >
   by native applications and libraries written in other languages such as C, C++
   and assembly. This post uses a Hello-world example to demonstrate the
   communication between Java and C on Mac OS X.
+permalink:         /2018/01/31/learning-jni/
 comments:    true
 article_header:
   type: overlay

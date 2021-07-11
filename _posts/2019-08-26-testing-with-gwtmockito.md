@@ -5,6 +5,7 @@ lang:                en
 date:              2019-08-26 22:16:23 +0200
 categories:        [java-core]
 tags:              [testing, mockito, gwt]
+permalink:         /2019/08/26/testing-with-gwtmockito/
 comments:          true
 excerpt:           >
     My recent bug fixing experience on Google Web Kit (GWT) with GwtMockito:

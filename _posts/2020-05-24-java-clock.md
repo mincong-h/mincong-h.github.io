@@ -5,6 +5,7 @@ lang:                en
 date:              2020-05-24 15:27:19 +0200
 categories:        [java-core, java-testing]
 tags:              [java, date, testing]
+permalink:         /2020/05/24/java-clock/
 comments:          true
 excerpt:           >
     Use java.time.Clock to control time in your unit tests. This article will

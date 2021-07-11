@@ -5,6 +5,7 @@ lang:                en
 date:              2018-12-03 07:15:28 +0100
 categories:        [java-rest]
 tags:              [http, java, jax-rs, rest]
+permalink:         /2018/12/03/exception-handling-in-jax-rs/
 comments:          true
 excerpt:           >
     This post explains exception mapper, how to register it in JAX-RS

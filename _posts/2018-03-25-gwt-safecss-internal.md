@@ -9,6 +9,7 @@ excerpt:     >
   Recently, I helped the GWT community for porting module gwt-safecss to
   GitHub. I think it’s also a good opportunity to learn more about GWT SafeCss.
   That’s why I’m writing this study note.
+permalink:         /2018/03/25/gwt-safecss-internal/
 comments:    true
 article_header:
   type: overlay

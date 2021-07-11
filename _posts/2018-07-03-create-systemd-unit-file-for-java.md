@@ -6,6 +6,7 @@ date:              2018-07-03 21:33:29 +0200
 date_modified:     2020-05-08 09:10:39 +0200
 categories:        [tech]
 tags:              [java, systemd, raspberry-pi]
+permalink:         /2018/07/03/create-systemd-unit-file-for-java/
 comments:          true
 image:             /assets/bg-coffee-2242213_1280.jpg
 cover:             /assets/bg-coffee-2242213_1280.jpg

@@ -5,6 +5,7 @@ lang:                en
 date:              2019-09-22 16:37:15 +0200
 categories:        [java-testing]
 tags:              [java, mockito, testing]
+permalink:         /2019/09/22/mockito-verify/
 comments:          true
 excerpt:           >
     Verify interaction with mock objects with verify(), verifyZeroInteractions()

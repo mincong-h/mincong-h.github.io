@@ -5,6 +5,7 @@ lang:                en
 date:              2018-09-16 16:29:22 +0800
 categories:        [build]
 tags:              [java, maven]
+permalink:         /2018/09/16/maven-surefire-plugin-understanding/
 comments:          true
 excerpt:           >
     Maven Surefire Plugin is used during the "test" phase of Maven build

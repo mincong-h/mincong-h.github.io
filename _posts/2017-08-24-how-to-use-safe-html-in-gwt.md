@@ -5,6 +5,7 @@ lang:                en
 date:        "2017-08-24 15:34:05 +0200"
 categories:  [tech]
 tags:        [security, gwt, web, java]
+permalink:         /2017/08/24/how-to-use-safe-html-in-gwt/
 comments:    true
 article_header:
   type: overlay

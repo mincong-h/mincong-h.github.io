@@ -6,6 +6,7 @@ date:              2020-12-16 15:27:56 +0100
 categories:        [elasticsearch]
 tags:              [elasticsearch, java, docker]
 series:            [dvf]
+permalink:         /2020/12/16/dvf-indexing/
 comments:          true
 excerpt:           >
     Part 1: Indexing new documents into Elasticsearch using French government's open

@@ -11,6 +11,7 @@ excerpt:     >
   will be separated into several subjects: Java basics, Java data types, methods
   and encapsulation, core APIs, flow control, inheritance, and exception
   handling.
+permalink:         /2017/04/06/oca-review-8-notes/
 comments:    true
 article_header:
   type: overlay

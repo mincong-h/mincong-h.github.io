@@ -6,6 +6,7 @@ date:               2018-07-13 21:17:11 +0200
 date_modified:      2018-07-24 17:17:38 +0200
 categories:         [tech]
 tags:               [javascript, study-note]
+permalink:         /2018/07/13/javascript-cheat-sheet/
 comments:           true
 excerpt:            >
     A simple JS cheat sheet for newbies, containing the basic syntax of commonly

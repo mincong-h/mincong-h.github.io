@@ -5,6 +5,7 @@ lang:                en
 date:              2020-01-19 13:32:29 +0100
 categories:        [elasticsearch]
 tags:              [java, elasticsearch]
+permalink:         /2020/01/19/elasticsearch-scroll-api/
 comments:          true
 excerpt:           >
     Elasticsearch Scroll API sample written in Java, useful for retrieving

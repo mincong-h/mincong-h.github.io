@@ -6,6 +6,7 @@ date:              2020-12-25 18:36:01 +0100
 categories:        [elasticsearch]
 tags:              [java, elasticsearch]
 series:            [dvf]
+permalink:         /2020/12/25/dvf-storage-optimization/
 comments:          true
 excerpt:           >
     Part 3: How to optmize storage of a given index by 40% using force-merge.

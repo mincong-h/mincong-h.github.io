@@ -9,6 +9,7 @@ excerpt:     >
   Today, I want to discuss Git internal mechanism with you: How Git resolves
   references? How JGit, a pure Java implementation of Git, resolves references
   in Java? Then, how to use them via class RevObject and its subtypes.
+permalink:         /2018/03/17/jgit-internal-reference-and-revobject/
 comments:    true
 article_header:
   type: overlay

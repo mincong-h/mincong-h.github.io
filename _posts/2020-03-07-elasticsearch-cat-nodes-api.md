@@ -5,6 +5,7 @@ lang:                en
 date:              2020-03-07 21:43:53 +0100
 categories:        [elasticsearch]
 tags:              [elasticsearch, cli, http]
+permalink:         /2020/03/07/elasticsearch-cat-nodes-api/
 comments:          true
 excerpt:           >
     Use Elasticsearch cat nodes API to understand the state of your

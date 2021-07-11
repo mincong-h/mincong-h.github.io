@@ -6,6 +6,7 @@ date:              2020-05-30 07:14:44 +0200
 date_modified:     2020-05-31 18:57:21 +0200
 categories:        [java-concurrency]
 tags:              [java, concurrency]
+permalink:         /2020/05/30/exception-handling-in-completable-future/
 comments:          true
 excerpt:           >
     How to handle exception in CompletableFuture? This

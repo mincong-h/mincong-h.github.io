@@ -5,6 +5,7 @@ lang:                en
 date:              2018-09-05 20:04:39 +0200
 categories:        [build]
 tags:              [maven, java]
+permalink:         /2018/09/05/maven-jar-plugin-understanding/
 comments:          true
 excerpt:           >
     A step-by-step guide for understanding Maven JAR Plugin in Java 8 and Java

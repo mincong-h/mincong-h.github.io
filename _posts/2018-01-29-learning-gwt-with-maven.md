@@ -12,6 +12,7 @@ excerpt:     >
   from Apache Ant, JARs and classpath must be handled explicitly etc. I found
   it more comfortable to start with Maven, the tool which many Java developers
   are familiar with.
+permalink:         /2018/01/29/learning-gwt-with-maven/
 comments:    true
 article_header:
   type: overlay

@@ -5,6 +5,7 @@ lang:                en
 date:              2019-11-17 09:01:50 +0100
 categories:        [review]
 tags:              [review]
+permalink:         /2019/11/17/dd-onboarding/
 comments:          true
 excerpt:           >
     Recapitulating my first two weeks at Datadog: what I observed and I

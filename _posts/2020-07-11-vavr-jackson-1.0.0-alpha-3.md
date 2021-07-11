@@ -5,6 +5,7 @@ lang:                en
 date:              2020-07-11 21:07:54 +0200
 categories:        [java-serialization]
 tags:              [java, vavr, jackson]
+permalink:         /2020/07/11/vavr-jackson-1.0.0-alpha-3/
 comments:          true
 excerpt:           >
     Release note of Vavr Jackson 1.0.0 Alpha 3.

@@ -5,6 +5,7 @@ lang:                en
 date:              2019-07-16 20:46:48 +0200
 categories:        [build]
 tags:              [java, maven]
+permalink:         /2019/07/16/specifying-maven-local-repository-from-cli/
 comments:          true
 excerpt:           >
     Use option "maven.repo.local" to specify the Maven local repository path.

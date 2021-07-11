@@ -6,6 +6,7 @@ date:              2020-02-02 15:46:36 +0100
 date_modified:     2020-06-01 22:20:25 +0200
 categories:        [java-testing]
 tags:              [java, logging, test]
+permalink:         /2020/02/02/logback-test-logging-event/
 comments:          true
 excerpt:           >
     Capture SLF4J + Logback logging events and test them in unit tests using

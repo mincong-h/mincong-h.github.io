@@ -6,6 +6,7 @@ date:              2021-01-10 11:46:21 +0100
 categories:        [elasticsearch]
 tags:              [elasticsearch, java]
 series:            [dvf]
+permalink:         /2021/01/10/dvf-snapshot-and-restore/
 comments:          true
 excerpt:           >
     Part 4: How to create a snapshot for index "transactions" of DVF and restore it

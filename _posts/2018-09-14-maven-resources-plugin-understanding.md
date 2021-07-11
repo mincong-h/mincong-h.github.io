@@ -5,6 +5,7 @@ lang:                en
 date:              2018-09-14 05:51:48 +0200
 categories:        [build]
 tags:              [java, maven]
+permalink:         /2018/09/14/maven-resources-plugin-understanding/
 comments:          true
 excerpt:           >
   Maven Resources Plugin is part of the core Maven plugins, which handles

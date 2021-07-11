@@ -8,6 +8,7 @@ lang:                en
 date:                2021-04-11 08:31:10 +0800
 categories:          [elasticsearch, python]
 tags:                [elasticsearch, python, jinja]
+permalink:           /2021/04/11/elasticsearch-generate-configuration-with-python-jinja2/
 comments:            true
 excerpt:             >
     This article explains how to generate the configuration for Elasticsearch using

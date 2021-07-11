@@ -5,6 +5,7 @@ lang:                en
 date:              2018-12-25 20:43:25 +0100
 categories:        [tech]
 tags:              [jenkins, engineering]
+permalink:         /2018/12/25/discard-old-build-artifacts-on-jenkins/
 comments:          true
 excerpt:           >
     How to discard old build artifacts on Jenkins and free the disk space by

@@ -10,6 +10,7 @@ excerpt:     >
   Foundation. After reading this article, you'll understand the definition of
   HTTP, URL and resources, the flow of messages, and the different status codes
   in HTTP.
+permalink:         /2017/06/05/http-the-webs-foundation/
 comments:    true
 article_header:
   type: overlay

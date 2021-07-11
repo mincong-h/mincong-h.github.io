@@ -5,6 +5,7 @@ lang:                en
 date:              2019-07-23 20:46:37 +0200
 categories:        [git]
 tags:              [git]
+permalink:         /2019/07/23/prepare-commit-message-using-git-hook/
 comments:          true
 excerpt:           >
     Create a Git hook prepare-commit-msg for inferring JIRA ticket as commit

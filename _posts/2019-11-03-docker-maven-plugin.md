@@ -5,6 +5,7 @@ lang:                en
 date:              2019-11-03 17:31:28 +0100
 categories:        [build]
 tags:              [java, docker, maven]
+permalink:         /2019/11/03/docker-maven-plugin/
 comments:          true
 excerpt:           >
     Introduction to Docker Maven Plugin: how to build and run

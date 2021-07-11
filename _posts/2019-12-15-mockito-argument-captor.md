@@ -5,6 +5,7 @@ lang:                en
 date:              2019-12-15 21:03:20 +0100
 categories:        [java-testing]
 tags:              [java, mockito, testing]
+permalink:         /2019/12/15/mockito-argument-captor/
 comments:          true
 excerpt:           >
     Three ways to create ArgumentCaptor in unit tests (Mockito JUnit Runner,

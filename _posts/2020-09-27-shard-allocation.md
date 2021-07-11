@@ -5,6 +5,7 @@ lang:                en
 date:              2020-09-27 11:44:32 +0200
 categories:        [elasticsearch]
 tags:              [elasticsearch, java]
+permalink:         /2020/09/27/shard-allocation/
 comments:          true
 excerpt:           >
     This article explains the 18 allocation deciders in Elasticsearch: when

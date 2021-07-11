@@ -5,6 +5,7 @@ lang:                en
 date:              2019-12-08 17:58:50 +0100
 categories:        [tech]
 tags:              [java, config]
+permalink:         /2019/12/08/typesafe-config/
 comments:          true
 excerpt:           >
     Typesafe Config library: its basic structure, loading mechanism, parsing,

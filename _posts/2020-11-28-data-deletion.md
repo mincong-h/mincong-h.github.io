@@ -5,6 +5,7 @@ lang:                en
 date:              2020-11-28 18:59:29 +0100
 categories:        [tech]
 tags:              [data]
+permalink:         /2020/11/28/data-deletion/
 comments:          true
 excerpt:           >
     8 lessons learned from data deletion: data organization, naming convention,

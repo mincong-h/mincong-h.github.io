@@ -5,6 +5,7 @@ lang:                en
 date:              2019-10-03 21:43:23 +0200
 categories:        [tech]
 tags:              [java, performance, cli, jgit, rest, jersey]
+permalink:         /2019/10/03/performance-improvements-on-nuxeoctl/
 comments:          true
 excerpt:           >
     How NOS team improves the performance of Nuxeoctl, Nuxeo Server's command
