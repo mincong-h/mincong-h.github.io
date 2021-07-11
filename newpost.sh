@@ -17,38 +17,22 @@
 #
 #        ./newpost.sh My Blog Post Title
 #
-#
-title="${*:1}"
 
-if [[ -z "$title" ]]; then
-    echo 'usage: newpost.sh My New Blog'
-    exit 1
-fi
+# Functions
+# -----
 
-bloghome=$(cd "$(dirname "$0")" || exit; pwd)
-url=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-filename="$(date +"%Y-%m-%d")-$url.md"
-filepath_en="${bloghome}/_posts/${filename}"
-filepath_cn="${bloghome}/_cn/${filename}"
-
-if [[ -f "$filepath_en" ]]; then
-    echo "${filepath_en} already exists."
-    exit 1
-fi
-
-if [[ -f "$filepath_cn" ]]; then
-    echo "${filepath_cn} already exists."
-    exit 1
-fi
-
-cat << EOF >> "$filepath_en"
+function append_metadata {
+  lang="$1"
+  path="$2"
+  title="$3"
+  cat << EOF >> "$path"
 ---
 layout:              post
 title:               $title
 subtitle:            >
     Given one sentence to expand the title or explain why this article may interest your readers.
 
-lang:                en
+lang:                $lang
 date:                $(date +"%Y-%m-%d %H:%M:%S %z")
 categories:          [java-core]
 tags:                []
@@ -67,6 +51,11 @@ wechat:              true
 ads:                 none
 ---
 
+EOF
+}
+
+function append_content {
+  cat << EOF >> "$1"
 ## Introduction 前言
 
 Explain context here...
@@ -94,6 +83,39 @@ on [Twitter](https://twitter.com/mincong_h) or
 
 写作不易，希望大家点个赞、点个在看支持一下，谢谢(花)
 EOF
+}
+
+# Main
+# -----
+
+title="${*:1}"
+
+if [[ -z "$title" ]]; then
+    echo 'usage: newpost.sh My New Blog'
+    exit 1
+fi
+
+bloghome=$(cd "$(dirname "$0")" || exit; pwd)
+url=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+filename="$(date +"%Y-%m-%d")-$url.md"
+filepath_en="${bloghome}/_posts/${filename}"
+filepath_cn="${bloghome}/_cn/${filename}"
+
+if [[ -f "$filepath_en" ]]; then
+    echo "${filepath_en} already exists."
+    exit 1
+fi
+
+if [[ -f "$filepath_cn" ]]; then
+    echo "${filepath_cn} already exists."
+    exit 1
+fi
+
+append_metadata "en" "$filepath_en" "$title"
+append_metadata "zh" "$filepath_cn" "$title"
+
+# Not for EN, because EN post is translated.
+append_content "$filepath_cn"
 
 echo "Blog post created!"
 echo "  EN: ${filepath_en}"
