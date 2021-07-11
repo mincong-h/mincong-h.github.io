@@ -33,14 +33,14 @@
     {%- assign _pageview = false -%}
   {%- endif -%}
 
+  {% assign _show_lang = include.show_lang %}
+
   {%- assign _paths_archive = site.paths.archive | default: site.data.variables.default.paths.archive -%}
 
   {%- if _show_tags or _show_author or _show_date or _pageview -%}
     <div class="article__info clearfix">
-
-      {%- if _show_tags -%}
-
-        <ul class="left-col menu">
+      <ul class="left-col menu">
+        {% if _show_tags %}
           {%- assign _tag_path = _paths_archive | append: '?tag=' -%}
           {%- include snippets/prepend-baseurl.html path=_tag_path -%}
 
@@ -52,7 +52,9 @@
                 href="{{ _tag_path | append: _tag_encode | replace: '//', '/' }}">{{ _tag }}</a>
             </li>
           {%- endfor -%}
+        {% endif %}
 
+        {% if _show_lang %}
           {%- include snippets/get-lang.html -%}
           {%- assign _lang = __return -%}
 
@@ -91,8 +93,8 @@
                  style="margin-right: 10px;font-size: 0.85rem"><span>CN</span></a>
             </li>
           {% endif %}
-        </ul>
-      {%- endif -%}
+        {% endif %}
+      </ul>
 
       {%- if _show_author or _show_date or _pageview -%}
         <ul class="right-col menu">
