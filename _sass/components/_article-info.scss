@@ -22,4 +22,11 @@
       }
     }
   }
+  .separator {
+    margin-left: map-get($spacers, 2);
+    margin-right: map-get($spacers, 2);
+  }
+  .lang {
+    font-size: map-get($base, font-size-sm);
+  }
 }

@@ -33,13 +33,14 @@
     {%- assign _pageview = false -%}
   {%- endif -%}
 
+  {% assign _show_lang = include.show_lang %}
+
   {%- assign _paths_archive = site.paths.archive | default: site.data.variables.default.paths.archive -%}
 
   {%- if _show_tags or _show_author or _show_date or _pageview -%}
     <div class="article__info clearfix">
-      {%- if _show_tags -%}
-
-        <ul class="left-col menu">
+      <ul class="left-col menu">
+        {% if _show_tags %}
           {%- assign _tag_path = _paths_archive | append: '?tag=' -%}
           {%- include snippets/prepend-baseurl.html path=_tag_path -%}
 
@@ -51,8 +52,46 @@
                 href="{{ _tag_path | append: _tag_encode | replace: '//', '/' }}">{{ _tag }}</a>
             </li>
           {%- endfor -%}
-        </ul>
-      {%- endif -%}
+        {% endif %}
+
+        {% if _show_lang %}
+          {%- include snippets/get-lang.html -%}
+          {%- assign _lang = __return -%}
+
+          <li class="separator">|</li>
+          {% if _lang == "en" %}
+            <li>
+              <a class="button button--circle button--primary focus lang"
+                 href="{{ include.article.url }}"><span>EN</span></a>
+
+              {% include snippets/get-article-url.html
+                         article=include.article
+                         collection=site.cn %}
+              {% assign _cn_url = __return %}
+
+              {% if _cn_url %}
+                <a class="button button--circle button--secondary lang"
+                   href="{{ _cn_url }}"><span>CN</span></a>
+              {% endif %}
+            </li>
+          {% else %}
+            <li>
+              {% include snippets/get-article-url.html
+                         article=include.article
+                         collection=site.posts %}
+              {% assign _en_url = __return %}
+
+              {% if _en_url %}
+                <a class="button button--circle button--secondary lang"
+                   href="{{ _en_url }}"><span>EN</span></a>
+              {% endif %}
+
+              <a class="button button--circle button--primary focus lang"
+                 href="{{ include.article.url }}"><span>CN</span></a>
+            </li>
+          {% endif %}
+        {% endif %}
+      </ul>
 
       {%- if _show_author or _show_date or _pageview -%}
         <ul class="right-col menu">
