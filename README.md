@@ -37,10 +37,13 @@ Or run via Docker:
 
 ## Generators
 
-Create new post page:
+Create new blog post (article):
 
 ```sh
 $ ./newpost.sh My New Post
+Blog post created!
+  EN: /Users/minconghuang/github/mincong-h.github.io/_posts/2021-07-11-my-new-post.md
+  CN: /Users/minconghuang/github/mincong-h.github.io/_cn/2021-07-11-my-new-post.md
 ```
 
 Create new tag page:
