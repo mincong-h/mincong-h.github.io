@@ -8,6 +8,7 @@ lang:                en
 date:                2021-04-20 10:40:32 +0800
 categories:          [review]
 tags:                [project]
+permalink:         /2021/04/20/an-important-change/
 comments:            true
 excerpt:             >
     English to Chinese?

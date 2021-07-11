@@ -5,6 +5,7 @@ lang:                en
 date:              2018-10-18 20:39:47 +0200
 categories:        [tech]
 tags:              [polymer, javascript, nuxeo]
+permalink:         /2018/10/18/how-quick-switcher-is-implemented/
 comments:          true
 excerpt:           >
     The internal mechanism of Quick Switcher, a Polymer element allowing you to

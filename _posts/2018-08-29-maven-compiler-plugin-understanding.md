@@ -6,6 +6,7 @@ date:              2018-08-29 19:08:27 +0200
 date_modified:     2020-11-01 16:45:48 +0100
 categories:        [build]
 tags:              [maven, java]
+permalink:         /2018/08/29/maven-compiler-plugin-understanding/
 comments:          true
 excerpt:           >
     A step-by-step guide for understanding Maven Compiler Plugin in Java 11.

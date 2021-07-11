@@ -5,6 +5,7 @@ lang:                en
 date:              2018-11-27 22:22:23 +0100
 categories:        [java-rest]
 tags:              [http, java, jax-rs, rest]
+permalink:         /2018/11/27/jax-rs-parameters/
 comments:          true
 excerpt:           >
     This post explains different param annotations in JAX-RS 2.1 and their

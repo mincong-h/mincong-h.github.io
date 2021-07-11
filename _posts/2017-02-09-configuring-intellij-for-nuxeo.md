@@ -5,6 +5,7 @@ lang:                en
 date:       "2017-02-09 20:00:00 +0100"
 categories: [tech]
 tags:       [nuxeo, intellij]
+permalink:         /2017/02/09/configuring-intellij-for-nuxeo/
 comments:    true
 article_header:
   type: overlay

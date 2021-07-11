@@ -5,6 +5,7 @@ lang:                en
 date:              2018-11-20 21:04:14 +0100
 categories:        [java-rest]
 tags:              [http, java, jax-rs, rest]
+permalink:         /2018/11/20/http-methods-in-jax-rs/
 comments:          true
 excerpt:           >
     This article explains the common HTTP methods in JAX-RS: annotation @GET,

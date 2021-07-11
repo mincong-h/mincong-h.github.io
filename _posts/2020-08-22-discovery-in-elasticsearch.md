@@ -5,6 +5,7 @@ lang:                en
 date:              2020-08-22 18:38:54 +0200
 categories:        [elasticsearch]
 tags:              [elasticsearch]
+permalink:         /2020/08/22/discovery-in-elasticsearch/
 comments:          true
 excerpt:           >
     How does discovery work in Elasticsearch? This article explains different

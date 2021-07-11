@@ -5,6 +5,7 @@ lang:                en
 date:              2019-09-15 15:50:33 +0200
 categories:        [tech]
 tags:              [java, testing, api, selenium, cli]
+permalink:         /2019/09/15/project-nos-test/
 comments:          true
 excerpt:           >
     NOS Test is a QA project consists of 3 parts: RESTful API, browser, and

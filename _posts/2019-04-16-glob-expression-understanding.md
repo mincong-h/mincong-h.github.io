@@ -6,6 +6,7 @@ date:              2019-04-16 22:21:18 +0200
 date_modified:     2020-07-19 11:45:26 +0200
 categories:        [java-core]
 tags:              [java, glob]
+permalink:         /2019/04/16/glob-expression-understanding/
 comments:          true
 excerpt:           >
     Glob expression syntax, and its usage in Java through Path Matcher and

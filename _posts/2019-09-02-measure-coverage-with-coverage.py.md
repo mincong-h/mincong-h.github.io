@@ -5,6 +5,7 @@ lang:                en
 date:              2019-09-02 21:09:21 +0200
 categories:        [python]
 tags:              [python, testing, code-quality]
+permalink:         /2019/09/02/measure-coverage-with-coverage.py/
 comments:          true
 excerpt:           >
     Experience sharing on code coverage measurement of Python program using

@@ -6,6 +6,7 @@ date:              2018-08-04 15:02:00 +0200
 date_modified:     2018-08-11 23:36:28 +0200
 categories:        [build]
 tags:              [java, maven]
+permalink:         /2018/08/04/maven-deploy-artifacts-to-nexus/
 comments:          true
 excerpt:           >
     Declare Maven deploy plugin in the parent POM. It's the same no matter

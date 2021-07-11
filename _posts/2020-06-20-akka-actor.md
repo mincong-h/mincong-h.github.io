@@ -5,6 +5,7 @@ lang:                en
 date:              2020-06-20 18:21:23 +0200
 categories:        [java-concurrency]
 tags:              [java, akka, concurrency]
+permalink:         /2020/06/20/akka-actor/
 comments:          true
 excerpt:           >
     How to write a new actor in Akka in Java? This post explains actor creation,

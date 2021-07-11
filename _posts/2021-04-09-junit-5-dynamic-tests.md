@@ -8,6 +8,7 @@ lang:                en
 date:                2021-04-09 08:54:59 +0800
 categories:          [java-testing]
 tags:                [java, junit, junit5, testing]
+permalink:         /2021/04/09/junit-5-dynamic-tests/
 comments:            true
 excerpt:             >
     How to write dynamic tests using @TestFactory in JUnit 5? This article

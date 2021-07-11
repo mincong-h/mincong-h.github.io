@@ -5,6 +5,7 @@ lang:                en
 date:              2020-09-13 17:56:58 +0200
 categories:        [elasticsearch]
 tags:              [elasticsearch, java]
+permalink:         /2020/09/13/es-index-exceptions/
 comments:          true
 excerpt:           >
     Explain the common Elasticsearch exceptions occurred when indexing new

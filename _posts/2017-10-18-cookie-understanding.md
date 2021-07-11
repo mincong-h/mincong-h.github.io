@@ -7,6 +7,7 @@ categories:  [tech]
 tags:        [cookie, http]
 excerpt:     >
   The 8 different fields in an HTTP cookie.
+permalink:         /2017/10/18/cookie-understanding/
 comments:    true
 article_header:
   type: overlay

@@ -5,6 +5,7 @@ lang:                en
 date:              2019-03-09 07:41:39 +0100
 categories:        [git]
 tags:              [git]
+permalink:         /2019/03/09/merging-20-git-repositories/
 comments:          true
 excerpt:           >
     Recently, I merged 20 Git repositories into a single one while keeping the

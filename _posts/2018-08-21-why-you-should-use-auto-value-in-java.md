@@ -5,6 +5,7 @@ lang:                en
 date:              2018-08-21 09:22:49 +0200
 categories:        [java-core]
 tags:              [java, javac, auto-value]
+permalink:         /2018/08/21/why-you-should-use-auto-value-in-java/
 comments:          true
 excerpt:           >
     Auto Value generates immutable value classes during Java compilation,

@@ -5,6 +5,7 @@ lang:                en
 date:              2019-07-18 20:47:15 +0200
 categories:        [java-core]
 tags:              [java, testing]
+permalink:         /2019/07/18/fixing-comparator/
 comments:          true
 excerpt:           >
     Fun experience on fixing a custom comparator by identifying the sub-problems,

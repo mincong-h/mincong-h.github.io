@@ -5,6 +5,7 @@ lang:                en
 date:              2019-09-08 15:52:08 +0200
 categories:        [git]
 tags:              [java, git, jgit]
+permalink:         /2019/09/08/jgit-config-loading-optimization/
 comments:          true
 excerpt:           >
     How JGit optimizes internally the configuration loading process using file

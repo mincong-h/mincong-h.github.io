@@ -7,6 +7,7 @@ categories:  [build]
 tags:        [maven]
 excerpt:     >
   Some interesting facts that I discovered about Maven plugins.
+permalink:         /2017/11/07/maven-plugins-understanding/
 comments:    true
 article_header:
   type: overlay

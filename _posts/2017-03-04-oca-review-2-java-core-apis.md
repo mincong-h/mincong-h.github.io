@@ -5,6 +5,7 @@ lang:                en
 date:        2017-03-04 08:30:00 +0100
 categories:  [java-core]
 tags:        [java, oca]
+permalink:         /2017/03/04/oca-review-2-java-core-apis/
 comments:    true
 article_header:
   type: overlay

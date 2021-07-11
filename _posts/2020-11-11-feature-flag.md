@@ -5,6 +5,7 @@ lang:                en
 date:              2020-11-11 14:35:10 +0100
 categories:        [reliability]
 tags:              [java, reliability]
+permalink:         /2020/11/11/feature-flag/
 comments:          true
 excerpt:           >
     How to make your web application more reliable with feature flags?

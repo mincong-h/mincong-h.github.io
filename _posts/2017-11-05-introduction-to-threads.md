@@ -11,6 +11,7 @@ excerpt:     >
   my examples: white walkers and the Night King. After reading the blog post,
   you'll understand: How to create and run a thread, use wait(), notify(),
   notifyAll() and join().
+permalink:         /2017/11/05/introduction-to-threads/
 comments:    true
 article_header:
   type: overlay

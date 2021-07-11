@@ -5,6 +5,7 @@ lang:                en
 date:              2019-12-08 17:58:50 +0100
 categories:        [tech]
 tags:              [java, config]
+permalink:         /2019/12/08/typesafe-config/
 comments:          true
 excerpt:           >
     Typesafe Config library: its basic structure, loading mechanism, parsing,
@@ -54,6 +55,7 @@ If you want to use Typesafe Config in Java project via Maven, you can do:
 
 Here are some examples of the basic usage of Typesafe Config. It supports
 types such as integer, long, boolean, double, string, list and object.
+permalink:         /2019/12/08/typesafe-config/
 There are two ways to write comments: using either `//` or `#`. Comments can be
 written inline at the tail of the line or they can be written in separated lines.
 More advanced features are presented in the following sections.

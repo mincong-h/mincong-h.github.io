@@ -5,6 +5,7 @@ lang:                en
 date:        "2017-03-20 20:39:02 +0100"
 categories:  [java-core]
 tags:        [java, oca]
+permalink:         /2017/03/20/oca-review-6-online-test-chapter-4/
 comments:    true
 article_header:
   type: overlay

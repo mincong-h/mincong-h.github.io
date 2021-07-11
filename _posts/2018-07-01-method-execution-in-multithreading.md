@@ -5,6 +5,7 @@ lang:                en
 date:        "2018-07-01 16:22:45 +0200"
 categories:  [java-concurrency]
 tags:        [java, multithreading, study-note]
+permalink:         /2018/07/01/method-execution-in-multithreading/
 comments:    true
 article_header:
   type: overlay

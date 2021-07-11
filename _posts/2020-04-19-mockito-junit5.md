@@ -5,6 +5,7 @@ lang:                en
 date:              2020-04-19 17:25:16 +0200
 categories:        [java-testing]
 tags:              [mockito, java, testing, junit]
+permalink:         /2020/04/19/mockito-junit5/
 comments:          true
 excerpt:           >
     Initialize Mockito mock objects in JUnit 5 using MockitoExtension,

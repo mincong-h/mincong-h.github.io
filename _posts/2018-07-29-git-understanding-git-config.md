@@ -5,6 +5,7 @@ lang:                en
 date:              2018-07-29 14:45:46 +0200
 categories:        [git]
 tags:              [git, study-note]
+permalink:         /2018/07/29/git-understanding-git-config/
 comments:          true
 excerpt:           >
     The format of Git internal configuration file (.git/config) is very

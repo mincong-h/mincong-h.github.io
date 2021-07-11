@@ -5,6 +5,7 @@ lang:                en
 date:              2019-03-19 20:47:13 +0100
 categories:        [java-serialization]
 tags:              [java, xml, jackson]
+permalink:         /2019/03/19/jackson-xml-mapper/
 comments:          true
 excerpt:           >
     How to do Java / XML mapping using Jackson XML Mapper. This article explains

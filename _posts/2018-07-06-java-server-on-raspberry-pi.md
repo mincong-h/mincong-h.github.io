@@ -6,6 +6,7 @@ date:              2018-07-06 05:51:00 +0200
 date_modified:     2018-07-22 15:19:16 +0200
 categories:        [tech]
 tags:              [java, raspberry-pi, systemd]
+permalink:         /2018/07/06/java-server-on-raspberry-pi/
 comments:          true
 excerpt:           >
     A step-by-step guide for installing Java server on Raspberry Pi: install

@@ -5,6 +5,7 @@ lang:                en
 date:              2019-01-22 21:04:37 +0100
 categories:        [tech]
 tags:              [security, java, http]
+permalink:         /2019/01/22/security-training-day-1/
 comments:          true
 excerpt:           >
     My study notes of security training (Day 1), including web thread landscape

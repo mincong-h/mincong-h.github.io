@@ -5,6 +5,7 @@ lang:                en
 date:              2019-02-13 20:22:57 +0100
 categories:        [java-core]
 tags:              [java, vavr, functional-programming]
+permalink:         /2019/02/13/vavr-list-vs-java-list/
 comments:          true
 excerpt:           >
     Difference between Vavr List and Java List? I'll compare them via CRUD

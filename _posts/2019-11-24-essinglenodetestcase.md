@@ -5,6 +5,7 @@ lang:                en
 date:              2019-11-24 10:01:48 +0100
 categories:        [elasticsearch]
 tags:              [java, elasticsearch, testing]
+permalink:         /2019/11/24/essinglenodetestcase/
 comments:          true
 excerpt:           >
     Writing unit tests for Elasticsearch using Elasticsearch Single Node Test

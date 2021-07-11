@@ -5,6 +5,7 @@ lang:                en
 date:              2018-11-13 21:08:54 +0100
 categories:        [java-rest]
 tags:              [jax-rs, java, rest]
+permalink:         /2018/11/13/simple-rest-demo-with-jax-rs/
 comments:          true
 excerpt:           >
     A quickstart demo for creating REST service in Java using JAX-RS 2.0. The

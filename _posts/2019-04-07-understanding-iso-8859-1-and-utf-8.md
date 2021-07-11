@@ -5,6 +5,7 @@ lang:                en
 date:              2019-04-07 17:22:30 +0200
 categories:        [java-core, python]
 tags:              [java, python, encoding]
+permalink:         /2019/04/07/understanding-iso-8859-1-and-utf-8/
 comments:          true
 excerpt:           >
     Character mapping between ISO-8859-1 / UTF-8, decode and encode data between

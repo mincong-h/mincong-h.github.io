@@ -5,6 +5,7 @@ lang:                en
 date:              2019-01-29 20:22:31 +0100
 categories:        [java-concurrency]
 tags:              [java, concurrency]
+permalink:         /2019/01/29/executorservice-invokeall/
 comments:          true
 excerpt:           >
     Using 100% CPU effortlessly in Java: submit all your tasks to thread

@@ -5,6 +5,7 @@ lang:                en
 date:              2019-01-23 20:41:20 +0100
 categories:        [tech]
 tags:              [security, http, browser]
+permalink:         /2019/01/23/security-training-day-2/
 comments:          true
 excerpt:           >
     My study notes of security training (day 2), including some ways of SQL

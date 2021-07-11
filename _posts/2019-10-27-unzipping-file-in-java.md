@@ -5,6 +5,7 @@ lang:                en
 date:              2019-10-27 22:07:58 +0100
 categories:        [java-core]
 tags:              [java]
+permalink:         /2019/10/27/unzipping-file-in-java/
 comments:          true
 excerpt:           >
     Unzipping zip file in Java 8 using builtin Java classes: ZipInputStream and

@@ -5,6 +5,7 @@ lang:                en
 date:              2020-01-08 20:56:26 +0100
 categories:        [java-concurrency]
 tags:              [java, akka, concurrency]
+permalink:         /2020/01/08/akka-testing-actor-with-testactorref/
 comments:          true
 excerpt:           >
     Unit testing Akka actor with "TestActorRef", which gives you access to

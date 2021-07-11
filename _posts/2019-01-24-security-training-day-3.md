@@ -5,6 +5,7 @@ lang:                en
 date:              2019-01-24 18:26:27 +0100
 categories:        [tech]
 tags:              [security, http]
+permalink:         /2019/01/24/security-training-day-3/
 comments:          true
 excerpt:           >
     My study notes of security training (day 3), including insecure direct

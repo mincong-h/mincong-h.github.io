@@ -7,6 +7,7 @@ categories:  [git]
 tags:        [git]
 excerpt:     >
   Learning Git Basics.
+permalink:         /2017/01/20/learning-git-basics/
 comments:    true
 article_header:
   type: overlay

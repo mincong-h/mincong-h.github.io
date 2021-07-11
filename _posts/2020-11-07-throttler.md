@@ -5,6 +5,7 @@ lang:                en
 date:              2020-11-07 14:12:25 +0100
 categories:        [reliability]
 tags:              [java, reliability]
+permalink:         /2020/11/07/throttler/
 comments:          true
 excerpt:           >
     What is throttling and how to write a simple throttler in Java.

@@ -5,6 +5,7 @@ lang:                en
 date:                2021-02-27 17:07:27 +0100
 categories:          [java-serialization, reliability]
 tags:                [java, mongodb, serialization, jackson, reliability]
+permalink:         /2021/02/27/mongodb-schema-compatibility/
 comments:            true
 excerpt:             >
     How to add or remove a field from a Mongo collection without breaking the

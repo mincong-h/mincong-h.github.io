@@ -5,6 +5,7 @@ lang:                en
 date:              2020-02-22 20:40:24 +0100
 categories:        [tech]
 tags:              [bash]
+permalink:         /2020/02/22/create-your-own-cheatsheets/
 comments:          true
 excerpt:           >
     Create your own cheatsheets in Bash.

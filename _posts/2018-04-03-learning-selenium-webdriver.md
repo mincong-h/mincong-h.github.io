@@ -5,6 +5,7 @@ lang:                en
 date:        "2018-04-03 20:50:21 +0200"
 categories:  [java-testing]
 tags:        [java, qa, testing, study-note, selenium]
+permalink:         /2018/04/03/learning-selenium-webdriver/
 comments:    true
 excerpt:     >
   A quick introduction to Selenium WebDriver, a practical tool for running

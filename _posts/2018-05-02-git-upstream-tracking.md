@@ -6,6 +6,7 @@ date:              2018-05-02 20:41:53 +0200
 date_modified:     2019-08-15 15:54:04 +0200
 categories:        [git]
 tags:              [git, java, jgit]
+permalink:         /2018/05/02/git-upstream-tracking/
 comments:          true
 excerpt:           >
     A quick introduction about Git upstream tracking: set upstream with git-push

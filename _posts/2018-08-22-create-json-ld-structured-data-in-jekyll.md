@@ -6,6 +6,7 @@ date:              2018-08-22 21:57:07 +0200
 date_modified:     2021-03-07 16:47:00 +0200
 categories:        [tech]
 tags:              [seo, jekyll, google-search-console]
+permalink:         /2018/08/22/create-json-ld-structured-data-in-jekyll/
 comments:          true
 excerpt:           >
     In this post, I will explain how to create JSON-LD structured data for

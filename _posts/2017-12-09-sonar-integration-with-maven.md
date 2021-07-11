@@ -6,6 +6,7 @@ date:              2017-12-09 17:23:09 +0100
 date_modified:     2018-12-30 16:11:25 +0100
 categories:        [build]
 tags:              [maven, java, code-quality, jenkins, sonar]
+permalink:         /2017/12/09/sonar-integration-with-maven/
 comments:          true
 excerpt:           >
     A concret Sonar integration example for your Java project, using

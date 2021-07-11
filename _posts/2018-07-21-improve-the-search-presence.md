@@ -6,6 +6,7 @@ date:              2018-07-21 06:37:11 +0200
 date_modified:     2018-07-22 18:00:40 +0200
 categories:        [tech]
 tags:              [search, seo, google-search-console, google-analytics]
+permalink:         /2018/07/21/improve-the-search-presence/
 comments:          true
 excerpt:           >
     This post explains how to improve your blog ranking in Google Search when

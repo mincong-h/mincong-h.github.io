@@ -9,6 +9,7 @@ excerpt:     >
   A step-by-step guide for transferring a Git repository from one place to
   another while keeping the entirety of the data, including all branches and
   tags.
+permalink:         /2017/06/01/git-repository-migration/
 comments:    true
 article_header:
   type: overlay

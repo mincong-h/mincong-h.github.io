@@ -5,6 +5,7 @@ lang:                en
 date:        2017-01-26 22:46:00 +0100
 categories:  [tech]
 tags:        [code-quality]
+permalink:         /2017/01/26/code-quality-improvement/
 comments:    true
 article_header:
   type: overlay
