@@ -21,10 +21,9 @@
 # Functions
 # -----
 
-function append_metadata {
-  lang="$1"
-  path="$2"
-  title="$3"
+function append_metadata_en {
+  path="$1"
+  title="$2"
   cat << EOF >> "$path"
 ---
 layout:              post
@@ -32,7 +31,39 @@ title:               $title
 subtitle:            >
     Given one sentence to expand the title or explain why this article may interest your readers.
 
-lang:                $lang
+lang:                en
+date:                $(date +"%Y-%m-%d %H:%M:%S %z")
+categories:          [java-core]
+tags:                []
+comments:            true
+excerpt:             >
+    TODO
+image:               /assets/bg-coffee-84624_1280.jpg
+cover:               /assets/bg-coffee-84624_1280.jpg
+article_header:
+  type:              overlay
+  theme:             dark
+  background_color:  "#203028"
+  background_image:
+    gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
+wechat:              false
+ads:                 none
+---
+
+EOF
+}
+
+function append_metadata_cn {
+  path="$1"
+  title="$2"
+  cat << EOF >> "$path"
+---
+layout:              post
+title:               $title
+subtitle:            >
+    Given one sentence to expand the title or explain why this article may interest your readers.
+
+lang:                zh
 date:                $(date +"%Y-%m-%d %H:%M:%S %z")
 categories:          [java-core]
 tags:                []
@@ -111,12 +142,12 @@ if [[ -f "$filepath_cn" ]]; then
     exit 1
 fi
 
-append_metadata "en" "$filepath_en" "$title"
-append_metadata "zh" "$filepath_cn" "$title"
+append_metadata_en "$filepath_en" "$title"
+append_metadata_cn "$filepath_cn" "$title"
 
 # Not for EN, because EN post is translated.
 append_content "$filepath_cn"
 
-echo "Blog post created!"
+echo "Blog posts created!"
 echo "  EN: ${filepath_en}"
 echo "  CN: ${filepath_cn}"
