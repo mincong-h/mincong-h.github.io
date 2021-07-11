@@ -10,7 +10,7 @@ date:                2021-04-12 07:34:30 +0800
 categories:          [elasticsearch]
 tags:                [elasticsearch, java]
 series:              [dvf]
-permalink:         /2021/04/12/dvf-aggregations/
+permalink:           /2021/04/12/dvf-aggregations/
 comments:            true
 excerpt:             >
     How to write and execute metric and bucket aggregations in Elasticsearch for

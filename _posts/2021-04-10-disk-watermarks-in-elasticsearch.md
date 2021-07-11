@@ -8,7 +8,7 @@ lang:                en
 date:                2021-04-10 07:00:00 +0800
 categories:          [elasticsearch]
 tags:                [elasticsearch]
-permalink:         /2021/04/10/disk-watermarks-in-elasticsearch/
+permalink:           /2021/04/10/disk-watermarks-in-elasticsearch/
 comments:            true
 excerpt:             >
     Understanding different disk watermarks: low, high, and flood-stage in

@@ -9,7 +9,7 @@ date:                2021-04-16 08:03:43 +0800
 categories:          [elasticsearch]
 tags:                [elasticsearch, kibana, open-data]
 series:              [dvf]
-permalink:         /2021/04/16/dvf-real-estate-analysis-idf-2020/
+permalink:           /2021/04/16/dvf-real-estate-analysis-idf-2020/
 comments:            true
 excerpt:             >
     This article studies the real estate market of Île-de-France in 2020 by
