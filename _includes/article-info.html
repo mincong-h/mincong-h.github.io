@@ -37,6 +37,7 @@
 
   {%- if _show_tags or _show_author or _show_date or _pageview -%}
     <div class="article__info clearfix">
+
       {%- if _show_tags -%}
 
         <ul class="left-col menu">
@@ -51,6 +52,10 @@
                 href="{{ _tag_path | append: _tag_encode | replace: '//', '/' }}">{{ _tag }}</a>
             </li>
           {%- endfor -%}
+            <li style="margin-left: 10px;padding-left: 0px;font-size: 0.85rem">|
+              <a class="button button--secondary button--circle" href="/cn/page2/" style="margin-left: 10px;font-size: 0.85rem"><span>EN</span></a>
+              <a class="button button--primary button--circle focus" href="/cn/page2/" style="margin-right: 10px;font-size: 0.85rem"><span>CN</span></a>
+            </li>
         </ul>
       {%- endif -%}
 
