@@ -91,61 +91,61 @@ en_categories:
   - title:      Categories
     children:
       - title:  Build Tools
-        url:    /categories/build
+        url:    /en/categories/build/
       - title:  Elasticsearch
-        url:    /categories/elasticsearch
+        url:    /en/categories/elasticsearch/
       - title:  Git
-        url:    /categories/git
+        url:    /en/categories/git/
       - title:  Java Concurrency
-        url:    /categories/java-concurrency
+        url:    /en/categories/java-concurrency/
       - title:  Java Core
-        url:    /categories/java-core
+        url:    /en/categories/java-core/
       - title:  Java RESTful APIs
-        url:    /categories/java-rest
+        url:    /en/categories/java-rest/
       - title:  Java Serialization
-        url:    /categories/java-serialization
+        url:    /en/categories/java-serialization/
       - title:  Java Testing
-        url:    /categories/java-testing
+        url:    /en/categories/java-testing/
       - title:  Python
-        url:    /categories/python
+        url:    /en/categories/python/
       - title:  Reliability
-        url:    /categories/reliability
+        url:    /en/categories/reliability/
       - title:  Review
-        url:    /categories/review
+        url:    /en/categories/review/
 
 cn_categories:
   - title:      文章类别
     children:
       - title:  构建工具
-        url:    /cn/categories/build
+        url:    /cn/categories/build/
       - title:  Elasticsearch
-        url:    /cn/categories/elasticsearch
+        url:    /cn/categories/elasticsearch/
       - title:  Git
-        url:    /cn/categories/git
+        url:    /cn/categories/git/
       - title:  Java Concurrency
-        url:    /cn/categories/java-concurrency
+        url:    /cn/categories/java-concurrency/
       - title:  Java 核心
-        url:    /cn/categories/java-core
+        url:    /cn/categories/java-core/
       - title:  Java RESTful APIs
-        url:    /cn/categories/java-rest
+        url:    /cn/categories/java-rest/
       - title:  Java 序列化
-        url:    /cn/categories/java-serialization
+        url:    /cn/categories/java-serialization/
       - title:  Java 测试
-        url:    /cn/categories/java-testing
+        url:    /cn/categories/java-testing/
       - title:  Python
-        url:    /cn/categories/python
+        url:    /cn/categories/python/
       - title:  可靠性
-        url:    /cn/categories/reliability
+        url:    /cn/categories/reliability/
       - title:  总结
-        url:    /cn/categories/review
+        url:    /cn/categories/review/
 
 
 series:
   - title: Series
     children:
       - title:  Real Estate Project DVF
-        url:    /series/dvf
+        url:    /en/series/dvf/
       - title:  JAX-RS 2.x Basics
-        url:    /series/jax-rs-basics
+        url:    /en/series/jax-rs-basics/
       - title:  Maven Plugins
-        url:    /series/maven-plugins
+        url:    /en/series/maven-plugins/
