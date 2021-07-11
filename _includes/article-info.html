@@ -58,11 +58,11 @@
           {%- include snippets/get-lang.html -%}
           {%- assign _lang = __return -%}
 
+          <li class="separator">|</li>
           {% if _lang == "en" %}
-            <li style="margin-left: 10px;padding-left: 0px;font-size: 0.85rem">|
-              <a class="button button--circle button--primary focus"
-                 href="{{ include.article.url }}"
-                 style="margin-left: 10px;font-size: 0.85rem"><span>EN</span></a>
+            <li>
+              <a class="button button--circle button--primary focus lang"
+                 href="{{ include.article.url }}"><span>EN</span></a>
 
               {% include snippets/get-article-url.html
                          article=include.article
@@ -70,27 +70,24 @@
               {% assign _cn_url = __return %}
 
               {% if _cn_url %}
-                <a class="button button--circle button--secondary"
-                   href="{{ _cn_url }}"
-                   style="margin-right: 10px;font-size: 0.85rem"><span>CN</span></a>
+                <a class="button button--circle button--secondary lang"
+                   href="{{ _cn_url }}"><span>CN</span></a>
               {% endif %}
             </li>
           {% else %}
-            <li style="margin-left: 10px;padding-left: 0px;font-size: 0.85rem">|
+            <li>
               {% include snippets/get-article-url.html
                          article=include.article
                          collection=site.posts %}
               {% assign _en_url = __return %}
 
               {% if _en_url %}
-                <a class="button button--circle button--secondary"
-                   href="{{ _en_url }}"
-                   style="margin-left: 10px;font-size: 0.85rem"><span>EN</span></a>
+                <a class="button button--circle button--secondary lang"
+                   href="{{ _en_url }}"><span>EN</span></a>
               {% endif %}
 
-              <a class="button button--circle button--primary focus"
-                 href="{{ include.article.url }}"
-                 style="margin-right: 10px;font-size: 0.85rem"><span>CN</span></a>
+              <a class="button button--circle button--primary focus lang"
+                 href="{{ include.article.url }}"><span>CN</span></a>
             </li>
           {% endif %}
         {% endif %}
