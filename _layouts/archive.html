@@ -27,8 +27,25 @@ titles:
 
 <div class="layout--archive js-all">
   {%- include tags.html -%}
+
+  <p class="article__content">
+    <i>Due to technical constraints, only the tags of English posts are shown.</i>
+  </p>
+
   <div class="js-result layout--archive__result d-none">
-    {%- include article-list.html articles=site.posts type='brief' show_info=true reverse=true group_by='year' -%}
+    {%- assign _articles = site.posts -%}
+
+    {%- for _a in site.cn -%}
+      {%- assign _articles = _articles | push: _a -%}
+    {%- endfor -%}
+
+    {%- include article-list.html
+                articles=_articles
+                type='brief'
+                show_info=true
+                reverse=true
+                group_by='year'
+    -%}
   </div>
 </div>
 

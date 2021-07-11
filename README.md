@@ -66,6 +66,15 @@ Property | Type | Description
 `subtitle` | String | The subtitle of the blog post in one sentence.
 `wechat` | Boolean | Whether WeChat QR code should be shown. Default to false.
 
+## Collections
+
+Collection Directory       | Description
+:------------------------- | :----------
+`_posts`                   | Blog posts written in English.
+`_cn`                      | Blog posts written in Chinese.
+`_displayed_en_categories` | Categories displayed for users, written in English.
+`_displayed_cn_categories` | Categories displayed for users, written in Chinese.
+
 ## Assets
 
 When adding a new image to the website, you need to register its metadata in

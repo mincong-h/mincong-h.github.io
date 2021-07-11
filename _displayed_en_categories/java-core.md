@@ -2,8 +2,10 @@
 layout:            category
 title:             Java Core
 category:          java-core
+lang:              en
 cover:             /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg
 sidebar:
-  nav:             categories
+  nav:             en_categories
 comments:          false
+redirect_from:     /categories/java-core/
 ---

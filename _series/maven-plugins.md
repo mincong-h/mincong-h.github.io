@@ -7,4 +7,5 @@ cover:             /assets/bg-tools-1209764_1280.jpg
 sidebar:
   nav:             series
 comments:          false
+redirect_from:     /series/maven-plugins/
 ---

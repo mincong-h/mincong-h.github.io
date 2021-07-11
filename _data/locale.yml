@@ -20,6 +20,9 @@ en: &EN
   EMAIL_ME                : "Send me an Email."
   EMAIL_US                : "Send us an Email."
   COPYRIGHT_DATES         : "2021"
+  BACKGROUND_PREFIX       : "Photo by"
+  BACKGROUND_MIDDLE       : "on"
+
 
 en-GB:
   <<: *EN
@@ -51,6 +54,8 @@ zh-Hans: &ZH_HANS
   EMAIL_ME                : "给我发邮件。"
   EMAIL_US                : "给我们发邮件。"
   COPYRIGHT_DATES         : "2021"
+  BACKGROUND_PREFIX       : "照片由"
+  BACKGROUND_MIDDLE       : "提供 /"
 
 zh:
   <<: *ZH_HANS

@@ -7,6 +7,7 @@ cover:             /assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg
 sidebar:
   nav:             series
 comments:          false
+redirect_from:     /series/jax-rs-basics/
 ---
 
 JAX-RS: Java™ API for RESTful Web Services (JAX-RS) is a Java programming

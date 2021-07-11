@@ -1,15 +1,37 @@
+site:
+  titles:
+    en        : Mincong Huang
+    zh        : 码农小黄
+  urls:
+    en        : /
+    zh        : /cn/
+  # switch to the other langage
+  urls2:
+    en        : /cn/
+    zh        : /
+  urls2_src:
+    en        : /assets/flag-CN.png
+    zh        : /assets/flag-US.png
+  urls2_alt:
+    en        : "切换到中文"
+    zh        : "Switch to English"
+
 header:
   - titles:
       en      : &EN       Categories
       zh-Hans : &ZH_HANS  分类
       zh      : *ZH_HANS
-    url: /categories
+    urls:
+      en      : /en/categories/
+      zh      : /cn/categories/
 
   - titles:
       en      : &EN       Series
       zh-Hans : &ZH_HANS  系列
       zh      : *ZH_HANS
-    url: /series
+    urls:
+      en      : /en/series/
+      zh      : /cn/series/
 
   - titles:
       # @start locale config
@@ -34,7 +56,9 @@ header:
       fr-FR   : *FR
       fr-LU   : *FR
       # @end locale config
-    url: /archive
+    urls:
+      en      : /en/archive/
+      zh      : /cn/archive/
 
   - titles:
       # @start locale config
@@ -59,12 +83,12 @@ header:
       fr-FR   : *FR
       fr-LU   : *FR
       # @end locale config
-    url: /about
+    urls:
+      en      : /en/about/
+      zh      : /cn/about/
 
-# TODO(mincong): Can we compute the following lists?
-
-categories:
-  - title: Categories
+en_categories:
+  - title:      Categories
     children:
       - title:  Build Tools
         url:    /categories/build
@@ -88,6 +112,33 @@ categories:
         url:    /categories/reliability
       - title:  Review
         url:    /categories/review
+
+cn_categories:
+  - title:      文章类别
+    children:
+      - title:  构建工具
+        url:    /cn/categories/build
+      - title:  Elasticsearch
+        url:    /cn/categories/elasticsearch
+      - title:  Git
+        url:    /cn/categories/git
+      - title:  Java Concurrency
+        url:    /cn/categories/java-concurrency
+      - title:  Java 核心
+        url:    /cn/categories/java-core
+      - title:  Java RESTful APIs
+        url:    /cn/categories/java-rest
+      - title:  Java 序列化
+        url:    /cn/categories/java-serialization
+      - title:  Java 测试
+        url:    /cn/categories/java-testing
+      - title:  Python
+        url:    /cn/categories/python
+      - title:  可靠性
+        url:    /cn/categories/reliability
+      - title:  总结
+        url:    /cn/categories/review
+
 
 series:
   - title: Series

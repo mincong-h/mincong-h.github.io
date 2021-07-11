@@ -1,7 +1,8 @@
 ---
-layout: page
-title: About
-permalink: /about/
+layout:     page
+title:      关于作者
+lang:       zh
+permalink:  /cn/about/
 ---
 
 <p align="center">
@@ -18,7 +19,12 @@ solution.
 
 <div class="layout--articles">
   <section class="my-5">
-    <header><h2 id="categories">Categories</h2></header>
-    {%- include article-list.html articles=site.displayed_categories type='grid' size='sm' cover_type='background' -%}
+    <header><h2 id="categories">文章类别</h2></header>
+    {% include article-list.html
+               articles=site.displayed_cn_categories
+               type='grid'
+               size='sm'
+               cover_type='background'
+    %}
   </section>
 </div>

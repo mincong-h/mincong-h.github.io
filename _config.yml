@@ -253,17 +253,23 @@ collections:
   # one category should be very different from the articles from another
   # category. One article should avoid having more than 2 categories. It
   # represents an important part of your technical stack (skill-tree).
-  displayed_categories:
+  # Examples: build, java, python
+  displayed_en_categories:
     my_label:  Categories
-    permalink: /categories/:name
+    permalink: /en/categories/:name/
     output:    true
+  displayed_cn_categories:
+    my_label:  文章类别
+    permalink: /cn/categories/:name/
+    output:    true
+
   # Series are a collection that contains several articles. A series explains
   # one target topic from different angles. It is usually about a framework or
   # a project.
   series:
     my_label:  Series
-    permalink: /series/:name
+    permalink: /en/series/:name/
     output:    true
   cn:
-    promalink: /cn/:title
+    promalink: /cn/:title/
     output:    true

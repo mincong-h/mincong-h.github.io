@@ -1,8 +1,11 @@
 ---
 layout:     page
-title:      Series
-permalink:  /series/
+title:      专题系列
+lang:       zh
+permalink:  /cn/series/
 ---
+
+_暂无中文专题系列，以下是英语专题系列。_
 
 <div class="layout--articles">
   <section class="my-5">

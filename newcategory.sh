@@ -15,11 +15,11 @@ fi
 
 bloghome=$(cd "$(dirname "$0")" || exit; pwd)
 category=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-filepath="${bloghome}/_displayed_categories/${category}.md"
+filepath="${bloghome}/_displayed_en_categories/${category}.md"
 
-if [[ ! -d "${bloghome}/_displayed_categories ]]
+if [[ ! -d "${bloghome}/_displayed_en_categories ]]
 then
-    echo "Categories directory does not exist: ${bloghome}/_displayed_categories"
+    echo "Categories directory does not exist: ${bloghome}/_displayed_en_categories"
     exit 1
 fi
 
