@@ -28,10 +28,16 @@ fi
 bloghome=$(cd "$(dirname "$0")" || exit; pwd)
 url=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 filename="$(date +"%Y-%m-%d")-$url.md"
-filepath_en="$bloghome/_posts/$filename"
+filepath_en="${bloghome}/_posts/${filename}"
+filepath_cn="${bloghome}/_cn/${filename}"
 
 if [[ -f "$filepath_en" ]]; then
     echo "${filepath_en} already exists."
+    exit 1
+fi
+
+if [[ -f "$filepath_cn" ]]; then
+    echo "${filepath_cn} already exists."
     exit 1
 fi
 
@@ -89,4 +95,6 @@ on [Twitter](https://twitter.com/mincong_h) or
 写作不易，希望大家点个赞、点个在看支持一下，谢谢(花)
 EOF
 
-echo "Blog created: $filepath_en"
+echo "Blog post created!"
+echo "  EN: ${filepath_en}"
+echo "  CN: ${filepath_cn}"
