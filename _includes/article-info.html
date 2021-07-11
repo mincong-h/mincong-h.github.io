@@ -66,9 +66,12 @@
                          article=include.article
                          collection=site.cn %}
               {% assign _cn_url = __return %}
-              <a class="button button--circle button--secondary"
-                 href="{{ _cn_url }}"
-                 style="margin-right: 10px;font-size: 0.85rem"><span>CN</span></a>
+
+              {% if _cn_url %}
+                <a class="button button--circle button--secondary"
+                   href="{{ _cn_url }}"
+                   style="margin-right: 10px;font-size: 0.85rem"><span>CN</span></a>
+              {% endif %}
             </li>
           {% else %}
             <li style="margin-left: 10px;padding-left: 0px;font-size: 0.85rem">|
@@ -76,9 +79,12 @@
                          article=include.article
                          collection=site.posts %}
               {% assign _en_url = __return %}
-              <a class="button button--circle button--secondary"
-                 href="{{ _en_url }}"
-                 style="margin-left: 10px;font-size: 0.85rem"><span>EN</span></a>
+
+              {% if _en_url %}
+                <a class="button button--circle button--secondary"
+                   href="{{ _en_url }}"
+                   style="margin-left: 10px;font-size: 0.85rem"><span>EN</span></a>
+              {% endif %}
 
               <a class="button button--circle button--primary focus"
                  href="{{ include.article.url }}"
