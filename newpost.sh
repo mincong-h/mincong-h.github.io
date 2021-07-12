@@ -121,9 +121,8 @@ fi
 
 bloghome=$(cd "$(dirname "$0")" || exit; pwd)
 url=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-filename="$(date +"%Y-%m-%d")-$url.md"
-filepath_en="${bloghome}/_posts/${filename}"
-filepath_cn="${bloghome}/_cn/${filename}"
+filepath_en="${bloghome}/_posts/$(date +"%Y-%m-%d")-${url}.md"
+filepath_cn="${bloghome}/_cn/${url}.md"
 
 if [[ -f "$filepath_en" ]]; then
     echo "${filepath_en} already exists."
