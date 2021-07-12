@@ -87,32 +87,25 @@ EOF
 
 function append_content {
   cat << EOF >> "$1"
-## Introduction 前言
+## 前言
 
-Explain context here...
-and why it is important to understand this topic (motivation)?
 为什么读者想读这篇文章？
 
-After reading this article, you will understand:
 阅读本文后，你会明白：
 
 事不宜迟，让我们马上开始吧！
 
-## Going Further 扩展
+## 扩展
 
-How to go further from here?
+如何从这篇文章中拓展出去？
 
-## Conclusion 结论
+## 结论
 
-Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
-on [Twitter](https://twitter.com/mincong_h) or
-[GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
+在本文中，我们看到了。。。最后，我们还简要讨论了其他的场景，并且分享了一些让大家拓展出去的资源。希望这篇文章能够给你带来一些思考，让你的系统变得。。。如果你有兴趣了解更多的资讯，欢迎关注我的 GitHub 账号 [mincong-h](https://github.com/mincong-h) 或者微信订阅号【码农小黄】。谢谢大家！
 
-在本文中，我们看到了。。。最后，我们还简要讨论了其他的场景，并且分享了一些让大家拓展出去的资源。希望这篇文章能够给你带来一些思考，让你的系统变得。。。如果你有兴趣了解更多的咨询，欢迎关注我的 GitHub 账号 [mincong-h](https://github.com/mincong-h) 或者微信订阅号【码农小黄】。谢谢大家！
+## 参考文献
 
-## References 参考文献
-
-写作不易，希望大家点个赞、点个在看支持一下，谢谢(花)
+<!-- 写作不易，希望大家点个赞、点个在看支持一下，谢谢(花) -->
 EOF
 }
 
