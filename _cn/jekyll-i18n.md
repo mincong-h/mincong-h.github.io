@@ -385,7 +385,7 @@ echo "  CN: ${filepath_cn}"
 -     {% raw %}{%- assign _post_count = site.posts | size -%}{% endraw %}
 +     {% raw %}{%- assign _post_count = paginator.total_posts -%}{% endraw %}
       {% raw %}{%- assign _page_count = paginator.total_pages -%}{% endraw %}
-      <p>{{ _locale_statistics | replace: '[POST_COUNT]', _post_count | replace: '[PAGE_COUNT]', _page_count }}</p>
+      <p>{% raw %}{{ _locale_statistics | replace: '[POST_COUNT]', _post_count | replace: '[PAGE_COUNT]', _page_count }}{% endraw %}</p>
       <div class="pagination__menu">
 @@ -51,7 +51,7 @@
               </li>
@@ -396,7 +396,11 @@ echo "  CN: ${filepath_cn}"
               {% raw %}{%- include snippets/prepend-baseurl.html path=_home_path -%}{% endraw %}
 ```
 
-其实还有一些其他修改需要考虑，不过由于篇幅问题不再展开。详情见：<https://github.com/mincong-h/mincong-h.github.io/pull/32>
+其实还有一些其他修改需要考虑，不过由于篇幅问题不再展开。最后做出来的效果：首页的中英文对比图。
+
+![首页的中英文对比图](/assets/20210711-diff-home.png)
+
+详情见：<https://github.com/mincong-h/mincong-h.github.io/pull/32>
 
 ### 任务四：修改构建和部署方式
 
@@ -505,9 +509,9 @@ site:
 
 ```html
 <li>
-  <a href="{{ _site_root2 }}">
-    <img src="{{ _site_root2_src }}"
-         alt="{{ _site_roo2_alt }}"
+  <a href="{% raw %}{{ _site_root2 }}{% endraw %}">
+    <img src="{% raw %}{{ _site_root2_src }}{% endraw %}"
+         alt="{% raw %}{{ _site_roo2_alt }}{% endraw %}"
          class="naviation__lang_img">
   </a>
 </li>
