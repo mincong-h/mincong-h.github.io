@@ -1,10 +1,12 @@
 ---
-layout: post
-title:  "Install Apache Lucene"
-lang:                en
-date:   2016-04-10 22:47:00 +0100
+layout:     post
+title:      "Install Apache Lucene"
+lang:       en
+date:       2016-04-10 22:47:00 +0100
 categories: [tech]
 tags:       [apache-lucene]
+comments:   false
+permalink:  /2016/04/10/install-lucene/
 excerpt:    >
   Apache Lucene is a high-performance, full-featured text search engine library
   written entirely in Java. It is a technology suitable for nearly any

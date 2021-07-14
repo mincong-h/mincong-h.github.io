@@ -1,10 +1,12 @@
 ---
-layout: post
-title:  "Starting Hibernate Search"
-lang:                en
-date:   2016-04-16 23:00:00 +0100
+layout:     post
+title:      "Starting Hibernate Search"
+lang:       en
+date:       2016-04-16 23:00:00 +0100
 categories: [tech]
 tags:       [hibernate-search]
+permalink:  /2016/04/16/starting-hibernate-search/
+comments:   false
 redirect_from:
   - /hibernate-search/2016/04/16/starting-hibernate-search/
 article_header:

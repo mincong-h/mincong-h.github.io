@@ -10,6 +10,8 @@ excerpt:    >
   unused space. There're 2 ways to do it: via GUI or via T-SQL.
 redirect_from:
   - /sql-server/2016/03/21/release-unused-space-using-shink/
+comments:   false
+permalink:  /2016-03-21-release-unused-space-using-shink.md
 article_header:
   type: overlay
   theme: dark
@@ -37,5 +39,5 @@ GO
 {% endhighlight %}
 
 Sometimes SSMS estimates that there's only few avaible free space (less than 1%)
-and the shrink is not interesting. However, it might be a doubtful estimation. 
+and the shrink is not interesting. However, it might be a doubtful estimation.
 I've gained more than 500 Mb instead of 1 Mb. So just take a try.

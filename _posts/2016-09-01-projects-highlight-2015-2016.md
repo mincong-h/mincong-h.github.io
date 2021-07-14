@@ -5,7 +5,7 @@ lang:                en
 date:           2016-09-01 07:00:00 +0100
 categories:     [review]
 tags:           [project]
-permalink:         /2016/09/01/projects-highlight-2015-2016/
+permalink:      /2016/09/01/projects-highlight-2015-2016/
 comments:       true
 excerpt:        >
   Today, I want to share with you all the projects that I've done during the last

@@ -9,6 +9,8 @@ excerpt:    >
   How to add listener to Android ListView.
 redirect_from:
   - /android/2016/03/20/listview-onclicklistner/
+comments:   false
+permalink:  /2016/03/20/listview-onclicklistner/
 article_header:
   type: overlay
   theme: dark

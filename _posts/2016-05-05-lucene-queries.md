@@ -1,10 +1,12 @@
 ---
-layout: post
-title:  "Lucene queries in Hibernate Search"
-lang:                en
-date:   2016-05-05 23:00:00 +0100
+layout:     post
+title:      "Lucene queries in Hibernate Search"
+lang:       en
+date:       2016-05-05 23:00:00 +0100
 categories: [tech]
 tags:       [hibernate-search]
+comments:   false
+permalink:  /2016/05/05/lucene-queries/
 redirect_from:
   - /hibernate-search/2016/05/05/lucene-queries/
 article_header:

@@ -1,10 +1,12 @@
 ---
-layout: post
-title:  "Review of my first project"
-lang:                en
-date:   2016-04-07 08:10:00 +0100
+layout:     post
+title:      "Review of my first project"
+lang:       en
+date:       2016-04-07 08:10:00 +0100
 categories: [tech]
 tags:       [project]
+permalink:  /2016/04/07/review-of-my-first-project
+comments:   false
 excerpt:    >
   After 8 weeks intensive works in nights and weekends, we've finally released
   the first application of our life: "eRallye". This Android application is

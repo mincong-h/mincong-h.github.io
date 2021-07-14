@@ -1,10 +1,12 @@
 ---
-layout: post
-title:  "Boolean query in Apache Lucene"
-lang:                en
-date:   2016-04-12 21:34:00 +0100
+layout:     post
+title:      "Boolean query in Apache Lucene"
+lang:       en
+date:       2016-04-12 21:34:00 +0100
 categories: [tech]
 tags:       [apache-lucene]
+permalink:  /2016/04/12/boolean-query-in-lucene/
+comments:   false
 excerpt:    >
   Today, I created an example to demostrate how BooleanQuery works and two
   different ways to construct a boolean query, using default constructor and
