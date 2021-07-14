@@ -105,7 +105,10 @@ function append_content {
 
 ## 参考文献
 
-<!-- 写作不易，希望大家点个赞、点个在看支持一下，谢谢(花) -->
+<!--
+ 写作不易，希望大家点个赞、点个在看支持一下，谢谢(花)
+ ![](https://mincong.io/assets/wechat-QR-code.jpg)
+-->
 EOF
 }
 
