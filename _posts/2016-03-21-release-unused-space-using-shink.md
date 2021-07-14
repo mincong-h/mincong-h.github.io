@@ -1,8 +1,8 @@
 ---
-layout: post
-title:  "Release unused space using Shrink"
-lang:                en
-date:   2016-03-21 09:46:00 +0100
+layout:     post
+title:      "Release unused space using Shrink"
+lang:       en
+date:       2016-03-21 09:46:00 +0100
 categories: [tech]
 tags:       [sql-server]
 excerpt:    >
@@ -11,7 +11,7 @@ excerpt:    >
 redirect_from:
   - /sql-server/2016/03/21/release-unused-space-using-shink/
 comments:   false
-permalink:  /2016-03-21-release-unused-space-using-shink.md
+permalink:  /2016/03/21/release-unused-space-using-shink/
 article_header:
   type: overlay
   theme: dark

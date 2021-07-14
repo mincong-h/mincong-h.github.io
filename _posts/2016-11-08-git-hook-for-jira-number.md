@@ -5,6 +5,8 @@ lang:                en
 date:        2016-11-08 12:00:00 +0100
 categories:  [git]
 tags:        [git]
+comments:    false
+permalink:   /2016/11/08/git-hook-for-jira-number/
 excerpt:     >
   Git commit hook for checking the JIRA number before commiting.
 redirect_from:
