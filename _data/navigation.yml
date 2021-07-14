@@ -15,6 +15,9 @@ site:
   urls2_alt:
     en        : "切换到中文"
     zh        : "Switch to English"
+  archive_url:
+    en        : /en/archive/
+    zh        : /cn/archive/
 
 header:
   - titles:

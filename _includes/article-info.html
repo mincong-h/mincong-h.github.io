@@ -35,7 +35,11 @@
 
   {% assign _show_lang = include.show_lang %}
 
-  {%- assign _paths_archive = site.paths.archive | default: site.data.variables.default.paths.archive -%}
+  {% include snippets/get-string-from-locale-config.html
+             locale=site.data.navigation.site.archive_url %}
+  {% assign _lang_path_archive = __return %}
+
+  {%- assign _paths_archive = _lang_path_archive | site.paths.archive | default: site.data.variables.default.paths.archive -%}
 
   {%- if _show_tags or _show_author or _show_date or _pageview -%}
     <div class="article__info clearfix">
