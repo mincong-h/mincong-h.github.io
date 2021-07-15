@@ -1,7 +1,7 @@
 ---
 layout:            post
 title:             Improve Blog Ranking in Google Search
-subtitle:          Basic SEO tips that I used for this site.
+subtitle:          Simple SEO improvements that I used for this site.
 lang:              en
 date:              2018-07-21 06:37:11 +0200
 date_modified:     2021-07-15 21:25:05 +0200
@@ -26,9 +26,9 @@ article_header:
 
 ## Introduction
 
-Today I want to talk about how to do SEO (Search Engine Optimization) for your
-website. Note that I didn't finish everything. This is an ongoing post.
-It covers:
+Today I want to talk about how to perform Search Engine Optimization (SEO) for your
+website. In this article, I am going to share some simple actions that I did for
+this website (<https://mincong.io>). It includes the following items:
 
 - [Add robots.txt for web robots](#add-robotstxt)
 - [Submit a sitemap file](#submit-a-sitemap-file)
@@ -37,6 +37,8 @@ It covers:
 - [Fix URL errors](#fix-url-errors)
 - [Understand what keywords users are searching](#understand-user-queries)
 - [Use SEO analyzer](#use-seo-analyzer)
+
+Now, let's get started!
 
 ## Add robots.txt
 
