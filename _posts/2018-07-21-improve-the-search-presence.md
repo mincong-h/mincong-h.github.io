@@ -6,7 +6,7 @@ lang:              en
 date:              2018-07-21 06:37:11 +0200
 date_modified:     2021-07-15 21:25:05 +0200
 categories:        [jekyll]
-tags:              [search, seo, google-search-console, google-analytics]
+tags:              [search, seo, google-search-console, google-analytics, jekyll]
 permalink:         /2018/07/21/improve-the-search-presence/
 comments:          true
 excerpt:           >
