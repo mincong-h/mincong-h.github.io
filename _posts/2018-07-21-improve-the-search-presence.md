@@ -1,10 +1,11 @@
 ---
 layout:            post
-title:             "SEO: Improve Blog Ranking in Google Search"
-lang:                en
+title:             Improve Blog Ranking in Google Search
+subtitle:          Basic SEO tips that I used for this site.
+lang:              en
 date:              2018-07-21 06:37:11 +0200
-date_modified:     2018-07-22 18:00:40 +0200
-categories:        [tech]
+date_modified:     2021-07-15 21:25:05 +0200
+categories:        [jekyll]
 tags:              [search, seo, google-search-console, google-analytics]
 permalink:         /2018/07/21/improve-the-search-presence/
 comments:          true
@@ -13,6 +14,8 @@ excerpt:           >
     you know nothing about SEO. I'm using my Jekyll blog as an example, to
     implement everything step-by-step: add robots.txt, sitemap, structured data;
     improve title tags, meta description; use Google Search Console...
+image:             /assets/bg-christine-lENhFCC2tGY-unsplash.jpg
+cover:             /assets/bg-christine-lENhFCC2tGY-unsplash.jpg
 article_header:
   type: overlay
   theme: dark
@@ -20,6 +23,8 @@ article_header:
   background_image:
     gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
+
+## Introduction
 
 Today I want to talk about how to do SEO (Search Engine Optimization) for your
 website. Note that I didn't finish everything. This is an ongoing post.
