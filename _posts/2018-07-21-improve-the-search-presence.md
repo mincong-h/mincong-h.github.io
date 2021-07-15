@@ -101,7 +101,7 @@ be used to display rich snippets in search results. Structured data is a
 standardized format for providing information about a page and classifying the
 page content.
 
-You can use Google [Structured Data Testing Tool][sd-testing] to test an
+You can use [Rich Results Test - Google Search Console][sd-testing] to test an
 existing page by giving their URLs, fix the errors and warnings based on
 Google's feedback:
 
@@ -212,6 +212,6 @@ analyzer helps you to know:
 [9]: https://moz.com/blog/using-google-tag-manager-to-dynamically-generate-schema-org-json-ld-tags
 [10]: https://neilpatel.com/blog/improve-google-rankings-without-getting-penalized/
 [BlogPosting]: https://schema.org/BlogPosting
-[sd-testing]: https://search.google.com/structured-data/testing-tool/
+[sd-testing]: https://search.google.com/test/rich-results
 [gs]: https://schema.org/docs/gs.html
 [sa]: https://www.google.com/webmasters/tools/search-analytics
