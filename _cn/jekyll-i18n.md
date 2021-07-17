@@ -6,7 +6,7 @@ subtitle:            >
 
 lang:                zh
 date:                2021-07-11 22:02:53 +0200
-categories:          [java-core]
+categories:          [jekyll]
 tags:                [jekyll, i18n]
 comments:            true
 excerpt:             >
