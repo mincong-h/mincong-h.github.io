@@ -50,6 +50,10 @@ wechat:              false
 ads:                 none
 ---
 
+<!--
+This article is translated with Google Translate and reviewed by Mincong.
+{:.info}
+ -->
 EOF
 }
 
