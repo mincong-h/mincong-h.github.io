@@ -12,6 +12,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      JEKYLL_ENV: production
     steps:
     - name: Checkout source code
       uses: actions/checkout@v2
