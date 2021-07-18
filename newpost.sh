@@ -115,8 +115,12 @@ function append_content {
 ## 参考文献
 
 <!--
- 写作不易，希望大家点个赞、点个在看支持一下，谢谢(花)
- ![](https://mincong.io/assets/wechat-QR-code.jpg)
+ WeChat:
+   写作不易，希望大家点个赞、点个在看支持一下，谢谢(花)
+   ![](https://mincong.io/assets/wechat-QR-code.jpg)
+
+ CSDN:
+   ![扫码关注](https://img-blog.csdnimg.cn/img_convert/f07c6cc9272c721180bad20c599e4ff7.png#pic_center =600x333)
 -->
 EOF
 }
