@@ -8,5 +8,5 @@ docker run --rm \
   --env JEKYLL_ENV=production \
   --volume="${PWD}:/srv/jekyll" \
   --volume="${PWD}/vendor/bundle:/usr/local/bundle" \
-  jekyll/builder:$JEKYLL_VERSION \
-  jekyll build $@
+  jekyll/jekyll:$JEKYLL_VERSION \
+  bundle exec jekyll build $@
