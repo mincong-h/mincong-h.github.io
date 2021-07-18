@@ -1,0 +1,28 @@
+#
+# https://www.mydatahack.com/deploying-jekyll-site-to-github-page-with-github-actions/
+# https://github.com/JamesIves/github-pages-deploy-action
+#
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: build-jekyll
+      run: |
+        bash docker-build-prod.sh
+    - name: deploy-github-pages
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        ACCESS_TOKEN: ${{ secrets.GIT_PAGE_DEPLOY }}
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: _site # The folder the action should deploy.
+        REPOSITORY_NAME: mincong-h/mincong-h.github.io
