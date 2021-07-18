@@ -54,6 +54,7 @@ author:
   linkedin  : mincong-huang  # "user_name" the last part of your profile url, e.g. https://www.linkedin.com/in/user_name
   github    : mincong-h      # "user_name" the last part of your profile url, e.g. https://github.com/user_name
   npm       : # "user_name" the last part of your profile url, e.g. https://www.npmjs.com/~user_name
+  csdn      : mincong_h
 
 # Jekyll SEO Tag
 twitter:

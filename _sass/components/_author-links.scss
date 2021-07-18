@@ -38,6 +38,9 @@
       .npm-button {
         @include clickable($text-color-1, $npm-color);
       }
+      .csdn-button {
+        @include clickable($text-color-1, $csdn-color);
+      }
     }
   }
 }

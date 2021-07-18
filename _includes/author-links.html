@@ -116,5 +116,13 @@
       </li>
     {%- endif -%}
 
+    {%- if _author.csdn -%}
+      <li title="{{ _locale_string_follow | replace: '[NAME]', 'CSDN' }}">
+        <a class="button button--circle csdn-button" itemprop="sameAs" href="https://blog.csdn.net/{{ _author.csdn }}" target="_blank">
+          <div class="icon">{%- include svg/icon/social/csdn.svg -%}</div>
+        </a>
+      </li>
+    {%- endif -%}
+
   </ul>
 </div>
