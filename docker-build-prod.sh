@@ -9,4 +9,4 @@ docker run --rm \
   --volume="${PWD}:/srv/jekyll" \
   --volume="${PWD}/vendor/bundle:/usr/local/bundle" \
   jekyll/jekyll:$JEKYLL_VERSION \
-  bundle exec jekyll build $@
+  jekyll build $@
