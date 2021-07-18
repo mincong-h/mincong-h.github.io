@@ -18,7 +18,7 @@ jobs:
         persist-credentials: false
     - name: build-jekyll
       run: |
-        bash docker-build-prod.sh
+        sudo bash docker-build-prod.sh
     - name: deploy-github-pages
       uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
