@@ -13,14 +13,17 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
+    - name: Checkout source code
       uses: actions/checkout@v2
       with:
         persist-credentials: false
-    - name: build-jekyll
+    - name: Install dependencies in the Gemfile
       run: |
-        bash docker-build-prod.sh --trace
-    - name: deploy-github-pages
+         bundler install --path vendor/bundle
+    - name: Build Jekyll website
+      run: |
+         bundle exec jekyll build
+    - name: Deploy GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
         ACCESS_TOKEN: ${{ secrets.GIT_PAGE_DEPLOY }}
