@@ -407,7 +407,7 @@ echo "  CN: ${filepath_cn}"
 
 由于使用了 GitHub 官方不支持的插件 jekyll-paginate-v2，不能再使用以前的自动部署方式。现在需要改成手动打包部署。也就是，不再从 master 分支进行部署。当代码合并到 `master` 以后，通过手动或者 CI 生成新的网页（核心命令：`jekyll build`）。然后，将生成的内容，也就是处于文件夹 `_site` 的内容，上传到 `gh-pages` 分支进行部署。
 
-实现上述功能的主要步骤如下：生成一个新的、与 master 无关的独立分支 gh-pages，添加一个空的 commit 作为分支的开始，然后清空本地的 Jekyll 生成文件的文件夹 `_site` 并将它连接到新的分支 gh-pages 去：
+如果使用手动部署的话，主要实现步骤如下：生成一个新的、与 master 无关的独立分支 gh-pages，添加一个空的 commit 作为分支的开始，然后清空本地的 Jekyll 生成文件的文件夹 `_site` 并将它连接到新的分支 gh-pages 去：
 
 ```sh
 git checkout --orphan gh-pages
@@ -422,6 +422,46 @@ git worktree add _site gh-pages
 ![修改部署方式：不再使用 master 分支而是 gh-pages 分支部署](/assets/20210711-deploy-via-gh-pages.png)
 
 详情见：Sangsoo Nam，[Using Git Worktree to Deploy GitHub Pages](https://sangsoonam.github.io/2019/02/08/using-git-worktree-to-deploy-github-pages.html)，2019。
+
+如果使用 GitHub Actions 自动部署的话，主要实现步骤如下：
+
+```yml
+name: Deploy to GitHub Pages
+on:
+  push:
+    branches:
+      - master
+      - docker # testing
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      JEKYLL_ENV: production
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.6 # Not needed with a .ruby-version file
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Install dependencies in the Gemfile
+      run: |
+         bundler install --path vendor/bundle
+    - name: Build Jekyll website
+      run: |
+         bundle exec jekyll build
+    - name: Deploy GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        ACCESS_TOKEN: ${{ secrets.GIT_PAGE_DEPLOY }}
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: _site # The folder the action should deploy.
+        REPOSITORY_NAME: mincong-h/mincong-h.github.io
+```
 
 ### 任务五：修改更多的页面
 
