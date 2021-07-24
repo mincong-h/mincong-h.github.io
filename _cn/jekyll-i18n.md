@@ -6,6 +6,7 @@ subtitle:            >
 
 lang:                zh
 date:                2021-07-11 22:02:53 +0200
+date_modified:       2021-07-24 18:59:06 +0200
 categories:          [jekyll]
 tags:                [jekyll, i18n]
 comments:            true
@@ -298,7 +299,7 @@ do
     year=$(echo $filename  | sed -E 's/^([[:digit:]]+)-([[:digit:]]+)-([[:digit:]]+)-(.*)\.md/\1/')
     month=$(echo $filename | sed -E 's/^([[:digit:]]+)-([[:digit:]]+)-([[:digit:]]+)-(.*)\.md/\2/')
     day=$(echo $filename   | sed -E 's/^([[:digit:]]+)-([[:digit:]]+)-([[:digit:]]+)-(.*)\.md/\3/')
-    name=$(echo $filename  | sed -E 's/^([[:digit:]]+)-([[:digit:]]+)-([  [:digit:]]+)-(.*)\.md/\4/')
+    name=$(echo $filename  | sed -E 's/^([[:digit:]]+)-([[:digit:]]+)-([[:digit:]]+)-(.*)\.md/\4/')
     permalink="/${year}/${month}/${day}/${name}/"
     echo "${i}: year=${year}, month=${month}, day=${day}, name=${name}, permalink=${permalink}"
     sed -i '' -E '/comments:/i\
@@ -488,7 +489,7 @@ https://mincong.io/archive/ -> https://mincong.io/en/archive/
 
 对于全局切换功能，主要是把另一语言的国旗、链接等信息写在页面导航的配置文件中，然后在页面生成的时候调用。
 
-注册到页面导航的数据文件（`_data/navigation.yml `）中：
+注册到页面导航的数据文件（`_data/navigation.yml`）中：
 
 ```yml
 site:
