@@ -6,7 +6,7 @@ subtitle:            >
 
 lang:                zh
 date:                2021-07-11 22:02:53 +0200
-date_modified:       2021-07-25 13:45:37 +0200
+date_modified:       2021-07-30 22:31:56 +0200
 categories:          [jekyll]
 tags:                [jekyll, i18n]
 comments:            true
@@ -583,9 +583,8 @@ site:
 1. 实现中英文两个RSS订阅。
 2. 在中文页面实现更多的中国化加载功能，比如加载微信的 SDK 有助于分享、加载百度 SDK 提高搜索率、将 Disqus 替换成别的在中国大陆可以加载的评论系统、引入其他中文开发者平台。
 3. 自动化中译英程序，通过脚本直接向第三方翻译平台提出翻译请求，比如谷歌翻译、DeepL 等。
-4. 自动化构建和部署过程，比如参考 MrPowerScripts 的文章 [How to get around the jekyll-pagination-v2 limitation of GitHub pages with CircleCI](https://mrpowerscripts.com/github-pages-circleci-jekyll-paginate-v2/)。
-5. 修复归档中的词云功能。目前词云使用 `site.tags` 进行标签统计。但是所有 cn 集合下的文章标签并未统计在内。
-6. 修复文章分类功能。目前文章分类页面能显示中文，但是实际文章列表是英语文章。
+4. 修复归档中的词云功能。目前词云使用 `site.tags` 进行标签统计。但是所有 cn 集合下的文章标签并未统计在内。
+5. 修复文章分类功能。目前文章分类页面能显示中文，但是实际文章列表是英语文章。
 
 如果你有别的建议，也非常欢迎留言讨论！
 
