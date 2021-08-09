@@ -7,7 +7,7 @@ subtitle:            >
 lang:                en
 date:                2021-07-31 09:50:49 +0200
 categories:          [elasticsearch]
-tags:                [elasticsearch, elasticsearch-7, java, system-design, reliability]
+tags:                [elasticsearch, java, system-design, reliability]
 comments:            true
 excerpt:             >
     Six practical solutions to improve data reliability: improve number of replicas, snapshot and restore, RAID, MQ, etc.

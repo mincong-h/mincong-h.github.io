@@ -7,7 +7,7 @@ subtitle:            >
 lang:                en
 date:                2021-07-14 16:57:49 +0200
 categories:          [elasticsearch]
-tags:                [elasticsearch, elasticsearch-7, java]
+tags:                [elasticsearch, java]
 comments:            true
 excerpt:             >
     How to fix corrupted index in Elasticsearch cluster without snapshot?

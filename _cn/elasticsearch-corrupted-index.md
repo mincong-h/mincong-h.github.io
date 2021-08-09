@@ -8,7 +8,7 @@ lang:                zh
 date:                2021-07-14 16:57:49 +0200
 date_modified:       2021-07-16 22:42:03 +0200
 categories:          [elasticsearch]
-tags:                [elasticsearch, elasticsearch-7, java]
+tags:                [elasticsearch, java]
 comments:            true
 excerpt:             >
     在没有 snapshot 的情况下，如何修复 Elasticsearch 集群中损坏的索引？

@@ -7,7 +7,7 @@ subtitle:            >
 lang:                zh
 date:                2021-07-31 09:50:49 +0200
 categories:          [elasticsearch]
-tags:                [elasticsearch, elasticsearch-7, java, system-design, reliability]
+tags:                [elasticsearch, java, system-design, reliability]
 comments:            true
 excerpt:             >
     六个提高数据可靠性的实战方案：提高副本分片、快照与恢复、RAID、MQ等
