@@ -11,11 +11,7 @@ permalink:  /cn/about/
     alt="Mincong Huang's Gravatar" />
 </p>
 
-Hi, welcome to my blog! I'm a software engineer at [Datadog](https://www.datadoghq.com/). I write blog posts
-in my free time. My blogs are bits and pieces of my tech journey. Most of them
-are related to Java. Hope you enjoy them! My opionions are my own, not
-Datadog's. This blog is powered by [Jekyll](https://jekyllrb.com/), a simple, blog-aware, static sites
-solution.
+你好，欢迎来到我的博客！我是一名软件工程师，目前任职于 [Datadog](https://www.datadoghq.com/)。我在工作之余写点博客，记录技术路途上的点点滴滴。主要关注 Elasticsearch 与 Java 后端开发。希望你喜欢它们！我的文章仅代表我自己的观点，并不代表公司。该博客由 [Jekyll](https://jekyllrb.com/) 提供支持，一个简单的、可识别博客的静态站点解决方案。
 
 <div class="layout--articles">
   <section class="my-5">
