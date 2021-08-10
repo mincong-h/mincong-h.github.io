@@ -6,6 +6,7 @@ subtitle:            >
 
 lang:                zh
 date:                2021-07-31 09:50:49 +0200
+date_modified:       2021-08-10 07:31:50 +0200
 categories:          [elasticsearch]
 tags:                [elasticsearch, java, system-design, reliability]
 comments:            true
@@ -39,7 +40,7 @@ ads:                 none
 - 提高副本分片数
 - 快照与恢复
 - 使用 RAID 磁盘阵列
-- 数据队列（message queue）整合
+- 消息队列（message queue）整合
 - 主副分片存在不同节点
 - 避免使用单一可用区
 
@@ -103,11 +104,11 @@ RAID（Redundant Array of Independent Disks）即独立磁盘冗余阵列，简�
 
 个人认为这个解决方案不太适合企业使用，因为它只对单机磁盘有效。对于企业级的数据平台来说，更多的考量因素是降低对于单机可靠性的依赖、运行价格、对抗灾难性故障（比如整个可用区故障）等。
 
-## 数据队列 MQ 整合
+## 消息队列 MQ 整合
 
-另一个思路是整合数据队列（message queue），比如当下很流行的 Apache Kafka。大致的思路是：先把消息写进 Kafka 的消息队列中，然后让一个 Kafka 的 consumer 去读取这些数据并写入 Elasticsearch 中。只有在数据被成功写入以后才 commit offset。同样道理，可以要求 consumer 只有在数据被快照以后才 commit offset。将这样的好处是避免数据丢失：当 Elasticsearch 拒绝接受写入请求、未通过快照备份数据时，数据依然保留在 Kafka 中。这样的设计将数据丢失问题转化为数据延迟问题，将一部分问题从 Elasticsearch 转移到 Kafka。它也有效地解决了上文中“快照功能无法恢复未快照数据”的问题，因为这部分数据现在可以从 Kafka 中恢复了。
+另一个思路是整合消息队列（message queue），比如当下很流行的 Apache Kafka。大致的思路是：先把消息写进 Kafka 的消息队列中，然后让一个 Kafka 的 consumer 去读取这些数据并写入 Elasticsearch 中。只有在数据被成功写入以后才 commit offset。同样道理，可以要求 consumer 只有在数据被快照以后才 commit offset。将这样的好处是避免数据丢失：当 Elasticsearch 拒绝接受写入请求、未通过快照备份数据时，数据依然保留在 Kafka 中。这样的设计将数据丢失问题转化为数据延迟问题，将一部分问题从 Elasticsearch 转移到 Kafka。它也有效地解决了上文中“快照功能无法恢复未快照数据”的问题，因为这部分数据现在可以从 Kafka 中恢复了。
 
-换句话说，这个解决方案暂存了未写入 ES 的数据、暂存了未快照数据。它适合数据量很大的应用场景，为出现 ES 写入异常、未快照部分等问题的高效解决方案。由于使用了 Kafka，它的容灾性也很强。它的不足点在于：它的复杂度，它给系统引入了数据队列以及与相应的消费者逻辑；它的可靠性也依赖于团队的编程能力；运维难度也相应增加。
+换句话说，这个解决方案暂存了未写入 ES 的数据、暂存了未快照数据。它适合数据量很大的应用场景，为出现 ES 写入异常、未快照部分等问题的高效解决方案。由于使用了 Kafka，它的容灾性也很强。它的不足点在于：它的复杂度，它给系统引入了消息队列以及与相应的消费者逻辑；它的可靠性也依赖于团队的编程能力；运维难度也相应增加。
 
 ## 主副分片存放在不同节点
 
