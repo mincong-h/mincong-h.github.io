@@ -10,7 +10,7 @@ categories:          [elasticsearch]
 tags:                [elasticsearch]
 comments:            true
 excerpt:             >
-    这篇文章讲述 Elasticsearch 的常见设置：集群设置、索引设置、节点设置，静态与动态设置的区别，以及的一些常用的 curl 命令。
+    这篇文章讲述 Elasticsearch 的常见设置：集群设置、索引设置、节点设置，静态与动态设置的区别，以及一些常用的 curl 命令。
 
 image:               /assets/bg-anthony-roberts-82wJ10pX1Fw-unsplash.jpg
 cover:               /assets/bg-anthony-roberts-82wJ10pX1Fw-unsplash.jpg
