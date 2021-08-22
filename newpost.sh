@@ -141,7 +141,9 @@ fi
 
 bloghome=$(cd "$(dirname "$0")" || exit; pwd)
 url=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
-filepath_en="${bloghome}/_posts/$(date +"%Y-%m-%d")-${url}.md"
+
+# English post is stored in "_drafts/" directory until the translation is done.
+filepath_en="${bloghome}/_drafts/$(date +"%Y-%m-%d")-${url}.md"
 filepath_cn="${bloghome}/_cn/${url}.md"
 
 if [[ -f "$filepath_en" ]]; then
