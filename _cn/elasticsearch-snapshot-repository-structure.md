@@ -281,14 +281,14 @@ done
 
 那 Elasticsearch 是如何通过 index-N 和 index.latest 文件加载仓库数据 `RepositoryData` 的呢？
 
-加载保存所有快照列表的 org.elasticsearch.repositories.RepositoryData 以及索引名称到其存储库 org.elasticsearch.repositories.IndexId 的映射是通过调用 BlobStoreRepository.getRepositoryData 完成的，实现如下：
+加载保存所有快照列表的 RepositoryData 以及索引名称到其仓库 IndexId 的映射是通过调用 BlobStoreRepository.getRepositoryData 完成的。具体实现如下：
 
 1. 第一步：储存
-   1. blobstore 存储库将 RepositoryData 存储在存储库根目录下的 /index-N 处以递增后缀 N 命名的文件中。
+   1. blobstore 仓库将 RepositoryData 存储在仓库根目录下的 /index-N 处以递增后缀 N 命名的文件中。
    2. 对于每个 BlobStoreRepository，集群状态中都存在一个 RepositoryMetadata 类型的条目。它跟踪当前有效的第 N 代以及尝试写入的最新一代。
    3. blobstore 还将最近的 N 存储为 64 位长度，直接在存储库根目录下的文件 /index.latest 中。
 2. 第二步：确定 N 的值
-   1. 首先，通过在存储库根目录下列出所有带有前缀 index- 的 blob，然后选择 N 值最高的文件，获取所有索引为 N 的文件列表，从而找到最新的  `RepositoryData`
+   1. 首先，通过在仓库根目录下列出所有带有前缀 index- 的 blob，然后选择 N 值最高的文件，获取所有索引为 N 的文件列表，从而找到最新的  `RepositoryData`
    2. 如果此操作因仓库的 BlobContainer 不支持列表操作而失败（在只读仓库会出现这样的情况），则从 index.latest 文件中读取 N 的最大值。
 3. 第三步：反序列化
    1. 使用刚刚确定的 N 值并获取 /index-N blob 并从中反序列化 RepositoryData。
