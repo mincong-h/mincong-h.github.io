@@ -281,7 +281,7 @@ done
 
 那 Elasticsearch 是如何通过 index-N 和 index.latest 文件加载仓库数据 `RepositoryData` 的呢？
 
-加载保存所有快照列表的 RepositoryData 以及索引名称到其仓库 IndexId 的映射是通过调用 BlobStoreRepository.getRepositoryData 完成的。具体实现如下：
+加载 RepositoryData 以及索引名称到其仓库 IndexId 的映射，这是通过调用 BlobStoreRepository.getRepositoryData 完成的。具体实现如下：
 
 1. 第一步：储存
    1. blobstore 仓库将 RepositoryData 存储在仓库根目录下的 /index-N 处以递增后缀 N 命名的文件中。
@@ -383,7 +383,7 @@ done
 如何从这篇文章中拓展出去？
 
 - 如果你想了解更多关于 Snapshot Repository 的内部文件格式或者加载机制，可以查看[快照仓库存储的 Elasticsearch 7.12 版的官方 Javadoc](https://github.com/elastic/elasticsearch/blob/7.12/server/src/main/java/org/elasticsearch/repositories/blobstore/package-info.java "快照仓库存储的 Javadoc - Elasticsearch 7.12")
-- 如果你想了解更多关于 Snapshot Repository 的运行原理，可以查看 Steve Mushero 在 Medium 上面写的文章 ["How Elasticsearch Snapshots Work"](https://steve-mushero.medium.com/how-elasticsearch-snapshots-work-3824fdfc4493)
+- 如果你想了解更多关于 Snapshot Repository 的运行原理，可以查看 Steve Mushero 在 Medium 上面写的文章 [How Elasticsearch Snapshots Work](https://steve-mushero.medium.com/how-elasticsearch-snapshots-work-3824fdfc4493 "How Elasticsearch Snapshots Work")
 - 如果你想了解更多关于 SMILE 格式的信息，可以查询维基百科 [Smile (data interchange format)](https://en.wikipedia.org/wiki/Smile_%28data_interchange_format%29 "Smile (data interchange format) - Wikipedia")或者查看 Ayush Gupta 在 Medium 上面写的文章 [Understanding Smile — A data format based on JSON](https://medium.com/code-with-ayush/understanding-smile-a-data-format-based-on-json-29972a37d376 "Understanding Smile — A data format based on JSON")
 
 ## 结论
