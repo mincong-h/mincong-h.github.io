@@ -1,4 +1,4 @@
-# mincong-h.github.io
+# mincong.io
 
 Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in
 my free time. My blogs are bits and pieces of my tech journey. Most of them are
