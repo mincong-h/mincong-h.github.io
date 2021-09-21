@@ -120,7 +120,7 @@ function append_content {
 
 <!--
  WeChat:
-   写作不易，希望大家点个赞、点个在看支持一下，谢谢！
+   原创不易，希望大家点个赞、点个在看支持一下，谢谢！
    ![](https://mincong.io/assets/wechat-QR-code.jpg)
 
  CSDN:
