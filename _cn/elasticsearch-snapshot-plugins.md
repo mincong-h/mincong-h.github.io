@@ -134,7 +134,7 @@ PUT _snapshot/my_backup
 
 ### Blob Store Repository
 
-抽象类 `BlobStoreRepository` 是一个快照仓库的基本实现，它被针对云提供商的 `BlobStore` 实现所继承。这个类只有两个抽象方法：`createBlobStore()` 和 `basePath()`。方法 `createBlobStore()` 可以用于创建 blob store，而且推荐实现时，采用惰性初始化（lazy initialize）。Blob store 是关于云提供商增删改查在 Elasticsearch 的实现，我们在下文会进一步分析。另一个方法是 `bashPath`，以获得 Elasticsearch snapshot repository 在云提供商储存桶中的相对储存路径。如果是一个储存桶对应一个 repo，那么 base path 应该是 `/`。如果一个储存桶对应多个 repos 或者一个储存桶有多个用途（不仅用于 Elasticsearch），那么就需要填充一个 Elasticsearch snapshot repo 所在的相对路径。
+抽象类 `BlobStoreRepository` 是一个快照仓库的基本实现，它被针对云提供商的 `BlobStore` 实现所继承。这个类只有两个抽象方法：`createBlobStore()` 和 `basePath()`。方法 `createBlobStore()` 可以用于创建 blob store，而且推荐实现时，采用惰性初始化（lazy initialize）。Blob store 是关于云提供商增删改查在 Elasticsearch 的实现，我们在下文会进一步分析。另一个方法是 `basePath`，以获得 Elasticsearch snapshot repository 在云提供商储存桶中的相对储存路径。如果是一个储存桶对应一个 repo，那么 base path 应该是 `/`。如果一个储存桶对应多个 repos 或者一个储存桶有多个用途（不仅用于 Elasticsearch），那么就需要填充一个 Elasticsearch snapshot repo 所在的相对路径。
 
 ```java
 public abstract class BlobStoreRepository extends AbstractLifecycleComponent implements Repository {
