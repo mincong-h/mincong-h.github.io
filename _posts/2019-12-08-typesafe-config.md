@@ -37,7 +37,7 @@ After reading this article, you will understand:
 - Unit format support
 - IDE support
 
-Let's get started.
+Now, let's get started!
 
 ## Dependency
 
