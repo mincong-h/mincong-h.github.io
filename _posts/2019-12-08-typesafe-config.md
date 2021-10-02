@@ -23,8 +23,8 @@ article_header:
 
 ## Overview
 
-Recently I discovered an awesome Java library about configuration --- [Typesafe
-Config](https://github.com/lightbend/config). It supports Java properties, JSON
+Recently I discovered an awesome Java library about configuration --- Typesafe
+Config ([GitHub](https://github.com/lightbend/config)). It supports Java properties, JSON
 and a human-friendly JSON superset. It can load resources from different places: files,
 URLs, classpath. It supports types, loading convention, substitutions,
 properties merging, etc. It's why I'm very excited to show what I learned to you.
@@ -47,8 +47,14 @@ If you want to use Typesafe Config in Java project via Maven, you can do:
 <dependency>
   <groupId>com.typesafe</groupId>
   <artifactId>config</artifactId>
-  <version>1.4.0</version>
+  <version>1.4.1</version>
 </dependency>
+```
+
+or via sbt:
+
+```
+libraryDependencies += "com.typesafe" % "config" % "1.4.1"
 ```
 
 ## Basic Structure
@@ -105,15 +111,15 @@ following (first-listed are higher priority):
 
 
 - system properties
-- "application.conf" (all resources on classpath with this name)
-- "application.json" (all resources on classpath with this name)
-- "application.properties" (all resources on classpath with this name)
-- "reference.conf" (all resources on classpath with this name)
+- `application.conf` (all resources on classpath with this name)
+- `application.json` (all resources on classpath with this name)
+- `application.properties` (all resources on classpath with this name)
+- `reference.conf` (all resources on classpath with this name)
 
 The idea is that libraries and frameworks should ship with a `reference.conf`
-in their jar. Applications should provide an `application.conf`, or if they
+in their JAR. Applications should provide an `application.conf`, or if they
 want to create multiple configurations in a single JVM, they could use
-ConfigFactory.load("myapp") to load their own `myapp.conf`.
+`ConfigFactory.load("myapp")` to load their own `myapp.conf`.
 
 Beside method `ConfigFeature#load()`, you can also use the following methods to
 create a config object. They are convenient for tesing:
