@@ -211,7 +211,7 @@ one. If a key in the included object occurred before the include statement in
 the including object, the included key's value overrides or merges with the
 earlier value, exactly as with duplicate keys found in a single file. When
 including file, extensions (`.conf`, `.json`, `.properties`) are not
-needed. You can also include configuration from URL or classpath. See [the HOCON spec](https://github.com/lightbend/config/blob/master/HOCON.md#includes) for more
+needed. You can also include configuration from URL or classpath. See [the HOCON spec](https://github.com/lightbend/config/blob/main/HOCON.md#includes) for more
 detail.
 
 ## Unit Format
