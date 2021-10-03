@@ -228,7 +228,7 @@ Gets a value as a duration in a specified
 If the value is already a number, then it's taken as milliseconds and then
 converted to the requested TimeUnit; if it's a string, it's parsed understanding units
  suffixes like "10m" or "5ns" as documented in the
-[HOCON](https://github.com/lightbend/config/blob/master/HOCON.md) spec.
+[HOCON](https://github.com/lightbend/config/blob/main/HOCON.md) spec.
 
 Java                  | Unit
 :-------------------- | :-----------------------
@@ -318,4 +318,4 @@ on [Twitter](https://twitter.com/mincong_h) or
 - Roman Janusz, AVSystem, JetBrains, "HOCON Plugins | JetBrains", _JetBrains_.
   <https://plugins.jetbrains.com/plugin/10481-hocon>
 - Typesafe Config authors, "HOCON Spec", _Lightend_.
-  <https://github.com/lightbend/config/blob/master/HOCON.md>
+  <https://github.com/lightbend/config/blob/main/HOCON.md>
