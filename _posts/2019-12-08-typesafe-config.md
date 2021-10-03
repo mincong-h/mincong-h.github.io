@@ -1,18 +1,20 @@
 ---
 layout:            post
 title:             Typesafe Config Introduction
-lang:                en
+lang:              en
 date:              2019-12-08 17:58:50 +0100
-categories:        [tech]
+date_modified:     2021-10-03 10:42:41 +0200
+categories:        [config]
 tags:              [java, config]
 permalink:         /2019/12/08/typesafe-config/
 comments:          true
 excerpt:           >
     Typesafe Config library: its basic structure, loading mechanism, parsing,
     substitutions, merging, inclusion, unit format support, IDE plugin, and more.
+
 image:             /assets/bg-anthony-roberts-82wJ10pX1Fw-unsplash.jpg
 cover:             /assets/bg-anthony-roberts-82wJ10pX1Fw-unsplash.jpg
-ads:               Ads idea
+ads:               none
 article_header:
   type: overlay
   theme: dark
