@@ -157,8 +157,9 @@ user {
 }
 ```
 
-You can also take advantage of this for "inheritance" or optional system or
-environment variable overrides.
+You can also take advantage of this for inheritance, optional system, or
+environment variable overrides. Checkout ["Use of substitutions"](https://github.com/lightbend/config#uses-of-substitutions)
+of the official guide for more details.
 
 ## Include
 
