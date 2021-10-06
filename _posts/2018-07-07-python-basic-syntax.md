@@ -1,16 +1,17 @@
 ---
-layout:      post
-title:       Python 3 Basic Syntax
-lang:        en
-date:        "2018-07-07 09:57:16 +0200"
-categories:  [python]
-tags:        [python, study-note]
-excerpt:     >
+layout:              post
+title:               Python 3 Basic Syntax
+lang:                en
+date:                2018-07-07 09:57:16 +0200
+date_modified:       2021-10-06 21:37:49 +0200
+categories:          [python]
+tags:                [python, study-note]
+excerpt:             >
   The basic syntax to learn before writing code in Python 3.
 
-comments:    true
-image:       /assets/bg-museums-victoria-G9Yy-iitjjg-unsplash.jpg
-cover:       /assets/bg-museums-victoria-G9Yy-iitjjg-unsplash.jpg
+comments:            true
+image:               /assets/bg-museums-victoria-G9Yy-iitjjg-unsplash.jpg
+cover:               /assets/bg-museums-victoria-G9Yy-iitjjg-unsplash.jpg
 article_header:
   type: overlay
   theme: dark
