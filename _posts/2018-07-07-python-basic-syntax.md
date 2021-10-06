@@ -1,14 +1,13 @@
 ---
 layout:      post
-title:       "Python 3 Cheat sheet"
-lang:                en
+title:       Python 3 Basic Syntax
+lang:        en
 date:        "2018-07-07 09:57:16 +0200"
 categories:  [python]
 tags:        [python, study-note]
 excerpt:     >
-  I occasionally write Python scripts, but I always forget those very basic
-  syntax. So I'm writing this Python 3 cheat sheet.
-permalink:         /2018/07/07/python-3-cheatsheet/
+  The minimum basic syntax to know before writing code in Python 3.
+
 comments:    true
 image:       /assets/bg-museums-victoria-G9Yy-iitjjg-unsplash.jpg
 cover:       /assets/bg-museums-victoria-G9Yy-iitjjg-unsplash.jpg
@@ -18,10 +17,16 @@ article_header:
   background_color: "#203028"
   background_image:
     gradient: "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
+
+redirect_from: /2018/07/07/python-3-cheatsheet/
 ---
 
-I occasionally write Python scripts, but I always forget those very basic
-syntax. So I'm writing this cheat sheet in Python 3.
+## Introduction
+
+I occasionally write scripts in Python 3 and this article keeps track of basic
+syntax that is frequently used according to my experience. To keep things
+simple, this article is focus on language syntax and does not include framework
+or tooling of the Python ecosystem. I hope that it will be useful for you. Enjoy!
 
 ## Iteration
 
