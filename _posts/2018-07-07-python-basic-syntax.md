@@ -32,47 +32,26 @@ useful for you as well. Enjoy!
 
 ## Iteration
 
-Dictionary iteration for keys:
+Iterate keys of a dictionary:
 
-{% highlight python %}
-for key in d:
-{% endhighlight %}
+```py
+for key in my_dict:
+    print(key)
+```
 
-{% highlight python %}
->>> for key in {1:2, 2:4}:
-...   print(key)
-...
-1
-2
-{% endhighlight %}
+Iterate values of a dictionary:
 
-Dictionary iteration for values:
+```py
+for value in my_dict.values():
+    print(value)
+```
 
-{% highlight python %}
-for v in d.values():
-{% endhighlight %}
+Iterate key-value pairs of a dictionary:
 
-{% highlight python %}
->>> for v in {1:2, 2:4}.values():
-...   print(v)
-...
-2
-4
-{% endhighlight %}
-
-Dictionary iteration for items (key, value):
-
-{% highlight python %}
-for key, value in d.items():
-{% endhighlight %}
-
-{% highlight python %}
->>> for k, v in {1:2, 2:4}.items():
-...   print(k, v)
-...
-1 2
-2 4
-{% endhighlight %}
+```py
+for key, value in my_dict.items():
+    print(key, value)
+```
 
 ## Insertion
 
