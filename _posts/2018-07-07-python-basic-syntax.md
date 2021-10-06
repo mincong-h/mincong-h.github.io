@@ -6,7 +6,7 @@ date:        "2018-07-07 09:57:16 +0200"
 categories:  [python]
 tags:        [python, study-note]
 excerpt:     >
-  The minimum basic syntax to know before writing code in Python 3.
+  The basic syntax to learn before writing code in Python 3.
 
 comments:    true
 image:       /assets/bg-museums-victoria-G9Yy-iitjjg-unsplash.jpg
@@ -26,7 +26,9 @@ redirect_from: /2018/07/07/python-3-cheatsheet/
 I occasionally write scripts in Python 3 and this article keeps track of basic
 syntax that is frequently used according to my experience. To keep things
 simple, this article is focus on language syntax and does not include framework
-or tooling of the Python ecosystem. I hope that it will be useful for you. Enjoy!
+or tooling of the Python ecosystem. Code written here is tested and hosted on
+[GitHub](https://github.com/mincong-h/learning-python). I hope that it will be
+useful for you as well. Enjoy!
 
 ## Iteration
 
