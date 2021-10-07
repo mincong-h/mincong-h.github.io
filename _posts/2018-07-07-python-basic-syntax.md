@@ -3,7 +3,7 @@ layout:              post
 title:               Python 3 Basic Syntax
 lang:                en
 date:                2018-07-07 09:57:16 +0200
-date_modified:       2021-10-06 21:37:49 +0200
+date_modified:       2021-10-07 08:28:29 +0200
 categories:          [python]
 tags:                [python, study-note]
 excerpt:             >
@@ -54,6 +54,32 @@ for key, value in my_dict.items():
     print(key, value)
 ```
 
+## List Comprehension
+
+List comprehensions are used for creating new lists from other iterables like tuples, strings, arrays, lists, etc. A list comprehension consists of brackets containing the expression, which is executed for each element along with the for loop to iterate over each element.
+
+```
+new_list = [ expression(element) for element in old_list if condition ]
+```
+
+Examples:
+
+```py
+>>> my_dict = {'k1': 'v1', 'k2': 'v2'}
+
+>>> [v for v in my_dict.values()]
+['v1', 'v2']
+
+>>> [k for k in my_dict]
+['k1', 'k2']
+
+>>> [k for k in my_dict if k == 'k1']
+['k1']
+
+>>> [k + ':' + v for k, v in my_dict.items()]
+['k1:v1', 'k2:v2']
+```
+
 ## Insertion
 
 Append an element into list:
@@ -97,3 +123,7 @@ Ternary operator:
 >>> 'not empty' if l else 'empty'
 'empty'
 {% endhighlight %}
+
+## References
+
+- GeeksforGeeks, "Python – List Comprehension", 2021. <https://www.geeksforgeeks.org/python-list-comprehension/>
