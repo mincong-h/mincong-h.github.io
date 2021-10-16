@@ -139,6 +139,16 @@ Add a new entry into dictionary:
 my_dict["my_key"] = "my_value"
 ```
 
+### Container Functions
+
+Function | Sample | Description
+:--- | :--- | :---
+`len` | `len(my_list)` | The length of the container.
+`enumerate` | `enumerate(my_list)` | Add counter to the iterable.
+`max` | `max(my_list)` | The maximal value among the given items.
+`min` | `min(my_list)` | The minimal value among the given items.
+`reversed` | `reversed(my_list)` | Create a reverse-iterator for a given list.
+
 ## If Statement
 
 Ternary operator:
@@ -154,6 +164,13 @@ Ternary operator:
 >>> 'not empty' if l else 'empty'
 'empty'
 ```
+
+## Math
+
+Function | Sample | Description
+:--- | :--- | :---
+Floor division, integer division (`//`) | `7 // 2` | 3
+Float division (`/`) | `7 / 2` | 3.5
 
 ## References
 
