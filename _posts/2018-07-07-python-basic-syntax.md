@@ -36,9 +36,12 @@ useful for you as well. Enjoy!
 Create a directionary, list, set in Python:
 
 ```py
+import typing
+
 # directionary
 my_dict1 = {"k1": "v1", "k2": "v2", "k3": "v3"}
 my_dict2 = dict()
+my_dict3 = typing.OrderedDict()
 
 # list
 my_list1 = ["v1", "v2", "v3]
@@ -159,4 +162,9 @@ Ternary operator:
 
 ## References
 
-- GeeksforGeeks, "Python – List Comprehension", 2021. <https://www.geeksforgeeks.org/python-list-comprehension/>
+- GeeksforGeeks, ["Python – List
+  Comprehension"](https://www.geeksforgeeks.org/python-list-comprehension/),
+  _GeeksforGeeks_, 2021.
+- Python, ["collections - Container datatypes - Python
+  3.10.0"](https://docs.python.org/3/library/collections.html),
+  _Python Documentation_, 2021.
