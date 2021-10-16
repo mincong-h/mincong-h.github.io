@@ -50,6 +50,7 @@ my_dict3 = typing.OrderedDict()
 # list
 my_list1 = ["v1", "v2", "v3"]
 my_list2 = list()
+my_list3 = [0] * 4  # [0, 0, 0, 0]
 
 # set
 my_set1 = {"k1", "k2", "k3"}
