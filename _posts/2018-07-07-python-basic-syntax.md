@@ -54,6 +54,20 @@ for key, value in my_dict.items():
     print(key, value)
 ```
 
+Iterate item in a list:
+
+```py
+for item in my_list:
+    print(item)
+```
+
+Iterate index and item in a list:
+
+```py
+for i, item in enumerate(my_list):
+    print(i, item)
+```
+
 ## List Comprehension
 
 List comprehensions are used for creating new lists from other iterables like tuples, strings, arrays, lists, etc. A list comprehension consists of brackets containing the expression, which is executed for each element along with the for loop to iterate over each element.
