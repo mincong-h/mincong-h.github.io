@@ -3,7 +3,7 @@ layout:              post
 title:               Python 3 Basic Syntax
 lang:                en
 date:                2018-07-07 09:57:16 +0200
-date_modified:       2021-10-07 08:28:29 +0200
+date_modified:       2021-10-16 18:50:20 +0200
 categories:          [python]
 tags:                [python, study-note]
 excerpt:             >
@@ -31,7 +31,33 @@ or tooling of the Python ecosystem. Code written here is tested and hosted on
 [GitHub](https://github.com/mincong-h/learning-python). I hope that it will be
 useful for you as well. Enjoy!
 
-## Iteration
+## Data Container
+
+This section discusses about list, set, and dictionary.
+
+### Container Creation
+
+Create a dictionary, list, set:
+
+```py
+import typing
+
+# dictionary
+my_dict1 = {"k1": "v1", "k2": "v2", "k3": "v3"}
+my_dict2 = dict()
+my_dict3 = typing.OrderedDict()
+
+# list
+my_list1 = ["v1", "v2", "v3"]
+my_list2 = list()
+my_list3 = [0] * 4  # [0, 0, 0, 0]
+
+# set
+my_set1 = {"k1", "k2", "k3"}
+my_set2 = set()
+```
+
+### Container Iteration
 
 Iterate keys of a dictionary:
 
@@ -54,7 +80,21 @@ for key, value in my_dict.items():
     print(key, value)
 ```
 
-## List Comprehension
+Iterate item in a list:
+
+```py
+for item in my_list:
+    print(item)
+```
+
+Iterate index and item in a list:
+
+```py
+for i, item in enumerate(my_list):
+    print(i, item)
+```
+
+### List Comprehension
 
 List comprehensions are used for creating new lists from other iterables like tuples, strings, arrays, lists, etc. A list comprehension consists of brackets containing the expression, which is executed for each element along with the for loop to iterate over each element.
 
@@ -80,33 +120,35 @@ Examples:
 ['k1:v1', 'k2:v2']
 ```
 
-## Insertion
+### Container Insertion
 
 Append an element into list:
 
-{% highlight python %}
-list.append(e)
-{% endhighlight %}
-
-{% highlight python %}
->>> l = [1, 2]
->>> l.append(3)
->>> l
-[1, 2, 3]
-{% endhighlight %}
+```py
+my_list.append(e)
+```
 
 Add an element into set:
 
-{% highlight python %}
-s.add(e)
-{% endhighlight %}
+```py
+my_set.add(e)
+```
 
-{% highlight python %}
->>> s = {1, 2}
->>> s.add(3)
->>> s
-{1, 2, 3}
-{% endhighlight %}
+Add a new entry into dictionary:
+
+```py
+my_dict["my_key"] = "my_value"
+```
+
+### Container Functions
+
+Function | Sample | Description
+:--- | :--- | :---
+`len` | `len(my_list)` | The length of the container.
+`enumerate` | `enumerate(my_list)` | Add counter to the iterable.
+`max` | `max(my_list)` | The maximal value among the given items.
+`min` | `min(my_list)` | The minimal value among the given items.
+`reversed` | `reversed(my_list)` | Create a reverse-iterator for a given list.
 
 ## If Statement
 
@@ -118,12 +160,24 @@ Ternary operator:
 </pre>
 </figure>
 
-{% highlight python %}
+```py
 >>> l = []
 >>> 'not empty' if l else 'empty'
 'empty'
-{% endhighlight %}
+```
+
+## Math
+
+Function | Sample | Description
+:--- | :--- | :---
+Floor division, integer division (`//`) | `7 // 2` | 3
+Float division (`/`) | `7 / 2` | 3.5
 
 ## References
 
-- GeeksforGeeks, "Python – List Comprehension", 2021. <https://www.geeksforgeeks.org/python-list-comprehension/>
+- GeeksforGeeks, ["Python – List
+  Comprehension"](https://www.geeksforgeeks.org/python-list-comprehension/),
+  _GeeksforGeeks_, 2021.
+- Python, ["collections - Container datatypes - Python
+  3.10.0"](https://docs.python.org/3/library/collections.html),
+  _Python Documentation_, 2021.
