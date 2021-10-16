@@ -31,7 +31,26 @@ or tooling of the Python ecosystem. Code written here is tested and hosted on
 [GitHub](https://github.com/mincong-h/learning-python). I hope that it will be
 useful for you as well. Enjoy!
 
-## Iteration
+## Container Creation
+
+Create a directionary, list, set in Python:
+
+```py
+# directionary
+my_dict1 = {"k1": "v1", "k2": "v2", "k3": "v3"}
+my_dict2 = dict()
+
+# list
+my_list1 = ["v1", "v2", "v3]
+my_list2 = list()
+
+# set
+my_set1 = {"k1", "k2", "k3"}
+my_set2 = set()
+```
+
+
+## Container Iteration
 
 Iterate keys of a dictionary:
 
