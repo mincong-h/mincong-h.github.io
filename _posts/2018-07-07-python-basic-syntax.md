@@ -3,7 +3,7 @@ layout:              post
 title:               Python 3 Basic Syntax
 lang:                en
 date:                2018-07-07 09:57:16 +0200
-date_modified:       2021-10-07 08:28:29 +0200
+date_modified:       2021-10-16 18:50:20 +0200
 categories:          [python]
 tags:                [python, study-note]
 excerpt:             >
