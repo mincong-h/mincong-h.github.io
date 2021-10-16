@@ -33,25 +33,24 @@ useful for you as well. Enjoy!
 
 ## Container Creation
 
-Create a directionary, list, set in Python:
+Create a dictionary, list, set:
 
 ```py
 import typing
 
-# directionary
+# dictionary
 my_dict1 = {"k1": "v1", "k2": "v2", "k3": "v3"}
 my_dict2 = dict()
 my_dict3 = typing.OrderedDict()
 
 # list
-my_list1 = ["v1", "v2", "v3]
+my_list1 = ["v1", "v2", "v3"]
 my_list2 = list()
 
 # set
 my_set1 = {"k1", "k2", "k3"}
 my_set2 = set()
 ```
-
 
 ## Container Iteration
 
