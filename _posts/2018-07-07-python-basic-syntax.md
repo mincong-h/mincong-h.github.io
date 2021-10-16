@@ -115,32 +115,24 @@ Examples:
 ['k1:v1', 'k2:v2']
 ```
 
-## Insertion
+## Container Insertion
 
 Append an element into list:
 
 ```py
-list.append(e)
-```
-
-```py
->>> l = [1, 2]
->>> l.append(3)
->>> l
-[1, 2, 3]
+my_list.append(e)
 ```
 
 Add an element into set:
 
 ```py
-s.add(e)
+my_set.add(e)
 ```
 
+Add a new entry into dictionary:
+
 ```py
->>> s = {1, 2}
->>> s.add(3)
->>> s
-{1, 2, 3}
+my_dict["my_key"] = "my_value"
 ```
 
 ## If Statement
