@@ -31,7 +31,11 @@ or tooling of the Python ecosystem. Code written here is tested and hosted on
 [GitHub](https://github.com/mincong-h/learning-python). I hope that it will be
 useful for you as well. Enjoy!
 
-## Container Creation
+## Data Container
+
+This section discusses about list, set, and dictionary.
+
+### Container Creation
 
 Create a dictionary, list, set:
 
@@ -52,7 +56,7 @@ my_set1 = {"k1", "k2", "k3"}
 my_set2 = set()
 ```
 
-## Container Iteration
+### Container Iteration
 
 Iterate keys of a dictionary:
 
@@ -89,7 +93,7 @@ for i, item in enumerate(my_list):
     print(i, item)
 ```
 
-## List Comprehension
+### List Comprehension
 
 List comprehensions are used for creating new lists from other iterables like tuples, strings, arrays, lists, etc. A list comprehension consists of brackets containing the expression, which is executed for each element along with the for loop to iterate over each element.
 
@@ -115,7 +119,7 @@ Examples:
 ['k1:v1', 'k2:v2']
 ```
 
-## Container Insertion
+### Container Insertion
 
 Append an element into list:
 
