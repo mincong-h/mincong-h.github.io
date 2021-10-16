@@ -122,10 +122,11 @@ Examples:
 
 ### Container Insertion
 
-Append an element into list:
+Append an element into list or replace an existing element:
 
 ```py
 my_list.append(e)
+my_list[1] = e
 ```
 
 Add an element into set:
