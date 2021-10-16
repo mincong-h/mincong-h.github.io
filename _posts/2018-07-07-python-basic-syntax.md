@@ -120,29 +120,29 @@ Examples:
 
 Append an element into list:
 
-{% highlight python %}
+```py
 list.append(e)
-{% endhighlight %}
+```
 
-{% highlight python %}
+```py
 >>> l = [1, 2]
 >>> l.append(3)
 >>> l
 [1, 2, 3]
-{% endhighlight %}
+```
 
 Add an element into set:
 
-{% highlight python %}
+```py
 s.add(e)
-{% endhighlight %}
+```
 
-{% highlight python %}
+```py
 >>> s = {1, 2}
 >>> s.add(3)
 >>> s
 {1, 2, 3}
-{% endhighlight %}
+```
 
 ## If Statement
 
@@ -154,11 +154,11 @@ Ternary operator:
 </pre>
 </figure>
 
-{% highlight python %}
+```py
 >>> l = []
 >>> 'not empty' if l else 'empty'
 'empty'
-{% endhighlight %}
+```
 
 ## References
 
