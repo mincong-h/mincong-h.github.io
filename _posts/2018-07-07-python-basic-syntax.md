@@ -3,7 +3,7 @@ layout:              post
 title:               Python 3 Basic Syntax
 lang:                en
 date:                2018-07-07 09:57:16 +0200
-date_modified:       2021-10-16 18:50:20 +0200
+date_modified:       2021-10-17 14:52:09 +0200
 categories:          [python]
 tags:                [python, study-note]
 excerpt:             >
@@ -174,6 +174,17 @@ Function | Sample | Description
 Floor division, integer division (`//`) | `7 // 2` | 3
 Float division (`/`) | `7 / 2` | 3.5
 
+## Class
+
+```py
+class Dog:
+
+    kind = 'canine'         # class variable shared by all instances
+
+    def __init__(self, name):
+        self.name = name    # instance variable unique to each instance
+```
+
 ## References
 
 - GeeksforGeeks, ["Python – List
@@ -182,3 +193,5 @@ Float division (`/`) | `7 / 2` | 3.5
 - Python, ["collections - Container datatypes - Python
   3.10.0"](https://docs.python.org/3/library/collections.html),
   _Python Documentation_, 2021.
+- Python, ["Classes"](https://docs.python.org/3/tutorial/classes.html), _Python
+  Documentation_, 2021.
