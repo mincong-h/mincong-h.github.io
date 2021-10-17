@@ -135,10 +135,11 @@ Add an element into set:
 my_set.add(e)
 ```
 
-Add a new entry into dictionary:
+Add a new entry into dictionary or increment an existing value:
 
 ```py
-my_dict["my_key"] = "my_value"
+my_dict["my_key"] = 2
+my_dict["my_key] += 1
 ```
 
 ### Container Functions
@@ -184,6 +185,20 @@ class Dog:
     def __init__(self, name):
         self.name = name    # instance variable unique to each instance
 ```
+
+## String Manipulations
+
+_Hint: hit TAB in Python REPL to see auto-completion for the string functions._
+
+Category | Function | Description
+:--- | :--- | :---
+Whitespace | `strip()` | Trim the string
+Whitespace | `lstrip()` | Left trim
+Whitespace | `rstrip()` | Right trim
+Case | `lower()` | Lower case
+Case | `upper()` | Uppder case
+Split | `split()`, `split(sep)` | Split the string using whitespace or a seperator
+Cancatenation | `join(words)` | Join words together using a given string
 
 ## References
 
