@@ -68,6 +68,7 @@ Property | Type | Description
 `comments` | Boolean | Whether the comments section will be enabled. Default to true.
 `subtitle` | String | The subtitle of the blog post in one sentence.
 `wechat` | Boolean | Whether WeChat QR code should be shown. Default to false.
+`ads` | String | Enable ads for the posts, currently support `ethical-ads` (<https://www.ethicalads.io/>)
 
 ## Collections
 
