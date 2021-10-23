@@ -12,7 +12,6 @@ excerpt:           >
     annotations, or factory method) and its different usage.
 image:             /assets/bg-romet-tagobert-ytrbFQSJBxw-unsplash.jpg
 cover:             /assets/bg-romet-tagobert-ytrbFQSJBxw-unsplash.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

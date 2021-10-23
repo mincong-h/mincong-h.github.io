@@ -12,7 +12,6 @@ excerpt:           >
     ZipEntry. Implementation supports sub-directories as well.
 image:             /assets/bg-coffee-2242213_1280.jpg
 cover:             /assets/bg-coffee-2242213_1280.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

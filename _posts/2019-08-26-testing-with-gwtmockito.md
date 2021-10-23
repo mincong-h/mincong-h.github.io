@@ -13,7 +13,6 @@ excerpt:           >
     testing, and comparison between GwtMockito and GWTTestCase.
 image:             /assets/bg-board-2450236_1280.jpg
 cover:             /assets/bg-board-2450236_1280.jpg
-ads:               None
 article_header:
   type: overlay
   theme: dark

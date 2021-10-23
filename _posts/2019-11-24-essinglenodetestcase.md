@@ -13,7 +13,6 @@ excerpt:           >
     the testing set up for you.
 image:             /assets/bg-coffee-2306471_1280.jpg
 cover:             /assets/bg-coffee-2306471_1280.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

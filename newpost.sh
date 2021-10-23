@@ -35,6 +35,7 @@ lang:                en
 date:                $(date +"%Y-%m-%d %H:%M:%S %z")
 categories:          [java-core]
 tags:                []
+ads_tags:            []
 comments:            true
 excerpt:             >
     TODO
@@ -47,7 +48,6 @@ article_header:
   background_image:
     gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 wechat:              false
-ads:                 none
 ---
 
 <!--
@@ -75,6 +75,7 @@ lang:                zh
 date:                $(date +"%Y-%m-%d %H:%M:%S %z")
 categories:          [java-core]
 tags:                []
+ads_tags:            []
 comments:            true
 excerpt:             >
     TODO

@@ -13,7 +13,6 @@ excerpt:           >
     tecnical constraints and verification.
 image:             /assets/bg-gary-chan-YzSZN3qvHeo-unsplash.jpg
 cover:             /assets/bg-gary-chan-YzSZN3qvHeo-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

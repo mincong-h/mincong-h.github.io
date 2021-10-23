@@ -12,7 +12,6 @@ excerpt:           >
     line, recently.
 image:             /assets/bg-veri-ivanova-p3Pj7jOYvnM-unsplash.jpg
 cover:             /assets/bg-veri-ivanova-p3Pj7jOYvnM-unsplash.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

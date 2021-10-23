@@ -14,7 +14,6 @@ excerpt:           >
 
 image:             /assets/bg-vitto-sommella-CrDnEQE_9vY-unsplash.jpg
 cover:             /assets/bg-vitto-sommella-CrDnEQE_9vY-unsplash.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

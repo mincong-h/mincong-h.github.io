@@ -12,7 +12,6 @@ excerpt:           >
     message prefix, based on the branch name.
 image:             /assets/bg-light-bulbs-1125016_1280.jpg
 cover:             /assets/bg-light-bulbs-1125016_1280.jpg
-ads:               Git Pro
 article_header:
   type: overlay
   theme: dark

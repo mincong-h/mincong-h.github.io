@@ -13,7 +13,6 @@ permalink:         /2018/04/08/learning-hashmap/
 comments:    true
 image:             /assets/bg-coffee-2242213_1280.jpg
 cover:             /assets/bg-coffee-2242213_1280.jpg
-ads:               Cracking The Coding Interview
 article_header:
   type: overlay
   theme: dark

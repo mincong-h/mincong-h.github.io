@@ -13,7 +13,6 @@ excerpt:           >
     ListAppender.
 image:             /assets/bg-adrian-korte-5gn2soeAc40-unsplash.jpg
 cover:             /assets/bg-adrian-korte-5gn2soeAc40-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

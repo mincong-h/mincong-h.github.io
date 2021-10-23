@@ -13,7 +13,6 @@ excerpt:           >
     Plugin itself.
 image:             /assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg
 cover:             /assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

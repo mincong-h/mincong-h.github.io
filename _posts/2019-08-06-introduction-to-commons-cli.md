@@ -12,7 +12,6 @@ excerpt:           >
     line arguments, print usage, and more using Apache Commons CLI.
 image:             /assets/bg-coffee-1030971_1280.jpg
 cover:             /assets/bg-coffee-1030971_1280.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

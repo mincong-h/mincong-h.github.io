@@ -8,6 +8,7 @@ lang:                en
 date:                2021-10-09 22:08:20 +0200
 categories:          [temporal]
 tags:                [temporal, go]
+ads_tags:            [automation, devops, infra]
 comments:            true
 excerpt:             >
     This article discusses the error retries in workflow engine Temporal,
@@ -24,7 +25,6 @@ article_header:
   background_image:
     gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 wechat:              false
-ads:                 none
 ---
 
 ## Introduction

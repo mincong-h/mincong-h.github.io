@@ -12,7 +12,6 @@ excerpt:           >
     Elasticsearch transport client or Java high level REST client.
 image:             /assets/bg-coffee-2242213_1280.jpg
 cover:             /assets/bg-coffee-2242213_1280.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

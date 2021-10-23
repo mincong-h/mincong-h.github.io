@@ -11,7 +11,6 @@ excerpt:           >
     Create your own cheatsheets in Bash.
 image:             /assets/bg-absolutvision-82TpEld0_e4-unsplash.jpg
 cover:             /assets/bg-absolutvision-82TpEld0_e4-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

@@ -12,7 +12,6 @@ excerpt:           >
     mainly focus on usage of fixed clock and offset clock.
 image:             /assets/bg-sonja-langford-eIkbSc3SDtI-unsplash.jpg
 cover:             /assets/bg-sonja-langford-eIkbSc3SDtI-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

@@ -1,0 +1,10 @@
+.article__ads {
+  padding: 1rem 0;
+  text-align: center;
+  @include media-breakpoint-up(lg) {
+    padding: 0;
+    position: fixed;
+    bottom: 1rem;
+    right: 2rem;
+  }
+}

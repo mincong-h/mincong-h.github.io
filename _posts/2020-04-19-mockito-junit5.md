@@ -12,7 +12,6 @@ excerpt:           >
     MockitoAnnotations#initMocks, or Mockito#mock.
 image:             /assets/bg-edward-howell-hYcriIw0gHc-unsplash.jpg
 cover:             /assets/bg-edward-howell-hYcriIw0gHc-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

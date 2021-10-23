@@ -11,7 +11,6 @@ excerpt:           >
     Testing Elasticsearch with docker and Java High Level REST Client
 image:             /assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg
 cover:             /assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

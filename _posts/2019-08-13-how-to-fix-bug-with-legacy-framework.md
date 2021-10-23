@@ -13,7 +13,6 @@ excerpt:           >
     testing, patching library and more.
 image:             /assets/bg-boy-666803_1280.jpg
 cover:             /assets/bg-boy-666803_1280.jpg
-ads:               Book - Working Effectively with Legacy Code
 article_header:
   type: overlay
   theme: dark
