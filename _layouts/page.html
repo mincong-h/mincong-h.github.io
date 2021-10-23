@@ -275,7 +275,18 @@ layout: base
 
 {% assign _ads = page.ads | default: "ethical-ads" %}
 {%- if _ads == "ethical-ads" and page.lang != "zh" -%}
-<script async src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+<script src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+<script>
+ethicalads.wait.then((placements) => {
+  if (!placements.length) {
+    console.debug('Loading backup content');
+    div = document.querySelector('[data-ea-publisher]')
+    div.innerHTML = '<p>Check out our first-party ad content.</p>'
+  } else {
+    console.debug('EthicalAds are loaded');
+  }
+});
+</script>
 {%- endif -%}
 
 {%- include markdown-enhancements.html -%}
