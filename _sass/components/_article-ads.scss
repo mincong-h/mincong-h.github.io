@@ -1,10 +1,7 @@
 .article__ads {
   padding-top: 1rem;
   text-align: center;
-}
-
-@media only screen and (min-width: 1024px) {
-  .article__ads {
+  @include media-breakpoint-up(lg) {
     position: fixed;
     bottom: 1rem;
     right: 2rem;
