@@ -12,7 +12,6 @@ excerpt:           >
     Coverage.py.
 image:             /assets/bg-snake-37585_1280.png
 cover:             /assets/bg-snake-37585_1280.png
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

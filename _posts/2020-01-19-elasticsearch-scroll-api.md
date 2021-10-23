@@ -13,7 +13,6 @@ excerpt:           >
     request.
 image:             /assets/bg-dylan-nolte-wYEj-xonKcg-unsplash.jpg
 cover:             /assets/bg-dylan-nolte-wYEj-xonKcg-unsplash.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

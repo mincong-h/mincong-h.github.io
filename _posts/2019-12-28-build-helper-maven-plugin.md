@@ -13,7 +13,6 @@ excerpt:           >
     using Build Helper Maven Plugin.
 image:             /assets/bg-c-dustin-91AQt9p4Mo8-unsplash.jpg
 cover:             /assets/bg-c-dustin-91AQt9p4Mo8-unsplash.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

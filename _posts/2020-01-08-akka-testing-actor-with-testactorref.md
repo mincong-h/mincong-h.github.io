@@ -13,7 +13,6 @@ excerpt:           >
     single-threaded environment.
 image:             /assets/bg-board-2450236_1280.jpg
 cover:             /assets/bg-board-2450236_1280.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

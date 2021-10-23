@@ -13,7 +13,6 @@ excerpt:           >
     to an Elasticsearch cluster.
 image:             /assets/bg-leonard-cotte-R5scocnOOdM-unsplash.jpg
 cover:             /assets/bg-leonard-cotte-R5scocnOOdM-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

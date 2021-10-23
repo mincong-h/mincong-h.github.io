@@ -13,7 +13,6 @@ excerpt:           >
     multi-threading.
 image:             /assets/bg-jonathan-velasquez-eUSpDPSFdKU-unsplash.jpg
 cover:             /assets/bg-jonathan-velasquez-eUSpDPSFdKU-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

@@ -12,7 +12,6 @@ excerpt:           >
     snapshots and reduces unnecessary file I/O?
 image:             /assets/bg-josh-calabrese-zcYRw547Dps-unsplash.jpg
 cover:             /assets/bg-josh-calabrese-zcYRw547Dps-unsplash.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

@@ -12,7 +12,6 @@ excerpt:           >
     message reception, and testing.
 image:             /assets/bg-coffee-2306471_1280.jpg
 cover:             /assets/bg-coffee-2306471_1280.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

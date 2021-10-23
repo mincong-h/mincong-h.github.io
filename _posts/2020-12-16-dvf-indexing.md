@@ -13,7 +13,6 @@ excerpt:           >
     data "Demande de valeurs foncières (DVF)".
 image:             /assets/bg-rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg
 cover:             /assets/bg-rodrigo-kugnharski-pdWc5wm1STw-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

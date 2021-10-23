@@ -13,7 +13,6 @@ excerpt:           >
     circumstances. Also, a complete list of messages for unassigned shards.
 image:             /assets/bg-robert-ruggiero-X2bcQMMhaow-unsplash.jpg
 cover:             /assets/bg-robert-ruggiero-X2bcQMMhaow-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

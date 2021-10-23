@@ -11,7 +11,6 @@ excerpt:           >
     Release note of Vavr Jackson 1.0.0 Alpha 3.
 image:             /assets/bg-aaron-burden-GFpxQ2ZyNc0-unsplash.jpg
 cover:             /assets/bg-aaron-burden-GFpxQ2ZyNc0-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

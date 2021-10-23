@@ -12,7 +12,6 @@ excerpt:           >
     command line. In this article, I will explain how I implemented it.
 image:             /assets/bg-mathew-schwartz-OjQgsR1oyEw-unsplash.jpg
 cover:             /assets/bg-mathew-schwartz-OjQgsR1oyEw-unsplash.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

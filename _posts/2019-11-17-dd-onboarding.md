@@ -14,7 +14,6 @@ excerpt:           >
 
 image:             /assets/bg-josh-rakower-zBsXaPEBSeI-unsplash.jpg
 cover:             /assets/bg-josh-rakower-zBsXaPEBSeI-unsplash.jpg
-ads:               Ads idea
 article_header:
   type: overlay
   theme: dark

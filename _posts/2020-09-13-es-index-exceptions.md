@@ -13,7 +13,6 @@ excerpt:           >
     resources for further investigation.
 image:             /assets/bg-sarah-kilian-52jRtc2S_VE-unsplash.jpg
 cover:             /assets/bg-sarah-kilian-52jRtc2S_VE-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

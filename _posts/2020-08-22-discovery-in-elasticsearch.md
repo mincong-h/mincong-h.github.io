@@ -13,7 +13,6 @@ excerpt:           >
     and more.
 image:             /assets/bg-tim-graf-ErO0E8wZaTA-unsplash.jpg
 cover:             /assets/bg-tim-graf-ErO0E8wZaTA-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

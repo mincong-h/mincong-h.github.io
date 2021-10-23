@@ -12,7 +12,6 @@ excerpt:           >
     Elasticsearch: id, name, IP address, CPU, load, memory, and much more.
 image:             /assets/bg-eric-han-WJ6fmN1D-h0-unsplash.jpg
 cover:             /assets/bg-eric-han-WJ6fmN1D-h0-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

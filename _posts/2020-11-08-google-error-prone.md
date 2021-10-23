@@ -12,7 +12,6 @@ excerpt:           >
     type analysis and catches more mistakes at compile time!
 image:             /assets/bg-coffee-983955_1280.jpg
 cover:             /assets/bg-coffee-983955_1280.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

@@ -14,7 +14,6 @@ excerpt:           >
     to go further from here.
 image:             /assets/bg-jean-louis-paulin-lHwmE58fW4Y-unsplash.jpg
 cover:             /assets/bg-jean-louis-paulin-lHwmE58fW4Y-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

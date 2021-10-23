@@ -14,7 +14,6 @@ excerpt:           >
     exceptionally().
 image:             /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg
 cover:             /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark

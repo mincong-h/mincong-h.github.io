@@ -18,7 +18,6 @@ article_header:
   background_color:  "#203028"
   background_image:
     gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .3), rgba(0, 0, 0, .2))"
-ads:                 none
 ---
 
 ## Introduction

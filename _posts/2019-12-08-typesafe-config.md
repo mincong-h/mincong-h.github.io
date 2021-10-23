@@ -14,7 +14,6 @@ excerpt:           >
 
 image:             /assets/bg-anthony-roberts-82wJ10pX1Fw-unsplash.jpg
 cover:             /assets/bg-anthony-roberts-82wJ10pX1Fw-unsplash.jpg
-ads:               none
 article_header:
   type: overlay
   theme: dark
