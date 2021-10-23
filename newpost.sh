@@ -47,7 +47,7 @@ article_header:
   background_image:
     gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 wechat:              false
-ads:                 none
+ads:                 ethical-ads
 ---
 
 <!--
