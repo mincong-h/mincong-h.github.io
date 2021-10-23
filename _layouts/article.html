@@ -32,11 +32,18 @@ type: article
           "image" -- Because we want to show image not text.
 
     {% endcomment %}
+
+    {% if page.ads_tags %}
+      {% assign _tags = page.tags | concat: page.ads_tags | uniq %}
+    {% else %}
+      {% assign _tags = page.tags %}
+    {% endif %}
+
     <div class="article__ads">
       {% if jekyll.environment == 'production' %}
         <div id="ea-article"
              data-ea-publisher="mincongio"
-             data-ea-keywords="{{ page.tags | join: '|'  }}"
+             data-ea-keywords="{{ _tags | join: '|'  }}"
              data-ea-type="image">
       {% endif %}
       </div>

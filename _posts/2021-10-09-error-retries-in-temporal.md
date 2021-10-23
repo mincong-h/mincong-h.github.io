@@ -8,6 +8,7 @@ lang:                en
 date:                2021-10-09 22:08:20 +0200
 categories:          [temporal]
 tags:                [temporal, go]
+ads_tags:            [automation, devops, infra]
 comments:            true
 excerpt:             >
     This article discusses the error retries in workflow engine Temporal,

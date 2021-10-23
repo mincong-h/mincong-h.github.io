@@ -35,6 +35,7 @@ lang:                en
 date:                $(date +"%Y-%m-%d %H:%M:%S %z")
 categories:          [java-core]
 tags:                []
+ads_tags:            []
 comments:            true
 excerpt:             >
     TODO
@@ -74,6 +75,7 @@ lang:                zh
 date:                $(date +"%Y-%m-%d %H:%M:%S %z")
 categories:          [java-core]
 tags:                []
+ads_tags:            []
 comments:            true
 excerpt:             >
     TODO
