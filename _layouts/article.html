@@ -32,6 +32,7 @@ type: article
     <div class="article__ads">
       {% if jekyll.environment == 'production' %}
         <div data-ea-publisher="mincongio"
+             data-ea-keywords="{{ page.tags | join: '|'  }}"
              data-ea-type="image">
       {% endif %}
       </div>
