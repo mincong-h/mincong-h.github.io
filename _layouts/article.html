@@ -20,9 +20,23 @@ type: article
 
          See https://ethical-ad-client.readthedocs.io/en/latest/#placements
      -->
-    <div class="ad-placement"
-         data-ea-publisher="mincongio"
-         data-ea-type="image">
+    {% comment %}
+      class:
+          "bordered", to make the ads more adapted to the Jekyll TeXt theme.
+          "horizontal", to make it more user friendly in mobile application.
+
+      data-ea-publisher:
+          "mincongio", name of the publisher
+
+      data-ea-type:
+          "image", because we want to show image not text.
+
+    {% endcomment %}
+    <div class="article__ads">
+      <div class="bordered horizontal"
+           data-ea-publisher="mincongio"
+           data-ea-type="image">
+      </div>
     </div>
   {% endif %}
 
