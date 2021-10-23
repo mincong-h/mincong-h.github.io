@@ -30,8 +30,10 @@ type: article
 
     {% endcomment %}
     <div class="article__ads">
-      <div data-ea-publisher="mincongio"
-           data-ea-type="image">
+      {% if jekyll.environment == 'production' %}
+        <div data-ea-publisher="mincongio"
+             data-ea-type="image">
+      {% endif %}
       </div>
     </div>
   {% endif %}
