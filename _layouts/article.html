@@ -22,16 +22,20 @@ type: article
          See https://ethical-ad-client.readthedocs.io/en/latest/#placements
      -->
     {% comment %}
+      id:
+          "ea-article" -- Placement ID for EthicalAds (EA) for article.
+
       data-ea-publisher:
-          "mincongio", name of the publisher
+          "mincongio" -- Name of the publisher.
 
       data-ea-type:
-          "image", because we want to show image not text.
+          "image" -- Because we want to show image not text.
 
     {% endcomment %}
     <div class="article__ads">
       {% if jekyll.environment == 'production' %}
-        <div data-ea-publisher="mincongio"
+        <div id="ea-article"
+             data-ea-publisher="mincongio"
              data-ea-keywords="{{ page.tags | join: '|'  }}"
              data-ea-type="image">
       {% endif %}
