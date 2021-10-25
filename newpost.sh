@@ -143,26 +143,25 @@ fi
 bloghome=$(cd "$(dirname "$0")" || exit; pwd)
 url=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 
-# English post is stored in "_drafts/" directory until the translation is done.
-filepath_en="${bloghome}/_drafts/$(date +"%Y-%m-%d")-${url}.md"
-filepath_cn="${bloghome}/_cn/${url}.md"
+filepath_en="${bloghome}/_posts/$(date +"%Y-%m-%d")-${url}.md"
+#filepath_cn="${bloghome}/_cn/${url}.md"
 
 if [[ -f "$filepath_en" ]]; then
     echo "${filepath_en} already exists."
     exit 1
 fi
 
-if [[ -f "$filepath_cn" ]]; then
-    echo "${filepath_cn} already exists."
-    exit 1
-fi
+#if [[ -f "$filepath_cn" ]]; then
+#    echo "${filepath_cn} already exists."
+#    exit 1
+#fi
 
 append_metadata_en "$filepath_en" "$title"
-append_metadata_cn "$filepath_cn" "$title"
+#append_metadata_cn "$filepath_cn" "$title"
 
 # Not for EN, because EN post is translated.
-append_content "$filepath_cn"
+#append_content "$filepath_cn"
 
 echo "Blog posts created!"
 echo "  EN: ${filepath_en}"
-echo "  CN: ${filepath_cn}"
+#echo "  CN: ${filepath_cn}"
