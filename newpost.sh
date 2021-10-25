@@ -94,7 +94,37 @@ ads:                 none
 EOF
 }
 
-function append_content {
+function append_content_en {
+  cat << EOF >> "$1"
+## Introduction
+
+Explain context here...
+and why it is important to understand this topic (motivation)?
+
+After reading this article, you will understand:
+
+## Section 1
+
+## Section 2
+
+## Section 3
+
+## Going Further
+
+How to go further from here?
+
+## Conclusion
+
+What did we talk in this article?
+Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
+on [Twitter](https://twitter.com/mincong_h) or
+[GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
+
+## References
+EOF
+}
+
+function append_content_cn {
   cat << EOF >> "$1"
 <!--
   Replace asset link with following on Chinese Platforms:
@@ -159,8 +189,8 @@ fi
 append_metadata_en "$filepath_en" "$title"
 #append_metadata_cn "$filepath_cn" "$title"
 
-# Not for EN, because EN post is translated.
-#append_content "$filepath_cn"
+append_content_en "$filepath_en"
+#append_content_cn "$filepath_cn"
 
 echo "Blog posts created!"
 echo "  EN: ${filepath_en}"
