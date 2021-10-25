@@ -186,4 +186,4 @@ append_content_en "$filepath_en"
 
 echo "Blog posts created!"
 echo "  EN: ${filepath_en}"
-#echo "  CN: ${filepath_cn}"
+echo "  CN: (disabled)"
