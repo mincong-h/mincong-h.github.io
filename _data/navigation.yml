@@ -146,6 +146,8 @@ cn_categories:
 series:
   - title: Series
     children:
+      - title:  Elasticsearch Snapshots
+        url:    /en/series/es-snapshots/
       - title:  Real Estate Project DVF
         url:    /en/series/dvf/
       - title:  JAX-RS 2.x Basics

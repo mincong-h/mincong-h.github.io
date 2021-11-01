@@ -8,6 +8,7 @@ lang:                en
 date:                2021-09-04 10:11:10 +0200
 categories:          [elasticsearch]
 tags:                [elasticsearch, java]
+series:              [es-snapshots]
 comments:            true
 excerpt:             >
     This article takes you to the Elasticsearch snapshot repository to explore its internal structure and understand the contents and uses of different files. 

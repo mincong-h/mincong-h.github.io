@@ -1,11 +1,11 @@
 ---
 layout:            post
 title:             "DVF: Snapshot And Restore"
-lang:                en
+lang:              en
 date:              2021-01-10 11:46:21 +0100
 categories:        [elasticsearch]
 tags:              [elasticsearch, java]
-series:            [dvf]
+series:            [dvf, es-snapshots]
 permalink:         /2021/01/10/dvf-snapshot-and-restore/
 comments:          true
 excerpt:           >

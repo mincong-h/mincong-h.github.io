@@ -8,6 +8,7 @@ lang:                en
 date:                2021-11-01 11:00:00 +0200
 categories:          [elasticsearch]
 tags:                [elasticsearch, java]
+series:              [es-snapshots]
 comments:            true
 excerpt:             >
     Elasticsearch snapshot repository plugins for AWS, GCP, and Azure
