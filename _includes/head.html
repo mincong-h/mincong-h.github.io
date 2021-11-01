@@ -3,6 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 {%- include snippets/get-article-title.html article=page -%}
+<!-- title: "{{ __return }}" -->
 <title>{%- if __return -%}{{ __return }} - {{ site.title }}{%- else -%}{{ site.title }}{%- endif -%}</title>
 
 <meta name="description" content="{%- if page.excerpt -%}{{ page.excerpt | strip_html | strip_newlines | strip | xml_escape | truncate: 160 }}{%- else -%}{{ site.description | xml_escape }}{%- endif -%}">
