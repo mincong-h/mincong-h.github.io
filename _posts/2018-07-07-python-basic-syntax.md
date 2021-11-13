@@ -3,7 +3,7 @@ layout:              post
 title:               Python 3 Basic Syntax
 lang:                en
 date:                2018-07-07 09:57:16 +0200
-date_modified:       2021-10-17 14:52:09 +0200
+date_modified:       2021-11-13 21:56:22 +0100
 categories:          [python]
 tags:                [python, study-note]
 excerpt:             >
@@ -199,6 +199,21 @@ Case | `lower()` | Lower case
 Case | `upper()` | Uppder case
 Split | `split()`, `split(sep)` | Split the string using whitespace or a seperator
 Cancatenation | `join(words)` | Join words together using a given string
+
+Splitting string with different methods:
+
+```py
+import re
+
+# regex without max-split
+re.split(pattern, text)
+
+# regex with max-split
+re.split(pattern, text, maxsplit=2)
+
+# split with normal separator (no regex)
+text.split(sep)
+```
 
 ## References
 
