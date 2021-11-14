@@ -187,8 +187,9 @@ EOF
 
 title="${*:1}"
 
-if [[ -z "$title" ]]; then
-    echo 'usage: newpost.sh My New Blog'
+if [[ -z "$title" ]]
+then
+    print_usage
     exit 1
 fi
 
@@ -198,7 +199,8 @@ create_en=1
 create_cn=0
 debug=0
 
-for i in "$@"; do
+for i in "$@"
+do
     case $i in
         -a|--all)
             create_en=1
