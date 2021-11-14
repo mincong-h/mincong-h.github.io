@@ -216,7 +216,7 @@ for i in "$@"; do
             shift
             ;;
         -d|--debug)
-            verbose=1
+            debug=1
             shift
             ;;
         -h|--help)
@@ -224,6 +224,7 @@ for i in "$@"; do
             exit 0
             ;;
         *)
+            title="${@}"
             ;;
     esac
 done
@@ -243,7 +244,8 @@ filepath_en=${filepath_en}
 filepath_cn=${filepath_cn}
 
 debug=${debug}
-title=${@}
+title=${title}
+url=${url}
 EOF
 fi
 
