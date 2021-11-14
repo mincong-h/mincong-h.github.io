@@ -23,6 +23,7 @@ Usage:
 
        newpost.sh [OPTIONS] TITLE
 
+
 Options:
 
        -d,--debug   Print debug logs
@@ -30,6 +31,7 @@ Options:
        -e,--en      Generate English post
        -c,--cn      Generate Chinese post
        -a,--all     Generate post in all languages (English and Chinese)
+
 
 Examples:
 
@@ -44,6 +46,8 @@ Examples:
        newpost.sh -h
 EOF
 }
+
+
 function append_metadata_en {
   path="$1"
   title="$2"
@@ -75,6 +79,7 @@ wechat:              false
 
 EOF
 }
+
 
 function append_metadata_cn {
   path="$1"
@@ -109,6 +114,7 @@ ads:                 none
 EOF
 }
 
+
 function append_content_en {
   cat << EOF >> "$1"
 ## Introduction
@@ -138,6 +144,7 @@ on [Twitter](https://twitter.com/mincong_h) or
 ## References
 EOF
 }
+
 
 function append_content_cn {
   cat << EOF >> "$1"
