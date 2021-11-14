@@ -37,13 +37,44 @@ Or run via Docker:
 
 ## Generators
 
-Create new blog post (article):
+Create new blog post (article). By default, only English post is created:
 
 ```sh
 $ ./newpost.sh My New Post
 Blog post created!
-  EN: /Users/minconghuang/github/mincong-h.github.io/_posts/2021-07-11-my-new-post.md
-  CN: /Users/minconghuang/github/mincong-h.github.io/_cn/2021-07-11-my-new-post.md
+  EN: /Users/minconghuang/github/mincong-h.github.io/_posts/2021-11-14-my-new-post.md
+  CN: (disabled)
+```
+
+Print help:
+
+```sh
+$ ./newpost.sh -h
+Usage:
+
+       newpost.sh [OPTIONS] TITLE
+
+
+Options:
+
+       -d,--debug   Print debug logs
+       -h,--help    Show help
+       -e,--en      Generate English post
+       -c,--cn      Generate Chinese post
+       -a,--all     Generate post in all languages (English and Chinese)
+
+
+Examples:
+
+       newpost.sh My Post Title
+
+       newpost.sh --all My Post Title
+       newpost.sh -a My Post Title
+
+       newpost.sh --en My Post Title
+       newpost.sh --cn My Post Title
+
+       newpost.sh -h
 ```
 
 Create new tag page:

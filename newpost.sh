@@ -13,13 +13,40 @@
 #    system relies on this name to find the other version, if exists.
 #    Date will be generated according to the current time in the system.
 #
-# Usage:
-#
-#        ./newpost.sh My Blog Post Title
-#
 
 # Functions
 # -----
+
+function print_usage {
+    cat << EOF
+Usage:
+
+       newpost.sh [OPTIONS] TITLE
+
+
+Options:
+
+       -d,--debug   Print debug logs
+       -h,--help    Show help
+       -e,--en      Generate English post
+       -c,--cn      Generate Chinese post
+       -a,--all     Generate post in all languages (English and Chinese)
+
+
+Examples:
+
+       newpost.sh My Post Title
+
+       newpost.sh --all My Post Title
+       newpost.sh -a My Post Title
+
+       newpost.sh --en My Post Title
+       newpost.sh --cn My Post Title
+
+       newpost.sh -h
+EOF
+}
+
 
 function append_metadata_en {
   path="$1"
@@ -52,6 +79,7 @@ wechat:              false
 
 EOF
 }
+
 
 function append_metadata_cn {
   path="$1"
@@ -86,6 +114,7 @@ ads:                 none
 EOF
 }
 
+
 function append_content_en {
   cat << EOF >> "$1"
 ## Introduction
@@ -115,6 +144,7 @@ on [Twitter](https://twitter.com/mincong_h) or
 ## References
 EOF
 }
+
 
 function append_content_cn {
   cat << EOF >> "$1"
@@ -163,27 +193,99 @@ if [[ -z "$title" ]]; then
 fi
 
 bloghome=$(cd "$(dirname "$0")" || exit; pwd)
+
+create_en=1
+create_cn=0
+debug=0
+
+for i in "$@"; do
+    case $i in
+        -a|--all)
+            create_en=1
+            create_cn=1
+            shift
+            ;;
+        -e|--en)
+            create_en=1
+            create_cn=0
+            shift
+            ;;
+        -c|--cn)
+            create_en=0
+            create_cn=1
+            shift
+            ;;
+        -d|--debug)
+            verbose=1
+            shift
+            ;;
+        -h|--help)
+            print_usage
+            exit 0
+            ;;
+        *)
+            ;;
+    esac
+done
+
 url=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 
 filepath_en="${bloghome}/_posts/$(date +"%Y-%m-%d")-${url}.md"
-#filepath_cn="${bloghome}/_cn/${url}.md"
+filepath_cn="${bloghome}/_cn/${url}.md"
 
-if [[ -f "$filepath_en" ]]; then
-    echo "${filepath_en} already exists."
-    exit 1
+if [[ $debug -eq "1" ]]
+then
+    cat << EOF
+create_en=${create_en}
+create_cn=${create_cn}
+
+filepath_en=${filepath_en}
+filepath_cn=${filepath_cn}
+
+debug=${debug}
+title=${@}
+EOF
 fi
 
-#if [[ -f "$filepath_cn" ]]; then
-#    echo "${filepath_cn} already exists."
-#    exit 1
-#fi
+if [[ $create_en -eq "1" ]]
+then
+    if [[ -f "$filepath_en" ]]
+    then
+        echo "${filepath_en} already exists."
+        exit 1
+    fi
+    append_metadata_en "$filepath_en" "$title"
+    append_content_en "$filepath_en"
+fi
 
-append_metadata_en "$filepath_en" "$title"
-#append_metadata_cn "$filepath_cn" "$title"
+if [[ $create_cn -eq "1" ]]
+then
+    if [[ -f "$filepath_cn" ]]; then
+        echo "${filepath_cn} already exists."
+        exit 1
+    fi
+    append_metadata_cn "$filepath_cn" "$title"
+    append_content_cn "$filepath_cn"
+fi
 
-append_content_en "$filepath_en"
-#append_content_cn "$filepath_cn"
-
-echo "Blog posts created!"
-echo "  EN: ${filepath_en}"
-echo "  CN: (disabled)"
+if [[ $create_en -eq "1" && $create_cn -eq "1" ]]
+then
+    cat << EOF
+Blog post created!
+  EN: ${filepath_en}
+  CN: ${filepath_cn}
+EOF
+elif [[ $create_en -eq "1" ]]
+then
+    cat << EOF
+Blog post created!
+  EN: ${filepath_en}
+  CN: (disabled)
+EOF
+else
+    cat << EOF
+Blog post created!
+  EN: (disabled)
+  CN: ${filepath_cn}
+EOF
+fi
