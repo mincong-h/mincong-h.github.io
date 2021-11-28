@@ -6,6 +6,7 @@ subtitle:            >
 
 lang:                en
 date:                2021-04-10 07:00:00 +0800
+series:              [es-admin]
 categories:          [elasticsearch]
 tags:                [elasticsearch]
 permalink:           /2021/04/10/disk-watermarks-in-elasticsearch/

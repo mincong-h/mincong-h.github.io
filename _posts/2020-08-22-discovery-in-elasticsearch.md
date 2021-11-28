@@ -1,8 +1,9 @@
 ---
 layout:            post
 title:             Discovery in Elasticsearch
-lang:                en
+lang:              en
 date:              2020-08-22 18:38:54 +0200
+series:            [es-admin]
 categories:        [elasticsearch]
 tags:              [elasticsearch]
 permalink:         /2020/08/22/discovery-in-elasticsearch/

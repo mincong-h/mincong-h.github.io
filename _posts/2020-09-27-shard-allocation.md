@@ -3,6 +3,7 @@ layout:            post
 title:             18 Allocation Deciders in Elasticsearch
 lang:                en
 date:              2020-09-27 11:44:32 +0200
+series:            [es-admin]
 categories:        [elasticsearch]
 tags:              [elasticsearch, java]
 permalink:         /2020/09/27/shard-allocation/

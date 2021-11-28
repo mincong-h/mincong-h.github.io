@@ -6,6 +6,7 @@ subtitle:            >
 
 lang:                en
 date:                2021-07-14 16:57:49 +0200
+series:              [es-admin]
 categories:          [elasticsearch]
 tags:                [elasticsearch, java]
 comments:            true

@@ -6,6 +6,7 @@ subtitle:            >
 
 lang:                en
 date:                2021-08-21 18:07:13 +0200
+series:              [es-admin]
 categories:          [elasticsearch]
 tags:                [elasticsearch]
 comments:            true

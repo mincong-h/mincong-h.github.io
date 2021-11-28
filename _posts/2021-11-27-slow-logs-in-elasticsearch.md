@@ -6,6 +6,7 @@ subtitle:            >
 
 lang:                en
 date:                2021-11-27 09:19:02 +0100
+series:              [es-admin]
 categories:          [elasticsearch]
 tags:                [elasticsearch]
 ads_tags:            []

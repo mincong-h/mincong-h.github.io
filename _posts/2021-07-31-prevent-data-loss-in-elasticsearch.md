@@ -6,6 +6,7 @@ subtitle:            >
 
 lang:                en
 date:                2021-07-31 09:50:49 +0200
+series:              [es-admin]
 categories:          [elasticsearch]
 tags:                [elasticsearch, java, system-design, reliability]
 comments:            true

@@ -148,6 +148,8 @@ series:
     children:
       - title:  Elasticsearch Snapshots
         url:    /en/series/es-snapshots/
+      - title:  Elasticsearch Cluster Administration
+        url:    /en/series/es-admin/
       - title:  Real Estate Project DVF
         url:    /en/series/dvf/
       - title:  JAX-RS 2.x Basics
