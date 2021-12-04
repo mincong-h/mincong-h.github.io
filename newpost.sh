@@ -126,9 +126,18 @@ Explain context here to attract people's attention... like:
 
 After reading this article, you will understand:
 
+dive deep:
+
 * Some prequisites
 * Some general concepts
 * Some specific concepts to dig deeper
+* How to go further from this article
+
+different dimensions:
+
+* section 1
+* section 2
+* section 3
 * How to go further from this article
 
 Now, let's get started!
