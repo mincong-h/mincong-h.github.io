@@ -2,7 +2,7 @@
 layout:              post
 title:               String Operations in Bash
 subtitle:            >
-    4 tips for making your scripting easier.
+    5 tips for making your scripting easier.
 
 lang:                en
 date:                2021-12-04 12:10:41 +0100
@@ -12,7 +12,7 @@ ads_tags:            []
 comments:            true
 excerpt:             >
     This article shares tips for different string operations in Bash, including
-    string declaration, substring removal, regular expressions in if-statement, and
+    string declaration, substring removal, substring replacement, regular expressions in if-statement, and
     operations in streams.
 
 image:               /assets/bg-pawel-czerwinski-ScYk6KKEPUI-unsplash.jpg
@@ -52,8 +52,10 @@ After reading this article, you will understand:
 
 * How to declare a variable?
 * How to remove a substring using shell parameter expansion?
+* How to replace a substring using shell parameter expansion?
 * How to determine string value using regular expressions in if-statement?
 * How to manipulate streams using different commands?
+* How to go further from here?
 
 Now, let's get started!
 
@@ -137,6 +139,32 @@ Deleting the longest match from the back of a string:
 ```sh
 d=2021-12-04
 echo ${d%%-*}  # 2021
+```
+
+## Substring Replacement
+
+Replace first match of `$substring` with `$replacementi`:
+
+```sh
+${string/substring/replacement}
+```
+
+Replace all matches of `$substring` with `$replacement`:
+
+```sh
+${string//substring/replacement}
+```
+
+Examples:
+
+```sh
+d=2021-12-04
+echo ${d/-/_}  # 2021_12-04
+```
+
+```sh
+d=2021-12-04
+echo ${d//-/_}  # 2021_12_04
 ```
 
 ## If Statement
@@ -236,6 +264,13 @@ man <command>
 <command> -h
 ```
 
+## Going Further
+
+* To know more techniques about manipulating strings, visit [Advanced
+  Bash-Scripting Guide: Chapter 10. Manipulating
+Variables](https://tldp.org/LDP/abs/html/string-manipulation.html) in The Linux
+Documentation Project (TLDP).
+
 ## Conclusion
 
 In this article, we discussed different string operations in Bash, including
@@ -250,8 +285,11 @@ on [Twitter](https://twitter.com/mincong_h) or
 ## References
 
 - Kewei Shang & Mincong Huang, ["Bash \| Tech Resources"](https://github.com/keweishang/tech-resources/blob/master/tool/bash.md), _GitHub_, 2020.
-- GNU, ["3.5.3 Shell Parameter
-  Expansion"](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html),
-_GNU_, 2021.
 - Vivek Gite, ["How to find out macOS version information from Terminal command
   prompt"](https://www.cyberciti.biz/faq/mac-osx-find-tell-operating-system-version-from-bash-prompt/), _CyberCiti_, 2021.
+- ["3.5.3 Shell Parameter
+  Expansion"](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html),
+_GNU_, 2021.
+- ["Manipulating
+  Strings"](https://tldp.org/LDP/abs/html/string-manipulation.html), _The Linux
+  Documentation Project (TLDP)_, 2021.
