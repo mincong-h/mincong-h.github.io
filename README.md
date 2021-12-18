@@ -109,13 +109,14 @@ $ ./newpost.sh My Regular Post Title
 one question and one answer. Compared to regular blog post, it's much shorter
 and means less work (done in less than 2 hours with less than 1000 words).
 Usually it means the question is specific to a language and a framework. You can
-consider it as something you see on <https://stackoverflow.com>.
+consider it as questions you see on <https://stackoverflow.com>.
 It consists of one question, one answer, notes for
 going further, and references. But why creating Q&As?
-For readers, it aims to provide them useful information without the needs to understanding the
-underlying implementation. For author, it means faster delivery speed, more
-arguments for the regular blog posts, and more page views (regular blog posts
-are hard to be found on search engines). Generating a Q&A blog post can be done using the
+For readers, it aims to provide them useful information without the needs to understand the
+underlying implementation. For author, it means having faster delivery speed,
+providing more
+arguments for the regular blog posts, and having more page views (regular blog posts
+are not SEO friendly). Generating a Q&A blog post can be done using the
 following command:
 
 ```sh
