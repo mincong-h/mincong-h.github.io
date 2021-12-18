@@ -31,6 +31,7 @@ Options:
        -e,--en      Generate English post
        -c,--cn      Generate Chinese post
        -a,--all     Generate post in all languages (English and Chinese)
+          --qna     Generate post using a Q&A (Question and Answer) template
 
 
 Examples:
@@ -51,10 +52,12 @@ EOF
 function append_metadata_en {
   path="$1"
   title="$2"
+  post_type="$3"
   cat << EOF >> "$path"
 ---
 layout:              post
-title:               $title
+type:                ${post_type}
+title:               ${title}
 subtitle:            >
     Given one sentence to expand the title or explain why this article may interest your readers.
 
@@ -84,10 +87,12 @@ EOF
 function append_metadata_cn {
   path="$1"
   title="$2"
+  post_type="$3"
   cat << EOF >> "$path"
 ---
 layout:              post
-title:               $title
+type:                ${post_type}
+title:               ${title}
 subtitle:            >
     Given one sentence to expand the title or explain why this article may interest your readers.
 
@@ -216,6 +221,7 @@ bloghome=$(cd "$(dirname "$0")" || exit; pwd)
 create_en=1
 create_cn=0
 debug=0
+post_type="regular"
 
 for i in "$@"
 do
@@ -243,6 +249,8 @@ do
             print_usage
             exit 0
             ;;
+        --qna)
+            post_type="Q&A"
         *)
             title="${@}"
             ;;
@@ -266,6 +274,7 @@ filepath_cn=${filepath_cn}
 debug=${debug}
 title=${title}
 url=${url}
+post_type=${post_type}
 EOF
 fi
 
@@ -276,7 +285,7 @@ then
         echo "${filepath_en} already exists."
         exit 1
     fi
-    append_metadata_en "$filepath_en" "$title"
+    append_metadata_en "$filepath_en" "$title" "$post_type"
     append_content_en "$filepath_en"
 fi
 
@@ -286,27 +295,27 @@ then
         echo "${filepath_cn} already exists."
         exit 1
     fi
-    append_metadata_cn "$filepath_cn" "$title"
+    append_metadata_cn "$filepath_cn" "$title" "$post_type"
     append_content_cn "$filepath_cn"
 fi
 
 if [[ $create_en -eq "1" && $create_cn -eq "1" ]]
 then
     cat << EOF
-Blog post created!
+Blog post (${post_type}) created!
   EN: ${filepath_en}
   CN: ${filepath_cn}
 EOF
 elif [[ $create_en -eq "1" ]]
 then
     cat << EOF
-Blog post created!
+Blog post (${post_type}) created!
   EN: ${filepath_en}
   CN: (disabled)
 EOF
 else
     cat << EOF
-Blog post created!
+Blog post (${post_type}) created!
   EN: (disabled)
   CN: ${filepath_cn}
 EOF
