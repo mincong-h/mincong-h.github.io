@@ -119,8 +119,40 @@ ads:                 none
 EOF
 }
 
+function append_qna_content_en {
+  cat << EOF >> "$1"
+## Question 
 
-function append_content_en {
+Describe the question here: what am I trying to do? What did I try (so that
+people can understand it may be confusing and requires explanation in the answer)?
+Why is this question useful to motivate people to read the answer.
+
+## Answer
+
+Provide some text to explain what is it, requirements, how does it work, etc.
+
+```java
+// Then follow by a code snippet to provide a concrete example
+```
+
+Explain the example a bit or continue the answer here.
+
+## Going Further
+
+How to go further from here?
+
+- Other answers that we didn't see
+- More context about the framework
+- Other tricks regarding the question
+
+Hope you enjoy this article, see you the next time!
+
+## References
+EOF
+}
+
+
+function append_regular_content_en {
   cat << EOF >> "$1"
 ## Introduction
 
@@ -251,6 +283,7 @@ do
             ;;
         --qna)
             post_type="Q&A"
+            ;;
         *)
             title="${@}"
             ;;
@@ -286,7 +319,13 @@ then
         exit 1
     fi
     append_metadata_en "$filepath_en" "$title" "$post_type"
-    append_content_en "$filepath_en"
+    case $post_type in
+        qna)
+          append_qna_content_en "$filepath_en" ;;
+        regular)
+          append_regular_content_en "$filepath_en" ;;
+        *)
+    esac
 fi
 
 if [[ $create_cn -eq "1" ]]
