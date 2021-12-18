@@ -152,7 +152,7 @@ EOF
 }
 
 
-function append_regular_content_en {
+function append_classic_content_en {
   cat << EOF >> "$1"
 ## Introduction
 
@@ -253,7 +253,7 @@ bloghome=$(cd "$(dirname "$0")" || exit; pwd)
 create_en=1
 create_cn=0
 debug=0
-post_type="regular"
+post_type="classic"
 
 for i in "$@"
 do
@@ -322,8 +322,8 @@ then
     case $post_type in
         qna)
           append_qna_content_en "$filepath_en" ;;
-        regular)
-          append_regular_content_en "$filepath_en" ;;
+        classic)
+          append_classic_content_en "$filepath_en" ;;
         *)
     esac
 fi

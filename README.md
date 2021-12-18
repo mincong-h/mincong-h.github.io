@@ -89,16 +89,16 @@ Tag page created: /Users/mincong/github/mincong-h.github.io/tags/java-ee.md
 
 ### Types Of Blog Post
 
-There are two types of blog post: regular and Q&A.
+There are two types of blog post: classic and Q&A.
 
-**Regular blog post** is a blog post that describes a language feature, a framework,
+**Classic blog post** is a blog post that describes a language feature, a framework,
 an architecture; translates a meaningful article; project review; or anything
 that is rather long and insightful. It is rich in
 content, i.e. going deep in a topic or showing the big picture. This should be
-interesting for the audience to follow. A regular blog post typically requires
+interesting for the audience to follow. A classic blog post typically requires
 several hours of writing and contains 3000+ words. It consists of an
 introduction, 3 to 4 sections, notes for going further, conclusion, and
-references. Generating a regular blog post can be done using the following
+references. Generating a classic blog post can be done using the following
 command:
 
 ```sh
@@ -106,7 +106,7 @@ $ ./newpost.sh My Regular Post Title
 ```
 
 **Q&A blog post** is a blog post that answers a specific question. It consists
-one question and one answer. Compared to regular blog post, it's much shorter
+one question and one answer. Compared to classic blog post, it's much shorter
 and means less work (done in less than 2 hours with less than 1000 words).
 Usually it means the question is specific to a language and a framework. You can
 consider it as questions you see on <https://stackoverflow.com>.
@@ -115,7 +115,7 @@ going further, and references. But why creating Q&As?
 For readers, it aims to provide them useful information without the needs to understand the
 underlying implementation. For author, it means having faster delivery speed,
 providing more
-arguments for the regular blog posts, and having more page views (regular blog posts
+arguments for the classic blog posts, and having more page views (classic blog posts
 are not SEO friendly). Generating a Q&A blog post can be done using the
 following command:
 
@@ -127,7 +127,7 @@ $ ./newpost.sh --qna My Question
 
 Property | Type | Description
 :--- | :--- | :---
-`type` | String | The type of the blog post: "regular", "Q&A".
+`type` | String | The type of the blog post: "classic", "Q&A".
 `image` | URL | Related path to image resource, such as `/assets/my-image.jpg`. Jekyll will complete it as an absolute path. Used by [Jekyll Feed](https://github.com/jekyll/jekyll-feed#optional-front-matter) plugin, [Jekyll SEO tag](https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md) and Twitter cards.
 `cover` | URL | Related path to image resource, such as `/assets/my-image.jpg`. Used for Jekyll TeXt Theme.
 `lang` | String | The language tag of the post: `en` or `zh`.
