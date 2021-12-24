@@ -283,6 +283,7 @@ do
             ;;
         --qna)
             post_type="Q&A"
+            shift
             ;;
         *)
             title="${@}"
