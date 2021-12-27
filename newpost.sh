@@ -163,6 +163,8 @@ Explain context here to attract people's attention... like:
 
 After reading this article, you will understand:
 
+(choose one of the following structures)
+
 dive deep:
 
 * Some prequisites
@@ -170,13 +172,14 @@ dive deep:
 * Some specific concepts to dig deeper
 * How to go further from this article
 
-different dimensions:
+different dimensions (broad):
 
 * section 1
 * section 2
 * section 3
 * How to go further from this article
 
+... then specify some information about the context, such as framework version, language version.
 Now, let's get started!
 
 ## Section 1

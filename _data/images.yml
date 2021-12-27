@@ -1,3 +1,11 @@
+/assets/bg-patrick-federi-LJEjI7LXABU-unsplash.jpg:
+    author:      Patrick Federi
+    url:         https://unsplash.com/@federi
+    height:      1920
+    width:       1440
+    license:     Unplash License
+    license_url: https://unsplash.com/license
+
 /assets/vuebigwhite.png:
     author:      Internet
     url:         https://www.filepicker.io/api/file/jpJaPUQmSWq1uFU1cpUs
