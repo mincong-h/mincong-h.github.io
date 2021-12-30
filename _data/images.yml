@@ -1,3 +1,11 @@
+/assets/bg-markus-winkler-EcgyryGygeE-unsplash.jpg:
+    author:      Markus Winkler
+    url:         https://unsplash.com/@markuswinkler
+    height:      1920
+    width:       1280
+    license:     Unplash License
+    license_url: https://unsplash.com/license
+
 /assets/bg-patrick-federi-LJEjI7LXABU-unsplash.jpg:
     author:      Patrick Federi
     url:         https://unsplash.com/@federi
