@@ -1,7 +1,7 @@
 ---
 layout:         post
 title:          Projects Highlight 2015-2016
-lang:                en
+lang:           en
 date:           2016-09-01 07:00:00 +0100
 categories:     [review]
 tags:           [project]
@@ -13,8 +13,11 @@ excerpt:        >
   a very active status in programming during a whole year. There're many projects
   that have been done in various contexts, including IoT, Mobile, Web, blog,
   Business Intelligence and open-source framework.
+
 redirect_from:
   - /project/2016/09/01/projects-highlight-2015-2016/
+image:          /assets/bg-road-220058_1280.jpg
+cover:          /assets/bg-road-220058_1280.jpg
 article_header:
   type: overlay
   theme: dark
