@@ -7,7 +7,7 @@ subtitle:            >
 lang:                zh
 date:                2021-09-04 10:11:10 +0200
 categories:          [elasticsearch]
-tags:                [elasticsearch, java]
+tags:                [elasticsearch, system-design, java]
 comments:            true
 excerpt:             >
     这篇文章带大家走进 Elasticsearch 快照仓库，看看它的内部结构，了解不同文件的内容和用途。

@@ -7,7 +7,7 @@ subtitle:            >
 lang:                en
 date:                2021-09-04 10:11:10 +0200
 categories:          [elasticsearch]
-tags:                [elasticsearch, java]
+tags:                [elasticsearch, system-design, java]
 series:              [es-snapshots]
 comments:            true
 excerpt:             >
