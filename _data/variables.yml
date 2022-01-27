@@ -40,7 +40,7 @@ default:
     search: default
 
 sources:
-  local:
+  custom:
     font_awesome: '/assets/css/font-awesome-5.15.1-all.min.css'
     jquery: '/assets/js/jquery-3.1.1.min.js'
     leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js'

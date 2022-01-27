@@ -111,7 +111,7 @@ pagination:
 
 ## => Sources
 ##############################
-sources: local # bootcdn (default), unpkg
+sources: custom # bootcdn (default), unpkg
 
 
 ## => Sharing
