@@ -41,7 +41,7 @@ default:
 
 sources:
   local:
-    font_awesome: '/assets/font-awesome/font-awesome-5.15.1-all.min.css'
+    font_awesome: '/assets/css/font-awesome-5.15.1-all.min.css'
     jquery: '/assets/js/jquery-3.1.1.min.js'
     leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js'
     chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js'
