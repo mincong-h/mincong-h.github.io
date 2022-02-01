@@ -1,0 +1,1819 @@
+<!DOCTYPE html><html lang="en">
+  <head><!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-87129300-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-87129300-1');
+		
+	</script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Internal Structure Of Elasticsearch Java High-Level REST Client - Mincong Huang</title>
+
+<meta name="description" content="This article explores the implementation of Elasticsearch Java High-Level REST Client (HLRC) by analyzing the structure of the client, the dependencies, the ...">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Internal Structure Of Elasticsearch Java High-Level REST Client | Mincong Huang</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Internal Structure Of Elasticsearch Java High-Level REST Client" />
+<meta name="author" content="Mincong Huang" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="This article explores the implementation of Elasticsearch Java High-Level REST Client (HLRC) by analyzing the structure of the client, the dependencies, the error handling mechanism, serialization, its observability, and more." />
+<meta property="og:description" content="This article explores the implementation of Elasticsearch Java High-Level REST Client (HLRC) by analyzing the structure of the client, the dependencies, the error handling mechanism, serialization, its observability, and more." />
+<link rel="canonical" href="https://mincong.io/en/elasticsearch-hlrc/" />
+<meta property="og:url" content="https://mincong.io/en/elasticsearch-hlrc/" />
+<meta property="og:site_name" content="Mincong Huang" />
+<meta property="og:image" content="https://mincong.io/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-01-23T15:47:40+01:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://mincong.io/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg" />
+<meta property="twitter:title" content="Internal Structure Of Elasticsearch Java High-Level REST Client" />
+<meta name="twitter:site" content="@mincong_h" />
+<meta name="twitter:creator" content="@mincong_h" />
+<script type="application/ld+json">
+{"image":"https://mincong.io/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg","headline":"Internal Structure Of Elasticsearch Java High-Level REST Client","description":"This article explores the implementation of Elasticsearch Java High-Level REST Client (HLRC) by analyzing the structure of the client, the dependencies, the error handling mechanism, serialization, its observability, and more.","datePublished":"2022-01-23T15:47:40+01:00","dateModified":"2022-01-23T15:47:40+01:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/elasticsearch-hlrc/"},"url":"https://mincong.io/en/elasticsearch-hlrc/","author":{"@type":"Person","name":"Mincong Huang"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<!-- Extra Open Graph :: Start -->
+
+<meta property="og:image:width" content="1280"/>
+<meta property="og:image:height" content="840"/>
+
+<!-- Extra Open Graph :: End -->
+
+<link rel="canonical" href="https://mincong.io/en/elasticsearch-hlrc/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+
+<meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
+
+<meta name="theme-color" content="#ffffff">
+<!-- end favicons snippet --><link rel="stylesheet" href="/assets/css/main.css"><link rel="stylesheet" href="/assets/css/font-awesome-5.15.1-all.min.css" ><!-- start custom head snippets -->
+
+<!-- end custom head snippets -->
+<script>(function() {
+  window.isArray = function(val) {
+    return Object.prototype.toString.call(val) === '[object Array]';
+  };
+  window.isString = function(val) {
+    return typeof val === 'string';
+  };
+
+  window.hasEvent = function(event) {
+    return 'on'.concat(event) in window.document;
+  };
+
+  window.isOverallScroller = function(node) {
+    return node === document.documentElement || node === document.body || node === window;
+  };
+
+  window.isFormElement = function(node) {
+    var tagName = node.tagName;
+    return tagName === 'INPUT' || tagName === 'SELECT' || tagName === 'TEXTAREA';
+  };
+
+  window.pageLoad = (function () {
+    var loaded = false, cbs = [];
+    window.addEventListener('load', function () {
+      var i;
+      loaded = true;
+      if (cbs.length > 0) {
+        for (i = 0; i < cbs.length; i++) {
+          cbs[i]();
+        }
+      }
+    });
+    return {
+      then: function(cb) {
+        cb && (loaded ? cb() : (cbs.push(cb)));
+      }
+    };
+  })();
+})();
+(function() {
+  window.throttle = function(func, wait) {
+    var args, result, thisArg, timeoutId, lastCalled = 0;
+
+    function trailingCall() {
+      lastCalled = new Date;
+      timeoutId = null;
+      result = func.apply(thisArg, args);
+    }
+    return function() {
+      var now = new Date,
+        remaining = wait - (now - lastCalled);
+
+      args = arguments;
+      thisArg = this;
+
+      if (remaining <= 0) {
+        clearTimeout(timeoutId);
+        timeoutId = null;
+        lastCalled = now;
+        result = func.apply(thisArg, args);
+      } else if (!timeoutId) {
+        timeoutId = setTimeout(trailingCall, remaining);
+      }
+      return result;
+    };
+  };
+})();
+(function() {
+  var Set = (function() {
+    var add = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (data[i] === item) {
+          return;
+        }
+      }
+      this.size ++;
+      data.push(item);
+      return data;
+    };
+
+    var Set = function(data) {
+      this.size = 0;
+      this._data = [];
+      var i;
+      if (data.length > 0) {
+        for (i = 0; i < data.length; i++) {
+          add.call(this, data[i]);
+        }
+      }
+    };
+    Set.prototype.add = add;
+    Set.prototype.get = function(index) { return this._data[index]; };
+    Set.prototype.has = function(item) {
+      var i, data = this._data;
+      for (i = 0; i < data.length; i++) {
+        if (this.get(i) === item) {
+          return true;
+        }
+      }
+      return false;
+    };
+    Set.prototype.is = function(map) {
+      if (map._data.length !== this._data.length) { return false; }
+      var i, j, flag, tData = this._data, mData = map._data;
+      for (i = 0; i < tData.length; i++) {
+        for (flag = false, j = 0; j < mData.length; j++) {
+          if (tData[i] === mData[j]) {
+            flag = true;
+            break;
+          }
+        }
+        if (!flag) { return false; }
+      }
+      return true;
+    };
+    Set.prototype.values = function() {
+      return this._data;
+    };
+    return Set;
+  })();
+
+  window.Lazyload = (function(doc) {
+    var queue = {js: [], css: []}, sources = {js: {}, css: {}}, context = this;
+    var createNode = function(name, attrs) {
+      var node = doc.createElement(name), attr;
+      for (attr in attrs) {
+        if (attrs.hasOwnProperty(attr)) {
+          node.setAttribute(attr, attrs[attr]);
+        }
+      }
+      return node;
+    };
+    var end = function(type, url) {
+      var s, q, qi, cbs, i, j, cur, val, flag;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        s[url] = true;
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (cur.urls.has(url)) {
+            qi = cur, val = qi.urls.values();
+            qi && (cbs = qi.callbacks);
+            for (flag = true, j = 0; j < val.length; j++) {
+              cur = val[j];
+              if (!s[cur]) {
+                flag = false;
+              }
+            }
+            if (flag && cbs && cbs.length > 0) {
+              for (j = 0; j < cbs.length; j++) {
+                cbs[j].call(context);
+              }
+              qi.load = true;
+            }
+          }
+        }
+      }
+    };
+    var load = function(type, urls, callback) {
+      var s, q, qi, node, i, cur,
+        _urls = typeof urls === 'string' ? new Set([urls]) : new Set(urls), val, url;
+      if (type === 'js' || type ==='css') {
+        s = sources[type], q = queue[type];
+        for (i = 0; i < q.length; i++) {
+          cur = q[i];
+          if (_urls.is(cur.urls)) {
+            qi = cur;
+            break;
+          }
+        }
+        val = _urls.values();
+        if (qi) {
+          callback && (qi.load || qi.callbacks.push(callback));
+          callback && (qi.load && callback());
+        } else {
+          q.push({
+            urls: _urls,
+            callbacks: callback ? [callback] : [],
+            load: false
+          });
+          for (i = 0; i < val.length; i++) {
+            node = null, url = val[i];
+            if (s[url] === undefined) {
+              (type === 'js' ) && (node = createNode('script', { src: url }));
+              (type === 'css') && (node = createNode('link', { rel: 'stylesheet', href: url }));
+              if (node) {
+                node.onload = (function(type, url) {
+                  return function() {
+                    end(type, url);
+                  };
+                })(type, url);
+                (doc.head || doc.body).appendChild(node);
+                s[url] = false;
+              }
+            }
+          }
+        }
+      }
+    };
+    return {
+      js: function(url, callback) {
+        load('js', url, callback);
+      },
+      css: function(url, callback) {
+        load('css', url, callback);
+      }
+    };
+  })(this.document);
+})();
+</script><script>
+  (function() {
+    var TEXT_VARIABLES = {
+      version: '2.2.6',
+      sources: {
+        font_awesome: '/assets/css/font-awesome-5.15.1-all.min.css',
+        jquery: '/assets/js/jquery-3.6.0.min.js',
+        leancloud_js_sdk: '//cdn.jsdelivr.net/npm/leancloud-storage@3.13.2/dist/av-min.js',
+        chart: 'https://cdn.bootcss.com/Chart.js/2.7.2/Chart.bundle.min.js',
+        gitalk: {
+          js: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.js',
+          css: 'https://cdn.bootcss.com/gitalk/1.2.2/gitalk.min.css'
+        },
+        valine: 'https://unpkg.com/valine/dist/Valine.min.js',
+        mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
+        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+      },
+      site: {
+        toc: {
+          selectors: 'h1,h2,h3'
+        }
+      },
+      paths: {
+        search_js: '/assets/search.js'
+      }
+    };
+    window.TEXT_VARIABLES = TEXT_VARIABLES;
+  })();
+</script>
+</head>
+  <body>
+    <div class="root" data-is-touch="false">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+
+      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="header__title">
+        <div class="header__brand"><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24">
+<style type="text/css">
+	.st0{fill:#515151;}
+</style>
+<path class="st0" d="M1.7,22.3c5.7-5.7,11.3-5.7,17,0c3.3-3.3,3.5-5.3,0.8-6c2.7,0.7,3.5-1.1,2.3-5.6s-3.3-5.2-6.3-2.1
+	c3-3,2.3-5.2-2.1-6.3S7,1.8,7.7,4.6C7,1.8,5,2.1,1.7,5.3C7.3,11,7.3,16.7,1.7,22.3"/>
+</svg>
+
+          
+
+          
+          
+          
+
+          
+          
+          
+
+          
+          
+
+          
+          
+
+          <a href="/">Home</a>
+        </div><button class="button button--secondary button--circle search-button js-search-toggle">
+            <i class="fas fa-search"></i>
+          </button></div><nav class="navigation">
+        <ul><li class="navigation__item"><a href="/en/categories/">Categories</a></li><li class="navigation__item"><a href="/en/series/">Series</a></li><li class="navigation__item"><a href="/en/archive/">Archive</a></li><li class="navigation__item"><a href="/en/about/">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle"><i class="fas fa-search"></i></button></li><li>
+            <a href="/cn/">
+             <img src="/assets/flag-CN.png"
+                  alt=""
+                  class="naviation__lang_img">
+            </a>
+          </li>
+        </ul>
+      </nav></div>
+  </header>
+</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4)),url(/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg);background-color:#203028;"><div class="hero__content"><div class ="main">
+
+  
+  <div class="article__info clearfix">
+      <ul class="left-col menu">
+        <li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=elasticsearch">elasticsearch</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=java">java</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=rest">rest</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=api">api</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=system-design">system-design</a>
+            </li>
+
+        <li class="separator">|</li>
+          
+            <li>
+              <a class="button button--circle button--primary focus lang"
+                 href="/en/elasticsearch-hlrc/"><span>EN</span></a>
+
+              
+
+
+
+
+
+
+              
+
+              
+            </li>
+          
+        
+      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jan 23, 2022</span>
+            </li></ul></div><div class="article__header"><header><h1>Internal Structure Of Elasticsearch Java High-Level REST Client</h1></header></div><div class="article__header">
+                        <p class="overlay__excerpt">How is it implemented and what can we learn from it?</p>
+                      </div><div class="article__info clearfix">
+  <ul class="left-col menu">
+    <li>
+      <i class="fas fa-camera"></i>
+      
+      Photo by
+      <a href="https://unsplash.com/@asthetik" target="_blank">Mike Kenneally</a>
+      
+      on
+      <a href="https://unsplash.com/license" target="_blank">Unplash </a>
+    </li>
+  </ul>
+</div>
+</div></div>
+              </div>
+            </div><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet -->
+<article><meta itemprop="headline" content="Internal Structure Of Elasticsearch Java High-Level REST Client"><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-01-23T15:47:40+01:00">
+    <meta itemprop="keywords" content="elasticsearch,java,rest,api,system-design"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><h2 id="introduction">Introduction</h2>
+
+<p>The <a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html">Elasticsearch Java High-Level REST
+Client</a>
+was <a href="https://www.elastic.co/fr/blog/the-elasticsearch-java-high-level-rest-client-is-out">out in
+2017</a>
+as the replacement of the classical native Java Client (also known as the
+Transport Client). This client can be used for communicating to the
+Elasticsearch cluster via RESTful API. During my side project <a href="/en/series/dvf/">DVF - Demande de
+Valeurs Foncières</a>, I had the chance to use this client to
+index documents in Elasticsearch and search them. Then recently, I need to create an internal API
+client for our team to communicate with a Java backend service. That’s why
+I am interested in the implementation of
+Elasticsearch’s REST client and want to get some
+inspiration from it. If you are a Java developer, a database administrator
+(DBA), or a regular user of Elasticsearch, this article is also for you:
+it can help you to better understand the design of this client and the different
+aspects of an API library.</p>
+
+<p>After reading this article, you will understand:</p>
+
+<ul>
+  <li>The client and sub-clients</li>
+  <li>The structure of the Java package</li>
+  <li>Its dependencies</li>
+  <li>Error handling mechanism</li>
+  <li>JSON serialization and deserialization</li>
+  <li>Asynchronous processing</li>
+  <li>Observability</li>
+</ul>
+
+<p>By the way, this article is written with the source code of Elasticsearch
+v7.16.2 and Java 16. And to simplify the naming, you will see the acronym
+“HLRC”, which means High-Level REST Client. Now, let’s get started!</p>
+
+<h2 id="client">Client</h2>
+
+<p>To initialize a <code class="language-plaintext highlighter-rouge">RestHighLevelClient</code> instance, you need a REST low-level client
+builder to be built as follows:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">RestClient</span><span class="o">.</span><span class="na">builder</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">HttpHost</span><span class="o">(</span><span class="s">"localhost"</span><span class="o">,</span> <span class="mi">9200</span><span class="o">,</span> <span class="s">"http"</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">HttpHost</span><span class="o">(</span><span class="s">"localhost"</span><span class="o">,</span> <span class="mi">9201</span><span class="o">,</span> <span class="s">"http"</span><span class="o">));</span>
+
+<span class="k">try</span> <span class="o">(</span><span class="kt">var</span> <span class="n">restClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RestHighLevelClient</span><span class="o">(</span><span class="n">builder</span><span class="o">))</span> <span class="o">{</span>
+  <span class="c1">// implement logic here</span>
+  <span class="kt">var</span> <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">indices</span><span class="o">().</span><span class="na">create</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="nc">RequestOptions</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">);</span>
+  <span class="o">...</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// handle exception here</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="builder">Builder</h3>
+
+<p>As you can see from the initialization, Elasticsearch High-Level REST Client
+(HLRC) uses a <a href="https://refactoring.guru/design-patterns/builder/java/example">builder
+pattern</a> to build
+the client. This builder allows us to set
+a lot of parameters that are used for each HTTP request, or in general, allows
+us to set configurations that are valid during the entire lifecycle of the API
+client. Here are some examples:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">setDefaultHeaders</code> – the default HTTP request headers that will be sent
+along with each HTTP request</li>
+  <li><code class="language-plaintext highlighter-rouge">setFailureListener</code> – to be notified for each request failure</li>
+  <li><code class="language-plaintext highlighter-rouge">setCompressionEnable</code> – whether the request should be compressed using gzip
+content</li>
+</ul>
+
+<p>Thanks to this builder class, we can set configuration easily in a
+single place – inside the class whether we construct the API client. Each
+parameter has its method, served as a named parameter. In Java, we don’t have
+named parameters, so this is an excellent alternative. The presence of the
+builder also makes the signature of the API client constructor simple. this is
+also extensive for Elasticsearch developers – when they need more parameters,
+they just need to add those parameters in the builder without breaking the
+<code class="language-plaintext highlighter-rouge">RestHighLevelClient</code>.</p>
+
+<h3 id="closeable">Closeable</h3>
+
+<p>The client is auto-closeable. It means that a user can use it with the concise
+try-with-resources syntax in Java because the actual closing logic is delegated
+to HLRC.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">try</span> <span class="o">(</span><span class="kt">var</span> <span class="n">restClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RestHighLevelClient</span><span class="o">(</span><span class="n">builder</span><span class="o">))</span> <span class="o">{</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Going further into this direction, we can see that the closing logic is simple:
+it just calls the underlying client <code class="language-plaintext highlighter-rouge">CloseableHttpAsyncClient</code>, a class from
+the HTTP async Client (org.apache.httpcomponents:httpasyncclient:4.1.4), one
+of the <a href="https://github.com/apache/httpcomponents-client">Apache HttpComponents
+Client</a>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">close</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+   <span class="n">client</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="sub-clients">Sub-clients</h3>
+
+<p>Elasticsearch is a complex ecosystem these days. There are many modules in it:
+cluster, core, index-lifecycle, cross-cluster replication (CCR), search,
+analytics, security, snapshot lifecycle management (SLM), … There is no way
+that all APIs can fit inside one single client. To better organize the code,
+Elasticsearch groups the APIs by domain inside the <code class="language-plaintext highlighter-rouge">RestHighLevelClient</code>, so
+that the interaction with that one domain is handled specifically by the domain
+sub-client. Here is the code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">RestHighLevelClient</span> <span class="kd">implements</span> <span class="nc">Closeable</span> <span class="o">{</span>
+
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">IndicesClient</span> <span class="n">indicesClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IndicesClient</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">ClusterClient</span> <span class="n">clusterClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ClusterClient</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">IngestClient</span> <span class="n">ingestClient</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">IngestClient</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+  <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>As you may see, each sub-client is instantiated using the instance of the
+rest client, such as <code class="language-plaintext highlighter-rouge">new IndicesClient(this)</code>. This is because the sub-client does
+not handle the actual HTTP request, it asks the low-level rest client to do it. This is a
+smart choice because, at the low level, the domain notion is gone – it’s just a
+matter of sending the JSON payload from the client to the server and waiting for the
+response. Then, inside the sub-client, there is a pointer to the original class:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">class</span> <span class="nc">IndicesClient</span> <span class="o">{</span>
+   <span class="kd">private</span> <span class="kd">final</span> <span class="nc">RestHighLevelClient</span> <span class="n">restHighLevelClient</span><span class="o">;</span>
+
+   <span class="nc">IndicesClient</span><span class="o">(</span><span class="nc">RestHighLevelClient</span> <span class="n">restHighLevelClient</span><span class="o">)</span> <span class="o">{</span>
+       <span class="k">this</span><span class="o">.</span><span class="na">restHighLevelClient</span> <span class="o">=</span> <span class="n">restHighLevelClient</span><span class="o">;</span>
+   <span class="o">}</span>
+   <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>From a user point of view, the API can be accessed as follows:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">client</span><span class="o">.</span><span class="na">indices</span><span class="o">().</span><span class="na">create</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="nc">RequestOptions</span><span class="o">.</span><span class="na">DEFAULT</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>And inside the create method, the implementation is:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">CreateIndexResponse</span> <span class="nf">create</span><span class="o">(</span>
+  <span class="nc">CreateIndexRequest</span> <span class="n">createIndexRequest</span><span class="o">,</span>
+  <span class="nc">RequestOptions</span> <span class="n">options</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+  <span class="k">return</span> <span class="n">restHighLevelClient</span><span class="o">.</span><span class="na">performRequestAndParseEntity</span><span class="o">(</span>
+      <span class="n">createIndexRequest</span><span class="o">,</span>
+      <span class="nl">IndicesRequestConverters:</span><span class="o">:</span><span class="n">createIndex</span><span class="o">,</span>
+      <span class="n">options</span><span class="o">,</span>
+      <span class="nl">CreateIndexResponse:</span><span class="o">:</span><span class="n">fromXContent</span><span class="o">,</span>
+      <span class="n">emptySet</span><span class="o">()</span>
+  <span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>where the wrapper class <code class="language-plaintext highlighter-rouge">InidicesClient</code> just calls the rest client to perform
+the actual HTTP request. More precisely, the rest client performs the HTTP
+request using the given input structure (<code class="language-plaintext highlighter-rouge">CreateIndexRequest</code>), the
+converter <code class="language-plaintext highlighter-rouge">IndicesRequestConverters</code> for JSON serialization, alongside the
+given request options. Then, when receiving the response, it uses the method
+<code class="language-plaintext highlighter-rouge">fromXContent</code> to deserialize the JSON content back to the Java structure.</p>
+
+<p>From my point of view, having sub-clients is a brilliant idea. It is extremely
+useful when the server APIs grow and become more complex. Having these
+sub-clients allows the framework developers (the Elastic employees or community
+contributors) to:</p>
+
+<ol>
+  <li>Avoid a giant class containing all the logic.</li>
+  <li>Decouple the business logic (high-level) and the actual API logic
+(low-level), where the business logic is delegated to different sub-client,
+specific to a target module (index, cluster, snapshot, …) and let the rest
+client itself to handle the low-level HTTP request and response.</li>
+  <li>It increases significantly the readability of the code.</li>
+</ol>
+
+<h2 id="packaging">Packaging</h2>
+
+<p>As a library, how is the High-Level REST Client (HLRC) organized? What can we
+learn from it? Since Elasticsearch is open-source, let’s go to the source code
+and find it out. 👀</p>
+
+<h3 id="request-and-response">Request And Response</h3>
+
+<p>From the following <code class="language-plaintext highlighter-rouge">tree</code> command, we can see that the request and response
+representations are stored inside a package, specific to the given domain, like
+asynchronous search, cluster, core, etc.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  elasticsearch git:(v7.16.2-rest-client u=) tree -P 'cluster|core|asyncsearch' --matchdirs -L 2 client/rest-high-level/src/main/java/org/elasticsearch/client | head -n 20
+client/rest-high-level/src/main/java/org/elasticsearch/client
+├── analytics
+├── asyncsearch
+│   ├── AsyncSearchResponse.java
+│   ├── DeleteAsyncSearchRequest.java
+│   ├── GetAsyncSearchRequest.java
+│   └── SubmitAsyncSearchRequest.java
+├── ccr
+├── cluster
+│   ├── ProxyModeInfo.java
+│   ├── RemoteConnectionInfo.java
+│   ├── RemoteInfoRequest.java
+│   ├── RemoteInfoResponse.java
+│   └── SniffModeInfo.java
+├── common
+├── core
+│   ├── AcknowledgedResponse.java
+│   ├── BroadcastResponse.java
+│   ├── CountRequest.java
+│   ├── CountResponse.java
+</code></pre></div></div>
+
+<p>This is a good idea because it provides a clear separation between different
+modules and ensure that the structure remains clear when the business grows –
+i.e. when we will have more and more modules in the API client.</p>
+
+<p>However, there is a counter-example – the machine learning (ML) package,
+which contains 107 files, most of them are structures of request and response.
+Maybe it’s time for Elasticsearch to split them into a better structure, i.e.
+multiple sub-domains for machine learning.</p>
+
+<h3 id="other-classes">Other Classes</h3>
+
+<p>Sub-clients and converters are stored directly inside the root directory. There
+are other classes as well but let’s focus on sub-clients and converters first.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  elasticsearch git:(v7.16.2-rest-client u=) tree -I '*Request.java|*Response.java' -L 1 client/rest-high-level/src/main/java/org/elasticsearch/client | head
+client/rest-high-level/src/main/java/org/elasticsearch/client
+├── AsyncSearchClient.java
+├── AsyncSearchRequestConverters.java
+├── CcrClient.java
+├── CcrRequestConverters.java
+├── ClusterClient.java
+├── ClusterRequestConverters.java
+├── EnrichClient.java
+├── EnrichRequestConverters.java
+├── EqlClient.java
+</code></pre></div></div>
+
+<p>I am not sure why they are not stored inside the domain packages. Putting them
+into sub-packages could simplify the structure of the root package
+(<code class="language-plaintext highlighter-rouge">org.elasticsearch.client</code>).
+Perhaps it has to be in the root package because the conversion methods are
+package-private (without <code class="language-plaintext highlighter-rouge">private</code>, <code class="language-plaintext highlighter-rouge">public</code> modifiers), so they have to be in
+the same Java package of the rest client so that they can be used during the
+HTTP request handling.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+
+<p><em>What are the dependencies used by this client?</em></p>
+
+<p>Understanding the list of dependencies is useful for software development. It
+gives us some hints about the structure of the client, its complexity, the
+potential vulnerabilities, classpath conflicts, etc. We can find the list using
+the <a href="https://riptutorial.com/gradle/example/10909/list-dependencies">Gradle dependency command</a>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gradle &lt;subproject&gt;:dependencies
+</code></pre></div></div>
+
+<p>in our case, it is:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  elasticsearch git:(v7.16.2-rest-client u=) ./gradlew client:rest-high-level:dependencies
+</code></pre></div></div>
+
+<p>Here we can see the dependencies used by the compile classpath. There are
+dependencies coming from Elasticsearch, dependencies from Jackson for
+serialization, dependencies from Log4J for logging, and dependencies from Apache
+HTTP for HTTP requests, etc.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>compileClasspath - Compile classpath for source set 'main'.
++--- project :server
+|    +--- project :libs:elasticsearch-core
+|    +--- project :libs:elasticsearch-secure-sm
+|    +--- project :libs:elasticsearch-x-content
+|    |    +--- project :libs:elasticsearch-core
+|    |    +--- org.yaml:snakeyaml:1.26
+|    |    +--- com.fasterxml.jackson.core:jackson-core:2.10.4
+|    |    +--- com.fasterxml.jackson.dataformat:jackson-dataformat-smile:2.10.4
+|    |    +--- com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.4
+|    |    \--- com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.10.4
+|    +--- project :libs:elasticsearch-geo
+|    +--- project :libs:elasticsearch-lz4
+|    |    +--- org.lz4:lz4-java:1.8.0
+|    |    \--- project :libs:elasticsearch-core
+|    +--- org.apache.lucene:lucene-core:8.10.1
+|    +--- org.apache.lucene:lucene-analyzers-common:8.10.1
+|    +--- org.apache.lucene:lucene-backward-codecs:8.10.1
+|    +--- org.apache.lucene:lucene-grouping:8.10.1
+|    +--- org.apache.lucene:lucene-highlighter:8.10.1
+|    +--- org.apache.lucene:lucene-join:8.10.1
+|    +--- org.apache.lucene:lucene-memory:8.10.1
+|    +--- org.apache.lucene:lucene-misc:8.10.1
+|    +--- org.apache.lucene:lucene-queries:8.10.1
+|    +--- org.apache.lucene:lucene-queryparser:8.10.1
+|    +--- org.apache.lucene:lucene-sandbox:8.10.1
+|    +--- org.apache.lucene:lucene-spatial3d:8.10.1
+|    +--- org.apache.lucene:lucene-suggest:8.10.1
+|    +--- project :libs:elasticsearch-cli
+|    |    +--- net.sf.jopt-simple:jopt-simple:5.0.2
+|    |    \--- project :libs:elasticsearch-core
+|    +--- com.carrotsearch:hppc:0.8.1
+|    +--- joda-time:joda-time:2.10.10
+|    +--- com.tdunning:t-digest:3.2
+|    +--- org.hdrhistogram:HdrHistogram:2.1.9
+|    +--- org.apache.logging.log4j:log4j-api:2.17.0
+|    +--- org.apache.logging.log4j:log4j-core:2.17.0
+|    \--- net.java.dev.jna:jna:5.10.0
++--- project :client:rest
+|    +--- org.apache.httpcomponents:httpclient:4.5.10
+|    +--- org.apache.httpcomponents:httpcore:4.4.12
+|    +--- org.apache.httpcomponents:httpasyncclient:4.1.4
+|    +--- org.apache.httpcomponents:httpcore-nio:4.4.12
+|    +--- commons-codec:commons-codec:1.11
+|    \--- commons-logging:commons-logging:1.1.3
++--- project :modules:mapper-extras
++--- project :modules:parent-join
++--- project :modules:aggs-matrix-stats
++--- project :modules:rank-eval
+\--- project :modules:lang-mustache
+     \--- com.github.spullara.mustache.java:compiler:0.9.6
+</code></pre></div></div>
+
+<h2 id="serialization">Serialization</h2>
+
+<p><em>How to serialize Java request into JSON and deserialize it from JSON to Java?</em></p>
+
+<h3 id="xcontent">XContent</h3>
+
+<p>In Elasticsearch, <code class="language-plaintext highlighter-rouge">XContent</code> is a generic abstraction for content handling,
+inspired by JSON and pull parsing. There are 4 types of XContent:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Type</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">JSON</td>
+      <td style="text-align: left">A JSON based content type.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">SMILE</td>
+      <td style="text-align: left">The jackson based smile binary format. Fast and compact binary format.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">YAML</td>
+      <td style="text-align: left">A YAML based content type.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">CBOR</td>
+      <td style="text-align: left">A CBOR based content type.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>In our case, we are mostly interested in the JSON content type.</p>
+
+<h3 id="serialization-1">Serialization</h3>
+
+<p>The serialization of the request is handled by the converters. There are many of
+them, perhaps one per domain (sub-client). Their naming convention is the name
+of the domain, followed by the suffix <code class="language-plaintext highlighter-rouge">*Converters.java</code>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>source: org.elasticsearch.client.{domain}.XxxRequest
+target: org.elasticsearch.client.Request
+</code></pre></div></div>
+
+<p>In each converter, you can find a manual process for converting each field of a
+domain-specific request into a low-level HTTP request.</p>
+
+<h3 id="deserialization">Deserialization</h3>
+
+<p>On the other side, there is a <code class="language-plaintext highlighter-rouge">fromXContent(XContentParser parser)</code> method for
+deserialization. You can from it in the domain-specific response, which allows
+parsing the low-level JSON response back to a high-level response in Java.</p>
+
+<p>Here is an example from the Cluster Health API:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">ClusterHealthResponse</span> <span class="nf">health</span><span class="o">(</span><span class="nc">ClusterHealthRequest</span> <span class="n">healthRequest</span><span class="o">,</span> <span class="nc">RequestOptions</span> <span class="n">options</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="n">restHighLevelClient</span><span class="o">.</span><span class="na">performRequestAndParseEntity</span><span class="o">(</span>
+        <span class="n">healthRequest</span><span class="o">,</span> <span class="c1">// domain-specific request</span>
+        <span class="nl">ClusterRequestConverters:</span><span class="o">:</span><span class="n">clusterHealth</span><span class="o">,</span> <span class="c1">// serialization</span>
+        <span class="n">options</span><span class="o">,</span>
+        <span class="nl">ClusterHealthResponse:</span><span class="o">:</span><span class="n">fromXContent</span><span class="o">,</span> <span class="c1">// deserialization</span>
+        <span class="n">singleton</span><span class="o">(</span><span class="nc">RestStatus</span><span class="o">.</span><span class="na">REQUEST_TIMEOUT</span><span class="o">.</span><span class="na">getStatus</span><span class="o">())</span>
+    <span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="error-handling">Error Handling</h2>
+
+<p>According to the Javadoc of the HTTP response listener, there are two main
+categories of failures: connection failures (usually I/O exception), or
+responses that were treated as errors based on their error response code as
+<code class="language-plaintext highlighter-rouge">ResponseException</code>.</p>
+
+<h3 id="ioexception">IOException</h3>
+
+<p>The I/O exception is thrown during the execution of the HTTP request, in case of
+a problem or the connection was aborted. Unfortunately, I didn’t find out more
+information about this part. If you know more details about it, please let me
+know.</p>
+
+<h3 id="responseexception">ResponseException</h3>
+
+<p>Response exception is an exception thrown when an Elasticsearch node responds to
+a request with a status code that indicates an error. It holds the response that
+was returned. Its message contains the HTTP method, the host name, the URI, and
+the status line (protocol version, status code, and the reason), the list of
+warnings if there is any, and finally the entity of the HTTP response. Here is
+the structure:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>method [{method}], host [{host}], URI [{uri}], status line [{status}]
+Warnings: {warnings}
+{entity}
+</code></pre></div></div>
+
+<p>A response exception is constructed after having received the HTTP response in
+the low-level RESTful client. You can see that in the following code block
+(after the try-catch statement):</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">private</span> <span class="nc">Response</span> <span class="nf">performRequest</span><span class="o">(</span><span class="kd">final</span> <span class="nc">NodeTuple</span><span class="o">&lt;</span><span class="nc">Iterator</span><span class="o">&lt;</span><span class="nc">Node</span><span class="o">&gt;&gt;</span> <span class="n">tuple</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">InternalRequest</span> <span class="n">request</span><span class="o">,</span> <span class="nc">Exception</span> <span class="n">previousException</span><span class="o">)</span>
+    <span class="kd">throws</span> <span class="nc">IOException</span> <span class="o">{</span>
+    <span class="nc">RequestContext</span> <span class="n">context</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">createContextForNextAttempt</span><span class="o">(</span><span class="n">tuple</span><span class="o">.</span><span class="na">nodes</span><span class="o">.</span><span class="na">next</span><span class="o">(),</span> <span class="n">tuple</span><span class="o">.</span><span class="na">authCache</span><span class="o">);</span>
+    <span class="nc">HttpResponse</span> <span class="n">httpResponse</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">httpResponse</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">context</span><span class="o">.</span><span class="na">requestProducer</span><span class="o">,</span> <span class="n">context</span><span class="o">.</span><span class="na">asyncResponseConsumer</span><span class="o">,</span> <span class="n">context</span><span class="o">.</span><span class="na">context</span><span class="o">,</span> <span class="kc">null</span><span class="o">).</span><span class="na">get</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">Exception</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+    <span class="c1">// Note: conversion happens here</span>
+    <span class="nc">ResponseOrResponseException</span> <span class="n">responseOrResponseException</span> <span class="o">=</span> <span class="n">convertResponse</span><span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">context</span><span class="o">.</span><span class="na">node</span><span class="o">,</span> <span class="n">httpResponse</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">responseOrResponseException</span><span class="o">.</span><span class="na">responseException</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">responseOrResponseException</span><span class="o">.</span><span class="na">response</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="runtimeexception">RuntimeException</h3>
+
+<p>It is also possible that the client throws a runtime exception. From what I
+see, it happens in at least the two following cases: when the input argument is
+invalid and when the parsing failed during the deserialization.</p>
+
+<p>When the input argument is incorrect, such as giving a negative value to a field
+that requires a positive number, it raises a runtime exception:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">HeapBufferedAsyncResponseConsumer</span><span class="o">(</span><span class="kt">int</span> <span class="n">bufferLimit</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">bufferLimit</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">"bufferLimit must be greater than 0"</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="k">this</span><span class="o">.</span><span class="na">bufferLimitBytes</span> <span class="o">=</span> <span class="n">bufferLimit</span><span class="o">;</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Another case in the XContent parsing:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">XContentParser</span><span class="o">.</span><span class="na">Token</span> <span class="n">token</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">parser</span><span class="o">.</span><span class="na">currentToken</span><span class="o">()</span> <span class="o">!=</span> <span class="nc">XContentParser</span><span class="o">.</span><span class="na">Token</span><span class="o">.</span><span class="na">START_OBJECT</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="na">nextToken</span><span class="o">();</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">token</span> <span class="o">!=</span> <span class="nc">XContentParser</span><span class="o">.</span><span class="na">Token</span><span class="o">.</span><span class="na">START_OBJECT</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">ParsingException</span><span class="o">(</span><span class="n">parser</span><span class="o">.</span><span class="na">getTokenLocation</span><span class="o">(),</span> <span class="s">"Failed to parse object: Expected START_OBJECT but was: "</span> <span class="o">+</span> <span class="n">token</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="exception-retry">Exception Retry</h3>
+
+<p>Elasticsearch HLRC may connect to multiple nodes of a given cluster. It selects
+a host out of the provided ones in a round-robin fashion. Failing hosts are
+marked dead and retried after a certain amount of time (minimum 1 minute,
+maximum 30 minutes), depending on how many times they priviously failed (the more
+failures, the later they will be retried). In case of failures, all of the alive
+nodes (or dead nodes that deserve a retry) are retried until one responds or
+none of them does, in which case an <code class="language-plaintext highlighter-rouge">IOException</code> will be thrown.</p>
+
+<p>To mark a node as dead, the client reads the status code returned by the HTTP
+response and determines if it is one of the following codes (<code class="language-plaintext highlighter-rouge">isRetryStatus</code>): <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502">502 Bad
+Gateway</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503">503
+Service
+Unavailable</a>, and
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504">504 Gateway
+Timeout</a>. If yes,
+then the host is marked as dead. Otherwise, the host is marked alive and the request
+won’t be retried as the error should be a request problem. We can find the logic
+inside the response conversion method of the low-level RESTful client:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">ResponseException</span> <span class="n">responseException</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ResponseException</span><span class="o">(</span><span class="n">response</span><span class="o">);</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">isRetryStatus</span><span class="o">(</span><span class="n">statusCode</span><span class="o">))</span> <span class="o">{</span>
+    <span class="c1">// mark host dead and retry against next one</span>
+    <span class="n">onFailure</span><span class="o">(</span><span class="n">node</span><span class="o">);</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">ResponseOrResponseException</span><span class="o">(</span><span class="n">responseException</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="c1">// mark host alive and don't retry, as the error should be a request problem</span>
+<span class="n">onResponse</span><span class="o">(</span><span class="n">node</span><span class="o">);</span>
+<span class="k">throw</span> <span class="n">responseException</span><span class="o">;</span>
+</code></pre></div></div>
+
+<h2 id="testing">Testing</h2>
+
+<p><em>How is the source code tested?</em></p>
+
+<p>There are several types of tests in this package: unit tests for a given method,
+unit tests with a mock HTTP server, and integration tests with a real
+Elasticsearch environment. In this section, we are going to take a quick look
+into them.</p>
+
+<h3 id="unit-test">Unit Test</h3>
+
+<p>Unit tests are stored in files having the name <code class="language-plaintext highlighter-rouge">*Tests.java</code> in the Git repository.
+If I take <code class="language-plaintext highlighter-rouge">RestClientBuilderTests</code> as an example, we can see that it tests the
+input validation of the builder. That is, the builder should raise an example
+when the input argument is not valid: hosts must not be null nor empty, default
+headers must not be null, etc. These tests are simple unit tests without an HTTP
+server.</p>
+
+<h3 id="mock-http-server">Mock HTTP Server</h3>
+
+<p>Some tests are specific for validating a given HTTP behavior. For example,
+the <code class="language-plaintext highlighter-rouge">RestClientGzipCompressionTests</code>, which validates the Gzip compression.
+These tests are also considered as unit tests in Elasticsearch, since their
+filenames also end with <code class="language-plaintext highlighter-rouge">*Tests.java</code>. In the example of Gzip tests, the test
+suite sets up an HTTP server (<code class="language-plaintext highlighter-rouge">com.sun.net.httpserver.HttpServer</code>) with a Gzip
+response handler. The test suite ensure that the low-level REST client handles
+the compression correctly according to the client options
+(<code class="language-plaintext highlighter-rouge">setCompressionEnabled(boolean)</code>).</p>
+
+<h3 id="integration-test">Integration Test</h3>
+
+<p>Integration tests are stored in files having the name <code class="language-plaintext highlighter-rouge">*IntegTests.java</code> or
+<code class="language-plaintext highlighter-rouge">*IT.java</code>. They extend the class <code class="language-plaintext highlighter-rouge">ESRestTestCase</code> which can talk to a real
+Elasticsearch cluster with a list of hosts. The high-level client wraps the
+low-level client and the low-level client connects to those <code class="language-plaintext highlighter-rouge">clusterHosts</code>.
+Therefore, we can create a request, let it be handled by the cluster, and then
+assert the response.</p>
+
+<h2 id="observability">Observability</h2>
+
+<p>When running code in production, it’s important to have the possibility to observe
+the behavior of the source code, for troubleshooting problems or other purposes.
+In this section, we are going to discuss what the rest client offers us.</p>
+
+<h3 id="logging">Logging</h3>
+
+<p>The client contains a <code class="language-plaintext highlighter-rouge">RequestLogger</code>, which provides methods to log requests and
+responses. More precisely, it can log failed requests and successful or failed
+responses. In other words, a successful request won’t be logged until a response
+is returned – which makes sense, because having the request and response in the
+same log is more contextual, it provides more information for troubleshooting.</p>
+
+<p>The request logger can be used as follows:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">RequestLogger</span><span class="o">.</span><span class="na">logResponse</span><span class="o">(</span><span class="n">logger</span><span class="o">,</span> <span class="n">request</span><span class="o">.</span><span class="na">httpRequest</span><span class="o">,</span> <span class="n">node</span><span class="o">.</span><span class="na">getHost</span><span class="o">(),</span> <span class="n">httpResponse</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>As you can see, the logger is injected as the first input argument of the
+method. In this way, the logger used by the helper class <code class="language-plaintext highlighter-rouge">RequestLogger</code> is
+always to the logger of the caller. It facilitates the lookup of the failure
+since all the logs can be found by filtering one single class (logger).</p>
+
+<p>There are three levels of logs that are used inside the logger for logging HTTP
+responses:</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">WARN</code>: when warn level is enabled, the logger logs the warnings retrieved from
+the HTTP response header <code class="language-plaintext highlighter-rouge">Warning</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">DEBUG</code>: when debug level is enabled, the logger logs the debug HTTP request and
+response, including the method name, the host, the URI, and the status line
+from the response</li>
+  <li><code class="language-plaintext highlighter-rouge">TRACE</code>: when trace level is enabled, the internal tracer (another logger)
+will build a <code class="language-plaintext highlighter-rouge">curl</code> request so that you can reproduce the HTTP request
+directly in your terminal without using HLRC! 😲</li>
+</ul>
+
+<p>You can also find more information from the official documentation <a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.15/java-rest-low-usage-logging.html">Logging
+(7.15)</a>
+of Elasticsearch.</p>
+
+<h3 id="tracing">Tracing</h3>
+
+<p>If you need a tracing solution, I think there is no built-in solution. However, I
+saw that there is a third-party library that helps to do this: it’s the
+<a href="https://github.com/opentracing-contrib/java-elasticsearch-client">OpenTracing Elasticsearch Client
+Instrumentation</a>.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Instantiate tracer</span>
+<span class="nc">Tracer</span> <span class="n">tracer</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1">// Optionally register tracer with GlobalTracer</span>
+<span class="nc">GlobalTracer</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">tracer</span><span class="o">);</span>
+
+<span class="c1">// Build RestClient adding TracingHttpClientConfigCallback</span>
+<span class="kt">var</span> <span class="n">builder</span> <span class="o">=</span> <span class="nc">RestClient</span><span class="o">.</span><span class="na">builder</span><span class="o">(</span>
+    <span class="k">new</span> <span class="nf">HttpHost</span><span class="o">(</span><span class="s">"localhost"</span><span class="o">,</span> <span class="mi">9200</span><span class="o">,</span> <span class="s">"http"</span><span class="o">),</span>
+    <span class="k">new</span> <span class="nf">HttpHost</span><span class="o">(</span><span class="s">"localhost"</span><span class="o">,</span> <span class="mi">9201</span><span class="o">,</span> <span class="s">"http"</span><span class="o">))</span>
+<span class="o">.</span><span class="na">setHttpClientConfigCallback</span><span class="o">(</span><span class="k">new</span> <span class="nc">TracingHttpClientConfigCallback</span><span class="o">(</span><span class="n">tracer</span><span class="o">))</span>
+<span class="c1">// set more options...</span>
+</code></pre></div></div>
+
+<p>From what I see in the source code, the class <code class="language-plaintext highlighter-rouge">TracingHttpClientConfigCallback</code>
+implements the method of Elasticsearch’s HLRC interface
+<code class="language-plaintext highlighter-rouge">HttpClientConfigCallback</code>:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">HttpClientConfigCallback</span> <span class="o">{</span>
+    <span class="nc">HttpAsyncClientBuilder</span> <span class="nf">customizeHttpClient</span><span class="o">(</span><span class="nc">HttpAsyncClientBuilder</span> <span class="n">var1</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>in which it registers two interceptors into the rest client: an HTTP request
+interceptor and an HTTP response interceptor. More precisely, the HTTP request
+interceptor is registered at the <strong>last</strong> position of the HTTP request
+interceptor chain, while the HTTP response interceptor is registered at the
+<strong>first</strong> position of the HTTP response interceptor chain. This makes sense
+because we want to record the request only if it will be successfully sent and
+after all the modifications; as for the response, we want to record it as soon
+as possible before any modification, such as transforming the response into
+exception. Here is the source code:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@Override</span>
+  <span class="kd">public</span> <span class="nc">HttpAsyncClientBuilder</span> <span class="nf">customizeHttpClient</span><span class="o">(</span>
+      <span class="kd">final</span> <span class="nc">HttpAsyncClientBuilder</span> <span class="n">httpAsyncClientBuilder</span><span class="o">)</span> <span class="o">{</span>
+    <span class="o">...</span>
+    <span class="n">httpClientBuilder</span><span class="o">.</span><span class="na">addInterceptorLast</span><span class="o">((</span><span class="nc">HttpRequestInterceptor</span><span class="o">)</span> <span class="o">(</span><span class="n">request</span><span class="o">,</span> <span class="n">context</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="o">...</span> <span class="o">});</span>
+    <span class="n">httpClientBuilder</span><span class="o">.</span><span class="na">addInterceptorFirst</span><span class="o">((</span><span class="nc">HttpResponseInterceptor</span><span class="o">)</span> <span class="o">(</span><span class="n">response</span><span class="o">,</span> <span class="n">context</span><span class="o">)</span> <span class="o">-&gt;</span> <span class="o">{</span> <span class="o">...</span> <span class="o">});</span>
+    <span class="k">return</span> <span class="n">httpClientBuilder</span><span class="o">;</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="going-further">Going Further</h2>
+
+<p>How to go further from here?</p>
+
+<ul>
+  <li>If you want to learn more about Java High Level REST Client, visit the
+official documentation <a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.15/java-rest-high.html">Java High Level REST Client</a>.</li>
+  <li>If you want to learn more about the Java API Client, the replacement of Java
+High Level REST Client, visit the official documentation <a href="https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html">Elasticsearch Java
+API
+Client</a>.</li>
+  <li>If you want to learn more about the instrumentation of the Elasticsearch client,
+visit GitHub project <a href="https://github.com/opentracing-contrib/java-elasticsearch-client">OpenTracing Elasticsearch Client
+Instrumentation</a>.</li>
+  <li>If you are interested in other system-design articles, you can find them in my
+blog by filtering the <a href="/en/archive/?tag=system-design">system-design</a> tag. I
+wrote two posts last year related to Elasticsearch: the internal structure of
+a snapshot repository and the decision system for the shard allocation in
+Elasticsearch.</li>
+  <li>If you are interested in learning more design patterns, <a href="https://refactoring.guru/">Refactoring
+Guru</a> is an amazing website for you. It is visual
+and provides code examples in different programming languages.</li>
+  <li>To learn more about Apache HttpComponents Client, you can visit their project
+on <a href="https://github.com/apache/httpcomponents-client/">GitHub</a>.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this article, we explored the Java High-Level REST Client of Elasticsearch.
+We saw its client by visiting the builder pattern, the auto-closing behavior,
+and the domain-driven sub-client structure. We saw its packaging, including
+request, response, sub-client, and converters. We also saw its dependencies, its
+serialization and deserialization, and the error handling mechanism. Inside the
+error handling, we discussed different types of exceptions, their meaning, and how to
+retry. Then, we saw the testing part and the observability part of the client.
+Finally, I provided some resources for going further on this
+topic. Interested to know more? You can subscribe to <a href="/feed.xml">the feed of my blog</a>, follow me
+on <a href="https://twitter.com/mincong_h">Twitter</a> or
+<a href="https://github.com/mincong-h/">GitHub</a>. Hope you enjoy this article, see you the next time!</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://github.com/apache/httpcomponents-client">“Apache HttpComponents
+Client”</a>, <em>GitHub</em>, 2021.</li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status">“HTTP response status
+codes”</a>, <em>MDN Web
+Docs</em>, 2022.</li>
+  <li><a href="https://github.com/opentracing-contrib/java-elasticsearch-client">“OpenTracing Elasticsearch Client
+Instrumentation”</a>,
+<em>GitHub</em>, 2022.</li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-01-23T15:47:40+01:00"><!-- start custom article footer snippet -->
+
+
+  
+
+  
+
+  <div class="article__ads">
+    
+      <div id="ea-article"
+           data-ea-publisher="mincongio"
+           data-ea-keywords="elasticsearch|java|rest|api|system-design"
+           data-ea-type="image">
+    
+    </div>
+  </div>
+
+<!-- end custom article footer snippet -->
+<div class="article__subscribe"><div class="subscribe">
+  <i class="fas fa-rss"></i>
+  <a type="application/rss+xml" href="/feed.xml">Subscribe</a>
+</div></div><div class="article__license"><div class="license">
+    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International</a> license.
+      <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <img alt="Attribution 4.0 International" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/en/query-params-vue.js/">Adding Query Parameters in Vue.js</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
+</div><section class="page__comments d-print-none"><div id="disqus_thread"></div>
+  <script>
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  var disqus_config = function () {
+    this.page.url = 'https://mincong.io/en/elasticsearch-hlrc/';
+    this.page.identifier = '/en/elasticsearch-hlrc';
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mincong-h.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section></article><!-- start custom main bottom snippet -->
+
+<!-- end custom main bottom snippet -->
+</div>
+            </div></div></div><div class="page__footer d-print-none">
+<footer class="footer py-4 js-page-footer">
+  <div class="main"><div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mincong Huang"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
+  <ul class="menu menu--nowrap menu--inline"><li title="Send me an Email.">
+      <a class="button button--circle mail-button" itemprop="email" href="mailto:mincong.h@gmail.com" target="_blank">
+        <i class="fas fa-envelope"></i>
+      </a><li title="Follow me on Twitter.">
+        <a class="button button--circle twitter-button" itemprop="sameAs" href="https://twitter.com/mincong_h" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1024.032 194.432c-37.664 16.704-78.176 28-120.672 33.088 43.36-26.016 76.672-67.168 92.384-116.224-40.608 24.064-85.568 41.568-133.408 50.976-38.336-40.832-92.928-66.336-153.344-66.336-116.032 0-210.08 94.048-210.08 210.08 0 16.48 1.856 32.512 5.44 47.872-174.592-8.768-329.408-92.416-433.024-219.52-18.08 31.04-28.448 67.104-28.448 105.632 0 72.896 37.088 137.184 93.472 174.88-34.432-1.088-66.816-10.528-95.168-26.272-0.032 0.864-0.032 1.76-0.032 2.656 0 101.792 72.416 186.688 168.512 205.984-17.632 4.8-36.192 7.36-55.36 7.36-13.536 0-26.688-1.312-39.52-3.776 26.72 83.456 104.32 144.192 196.256 145.888-71.904 56.352-162.496 89.92-260.928 89.92-16.96 0-33.664-0.992-50.112-2.944 92.96 59.616 203.392 94.4 322.048 94.4 386.432 0 597.728-320.128 597.728-597.76 0-9.12-0.192-18.176-0.608-27.168 41.056-29.632 76.672-66.624 104.832-108.736z" />
+</svg>
+</div>
+        </a>
+      </li><li title="Follow me on Linkedin.">
+        <a class="button button--circle linkedin-button" itemprop="sameAs" href="https://www.linkedin.com/in/mincong-huang" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M260.096 155.648c0 27.307008-9.899008 50.516992-29.696 69.632-19.796992 19.115008-45.396992 28.672-76.8 28.672-30.036992 0-54.612992-9.556992-73.728-28.672-19.115008-19.115008-28.672-42.324992-28.672-69.632 0-28.672 9.556992-52.224 28.672-70.656 19.115008-18.432 44.372992-27.648 75.776-27.648 31.403008 0 56.32 9.216 74.752 27.648 18.432 18.432 28.331008 41.984 29.696 70.656 0 0 0 0 0 0m-202.752 808.96c0 0 0-632.832 0-632.832 0 0 196.608 0 196.608 0 0 0 0 632.832 0 632.832 0 0-196.608 0-196.608 0 0 0 0 0 0 0m313.344-430.08c0-58.708992-1.364992-126.292992-4.096-202.752 0 0 169.984 0 169.984 0 0 0 10.24 88.064 10.24 88.064 0 0 4.096 0 4.096 0 40.96-68.267008 105.812992-102.4 194.56-102.4 68.267008 0 123.220992 22.868992 164.864 68.608 41.643008 45.739008 62.464 113.664 62.464 203.776 0 0 0 374.784 0 374.784 0 0-196.608 0-196.608 0 0 0 0-350.208 0-350.208 0-91.476992-33.451008-137.216-100.352-137.216-47.787008 0-81.236992 24.576-100.352 73.728-4.096 8.192-6.144 24.576-6.144 49.152 0 0 0 364.544 0 364.544 0 0-198.656 0-198.656 0 0 0 0-430.08 0-430.08 0 0 0 0 0 0" />
+</svg>
+</div>
+        </a>
+      </li><li title="Follow me on Github.">
+        <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/mincong-h" target="_blank">
+          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path class="svgpath" data-index="path_0" fill="#272636" d="M0 525.2c0 223.6 143.3 413.7 343 483.5 26.9 6.8 22.8-12.4 22.8-25.4l0-88.7c-155.3 18.2-161.5-84.6-172-101.7-21.1-36-70.8-45.2-56-62.3 35.4-18.2 71.4 4.6 113.1 66.3 30.2 44.7 89.1 37.2 119 29.7 6.5-26.9 20.5-50.9 39.7-69.6C248.8 728.2 181.7 630 181.7 513.2c0-56.6 18.7-108.7 55.3-150.7-23.3-69.3 2.2-128.5 5.6-137.3 66.5-6 135.5 47.6 140.9 51.8 37.8-10.2 80.9-15.6 129.1-15.6 48.5 0 91.8 5.6 129.8 15.9 12.9-9.8 77-55.8 138.8-50.2 3.3 8.8 28.2 66.7 6.3 135 37.1 42.1 56 94.6 56 151.4 0 117-67.5 215.3-228.8 243.7 26.9 26.6 43.6 63.4 43.6 104.2l0 128.8c0.9 10.3 0 20.5 17.2 20.5C878.1 942.4 1024 750.9 1024 525.3c0-282.9-229.3-512-512-512C229.1 13.2 0 242.3 0 525.2L0 525.2z" />
+</svg>
+</div>
+        </a>
+      </li></ul>
+</div>
+</div>
+    </div><div class="site-info mt-2">
+      <div>© Mincong Huang 2021,
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a
+        title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.
+      </div>
+    </div>
+  </div>
+</footer>
+</div></div>
+    </div><script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $body = $('body'), $window = $(window);
+    var $pageRoot = $('.js-page-root'), $pageMain = $('.js-page-main');
+    var activeCount = 0;
+    function modal(options) {
+      var $root = this, visible, onChange, hideWhenWindowScroll = false;
+      var scrollTop;
+      function setOptions(options) {
+        var _options = options || {};
+        visible = _options.initialVisible === undefined ? false : show;
+        onChange = _options.onChange;
+        hideWhenWindowScroll = _options.hideWhenWindowScroll;
+      }
+      function init() {
+        setState(visible);
+      }
+      function setState(isShow) {
+        if (isShow === visible) {
+          return;
+        }
+        visible = isShow;
+        if (visible) {
+          activeCount++;
+          scrollTop = $(window).scrollTop() || $pageMain.scrollTop();
+          $root.addClass('modal--show');
+          $pageMain.scrollTop(scrollTop);
+          activeCount === 1 && ($pageRoot.addClass('show-modal'), $body.addClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.on('scroll', hide);
+          $window.on('keyup', handleKeyup);
+        } else {
+          activeCount > 0 && activeCount--;
+          $root.removeClass('modal--show');
+          $window.scrollTop(scrollTop);
+          activeCount === 0 && ($pageRoot.removeClass('show-modal'), $body.removeClass('of-hidden'));
+          hideWhenWindowScroll && window.hasEvent('touchstart') && $window.off('scroll', hide);
+          $window.off('keyup', handleKeyup);
+        }
+        onChange && onChange(visible);
+      }
+      function show() {
+        setState(true);
+      }
+      function hide() {
+        setState(false);
+      }
+      function handleKeyup(e) {
+        // Char Code: 27  ESC
+        if (e.which ===  27) {
+          hide();
+        }
+      }
+      setOptions(options);
+      init();
+      return {
+        show: show,
+        hide: hide,
+        $el: $root
+      };
+    }
+    $.fn.modal = modal;
+  });
+})();
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+(function () {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    // search panel
+    var search = (window.search || (window.search = {}));
+    var useDefaultSearchBox = window.useDefaultSearchBox === undefined ?
+      true : window.useDefaultSearchBox ;
+
+    var $searchModal = $('.js-page-search-modal');
+    var $searchToggle = $('.js-search-toggle');
+    var searchModal = $searchModal.modal({ onChange: handleModalChange, hideWhenWindowScroll: true });
+    var modalVisible = false;
+    search.searchModal = searchModal;
+
+    var $searchBox = null;
+    var $searchInput = null;
+    var $searchClear = null;
+
+    function getModalVisible() {
+      return modalVisible;
+    }
+    search.getModalVisible = getModalVisible;
+
+    function handleModalChange(visible) {
+      modalVisible = visible;
+      if (visible) {
+        search.onShow && search.onShow();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].focus();
+      } else {
+        search.onShow && search.onHide();
+        useDefaultSearchBox && $searchInput[0] && $searchInput[0].blur();
+        setTimeout(function() {
+          useDefaultSearchBox && ($searchInput.val(''), $searchBox.removeClass('not-empty'));
+          search.clear && search.clear();
+          window.pageAsideAffix && window.pageAsideAffix.refresh();
+        }, 400);
+      }
+    }
+
+    $searchToggle.on('click', function() {
+      modalVisible ? searchModal.hide() : searchModal.show();
+    });
+    // Char Code: 83  S, 191 /
+    $(window).on('keyup', function(e) {
+      if (!modalVisible && !window.isFormElement(e.target || e.srcElement) && (e.which === 83 || e.which === 191)) {
+        modalVisible || searchModal.show();
+      }
+    });
+
+    if (useDefaultSearchBox) {
+      $searchBox = $('.js-search-box');
+      $searchInput = $searchBox.children('input');
+      $searchClear = $searchBox.children('.js-icon-clear');
+      search.getSearchInput = function() {
+        return $searchInput.get(0);
+      };
+      search.getVal = function() {
+        return $searchInput.val();
+      };
+      search.setVal = function(val) {
+        $searchInput.val(val);
+      };
+
+      $searchInput.on('focus', function() {
+        $(this).addClass('focus');
+      });
+      $searchInput.on('blur', function() {
+        $(this).removeClass('focus');
+      });
+      $searchInput.on('input', window.throttle(function() {
+        var val = $(this).val();
+        if (val === '' || typeof val !== 'string') {
+          search.clear && search.clear();
+        } else {
+          $searchBox.addClass('not-empty');
+          search.onInputNotEmpty && search.onInputNotEmpty(val);
+        }
+      }, 400));
+      $searchClear.on('click', function() {
+        $searchInput.val(''); $searchBox.removeClass('not-empty');
+        search.clear && search.clear();
+      });
+    }
+  });
+})();
+</script><div class="search search--dark">
+  <div class="main">
+    <div class="search__header">Search</div>
+    <div class="search-bar">
+      <div class="search-box js-search-box">
+        <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
+        <input type="text" />
+        <div class="search-box__icon-clear js-icon-clear">
+          <a><i class="fas fa-times"></i></a>
+        </div>
+      </div>
+      <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
+        Cancel</button>
+    </div>
+    <div class="search-result js-search-result"></div>
+  </div>
+</div>
+<script>var SOURCES = window.TEXT_VARIABLES.sources;
+var PAHTS = window.TEXT_VARIABLES.paths;
+window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
+  var search = (window.search || (window.search = {}));
+  var searchData = window.TEXT_SEARCH_DATA || {};
+
+  function memorize(f) {
+    var cache = {};
+    return function () {
+      var key = Array.prototype.join.call(arguments, ',');
+      if (key in cache) return cache[key];
+      else return cache[key] = f.apply(this, arguments);
+    };
+  }
+
+  /// search
+  function searchByQuery(query) {
+    var i, j, key, keys, cur, _title, result = {};
+    keys = Object.keys(searchData);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      for (j = 0; j < searchData[key].length; j++) {
+        cur = searchData[key][j], _title = cur.title;
+        if ((result[key] === undefined || result[key] && result[key].length < 4 )
+          && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+          if (result[key] === undefined) {
+            result[key] = [];
+          }
+          result[key].push(cur);
+        }
+      }
+    }
+    return result;
+  }
+
+  var renderHeader = memorize(function(header) {
+    return $('<p class="search-result__header">' + header + '</p>');
+  });
+
+  var renderItem = function(index, title, url) {
+    return $('<li class="search-result__item" data-index="' + index + '"><a class="button" href="' + url + '">' + title + '</a></li>');
+  };
+
+  function render(data) {
+    if (!data) { return null; }
+    var $root = $('<ul></ul>'), i, j, key, keys, cur, itemIndex = 0;
+    keys = Object.keys(data);
+    for (i = 0; i < keys.length; i++) {
+      key = keys[i];
+      $root.append(renderHeader(key));
+      for (j = 0; j < data[key].length; j++) {
+        cur = data[key][j];
+        $root.append(renderItem(itemIndex++, cur.title, cur.url));
+      }
+    }
+    return $root;
+  }
+
+  // search box
+  var $result = $('.js-search-result'), $resultItems;
+  var lastActiveIndex, activeIndex;
+
+  function clear() {
+    $result.html(null);
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+  }
+  function onInputNotEmpty(val) {
+    $result.html(render(searchByQuery(val)));
+    $resultItems = $('.search-result__item'); activeIndex = 0;
+    $resultItems.eq(0).addClass('active');
+  }
+
+  search.clear = clear;
+  search.onInputNotEmpty = onInputNotEmpty;
+
+  function updateResultItems() {
+    lastActiveIndex >= 0 && $resultItems.eq(lastActiveIndex).removeClass('active');
+    activeIndex >= 0 && $resultItems.eq(activeIndex).addClass('active');
+  }
+
+  function moveActiveIndex(direction) {
+    var itemsCount = $resultItems ? $resultItems.length : 0;
+    if (itemsCount > 1) {
+      lastActiveIndex = activeIndex;
+      if (direction === 'up') {
+        activeIndex = (activeIndex - 1 + itemsCount) % itemsCount;
+      } else if (direction === 'down') {
+        activeIndex = (activeIndex + 1 + itemsCount) % itemsCount;
+      }
+      updateResultItems();
+    }
+  }
+
+  // Char Code: 13  Enter, 37  ⬅, 38  ⬆, 39  ➡, 40  ⬇
+  $(window).on('keyup', function(e) {
+    var modalVisible = search.getModalVisible && search.getModalVisible();
+    if (modalVisible) {
+      if (e.which === 38) {
+        modalVisible && moveActiveIndex('up');
+      } else if (e.which === 40) {
+        modalVisible && moveActiveIndex('down');
+      } else if (e.which === 13) {
+        modalVisible && $resultItems && activeIndex >= 0 && $resultItems.eq(activeIndex).children('a')[0].click();
+      }
+    }
+  });
+
+  $result.on('mouseover', '.search-result__item > a', function() {
+    var itemIndex = $(this).parent().data('index');
+    itemIndex >= 0 && (lastActiveIndex = activeIndex, activeIndex = itemIndex, updateResultItems());
+  });
+});
+</script>
+</div></div>
+
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function scrollToAnchor(anchor, duration, callback) {
+      var $root = this;
+      $root.animate({ scrollTop: $(anchor).position().top }, duration, function() {
+        window.history.replaceState(null, '', window.location.href.split('#')[0] + anchor);
+        callback && callback();
+      });
+    }
+    $.fn.scrollToAnchor = scrollToAnchor;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function affix(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroll,
+        offsetBottom = 0, scrollTarget = window, scroll = window.document, disabled = false, isOverallScroller = true,
+        rootTop, rootLeft, rootHeight, scrollBottom, rootBottomTop,
+        hasInit = false, curState;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.offsetBottom && (offsetBottom = _options.offsetBottom);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroll && (scroll = _options.scroll);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $scrollTarget = $(scrollTarget);
+        isOverallScroller = window.isOverallScroller($scrollTarget[0]);
+        $scroll = $(scroll);
+      }
+      function preCalc() {
+        top();
+        rootHeight = $root.outerHeight();
+        rootTop = $root.offset().top + (isOverallScroller ? 0 :  $scrollTarget.scrollTop());
+        rootLeft = $root.offset().left;
+      }
+      function calc(needPreCalc) {
+        needPreCalc && preCalc();
+        scrollBottom = $scroll.outerHeight() - offsetBottom - rootHeight;
+        rootBottomTop = scrollBottom - rootTop;
+      }
+      function top() {
+        if (curState !== 'top') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: 0
+          });
+          curState = 'top';
+        }
+      }
+      function fixed() {
+        if (curState !== 'fixed') {
+          $root.addClass('fixed').css({
+            left: rootLeft + 'px',
+            top: 0
+          });
+          curState = 'fixed';
+        }
+      }
+      function bottom() {
+        if (curState !== 'bottom') {
+          $root.removeClass('fixed').css({
+            left: 0,
+            top: rootBottomTop + 'px'
+          });
+          curState = 'bottom';
+        }
+      }
+      function setState() {
+        var scrollTop = $scrollTarget.scrollTop();
+        if (scrollTop >= rootTop && scrollTop <= scrollBottom) {
+          fixed();
+        } else if (scrollTop < rootTop) {
+          top();
+        } else {
+          bottom();
+        }
+      }
+      function init() {
+        if(!hasInit) {
+          var interval, timeout;
+          calc(true); setState();
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState();
+          });
+          $window.on('resize', function() {
+            disabled || (calc(true), setState());
+          });
+          hasInit = true;
+        }
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions,
+        refresh: function() {
+          calc(true, { animation: false }); setState();
+        }
+      };
+    }
+    $.fn.affix = affix;
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    function toc(options) {
+      var $root = this, $window = $(window), $scrollTarget, $scroller, $tocUl = $('<ul class="toc toc--ellipsis"></ul>'), $tocLi, $headings, $activeLast, $activeCur,
+        selectors = 'h1,h2,h3', container = 'body', scrollTarget = window, scroller = 'html, body', disabled = false,
+        headingsPos, scrolling = false, hasRendered = false, hasInit = false;
+
+      function setOptions(options) {
+        var _options = options || {};
+        _options.selectors && (selectors = _options.selectors);
+        _options.container && (container = _options.container);
+        _options.scrollTarget && (scrollTarget = _options.scrollTarget);
+        _options.scroller && (scroller = _options.scroller);
+        _options.disabled !== undefined && (disabled = _options.disabled);
+        $headings = $(container).find(selectors).filter('[id]');
+        $scrollTarget = $(scrollTarget);
+        $scroller = $(scroller);
+      }
+      function calc() {
+        headingsPos = [];
+        $headings.each(function() {
+          headingsPos.push(Math.floor($(this).position().top));
+        });
+      }
+      function setState(element, disabled) {
+        var scrollTop = $scrollTarget.scrollTop(), i;
+        if (disabled || !headingsPos || headingsPos.length < 1) { return; }
+        if (element) {
+          $activeCur = element;
+        } else {
+          for (i = 0; i < headingsPos.length; i++) {
+            if (scrollTop >= headingsPos[i]) {
+              $activeCur = $tocLi.eq(i);
+            } else {
+              $activeCur || ($activeCur = $tocLi.eq(i));
+              break;
+            }
+          }
+        }
+        $activeLast && $activeLast.removeClass('active');
+        ($activeLast = $activeCur).addClass('active');
+      }
+      function render() {
+        if(!hasRendered) {
+          $root.append($tocUl);
+          $headings.each(function() {
+            var $this = $(this);
+            $tocUl.append($('<li></li>').addClass('toc-' + $this.prop('tagName').toLowerCase())
+              .append($('<a></a>').text($this.text()).attr('href', '#' + $this.prop('id'))));
+          });
+          $tocLi = $tocUl.children('li');
+          $tocUl.on('click', 'a', function(e) {
+            e.preventDefault();
+            var $this = $(this);
+            scrolling = true;
+            setState($this.parent());
+            $scroller.scrollToAnchor($this.attr('href'), 400, function() {
+              scrolling = false;
+            });
+          });
+        }
+        hasRendered = true;
+      }
+      function init() {
+        var interval, timeout;
+        if(!hasInit) {
+          render(); calc(); setState(null, scrolling);
+          // run calc every 100 millisecond
+          interval = setInterval(function() {
+            calc();
+          }, 100);
+          timeout = setTimeout(function() {
+            clearInterval(interval);
+          }, 45000);
+          window.pageLoad.then(function() {
+            setTimeout(function() {
+              clearInterval(interval);
+              clearTimeout(timeout);
+            }, 3000);
+          });
+          $scrollTarget.on('scroll', function() {
+            disabled || setState(null, scrolling);
+          });
+          $window.on('resize', window.throttle(function() {
+            if (!disabled) {
+              render(); calc(); setState(null, scrolling);
+            }
+          }, 100));
+        }
+        hasInit = true;
+      }
+
+      setOptions(options);
+      if (!disabled) {
+        init();
+      }
+      $window.on('resize', window.throttle(function() {
+        init();
+      }, 200));
+      return {
+        setOptions: setOptions
+      };
+    }
+    $.fn.toc = toc;
+  });
+})();
+/*(function () {
+
+})();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script><script src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+<script>
+ethicalads.wait.then((placements) => {
+  if (!placements.length) {
+    console.debug('Loading backup content');
+    div = document.querySelector('[data-ea-publisher]')
+    div.innerHTML = '<p>Check out our first-party ad content.</p>'
+  } else {
+    console.debug('EthicalAds are loaded');
+  }
+});
+</script>
+    </div>
+    <script>(function () {
+  var $root = document.getElementsByClassName('root')[0];
+  if (window.hasEvent('touchstart')) {
+    $root.dataset.isTouch = true;
+    document.addEventListener('touchstart', function(){}, false);
+  }
+})();
+</script>
+  </body>
+</html>
+
