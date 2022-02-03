@@ -695,6 +695,9 @@ topic. Interested to know more? You can subscribe to [the feed of my blog](/feed
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
+_P.S. Special thanks to [Daniel Intskirveli](https://github.com/dintskirveli)
+for reviewing this post._
+
 ## References
 
 - ["Apache HttpComponents
