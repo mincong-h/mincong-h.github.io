@@ -1,5 +1,315 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-02-03T10:24:56+01:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
-</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Internal Structure Of Elasticsearch Java High-Level REST Client</title><link href="https://mincong.io/en/elasticsearch-hlrc/" rel="alternate" type="text/html" title="Internal Structure Of Elasticsearch Java High-Level REST Client" /><published>2022-01-23T15:47:40+01:00</published><updated>2022-01-23T15:47:40+01:00</updated><id>https://mincong.io/en/elasticsearch-hlrc</id><content type="html" xml:base="https://mincong.io/en/elasticsearch-hlrc/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-03-27T22:48:52+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Setting Up Monitoring For Java With Datadog</title><link href="https://mincong.io/en/setting-up-monitoring-for-java-with-datadog/" rel="alternate" type="text/html" title="Setting Up Monitoring For Java With Datadog" /><published>2022-03-27T17:52:01+02:00</published><updated>2022-03-27T17:52:01+02:00</updated><id>https://mincong.io/en/setting-up-monitoring-for-java-with-datadog</id><content type="html" xml:base="https://mincong.io/en/setting-up-monitoring-for-java-with-datadog/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Recently I was developping a search solution for my blog to improve the search
+experience, based on Java and Elasticsearch. Before using it in production,
+I want to set up a monitoring system to better understand what happens.
+As a Datadog employee, I natually chose &lt;a href=&quot;https://www.datadoghq.com/&quot;&gt;Datadog&lt;/a&gt; as
+the solution because I have been using it for several years now. This article
+mainly explains how did I set up the whole system. Hopefully it will be useful
+for you as well. &lt;mark&gt;Please note that this is NOT an official guide from
+Datadog.&lt;/mark&gt; It’s simply a side project that I did over my free time.&lt;/p&gt;
+
+&lt;p&gt;Currently, I am running my project in Alibaba Cloud inside a Linux server
+(Ubuntu), inside which there are mainly two Docker containers: one for the Java
+application for search and the other for Elasticsearch. After reading this
+article, you will understand:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to integrate Alibaba Cloud?&lt;/li&gt;
+  &lt;li&gt;How to set up Datadog Agent in Docker mode?&lt;/li&gt;
+  &lt;li&gt;How to integrate Elasticsearch?&lt;/li&gt;
+  &lt;li&gt;How to integrate a Java application (logs)?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This article does not aim to be exhausitive. Instead, it provides a high-level
+overview and tries to give you a big picture. Now, let’s get started!&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisite&quot;&gt;Prerequisite&lt;/h2&gt;
+
+&lt;p&gt;Before adding integrations, the first step is to sign up a trial account in
+Datadog so that you can create credentials (API, APP keys) for the integrations,
+and also have the detailed instructions of different integrations inside
+Datadog’s Web Application. Compared to the static documentation, the hints and
+commands there are more adapted to your need, where API key is prefilled and the
+Datadog site (US, EU, …) is prefilled.&lt;/p&gt;
+
+&lt;h2 id=&quot;integrate-alibaba-cloud&quot;&gt;Integrate Alibaba Cloud&lt;/h2&gt;
+
+&lt;p&gt;Datadog has documentation about &lt;a href=&quot;https://docs.datadoghq.com/integrations/alibaba_cloud/&quot;&gt;Alibaba Cloud
+Integration&lt;/a&gt; and a blog
+post &lt;a href=&quot;https://www.datadoghq.com/blog/monitor-alibaba-cloud-datadog/&quot;&gt;“Monitor Alibaba Cloud with
+Datadog”&lt;/a&gt; to help
+understand why the integration is beneficial for you. Following
+that documentation page will allow you to access metrics to different services,
+such as Alibaba Elastic
+Compute Service (ECS), Server Load Balancer (SLB), ApsaraDB RDS, ApsaraDB for
+Redis, Content Delivery Network (CDN), Container Service, Express Connect.&lt;/p&gt;
+
+&lt;p&gt;Setting up the integration is pretty simple, you need to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In Alibaba Cloud, create a service account in Resource Assess Management (RAM)
+to provide programmatic access for Datadog&lt;/li&gt;
+  &lt;li&gt;In Alibaba Cloud, grant permissions for resources that you want to monitor&lt;/li&gt;
+  &lt;li&gt;In Datadog, provide the access key and secret generated previously so that
+Datadog can crawl those metrics.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20220327-alibaba-user.png&quot; alt=&quot;Set up service account for Datadog in Alibaba Cloud&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20220327-datadog-alibabacloud.png&quot; alt=&quot;Set up Alibaba Cloud integration in Datadog&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that installing the Alibaba Integration could increase the number of hosts
+that Datadog monitors. For more information on how this may affect your billing,
+visite the &lt;a href=&quot;https://docs.datadoghq.com/account_management/billing/alibaba/&quot;&gt;Alibaba Integartion
+Billing&lt;/a&gt; page.
+In my case, it does not impact me because I have one single host – having this
+integration won’t add more hosts into the bill.&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-datadog-agent&quot;&gt;Set Up Datadog Agent&lt;/h2&gt;
+
+&lt;p&gt;The previous section focus on the cloud provider level. And now it’s time to go
+further into the host level. Since I am running two services, my Java
+app and Elasticsearch, in Docker, I believe that there are two options to
+monitor them: using either the Datadog agent at host level or as a Docker
+container.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Host level.&lt;/strong&gt; The Datadog Agent is installed via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;apt&lt;/code&gt; and running with
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;systemd&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Docker level.&lt;/strong&gt; The Datadog Agent is installed via Docker and running as a
+Docker container&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;At the beginning I chose the first option because I imagine that it can
+capture more information about the host such as the Linux Kernel, disk, systemd,
+etc. Also because I can configure the agent easily (through the files inside
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/datadog-agent/conf.d/&lt;/code&gt;). However it didn’t work as expected. It failed to
+monitor Docker since the
+socket is hard-coded to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unix:///var/run/docker.sock&lt;/code&gt;, but my Docker engine did
+not use that endpoint. It is using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;unix:///run/user/1000/docker.sock&lt;/code&gt; since I
+am running Docker in rootless mode (see
+&lt;a href=&quot;https://docs.docker.com/engine/security/rootless/&quot;&gt;“Run the Docker daemon as a non-root user (Rootless
+mode)”&lt;/a&gt;). I kept seeing
+errors:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;2022-03-26 15:36:24 CST | CORE | ERROR |
+(pkg/collector/worker/check_logger.go:68 in Error) | check:docker | Error running check: temporary failure in dockerutil, will retry later: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get “http://%2Fvar%2Frun%2Fdocker.sock/v1.24/info”: dial unix /var/run/docker.sock: connect: permission denied&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;By consequence, I fell back to the second option, where I started Datadog agent
+in Docker mode. Here is the command I used for starting the Docker container:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; datadog-agent &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DD_API_KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;DD_API_KEY&amp;gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DD_LOGS_ENABLED&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-e&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;DD_SITE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;datadoghq.eu&quot;&lt;/span&gt;  &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /run/user/1000/docker.sock:/var/run/docker.sock:ro &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /proc/:/host/proc/:ro &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /opt/datadog-agent/run:/opt/datadog-agent/run:rw &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt; /sys/fs/cgroup/:/host/sys/fs/cgroup:ro &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    datadog/agent:7
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And here is the explanation of these options:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Option&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-e DD_API_KEY&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This environment variable specifies the API key of Datadog.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-e DD_LOGS_ENABLED&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This environment variable indicates that the logs integration in enabled.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-e DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This environment variable adds a log configuration that enables log collection for all containers.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-e DD_SITE&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This environment variable is used to ask the agent to send data to the EU site.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-v /run/user/1000/docker.sock:/var/run/docker.sock:ro&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This option binds the Docker socket &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/run/user/1000/docker.sock&lt;/code&gt; to containers’ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/run/docker.sock&lt;/code&gt; so that Datadog agent can monitor the Docker engine.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-v /proc/:/host/proc/:ro&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This option gives Datadog agent read-only access to some kernel data and system information. See this article &lt;a href=&quot;https://www.wikiwand.com/en/Procfs&quot;&gt;“procfs”&lt;/a&gt; to learn more about the proc filesystem.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-v /opt/datadog-agent/run:/opt/datadog-agent/run:rw&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This option makes sure we do not lose any logs from containers during restarts or network issues, we store on the host the last line that was collected for each container in this directory.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;This option gives Datadog agent read-only access to Linux control groups (&lt;a href=&quot;https://www.man7.org/linux/man-pages/man7/cgroups.7.html&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cgroups&lt;/code&gt;&lt;/a&gt;).&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Once the Datadog agent is up and running, it can detect all the services running
+in the host and provide hints in the Datadog website. In my case, it detects 3
+services: Docker, Elasticsearch, and SSH.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20220327-detections.png&quot; alt=&quot;Service detections in Datadog&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;autodiscovery&quot;&gt;Autodiscovery&lt;/h2&gt;
+
+&lt;p&gt;Now, it’s time to configure services correctly (Elasticsearch and my application
+Java). The easiest way to do this is to rely on the
+&lt;a href=&quot;https://docs.datadoghq.com/agent/docker/integrations/?tab=docker&quot;&gt;autodiscovery&lt;/a&gt;
+mechansim provided by Datadog. With Autodiscovery, the Agent detects if it’s
+running on Docker and automatically searches all labels for integration
+templates. These labels can be defined in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Dockerfile&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker-compose.yaml&lt;/code&gt;,
+when running the Docker container (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;docker run&lt;/code&gt;), or inside Docker Swarm. You
+can learn more about this in article &lt;a href=&quot;https://docs.datadoghq.com/agent/docker/integrations/?tab=docker&quot;&gt;Docker Integrations
+Autodiscovery&lt;/a&gt;.
+We will see concrete examples in the sections below.&lt;/p&gt;
+
+&lt;h2 id=&quot;integrate-elasticsearch&quot;&gt;Integrate Elasticsearch&lt;/h2&gt;
+
+&lt;p&gt;Integrating Elasticsearch can be zero configuration as the integation is provided
+out-of-the box. As far as the Elasticsearch service is running on port 9200
+(defaut), Datadog agent is able to detect it. In my case, it still requires some
+configuration. This is because I followed Elasticsearch’s document to &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/7.16/security-minimal-setup.html&quot;&gt;set up the
+minimal security for
+Elasticsearch&lt;/a&gt;.
+In particular, it enables basic authentication for Elasticsearch. For Datadog
+agent, it means providing a username and a password is required to
+talk to Elasticsearch. In my case, I am using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remote_monitoring_user&lt;/code&gt;
+as user and its password.&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--detach&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--env&lt;/span&gt; discovery.type&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;single-node &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--label&lt;/span&gt; com.datadoghq.ad.check_names&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[&quot;elastic&quot;]'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--label&lt;/span&gt; com.datadoghq.ad.init_configs&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[{}]'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--label&lt;/span&gt; com.datadoghq.ad.instances&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[
+      {
+        &quot;url&quot;: &quot;http://%%host%%:9200&quot;,
+        &quot;username&quot;: &quot;remote_monitoring_user&quot;,
+        &quot;password&quot;: &quot;...&quot;,
+        &quot;auth_type&quot;: &quot;basic&quot;,
+        ...
+      }
+    ]'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--label&lt;/span&gt; com.datadoghq.ad.logs&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[
+      {
+        &quot;source&quot;: &quot;elasticsearch&quot;,
+        &quot;service&quot;: &quot;elasticsearch&quot;
+      }
+    ]'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--network&lt;/span&gt; network-blogsearch &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--publish&lt;/span&gt; 9200:9200 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/app/elasticsearch/data:/usr/share/elasticsearch/data&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--volume&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/app/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;elasticsearch&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  docker.elastic.co/elasticsearch/elasticsearch:7.16.3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see, I used multiple labels for the Datadog autodiscovery (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ad&lt;/code&gt;), for
+the check, the configuration, and the logs integration. After restarting the
+Elasticsearch container with these Datadog labels, Datadog agent was able to
+configure everything. I saw the dashboard and logs in Datadog.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20220327-elasticsearch-dashboard.png&quot; alt=&quot;Elasticsearch dashboard in Datadog&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;integrate-java&quot;&gt;Integrate Java&lt;/h2&gt;
+
+&lt;p&gt;Currently my Java application does not have any custom metrics. So this section
+is focus on collecting logs. My application is built using Maven and Logback, so
+I am going to write how to configure them. Datadog has a page &lt;a href=&quot;https://docs.datadoghq.com/logs/log_collection/java/?tab=logback&quot;&gt;“Java Log
+Collection”&lt;/a&gt;,
+which explains how to configure logs under different logging frameworks (Log4j,
+Log4j2, and Logback), using JSON or raw format. In my case, I used JSON format
+as suggested by the documentation. As you may know, Logback does not have a
+builtin support for JSON logging. So I used the
+&lt;a href=&quot;https://github.com/logfellow/logstash-logback-encoder&quot;&gt;logfellow/logstash-logback-encoder&lt;/a&gt;
+to provides the JSON logs, as suggested by the doc. This means declaring a
+dependency on the encoder and using it inside Logback’s file appender.&lt;/p&gt;
+
+&lt;p&gt;Dependency:&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;net.logstash.logback&lt;span class=&quot;nt&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;logstash-logback-encoder&lt;span class=&quot;nt&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;7.0.1&lt;span class=&quot;nt&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Logback configuration (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;logback.xml&lt;/code&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;language-xml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;appender&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CONSOLE&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ch.qos.logback.core.ConsoleAppender&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;encoder&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;net.logstash.logback.encoder.LogstashEncoder&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/appender&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;appender&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FILE&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ch.qos.logback.core.FileAppender&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;file&amp;gt;&lt;/span&gt;/path/to/app.log&lt;span class=&quot;nt&quot;&gt;&amp;lt;/file&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;encoder&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;net.logstash.logback.encoder.LogstashEncoder&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- ... --&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/appender&amp;gt;&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;root&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;level=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;info&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;appender-ref&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;CONSOLE&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;appender-ref&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;ref=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FILE&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/root&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;I didn’t completely follow Datadog’s guide because I want to see the logs in
+both the file and the console. Then, when starting the Java Docker container, I
+also added some labels for autodiscovery:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker run &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--detach&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--label&lt;/span&gt; com.datadoghq.ad.logs&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'[
+        {
+          &quot;type&quot;: &quot;java&quot;,
+          &quot;source&quot;: &quot;java&quot;,
+          &quot;service&quot;: &quot;blogsearch&quot;,
+          &quot;sourcecategory&quot;: &quot;java&quot;,
+          &quot;path&quot;: &quot;/path/to/app.log&quot;
+        }
+      ]'&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--name&lt;/span&gt; blogsearch &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--publish&lt;/span&gt; 8080:8080 &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;--network&lt;/span&gt; network-blogsearch &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    ...
+    &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;REPO&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;TAG&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and we can see that the logs are collected successfully:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20220327-java-logs.png&quot; alt=&quot;Java logs in Datadog&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20220327-integrations.png&quot; alt=&quot;Installed integrations&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In this article, we saw how to collect metrics and logs from the cloud provider (Alibaba
+Cloud), from Elasticsearch, and from Java appliation through autodiscovery using
+Datadog agent.
+Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
+on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
+&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.datadoghq.com/&quot;&gt;Datadog Docs&lt;/a&gt;, 2022.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="java-core" /><category term="java" /><category term="datadog" /><category term="elasticsearch" /><category term="aliyun" /><category term="logging" /><summary type="html">This article explains how to set up Datadog monitoring for a Java application and an Elasticsearch service running in Alibaba Cloud.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Internal Structure Of Elasticsearch Java High-Level REST Client</title><link href="https://mincong.io/en/elasticsearch-hlrc/" rel="alternate" type="text/html" title="Internal Structure Of Elasticsearch Java High-Level REST Client" /><published>2022-01-23T15:47:40+01:00</published><updated>2022-01-23T15:47:40+01:00</updated><id>https://mincong.io/en/elasticsearch-hlrc</id><content type="html" xml:base="https://mincong.io/en/elasticsearch-hlrc/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;The &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html&quot;&gt;Elasticsearch Java High-Level REST
 Client&lt;/a&gt;
@@ -2197,309 +2507,4 @@ Filters”&lt;/a&gt;,
 Logs | Sun Java System Directory Server Enterprise Edition 6.0
 Reference”&lt;/a&gt;,
 &lt;em&gt;Oracle&lt;/em&gt;, 2010.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="java-core" /><category term="java" /><category term="jetty" /><category term="jersey" /><category term="api" /><category term="jax-rs" /><summary type="html">This article discusses how to implement a simple audit logs solution with Java JAX-RS, including requirements, considerations for the implementation, and 3 different solutions based on Java Servlet, Jetty, and JAX-RS filter.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-markus-spiske-gnhxvdGmGG8-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-markus-spiske-gnhxvdGmGG8-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Elasticsearch Snapshot Plugins</title><link href="https://mincong.io/en/elasticsearch-snapshot-plugins/" rel="alternate" type="text/html" title="Elasticsearch Snapshot Plugins" /><published>2021-11-01T10:00:00+01:00</published><updated>2021-11-01T10:00:00+01:00</updated><id>https://mincong.io/en/elasticsearch-snapshot-plugins</id><content type="html" xml:base="https://mincong.io/en/elasticsearch-snapshot-plugins/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;The “Snapshot and Restore” feature is an important part of an Elasticsearch cluster.
-Its existence provides a strong guarantee for data reliability. That’s why we
-are interested in learning more about it. In this article, let’s take a look at
-different official snapshot repository plugins in Elasticsearch.&lt;/p&gt;
-
-&lt;p&gt;Before getting into details, let’s first understand what is a snapshot
-repository. There are two types of snapshot repositories: local repository and
-remote repository. The local repository is mainly used for testing (for unit
-testing or when trying out Elasticsearch in localhost), and it does not make
-much sense to use it on production. In production, we mainly use a remote
-snapshot repository because it can store cluster data outside the cluster as
-data backup. There are four official plugins: AWS, GCS, Azure, and HDFS. Among
-them, AWS, GCS, and Azure are the three plugins that I had used in the past two
-years, and they are also the main subject of discussion today.&lt;/p&gt;
-
-&lt;p&gt;After reading this article, you will understand:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The plugin installation&lt;/li&gt;
-  &lt;li&gt;The similarities and differences of snapshot operations across different
-plugins&lt;/li&gt;
-  &lt;li&gt;The dependency between the Elasticsearch plugin and the cloud provider&lt;/li&gt;
-  &lt;li&gt;The source code analysis of several representative classes&lt;/li&gt;
-  &lt;li&gt;How to go further from this article&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Now, let’s get started!&lt;/p&gt;
-
-&lt;h2 id=&quot;plugin-installation&quot;&gt;Plugin Installation&lt;/h2&gt;
-
-&lt;p&gt;Plugins can be installed via the command line elasticsearch-plugin (&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/plugins/7.x/installation.html&quot; title=&quot;Install Plugins&quot;&gt;Official Document&lt;/a&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bin/elasticsearch-plugin &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$plugin_name&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bin/elasticsearch-plugin &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;repository-s3
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bin/elasticsearch-plugin &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;repository-gcs
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bin/elasticsearch-plugin &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;repository-azure
-&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bin/elasticsearch-plugin &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;repository-hdfs
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;For the plugin to be used normally, the plugin must be installed on
-each node of the cluster. The four plugins mentioned above are all official
-plugins of Elasticsearch. You don’t need to download them, just install them
-directly. After a successful installation, the node needs to be restarted for
-the plugin to take effect.&lt;/p&gt;
-
-&lt;p&gt;Once installed, you may want to get information about the plugin. There are at
-least two ways to query the plugin. One is to query through the command line
-after logging in to the node. The second is to query directly through the
-RESTful API.&lt;/p&gt;
-
-&lt;p&gt;Log in to the node and list the installed plugins using the following command:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;bin/elasticsearch-plugin list
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Query the plugins directly through &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/7.x/cluster-nodes-info.html&quot; title=&quot;Node API&quot;&gt;Node API&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;GET /_nodes/plugins
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;snapshot-apis&quot;&gt;Snapshot APIs&lt;/h2&gt;
-
-&lt;p&gt;Elasticsearch’s snapshot APIs include two parts: Snapshot repository management
-API (Snapshot repository management API) and Snapshot management API (Snapshot
-management API). Most of the APIs are common to different plugins. The only
-exception is the API for creating a snapshot repository. The type of repository
-needs to be provided when creating it. The parameters for the creation request
-of different repositories are also slightly different. Here are a few simple
-examples. If you were interested in any specific parameters, please refer to the
-&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/master/put-snapshot-repo-api.html&quot;&gt;official documentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Create an AWS S3 repository:&lt;/p&gt;
-
-&lt;div class=&quot;language-http highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;PUT _snapshot/my_s3_repository
-
-{
-   &quot;type&quot;: &quot;s3&quot;,
-   &quot;settings&quot;: {
-     &quot;bucket&quot;: &quot;my-bucket&quot;
-   }
-}
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Create a Google Cloud Storage (GCS) repository:&lt;/p&gt;
-
-&lt;div class=&quot;language-http highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;PUT _snapshot/my_gcs_repository
-
-{
-   &quot;type&quot;: &quot;gcs&quot;,
-   &quot;settings&quot;: {
-     &quot;bucket&quot;: &quot;my_bucket&quot;,
-     &quot;client&quot;: &quot;my_alternate_client&quot;
-   }
-}
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Create an Azure repository:&lt;/p&gt;
-
-&lt;div class=&quot;language-http highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;PUT _snapshot/my_backup
-
-{
-   &quot;type&quot;: &quot;azure&quot;,
-   &quot;settings&quot;: {
-     &quot;client&quot;: &quot;secondary&quot;
-   }
-}
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;dependencies-with-cloud-provider&quot;&gt;Dependencies With Cloud Provider&lt;/h2&gt;
-
-&lt;p&gt;Using remote ES snapshot repository plugins means that you have to face the
-issue of dependencies on your cloud provider. The dependency challenge here is
-mainly reflected in two parts: the SDK of the cloud provider and the storage
-system of the cloud provider.&lt;/p&gt;
-
-&lt;p&gt;Regarding the cloud provider’s SDK, since Elasticsearch needs to use the SDK
-client provided by the cloud provider to manipulate data (upload, list,
-download, delete, etc.), there must be compatibility issues here between the SDK
-version and your ES cluster. When the SDK version of the cloud provider is
-constantly updated, if your Elasticsearch cluster version remains the same,
-the SDK version will likely be too old to be used after a certain point
-in time. It may make the cluster vulnerable to unsuccessful back-up, downgraded
-performance, etc. Therefore, it is important to upgrade the Elasticsearch
-cluster version in time.&lt;/p&gt;
-
-&lt;p&gt;In the storage method, using the storage system of a specific cloud service
-means that you need to configure and manage the corresponding storage, such as
-creating and setting service accounts.&lt;/p&gt;
-
-&lt;h2 id=&quot;source-code-samples&quot;&gt;Source Code Samples&lt;/h2&gt;
-
-&lt;p&gt;Above we mainly looked at general information about snapshot repository plugins
-in Elasticsearch. In the following paragraphs, I want to take you into the
-code and read together a few representative classes.&lt;/p&gt;
-
-&lt;h3 id=&quot;blob-store-repository&quot;&gt;Blob Store Repository&lt;/h3&gt;
-
-&lt;p&gt;The abstract class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BlobStoreRepository&lt;/code&gt; is the base implementation of a
-snapshot repository, with works with any blob store implementation.
-This class has only two abstract methods: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;createBlobStore()&lt;/code&gt;
-and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;basePath()&lt;/code&gt;. The method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;createBlobStore()&lt;/code&gt; can be used to create a blob
-store, and it is recommended to implement with lazy initialization. Blob store is
-responsible for creating, reading, updating, and deleting data (CRUD) towards to cloud provider
-in Elasticsearch. We will analyze it further later. Another method is
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;basePath()&lt;/code&gt;, which obtains the relative storage path of the Elasticsearch
-snapshot repository in the storage bucket of the cloud provider. If one bucket
-is used for one single repository, then the base path should be &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/&lt;/code&gt;. If one
-bucket is used for multiple repositories, or being used for other data-stores
-(not only for Elasticsearch), then you need to fill in the relative path where
-your Elasticsearch snapshot repo is located.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BlobStoreRepository&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AbstractLifecycleComponent&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Repository&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-
-    &lt;span class=&quot;cm&quot;&gt;/**
-     * Creates new BlobStore to read and write data.
-     */&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;protected&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BlobStore&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createBlobStore&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-    &lt;span class=&quot;cm&quot;&gt;/**
-     * Returns base path of the repository
-     */&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BlobPath&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;basePath&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BlobStoreRepository&lt;/code&gt; contains the business logic related to snapshots. It implements functions such as snapshot, restore, get info, delete, cleanup, verify, extract statistics, and update cluster state.&lt;/p&gt;
-
-&lt;p&gt;Regardless of the cloud providers, all repositories inherit this abstract class and
-use the cloud provider’s SDK to implement the blob reading and writing. From the
-command line below, we can see that whether it is a read-only URL Repository,
-Mock Repository for testing, File System Repository for local warehouses, or
-remote warehouses Azure, S3, GCS, HDFS, their implementations all inherit this
-class:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜ elasticsearch git:&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;7.9 &lt;span class=&quot;nv&quot;&gt;u&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=)&lt;/span&gt; rg &lt;span class=&quot;s2&quot;&gt;&quot;extends BlobStoreRepository&quot;&lt;/span&gt;
-modules/repository-url/src/main/java/org/elasticsearch/repositories/url/URLRepository.java
-56:public class URLRepository extends BlobStoreRepository &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-server/src/test/java/org/elasticsearch/snapshots/mockstore/MockEventuallyConsistentRepository.java
-68: public class MockEventuallyConsistentRepository extends BlobStoreRepository &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-server/src/main/java/org/elasticsearch/repositories/fs/FsRepository.java
-53:public class FsRepository extends BlobStoreRepository &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-plugins/repository-azure/src/main/java/org/elasticsearch/repositories/azure/AzureRepository.java
-55:public class AzureRepository extends BlobStoreRepository &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-plugins/repository-s3/src/main/java/org/elasticsearch/repositories/s3/S3Repository.java
-72:class S3Repository extends BlobStoreRepository &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-plugins/repository-gcs/src/main/java/org/elasticsearch/repositories/gcs/GoogleCloudStorageRepository.java
-43:class GoogleCloudStorageRepository extends BlobStoreRepository &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-plugins/repository-hdfs/src/main/java/org/elasticsearch/repositories/hdfs/HdfsRepository.java
-54:public final class HdfsRepository extends BlobStoreRepository &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;blob-store&quot;&gt;Blob Store&lt;/h3&gt;
-
-&lt;p&gt;Blob store mainly provides two functions related to blobs: obtaining the blob
-container of a given path and obtaining statistics on the count of operations
-that have been performed on this blob store.
-For some plugins, the logic of adding, deleting, modifying, and checking blobs
-is also written in the implementation of blob stores, such as the blob stores
-Azure and GCS.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
- * An interface for storing blobs.
- */&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;BlobStore&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Closeable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;cm&quot;&gt;/**
-     * Get a blob container instance for storing blobs at the given {@link BlobPath}.
-     */&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;BlobContainer&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;blobContainer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;BlobPath&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-    &lt;span class=&quot;cm&quot;&gt;/**
-     * Returns statistics on the count of operations that have been performed on this blob store
-     */&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Map&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Collections&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;emptyMap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;blob-container&quot;&gt;Blob Container&lt;/h3&gt;
-
-&lt;p&gt;A blob container refers to the container that contains all blobs under a certain
-path. It does not contain logic related to snapshots, but it is more inclined to
-the bottom layer of the cloud provider. It is mainly responsible for adding,
-deleting, modifying and checking blobs under a given path, represented as
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BlobPath&lt;/code&gt;. Here are some of its methods:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/20210918-BlobContainer.png&quot; alt=&quot;BlobContainer&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;As mentioned in the previous paragraph, for some providers, the logic of adding,
-deleting, modifying, and checking blobs are not directly done in this class, but
-are delegated to the blob store, like the implementations of Azure and GCS.
-However, the CRUD operations of S3 are implemented in the class
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;S3BlobContainer&lt;/code&gt;. So I feel that the boundary between blob store and blob
-container is not clear. But one thing is for sure: there is only one blob store in
-a repository and a repository may have many blob containers.&lt;/p&gt;
-
-&lt;h3 id=&quot;snapshot-creation&quot;&gt;Snapshot Creation&lt;/h3&gt;
-
-&lt;p&gt;Now we understand different classes, let’s take a look at how the snapshot is
-created inside a snapshot repository, starting from the class
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BlobStoreRepository&lt;/code&gt;. The diagram below is generated by the third-party plugin
-“Sequence Diagram” in IntelliJ IDEA. To simplify the description, some steps are omitted.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/20210918-BlobStoreRepository_snapshotFile.png&quot; alt=&quot;Sequence diagram&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;In this figure, we can see that the method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;snapshotFile&lt;/code&gt; of
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BlobStoreRepository&lt;/code&gt; first finds the file name (1.1) of the file to
-snapshot, then verifies the correctness of the file (1.2), and then for each
-part of the file (1.3), it performs un upload. When uploading, Elasticsearch uses a
-custom input stream wrapper to achieve potential rate-limiting. The latter part
-of the Sequence Diagram plugin seems to be incorrect, it writes the wrong serial
-number. But the flaws are not concealed, the next step is to write the blob,
-which is the blue part in the figure (1.4.1.1.4). Write the blob and forward it
-to the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BlobContainer&lt;/code&gt; implementation. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BlobContainer&lt;/code&gt; is an interface that has
-different implementations depending on the cloud provider. After the
-implementation is completed, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BlobStoreRepository&lt;/code&gt; checks the correctness of the
-written data. Finally, the repository adds the successfully created snapshot to the status
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IndexShardSnapshotStatus&lt;/code&gt; to track the progress of the snapshot creation.&lt;/p&gt;
-
-&lt;p&gt;Due to time constraints, we have to stop here for the source code analysis.&lt;/p&gt;
-
-&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
-
-&lt;p&gt;How to go further from this article?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If you are interested in understanding the internal structure of the snapshot
-repository, you can read another article of mine &lt;a href=&quot;/en/elasticsearch-snapshot-repository-structure/&quot;&gt;The internal structure of
-the Elasticsearch snapshot repository&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;If you are interested in learning how to prevent data loss in Elasticsearch,
-you can read my other article &lt;a href=&quot;/en/prevent-data-loss-in-elasticsearch/&quot;&gt;How to prevent data loss in Elasticsearch? &lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;If you want to know more about plugins, please refer to the official
-documentation &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/plugins/7.x/index.html&quot;&gt;Elasticsearch Plugins and Integrations&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;If you want to know more about the blob store, you can visit
-&lt;a href=&quot;https://github.com/elastic/elasticsearch/blob/7.x/server/src/main/java/org/elasticsearch/repositories/blobstore/package-info.java&quot; title=&quot;org.elasticsearch.repositories.blobstore&quot;&gt;GitHub&lt;/a&gt; to read the documentation and source code of this package.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;In this article, we saw how to install plugins for different cloud providers
-through &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;elasticsearch-plugin&lt;/code&gt;; the impact of different plugins on the snapshot
-operations; after using the snapshot plugin, the dependency between the
-Elasticsearch cluster and the cloud provider; next, we walked into the source
-code, briefly analyzed the logic of three classes: Blob Store Repository, Blob
-Store, and Blob Container. We also snapshot creation as an example to
-understand how Blob Store Repository communicates with Blob Container. Finally,
-I also shared some resources to allow you to go further from this article.
-I hope this article can give you some thoughts and give you a better understanding of
-the “snapshot and restore” feature in Elasticsearch. If you are interested in knowing more
-information, you can subscribe to the &lt;a href=&quot;/feed.xml&quot;&gt;feed of my blog&lt;/a&gt;, follow me on
-&lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
-&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you
-the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="elasticsearch" /><category term="elasticsearch" /><category term="java" /><summary type="html">Elasticsearch snapshot repository plugins for AWS, GCP, and Azure</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-aaron-burden-GFpxQ2ZyNc0-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-aaron-burden-GFpxQ2ZyNc0-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="java-core" /><category term="java" /><category term="jetty" /><category term="jersey" /><category term="api" /><category term="jax-rs" /><summary type="html">This article discusses how to implement a simple audit logs solution with Java JAX-RS, including requirements, considerations for the implementation, and 3 different solutions based on Java Servlet, Jetty, and JAX-RS filter.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-markus-spiske-gnhxvdGmGG8-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-markus-spiske-gnhxvdGmGG8-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

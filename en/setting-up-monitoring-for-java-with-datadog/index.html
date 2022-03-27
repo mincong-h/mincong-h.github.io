@@ -10,38 +10,42 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Home - page 18 - Mincong Huang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Setting Up Monitoring For Java With Datadog - Mincong Huang</title>
 
-<meta name="description" content="Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
-">
+<meta name="description" content="This article explains how to set up Datadog monitoring for a Java application and an Elasticsearch service running in Alibaba Cloud.">
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Page 18 of 24 for Home - page 18 | Mincong Huang</title>
+<title>Setting Up Monitoring For Java With Datadog | Mincong Huang</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Home - page 18" />
+<meta property="og:title" content="Setting Up Monitoring For Java With Datadog" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Hi, welcome to my blog! I’m a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog’s. This blog is powered by Jekyll, a simple, blog-aware, static sites solution." />
-<meta property="og:description" content="Hi, welcome to my blog! I’m a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog’s. This blog is powered by Jekyll, a simple, blog-aware, static sites solution." />
-<link rel="canonical" href="https://mincong.io/page18/" />
-<meta property="og:url" content="https://mincong.io/page18/" />
+<meta name="description" content="This article explains how to set up Datadog monitoring for a Java application and an Elasticsearch service running in Alibaba Cloud." />
+<meta property="og:description" content="This article explains how to set up Datadog monitoring for a Java application and an Elasticsearch service running in Alibaba Cloud." />
+<link rel="canonical" href="https://mincong.io/en/setting-up-monitoring-for-java-with-datadog/" />
+<meta property="og:url" content="https://mincong.io/en/setting-up-monitoring-for-java-with-datadog/" />
 <meta property="og:site_name" content="Mincong Huang" />
-<link rel="prev" href="https://mincong.io/page17/" />
-<link rel="next" href="https://mincong.io/page19/" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Home - page 18" />
+<meta property="og:image" content="https://mincong.io/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-03-27T17:52:01+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://mincong.io/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg" />
+<meta property="twitter:title" content="Setting Up Monitoring For Java With Datadog" />
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"headline":"Home - page 18","description":"Hi, welcome to my blog! I’m a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog’s. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.","@type":"WebPage","url":"https://mincong.io/page18/","author":{"@type":"Person","name":"Mincong Huang"},"@context":"https://schema.org"}</script>
+{"image":"https://mincong.io/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg","headline":"Setting Up Monitoring For Java With Datadog","description":"This article explains how to set up Datadog monitoring for a Java application and an Elasticsearch service running in Alibaba Cloud.","datePublished":"2022-03-27T17:52:01+02:00","dateModified":"2022-03-27T17:52:01+02:00","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/setting-up-monitoring-for-java-with-datadog/"},"url":"https://mincong.io/en/setting-up-monitoring-for-java-with-datadog/","author":{"@type":"Person","name":"Mincong Huang"},"@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
 <!-- Extra Open Graph :: Start -->
 
+<meta property="og:image:width" content="1280"/>
+<meta property="og:image:height" content="1920"/>
+
 <!-- Extra Open Graph :: End -->
 
-<link rel="canonical" href="https://mincong.io/page18/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="canonical" href="https://mincong.io/en/setting-up-monitoring-for-java-with-datadog/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -291,7 +295,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -334,244 +338,463 @@
         </ul>
       </nav></div>
   </header>
-</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
+</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4)),url(/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg);background-color:#203028;"><div class="hero__content"><div class ="main">
 
-              <div class="col-aside d-print-none js-col-aside"></div>
+  
+  <div class="article__info clearfix">
+      <ul class="left-col menu">
+        <li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=java">java</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=datadog">datadog</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=elasticsearch">elasticsearch</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=aliyun">aliyun</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=logging">logging</a>
+            </li>
+
+        <li class="separator">|</li>
+          
+            <li>
+              <a class="button button--circle button--primary focus lang"
+                 href="/en/setting-up-monitoring-for-java-with-datadog/"><span>EN</span></a>
+
+              
+
+
+
+
+
+
+              
+
+              
+            </li>
+          
+        
+      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 27, 2022</span>
+            </li></ul></div><div class="article__header"><header><h1>Setting Up Monitoring For Java With Datadog</h1></header></div><div class="article__header">
+                        <p class="overlay__excerpt">Alibaba Cloud + Java + Elasticsearch</p>
+                      </div><div class="article__info clearfix">
+  <ul class="left-col menu">
+    <li>
+      <i class="fas fa-camera"></i>
+      
+      Photo by
+      <a href="https://unsplash.com/@joeyc" target="_blank">Joe Caione</a>
+      
+      on
+      <a href="https://unsplash.com/license" target="_blank">Unplash </a>
+    </li>
+  </ul>
+</div>
+</div></div>
+              </div>
+            </div><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
 
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home - page 18</h1></header><meta itemprop="headline" content="Home - page 18">
+<article><meta itemprop="headline" content="Setting Up Monitoring For Java With Datadog"><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-03-27T17:52:01+02:00">
+    <meta itemprop="keywords" content="java,datadog,elasticsearch,aliyun,logging"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><h2 id="introduction">Introduction</h2>
+
+<p>Recently I was developping a search solution for my blog to improve the search
+experience, based on Java and Elasticsearch. Before using it in production,
+I want to set up a monitoring system to better understand what happens.
+As a Datadog employee, I natually chose <a href="https://www.datadoghq.com/">Datadog</a> as
+the solution because I have been using it for several years now. This article
+mainly explains how did I set up the whole system. Hopefully it will be useful
+for you as well. <mark>Please note that this is NOT an official guide from
+Datadog.</mark> It’s simply a side project that I did over my free time.</p>
+
+<p>Currently, I am running my project in Alibaba Cloud inside a Linux server
+(Ubuntu), inside which there are mainly two Docker containers: one for the Java
+application for search and the other for Elasticsearch. After reading this
+article, you will understand:</p>
+
+<ul>
+  <li>How to integrate Alibaba Cloud?</li>
+  <li>How to set up Datadog Agent in Docker mode?</li>
+  <li>How to integrate Elasticsearch?</li>
+  <li>How to integrate a Java application (logs)?</li>
+</ul>
+
+<p>This article does not aim to be exhausitive. Instead, it provides a high-level
+overview and tries to give you a big picture. Now, let’s get started!</p>
+
+<h2 id="prerequisite">Prerequisite</h2>
+
+<p>Before adding integrations, the first step is to sign up a trial account in
+Datadog so that you can create credentials (API, APP keys) for the integrations,
+and also have the detailed instructions of different integrations inside
+Datadog’s Web Application. Compared to the static documentation, the hints and
+commands there are more adapted to your need, where API key is prefilled and the
+Datadog site (US, EU, …) is prefilled.</p>
+
+<h2 id="integrate-alibaba-cloud">Integrate Alibaba Cloud</h2>
+
+<p>Datadog has documentation about <a href="https://docs.datadoghq.com/integrations/alibaba_cloud/">Alibaba Cloud
+Integration</a> and a blog
+post <a href="https://www.datadoghq.com/blog/monitor-alibaba-cloud-datadog/">“Monitor Alibaba Cloud with
+Datadog”</a> to help
+understand why the integration is beneficial for you. Following
+that documentation page will allow you to access metrics to different services,
+such as Alibaba Elastic
+Compute Service (ECS), Server Load Balancer (SLB), ApsaraDB RDS, ApsaraDB for
+Redis, Content Delivery Network (CDN), Container Service, Express Connect.</p>
+
+<p>Setting up the integration is pretty simple, you need to:</p>
+
+<ul>
+  <li>In Alibaba Cloud, create a service account in Resource Assess Management (RAM)
+to provide programmatic access for Datadog</li>
+  <li>In Alibaba Cloud, grant permissions for resources that you want to monitor</li>
+  <li>In Datadog, provide the access key and secret generated previously so that
+Datadog can crawl those metrics.</li>
+</ul>
+
+<p><img src="/assets/20220327-alibaba-user.png" alt="Set up service account for Datadog in Alibaba Cloud" /></p>
+
+<p><img src="/assets/20220327-datadog-alibabacloud.png" alt="Set up Alibaba Cloud integration in Datadog" /></p>
+
+<p>Note that installing the Alibaba Integration could increase the number of hosts
+that Datadog monitors. For more information on how this may affect your billing,
+visite the <a href="https://docs.datadoghq.com/account_management/billing/alibaba/">Alibaba Integartion
+Billing</a> page.
+In my case, it does not impact me because I have one single host – having this
+integration won’t add more hosts into the bill.</p>
+
+<h2 id="set-up-datadog-agent">Set Up Datadog Agent</h2>
+
+<p>The previous section focus on the cloud provider level. And now it’s time to go
+further into the host level. Since I am running two services, my Java
+app and Elasticsearch, in Docker, I believe that there are two options to
+monitor them: using either the Datadog agent at host level or as a Docker
+container.</p>
+
+<ol>
+  <li><strong>Host level.</strong> The Datadog Agent is installed via <code class="language-plaintext highlighter-rouge">apt</code> and running with
+<code class="language-plaintext highlighter-rouge">systemd</code></li>
+  <li><strong>Docker level.</strong> The Datadog Agent is installed via Docker and running as a
+Docker container</li>
+</ol>
+
+<p>At the beginning I chose the first option because I imagine that it can
+capture more information about the host such as the Linux Kernel, disk, systemd,
+etc. Also because I can configure the agent easily (through the files inside
+<code class="language-plaintext highlighter-rouge">/etc/datadog-agent/conf.d/</code>). However it didn’t work as expected. It failed to
+monitor Docker since the
+socket is hard-coded to <code class="language-plaintext highlighter-rouge">unix:///var/run/docker.sock</code>, but my Docker engine did
+not use that endpoint. It is using <code class="language-plaintext highlighter-rouge">unix:///run/user/1000/docker.sock</code> since I
+am running Docker in rootless mode (see
+<a href="https://docs.docker.com/engine/security/rootless/">“Run the Docker daemon as a non-root user (Rootless
+mode)”</a>). I kept seeing
+errors:</p>
+
+<blockquote>
+  <p>2022-03-26 15:36:24 CST | CORE | ERROR |
+(pkg/collector/worker/check_logger.go:68 in Error) | check:docker | Error running check: temporary failure in dockerutil, will retry later: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get “http://%2Fvar%2Frun%2Fdocker.sock/v1.24/info”: dial unix /var/run/docker.sock: connect: permission denied</p>
+</blockquote>
+
+<p>By consequence, I fell back to the second option, where I started Datadog agent
+in Docker mode. Here is the command I used for starting the Docker container:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">--name</span> datadog-agent <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">DD_API_KEY</span><span class="o">=</span>&lt;DD_API_KEY&gt; <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">DD_LOGS_ENABLED</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+    <span class="nt">-e</span> <span class="nv">DD_SITE</span><span class="o">=</span><span class="s2">"datadoghq.eu"</span>  <span class="se">\</span>
+    <span class="nt">-v</span> /run/user/1000/docker.sock:/var/run/docker.sock:ro <span class="se">\</span>
+    <span class="nt">-v</span> /proc/:/host/proc/:ro <span class="se">\</span>
+    <span class="nt">-v</span> /opt/datadog-agent/run:/opt/datadog-agent/run:rw <span class="se">\</span>
+    <span class="nt">-v</span> /sys/fs/cgroup/:/host/sys/fs/cgroup:ro <span class="se">\</span>
+    datadog/agent:7
+</code></pre></div></div>
+
+<p>And here is the explanation of these options:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Option</th>
+      <th style="text-align: left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-e DD_API_KEY</code></td>
+      <td style="text-align: left">This environment variable specifies the API key of Datadog.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-e DD_LOGS_ENABLED</code></td>
+      <td style="text-align: left">This environment variable indicates that the logs integration in enabled.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-e DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL</code></td>
+      <td style="text-align: left">This environment variable adds a log configuration that enables log collection for all containers.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-e DD_SITE</code></td>
+      <td style="text-align: left">This environment variable is used to ask the agent to send data to the EU site.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-v /run/user/1000/docker.sock:/var/run/docker.sock:ro</code></td>
+      <td style="text-align: left">This option binds the Docker socket <code class="language-plaintext highlighter-rouge">/run/user/1000/docker.sock</code> to containers’ <code class="language-plaintext highlighter-rouge">/var/run/docker.sock</code> so that Datadog agent can monitor the Docker engine.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-v /proc/:/host/proc/:ro</code></td>
+      <td style="text-align: left">This option gives Datadog agent read-only access to some kernel data and system information. See this article <a href="https://www.wikiwand.com/en/Procfs">“procfs”</a> to learn more about the proc filesystem.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-v /opt/datadog-agent/run:/opt/datadog-agent/run:rw</code></td>
+      <td style="text-align: left">This option makes sure we do not lose any logs from containers during restarts or network issues, we store on the host the last line that was collected for each container in this directory.</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro</code></td>
+      <td style="text-align: left">This option gives Datadog agent read-only access to Linux control groups (<a href="https://www.man7.org/linux/man-pages/man7/cgroups.7.html"><code class="language-plaintext highlighter-rouge">cgroups</code></a>).</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Once the Datadog agent is up and running, it can detect all the services running
+in the host and provide hints in the Datadog website. In my case, it detects 3
+services: Docker, Elasticsearch, and SSH.</p>
+
+<p><img src="/assets/20220327-detections.png" alt="Service detections in Datadog" /></p>
+
+<h2 id="autodiscovery">Autodiscovery</h2>
+
+<p>Now, it’s time to configure services correctly (Elasticsearch and my application
+Java). The easiest way to do this is to rely on the
+<a href="https://docs.datadoghq.com/agent/docker/integrations/?tab=docker">autodiscovery</a>
+mechansim provided by Datadog. With Autodiscovery, the Agent detects if it’s
+running on Docker and automatically searches all labels for integration
+templates. These labels can be defined in <code class="language-plaintext highlighter-rouge">Dockerfile</code>, <code class="language-plaintext highlighter-rouge">docker-compose.yaml</code>,
+when running the Docker container (<code class="language-plaintext highlighter-rouge">docker run</code>), or inside Docker Swarm. You
+can learn more about this in article <a href="https://docs.datadoghq.com/agent/docker/integrations/?tab=docker">Docker Integrations
+Autodiscovery</a>.
+We will see concrete examples in the sections below.</p>
+
+<h2 id="integrate-elasticsearch">Integrate Elasticsearch</h2>
+
+<p>Integrating Elasticsearch can be zero configuration as the integation is provided
+out-of-the box. As far as the Elasticsearch service is running on port 9200
+(defaut), Datadog agent is able to detect it. In my case, it still requires some
+configuration. This is because I followed Elasticsearch’s document to <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/security-minimal-setup.html">set up the
+minimal security for
+Elasticsearch</a>.
+In particular, it enables basic authentication for Elasticsearch. For Datadog
+agent, it means providing a username and a password is required to
+talk to Elasticsearch. In my case, I am using the <code class="language-plaintext highlighter-rouge">remote_monitoring_user</code>
+as user and its password.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="se">\</span>
+  <span class="nt">--detach</span> <span class="se">\</span>
+  <span class="nt">--env</span> discovery.type<span class="o">=</span>single-node <span class="se">\</span>
+  <span class="nt">--label</span> com.datadoghq.ad.check_names<span class="o">=</span><span class="s1">'["elastic"]'</span> <span class="se">\</span>
+  <span class="nt">--label</span> com.datadoghq.ad.init_configs<span class="o">=</span><span class="s1">'[{}]'</span> <span class="se">\</span>
+  <span class="nt">--label</span> com.datadoghq.ad.instances<span class="o">=</span><span class="s1">'[
+      {
+        "url": "http://%%host%%:9200",
+        "username": "remote_monitoring_user",
+        "password": "...",
+        "auth_type": "basic",
+        ...
+      }
+    ]'</span> <span class="se">\</span>
+  <span class="nt">--label</span> com.datadoghq.ad.logs<span class="o">=</span><span class="s1">'[
+      {
+        "source": "elasticsearch",
+        "service": "elasticsearch"
+      }
+    ]'</span> <span class="se">\</span>
+  <span class="nt">--network</span> network-blogsearch <span class="se">\</span>
+  <span class="nt">--publish</span> 9200:9200 <span class="se">\</span>
+  <span class="nt">--volume</span> <span class="s2">"/app/elasticsearch/data:/usr/share/elasticsearch/data"</span> <span class="se">\</span>
+  <span class="nt">--volume</span> <span class="s2">"/app/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml"</span> <span class="se">\</span>
+  <span class="nt">--name</span> <span class="s2">"elasticsearch"</span> <span class="se">\</span>
+  docker.elastic.co/elasticsearch/elasticsearch:7.16.3
+</code></pre></div></div>
+
+<p>As you can see, I used multiple labels for the Datadog autodiscovery (<code class="language-plaintext highlighter-rouge">ad</code>), for
+the check, the configuration, and the logs integration. After restarting the
+Elasticsearch container with these Datadog labels, Datadog agent was able to
+configure everything. I saw the dashboard and logs in Datadog.</p>
+
+<p><img src="/assets/20220327-elasticsearch-dashboard.png" alt="Elasticsearch dashboard in Datadog" /></p>
+
+<h2 id="integrate-java">Integrate Java</h2>
+
+<p>Currently my Java application does not have any custom metrics. So this section
+is focus on collecting logs. My application is built using Maven and Logback, so
+I am going to write how to configure them. Datadog has a page <a href="https://docs.datadoghq.com/logs/log_collection/java/?tab=logback">“Java Log
+Collection”</a>,
+which explains how to configure logs under different logging frameworks (Log4j,
+Log4j2, and Logback), using JSON or raw format. In my case, I used JSON format
+as suggested by the documentation. As you may know, Logback does not have a
+builtin support for JSON logging. So I used the
+<a href="https://github.com/logfellow/logstash-logback-encoder">logfellow/logstash-logback-encoder</a>
+to provides the JSON logs, as suggested by the doc. This means declaring a
+dependency on the encoder and using it inside Logback’s file appender.</p>
+
+<p>Dependency:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>net.logstash.logback<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>logstash-logback-encoder<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>7.0.1<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></div>
+
+<p>Logback configuration (<code class="language-plaintext highlighter-rouge">logback.xml</code>):</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"CONSOLE"</span> <span class="na">class=</span><span class="s">"ch.qos.logback.core.ConsoleAppender"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;encoder</span> <span class="na">class=</span><span class="s">"net.logstash.logback.encoder.LogstashEncoder"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/appender&gt;</span>
+  <span class="nt">&lt;appender</span> <span class="na">name=</span><span class="s">"FILE"</span> <span class="na">class=</span><span class="s">"ch.qos.logback.core.FileAppender"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;file&gt;</span>/path/to/app.log<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;encoder</span> <span class="na">class=</span><span class="s">"net.logstash.logback.encoder.LogstashEncoder"</span><span class="nt">/&gt;</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+  <span class="nt">&lt;/appender&gt;</span>
+
+  <span class="nt">&lt;root</span> <span class="na">level=</span><span class="s">"info"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"CONSOLE"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;appender-ref</span> <span class="na">ref=</span><span class="s">"FILE"</span><span class="nt">/&gt;</span>
+  <span class="nt">&lt;/root&gt;</span>
+<span class="nt">&lt;/configuration&gt;</span>
+</code></pre></div></div>
+
+<p>I didn’t completely follow Datadog’s guide because I want to see the logs in
+both the file and the console. Then, when starting the Java Docker container, I
+also added some labels for autodiscovery:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="se">\</span>
+    <span class="nt">--detach</span> <span class="se">\</span>
+    <span class="nt">--label</span> com.datadoghq.ad.logs<span class="o">=</span><span class="s1">'[
+        {
+          "type": "java",
+          "source": "java",
+          "service": "blogsearch",
+          "sourcecategory": "java",
+          "path": "/path/to/app.log"
+        }
+      ]'</span> <span class="se">\</span>
+    <span class="nt">--name</span> blogsearch <span class="se">\</span>
+    <span class="nt">--publish</span> 8080:8080 <span class="se">\</span>
+    <span class="nt">--network</span> network-blogsearch <span class="se">\</span>
+    ...
+    <span class="s2">"</span><span class="k">${</span><span class="nv">REPO</span><span class="k">}</span><span class="s2">:</span><span class="k">${</span><span class="nv">TAG</span><span class="k">}</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<p>and we can see that the logs are collected successfully:</p>
+
+<p><img src="/assets/20220327-java-logs.png" alt="Java logs in Datadog" /></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><img src="/assets/20220327-integrations.png" alt="Installed integrations" /></p>
+
+<p>In this article, we saw how to collect metrics and logs from the cloud provider (Alibaba
+Cloud), from Elasticsearch, and from Java appliation through autodiscovery using
+Datadog agent.
+Interested to know more? You can subscribe to <a href="/feed.xml">the feed of my blog</a>, follow me
+on <a href="https://twitter.com/mincong_h">Twitter</a> or
+<a href="https://github.com/mincong-h/">GitHub</a>. Hope you enjoy this article, see you the next time!</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://docs.datadoghq.com/">Datadog Docs</a>, 2022.</li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-03-27T17:52:01+02:00"><!-- start custom article footer snippet -->
+
 
   
-  <meta itemprop="author" content="Mincong Huang"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2018/04/28/git-index/"><h2 itemprop="headline" class="item__header">Git: Understanding the Index File</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Git index file (.git/index) is a binary file having the following format: a 12-byte header, a number of sorted index entries, extensions, and a SHA-1 checksum. Now let's create a new Git repository, and see how index file changes when a new file is added.</div><p><a href="/2018/04/28/git-index/">Read more</a></p></div>
-
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=git">git</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=macos">macos</a>
-            </li>
-
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 28, 2018</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2018-04-28T10:06:28+02:00">
-    <meta itemprop="keywords" content="git,macos"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2018/04/28/testing-haskell/"><h2 itemprop="headline" class="item__header">Testing Haskell</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">This post explains how to configure your Haskell project for testing, using Cabal and Travis CI.</div><p><a href="/2018/04/28/testing-haskell/">Read more</a></p></div>
-
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=haskell">haskell</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=testing">testing</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=ci">ci</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=travis-ci">travis-ci</a>
-            </li>
-
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 28, 2018</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2018-04-28T07:19:14+02:00">
-    <meta itemprop="keywords" content="haskell,testing,ci,travis-ci"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-coffee-2242213_1280.jpg" /></div><div class="item__content">
-          <header><a href="/2018/04/08/learning-hashmap/"><h2 itemprop="headline" class="item__header">Learning HashMap</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Understand java.util.HashMap in Java 11: bitwise operations, hash computation using hash code, index calculation, and more.</div><p><a href="/2018/04/08/learning-hashmap/">Read more</a></p></div>
-
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=study-note">study-note</a>
-            </li>
-
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 08, 2018</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2018-04-08T09:42:26+02:00">
-    <meta itemprop="keywords" content="java,study-note"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-board-2450236_1280.jpg" /></div><div class="item__content">
-          <header><a href="/2018/04/03/learning-selenium-webdriver/"><h2 itemprop="headline" class="item__header">Introduction to Selenium WebDriver</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">A quick introduction to Selenium WebDriver, a practical tool for running functional tests and browser automation. The sample is written with Firefox 58 and GeckoDriver 0.20.</div><p><a href="/2018/04/03/learning-selenium-webdriver/">Read more</a></p></div>
-
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=qa">qa</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=testing">testing</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=study-note">study-note</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=selenium">selenium</a>
-            </li>
-
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Apr 03, 2018</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2018-04-03T20:50:21+02:00">
-    <meta itemprop="keywords" content="java,qa,testing,study-note,selenium"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2018/03/25/gwt-safecss-internal/"><h2 itemprop="headline" class="item__header">GWT SafeCSS Internal</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Recently, I helped the GWT community for porting module gwt-safecss to GitHub. I think it’s also a good opportunity to learn more about GWT SafeCss. That’s why I’m writing this study note.</div><p><a href="/2018/03/25/gwt-safecss-internal/">Read more</a></p></div>
-
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=gwt">gwt</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=study-note">study-note</a>
-            </li>
-
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 25, 2018</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2018-03-25T09:13:01+02:00">
-    <meta itemprop="keywords" content="java,gwt,study-note"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__content">
-          <header><a href="/2018/03/17/jgit-internal-reference-and-revobject/"><h2 itemprop="headline" class="item__header">JGit Internal: Reference and RevObject</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Today, I want to discuss Git internal mechanism with you: How Git resolves references? How JGit, a pure Java implementation of Git, resolves references in Java? Then, how to use them via class RevObject and its subtypes.</div><p><a href="/2018/03/17/jgit-internal-reference-and-revobject/">Read more</a></p></div>
-
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=jgit">jgit</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=git">git</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li>
-
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 17, 2018</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2018-03-17T08:24:10+01:00">
-    <meta itemprop="keywords" content="jgit,git,java"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-coffee-2306471_1280.jpg" /></div><div class="item__content">
-          <header><a href="/2018/02/28/java-9-migration/"><h2 itemprop="headline" class="item__header">Java 9 Migration</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Java 9 migration for Maven project. It consists Java 9 installation, IDE update, Maven project update, CI update, and fixing tests. This article is written using macOS and IntelliJ IDEA.</div><p><a href="/2018/02/28/java-9-migration/">Read more</a></p></div>
-
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java9">java9</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=maven">maven</a>
-            </li>
-
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 28, 2018</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2018-02-28T20:18:23+01:00">
-    <meta itemprop="keywords" content="java,java9,maven"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-coffee-171653_1280.jpg" /></div><div class="item__content">
-          <header><a href="/2018/02/06/learning-checkstyle/"><h2 itemprop="headline" class="item__header">Learning Checkstyle</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">Checkstyle is a development tool to help programmers write Java code that adheres to a coding standard. By default it supports the Google Java Style Guide and Sun Code Conventions, but is highly configurable. It can be invoked with an ANT task and a command line program.</div><p><a href="/2018/02/06/learning-checkstyle/">Read more</a></p></div>
-
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=maven">maven</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=checkstyle">checkstyle</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=code-quality">code-quality</a>
-            </li>
-
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Feb 06, 2018</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2018-02-06T17:31:07+01:00">
-    <meta itemprop="keywords" content="java,maven,checkstyle,code-quality"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>186 post articles, 24 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><a class="button button--secondary button--circle" href="/page17/">
-            <i class="fas fa-angle-left"></i>
-          </a></li><li>
-              <a class="button button--secondary button--circle" href="/"><span>1</span></a>
-            </li><li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li><li>
-                  <a class="button button--secondary button--circle" href="/page17/"><span>17</span></a>
-                </li><li>
-              <div class="button button--primary button--circle focus"><span>18</span></div>
-            </li><li>
-                  <a class="button button--secondary button--circle" href="/page19/"><span>19</span></a>
-                </li><li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li><li>
-                  <a class="button button--secondary button--circle" href="/page24/"><span>24</span></a>
-                </li><li><a class="button button--secondary button--circle" href="/page19/">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
-
-})();*/
-</script>
-
-
-
-</div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
   
 
-  
-  
+  <div class="article__ads">
     
-
-    <div class="main__ads">
-      
-        <div id="ea-article"
-             class="horizontal"
-             data-ea-publisher="mincongio"
-             data-ea-keywords="java|elasticsearch|devops|git|api|backend"
-             data-ea-type="image">
-      
-      </div>
+      <div id="ea-article"
+           data-ea-publisher="mincongio"
+           data-ea-keywords="java|datadog|elasticsearch|aliyun|logging"
+           data-ea-type="image">
+    
     </div>
-  
+  </div>
+
+<!-- end custom article footer snippet -->
+<div class="article__subscribe"><div class="subscribe">
+  <i class="fas fa-rss"></i>
+  <a type="application/rss+xml" href="/feed.xml">Subscribe</a>
+</div></div><div class="article__license"><div class="license">
+    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International</a> license.
+      <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <img alt="Attribution 4.0 International" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/en/elasticsearch-hlrc/">Internal Structure Of Elasticsearch Java High-Level REST Client</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
+</div><section class="page__comments d-print-none"><div id="disqus_thread"></div>
+  <script>
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  var disqus_config = function () {
+    this.page.url = 'https://mincong.io/en/setting-up-monitoring-for-java-with-datadog/';
+    this.page.identifier = '/en/setting-up-monitoring-for-java-with-datadog';
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mincong-h.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
 </div>
@@ -1132,6 +1355,68 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
+
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
+    }
+
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+  });
+})();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
 </script><script src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
 <script>
 ethicalads.wait.then((placements) => {
