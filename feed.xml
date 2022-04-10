@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-04-10T11:27:52+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-04-10T14:28:01+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
 </subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Setting Up Monitoring For Java With Datadog</title><link href="https://mincong.io/en/setting-up-monitoring-for-java-with-datadog/" rel="alternate" type="text/html" title="Setting Up Monitoring For Java With Datadog" /><published>2022-03-27T17:52:01+02:00</published><updated>2022-03-27T17:52:01+02:00</updated><id>https://mincong.io/en/setting-up-monitoring-for-java-with-datadog</id><content type="html" xml:base="https://mincong.io/en/setting-up-monitoring-for-java-with-datadog/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Recently I was developing a search solution for my blog to improve the search
@@ -398,6 +398,58 @@ grant more permissions to the tracer JAR:&lt;/p&gt;
     // ...
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;pricing&quot;&gt;Pricing&lt;/h2&gt;
+
+&lt;p&gt;How much will it cost for a normal customer?&lt;/p&gt;
+
+&lt;p&gt;I am lucky enough to be a Datadog employee so that the data above is free, but I
+want to know what will it cost for normal customers. Out of curiosity, I decided
+to following the &lt;a href=&quot;https://www.datadoghq.com/pricing/&quot;&gt;pricing&lt;/a&gt; and do an
+estimation.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Item&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Unit Price&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Price&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Infrastructure&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$15/host/month&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$15/month&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;“Pro” plan for one host, with 15 months full-resolution data retention and unlimited alert.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Logs management (ingestion)&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$0.10/GB/month&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$0.1/month&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;I don’t have much logs right now. 1GB should be enough.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Logs management (storage)&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$1.70/million/month&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$1.8/month&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;APM and Continous Profiler&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$40/host/month&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;$40/month&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Billed annually.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;Total&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;-&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;&lt;strong&gt;$56.8/month&lt;/strong&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
