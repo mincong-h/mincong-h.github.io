@@ -389,6 +389,23 @@ grant {
 }
 ```
 
+## Pricing
+
+How much will it cost for a normal customer?
+
+I am lucky enough to be a Datadog employee so that the data above is free, but I
+want to know what will it cost for normal customers. Out of curiosity, I decided
+to following the [pricing](https://www.datadoghq.com/pricing/) and do an
+estimation.
+
+Item | Unit Price | Price | Description
+:--- | ---: | ---: | :---
+Infrastructure | $15/host/month | $15/month | "Pro" plan for one host, with 15 months full-resolution data retention and unlimited alert.
+Logs management (ingestion) | $0.10/GB/month | $0.1/month | I don't have much logs right now. 1GB should be enough.
+Logs management (storage)  | $1.70/million/month | $1.8/month | -
+APM and Continous Profiler | $40/host/month | $40/month | Billed annually.
+**Total** | - | **$56.8/month** |
+
 ## Conclusion
 
 ![Installed integrations](/assets/20220327-integrations.png)
