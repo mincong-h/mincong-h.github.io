@@ -412,14 +412,14 @@
 <!-- end custom article top snippet -->
 <div class="article__content" itemprop="articleBody"><h2 id="introduction">Introduction</h2>
 
-<p>Recently I was developping a search solution for my blog to improve the search
+<p>Recently I was developing a search solution for my blog to improve the search
 experience, based on Java and Elasticsearch. Before using it in production,
 I want to set up a monitoring system to better understand what happens.
-As a Datadog employee, I natually chose <a href="https://www.datadoghq.com/">Datadog</a> as
+As a Datadog employee, I naturally chose <a href="https://www.datadoghq.com/">Datadog</a> as
 the solution because I have been using it for several years now. This article
-mainly explains how did I set up the whole system. Hopefully it will be useful
+mainly explains how I set up the whole system. Hopefully, it will be useful
 for you as well. <mark>Please note that this is NOT an official guide from
-Datadog.</mark> It’s simply a side project that I did over my free time.</p>
+Datadog.</mark> It’s simply a side project that I did in my free time.</p>
 
 <p>Currently, I am running my project in Alibaba Cloud inside a Linux server
 (Ubuntu), inside which there are mainly two Docker containers: one for the Java
@@ -431,16 +431,18 @@ article, you will understand:</p>
   <li>How to set up Datadog Agent in Docker mode?</li>
   <li>How to integrate Elasticsearch?</li>
   <li>How to integrate a Java application (logs)?</li>
+  <li>How to enable APM?</li>
+  <li>How to enable profiling?</li>
 </ul>
 
-<p>This article does not aim to be exhausitive. Instead, it provides a high-level
+<p>This article does not aim to be exhaustive. Instead, it provides a high-level
 overview and tries to give you a big picture. Now, let’s get started!</p>
 
 <h2 id="prerequisite">Prerequisite</h2>
 
-<p>Before adding integrations, the first step is to sign up a trial account in
+<p>Before adding integrations, the first step is to sign up for a trial account in
 Datadog so that you can create credentials (API, APP keys) for the integrations,
-and also have the detailed instructions of different integrations inside
+and also have the detailed instructions for different integrations inside
 Datadog’s Web Application. Compared to the static documentation, the hints and
 commands there are more adapted to your need, where API key is prefilled and the
 Datadog site (US, EU, …) is prefilled.</p>
@@ -460,30 +462,30 @@ Redis, Content Delivery Network (CDN), Container Service, Express Connect.</p>
 <p>Setting up the integration is pretty simple, you need to:</p>
 
 <ul>
-  <li>In Alibaba Cloud, create a service account in Resource Assess Management (RAM)
+  <li>In Alibaba Cloud, create a service account in Resource Access Management (RAM)
 to provide programmatic access for Datadog</li>
   <li>In Alibaba Cloud, grant permissions for resources that you want to monitor</li>
   <li>In Datadog, provide the access key and secret generated previously so that
 Datadog can crawl those metrics.</li>
 </ul>
 
-<p><img src="/assets/20220327-alibaba-user.png" alt="Set up service account for Datadog in Alibaba Cloud" /></p>
+<p><img src="/assets/20220327-alibaba-user.png" alt="Set up a service account for Datadog in Alibaba Cloud" /></p>
 
 <p><img src="/assets/20220327-datadog-alibabacloud.png" alt="Set up Alibaba Cloud integration in Datadog" /></p>
 
 <p>Note that installing the Alibaba Integration could increase the number of hosts
 that Datadog monitors. For more information on how this may affect your billing,
-visite the <a href="https://docs.datadoghq.com/account_management/billing/alibaba/">Alibaba Integartion
+visit the <a href="https://docs.datadoghq.com/account_management/billing/alibaba/">Alibaba Integration
 Billing</a> page.
 In my case, it does not impact me because I have one single host – having this
-integration won’t add more hosts into the bill.</p>
+integration won’t add more hosts to the bill.</p>
 
 <h2 id="set-up-datadog-agent">Set Up Datadog Agent</h2>
 
 <p>The previous section focus on the cloud provider level. And now it’s time to go
 further into the host level. Since I am running two services, my Java
 app and Elasticsearch, in Docker, I believe that there are two options to
-monitor them: using either the Datadog agent at host level or as a Docker
+monitor them: using either the Datadog agent at the host level or as a Docker
 container.</p>
 
 <ol>
@@ -493,10 +495,10 @@ container.</p>
 Docker container</li>
 </ol>
 
-<p>At the beginning I chose the first option because I imagine that it can
+<p>In the beginning, I chose the first option because I imagine that it can
 capture more information about the host such as the Linux Kernel, disk, systemd,
 etc. Also because I can configure the agent easily (through the files inside
-<code class="language-plaintext highlighter-rouge">/etc/datadog-agent/conf.d/</code>). However it didn’t work as expected. It failed to
+<code class="language-plaintext highlighter-rouge">/etc/datadog-agent/conf.d/</code>). However, it didn’t work as expected. It failed to
 monitor Docker since the
 socket is hard-coded to <code class="language-plaintext highlighter-rouge">unix:///var/run/docker.sock</code>, but my Docker engine did
 not use that endpoint. It is using <code class="language-plaintext highlighter-rouge">unix:///run/user/1000/docker.sock</code> since I
@@ -541,7 +543,7 @@ in Docker mode. Here is the command I used for starting the Docker container:</p
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-e DD_LOGS_ENABLED</code></td>
-      <td style="text-align: left">This environment variable indicates that the logs integration in enabled.</td>
+      <td style="text-align: left">This environment variable indicates that the logs integration is enabled.</td>
     </tr>
     <tr>
       <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-e DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL</code></td>
@@ -571,7 +573,7 @@ in Docker mode. Here is the command I used for starting the Docker container:</p
 </table>
 
 <p>Once the Datadog agent is up and running, it can detect all the services running
-in the host and provide hints in the Datadog website. In my case, it detects 3
+in the host and provide hints on the Datadog website. In my case, it detects 3
 services: Docker, Elasticsearch, and SSH.</p>
 
 <p><img src="/assets/20220327-detections.png" alt="Service detections in Datadog" /></p>
@@ -581,19 +583,19 @@ services: Docker, Elasticsearch, and SSH.</p>
 <p>Now, it’s time to configure services correctly (Elasticsearch and my application
 Java). The easiest way to do this is to rely on the
 <a href="https://docs.datadoghq.com/agent/docker/integrations/?tab=docker">autodiscovery</a>
-mechansim provided by Datadog. With Autodiscovery, the Agent detects if it’s
+mechanism provided by Datadog. With Autodiscovery, the Agent detects if it’s
 running on Docker and automatically searches all labels for integration
 templates. These labels can be defined in <code class="language-plaintext highlighter-rouge">Dockerfile</code>, <code class="language-plaintext highlighter-rouge">docker-compose.yaml</code>,
 when running the Docker container (<code class="language-plaintext highlighter-rouge">docker run</code>), or inside Docker Swarm. You
-can learn more about this in article <a href="https://docs.datadoghq.com/agent/docker/integrations/?tab=docker">Docker Integrations
+can learn more about this in the article <a href="https://docs.datadoghq.com/agent/docker/integrations/?tab=docker">Docker Integrations
 Autodiscovery</a>.
 We will see concrete examples in the sections below.</p>
 
 <h2 id="integrate-elasticsearch">Integrate Elasticsearch</h2>
 
-<p>Integrating Elasticsearch can be zero configuration as the integation is provided
-out-of-the box. As far as the Elasticsearch service is running on port 9200
-(defaut), Datadog agent is able to detect it. In my case, it still requires some
+<p>Integrating Elasticsearch can be zero-configuration as the integration is provided
+out-of-the-box. As far as the Elasticsearch service is running on port 9200
+(default), Datadog agent can detect it. In my case, it still requires some
 configuration. This is because I followed Elasticsearch’s document to <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.16/security-minimal-setup.html">set up the
 minimal security for
 Elasticsearch</a>.
@@ -639,16 +641,16 @@ configure everything. I saw the dashboard and logs in Datadog.</p>
 
 <h2 id="integrate-java">Integrate Java</h2>
 
-<p>Currently my Java application does not have any custom metrics. So this section
-is focus on collecting logs. My application is built using Maven and Logback, so
+<p>Currently, my Java application does not have any custom metrics. So this section
+is focused on collecting logs. My application is built using Maven and Logback, so
 I am going to write how to configure them. Datadog has a page <a href="https://docs.datadoghq.com/logs/log_collection/java/?tab=logback">“Java Log
 Collection”</a>,
 which explains how to configure logs under different logging frameworks (Log4j,
 Log4j2, and Logback), using JSON or raw format. In my case, I used JSON format
-as suggested by the documentation. As you may know, Logback does not have a
-builtin support for JSON logging. So I used the
+as suggested by the documentation. As you may know, Logback does not have
+built-in support for JSON logging. So I used the
 <a href="https://github.com/logfellow/logstash-logback-encoder">logfellow/logstash-logback-encoder</a>
-to provides the JSON logs, as suggested by the doc. This means declaring a
+to provide the JSON logs, as suggested by the doc. This means declaring a
 dependency on the encoder and using it inside Logback’s file appender.</p>
 
 <p>Dependency:</p>
@@ -705,13 +707,116 @@ also added some labels for autodiscovery:</p>
 
 <p><img src="/assets/20220327-java-logs.png" alt="Java logs in Datadog" /></p>
 
+<h2 id="apm">APM</h2>
+
+<p>Then I want to go one step further: I want to enable the Application Performance
+Management (APM) as well. Because it gives teams the insight they need to
+identify areas in need of optimization and prioritize tasks effectively. Datadog
+has a page for <a href="https://docs.datadoghq.com/getting_started/tracing/">Getting Started With
+Tracing</a>, there is also
+custom quick start instructions within the Datadog website for the best experience.
+Below, I am using the Datadog-website version to enable APM step by step, where
+I can choose the environment, host configuration, language, and Datadog will
+generate commands for me.</p>
+
+<p><img src="/assets/20220327-apm-1.png" alt="APM setup part 1" /></p>
+
+<p><img src="/assets/20220327-apm-2.png" alt="APM setup part 2" /></p>
+
+<p><img src="/assets/20220327-apm-3.png" alt="APM setup part 3" /></p>
+
+<p>Most of the things went smoothly. The only problem for me was that I chose the
+wrong option in the “same host” part and I didn’t receive any traces in Datadog
+Agent. I should have chosen “From another host” as different containers (Java
+app, Datadog agent) were running in different containers. Concretely, it means
+that we need to configure the applications and Datadog agent a bit differently:</p>
+
+<ul>
+  <li>For the <code class="language-plaintext highlighter-rouge">blogsearch</code> Java application, I need to specify the host of the
+Datadog agent via the environment variable <code class="language-plaintext highlighter-rouge">-e DD_AGENT_HOST=datadog-agent</code> so
+that the tracer knows to which host it needs to send the data.</li>
+  <li>For the Datadog agent, I need to enable non-local traffic via the environment
+variable <code class="language-plaintext highlighter-rouge">-e DD_APM_NON_LOCAL_TRAFFIC=true</code> and add it to the Docker network
+of the Java application via the option <code class="language-plaintext highlighter-rouge">--network network-blogsearch</code>.</li>
+</ul>
+
+<p>On the Datadog agent side, the start-command looks like this:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">-d</span> <span class="nt">--name</span> datadog-agent <span class="se">\</span>
+           <span class="nt">--network</span> network-blogsearch <span class="se">\</span>
+           <span class="nt">-e</span> <span class="nv">DD_API_KEY</span><span class="o">=</span><span class="nv">$DD_API_KEY</span> <span class="se">\</span>
+           <span class="nt">-e</span> <span class="nv">DD_APM_NON_LOCAL_TRAFFIC</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+           <span class="nt">-e</span> <span class="nv">DD_LOGS_ENABLED</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+           <span class="nt">-e</span> <span class="nv">DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL</span><span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+           <span class="nt">-e</span> <span class="nv">DD_SITE</span><span class="o">=</span><span class="s2">"datadoghq.eu"</span>  <span class="se">\</span>
+           <span class="nt">-p</span> 127.0.0.1:8126:8126/tcp <span class="se">\</span>
+           <span class="nt">-v</span> /run/user/1000/docker.sock:/var/run/docker.sock:ro <span class="se">\</span>
+           <span class="nt">-v</span> /proc/:/host/proc/:ro <span class="se">\</span>
+           <span class="nt">-v</span> /opt/datadog-agent/run:/opt/datadog-agent/run:rw <span class="se">\</span>
+           <span class="nt">-v</span> /sys/fs/cgroup/:/host/sys/fs/cgroup:ro <span class="se">\</span>
+           datadog/agent:7
+</code></pre></div></div>
+
+<p>On the application side, I need to:</p>
+
+<ul>
+  <li>Download the tracer JAR in the <code class="language-plaintext highlighter-rouge">Dockerfile</code></li>
+  <li>Include it as the Java agent of the Java application and specify the Java
+property <code class="language-plaintext highlighter-rouge">dd.service</code></li>
+  <li>Specify the <code class="language-plaintext highlighter-rouge">DD_AGENT_HOST</code> in the Docker start-command</li>
+</ul>
+
+<p>Once these are done. I also added the tracer in Elasticsearch, it mainly means:</p>
+
+<ul>
+  <li>Create a custom Dockerfile for Elasticsearch.</li>
+  <li>Download the tracer JAR and use it as Java agent for Elasticsearch. This can
+be done via the <code class="language-plaintext highlighter-rouge">ES_JAVA_OPS</code>, the same as the Java application mentioned above.
+Also, specify the Java <code class="language-plaintext highlighter-rouge">dd.service</code></li>
+  <li>Grant additional permissions for this JAR using an additional security policy
+file as Elasticsearch has a security manager which contains strict and
+fine-tuned security permissions for the classpath, network, filesystem, system
+properties, etc.</li>
+  <li>Publish Docker image to my personal Docker registry.</li>
+</ul>
+
+<p>After all these efforts, we can see the traces in Datadog’s website:</p>
+
+<p><img src="/assets/20220327-trace-flame-graph.png" alt="APM trace" /></p>
+
+<h2 id="profiling">Profiling</h2>
+
+<p>For Java applications, the profiling can be done via <a href="https://docs.datadoghq.com/tracing/profiler/">Continuous
+Profiler</a>. The profiler is
+already included inside the Java tracer, so we just need to enable it:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>java <span class="nt">-javaagent</span>:/path/to/dd-java-agent.jar <span class="se">\</span>
+  <span class="nt">-Ddd</span>.profiling.enabled<span class="o">=</span><span class="nb">true</span> <span class="se">\</span>
+  <span class="nt">-XX</span>:FlightRecorderOptions<span class="o">=</span><span class="nv">stackdepth</span><span class="o">=</span>256 <span class="se">\</span>
+  ...
+</code></pre></div></div>
+
+<p>Once it is enabled, we can see the profiling data on Datadog’s website:</p>
+
+<p><img src="/assets/20220327-profiling.png" alt="Profiling" /></p>
+
+<p>By the way, if you have a security manager enabled, you will probably need to
+grant more permissions to the tracer JAR:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>grant {
+    permission jdk.jfr.FlightRecorderPermission "accessFlightRecorder";
+    permission jdk.jfr.FlightRecorderPermission "registerEvent";
+    // ...
+}
+</code></pre></div></div>
+
 <h2 id="conclusion">Conclusion</h2>
 
 <p><img src="/assets/20220327-integrations.png" alt="Installed integrations" /></p>
 
 <p>In this article, we saw how to collect metrics and logs from the cloud provider (Alibaba
-Cloud), from Elasticsearch, and from Java appliation through autodiscovery using
-Datadog agent.
+Cloud), from Elasticsearch, and from Java application through autodiscovery using
+Datadog agent. We also saw how to enable APM and profiling.
 Interested to know more? You can subscribe to <a href="/feed.xml">the feed of my blog</a>, follow me
 on <a href="https://twitter.com/mincong_h">Twitter</a> or
 <a href="https://github.com/mincong-h/">GitHub</a>. Hope you enjoy this article, see you the next time!</p>
@@ -721,7 +826,9 @@ on <a href="https://twitter.com/mincong_h">Twitter</a> or
 <ul>
   <li><a href="https://docs.datadoghq.com/">Datadog Docs</a>, 2022.</li>
 </ul>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-03-27T17:52:01+02:00"><!-- start custom article footer snippet -->
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><span>Last updated
+      <time itemprop="dateModified" datetime="2022-04-10T11:22:47+02:00">Apr 10, 2022</time>
+    </span><!-- start custom article footer snippet -->
 
 
   
