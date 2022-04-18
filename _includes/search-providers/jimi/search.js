@@ -2,7 +2,8 @@ var SOURCES = window.TEXT_VARIABLES.sources;
 var PAHTS = window.TEXT_VARIABLES.paths;
 window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
   var search = (window.search || (window.search = {}));
-  var searchData = window.TEXT_SEARCH_DATA || {};
+  //var searchData = window.TEXT_SEARCH_DATA || {};
+  var searchData = {};
 
   function memorize(f) {
     var cache = {};
@@ -15,26 +16,7 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 
   // search
   function searchByQuery(query) {
-    console.log(`searching posts for query: ${query}`);
     var i, j, key, keys, cur, _title, result = {};
-    const url = 'https://search.jimidata.info/sites/mincong.io/posts/search?' + $.param({
-      q: query
-    });
-    console.log(`querying ${url}`);
-    let start = Date.now();
-    $.ajax({
-      'url': url,
-      'success': function(data) {
-        let duration = Date.now() - start;
-        console.log(`received response successfully (${duration} ms)`);
-        console.log(data);
-      },
-      'error': function(data) {
-        let duration = Date.now() - start;
-        console.error(`received error response (${duration} ms)`);
-        console.error(data);
-      }
-    })
     keys = Object.keys(searchData);
     for (i = 0; i < keys.length; i++) {
       key = keys[i];
@@ -50,6 +32,52 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
       }
     }
     return result;
+  }
+
+  // search
+  function remoteSearchByQuery(query) {
+    console.log(`searching posts for query: ${query}`);
+    var i, j, key, keys, cur, _title;
+    const url = 'https://search.jimidata.info/sites/mincong.io/posts/search?' + $.param({
+      q: query
+    });
+    console.log(`querying ${url}`);
+    let start = Date.now();
+    $.ajax({
+      'url': url,
+      'success': function(data) {
+        let duration = Date.now() - start;
+        console.log(`received response successfully (${duration} ms)`);
+        console.log(data);
+
+        result = {};
+        keys = Object.keys(data);
+
+        for (i = 0; i < keys.length; i++) {
+          key = keys[i];
+          for (j = 0; j < data[key].length; j++) {
+            cur = data[key][j], _title = cur.title;
+            if ((result[key] === undefined || result[key] && result[key].length < 4 )
+              && _title.toLowerCase().indexOf(query.toLowerCase()) >= 0) {
+              if (result[key] === undefined) {
+                result[key] = [];
+              }
+              result[key].push(cur);
+            }
+          }
+        }
+
+        $('.js-search-result').html(render(data));
+        $resultItems = $('.search-result__item');
+        activeIndex = 0;
+        $resultItems.eq(0).addClass('active');
+      },
+      'error': function(data) {
+        let duration = Date.now() - start;
+        console.error(`received error response (${duration} ms)`);
+        console.error(data);
+      }
+    })
   }
 
   var renderHeader = memorize(function(header) {
@@ -84,9 +112,11 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
     $resultItems = $('.search-result__item'); activeIndex = 0;
   }
   function onInputNotEmpty(val) {
-    $result.html(render(searchByQuery(val)));
-    $resultItems = $('.search-result__item'); activeIndex = 0;
-    $resultItems.eq(0).addClass('active');
+    // TODO add feature flag
+    // $result.html(render(searchByQuery(val)));
+    // $resultItems = $('.search-result__item'); activeIndex = 0;
+    // $resultItems.eq(0).addClass('active');
+    remoteSearchByQuery(val);
   }
 
   search.clear = clear;
