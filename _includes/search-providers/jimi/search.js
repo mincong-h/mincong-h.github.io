@@ -113,7 +113,7 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
   function isJimiSearchEnabled() {
     let cookies = document.cookie.split(";");
     for (let c of cookies) {
-      if (c.startsWith("MC_FF_JIMI_SEARCH_ENABLED")) {
+      if (c.trim().startsWith("MC_FF_JIMI_SEARCH_ENABLED")) {
         return true;
       }
     }
