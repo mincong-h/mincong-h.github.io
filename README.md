@@ -149,6 +149,20 @@ Collection Directory       | Description
 `_displayed_en_categories` | Categories displayed for users, written in English.
 `_displayed_cn_categories` | Categories displayed for users, written in Chinese.
 
+## Search
+
+The search feature is powered by Jimi Search (`jimi`), a custom search solution
+that I created based on Java and Elasticsearch. It is currently in alpha, if you
+want to use it, you need to create the following cookie in your browser (keep
+the value empty):
+
+```
+MC_FF_JIMI_SEARCH_ENABLED
+```
+
+And now you are using Jimi Search for searching the blog posts. To disable it,
+simply delete the cookie.
+
 ## Assets
 
 When adding a new image to the website, you need to register its metadata in
