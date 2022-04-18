@@ -111,12 +111,25 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
     $result.html(null);
     $resultItems = $('.search-result__item'); activeIndex = 0;
   }
+  function isJimiSearchEnabled() {
+    let cookies = document.cookie.split(";");
+    for (let c of cookies) {
+      if (c.startsWith("MC_FF_JIMI_SEARCH_ENABLED")) {
+        return true;
+      }
+    }
+    return false;
+  }
   function onInputNotEmpty(val) {
-    // TODO add feature flag
-    // $result.html(render(searchByQuery(val)));
-    // $resultItems = $('.search-result__item'); activeIndex = 0;
-    // $resultItems.eq(0).addClass('active');
-    remoteSearchByQuery(val);
+    let jimiEnabled = isJimiSearchEnabled();
+    console.log(`jimiEnabled=${jimiEnabled}`);
+    if (jimiEnabled) {
+      remoteSearchByQuery(val);
+    } else {
+      $result.html(render(searchByQuery(val)));
+      $resultItems = $('.search-result__item'); activeIndex = 0;
+      $resultItems.eq(0).addClass('active');
+    }
   }
 
   search.clear = clear;
