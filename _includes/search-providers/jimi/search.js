@@ -2,8 +2,7 @@ var SOURCES = window.TEXT_VARIABLES.sources;
 var PAHTS = window.TEXT_VARIABLES.paths;
 window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
   var search = (window.search || (window.search = {}));
-  //var searchData = window.TEXT_SEARCH_DATA || {};
-  var searchData = {};
+  var searchData = window.TEXT_SEARCH_DATA || {};
 
   function memorize(f) {
     var cache = {};
