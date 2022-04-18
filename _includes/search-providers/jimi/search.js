@@ -17,6 +17,20 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
   function searchByQuery(query) {
     console.log(`searching posts for query: ${query}`);
     var i, j, key, keys, cur, _title, result = {};
+    const url = 'https://search.jimidata.info/sites/mincong.io/posts/search?' + $.param({
+      q: query
+    });
+    console.log(`querying ${url}`);
+    $.ajax({
+      'url': url,
+      'success': function(data) {
+        console.log("received response successfully")
+        console.log(data);
+      },
+      'error': function(data) {
+        console.error(data);
+      }
+    })
     keys = Object.keys(searchData);
     for (i = 0; i < keys.length; i++) {
       key = keys[i];
