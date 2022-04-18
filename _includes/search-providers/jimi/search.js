@@ -21,13 +21,17 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
       q: query
     });
     console.log(`querying ${url}`);
+    let start = Date.now();
     $.ajax({
       'url': url,
       'success': function(data) {
-        console.log("received response successfully")
+        let duration = Date.now() - start;
+        console.log(`received response successfully (${duration} ms)`);
         console.log(data);
       },
       'error': function(data) {
+        let duration = Date.now() - start;
+        console.error(`received error response (${duration} ms)`);
         console.error(data);
       }
     })
