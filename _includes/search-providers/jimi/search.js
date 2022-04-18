@@ -13,8 +13,9 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
     };
   }
 
-  /// search
+  // search
   function searchByQuery(query) {
+    console.log(`searching posts for query: ${query}`);
     var i, j, key, keys, cur, _title, result = {};
     keys = Object.keys(searchData);
     for (i = 0; i < keys.length; i++) {
