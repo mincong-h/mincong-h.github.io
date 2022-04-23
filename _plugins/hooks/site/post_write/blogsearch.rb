@@ -6,5 +6,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
         # Jekyll.logger.info post.data["date"].class
         Jekyll.logger.info post.data["date"].strftime("%FT%T%:z")
         Jekyll.logger.info post.data["title"].strip
+        Jekyll.logger.info site.url + post.url
+        Jekyll.logger.info "---"
     }
 end
