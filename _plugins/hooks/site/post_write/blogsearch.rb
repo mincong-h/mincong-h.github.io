@@ -27,7 +27,6 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
         headers = {"Content-Type": "application/json"}
         body = {"title" => title, "url" => url, "content" => content}.to_json
-        Jekyll.logger.info body
 
         request = Net::HTTP::Put.new(uri.request_uri, headers)
         request.basic_auth username, password
