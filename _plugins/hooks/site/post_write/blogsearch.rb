@@ -1,23 +1,39 @@
 require 'net/http'
+require 'uri'
+require 'json'
 
 Jekyll::Hooks.register :site, :post_write do |site|
     Jekyll.logger.info "Updating blog posts to BlogSearch..."
-    Jekyll.logger.info ENV["JIMI_USERNAME"]
-    Jekyll.logger.info ENV["JIMI_PASSWORD"]
+    username = ENV["JIMI_USERNAME"]
+    password = ENV["JIMI_PASSWORD"]
 
-    Jekyll.logger.info "Getting information from Jimi Data"
-    uri = URI('https://search.jimidata.info')
-    response = Net::HTTP.get_response(uri)
-    Jekyll.logger.info response.code
-    Jekyll.logger.info response.body
-    Jekyll.logger.info "==="
+    site_info = Net::HTTP.get URI('https://search.jimidata.info')
+    Jekyll.logger.info site_info
 
     # See more variables in https://jekyllrb.com/docs/variables/
     site.posts.docs.each { |post|
-        # Jekyll.logger.info post.data["date"].class
-        Jekyll.logger.info post.data["date"].strftime("%FT%T%:z")
-        Jekyll.logger.info post.data["title"].strip
-        Jekyll.logger.info post.url
+        url = post.url
+        title = post.data["title"]
+        content = post.content
+        Jekyll.logger.info "Indexing post: " + title + " (" + post.id + ")"
+
+        pos = post.id.rindex('/') + 1
+        postId = post.id[pos..-1]  # hack: remove prefix
+        uri = URI.parse('https://search.jimidata.info/sites/mincong.io/posts/' + postId)
+        Jekyll.logger.info uri
+
+        http = Net::HTTP.new(uri.host, uri.port)
+        http.use_ssl = true
+
+        headers = {"Content-Type": "application/json"}
+        request = Net::HTTP::Put.new(uri.request_uri, headers)
+        request.basic_auth username, password
+        request.body = {"title" => title, "url" => url, "content" => content}.to_json,
+
+        response = http.request(request)
+
+        Jekyll.logger.info response.code
+        Jekyll.logger.info response.body
         Jekyll.logger.info "---"
     }
 end
