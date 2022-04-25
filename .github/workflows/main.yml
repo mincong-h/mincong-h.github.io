@@ -30,6 +30,9 @@ jobs:
     - name: Build Jekyll website
       run: |
          bundle exec jekyll build
+      env:
+        JIMI_USERNAME: "${{ secrets.JIMI_USERNAME }}"
+        JIMI_PASSWORD: "${{ secrets.JIMI_PASSWORD }}"
     - name: Deploy GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
