@@ -27,7 +27,6 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
         headers = {"Content-Type": "application/json"}
         body = {"title" => title, "url" => url, "content" => content}.to_json
-        Jekyll.logger.info body
 
         request = Net::HTTP::Put.new(uri.request_uri, headers)
         request.basic_auth username, password
@@ -35,8 +34,6 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
         response = http.request(request)
 
-        Jekyll.logger.info response.code
-        Jekyll.logger.info response.body
-        Jekyll.logger.info "---"
+        Jekyll.logger.info response.code + " " + response.body
     }
 end
