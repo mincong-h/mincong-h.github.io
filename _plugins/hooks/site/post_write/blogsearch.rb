@@ -34,6 +34,6 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
         response = http.request(request)
 
-        Jekyll.logger.info response.code + response.body
+        Jekyll.logger.info response.code + " " + response.body
     }
 end
