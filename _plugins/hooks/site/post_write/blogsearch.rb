@@ -26,9 +26,12 @@ Jekyll::Hooks.register :site, :post_write do |site|
         http.use_ssl = true
 
         headers = {"Content-Type": "application/json"}
+        body = {"title" => title, "url" => url, "content" => content}.to_json
+        Jekyll.logger.info body
+
         request = Net::HTTP::Put.new(uri.request_uri, headers)
         request.basic_auth username, password
-        request.body = {"title" => title, "url" => url, "content" => content}.to_json,
+        request.body = body
 
         response = http.request(request)
 
