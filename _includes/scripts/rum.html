@@ -1,0 +1,23 @@
+<script>
+  (function(h,o,u,n,d) {
+    h=h[d]=h[d]||{q:[],onReady:function(c){h.q.push(c)}}
+    d=o.createElement(u);d.async=1;d.src=n
+    n=o.getElementsByTagName(u)[0];n.parentNode.insertBefore(d,n)
+  })(window,document,'script','https://www.datadoghq-browser-agent.com/datadog-rum-v4.js','DD_RUM')
+  DD_RUM.onReady(function() {
+    DD_RUM.init({
+      clientToken: 'pub1212981d8cc6f0997eb39addafaefc3d',
+      applicationId: 'bc39e1cb-2fe4-4ba3-aa97-e077d1593720',
+      site: 'datadoghq.eu',
+      service: 'mincong.io',
+      env: 'prod',
+      // Specify a version number to identify the deployed version of your application in Datadog
+      // version: '1.0.0',
+      sampleRate: 100,
+      trackInteractions: true,
+      defaultPrivacyLevel: 'mask-user-input'
+    });
+
+    DD_RUM.startSessionReplayRecording();
+  })
+</script>
