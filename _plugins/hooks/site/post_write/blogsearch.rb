@@ -3,6 +3,15 @@ require 'uri'
 require 'json'
 
 Jekyll::Hooks.register :site, :post_write do |site|
+    jekyll_env = ENV["JEKYLL_ENV"]
+    jimi_enabled_env = ENV["JIMI_ENABLED"]
+    jimi_enabled = jekyll_env == "prod" || jimi_enabled_env == "true"
+
+    if !jimi_enabled
+        Jekyll.logger.info "Jimi search is disabled"
+        return
+    end
+
     Jekyll.logger.info "Updating blog posts to BlogSearch..."
     username = ENV["JIMI_USERNAME"]
     password = ENV["JIMI_PASSWORD"]
