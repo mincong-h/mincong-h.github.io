@@ -8,6 +8,20 @@ sites solution. It is also powered by [TeXt
 Theme](https://github.com/kitian616/jekyll-TeXt-theme), a super customizable
 Jekyll theme written by Tian Qi ([kitian616](https://github.com/kitian616)).
 
+- [Install and Run](#install-and-run)
+- [Generators](#generators)
+- [Blog Post](#blog-post)
+  - [Types of Blog Post](#types-of-blog-post)
+  - [Configuration](#configuration)
+- [Collections](#collections)
+- [Search](#search)
+  - [Indexing Documents](#indexing-documents)
+  - [Querying Documents](#querying-documents)
+- [Assets](#assets)
+- [Social Network Sharing](#social-network-sharing)
+- [WeChat](#wechat)
+- [Useful References](#useful-resources)
+
 ## Install and Run
 
 Install required Jekyll plugins, then run Jekyll:
@@ -150,6 +164,16 @@ Collection Directory       | Description
 `_displayed_cn_categories` | Categories displayed for users, written in Chinese.
 
 ## Search
+
+### Indexing Documents
+
+Indexing documents are done during the build process of the website, usually in
+the CI. This is powered by the custom BlogSearch plugin
+(`_plugins/hooks/site/post_write/blogsearch.rb`). To debug it, you can set
+environment variable `JIMI_ENABLED` and then build/serve the Jekyll website.
+Username (`JIMI_USERNAME`) and password (`JIMI_PASSWORD`) are required.
+
+### Querying Documents
 
 The search feature is powered by Jimi Search (`jimi`), a custom search solution
 that I created based on Java and Elasticsearch. It is currently in alpha, if you
