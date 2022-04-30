@@ -8,9 +8,19 @@ sites solution. It is also powered by [TeXt
 Theme](https://github.com/kitian616/jekyll-TeXt-theme), a super customizable
 Jekyll theme written by Tian Qi ([kitian616](https://github.com/kitian616)).
 
+- [Install and Run](#install-and-run)
+- [Generators](#generators)
+- [Blog Post](#blog-post)
+  - [Types of Blog Post](#types-of-blog-post)
+  - [Configuration](#configuration)
+- [Collections](#collections)
 - [Search](#search)
   - [Indexing Documents](#indexing-documents)
   - [Querying Documents](#querying-documents)
+- [Assets](#assets)
+- [Social Network Sharing](#social-network-sharing)
+- [WeChat](#wechat)
+- [Useful References](#useful-resources)
 
 ## Install and Run
 
