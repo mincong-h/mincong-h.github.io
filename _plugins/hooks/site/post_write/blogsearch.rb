@@ -9,7 +9,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
     if !jimi_enabled
         Jekyll.logger.info "Jimi search is disabled"
-        return
+        next
     end
 
     Jekyll.logger.info "Updating blog posts to BlogSearch..."
