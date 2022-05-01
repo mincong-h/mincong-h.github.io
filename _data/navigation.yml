@@ -156,3 +156,5 @@ series:
         url:    /en/series/jax-rs-basics/
       - title:  Maven Plugins
         url:    /en/series/maven-plugins/
+      - title:  BlogSearch
+        url:    /en/series/blogsearch/

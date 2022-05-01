@@ -10,6 +10,7 @@ date:                2022-03-27 17:52:01 +0200
 date_modified:       2022-04-10 11:22:47 +0200
 categories:          [java-core]
 tags:                [java, datadog, elasticsearch, aliyun, logging]
+series:              [blogsearch]
 ads_tags:            []
 comments:            true
 excerpt:             >
