@@ -35,19 +35,17 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 
   // search
   function remoteSearchByQuery(query) {
-    console.log(`searching posts for query: ${query}`);
+    console.log(`searching: ${query}`);
     var i, j, key, keys, cur, _title;
     const url = 'https://search.jimidata.info/sites/mincong.io/posts/search?' + $.param({
       q: query
     });
-    console.log(`querying ${url}`);
     let start = Date.now();
     $.ajax({
       'url': url,
       'success': function(data) {
         let duration = Date.now() - start;
         console.log(`received response successfully (${duration} ms)`);
-        console.log(data);
 
         result = {};
         keys = Object.keys(data);
@@ -110,25 +108,9 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
     $result.html(null);
     $resultItems = $('.search-result__item'); activeIndex = 0;
   }
-  function isJimiSearchEnabled() {
-    let cookies = document.cookie.split(";");
-    for (let c of cookies) {
-      if (c.trim().startsWith("MC_FF_JIMI_SEARCH_ENABLED")) {
-        return true;
-      }
-    }
-    return false;
-  }
+
   function onInputNotEmpty(val) {
-    let jimiEnabled = isJimiSearchEnabled();
-    console.log(`jimiEnabled=${jimiEnabled}`);
-    if (jimiEnabled) {
-      remoteSearchByQuery(val);
-    } else {
-      $result.html(render(searchByQuery(val)));
-      $resultItems = $('.search-result__item'); activeIndex = 0;
-      $resultItems.eq(0).addClass('active');
-    }
+    remoteSearchByQuery(val);
   }
 
   search.clear = clear;

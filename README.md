@@ -176,16 +176,7 @@ Username (`JIMI_USERNAME`) and password (`JIMI_PASSWORD`) are required.
 ### Querying Documents
 
 The search feature is powered by Jimi Search (`jimi`), a custom search solution
-that I created based on Java and Elasticsearch. It is currently in alpha, if you
-want to use it, you need to create the following cookie in your browser (keep
-the value empty):
-
-```
-MC_FF_JIMI_SEARCH_ENABLED
-```
-
-And now you are using Jimi Search for searching the blog posts. To disable it,
-simply delete the cookie.
+that I created based on Java and Elasticsearch.
 
 ## Assets
 
