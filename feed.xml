@@ -1,5 +1,270 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-05-26T17:08:43+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
-</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">BlogSearch Architecture</title><link href="https://mincong.io/en/blogsearch-architecture/" rel="alternate" type="text/html" title="BlogSearch Architecture" /><published>2022-05-26T09:54:25+02:00</published><updated>2022-05-26T09:54:25+02:00</updated><id>https://mincong.io/en/blogsearch-architecture</id><content type="html" xml:base="https://mincong.io/en/blogsearch-architecture/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-06-26T10:09:25+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Managing Code Complexity</title><link href="https://mincong.io/en/managing-code-complexity/" rel="alternate" type="text/html" title="Managing Code Complexity" /><published>2022-06-25T10:31:04+02:00</published><updated>2022-06-25T10:31:04+02:00</updated><id>https://mincong.io/en/managing-code-complexity</id><content type="html" xml:base="https://mincong.io/en/managing-code-complexity/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;In late 2021, I had the chance to join a new team at
+&lt;a href=&quot;https://www.datadoghq.com/&quot;&gt;Datadog&lt;/a&gt; called “Event Platform Automation”, which
+creates workflows and other types of automation to support the growth of the
+platform. The goal is to eliminate toil, avoid operational overload, and build
+packages so that other teams can write their workflows. Since this was a new
+project, I had the chance to write many things from scratch in Java and Go, and
+witnessed the growth of the codebase. That’s why I want to write down this
+article to share my experience with you.&lt;/p&gt;
+
+&lt;p&gt;Today’s topic is mainly about complexity. When you start a new project, you will
+see that the complexity grows a lot. It grows in terms of lines of code,
+structures, packages, etc. It’s difficult to get it right. And this keeps
+happening as your business grows (which is a good thing). That’s why I believe
+it’s worth discussing how to make things done correctly.&lt;/p&gt;
+
+&lt;p&gt;After reading this article, you will understand:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How to manage the complexity in different dimensions?&lt;/li&gt;
+  &lt;li&gt;Why does continuous refactoring matter?&lt;/li&gt;
+  &lt;li&gt;What kinds of strategies do you need?&lt;/li&gt;
+  &lt;li&gt;How to go further from this article?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, let’s get started!&lt;/p&gt;
+
+&lt;h2 id=&quot;growing-in-different-dimensions&quot;&gt;Growing in Different Dimensions&lt;/h2&gt;
+
+&lt;p&gt;When your codebase grows from 100 lines to 1,000 lines, from 1,000 to 10,000,
+and even more, you need to find many ways to manage the complexity. Here are
+some dimensions that it’s worth considering.&lt;/p&gt;
+
+&lt;h3 id=&quot;lines-of-code&quot;&gt;Lines of Code&lt;/h3&gt;
+
+&lt;p&gt;When the project is small enough, the first dimension to consider is to grow the
+file in terms of lines of code. That is, you just need to add new functions and
+new structures to express the logic that you want. At this stage, the complexity
+is not the real concern, the priority may be to get things done and increase the
+impact of the code.&lt;/p&gt;
+
+&lt;h3 id=&quot;files&quot;&gt;Files&lt;/h3&gt;
+
+&lt;p&gt;Once you have more logic, you cannot use the same file all the time. Otherwise,
+the complexity of that file will explode. That’s how we end up with files having
+thousands of lines of code and people don’t know how it works anymore.
+Multiple signals can help you to identify this:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Multiple developers contributed to your file&lt;/li&gt;
+  &lt;li&gt;The lines of code increased very fast recently&lt;/li&gt;
+  &lt;li&gt;We start to see multiple domains or multiple layers in the same file&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;A straightforward solution is to use multiple files. Each file can represent a
+domain that you need. For example, when writing a complex workflow, you may need
+to interact with multiple external services. In that case, you can have one file
+for each service, where you put all the related logic there.&lt;/p&gt;
+
+&lt;h3 id=&quot;classes-structures&quot;&gt;Classes (Structures)&lt;/h3&gt;
+
+&lt;p&gt;Most of the time, having functions and files is not enough to support your
+use cases. This is because we are working with some business logic and many
+data are related to each other. That’s why you need classes in Java (or
+structures in Go) to better express your business models and ensure that
+different pieces of information are consistent. It’s also known as
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Object-oriented_programming&quot;&gt;Object-Oriented Programming
+(OOP)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, I feel that it’s very easy to abuse the usage of classes and make
+things confusing. For example, having too many classes that are similar, or
+having a giant class with too many methods. Face to this problem, there are
+multiple considerations:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;The lifecycle of the data.&lt;/strong&gt; If a piece of information is always the same
+during a long period or multiple steps of the execution, it makes sense to
+add it into a class. Otherwise, if it’s only used for a short period
+or one single location, it’s better to put it as a parameter. In Java, I like
+making class members &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;final&lt;/code&gt; so that we can have a clear expectation of the value
+of that member – we know that it won’t be changed during the whole lifecycle
+of the instance of the class.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;The number of usages of a method.&lt;/strong&gt; If a method is frequently used, it’s
+logical to keep it in a class. If a method is only used once or twice and
+it looks special compared to other methods, perhaps it’s worth moving it to
+another place: to the caller or another class.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SOLID principles&lt;/strong&gt;. Also, consider the SOLID principles: Single
+responsibility; Open/closed; Liskov Substitution; Interface segregation;
+Dependency inversion, which helps you to decide what should be put into a
+single class or separated classes. See also
+https://www.baeldung.com/solid-principles.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;packages&quot;&gt;Packages&lt;/h3&gt;
+
+&lt;p&gt;Once the classes don’t fit your need anymore, perhaps it’s time to consider
+using packages. Packages are internal libraries that are used for different
+callers. In the case of workflows, multiple workflows can re-use the same
+libraries in different manners. We use libraries to interact with different
+services (GitHub, GitLab, Slack, internal services, etc).&lt;/p&gt;
+
+&lt;p&gt;But don’t create a package if it’s not necessary! If you have only one or two
+files, it does not worth creating a new package. This kind of package is called
+“shallow modules”. It does not hide many details and is therefore useless for
+managing complexity. Ideally, the package should be deep, so that it handles
+complex logic for you and provides simple APIs to make manipulations easy. In
+the book “A Philosophy of Software Design”, written by John Ousterhout, he
+mentioned the difference between deep and shallow modules:&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img alt=&quot;Deep and shallow modules&quot; style=&quot;max-width: 400px;&quot; src=&quot;/assets/20220625-deep-modules.png&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;He said: &lt;em&gt;“The best modules are deep: they allow a lot of functionality to be
+accessed through a simple interface. A shallow module is one with a relatively
+complex interface, but not much functionality: it doesn’t hide much
+complexity”.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;It’s important to write down some documentation about the package that you are
+creating. It gives a high-level overview to your readers (the developers that
+will use the package). It helps people to understand the intention of the
+package without needing to navigate into the code; the design choices and
+assumptions that you made during the development.&lt;/p&gt;
+
+&lt;p&gt;In my case, I created two packages in Go this year:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;An internal API client&lt;/strong&gt; to communicate to an administration service via RESTful
+APIs. In the beginning, it was one method inside a workflow, over time, it
+becomes an independent file, a shared file used by multiple workflows, and
+nowadays a library for most of the workflows. It’s built on top of
+&lt;a href=&quot;https://pkg.go.dev/net/http&quot;&gt;https://pkg.go.dev/net/http&lt;/a&gt; and &lt;a href=&quot;https://pkg.go.dev/encoding/json&quot;&gt;https://pkg.go.dev/encoding/json&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;An internal configuration package,&lt;/strong&gt; which contains data models to represent
+different configuration files in Go, deserialized from YAML and Bazel
+(Starlark). Initially, the package contained only Starlark-related files, but
+over time, we also need to parse YAML files, and we may welcome other
+file formats as well.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;services&quot;&gt;Services&lt;/h3&gt;
+
+&lt;p&gt;If you need to grow even further, you can also consider building multiple
+services. Each service re-uses a subset of the existing packages. In a data
+platform backend, you can have one service per team or one service per data
+store.&lt;/p&gt;
+
+&lt;h2 id=&quot;continuous-refactoring&quot;&gt;Continuous Refactoring&lt;/h2&gt;
+
+&lt;p&gt;If we take a step back, it’s also important to realize that there isn’t any
+perfect solution that solves all the problems. Therefore, it’s essential to
+refactor the code continuously and ensure that it fits new use-cases. Here are
+some aspects of refactoring that I want to mention.&lt;/p&gt;
+
+&lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
+
+&lt;p&gt;Writing tests allows you to have small datasets to validate the behavior of the
+existing code. It ensures that the refactoring won’t introduce regression to
+your production (or at least reduce the risk of incidents). There are several
+moments that you can consider writing tests:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;When developing the software, you can test important cases to ensure the
+features work as you would expect.&lt;/li&gt;
+  &lt;li&gt;When someone uses your code and you found bugs, it’s a good moment to enforce
+the coverage and have more corner cases being covered.&lt;/li&gt;
+  &lt;li&gt;When it becomes a library, it means that it’s being shared for some people or
+some projects. It’s also a good moment to improve the coverage.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Generally speaking, testing brings confidence to your refactoring.&lt;/p&gt;
+
+&lt;h3 id=&quot;refactoring&quot;&gt;Refactoring&lt;/h3&gt;
+
+&lt;p&gt;Refactoring allows you to adapt the source code for new needs. The typical
+dimensions are what I mentioned in the previous section: lines of code, files,
+classes, packages, and services. For example, you may want to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;use interface to standardize different implementations and define a contract
+between the users and the maintainers of the library.&lt;/li&gt;
+  &lt;li&gt;simplify the relationship between some services to make it easier to
+understand&lt;/li&gt;
+  &lt;li&gt;creating a class to enforce the consistency between some fields&lt;/li&gt;
+  &lt;li&gt;avoiding having too much information leaked out to the caller’s side by
+centralizing them into a single package&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These are some very vague ideas. If you need more concrete details about how to
+do it, I strongly suggest you visit &lt;a href=&quot;https://refactoring.guru/&quot;&gt;https://refactoring.guru/&lt;/a&gt;. It teaches
+you many design patterns and refactoring skills that you can apply to your daily
+tasks.&lt;/p&gt;
+
+&lt;h3 id=&quot;mindset&quot;&gt;Mindset&lt;/h3&gt;
+
+&lt;p&gt;Having the right mindset is also important. It allows you to have a clear
+expectation about what will happen and get prepared for it mentally. Here
+are some notes that I keep in mind:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Technical debt always exists. As time goes by, there are always some things
+that are outdated or unknown to some members. What matters is to control
+the impact of this technical debt so that it won’t slow you down too much for
+developing new solutions or maintaining existing ones.&lt;/li&gt;
+  &lt;li&gt;You need to communicate with your team members. Sometimes people need
+visibility on what you do. They need to understand why and how will you do it,
+and also how long will it take. If we have an agreement on what we do, things will
+move smoothly.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;strategy&quot;&gt;Strategy&lt;/h2&gt;
+
+&lt;p&gt;How to manage the code complexity efficiently? Here are some strategies that I
+would consider.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Priority.&lt;/strong&gt; We need to know what are the most important to address. We need to
+agree on
+something as a team, such as, using the OKRs, or finding out what is important for
+team members. You also need to have support from your manager so that everyone
+is aligned about the direction.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Data-Driven.&lt;/strong&gt; Use data to demonstrate what we want to achieve collectively,
+what are the pain points, what will be the impact, etc. To collect data, you
+need to think about different dimensions.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Making Assumption.&lt;/strong&gt; Assume some situations so that we don’t need to care
+about those cases for now. Perhaps we can address them later on or allow the
+system to have some imperfections which don’t impact the general mechanism of
+the solution.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Don’t overthink at the beginning.&lt;/strong&gt; Focus on what matters most first. That is,
+it’s OK to take some shortcuts as far as you will come back and refactor later
+on. This ensures the delivery speed. Done is better than perfect.&lt;/p&gt;
+
+&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
+
+&lt;p&gt;How to go further from here?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;I recommend the book “A Philosophy of Software Design”, written by John
+Ousterhout, Stanford University, which shows you the different aspects of
+software design.&lt;/li&gt;
+  &lt;li&gt;Visit &lt;a href=&quot;https://www.baeldung.com/solid-principles&quot;&gt;SOLID Principles&lt;/a&gt; to learn
+more about these 5 principles.&lt;/li&gt;
+  &lt;li&gt;Visit &lt;a href=&quot;https://refactoring.guru/&quot;&gt;Refactoring Guru&lt;/a&gt; to learn more about
+different design patterns and refactoring patterns.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Today we discussed how to manage the code complexity in different
+dimensions, we see how continuous refactoring can help us, and different
+strategies to allow having an efficient way to spend your time on handling
+complexity, and finally, some additional resources to go further.
+Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;,
+and follow me
+on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
+&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Object-oriented_programming&quot;&gt;https://en.wikipedia.org/wiki/Object-oriented_programming&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://refactoring.guru/&quot;&gt;https://refactoring.guru/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.baeldung.com/solid-principles&quot;&gt;https://www.baeldung.com/solid-principles&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="system-design" /><category term="java" /><category term="go" /><summary type="html">This article discusses how to manage code complexity when the codebase is getting more and more complex, how to refactor continuously, and what kinds of strategies you need to succeed.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-jon-tyson-FKkK1hnTe-Q-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-jon-tyson-FKkK1hnTe-Q-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">BlogSearch Architecture</title><link href="https://mincong.io/en/blogsearch-architecture/" rel="alternate" type="text/html" title="BlogSearch Architecture" /><published>2022-05-26T09:54:25+02:00</published><updated>2022-05-26T09:54:25+02:00</updated><id>https://mincong.io/en/blogsearch-architecture</id><content type="html" xml:base="https://mincong.io/en/blogsearch-architecture/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Recently I built a simple service “BlogSearch” for searching blog posts on my blog
 &lt;a href=&quot;https://mincong.io&quot;&gt;https://mincong.io&lt;/a&gt;. Today I want to share with you the architecture of the
@@ -2598,193 +2863,4 @@ Expansion”&lt;/a&gt;,
   &lt;li&gt;&lt;a href=&quot;https://tldp.org/LDP/abs/html/string-manipulation.html&quot;&gt;“Manipulating
 Strings”&lt;/a&gt;, &lt;em&gt;The Linux
 Documentation Project (TLDP)&lt;/em&gt;, 2021.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="bash" /><category term="bash" /><category term="scripting" /><summary type="html">This article shares tips for different string operations in Bash, including string declaration, substring removal, substring replacement, regular expressions in if-statement, and operations in streams.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-pawel-czerwinski-ScYk6KKEPUI-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-pawel-czerwinski-ScYk6KKEPUI-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Slow Query Logs In Elasticsearch</title><link href="https://mincong.io/en/slow-logs-in-elasticsearch/" rel="alternate" type="text/html" title="Slow Query Logs In Elasticsearch" /><published>2021-11-27T09:19:02+01:00</published><updated>2021-11-27T09:19:02+01:00</updated><id>https://mincong.io/en/slow-logs-in-elasticsearch</id><content type="html" xml:base="https://mincong.io/en/slow-logs-in-elasticsearch/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;If you are using Elasticsearch in production, you are probably familiar with
-slow logs. Slow logs are logs provided by Elasticsearch, which help you to
-troubleshoot the slowness of the write path (index) or the read path
-(search). It’s useful for determing the root cause of the problem and may
-provide hints to mitigations and solutions. In this article, I want to discuss
-slow logs with you, in particular:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;How does the log look like?&lt;/li&gt;
-  &lt;li&gt;How to change thresholds?&lt;/li&gt;
-  &lt;li&gt;Root causes of slow queries?&lt;/li&gt;
-  &lt;li&gt;How to go further from this article?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Now, let’s get started!&lt;/p&gt;
-
-&lt;h2 id=&quot;query-slow-log&quot;&gt;Query Slow Log&lt;/h2&gt;
-
-&lt;p&gt;Let’s analyze a slow log provided Elasticsearch official documentation (&lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html&quot;&gt;link&lt;/a&gt;):&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;[2030-08-30T11:59:37,786][WARN ][i.s.s.query              ] [node-0] [index6][0]
-took[78.4micros], took_millis[0], total_hits[0 hits], stats[],
-search_type[QUERY_THEN_FETCH], total_shards[1],
-source[{“query”:{“match_all”:{“boost”:1.0}}}], id[MY_USER_ID],&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;If we split the log into pieces, we can obtain the following table:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Description&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Timestamp&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;2030-08-30T11:59:37,786&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The timestamp of the log.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Log Level&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;WARN&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;It means that the query execution time is higher than the query “warn” threshold. This is configured in index settings API.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Logger&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;i.s.s.query&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;This is a concise version of logger name (class name): “index.search.slowlog.query”. This is useful for users to determine the type of slowness: index or search.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Node&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;node-0&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;It means that the slowness happens on node-0. If you select a time range and group by nodes, it will help you determine the distribution of the slowness across the cluster. In other words, determine if the slowness happens on one single node or happens on multiple ones. Also, if you name the node with some special meaning, e.g. roles (fresh, warm, cold), you will be able to determine which roles are slow.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Index name&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;index6&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The name of the index that is impacted. We have similar troubleshooting ideas as the “node” mentioned above. Additionally, you may have the customer’s id, product type, timestamp, or other useful information as part of the index names. Therefore, it’s useful for you to determine which customer, which product, or which range of indices are impacted.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Shard&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The shard id.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Took&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;78.4micros&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Execution time in human-readable format. It determines how slow the query is.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Took in milliseconds&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;0&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Execution time in milliseconds in numeric value. If you have the possibility to transform this value in your log pipelines, you can calculate filter the queries that are slower than a certain threshold, e.g. “&amp;gt;= 2 seconds”. Therefore, you can reduce noises and better identify the source of the problem. This transformation can be done using a grok parser. Here is a great beginner’s guide about &lt;a href=&quot;https://logz.io/blog/logstash-grok/&quot;&gt;Logstash Grok&lt;/a&gt; and here is the documentation of &lt;a href=&quot;https://docs.datadoghq.com/logs/log_configuration/processors/&quot;&gt;Grok Parser in Datadog&lt;/a&gt;.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Stats&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Statistics&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Search type&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;QUERY_THEN_FETCH&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The type of search.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Total shards&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;1&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Total number of shards.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Source&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;{ “query”: { “match_all”: { “boost “: 1.0 } } }&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The source of of the query. This is one of the most important fields. It allows us the determine how the query looks like and gives us an idea of what kind of information that the user is looking for.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;ID&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;MY_USER_ID&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The user ID. It may help you determine whether the query problems come from the same user.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h2 id=&quot;thresholds&quot;&gt;Thresholds&lt;/h2&gt;
-
-&lt;p&gt;You can use thresholds to better define the level of logs depending on your requirements. Note that these settings are dynamic so you can change them without restarting the server. The 3 different kinds of thresholds that you can define are index (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index&lt;/code&gt;), the query phase of search (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;query&lt;/code&gt;), and the fetch phase of the search (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fetch&lt;/code&gt;).&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;PUT /my-index-000001/_settings
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;index.search.slowlog.threshold.query.warn&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;10s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;index.search.slowlog.threshold.query.info&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;5s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;index.search.slowlog.threshold.query.debug&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;index.search.slowlog.threshold.query.trace&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;500ms&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;index.search.slowlog.threshold.fetch.warn&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1s&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;index.search.slowlog.threshold.fetch.info&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;800ms&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;index.search.slowlog.threshold.fetch.debug&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;500ms&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;index.search.slowlog.threshold.fetch.trace&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;200ms&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;… but what is query-then-fetch?&lt;/p&gt;
-
-&lt;p&gt;According to “Elasticsearch: The Definitive Guide”, there are two phases in the search: query and fetch.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;query&lt;/strong&gt;: during the initial query phase, the query is broadcast to a shard copy (a primary or replica shard) of every shard in the index. Each shard executes the search locally and builds a priority queue of matching documents. It identifies which documents satisfy the search request.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;fetch&lt;/strong&gt;: we retrieve the documents themselves.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;For more details, you can visit &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/guide/current/index.html&quot;&gt;“Elasticsearch: The Definitive Guide 2.x”&lt;/a&gt;, especially the sections: &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/guide/current/_query_phase.html&quot;&gt;“Query Phase”&lt;/a&gt; and &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/guide/current/_fetch_phase.html&quot;&gt;“Fetch Phase”&lt;/a&gt;.&lt;/p&gt;
-
-&lt;h2 id=&quot;root-causes&quot;&gt;Root Causes&lt;/h2&gt;
-
-&lt;p&gt;Unfortunately, I don’t have much experience working with slow queries. However, I know that Opster has an excellent article about analyzing slow logs. In their article &lt;a href=&quot;https://opster.com/guides/data-structuring/elasticsearch-slow-search-query-guide/&quot;&gt;“Elasticsearch Slow Query Troubleshooting Guide”&lt;/a&gt;, they mention that the causes can be:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Poorly written or expensive search queries.&lt;/li&gt;
-  &lt;li&gt;Poorly configured Elasticsearch clusters or indices.&lt;/li&gt;
-  &lt;li&gt;Saturated CPU, Memory, Disk and network resources on the cluster.&lt;/li&gt;
-  &lt;li&gt;Periodic background processes like snapshots or merging segments that consume cluster resources (CPU, Memory, disk) causing other search queries to perform slowly as resources are sparsely available for the main search queries.&lt;/li&gt;
-  &lt;li&gt;Segment merging is used to reduce the number of segments so that search latency is improved, however, merges can be expensive to perform, especially on low IO environments.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Another great article comes from the engineering blog of Elasticsearch, written by Louis Ong as &lt;a href=&quot;https://www.elastic.co/blog/advanced-tuning-finding-and-fixing-slow-elasticsearch-queries&quot;&gt;“Advanced tuning: finding and fixing slow Elasticsearch queries”&lt;/a&gt;. He mentioned that the common causes are:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;High resource utilization when inactive&lt;/li&gt;
-  &lt;li&gt;High thread pool rejected count&lt;/li&gt;
-  &lt;li&gt;High CPU and indexing latency&lt;/li&gt;
-  &lt;li&gt;Increased latency with more replica shards&lt;/li&gt;
-  &lt;li&gt;High utilization when sharing resources&lt;/li&gt;
-  &lt;li&gt;High heap aggregating highly unique fields&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Also, there is this article written by Burak Altaş on Medium as &lt;a href=&quot;https://medium.com/@burak.altas/how-to-optimize-elasticsearch-for-better-search-performance-283492e475f8&quot;&gt;“How to Optimize Elasticsearch for Better Search Performance”&lt;/a&gt;, talking about index configuration, shard optimization, Elasticsearch (cluster) configuration. Check it out.&lt;/p&gt;
-
-&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
-
-&lt;p&gt;How to go further from here?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Due to time constraints, I only discuss slow query logs here but didn’t mention much about index logs. In other words, we only discussed the read path and not the write path. You may want to explore that as well.&lt;/li&gt;
-  &lt;li&gt;To learn more about how to fix the problems, check out the more detailed solutions mentioned in the “Root Causes” section.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;In this article, we discussed the slow log structure in Elasticsearch, its thresholds, and the possible root causes of the problem.
-Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
-on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
-&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Ran Ramati, Gedalyah Reback, &lt;a href=&quot;https://logz.io/blog/logstash-grok/&quot;&gt;“A Beginner’s Guide to Logstash Grok”&lt;/a&gt;, &lt;em&gt;Logz&lt;/em&gt;, 2020.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://docs.datadoghq.com/logs/log_configuration/processors/&quot;&gt;“Processors”&lt;/a&gt;, &lt;em&gt;Datadog Documentation&lt;/em&gt;, 2021.&lt;/li&gt;
-  &lt;li&gt;Vineeth Mohan, &lt;a href=&quot;https://qbox.io/blog/slow-logs-in-elasticsearch-search-index-config-example&quot;&gt;“Slow Logs in Elasticsearch”&lt;/a&gt;, &lt;em&gt;QBOX&lt;/em&gt;, 2018.&lt;/li&gt;
-  &lt;li&gt;Clinton Gormley, Zachary Tong, &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/guide/current/index.html&quot;&gt;“Elasticsearch: The Definitive Guide 2.x”&lt;/a&gt;, &lt;em&gt;Elasticsearch&lt;/em&gt;, 2014-2015.&lt;/li&gt;
-  &lt;li&gt;Opster Team, &lt;a href=&quot;https://opster.com/guides/data-structuring/elasticsearch-slow-search-query-guide/&quot;&gt;“Elasticsearch Slow Query Troubleshooting Guide”&lt;/a&gt;, &lt;em&gt;Opster&lt;/em&gt;, 2021.&lt;/li&gt;
-  &lt;li&gt;Louis Ong, &lt;a href=&quot;https://www.elastic.co/blog/advanced-tuning-finding-and-fixing-slow-elasticsearch-queries&quot;&gt;“Advanced tuning: finding and fixing slow Elasticsearch queries”&lt;/a&gt;, &lt;em&gt;Elastic&lt;/em&gt;, 2019.&lt;/li&gt;
-  &lt;li&gt;Burak Altaş, &lt;a href=&quot;https://medium.com/@burak.altas/how-to-optimize-elasticsearch-for-better-search-performance-283492e475f8&quot;&gt;“How to Optimize Elasticsearch for Better Search Performance”&lt;/a&gt;, &lt;em&gt;Medium&lt;/em&gt;, 2019.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="elasticsearch" /><category term="elasticsearch" /><summary type="html">Better understand the slow queries in Elasticsearch by using the slow logs. In this article, we discuss the log structure, the thresholds, and some potential root causes.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-nareeta-martin-cOWn-bYGmlc-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-nareeta-martin-cOWn-bYGmlc-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="bash" /><category term="bash" /><category term="scripting" /><summary type="html">This article shares tips for different string operations in Bash, including string declaration, substring removal, substring replacement, regular expressions in if-statement, and operations in streams.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-pawel-czerwinski-ScYk6KKEPUI-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-pawel-czerwinski-ScYk6KKEPUI-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

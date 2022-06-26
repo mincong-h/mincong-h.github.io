@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh">
+<!DOCTYPE html><html lang="en">
   <head><!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-87129300-1"></script>
 	<script>
@@ -10,37 +10,42 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Java 测试 - Mincong Huang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Managing Code Complexity - Mincong Huang</title>
 
-<meta name="description" content="">
+<meta name="description" content="This article discusses how to manage code complexity when the codebase is getting more and more complex, how to refactor continuously, and what kinds of stra...">
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Java 测试 | Mincong Huang</title>
+<title>Managing Code Complexity | Mincong Huang</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Java 测试" />
+<meta property="og:title" content="Managing Code Complexity" />
 <meta name="author" content="Mincong Huang" />
-<meta property="og:locale" content="zh" />
-<meta name="description" content="Hi, welcome to my blog! I’m a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog’s. This blog is powered by Jekyll, a simple, blog-aware, static sites solution." />
-<meta property="og:description" content="Hi, welcome to my blog! I’m a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog’s. This blog is powered by Jekyll, a simple, blog-aware, static sites solution." />
-<link rel="canonical" href="https://mincong.io/cn/categories/java-testing/" />
-<meta property="og:url" content="https://mincong.io/cn/categories/java-testing/" />
+<meta property="og:locale" content="en" />
+<meta name="description" content="This article discusses how to manage code complexity when the codebase is getting more and more complex, how to refactor continuously, and what kinds of strategies you need to succeed." />
+<meta property="og:description" content="This article discusses how to manage code complexity when the codebase is getting more and more complex, how to refactor continuously, and what kinds of strategies you need to succeed." />
+<link rel="canonical" href="https://mincong.io/en/managing-code-complexity/" />
+<meta property="og:url" content="https://mincong.io/en/managing-code-complexity/" />
 <meta property="og:site_name" content="Mincong Huang" />
+<meta property="og:image" content="https://mincong.io/assets/bg-jon-tyson-FKkK1hnTe-Q-unsplash.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-06-26T10:09:25+02:00" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Java 测试" />
+<meta property="article:published_time" content="2022-06-25T10:31:04+02:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://mincong.io/assets/bg-jon-tyson-FKkK1hnTe-Q-unsplash.jpg" />
+<meta property="twitter:title" content="Managing Code Complexity" />
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"datePublished":"2022-06-26T10:09:25+02:00","description":"Hi, welcome to my blog! I’m a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog’s. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.","author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/cn/categories/java-testing/"},"@type":"BlogPosting","url":"https://mincong.io/cn/categories/java-testing/","headline":"Java 测试","dateModified":"2022-06-26T10:09:25+02:00","@context":"https://schema.org"}</script>
+{"datePublished":"2022-06-25T10:31:04+02:00","description":"This article discusses how to manage code complexity when the codebase is getting more and more complex, how to refactor continuously, and what kinds of strategies you need to succeed.","author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/managing-code-complexity/"},"@type":"BlogPosting","url":"https://mincong.io/en/managing-code-complexity/","image":"https://mincong.io/assets/bg-jon-tyson-FKkK1hnTe-Q-unsplash.jpg","headline":"Managing Code Complexity","dateModified":"2022-06-25T10:31:04+02:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
 <!-- Extra Open Graph :: Start -->
 
+<meta property="og:image:width" content="1440"/>
+<meta property="og:image:height" content="1920"/>
+
 <!-- Extra Open Graph :: End -->
 
-<link rel="canonical" href="https://mincong.io/cn/categories/java-testing/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="canonical" href="https://mincong.io/en/managing-code-complexity/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -314,18 +319,7 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page layout--page--sidebar clearfix js-page-root">
-  <div class="page__mask d-print-none js-page-mask js-sidebar-hide"></div>
-  <div class="page__viewport">
-    <div class="page__actions d-print-none">
-      <div class="button button--circle button--lg box-shadow-2 sidebar-button js-sidebar-show">
-        <i class="fas fa-bars icon--show"></i>
-      </div>
-    </div>
-
-    <div class="grid page__grid">
-
-      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">文章类别</li><li class="toc-h2"><a href="/cn/categories/build/">构建工具</a></li><li class="toc-h2"><a href="/cn/categories/elasticsearch/">Elasticsearch</a></li><li class="toc-h2"><a href="/cn/categories/git/">Git</a></li><li class="toc-h2"><a href="/cn/categories/java-concurrency/">Java Concurrency</a></li><li class="toc-h2"><a href="/cn/categories/java-core/">Java 核心</a></li><li class="toc-h2"><a href="/cn/categories/java-rest/">Java RESTful APIs</a></li><li class="toc-h2"><a href="/cn/categories/java-serialization/">Java 序列化</a></li><li class="toc-h2 active"><a href="/cn/categories/java-testing/">Java 测试</a></li><li class="toc-h2"><a href="/cn/categories/python/">Python</a></li><li class="toc-h2"><a href="/cn/categories/reliability/">可靠性</a></li><li class="toc-h2"><a href="/cn/categories/review/">总结</a></li></ul></div></div><div class="page__main js-page-main cell cell--auto">
+      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -354,13 +348,13 @@
           
           
 
-          <a href="/cn/">码农小黄</a>
+          <a href="/">Home</a>
         </div><button class="button button--secondary button--circle search-button js-search-toggle" data-dd-action-name="search">
             <i class="fas fa-search"></i>
           </button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/cn/categories/">分类</a></li><li class="navigation__item"><a href="/cn/series/">系列</a></li><li class="navigation__item"><a href="/cn/archive/">归档</a></li><li class="navigation__item"><a href="/cn/about/">关于</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle" data-dd-action-name="search"><i class="fas fa-search"></i></button></li><li>
-            <a href="/">
-             <img src="/assets/flag-US.png"
+        <ul><li class="navigation__item"><a href="/en/categories/">Categories</a></li><li class="navigation__item"><a href="/en/series/">Series</a></li><li class="navigation__item"><a href="/en/archive/">Archive</a></li><li class="navigation__item"><a href="/en/about/">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle" data-dd-action-name="search"><i class="fas fa-search"></i></button></li><li>
+            <a href="/cn/">
+             <img src="/assets/flag-CN.png"
                   alt=""
                   class="naviation__lang_img">
             </a>
@@ -368,122 +362,412 @@
         </ul>
       </nav></div>
   </header>
-</div><div class="page__content"><div class ="main"><div class="grid grid--reverse">
-
-              <div class="col-aside d-print-none js-col-aside"></div>
-
-              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
-
-<!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>Java 测试</h1></header></div><meta itemprop="headline" content="Java 测试">
+</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4)),url(/assets/bg-jon-tyson-FKkK1hnTe-Q-unsplash.jpg);background-color:#203028;"><div class="hero__content"><div class ="main">
 
   
   <div class="article__info clearfix">
       <ul class="left-col menu">
+        <li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=system-design">system-design</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=java">java</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=go">go</a>
+            </li>
+
+        <li class="separator">|</li>
+          
+            <li>
+              <a class="button button--circle button--primary focus lang"
+                 href="/en/managing-code-complexity/"><span>EN</span></a>
+
+              
+
+
+
+
+
+
+              
+
+              
+            </li>
+          
         
-
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 06月26日</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-06-26T10:09:25+02:00"><div class="js-article-content">
-
-
-<div class="layout--articles">
-  <section class="my-5">
-    <div class="article-list grid grid--p-3"><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2021/04/09/junit-5-dynamic-tests/"><h2 class="card__header">JUnit 5: Dynamic Tests with TestFactory</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-sonja-langford-eIkbSc3SDtI-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2020/05/24/java-clock/"><h2 class="card__header">Controlling Time with Java Clock</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2020/05/10/completablefuture-test/"><h2 class="card__header">How CompletableFuture is tested in OpenJDK?</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-edward-howell-hYcriIw0gHc-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2020/04/19/mockito-junit5/"><h2 class="card__header">Mockito: 3 Ways to Init Mock in JUnit 5</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2020/04/05/testing-elasticsearch-with-docker-and-java-client/"><h2 class="card__header">Testing Elasticsearch With Docker And Java High Level REST Client</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-adrian-korte-5gn2soeAc40-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2020/02/02/logback-test-logging-event/"><h2 class="card__header">Logback: Test Logging Event</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-romet-tagobert-ytrbFQSJBxw-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2019/12/15/mockito-argument-captor/"><h2 class="card__header">Mockito: ArgumentCaptor</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-alex-block-eicoRD590x4-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2019/09/22/mockito-verify/"><h2 class="card__header">Mockito: 4 Ways to Verify Interactions</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2019/09/13/init-mock/"><h2 class="card__header">Mockito: 3 Ways to Init Mock in JUnit 4</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-boy-666803_1280.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2019/08/13/how-to-fix-bug-with-legacy-framework/"><h2 class="card__header">6 Tips for Fixing Bugs with Legacy Frameworks</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-dog-2785074_1280.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2019/02/05/tdd-after-3-months-practice/"><h2 class="card__header">TDD: After 3 Months' Practice</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-171653_1280.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2018/12/18/testing-jax-rs-resources/"><h2 class="card__header">Testing JAX-RS Resources</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-board-2450236_1280.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2018/04/03/learning-selenium-webdriver/"><h2 class="card__header">Introduction to Selenium WebDriver</h2></a>
-                </header>
-              </div>
-          </div>
-        </div></div>
-</section>
+      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jun 25, 2022</span>
+            </li></ul></div><div class="article__header"><header><h1>Managing Code Complexity</h1></header></div><div class="article__header">
+                        <p class="overlay__excerpt">The codebase is getting more and more complex, what should I do?</p>
+                      </div><div class="article__info clearfix">
+  <ul class="left-col menu">
+    <li>
+      <i class="fas fa-camera"></i>
+      
+      Photo by
+      <a href="https://unsplash.com/@jontyson" target="_blank">Jon Tyson</a>
+      
+      on
+      <a href="https://unsplash.com/license" target="_blank">Unplash </a>
+    </li>
+  </ul>
 </div>
-</div></article><!-- start custom main bottom snippet -->
+</div></div>
+              </div>
+            </div><div class ="main"><div class="grid grid--reverse">
+
+              <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
+</aside></div>
+
+              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+
+<!-- end custom main top snippet -->
+<article><meta itemprop="headline" content="Managing Code Complexity"><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-06-25T10:31:04+02:00">
+    <meta itemprop="keywords" content="system-design,java,go"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+
+
+<!-- end custom article top snippet -->
+<div class="article__content" itemprop="articleBody"><h2 id="introduction">Introduction</h2>
+
+<p>In late 2021, I had the chance to join a new team at
+<a href="https://www.datadoghq.com/">Datadog</a> called “Event Platform Automation”, which
+creates workflows and other types of automation to support the growth of the
+platform. The goal is to eliminate toil, avoid operational overload, and build
+packages so that other teams can write their workflows. Since this was a new
+project, I had the chance to write many things from scratch in Java and Go, and
+witnessed the growth of the codebase. That’s why I want to write down this
+article to share my experience with you.</p>
+
+<p>Today’s topic is mainly about complexity. When you start a new project, you will
+see that the complexity grows a lot. It grows in terms of lines of code,
+structures, packages, etc. It’s difficult to get it right. And this keeps
+happening as your business grows (which is a good thing). That’s why I believe
+it’s worth discussing how to make things done correctly.</p>
+
+<p>After reading this article, you will understand:</p>
+
+<ul>
+  <li>How to manage the complexity in different dimensions?</li>
+  <li>Why does continuous refactoring matter?</li>
+  <li>What kinds of strategies do you need?</li>
+  <li>How to go further from this article?</li>
+</ul>
+
+<p>Now, let’s get started!</p>
+
+<h2 id="growing-in-different-dimensions">Growing in Different Dimensions</h2>
+
+<p>When your codebase grows from 100 lines to 1,000 lines, from 1,000 to 10,000,
+and even more, you need to find many ways to manage the complexity. Here are
+some dimensions that it’s worth considering.</p>
+
+<h3 id="lines-of-code">Lines of Code</h3>
+
+<p>When the project is small enough, the first dimension to consider is to grow the
+file in terms of lines of code. That is, you just need to add new functions and
+new structures to express the logic that you want. At this stage, the complexity
+is not the real concern, the priority may be to get things done and increase the
+impact of the code.</p>
+
+<h3 id="files">Files</h3>
+
+<p>Once you have more logic, you cannot use the same file all the time. Otherwise,
+the complexity of that file will explode. That’s how we end up with files having
+thousands of lines of code and people don’t know how it works anymore.
+Multiple signals can help you to identify this:</p>
+
+<ul>
+  <li>Multiple developers contributed to your file</li>
+  <li>The lines of code increased very fast recently</li>
+  <li>We start to see multiple domains or multiple layers in the same file</li>
+</ul>
+
+<p>A straightforward solution is to use multiple files. Each file can represent a
+domain that you need. For example, when writing a complex workflow, you may need
+to interact with multiple external services. In that case, you can have one file
+for each service, where you put all the related logic there.</p>
+
+<h3 id="classes-structures">Classes (Structures)</h3>
+
+<p>Most of the time, having functions and files is not enough to support your
+use cases. This is because we are working with some business logic and many
+data are related to each other. That’s why you need classes in Java (or
+structures in Go) to better express your business models and ensure that
+different pieces of information are consistent. It’s also known as
+<a href="https://en.wikipedia.org/wiki/Object-oriented_programming">Object-Oriented Programming
+(OOP)</a>.</p>
+
+<p>However, I feel that it’s very easy to abuse the usage of classes and make
+things confusing. For example, having too many classes that are similar, or
+having a giant class with too many methods. Face to this problem, there are
+multiple considerations:</p>
+
+<ol>
+  <li><strong>The lifecycle of the data.</strong> If a piece of information is always the same
+during a long period or multiple steps of the execution, it makes sense to
+add it into a class. Otherwise, if it’s only used for a short period
+or one single location, it’s better to put it as a parameter. In Java, I like
+making class members <code class="language-plaintext highlighter-rouge">final</code> so that we can have a clear expectation of the value
+of that member – we know that it won’t be changed during the whole lifecycle
+of the instance of the class.</li>
+  <li><strong>The number of usages of a method.</strong> If a method is frequently used, it’s
+logical to keep it in a class. If a method is only used once or twice and
+it looks special compared to other methods, perhaps it’s worth moving it to
+another place: to the caller or another class.</li>
+  <li><strong>SOLID principles</strong>. Also, consider the SOLID principles: Single
+responsibility; Open/closed; Liskov Substitution; Interface segregation;
+Dependency inversion, which helps you to decide what should be put into a
+single class or separated classes. See also
+https://www.baeldung.com/solid-principles.</li>
+</ol>
+
+<h3 id="packages">Packages</h3>
+
+<p>Once the classes don’t fit your need anymore, perhaps it’s time to consider
+using packages. Packages are internal libraries that are used for different
+callers. In the case of workflows, multiple workflows can re-use the same
+libraries in different manners. We use libraries to interact with different
+services (GitHub, GitLab, Slack, internal services, etc).</p>
+
+<p>But don’t create a package if it’s not necessary! If you have only one or two
+files, it does not worth creating a new package. This kind of package is called
+“shallow modules”. It does not hide many details and is therefore useless for
+managing complexity. Ideally, the package should be deep, so that it handles
+complex logic for you and provides simple APIs to make manipulations easy. In
+the book “A Philosophy of Software Design”, written by John Ousterhout, he
+mentioned the difference between deep and shallow modules:</p>
+
+<p align="center">
+<img alt="Deep and shallow modules" style="max-width: 400px;" src="/assets/20220625-deep-modules.png" />
+</p>
+
+<p>He said: <em>“The best modules are deep: they allow a lot of functionality to be
+accessed through a simple interface. A shallow module is one with a relatively
+complex interface, but not much functionality: it doesn’t hide much
+complexity”.</em></p>
+
+<p>It’s important to write down some documentation about the package that you are
+creating. It gives a high-level overview to your readers (the developers that
+will use the package). It helps people to understand the intention of the
+package without needing to navigate into the code; the design choices and
+assumptions that you made during the development.</p>
+
+<p>In my case, I created two packages in Go this year:</p>
+
+<ul>
+  <li><strong>An internal API client</strong> to communicate to an administration service via RESTful
+APIs. In the beginning, it was one method inside a workflow, over time, it
+becomes an independent file, a shared file used by multiple workflows, and
+nowadays a library for most of the workflows. It’s built on top of
+<a href="https://pkg.go.dev/net/http">https://pkg.go.dev/net/http</a> and <a href="https://pkg.go.dev/encoding/json">https://pkg.go.dev/encoding/json</a>.</li>
+  <li><strong>An internal configuration package,</strong> which contains data models to represent
+different configuration files in Go, deserialized from YAML and Bazel
+(Starlark). Initially, the package contained only Starlark-related files, but
+over time, we also need to parse YAML files, and we may welcome other
+file formats as well.</li>
+</ul>
+
+<h3 id="services">Services</h3>
+
+<p>If you need to grow even further, you can also consider building multiple
+services. Each service re-uses a subset of the existing packages. In a data
+platform backend, you can have one service per team or one service per data
+store.</p>
+
+<h2 id="continuous-refactoring">Continuous Refactoring</h2>
+
+<p>If we take a step back, it’s also important to realize that there isn’t any
+perfect solution that solves all the problems. Therefore, it’s essential to
+refactor the code continuously and ensure that it fits new use-cases. Here are
+some aspects of refactoring that I want to mention.</p>
+
+<h3 id="testing">Testing</h3>
+
+<p>Writing tests allows you to have small datasets to validate the behavior of the
+existing code. It ensures that the refactoring won’t introduce regression to
+your production (or at least reduce the risk of incidents). There are several
+moments that you can consider writing tests:</p>
+
+<ul>
+  <li>When developing the software, you can test important cases to ensure the
+features work as you would expect.</li>
+  <li>When someone uses your code and you found bugs, it’s a good moment to enforce
+the coverage and have more corner cases being covered.</li>
+  <li>When it becomes a library, it means that it’s being shared for some people or
+some projects. It’s also a good moment to improve the coverage.</li>
+</ul>
+
+<p>Generally speaking, testing brings confidence to your refactoring.</p>
+
+<h3 id="refactoring">Refactoring</h3>
+
+<p>Refactoring allows you to adapt the source code for new needs. The typical
+dimensions are what I mentioned in the previous section: lines of code, files,
+classes, packages, and services. For example, you may want to:</p>
+
+<ul>
+  <li>use interface to standardize different implementations and define a contract
+between the users and the maintainers of the library.</li>
+  <li>simplify the relationship between some services to make it easier to
+understand</li>
+  <li>creating a class to enforce the consistency between some fields</li>
+  <li>avoiding having too much information leaked out to the caller’s side by
+centralizing them into a single package</li>
+</ul>
+
+<p>These are some very vague ideas. If you need more concrete details about how to
+do it, I strongly suggest you visit <a href="https://refactoring.guru/">https://refactoring.guru/</a>. It teaches
+you many design patterns and refactoring skills that you can apply to your daily
+tasks.</p>
+
+<h3 id="mindset">Mindset</h3>
+
+<p>Having the right mindset is also important. It allows you to have a clear
+expectation about what will happen and get prepared for it mentally. Here
+are some notes that I keep in mind:</p>
+
+<ul>
+  <li>Technical debt always exists. As time goes by, there are always some things
+that are outdated or unknown to some members. What matters is to control
+the impact of this technical debt so that it won’t slow you down too much for
+developing new solutions or maintaining existing ones.</li>
+  <li>You need to communicate with your team members. Sometimes people need
+visibility on what you do. They need to understand why and how will you do it,
+and also how long will it take. If we have an agreement on what we do, things will
+move smoothly.</li>
+</ul>
+
+<h2 id="strategy">Strategy</h2>
+
+<p>How to manage the code complexity efficiently? Here are some strategies that I
+would consider.</p>
+
+<p><strong>Priority.</strong> We need to know what are the most important to address. We need to
+agree on
+something as a team, such as, using the OKRs, or finding out what is important for
+team members. You also need to have support from your manager so that everyone
+is aligned about the direction.</p>
+
+<p><strong>Data-Driven.</strong> Use data to demonstrate what we want to achieve collectively,
+what are the pain points, what will be the impact, etc. To collect data, you
+need to think about different dimensions.</p>
+
+<p><strong>Making Assumption.</strong> Assume some situations so that we don’t need to care
+about those cases for now. Perhaps we can address them later on or allow the
+system to have some imperfections which don’t impact the general mechanism of
+the solution.</p>
+
+<p><strong>Don’t overthink at the beginning.</strong> Focus on what matters most first. That is,
+it’s OK to take some shortcuts as far as you will come back and refactor later
+on. This ensures the delivery speed. Done is better than perfect.</p>
+
+<h2 id="going-further">Going Further</h2>
+
+<p>How to go further from here?</p>
+
+<ul>
+  <li>I recommend the book “A Philosophy of Software Design”, written by John
+Ousterhout, Stanford University, which shows you the different aspects of
+software design.</li>
+  <li>Visit <a href="https://www.baeldung.com/solid-principles">SOLID Principles</a> to learn
+more about these 5 principles.</li>
+  <li>Visit <a href="https://refactoring.guru/">Refactoring Guru</a> to learn more about
+different design patterns and refactoring patterns.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Today we discussed how to manage the code complexity in different
+dimensions, we see how continuous refactoring can help us, and different
+strategies to allow having an efficient way to spend your time on handling
+complexity, and finally, some additional resources to go further.
+Interested to know more? You can subscribe to <a href="/feed.xml">the feed of my blog</a>,
+and follow me
+on <a href="https://twitter.com/mincong_h">Twitter</a> or
+<a href="https://github.com/mincong-h/">GitHub</a>. Hope you enjoy this article, see you the next time!</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Object-oriented_programming">https://en.wikipedia.org/wiki/Object-oriented_programming</a></li>
+  <li><a href="https://refactoring.guru/">https://refactoring.guru/</a></li>
+  <li><a href="https://www.baeldung.com/solid-principles">https://www.baeldung.com/solid-principles</a></li>
+</ul>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-06-25T10:31:04+02:00"><!-- start custom article footer snippet -->
+
+
+  
+
+  
+
+  <div class="article__ads">
+    
+      <div id="ea-article"
+           data-ea-publisher="mincongio"
+           data-ea-keywords="system-design|java|go"
+           data-ea-type="image">
+    
+    </div>
+  </div>
+
+<!-- end custom article footer snippet -->
+<div class="article__subscribe"><div class="subscribe">
+  <i class="fas fa-rss"></i>
+  <a type="application/rss+xml" href="/feed.xml">Subscribe</a>
+</div></div><div class="article__license"><div class="license">
+    <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International</a> license.
+      <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
+        <img alt="Attribution 4.0 International" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+      </a>
+    </p>
+  </div></div></footer>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/en/blogsearch-architecture/">BlogSearch Architecture</a></div></div></div>
+
+</div>
+
+<script>(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    $(function() {
+      var $this ,$scroll;
+      var $articleContent = $('.js-article-content');
+      var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+      var scroll = hasSidebar ? '.js-page-main' : 'html, body';
+      $scroll = $(scroll);
+
+      $articleContent.find('.highlight').each(function() {
+        $this = $(this);
+        $this.attr('data-lang', $this.find('code').attr('data-lang'));
+      });
+      $articleContent.find('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]').each(function() {
+        $this = $(this);
+        $this.append($('<a class="anchor d-print-none" aria-hidden="true"></a>').html('<i class="fas fa-anchor"></i>'));
+      });
+      $articleContent.on('click', '.anchor', function() {
+        $scroll.scrollToAnchor('#' + $(this).parent().attr('id'), 400);
+      });
+    });
+  });
+})();
+</script>
+</div><section class="page__comments d-print-none"><div id="disqus_thread"></div>
+  <script>
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  var disqus_config = function () {
+    this.page.url = 'https://mincong.io/en/managing-code-complexity/';
+    this.page.identifier = '/en/managing-code-complexity';
+  };
+  (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://mincong-h.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
 </div>
@@ -491,24 +775,24 @@
 <footer class="footer py-4 js-page-footer">
   <div class="main"><div itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mincong Huang"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
-  <ul class="menu menu--nowrap menu--inline"><li title="给我发邮件。">
+  <ul class="menu menu--nowrap menu--inline"><li title="Send me an Email.">
       <a class="button button--circle mail-button" itemprop="email" href="mailto:mincong.h@gmail.com" target="_blank">
         <i class="fas fa-envelope"></i>
-      </a><li title="在 Twitter 上关注我。">
+      </a><li title="Follow me on Twitter.">
         <a class="button button--circle twitter-button" itemprop="sameAs" href="https://twitter.com/mincong_h" target="_blank">
           <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M1024.032 194.432c-37.664 16.704-78.176 28-120.672 33.088 43.36-26.016 76.672-67.168 92.384-116.224-40.608 24.064-85.568 41.568-133.408 50.976-38.336-40.832-92.928-66.336-153.344-66.336-116.032 0-210.08 94.048-210.08 210.08 0 16.48 1.856 32.512 5.44 47.872-174.592-8.768-329.408-92.416-433.024-219.52-18.08 31.04-28.448 67.104-28.448 105.632 0 72.896 37.088 137.184 93.472 174.88-34.432-1.088-66.816-10.528-95.168-26.272-0.032 0.864-0.032 1.76-0.032 2.656 0 101.792 72.416 186.688 168.512 205.984-17.632 4.8-36.192 7.36-55.36 7.36-13.536 0-26.688-1.312-39.52-3.776 26.72 83.456 104.32 144.192 196.256 145.888-71.904 56.352-162.496 89.92-260.928 89.92-16.96 0-33.664-0.992-50.112-2.944 92.96 59.616 203.392 94.4 322.048 94.4 386.432 0 597.728-320.128 597.728-597.76 0-9.12-0.192-18.176-0.608-27.168 41.056-29.632 76.672-66.624 104.832-108.736z" />
 </svg>
 </div>
         </a>
-      </li><li title="在 Linkedin 上关注我。">
+      </li><li title="Follow me on Linkedin.">
         <a class="button button--circle linkedin-button" itemprop="sameAs" href="https://www.linkedin.com/in/mincong-huang" target="_blank">
           <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M260.096 155.648c0 27.307008-9.899008 50.516992-29.696 69.632-19.796992 19.115008-45.396992 28.672-76.8 28.672-30.036992 0-54.612992-9.556992-73.728-28.672-19.115008-19.115008-28.672-42.324992-28.672-69.632 0-28.672 9.556992-52.224 28.672-70.656 19.115008-18.432 44.372992-27.648 75.776-27.648 31.403008 0 56.32 9.216 74.752 27.648 18.432 18.432 28.331008 41.984 29.696 70.656 0 0 0 0 0 0m-202.752 808.96c0 0 0-632.832 0-632.832 0 0 196.608 0 196.608 0 0 0 0 632.832 0 632.832 0 0-196.608 0-196.608 0 0 0 0 0 0 0m313.344-430.08c0-58.708992-1.364992-126.292992-4.096-202.752 0 0 169.984 0 169.984 0 0 0 10.24 88.064 10.24 88.064 0 0 4.096 0 4.096 0 40.96-68.267008 105.812992-102.4 194.56-102.4 68.267008 0 123.220992 22.868992 164.864 68.608 41.643008 45.739008 62.464 113.664 62.464 203.776 0 0 0 374.784 0 374.784 0 0-196.608 0-196.608 0 0 0 0-350.208 0-350.208 0-91.476992-33.451008-137.216-100.352-137.216-47.787008 0-81.236992 24.576-100.352 73.728-4.096 8.192-6.144 24.576-6.144 49.152 0 0 0 364.544 0 364.544 0 0-198.656 0-198.656 0 0 0 0-430.08 0-430.08 0 0 0 0 0 0" />
 </svg>
 </div>
         </a>
-      </li><li title="在 Github 上关注我。">
+      </li><li title="Follow me on Github.">
         <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/mincong-h" target="_blank">
           <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path class="svgpath" data-index="path_0" fill="#272636" d="M0 525.2c0 223.6 143.3 413.7 343 483.5 26.9 6.8 22.8-12.4 22.8-25.4l0-88.7c-155.3 18.2-161.5-84.6-172-101.7-21.1-36-70.8-45.2-56-62.3 35.4-18.2 71.4 4.6 113.1 66.3 30.2 44.7 89.1 37.2 119 29.7 6.5-26.9 20.5-50.9 39.7-69.6C248.8 728.2 181.7 630 181.7 513.2c0-56.6 18.7-108.7 55.3-150.7-23.3-69.3 2.2-128.5 5.6-137.3 66.5-6 135.5 47.6 140.9 51.8 37.8-10.2 80.9-15.6 129.1-15.6 48.5 0 91.8 5.6 129.8 15.9 12.9-9.8 77-55.8 138.8-50.2 3.3 8.8 28.2 66.7 6.3 135 37.1 42.1 56 94.6 56 151.4 0 117-67.5 215.3-228.8 243.7 26.9 26.6 43.6 63.4 43.6 104.2l0 128.8c0.9 10.3 0 20.5 17.2 20.5C878.1 942.4 1024 750.9 1024 525.3c0-282.9-229.3-512-512-512C229.1 13.2 0 242.3 0 525.2L0 525.2z" />
@@ -527,7 +811,7 @@
   </div>
 </footer>
 </div></div>
-    </div></div></div><script>(function() {
+    </div><script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
   window.Lazyload.js(SOURCES.jquery, function() {
     var $body = $('body'), $window = $(window);
@@ -679,7 +963,7 @@
 })();
 </script><div class="search search--dark">
   <div class="main">
-    <div class="search__header">搜索</div>
+    <div class="search__header">Search</div>
     <div class="search-bar">
       <div class="search-box js-search-box">
         <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
@@ -689,7 +973,7 @@
         </div>
       </div>
       <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
-        取消</button>
+        Cancel</button>
     </div>
     <div class="search-result js-search-result"></div>
   </div>
@@ -1087,36 +1371,79 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
-</script><script>(function() {
+</script><script>
+  /* toc must before affix, since affix need to konw toc' height. */(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
-
+  var TOC_SELECTOR = window.TEXT_VARIABLES.site.toc.selectors;
   window.Lazyload.js(SOURCES.jquery, function() {
-    var $pageMask = $('.js-page-mask');
-    var $pageRoot = $('.js-page-root');
-    var $sidebarShow = $('.js-sidebar-show');
-    var $sidebarHide = $('.js-sidebar-hide');
+    var $window = $(window);
+    var $articleContent = $('.js-article-content');
+    var $tocRoot = $('.js-toc-root'), $col2 = $('.js-col-aside');
+    var toc;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+    var hasToc = $articleContent.find(TOC_SELECTOR).length > 0;
 
-    function freeze(e) {
-      if (e.target === $pageMask[0]) {
-        e.preventDefault();
-      }
-    }
-    function stopBodyScrolling(bool) {
-      if (bool === true) {
-        window.addEventListener('touchmove', freeze, { passive: false });
-      } else {
-        window.removeEventListener('touchmove', freeze, { passive: false });
-      }
+    function disabled() {
+      return $col2.css('display') === 'none' || !hasToc;
     }
 
-    $sidebarShow.on('click', function() {
-      stopBodyScrolling(true); $pageRoot.addClass('show-sidebar');
+    tocDisabled = disabled();
+
+    toc = $tocRoot.toc({
+      selectors: TOC_SELECTOR,
+      container: $articleContent,
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      disabled: tocDisabled
     });
-    $sidebarHide.on('click', function() {
-      stopBodyScrolling(false); $pageRoot.removeClass('show-sidebar');
-    });
+
+    $window.on('resize', window.throttle(function() {
+      tocDisabled = disabled();
+      toc && toc.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
   });
 })();
+(function() {
+  var SOURCES = window.TEXT_VARIABLES.sources;
+  window.Lazyload.js(SOURCES.jquery, function() {
+    var $window = $(window), $pageFooter = $('.js-page-footer');
+    var $pageAside = $('.js-page-aside');
+    var affix;
+    var tocDisabled = false;
+    var hasSidebar = $('.js-page-root').hasClass('layout--page--sidebar');
+
+    affix = $pageAside.affix({
+      offsetBottom: $pageFooter.outerHeight(),
+      scrollTarget: hasSidebar ? '.js-page-main' : null,
+      scroller: hasSidebar ? '.js-page-main' : null,
+      scroll: hasSidebar ? $('.js-page-main').children() : null,
+      disabled: tocDisabled
+    });
+
+    $window.on('resize', window.throttle(function() {
+      affix && affix.setOptions({
+        disabled: tocDisabled
+      });
+    }, 100));
+
+    window.pageAsideAffix = affix;
+  });
+})();
+</script><script src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+<script>
+ethicalads.wait.then((placements) => {
+  if (!placements.length) {
+    console.debug('Loading backup content');
+    div = document.querySelector('[data-ea-publisher]')
+    div.innerHTML = '<p>Check out our first-party ad content.</p>'
+  } else {
+    console.debug('EthicalAds are loaded');
+  }
+});
 </script>
     </div>
     <script>(function () {
