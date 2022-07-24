@@ -1,5 +1,442 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-06-26T10:09:25+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
-</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Managing Code Complexity</title><link href="https://mincong.io/en/managing-code-complexity/" rel="alternate" type="text/html" title="Managing Code Complexity" /><published>2022-06-25T10:31:04+02:00</published><updated>2022-06-25T10:31:04+02:00</updated><id>https://mincong.io/en/managing-code-complexity</id><content type="html" xml:base="https://mincong.io/en/managing-code-complexity/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-07-24T11:15:45+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">My Hackathon Projects At Datadog</title><link href="https://mincong.io/en/my-hackathon-projects-at-datadog/" rel="alternate" type="text/html" title="My Hackathon Projects At Datadog" /><published>2022-07-17T14:31:57+02:00</published><updated>2022-07-17T14:31:57+02:00</updated><id>https://mincong.io/en/my-hackathon-projects-at-datadog</id><content type="html" xml:base="https://mincong.io/en/my-hackathon-projects-at-datadog/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;It’s been 2 years and a half since I joined Datadog and I had the chance to
+participate in 4 hackathon projects. They were a great experience and  I learned a
+lot from them! That’s why I want to share my experience with you, to give you an
+idea of what can an engineer build in a short period. And perhaps give you
+some inspiration to do the same.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;What does a hackathon look like at Datadog?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;A hackathon at Datadog lasts for 2 days. It happens once or twice per year.
+You can use this time to implement
+something that you want, either individually or collectively. There are many
+kinds of projects: a new feature in the existing platform, a new tool, a side
+project that you want to work on, a new framework that you want to explore, etc.
+It’s not necessarily related to professional projects, you can also work on a
+personal one. At the end of the hackathon, there is a 2-minute
+presentation where you can show the results to other engineers.&lt;/p&gt;
+
+&lt;p&gt;Now you have a better understanding of the context, let’s continue to see the
+projects that I participated in in the past.&lt;/p&gt;
+
+&lt;h2 id=&quot;auto-completion-for-python-scripts&quot;&gt;Auto-completion For Python Scripts&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Comment&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Date&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;February 2020&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Duration&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;2 days&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Participants&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://github.com/mincong-h&quot;&gt;Mincong Huang&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Keywords&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;script&lt;/code&gt;, &lt;a href=&quot;https://docs.python.org/3/library/argparse.html&quot;&gt;argparse&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Status&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Abandoned&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;I didn’t complete after the hackathon deadline, the potential impact is low.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;The first hackathon project that I did was adding auto-completion for some
+internal Python scripts, built for handling operations for the logs team.
+At that time, I was in the logs storage team, where we had a lot of operations
+to do every day. Those operations were related to multiple domains: Elasticsearch,
+Kafka, MongoDB, etc. Therefore, it involved many scripts and each of those has
+multiple options and values. It’s hard to remember what are the right options or
+values. To make things easier, I wanted to add an auto-completion feature so
+that we can use a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tab&lt;/code&gt; to let the system show the options or the list of values
+that are related to the current option.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Below, you can find a more detailed and technical version.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;The scripts are built in Python using the library
+&lt;a href=&quot;https://docs.python.org/3/library/argparse.html&quot;&gt;argparse&lt;/a&gt;. When calling the
+script, we parse the arguments provided to the script and use them as a
+dictionary. There is another library called
+&lt;a href=&quot;https://pypi.org/project/argcomplete/&quot;&gt;argcomplete&lt;/a&gt; which provides easy,
+extensible command line tab completion of arguments for your Python script.
+Thanks to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;argcomplete&lt;/code&gt;, we can find out the list of available options, or the
+list of values related to a given option. For example, when creating a new
+Elasticsearch cluster, you need to specify the data center, the cloud provider,
+the name of the Kubernetes cluster, etc. Also, you may want to let the
+data center or Kubernetes cluster be completed automatically.&lt;/p&gt;
+
+&lt;p&gt;To achieve auto-completion, we need to:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Install auto-completion.&lt;/strong&gt; Register the completion when installing the
+Python scripts. It means creating a Bash script for completion and hooking it
+into the installation file (in our case, it’s a
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Make_(software)&quot;&gt;Makefile&lt;/a&gt;). Inside the Bash
+script, we need to iterate each command and call the
+&lt;a href=&quot;https://pypi.org/project/argcomplete/&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;register-python-argcomplete&lt;/code&gt;&lt;/a&gt; to
+register them; or use the global completion.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Add completer to argument parser.&lt;/strong&gt; We need to create a completer and add it
+to the argument parser to provide completions. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;argcomplete&lt;/code&gt; contains a list
+of completers, such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ChoicesCompleter&lt;/code&gt; to complete values as an
+enumeration.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Making the completion meaningful and optional.&lt;/strong&gt; We need to ensure that the completion
+is meaningful to the user. For example, giving the right list of data centers, the
+right list of Kubernetes clusters, the right tags, etc. Also, we need to make
+the completion optional so that people enable them if they want to, but we
+don’t force anyone.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Add tests.&lt;/strong&gt; To set up the tests, we need to add some environment variables and
+simulate user behavior (mainly pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tab&lt;/code&gt;) in the tests and ensure that
+the script behaves correctly. The simulation is mainly done by creating a
+parser and running the completer on the user’s behavior.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Other tasks.&lt;/strong&gt; There are also some minor tasks related to dependencies,
+test setup, and documentation.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In the end, I gave up the project… 😅 I completed items 1, 2, 4,
+5 during the Hackathon, but item 3 “Making the completion meaningful and
+optional” was hard.
+Making the completion meaningful means I need to have the source of truth of the
+staging and production environment defined in the source code; or querying
+some external services in real-time, which has additional performance concerns
+(auto-completion needs to be fast),
+or requires additional setup (such as kubectl-port-forward). I didn’t have
+much time to continue after the hackathon and we had reduced significantly our
+manual operations after switching to Kubernetes. So I decided to stop continuing
+on it.&lt;/p&gt;
+
+&lt;h2 id=&quot;completable-future-and-vavr&quot;&gt;Completable Future And Vavr&lt;/h2&gt;
+
+&lt;p&gt;For the second Hackathon, I didn’t find out anything too interesting to work on,
+so I picked some refactoring at the last minute. It was about Completable
+Future in Java. However, one day later, my
+colleague convinced me that I should try something cooler, so I started to work
+on Vavr integration, an object-functional library.&lt;/p&gt;
+
+&lt;h3 id=&quot;completable-future&quot;&gt;Completable Future&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Comment&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Date&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;July 2020&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Duration&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;1 day&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Day 1 of the Hackathon&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Participants&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://github.com/mincong-h&quot;&gt;Mincong Huang&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Keywords&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;concurrency&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Status&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Completed&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;If you are familiar with the &lt;a href=&quot;https://docs.oracle.com/en/java/javase/18/docs/api/java.base/java/util/concurrent/CompletableFuture.html&quot;&gt;Completable
+Future&lt;/a&gt;
+in Java, you probably know that there are two notions: &lt;a href=&quot;https://docs.oracle.com/en/java/javase/18/docs/api/java.base/java/util/concurrent/CompletionStage.html&quot;&gt;Completion
+Stage&lt;/a&gt;
+and &lt;a href=&quot;https://docs.oracle.com/en/java/javase/18/docs/api/java.base/java/util/concurrent/CompletableFuture.html&quot;&gt;Completable
+Future&lt;/a&gt;.
+Completion Stage is an interface, which allows you to write code in an asynchronous
+way, e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;thenApply(...)&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;thenCompose(...)&lt;/code&gt;, to describe the relationship
+between multiple stages. On the other hand, Completable Future is the
+implementation for interfaces: Completion Stage and Future. On top of the completion
+stages, it contains all the APIs to manipulate future, such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;join()&lt;/code&gt;,
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get()&lt;/code&gt;, which makes it more powerful.&lt;/p&gt;
+
+&lt;p&gt;My refactoring was to remove all the unnecessary usage of Completable Future and
+replace them with Completion Stage. By doing so, it allows us to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Make it more explicit that we don’t want to complete or fail the future.&lt;/li&gt;
+  &lt;li&gt;Avoid additional calls of method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;toCompletableFuture()&lt;/code&gt;, which enables interoperability
+among different implementations of this interface by providing a common
+conversion type.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now I re-think this initiative, I won’t do this again. Because:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The impact of the change was low but it requires a lot of work. I needed to
+create 10 PRs (one per group of services) and merge them individually to avoid having too many conflicts
+to handle.&lt;/li&gt;
+  &lt;li&gt;The regression happens quite soon because people don’t know why we should use
+the Completion Stage and we don’t have any rule in the CI or IDE to enforce
+this. On the other side, giving the possibility to developers to manipulate futures
+(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;join()&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;get()&lt;/code&gt;) is not dangerous, we never had a problem with this as
+everyone uses the APIs carefully.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;vavr&quot;&gt;Vavr&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Comment&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Date&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;July 2020&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Duration&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;1 day&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Day 2 of the Hackathon&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Participants&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://github.com/mincong-h&quot;&gt;Mincong Huang&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Keywords&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vavr&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Status&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Rejected&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;This project demonstrated the usage of Java object-functional library
+&lt;a href=&quot;https://github.com/vavr-io/vavr&quot;&gt;vavr&lt;/a&gt;, which brings many concepts of Scala
+into the Java world. In my hackathon, I tried to integrate Vavr into an existing
+service. I demonstrated multiple data types: streams, map, tuple, optional,
+either; demonstrated support of JSON serialization; I discussed
+interoperability, performance, migration plan, etc. However, the project was
+rejected by our director and some other developers because using the library
+in the critical path may have a performance impact; also, the Vavr APIs
+are pretty invasive due to their names, which makes integration
+hard as we cannot distinguish the normal Java API and the vavr API only using
+the short name (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;List&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Set&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Map&lt;/code&gt;, …).&lt;/p&gt;
+
+&lt;p&gt;I tried my best to convince people that it’s cool to use Vavr but unfortunately,
+it’s rejected. That’s also why I stopped contributing to Vavr as I don’t find
+any use-cases in the near future.&lt;/p&gt;
+
+&lt;h2 id=&quot;datadog-instant&quot;&gt;Datadog Instant&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Comment&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Date&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;August 2020&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Duration&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;2 days&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Participants&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://github.com/aleloup-dd&quot;&gt;Arnaud Leloup&lt;/a&gt;, &lt;a href=&quot;https://github.com/mincong-h&quot;&gt;Mincong Huang&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Keywords&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javascript&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;search&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Status&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Completed&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Datadog Instant is an experimental project proposed by &lt;a href=&quot;https://github.com/aleloup-dd&quot;&gt;Arnaud
+Leloup&lt;/a&gt;, which allows users to have instant
+recommendations in the &lt;a href=&quot;https://docs.datadoghq.com/logs/explorer/&quot;&gt;Log Explorer&lt;/a&gt;
+in Datadog, like what Google proposes in their search bar (see screenshot
+below). The idea is to provide more relevant results to the user based on the search
+history; complete a word instantly without waiting, and bring information to the
+user rather than asking them to look into the “saved views” or other locations.
+Nobody wants to enter the same query again and again.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20220717-google-recommendations.png&quot; alt=&quot;Google instant recommendations&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There were several aspects to manage:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Data structure.&lt;/strong&gt; We need to store users’ historical data to provide personalized
+suggestions. This is done using a &lt;a href=&quot;https://en.wikipedia.org/wiki/Trie&quot;&gt;trie&lt;/a&gt;,
+a type of k-wary search tree. It allows us to persist words or sentences as
+characters or keys, the number of occurrences in the history, and finally to
+recompute the words during completion. For the hackathon, we persisted the
+trie in the local storage of the browser.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Frontend.&lt;/strong&gt; We need to intercept multiple events when the user presses keys on
+their keyword, especially the A-Z keys and the TAB key. When the event
+happened, we need to either read the trie or update the content of the search
+bar. As we were backend developers and we didn’t know the frontend very well,
+we use the old-school jQuery to handle the logic.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This was the first time that I worked with someone else on a Hackathon project
+and it was cool! Compared to a solo project, we were able to discuss,
+validate or reject some ideas, share tasks, and review. Now, this proof of
+concept (POC) is picked up by the Events UI team and will probably become the
+reality in the future! Thanks to Arnaud, I also learned how to plan and
+distribute tasks so that we can work more efficiently as a team.&lt;/p&gt;
+
+&lt;h2 id=&quot;temporal-java-worker&quot;&gt;Temporal Java Worker&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Comment&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Date&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;April 2022&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Duration&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;2 days&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Participants&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://github.com/juliendangers&quot;&gt;Julien Crestin&lt;/a&gt;, &lt;a href=&quot;https://github.com/mincong-h&quot;&gt;Mincong Huang&lt;/a&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Keywords&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;temporal&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Status&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;On-hold&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;It’s not the priority to continue on this project at the moment.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;At Datadog, we use the workflow engine &lt;a href=&quot;https://temporal.io/&quot;&gt;Temporal&lt;/a&gt; to
+handle internal deployments and running workflows for different usages. All the
+existing code is written in Go. It works well for most of the team. However,
+some teams use Java. Using Go means having an additional barrier to benefit from
+the existing workflow engine, such as learning the language, re-building domain
+models and existing features, managing source code in two different
+repositories, etc. The goal of the Hackathon is to try building a Temporal Java
+worker using the &lt;a href=&quot;https://github.com/temporalio/sdk-java&quot;&gt;Temporal Java SDK&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;During the Hackathon, I worked with my teammate Julien to make this work. More
+precisely, we had to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Create a Temporal worker.&lt;/strong&gt; This was the most obvious part as we can handle
+can follow the official &lt;a href=&quot;https://github.com/temporalio/samples-java&quot;&gt;Java
+samples&lt;/a&gt; and the previous PoC done
+by other teams. It also meant creating a Maven module, making configuration
+work, modifying the CI so that we can release the application, etc.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Make the authentication work.&lt;/strong&gt; The communication to the Temporal Server is
+done in HTTPS and requires authentication using OAuth and JWT, so we needed to
+find a way to do that in Java. It implies fetching the certificate, finding
+the right role, providing the token in the header, etc.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We made the entire logic work at the end (a bit after the Hackathon). Thanks
+to this experience, we figured out the solution to many issues and make it
+possible to plan the work with much better visibility. Although we didn’t have a
+chance to move forward right now, there is a good chance that we will do that
+again soon.&lt;/p&gt;
+
+&lt;h2 id=&quot;lessons-learned&quot;&gt;Lessons Learned&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;What did I learn across these projects?&lt;/em&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;You don’t have to know everything to get started.&lt;/strong&gt; Do not be afraid of
+starting something you don’t know very well. There are chances that you can
+learn that quickly, or get help from your teammates. In my case, it was the
+Datadog Instant project. I didn’t know much about jQuery, but I had
+experience with Vue.js, so I learned that during the hackathon.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Write a plan before writing code.&lt;/strong&gt; If you write down your plan, there is
+a much better chance that you will succeed in this game. It helps you to
+clarify the needs, your goal, the milestones to achieve that, the known
+constraints, the available resources, etc. It gives better visibility and
+expectation and also helps distribute works across participants.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Work on something impactful.&lt;/strong&gt; If your project is really useful for the
+company (for the product, for teammates, …), there is a much higher chance that
+your work won’t be lost after the Hackathon.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;An incomplete project is not a failure.&lt;/strong&gt; The most important thing is to learn
+and explore, it’s ok to fail. Even a failed project can provide much
+information for further discussion and decisions.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Today I shared the previous Hackathon projects with you in this article. I
+showed the 4 projects that I did: auto-completion for Python scripts; the
+completable features refactoring and Vavr integration; the Datadog Instant,
+providing Google-like instant recommendations in the search bar; and the
+Temporal Java worker to write workflows in Java. Then I also shared some
+lessons learned from these projects.
+Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
+on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
+&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="review" /><category term="java" /><category term="python" /><summary type="html">This article shared the 4 projects that I did over the last hackathons in Datadog and the lessons learned from those experiences.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-karsten-winegeart-ewfHXBcuFA0-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-karsten-winegeart-ewfHXBcuFA0-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Managing Code Complexity</title><link href="https://mincong.io/en/managing-code-complexity/" rel="alternate" type="text/html" title="Managing Code Complexity" /><published>2022-06-25T10:31:04+02:00</published><updated>2022-06-25T10:31:04+02:00</updated><id>https://mincong.io/en/managing-code-complexity</id><content type="html" xml:base="https://mincong.io/en/managing-code-complexity/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;In late 2021, I had the chance to join a new team at
 &lt;a href=&quot;https://www.datadoghq.com/&quot;&gt;Datadog&lt;/a&gt; called “Event Platform Automation”, which
@@ -2613,254 +3050,4 @@ in his post, including:&lt;/p&gt;
   &lt;li&gt;Milind Deobhankar, &lt;a href=&quot;https://dzone.com/articles/5-ways-to-change-the-log-levels-at-runtime&quot;&gt;“5 ways to change log levels at
 runtime”&lt;/a&gt;,
 &lt;em&gt;DZone&lt;/em&gt;, 2020.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="java-core" /><category term="java" /><category term="logging" /><summary type="html">This Q&amp;A explains how to change logger level dynamically at runtime via RESTful API for your Java application when using Logback.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-icons8-team-dhZtNlvNE8M-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-icons8-team-dhZtNlvNE8M-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">String Operations in Bash</title><link href="https://mincong.io/en/string-operations-in-bash/" rel="alternate" type="text/html" title="String Operations in Bash" /><published>2021-12-04T12:10:41+01:00</published><updated>2021-12-04T12:10:41+01:00</updated><id>https://mincong.io/en/string-operations-in-bash</id><content type="html" xml:base="https://mincong.io/en/string-operations-in-bash/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;When working in the software industry, no matter you are a software engineer, a
-data scientist, a support engineer, or any other role, you probably need to
-know some basic skills about Bash to
-improve your productivity. This can be useful for automating complex tasks in
-your terminal, generating the file for configuration or documentation, sharing
-commands with your teammates, etc. In this post, we are going to explore some
-frequently used techniques about string operations.&lt;/p&gt;
-
-&lt;p&gt;This article is written in macOS 11.6 and the default Bash environment (more
-details are described in the command below):&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bash &lt;span class=&quot;nt&quot;&gt;-version&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sw_vers
-GNU bash, version 3.2.57&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-release&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;x86_64-apple-darwin20&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-Copyright &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;C&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 2007 Free Software Foundation, Inc.
-ProductName:	macOS
-ProductVersion:	11.6
-BuildVersion:	20G165
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;After reading this article, you will understand:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;How to declare a variable?&lt;/li&gt;
-  &lt;li&gt;How to remove a substring using shell parameter expansion?&lt;/li&gt;
-  &lt;li&gt;How to replace a substring using shell parameter expansion?&lt;/li&gt;
-  &lt;li&gt;How to determine string value using regular expressions in if-statement?&lt;/li&gt;
-  &lt;li&gt;How to manipulate streams using different commands?&lt;/li&gt;
-  &lt;li&gt;How to go further from here?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Now, let’s get started!&lt;/p&gt;
-
-&lt;h2 id=&quot;declaring-variables&quot;&gt;Declaring Variables&lt;/h2&gt;
-
-&lt;p&gt;&lt;strong&gt;Declare a single line variable.&lt;/strong&gt; To declare a single line variable, just
-declare a variable, followed by an equal sign (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;=&lt;/code&gt;) for the assignment, and ends
-with the value of the variable, either using a string directly, or using a
-command inside a subshell (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$(...)&lt;/code&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello Bash&quot;&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;creation_date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +&lt;span class=&quot;s2&quot;&gt;&quot;%Y-%m-%d&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 2012-12-04&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Declare a multi-line text.&lt;/strong&gt; A heredoc is a special-purpose code block that
-tells the shell to read input from the current source until it encounters a line
-containing a delimiter. EOF (end of file) is a commonly used delimiter but it’s
-not mandatory. You can use JSON, YAML, TEXT, or any other delimiter that you
-think is relevant to your situation. The syntax for Heredoc in Bash is:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;COMMAND &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;DELIMITER&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
-Here is the long description
-...
-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;DELIMITER
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here is an example for generating a YAML file, where we generate the heredoc and
-print it inside a subshell
-and assign the result to a variable:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;YAML&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
-cluster:
-  type: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$TYPE&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
-  name: elasticsearch-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$TYPE&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
-  date: &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +&lt;span class=&quot;s2&quot;&gt;&quot;%Y-%m-%d&quot;&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YAML
-&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;substring-removal&quot;&gt;Substring Removal&lt;/h2&gt;
-
-&lt;p&gt;Removing a substring can be done inside a shell parameter expansion &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;${param}&lt;/code&gt;.
-Using character &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; can delete a prefix of the string and using character &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%&lt;/code&gt;
-can delete a suffix of the string. Using the same characters once or twice will
-delete the shortest and the longest match respectively. To better remember this,
-look at your ISO layout keyboard:&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;# 3&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$ 4&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;% 5&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;In a standard keyboard layout, keys 3/4/5 represent &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt;/&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%&lt;/code&gt;. Since &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; is
-before &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%&lt;/code&gt; is after &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt;, deletion with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; happens from the front of a string
-(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt;), and deletion with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;%&lt;/code&gt; happens from the end of a string (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$&lt;/code&gt;). Here are some
-concrete examples:&lt;/p&gt;
-
-&lt;p&gt;Deleting the shortest match from the front of a string:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2021-12-04
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;#*-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 12-04&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Deleting the longest match from the front of a string:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2021-12-04
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;##*-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 04&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Deleting the shortest match from the back of a string:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2021-12-04
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%-*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 2021-12&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Deleting the longest match from the back of a string:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2021-12-04
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%%-*&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 2021&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;substring-replacement&quot;&gt;Substring Replacement&lt;/h2&gt;
-
-&lt;p&gt;Replace first match of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$substring&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$replacementi&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/substring/replacement&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Replace all matches of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$substring&lt;/code&gt; with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$replacement&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;//substring/replacement&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Examples:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2021-12-04
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;/-/_&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 2021_12-04&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;2021-12-04
-&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;//-/_&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# 2021_12_04&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;if-statement&quot;&gt;If Statement&lt;/h2&gt;
-
-&lt;p&gt;Normal regular expression:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~ ^[0-9]&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;4&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;-[0-9]&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;-[0-9]&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Negate regular expression:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# inside&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~ ^[0-9]&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;4&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;-[0-9]&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;-[0-9]&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# outside&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;~ ^[0-9]&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;4&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;-[0-9]&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;-[0-9]&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;2&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Contain keyword using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;==&lt;/code&gt;, e.g. word “2021”:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2021&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;stream&quot;&gt;Stream&lt;/h2&gt;
-
-&lt;p&gt;To manipulate streams (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stdin&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stdout&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stderr&lt;/code&gt;) in Bash, you can use a pipe
-(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;|&lt;/code&gt;) followed by a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;command&lt;/code&gt; after your stream to filter, update, or collect
-information. This can be achieved using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;grep&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sed&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cut&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xargs&lt;/code&gt;, or other
-commands. Here is the syntax:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;my_stream | &amp;lt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here are some examples using “users.csv”:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;users.csv
-&lt;span class=&quot;s2&quot;&gt;&quot;User A&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;10&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;Paris&quot;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;&quot;User B&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;20&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;London&quot;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;&quot;User C&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;30&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;New York&quot;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;&quot;User d&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;40&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;Toulouse&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Find users in Paris:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;users.csv | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;Paris
-&lt;span class=&quot;s2&quot;&gt;&quot;User A&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;10&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;Paris&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Remove quotes (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&quot;&lt;/code&gt;):&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;users.csv | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'s/&quot;//g'&lt;/span&gt;
-User A,10,Paris
-User B,20,London
-User C,30,New York
-User d,40,Toulouse
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Remove user with incorrect format, e.g. ID written in lower case:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;users.csv | &lt;span class=&quot;nb&quot;&gt;sed&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/User [[:lower:]]/d'&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;&quot;User A&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;10&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;Paris&quot;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;&quot;User B&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;20&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;London&quot;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;&quot;User C&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;30&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;New York&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Cut column 2 and only keep columns 1 and 3:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;users.csv | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; 1,3 &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; ,
-&lt;span class=&quot;s2&quot;&gt;&quot;User A&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;Paris&quot;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;&quot;User B&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;London&quot;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;&quot;User C&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;New York&quot;&lt;/span&gt;
-&lt;span class=&quot;s2&quot;&gt;&quot;User d&quot;&lt;/span&gt;,&lt;span class=&quot;s2&quot;&gt;&quot;Toulouse&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;… to learn more about the syntax of your target command, use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;man&lt;/code&gt; command or
-use the help option &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-h&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# man cut&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# man grep&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# man sed&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# ...&lt;/span&gt;
-man &amp;lt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# cut -h&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# grep -h&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;# sed -h&lt;/span&gt;
-&amp;lt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-h&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;To know more techniques about manipulating strings, visit &lt;a href=&quot;https://tldp.org/LDP/abs/html/string-manipulation.html&quot;&gt;Advanced
-Bash-Scripting Guide: Chapter 10. Manipulating
-Variables&lt;/a&gt; in The Linux
-Documentation Project (TLDP).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;In this article, we discussed different string operations in Bash, including
-variable declaration, substring removal, built-in regular expression for
-if-statement, manipulating streams (filter, update, collect). The source code is
-also available on
-&lt;a href=&quot;https://github.com/keweishang/tech-resources/tree/master/tool&quot;&gt;GitHub&lt;/a&gt;.
-Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
-on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
-&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Kewei Shang &amp;amp; Mincong Huang, &lt;a href=&quot;https://github.com/keweishang/tech-resources/blob/master/tool/bash.md&quot;&gt;“Bash | Tech Resources”&lt;/a&gt;, &lt;em&gt;GitHub&lt;/em&gt;, 2020.&lt;/li&gt;
-  &lt;li&gt;Vivek Gite, &lt;a href=&quot;https://www.cyberciti.biz/faq/mac-osx-find-tell-operating-system-version-from-bash-prompt/&quot;&gt;“How to find out macOS version information from Terminal command
-prompt”&lt;/a&gt;, &lt;em&gt;CyberCiti&lt;/em&gt;, 2021.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html&quot;&gt;“3.5.3 Shell Parameter
-Expansion”&lt;/a&gt;,
-&lt;em&gt;GNU&lt;/em&gt;, 2021.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://tldp.org/LDP/abs/html/string-manipulation.html&quot;&gt;“Manipulating
-Strings”&lt;/a&gt;, &lt;em&gt;The Linux
-Documentation Project (TLDP)&lt;/em&gt;, 2021.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="bash" /><category term="bash" /><category term="scripting" /><summary type="html">This article shares tips for different string operations in Bash, including string declaration, substring removal, substring replacement, regular expressions in if-statement, and operations in streams.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-pawel-czerwinski-ScYk6KKEPUI-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-pawel-czerwinski-ScYk6KKEPUI-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="java-core" /><category term="java" /><category term="logging" /><summary type="html">This Q&amp;A explains how to change logger level dynamically at runtime via RESTful API for your Java application when using Logback.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-icons8-team-dhZtNlvNE8M-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-icons8-team-dhZtNlvNE8M-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
