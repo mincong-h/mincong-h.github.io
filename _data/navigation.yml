@@ -115,6 +115,8 @@ en_categories:
         url:    /en/categories/reliability/
       - title:  Review
         url:    /en/categories/review/
+      - title:  Temporal
+        url:    /en/categories/temporal/
 
 cn_categories:
   - title:      文章类别
@@ -141,6 +143,8 @@ cn_categories:
         url:    /cn/categories/reliability/
       - title:  总结
         url:    /cn/categories/review/
+      - title:  Temporal
+        url:    /cn/categories/temporal/
 
 
 series:
