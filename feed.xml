@@ -1,5 +1,234 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-07-24T11:15:45+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
-</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">My Hackathon Projects At Datadog</title><link href="https://mincong.io/en/my-hackathon-projects-at-datadog/" rel="alternate" type="text/html" title="My Hackathon Projects At Datadog" /><published>2022-07-17T14:31:57+02:00</published><updated>2022-07-17T14:31:57+02:00</updated><id>https://mincong.io/en/my-hackathon-projects-at-datadog</id><content type="html" xml:base="https://mincong.io/en/my-hackathon-projects-at-datadog/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-07-31T10:53:10+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Activity in Temporal</title><link href="https://mincong.io/en/activity-in-temporal/" rel="alternate" type="text/html" title="Activity in Temporal" /><published>2022-07-30T11:28:39+02:00</published><updated>2022-07-30T11:28:39+02:00</updated><id>https://mincong.io/en/activity-in-temporal</id><content type="html" xml:base="https://mincong.io/en/activity-in-temporal/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;If you want to use &lt;a href=&quot;https://temporal.io/&quot;&gt;https://temporal.io/&lt;/a&gt; as your workflow engine, you need to
+know about Activity, which is one of the key concepts of the Temporal workflow
+engine. After reading this article, you will understand:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What is an activity?&lt;/li&gt;
+  &lt;li&gt;Activity execution&lt;/li&gt;
+  &lt;li&gt;Observe an activity&lt;/li&gt;
+  &lt;li&gt;Test an activity&lt;/li&gt;
+  &lt;li&gt;Trade-offs&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, let’s get started!&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-an-activity&quot;&gt;What is an activity?&lt;/h2&gt;
+
+&lt;p&gt;According to the &lt;a href=&quot;https://docs.temporal.io/concepts/what-is-an-activity&quot;&gt;official documentation of
+Temporal&lt;/a&gt;, &lt;em&gt;“an Activity is
+a normal function or object method that executes a single, well-defined action
+(either short or long-running), such as calling another service, transcoding a
+media file, or sending an email message”&lt;/em&gt;. In the basic &lt;a href=&quot;https://github.com/temporalio/samples-go/tree/main/helloworld&quot;&gt;“Hello
+World”&lt;/a&gt; sample,
+we can see how the actual code looks like:&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;// Workflow is a Hello World workflow definition.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Workflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workflow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;c&quot;&gt;// ...&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;workflow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExecuteActivity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+		&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Activity failed.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Error&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;
+	&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HelloWorld workflow completed.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;result&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetLogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Activity&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;where we have a function &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Activity&lt;/code&gt; for logging “Hello $name!” which is called
+by the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Workflow&lt;/code&gt; using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workflow.ExecuteActivity(...)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;activity-execution&quot;&gt;Activity Execution&lt;/h2&gt;
+
+&lt;p&gt;Now, what happens when a workflow executes an activity? Basically, it contains 3
+stages in the lifecycle of the execution: scheduled, started, and completed.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.temporal.io/references/events/#activitytaskscheduled&quot;&gt;&lt;strong&gt;ActivityTaskScheduled&lt;/strong&gt;&lt;/a&gt;
+  – The activity task is sent to the Temporal server. More precisely, sent to a
+  specific namespace and specific task queue inside the Temporal server via gRPC. Then,
+  this activity waits to be picked up by a
+  Temporal worker (client) to execute the actual logic. During this time, the
+  event is persisted in the database and you can see it from the Web UI in the
+  &lt;a href=&quot;https://docs.temporal.io/concepts/what-is-an-event-history&quot;&gt;event history&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.temporal.io/references/events/#activitytaskstarted&quot;&gt;&lt;strong&gt;ActivityTaskStarted&lt;/strong&gt;&lt;/a&gt;
+  – The activity task is picked by a Temporal worker that is listening to that
+  task queue. Therefore, the task is considered as “started”. The task is
+  being processed by the SDK client.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.temporal.io/references/events/#activitytaskcompleted&quot;&gt;&lt;strong&gt;ActivityTaskCompleted&lt;/strong&gt;&lt;/a&gt;
+  – The activity task is now completed. The SDK client has picked up and
+  successfully completed the Activity Task.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Your best friend for better understanding these concepts is the Temporal Web UI
+because it shows the execution of the workflow as event history, where all the
+events are listed in chronological order. It’s quite simple.&lt;/p&gt;
+
+&lt;p&gt;However, for advanced users, the reality is more complex than that. Here are
+some details that you
+may need to know if you need to run workflows in production:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Pending task.&lt;/strong&gt; When an activity task is scheduled, it won’t necessarily be picked up because
+the worker may not be deployed or may not listen to that task queue.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Heartbeating.&lt;/strong&gt; When an activity task is being processed, the duration can be short or long.
+You may need to set up heartbeating for long-running activities so that
+Temporal server knows that the activity is making progress so that it won’t
+abort the execution. For example, if the activity reads a large file from
+Amazon S3 or runs an ML training job on some local GPUs. For short execution,
+such as a quick API call or reading a small file from a disk, heartbeating is
+not necessary.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Execution retries&lt;/strong&gt;. You can define a retry policy in the activity options
+from the workflow context to allow retrying failed activity tasks. One
+“Activity Execution” contains multiple “Activity Task Executions”. A task can
+be retried due to timeout or failure. The number of retries or other
+conditions is defined in the retry policy. You can see more details in the official
+document &lt;a href=&quot;https://docs.temporal.io/concepts/what-is-an-activity-execution&quot;&gt;“What is an Activity
+Execution?”&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Other task results.&lt;/strong&gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ActivityTaskCompleted&lt;/code&gt; isn’t the only type of result
+for the execution. An activity task can also be failed (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ActivityTaskFailed&lt;/code&gt;),
+timed out (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ActivityTaskTimedOut&lt;/code&gt;), cancel-requested (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ActivityTaskCancelRequested&lt;/code&gt;),
+or canceled (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ActivityTaskCanceled&lt;/code&gt;). You can browse those events in the
+&lt;a href=&quot;https://docs.temporal.io/references/events&quot;&gt;Events reference&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;observability&quot;&gt;Observability&lt;/h2&gt;
+
+&lt;p&gt;Now I have a workflow running and I want to inspect the activities, what should
+I do?&lt;/p&gt;
+
+&lt;h3 id=&quot;logging&quot;&gt;Logging&lt;/h3&gt;
+
+&lt;p&gt;When defining your activity, you may retrieve a logger from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;activity&lt;/code&gt;
+package as&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;activity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetLogger&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Internally, the logger not only logs the message and severity but also adds
+additional key-value pairs such as the namespace, the task queue, worker ID, the
+workflow type, the workflow ID, the run ID, etc.&lt;/p&gt;
+
+&lt;h3 id=&quot;tracing&quot;&gt;Tracing&lt;/h3&gt;
+
+&lt;p&gt;The Go SDK provides support for distributed tracing through OpenTracing. Tracing
+allows you to view the call graph of a workflow execution along with its
+activities and child workflows. See
+&lt;a href=&quot;https://docs.temporal.io/go/tracing/&quot;&gt;documentation&lt;/a&gt;. Otherwise, you can also
+create a custom
+interceptor by extending the
+&lt;a href=&quot;https://github.com/temporalio/sdk-go/blob/master/interceptor/tracing_interceptor.go&quot;&gt;BaseTracer&lt;/a&gt;
+and providing your own implementation. It provides functions to
+intercept the activity and workflow, in particular,
+extracting span from the gRPC headers and injecting it into the context or vice versa.&lt;/p&gt;
+
+&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
+
+&lt;p&gt;To test activity, you probably cannot use a normal unit test anymore. Because
+some logic assumes that the current function is located inside an activity, such
+as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;activity.GetLogger(ctx)&lt;/code&gt;. It will panic if your test isn’t inside an
+activity.&lt;/p&gt;
+
+&lt;p&gt;Therefore, you need to prepare an activity environment or workflow environment
+for it. This can be done using the testing framework provided by the Temporal Go
+SDK or other language SDKs via a Temporal test suite. Once the environment is created, you will need to
+register the activity into the environment so that you can execute the activity.&lt;/p&gt;
+
+&lt;p&gt;The test file &lt;a href=&quot;https://github.com/temporalio/samples-go/blob/main/helloworld/helloworld_test.go&quot;&gt;helloworld_test.go&lt;/a&gt; in the “hello world” sample very well resumed what you need to do,
+either using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewTestWorkflowEnvironment()&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;NewTestActivityEnvironment()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;helloworld&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+	&lt;span class=&quot;s&quot;&gt;&quot;testing&quot;&lt;/span&gt;
+
+	&lt;span class=&quot;s&quot;&gt;&quot;github.com/stretchr/testify/mock&quot;&lt;/span&gt;
+
+	&lt;span class=&quot;s&quot;&gt;&quot;github.com/stretchr/testify/require&quot;&lt;/span&gt;
+	&lt;span class=&quot;s&quot;&gt;&quot;go.temporal.io/sdk/testsuite&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Test_Workflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;testSuite&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testsuite&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WorkflowTestSuite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testSuite&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewTestWorkflowEnvironment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+	&lt;span class=&quot;c&quot;&gt;// Mock activity implementation&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;OnActivity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mock&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Anything&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Temporal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello Temporal!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;nil&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExecuteWorkflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Workflow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Temporal&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsWorkflowCompleted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NoError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetWorkflowError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+	&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NoError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;GetWorkflowResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello Temporal!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Test_Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testing&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;testSuite&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testsuite&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WorkflowTestSuite&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;testSuite&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewTestActivityEnvironment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;RegisterActivity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+	&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExecuteActivity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Activity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;World&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NoError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+	&lt;span class=&quot;k&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NoError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Equal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;trade-offs&quot;&gt;Trade-Offs&lt;/h2&gt;
+
+&lt;p&gt;One trade-off about using activity is the risk of function signature mismatch
+between the definition (e.g. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Activity(ctx context.Context, name string) (string,
+error)&lt;/code&gt; in the hello world sample) and the execution (e.g.
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workflow.ExecuteActivity(ctx, Activity, name)&lt;/code&gt;). If you updated the activity
+definition without updating the executions (callers), then your workflow
+execution will probably not work anymore – because the Temporal worker cannot find
+the function in its registry… because the signature is changed. One
+mitigation is to avoid using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ExecuteActivity&lt;/code&gt; directly, but generate a client,
+which encapsulates the logic. Therefore, you can rely on the compiler to find
+out the issue.&lt;/p&gt;
+
+&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
+
+&lt;p&gt;How to go further from here?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If you want to know more about activities in Temporal, you should read the
+official documentation &lt;a href=&quot;https://docs.temporal.io/activities&quot;&gt;https://docs.temporal.io/activities&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;If you want to know more about the Go SDK, visit &lt;a href=&quot;https://docs.temporal.io/go/&quot;&gt;https://docs.temporal.io/go/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;If you want to know more about observability, visit
+&lt;a href=&quot;https://docs.temporal.io/application-development/observability&quot;&gt;https://docs.temporal.io/application-development/observability&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;In this article, we talk about activities in temporal: the definition of activity,
+the execution of an activity, observability, testing, trade-offs, and finally
+some additional resources to go further.
+Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
+on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
+&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.temporal.io/&quot;&gt;https://docs.temporal.io/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="temporal" /><category term="temporal" /><category term="go" /><summary type="html">This article explains the definition of an activity, execution, observability, testing, and trade-offs in the workflow engine Temporal.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">My Hackathon Projects At Datadog</title><link href="https://mincong.io/en/my-hackathon-projects-at-datadog/" rel="alternate" type="text/html" title="My Hackathon Projects At Datadog" /><published>2022-07-17T14:31:57+02:00</published><updated>2022-07-17T14:31:57+02:00</updated><id>https://mincong.io/en/my-hackathon-projects-at-datadog</id><content type="html" xml:base="https://mincong.io/en/my-hackathon-projects-at-datadog/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;It’s been 2 years and a half since I joined Datadog and I had the chance to
 participate in 4 hackathon projects. They were a great experience and  I learned a
@@ -2974,80 +3203,4 @@ certain blocks, etc.&lt;/p&gt;
 Vue.js to learn the best practices about this framework.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="frontend" /><category term="javascript" /><category term="vuejs" /><category term="vuejs2" /><summary type="html">Your vue file is getting big? This Q&amp;A explains how to use component in Vue.js by extracting logic from your existing page.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/vuebigwhite.png" /><media:content medium="image" url="https://mincong.io/assets/vuebigwhite.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Change Log Level At Runtime in Logback</title><link href="https://mincong.io/en/change-log-level-at-runtime-in-logback/" rel="alternate" type="text/html" title="Change Log Level At Runtime in Logback" /><published>2021-12-18T09:02:43+01:00</published><updated>2021-12-18T09:02:43+01:00</updated><id>https://mincong.io/en/change-log-level-at-runtime-in-logback</id><content type="html" xml:base="https://mincong.io/en/change-log-level-at-runtime-in-logback/">&lt;h2 id=&quot;question&quot;&gt;Question&lt;/h2&gt;
-
-&lt;p&gt;I have a Java application using &lt;a href=&quot;http://logback.qos.ch/&quot;&gt;Logback&lt;/a&gt; as
-implementation for logging. I want to change log level at runtime for a given
-Java package or a given Java class without restarting my Java application. Is
-it possible? In particular, I am interested in enable the DEBUG level logs for a
-given package a short period of time so that I can troubleshoot issues in
-production.&lt;/p&gt;
-
-&lt;h2 id=&quot;answer&quot;&gt;Answer&lt;/h2&gt;
-
-&lt;p&gt;One possible solution is to retrieve the logger from logger context and modify
-its log level. Let’s say that you are uring &lt;a href=&quot;http://www.slf4j.org/&quot;&gt;SLF4J&lt;/a&gt; as
-interface and Logback as implementation, you can do that as follows:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ch.qos.logback.classic.Level&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ch.qos.logback.classic.Logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;ch.qos.logback.classic.LoggerContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LogbackLevelChanger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setLevel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Level&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;LoggerContext&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LoggerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getILoggerFactory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getLogger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setLevel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;c1&quot;&gt;// handle missing logger here&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then you can expose this method to your RESTful API so that the log level can be
-changed remotely at runtime:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@PUT&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@Path&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/log-level/{name}/{level}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;setLogLevel&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;nd&quot;&gt;@PathParam&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nd&quot;&gt;@PathParam&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;level&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;level&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;If you are using this technique for troubleshooting, you may consider adding a
-duration for the expiry so that the log level can be reset after the given
-duration. This avoid creating additional logs and potentially increase the fee
-for logging.&lt;/p&gt;
-
-&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
-
-&lt;p&gt;The solution described above is not the only solution. Milind Deobhankar
-described &lt;a href=&quot;https://dzone.com/articles/5-ways-to-change-the-log-levels-at-runtime&quot;&gt;5 ways to change log levels at
-runtime&lt;/a&gt;
-in his post, including:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Using the Spring Boot Admin&lt;/li&gt;
-  &lt;li&gt;Scan the logback.xml&lt;/li&gt;
-  &lt;li&gt;Access logback.xml via URL&lt;/li&gt;
-  &lt;li&gt;Creating API To Change the Log Levels (what we discussed in this post)&lt;/li&gt;
-  &lt;li&gt;Pub / Sub – the application instance needs to subscribe to the topic where log level changes will get published.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;It’s worth reading if you need more options.&lt;/p&gt;
-
-&lt;p&gt;Hope you enjoy this article, see you the next time!&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://logback.qos.ch/&quot;&gt;“Logback Project”&lt;/a&gt;, &lt;em&gt;Logback&lt;/em&gt;, 2021.&lt;/li&gt;
-  &lt;li&gt;Milind Deobhankar, &lt;a href=&quot;https://dzone.com/articles/5-ways-to-change-the-log-levels-at-runtime&quot;&gt;“5 ways to change log levels at
-runtime”&lt;/a&gt;,
-&lt;em&gt;DZone&lt;/em&gt;, 2020.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="java-core" /><category term="java" /><category term="logging" /><summary type="html">This Q&amp;A explains how to change logger level dynamically at runtime via RESTful API for your Java application when using Logback.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-icons8-team-dhZtNlvNE8M-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-icons8-team-dhZtNlvNE8M-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;p&gt;Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="frontend" /><category term="javascript" /><category term="vuejs" /><category term="vuejs2" /><summary type="html">Your vue file is getting big? This Q&amp;A explains how to use component in Vue.js by extracting logic from your existing page.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/vuebigwhite.png" /><media:content medium="image" url="https://mincong.io/assets/vuebigwhite.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

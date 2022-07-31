@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh">
+<!DOCTYPE html><html lang="en">
   <head><!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-87129300-1"></script>
 	<script>
@@ -10,29 +10,29 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Java 并发 - Mincong Huang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Temporal - Mincong Huang</title>
 
 <meta name="description" content="">
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Java 并发 | Mincong Huang</title>
+<title>Temporal | Mincong Huang</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Java 并发" />
+<meta property="og:title" content="Temporal" />
 <meta name="author" content="Mincong Huang" />
-<meta property="og:locale" content="zh" />
+<meta property="og:locale" content="en" />
 <meta name="description" content="Hi, welcome to my blog! I’m a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog’s. This blog is powered by Jekyll, a simple, blog-aware, static sites solution." />
 <meta property="og:description" content="Hi, welcome to my blog! I’m a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog’s. This blog is powered by Jekyll, a simple, blog-aware, static sites solution." />
-<link rel="canonical" href="https://mincong.io/cn/categories/java-concurrency/" />
-<meta property="og:url" content="https://mincong.io/cn/categories/java-concurrency/" />
+<link rel="canonical" href="https://mincong.io/en/categories/temporal/" />
+<meta property="og:url" content="https://mincong.io/en/categories/temporal/" />
 <meta property="og:site_name" content="Mincong Huang" />
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2022-07-31T10:53:10+02:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Java 并发" />
+<meta property="twitter:title" content="Temporal" />
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"datePublished":"2022-07-31T10:53:10+02:00","description":"Hi, welcome to my blog! I’m a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog’s. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.","author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/cn/categories/java-concurrency/"},"@type":"BlogPosting","url":"https://mincong.io/cn/categories/java-concurrency/","headline":"Java 并发","dateModified":"2022-07-31T10:53:10+02:00","@context":"https://schema.org"}</script>
+{"datePublished":"2022-07-31T10:53:10+02:00","description":"Hi, welcome to my blog! I’m a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog’s. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.","author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/categories/temporal/"},"@type":"BlogPosting","url":"https://mincong.io/en/categories/temporal/","headline":"Temporal","dateModified":"2022-07-31T10:53:10+02:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -40,7 +40,7 @@
 
 <!-- Extra Open Graph :: End -->
 
-<link rel="canonical" href="https://mincong.io/cn/categories/java-concurrency/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="canonical" href="https://mincong.io/en/categories/temporal/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -325,7 +325,7 @@
 
     <div class="grid page__grid">
 
-      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">文章类别</li><li class="toc-h2"><a href="/cn/categories/build/">构建工具</a></li><li class="toc-h2"><a href="/cn/categories/elasticsearch/">Elasticsearch</a></li><li class="toc-h2"><a href="/cn/categories/git/">Git</a></li><li class="toc-h2 active"><a href="/cn/categories/java-concurrency/">Java Concurrency</a></li><li class="toc-h2"><a href="/cn/categories/java-core/">Java 核心</a></li><li class="toc-h2"><a href="/cn/categories/java-rest/">Java RESTful APIs</a></li><li class="toc-h2"><a href="/cn/categories/java-serialization/">Java 序列化</a></li><li class="toc-h2"><a href="/cn/categories/java-testing/">Java 测试</a></li><li class="toc-h2"><a href="/cn/categories/python/">Python</a></li><li class="toc-h2"><a href="/cn/categories/reliability/">可靠性</a></li><li class="toc-h2"><a href="/cn/categories/review/">总结</a></li><li class="toc-h2"><a href="/cn/categories/temporal/">Temporal</a></li></ul></div></div><div class="page__main js-page-main cell cell--auto">
+      <div class="page__sidebar d-print-none"><div class="sidebar-toc"><ul class="toc toc--navigator"><li class="toc-h1">Categories</li><li class="toc-h2"><a href="/en/categories/build/">Build Tools</a></li><li class="toc-h2"><a href="/en/categories/elasticsearch/">Elasticsearch</a></li><li class="toc-h2"><a href="/en/categories/git/">Git</a></li><li class="toc-h2"><a href="/en/categories/java-concurrency/">Java Concurrency</a></li><li class="toc-h2"><a href="/en/categories/java-core/">Java Core</a></li><li class="toc-h2"><a href="/en/categories/java-rest/">Java RESTful APIs</a></li><li class="toc-h2"><a href="/en/categories/java-serialization/">Java Serialization</a></li><li class="toc-h2"><a href="/en/categories/java-testing/">Java Testing</a></li><li class="toc-h2"><a href="/en/categories/python/">Python</a></li><li class="toc-h2"><a href="/en/categories/reliability/">Reliability</a></li><li class="toc-h2"><a href="/en/categories/review/">Review</a></li><li class="toc-h2 active"><a href="/en/categories/temporal/">Temporal</a></li></ul></div></div><div class="page__main js-page-main cell cell--auto">
 
       <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
       <div class="header__title">
@@ -354,13 +354,13 @@
           
           
 
-          <a href="/cn/">码农小黄</a>
+          <a href="/">Home</a>
         </div><button class="button button--secondary button--circle search-button js-search-toggle" data-dd-action-name="search">
             <i class="fas fa-search"></i>
           </button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/cn/categories/">分类</a></li><li class="navigation__item"><a href="/cn/series/">系列</a></li><li class="navigation__item"><a href="/cn/archive/">归档</a></li><li class="navigation__item"><a href="/cn/about/">关于</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle" data-dd-action-name="search"><i class="fas fa-search"></i></button></li><li>
-            <a href="/">
-             <img src="/assets/flag-US.png"
+        <ul><li class="navigation__item"><a href="/en/categories/">Categories</a></li><li class="navigation__item"><a href="/en/series/">Series</a></li><li class="navigation__item"><a href="/en/archive/">Archive</a></li><li class="navigation__item"><a href="/en/about/">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle" data-dd-action-name="search"><i class="fas fa-search"></i></button></li><li>
+            <a href="/cn/">
+             <img src="/assets/flag-CN.png"
                   alt=""
                   class="naviation__lang_img">
             </a>
@@ -375,7 +375,7 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>Java 并发</h1></header></div><meta itemprop="headline" content="Java 并发">
+<article itemscope itemtype="http://schema.org/WebPage"><div class="article__header"><header><h1>Temporal</h1></header></div><meta itemprop="headline" content="Temporal">
 
   
   <div class="article__info clearfix">
@@ -383,79 +383,23 @@
         
 
         
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>2022年 07月31日</span>
+      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 31, 2022</span>
             </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-07-31T10:53:10+02:00"><div class="js-article-content">
 
 
 <div class="layout--articles">
   <section class="my-5">
     <div class="article-list grid grid--p-3"><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-2242213_1280.jpg')"></div></div><div class="card__content">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg')"></div></div><div class="card__content">
                 <header>
-                  <a href="/2020/07/26/es-client-completablefuture/"><h2 class="card__header">Wrap Elasticsearch Response Into CompletableFuture</h2></a>
+                  <a href="/en/activity-in-temporal/"><h2 class="card__header">Activity in Temporal</h2></a>
                 </header>
               </div>
           </div>
         </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-park-troopers-RAtKWVlfdf4-unsplash.jpg')"></div></div><div class="card__content">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-pablo-garcia-saldana-lPQIndZz8Mo-unsplash.jpg')"></div></div><div class="card__content">
                 <header>
-                  <a href="/2020/06/26/completable-future/"><h2 class="card__header">Why Do We Need Completable Future?</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-2306471_1280.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2020/06/20/akka-actor/"><h2 class="card__header">Write An Actor In Akka</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2020/05/30/exception-handling-in-completable-future/"><h2 class="card__header">3 Ways to Handle Exception In Completable Future</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2020/05/10/completablefuture-test/"><h2 class="card__header">How CompletableFuture is tested in OpenJDK?</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-983955_1280.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2020/03/15/jaxrs-async-processing/"><h2 class="card__header">Asynchronous Processing in JAX-RS 2.x</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-board-2450236_1280.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2020/01/08/akka-testing-actor-with-testactorref/"><h2 class="card__header">Akka: Testing Actor with TestActorRef</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-powerboat-2784250_1280.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2019/01/29/executorservice-invokeall/"><h2 class="card__header">ExecutorService.invokeAll()</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__content">
-                <header>
-                  <a href="/2018/07/01/method-execution-in-multithreading/"><h2 class="card__header">Method Execution In Multithreading</h2></a>
-                </header>
-              </div>
-          </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__content">
-                <header>
-                  <a href="/2017/11/05/introduction-to-threads/"><h2 class="card__header">Introduction to Threads</h2></a>
+                  <a href="/en/error-retries-in-temporal/"><h2 class="card__header">Error Retries in Temporal Workflow</h2></a>
                 </header>
               </div>
           </div>
@@ -470,24 +414,24 @@
 <footer class="footer py-4 js-page-footer">
   <div class="main"><div itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Mincong Huang"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
-  <ul class="menu menu--nowrap menu--inline"><li title="给我发邮件。">
+  <ul class="menu menu--nowrap menu--inline"><li title="Send me an Email.">
       <a class="button button--circle mail-button" itemprop="email" href="mailto:mincong.h@gmail.com" target="_blank">
         <i class="fas fa-envelope"></i>
-      </a><li title="在 Twitter 上关注我。">
+      </a><li title="Follow me on Twitter.">
         <a class="button button--circle twitter-button" itemprop="sameAs" href="https://twitter.com/mincong_h" target="_blank">
           <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M1024.032 194.432c-37.664 16.704-78.176 28-120.672 33.088 43.36-26.016 76.672-67.168 92.384-116.224-40.608 24.064-85.568 41.568-133.408 50.976-38.336-40.832-92.928-66.336-153.344-66.336-116.032 0-210.08 94.048-210.08 210.08 0 16.48 1.856 32.512 5.44 47.872-174.592-8.768-329.408-92.416-433.024-219.52-18.08 31.04-28.448 67.104-28.448 105.632 0 72.896 37.088 137.184 93.472 174.88-34.432-1.088-66.816-10.528-95.168-26.272-0.032 0.864-0.032 1.76-0.032 2.656 0 101.792 72.416 186.688 168.512 205.984-17.632 4.8-36.192 7.36-55.36 7.36-13.536 0-26.688-1.312-39.52-3.776 26.72 83.456 104.32 144.192 196.256 145.888-71.904 56.352-162.496 89.92-260.928 89.92-16.96 0-33.664-0.992-50.112-2.944 92.96 59.616 203.392 94.4 322.048 94.4 386.432 0 597.728-320.128 597.728-597.76 0-9.12-0.192-18.176-0.608-27.168 41.056-29.632 76.672-66.624 104.832-108.736z" />
 </svg>
 </div>
         </a>
-      </li><li title="在 Linkedin 上关注我。">
+      </li><li title="Follow me on Linkedin.">
         <a class="button button--circle linkedin-button" itemprop="sameAs" href="https://www.linkedin.com/in/mincong-huang" target="_blank">
           <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M260.096 155.648c0 27.307008-9.899008 50.516992-29.696 69.632-19.796992 19.115008-45.396992 28.672-76.8 28.672-30.036992 0-54.612992-9.556992-73.728-28.672-19.115008-19.115008-28.672-42.324992-28.672-69.632 0-28.672 9.556992-52.224 28.672-70.656 19.115008-18.432 44.372992-27.648 75.776-27.648 31.403008 0 56.32 9.216 74.752 27.648 18.432 18.432 28.331008 41.984 29.696 70.656 0 0 0 0 0 0m-202.752 808.96c0 0 0-632.832 0-632.832 0 0 196.608 0 196.608 0 0 0 0 632.832 0 632.832 0 0-196.608 0-196.608 0 0 0 0 0 0 0m313.344-430.08c0-58.708992-1.364992-126.292992-4.096-202.752 0 0 169.984 0 169.984 0 0 0 10.24 88.064 10.24 88.064 0 0 4.096 0 4.096 0 40.96-68.267008 105.812992-102.4 194.56-102.4 68.267008 0 123.220992 22.868992 164.864 68.608 41.643008 45.739008 62.464 113.664 62.464 203.776 0 0 0 374.784 0 374.784 0 0-196.608 0-196.608 0 0 0 0-350.208 0-350.208 0-91.476992-33.451008-137.216-100.352-137.216-47.787008 0-81.236992 24.576-100.352 73.728-4.096 8.192-6.144 24.576-6.144 49.152 0 0 0 364.544 0 364.544 0 0-198.656 0-198.656 0 0 0 0-430.08 0-430.08 0 0 0 0 0 0" />
 </svg>
 </div>
         </a>
-      </li><li title="在 Github 上关注我。">
+      </li><li title="Follow me on Github.">
         <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/mincong-h" target="_blank">
           <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path class="svgpath" data-index="path_0" fill="#272636" d="M0 525.2c0 223.6 143.3 413.7 343 483.5 26.9 6.8 22.8-12.4 22.8-25.4l0-88.7c-155.3 18.2-161.5-84.6-172-101.7-21.1-36-70.8-45.2-56-62.3 35.4-18.2 71.4 4.6 113.1 66.3 30.2 44.7 89.1 37.2 119 29.7 6.5-26.9 20.5-50.9 39.7-69.6C248.8 728.2 181.7 630 181.7 513.2c0-56.6 18.7-108.7 55.3-150.7-23.3-69.3 2.2-128.5 5.6-137.3 66.5-6 135.5 47.6 140.9 51.8 37.8-10.2 80.9-15.6 129.1-15.6 48.5 0 91.8 5.6 129.8 15.9 12.9-9.8 77-55.8 138.8-50.2 3.3 8.8 28.2 66.7 6.3 135 37.1 42.1 56 94.6 56 151.4 0 117-67.5 215.3-228.8 243.7 26.9 26.6 43.6 63.4 43.6 104.2l0 128.8c0.9 10.3 0 20.5 17.2 20.5C878.1 942.4 1024 750.9 1024 525.3c0-282.9-229.3-512-512-512C229.1 13.2 0 242.3 0 525.2L0 525.2z" />
@@ -658,7 +602,7 @@
 })();
 </script><div class="search search--dark">
   <div class="main">
-    <div class="search__header">搜索</div>
+    <div class="search__header">Search</div>
     <div class="search-bar">
       <div class="search-box js-search-box">
         <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
@@ -668,7 +612,7 @@
         </div>
       </div>
       <button class="button button--theme-dark button--pill search__cancel js-search-toggle">
-        取消</button>
+        Cancel</button>
     </div>
     <div class="search-result js-search-result"></div>
   </div>
@@ -1096,6 +1040,17 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
     });
   });
 })();
+</script><script src="https://media.ethicalads.io/media/client/ethicalads.min.js"></script>
+<script>
+ethicalads.wait.then((placements) => {
+  if (!placements.length) {
+    console.debug('Loading backup content');
+    div = document.querySelector('[data-ea-publisher]')
+    div.innerHTML = '<p>Check out our first-party ad content.</p>'
+  } else {
+    console.debug('EthicalAds are loaded');
+  }
+});
 </script>
     </div>
     <script>(function () {
