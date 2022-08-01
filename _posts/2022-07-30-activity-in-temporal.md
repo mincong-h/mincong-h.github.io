@@ -13,7 +13,7 @@ ads_tags:            [workflow, automation, devops]
 comments:            true
 excerpt:             >
     This article explains the definition of an activity, execution, observability,
-    testing, and trade-offs in the workflow engine Temporal.
+    testing, use-cases, and trade-offs in the workflow engine Temporal.
 
 image:               /assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg
 cover:               /assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg
@@ -36,6 +36,7 @@ engine. After reading this article, you will understand:
 * Activity execution
 * Observe an activity
 * Test an activity
+* Use-cases
 * Trade-offs
 
 Now, let's get started!
@@ -214,6 +215,26 @@ func Test_Activity(t *testing.T) {
 }
 ```
 
+## Use-cases
+
+_But when should I use activities?_
+
+Using activities has multiple benefits: the logic encapsulated by the activity
+can be retried based on the retry policy; you can see the input and output in
+JSON format in the event history; you can rely on
+`workflow.ExecuteActivity(...)` to handle asynchronous processing, etc. Given
+the benefits above, I believe that you can use activities:
+
+* when your workflow talks to an external service so that you can retry on failures
+* when you need clear input and output for a section of your workflow so that
+  you can inspect the event history
+* when you need to execute multiple tasks concurrently or asynchronously so that
+  you can combine them with [workflow selectors and
+  channels](https://docs.temporal.io/go/selectors/#overview).
+
+If other cases are not covered by this section, please let me
+know, I am happy to update it! :D
+
 ## Trade-Offs
 
 One trade-off about using activity is the risk of function signature mismatch
@@ -240,11 +261,14 @@ How to go further from here?
 ## Conclusion
 
 In this article, we talk about activities in temporal: the definition of activity,
-the execution of an activity, observability, testing, trade-offs, and finally
+the execution of an activity, observability, testing, use-cases, trade-offs, and finally
 some additional resources to go further.
 Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
+
+_P.S. Special thanks to [Charles Oran](https://github.com/coran) for reviewing
+this post._
 
 ## References
 
