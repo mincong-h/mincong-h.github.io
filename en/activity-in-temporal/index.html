@@ -12,7 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Activity in Temporal - Mincong Huang</title>
 
-<meta name="description" content="This article explains the definition of an activity, execution, observability, testing, and trade-offs in the workflow engine Temporal.">
+<meta name="description" content="This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal.">
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
 <title>Activity in Temporal | Mincong Huang</title>
@@ -20,8 +20,8 @@
 <meta property="og:title" content="Activity in Temporal" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This article explains the definition of an activity, execution, observability, testing, and trade-offs in the workflow engine Temporal." />
-<meta property="og:description" content="This article explains the definition of an activity, execution, observability, testing, and trade-offs in the workflow engine Temporal." />
+<meta name="description" content="This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal." />
+<meta property="og:description" content="This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal." />
 <link rel="canonical" href="https://mincong.io/en/activity-in-temporal/" />
 <meta property="og:url" content="https://mincong.io/en/activity-in-temporal/" />
 <meta property="og:site_name" content="Mincong Huang" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"datePublished":"2022-07-30T11:28:39+02:00","description":"This article explains the definition of an activity, execution, observability, testing, and trade-offs in the workflow engine Temporal.","author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/activity-in-temporal/"},"@type":"BlogPosting","url":"https://mincong.io/en/activity-in-temporal/","image":"https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg","headline":"Activity in Temporal","dateModified":"2022-07-30T11:28:39+02:00","@context":"https://schema.org"}</script>
+{"datePublished":"2022-07-30T11:28:39+02:00","description":"This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal.","author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/activity-in-temporal/"},"@type":"BlogPosting","url":"https://mincong.io/en/activity-in-temporal/","image":"https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg","headline":"Activity in Temporal","dateModified":"2022-07-30T11:28:39+02:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -436,6 +436,7 @@ engine. After reading this article, you will understand:</p>
   <li>Activity execution</li>
   <li>Observe an activity</li>
   <li>Test an activity</li>
+  <li>Use-cases</li>
   <li>Trade-offs</li>
 </ul>
 
@@ -616,6 +617,28 @@ either using <code class="language-plaintext highlighter-rouge">NewTestWorkflowE
 <span class="p">}</span>
 </code></pre></div></div>
 
+<h2 id="use-cases">Use-cases</h2>
+
+<p><em>But when should I use activities?</em></p>
+
+<p>Using activities has multiple benefits: the logic encapsulated by the activity
+can be retried based on the retry policy; you can see the input and output in
+JSON format in the event history; you can rely on
+<code class="language-plaintext highlighter-rouge">workflow.ExecuteActivity(...)</code> to handle asynchronous processing, etc. Given
+the benefits above, I believe that you can use activities:</p>
+
+<ul>
+  <li>when your workflow talks to an external service so that you can retry on failures</li>
+  <li>when you need clear input and output for a section of your workflow so that
+you can inspect the event history</li>
+  <li>when you need to execute multiple tasks concurrently or asynchronously so that
+you can combine them with <a href="https://docs.temporal.io/go/selectors/#overview">workflow selectors and
+channels</a>.</li>
+</ul>
+
+<p>If other cases are not covered by this section, please let me
+know, I am happy to update it! :D</p>
+
 <h2 id="trade-offs">Trade-Offs</h2>
 
 <p>One trade-off about using activity is the risk of function signature mismatch
@@ -644,11 +667,14 @@ official documentation <a href="https://docs.temporal.io/activities">https://doc
 <h2 id="conclusion">Conclusion</h2>
 
 <p>In this article, we talk about activities in temporal: the definition of activity,
-the execution of an activity, observability, testing, trade-offs, and finally
+the execution of an activity, observability, testing, use-cases, trade-offs, and finally
 some additional resources to go further.
 Interested to know more? You can subscribe to <a href="/feed.xml">the feed of my blog</a>, follow me
 on <a href="https://twitter.com/mincong_h">Twitter</a> or
 <a href="https://github.com/mincong-h/">GitHub</a>. Hope you enjoy this article, see you the next time!</p>
+
+<p><em>P.S. Special thanks to <a href="https://github.com/coran">Charles Oran</a> for reviewing
+this post.</em></p>
 
 <h2 id="references">References</h2>
 

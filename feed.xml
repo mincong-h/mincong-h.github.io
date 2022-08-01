@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-07-31T10:53:10+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-08-01T22:48:06+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
 </subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Activity in Temporal</title><link href="https://mincong.io/en/activity-in-temporal/" rel="alternate" type="text/html" title="Activity in Temporal" /><published>2022-07-30T11:28:39+02:00</published><updated>2022-07-30T11:28:39+02:00</updated><id>https://mincong.io/en/activity-in-temporal</id><content type="html" xml:base="https://mincong.io/en/activity-in-temporal/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;If you want to use &lt;a href=&quot;https://temporal.io/&quot;&gt;https://temporal.io/&lt;/a&gt; as your workflow engine, you need to
@@ -10,6 +10,7 @@ engine. After reading this article, you will understand:&lt;/p&gt;
   &lt;li&gt;Activity execution&lt;/li&gt;
   &lt;li&gt;Observe an activity&lt;/li&gt;
   &lt;li&gt;Test an activity&lt;/li&gt;
+  &lt;li&gt;Use-cases&lt;/li&gt;
   &lt;li&gt;Trade-offs&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -190,6 +191,28 @@ either using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h2 id=&quot;use-cases&quot;&gt;Use-cases&lt;/h2&gt;
+
+&lt;p&gt;&lt;em&gt;But when should I use activities?&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Using activities has multiple benefits: the logic encapsulated by the activity
+can be retried based on the retry policy; you can see the input and output in
+JSON format in the event history; you can rely on
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;workflow.ExecuteActivity(...)&lt;/code&gt; to handle asynchronous processing, etc. Given
+the benefits above, I believe that you can use activities:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;when your workflow talks to an external service so that you can retry on failures&lt;/li&gt;
+  &lt;li&gt;when you need clear input and output for a section of your workflow so that
+you can inspect the event history&lt;/li&gt;
+  &lt;li&gt;when you need to execute multiple tasks concurrently or asynchronously so that
+you can combine them with &lt;a href=&quot;https://docs.temporal.io/go/selectors/#overview&quot;&gt;workflow selectors and
+channels&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If other cases are not covered by this section, please let me
+know, I am happy to update it! :D&lt;/p&gt;
+
 &lt;h2 id=&quot;trade-offs&quot;&gt;Trade-Offs&lt;/h2&gt;
 
 &lt;p&gt;One trade-off about using activity is the risk of function signature mismatch
@@ -218,17 +241,20 @@ official documentation &lt;a href=&quot;https://docs.temporal.io/activities&quot
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;In this article, we talk about activities in temporal: the definition of activity,
-the execution of an activity, observability, testing, trade-offs, and finally
+the execution of an activity, observability, testing, use-cases, trade-offs, and finally
 some additional resources to go further.
 Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
 on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
 &lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
 
+&lt;p&gt;&lt;em&gt;P.S. Special thanks to &lt;a href=&quot;https://github.com/coran&quot;&gt;Charles Oran&lt;/a&gt; for reviewing
+this post.&lt;/em&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.temporal.io/&quot;&gt;https://docs.temporal.io/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="temporal" /><category term="temporal" /><category term="go" /><summary type="html">This article explains the definition of an activity, execution, observability, testing, and trade-offs in the workflow engine Temporal.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">My Hackathon Projects At Datadog</title><link href="https://mincong.io/en/my-hackathon-projects-at-datadog/" rel="alternate" type="text/html" title="My Hackathon Projects At Datadog" /><published>2022-07-17T14:31:57+02:00</published><updated>2022-07-17T14:31:57+02:00</updated><id>https://mincong.io/en/my-hackathon-projects-at-datadog</id><content type="html" xml:base="https://mincong.io/en/my-hackathon-projects-at-datadog/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="temporal" /><category term="temporal" /><category term="go" /><summary type="html">This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">My Hackathon Projects At Datadog</title><link href="https://mincong.io/en/my-hackathon-projects-at-datadog/" rel="alternate" type="text/html" title="My Hackathon Projects At Datadog" /><published>2022-07-17T14:31:57+02:00</published><updated>2022-07-17T14:31:57+02:00</updated><id>https://mincong.io/en/my-hackathon-projects-at-datadog</id><content type="html" xml:base="https://mincong.io/en/my-hackathon-projects-at-datadog/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;It’s been 2 years and a half since I joined Datadog and I had the chance to
 participate in 4 hackathon projects. They were a great experience and  I learned a
