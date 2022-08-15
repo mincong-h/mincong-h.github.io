@@ -183,6 +183,9 @@ that I created based on Java and Elasticsearch.
 When adding a new image to the website, you need to register its metadata in
 `_data/images.yml`.
 
+- <https://unsplash.com> Beasutiful free images & pictures
+- <https://pixabay.com> 2.6 million+ strunning free images to use anywhere
+
 ## Social Network Sharing
 
 Website | Preview Tool
