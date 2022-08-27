@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-08-15T22:30:24+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-08-27T10:28:25+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
 </subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Activity in Temporal</title><link href="https://mincong.io/en/activity-in-temporal/" rel="alternate" type="text/html" title="Activity in Temporal" /><published>2022-07-30T11:28:39+02:00</published><updated>2022-07-30T11:28:39+02:00</updated><id>https://mincong.io/en/activity-in-temporal</id><content type="html" xml:base="https://mincong.io/en/activity-in-temporal/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;If you want to use &lt;a href=&quot;https://temporal.io/&quot;&gt;https://temporal.io/&lt;/a&gt; as your workflow engine, you need to
@@ -719,7 +719,7 @@ it’s worth discussing how to make things done correctly.&lt;/p&gt;
 
 &lt;p&gt;Now, let’s get started!&lt;/p&gt;
 
-&lt;h2 id=&quot;growing-in-different-dimensions&quot;&gt;Growing in Different Dimensions&lt;/h2&gt;
+&lt;h2 id=&quot;growing-in-dimensions&quot;&gt;Growing in Dimensions&lt;/h2&gt;
 
 &lt;p&gt;When your codebase grows from 100 lines to 1,000 lines, from 1,000 to 10,000,
 and even more, you need to find many ways to manage the complexity. Here are
@@ -831,6 +831,35 @@ over time, we also need to parse YAML files, and we may welcome other
 file formats as well.&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id=&quot;layers&quot;&gt;Layers&lt;/h3&gt;
+
+&lt;p&gt;Sometimes, having packages is not enough for handling the complexity. You need
+to have layers. For example, in the API client that I mentioned above, we
+adapted a two layer architecture, where you can find high-level API clients and
+low-level API client. Each high-level API client is a virtual API client for a
+given domain (Kafka, ZooKeeper, Elasticsearch, …) and the low-level client is
+a virtual for handling acutal HTTP requests, tracing, error handling, etc.&lt;/p&gt;
+
+&lt;!--
+  https://excalidraw.com/#json=WHt6_IwK7k7qpNCZq5UYc,qXohm0POofxOVCTv6hCOKg
+--&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img src=&quot;/assets/20220827-layer-sample-1.png&quot; alt=&quot;Diagram of a two-layer architecture&quot; style=&quot;max-width: 500px&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h3 id=&quot;design-patterns&quot;&gt;Design Patterns&lt;/h3&gt;
+
+&lt;p&gt;Now we have multiple domains. It means that there is a high probability that we
+have similar code in each domain. This causes code duplication. To mitigate the
+problem, we need to introduce a common structure shared by those structures.
+This is a skeleton which defines a subset of the logic and allows subclasses to
+redefine certain steps without changing the algorithm’s structure.&lt;/p&gt;
+
+&lt;p&gt;In general, it means using different design patterns to handle the
+code complexity inside a service: adapter, proxy, factory, composite, builder,
+decorator, facade, etc.&lt;/p&gt;
+
 &lt;h3 id=&quot;services&quot;&gt;Services&lt;/h3&gt;
 
 &lt;p&gt;If you need to grow even further, you can also consider building multiple
@@ -844,6 +873,20 @@ store.&lt;/p&gt;
 perfect solution that solves all the problems. Therefore, it’s essential to
 refactor the code continuously and ensure that it fits new use-cases. Here are
 some aspects of refactoring that I want to mention.&lt;/p&gt;
+
+&lt;h3 id=&quot;drawing-diagrams&quot;&gt;Drawing Diagrams&lt;/h3&gt;
+
+&lt;p&gt;Drawing diagrams makes the problem more visual. It allows you to better
+understand what the problem is, communicate with other team members, etc. There
+are many types of diagrams: flowchat, sequence diagram, class diagram, state
+diagram, etc. Depending on the requirements, you may use different ones. As for
+tools, I like using the following ones:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://excalidraw.com&quot;&gt;https://excalidraw.com&lt;/a&gt; to draw diagram online&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mermaid-js.github.io/mermaid/#/&quot;&gt;https://mermaid-js.github.io/mermaid/#/&lt;/a&gt; to write diagram as code, and let
+the tool to generate the actual result for you.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;testing&quot;&gt;Testing&lt;/h3&gt;
 
