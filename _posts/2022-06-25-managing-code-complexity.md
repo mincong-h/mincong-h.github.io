@@ -7,6 +7,7 @@ subtitle:            >
 
 lang:                en
 date:                2022-06-25 10:31:04 +0200
+date_modified:       2022-08-27 10:20:58 +0200
 categories:          []
 tags:                [system-design, java, go]
 ads_tags:            []
@@ -53,7 +54,7 @@ After reading this article, you will understand:
 
 Now, let's get started!
 
-## Growing in Different Dimensions
+## Growing in Dimensions
 
 When your codebase grows from 100 lines to 1,000 lines, from 1,000 to 10,000,
 and even more, you need to find many ways to manage the complexity. Here are
@@ -161,6 +162,37 @@ In my case, I created two packages in Go this year:
   over time, we also need to parse YAML files, and we may welcome other
   file formats as well.
 
+### Layers
+
+Sometimes, having packages is not enough for handling the complexity. You need
+to have layers. For example, in the API client that I mentioned above, we
+adapted a two layer architecture, where you can find high-level API clients and
+low-level API client. Each high-level API client is a virtual API client for a
+given domain (Kafka, ZooKeeper, Elasticsearch, ...) and the low-level client is
+a virtual for handling acutal HTTP requests, tracing, error handling, etc.
+
+<!--
+  https://excalidraw.com/#json=WHt6_IwK7k7qpNCZq5UYc,qXohm0POofxOVCTv6hCOKg
+-->
+
+<p align="center">
+<img src="/assets/20220827-layer-sample-1.png"
+     alt="Diagram of a two-layer architecture"
+     style="max-width: 500px" >
+</p>
+
+### Design Patterns
+
+Now we have multiple domains. It means that there is a high probability that we
+have similar code in each domain. This causes code duplication. To mitigate the
+problem, we need to introduce a common structure shared by those structures.
+This is a skeleton which defines a subset of the logic and allows subclasses to
+redefine certain steps without changing the algorithm's structure.
+
+In general, it means using different design patterns to handle the
+code complexity inside a service: adapter, proxy, factory, composite, builder,
+decorator, facade, etc.
+
 ### Services
 
 If you need to grow even further, you can also consider building multiple
@@ -174,6 +206,18 @@ If we take a step back, it's also important to realize that there isn't any
 perfect solution that solves all the problems. Therefore, it's essential to
 refactor the code continuously and ensure that it fits new use-cases. Here are
 some aspects of refactoring that I want to mention.
+
+### Drawing Diagrams
+
+Drawing diagrams makes the problem more visual. It allows you to better
+understand what the problem is, communicate with other team members, etc. There
+are many types of diagrams: flowchat, sequence diagram, class diagram, state
+diagram, etc. Depending on the requirements, you may use different ones. As for
+tools, I like using the following ones:
+
+* <https://excalidraw.com> to draw diagram online
+* <https://mermaid-js.github.io/mermaid/#/> to write diagram as code, and let
+  the tool to generate the actual result for you.
 
 ### Testing
 
