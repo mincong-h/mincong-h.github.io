@@ -176,7 +176,7 @@ Username (`JIMI_USERNAME`) and password (`JIMI_PASSWORD`) are required.
 ### Querying Documents
 
 The search feature is powered by Jimi Search (`jimi`), a custom search solution
-that I created based on Java and Elasticsearch.
+that I created based on Java, OpenAPI and Elasticsearch.
 
 ## Assets
 
