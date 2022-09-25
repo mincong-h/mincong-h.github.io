@@ -412,6 +412,15 @@ var response = service.blockingStub().startWorkflowExecution(request);
 
 How to go further from here?
 
+* If you want to learn more about gRPC, visit the official documentation
+  <https://grpc.io/docs/>.
+* If you want to learn more about the Temporal Java SDK, visit the source code
+  on GitHub <https://github.com/temporalio/sdk-java>
+* If you want to learn more about the Temporal proto files, visite the source
+  code on GitHub <https://github.com/temporalio/api>
+* If you want to learn more about data converter, visit <https://docs.temporal.io/concepts/what-is-a-data-converter/>
+* If you want to learn more about authorization, visit <https://docs.temporal.io/server/security/#authorization>
+
 ## Conclusion
 
 What did we talk in this article? Take notes from introduction again.
@@ -425,3 +434,4 @@ on [Twitter](https://twitter.com/mincong_h) or
 - [GitHub: Temporal gRPC API and proto files](https://github.com/temporalio/api)
 - [Temporal: What is a Data
   Converter?](https://docs.temporal.io/concepts/what-is-a-data-converter/)
+- [Temporal: server security](https://docs.temporal.io/server/security/)
