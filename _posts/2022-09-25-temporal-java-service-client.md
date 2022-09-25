@@ -423,7 +423,12 @@ How to go further from here?
 
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
+In this article, we discussed the service client of the Temporal in Java. As
+part of the Java SDK, it handles interactions with the Temporal server (Temporal
+frontend) over gRPC. We discussed about the module structure, the messages in
+protobuf, the code generation, the data conversion and converters, the
+authorization with JWT token, and the workflow services stubs (blocking and
+future), and some useful links to go further from this article.
 Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
