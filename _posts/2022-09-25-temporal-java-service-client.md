@@ -88,7 +88,74 @@ temporal-serviceclient/src/main/java
 6 directories, 0 files
 ```
 
-## Section 2
+In the following sections, we will go further into some of these components and
+tries to understand how it works.
+
+## Protobuf
+
+As most of the gRPC services, Temporal service client in Java uses
+[protobuf](https://developers.google.com/protocol-buffers/) (protocol buffers)
+to describe RPC actions and messages. The source code is store under the path:
+
+```
+temporal-serviceclient/src/main/proto
+```
+
+If you visit the source code on
+[Github](https://github.com/temporalio/sdk-java/tree/master/temporal-serviceclient/src/main),
+you will probably notice that the `proto` directory is actually a Git submodule,
+meaning that the source code is not stored in the same Git repository
+(`temporalio/sdk-java`), but in another one called API (`temporalio/api`):
+
+```
+➜  sdk-java git:(mincong/notes|u=) cat .gitmodules
+[submodule "temporal-serviceclient/src/main/proto"]
+	path = temporal-serviceclient/src/main/proto
+	url = https://github.com/temporalio/api.git
+```
+
+This is smart! By doing so, there is one source of truth for the Temporal gRPC
+API and proto files, and all the SDKs can reference it as a Git submodule.
+Currently there are 6 SDKs for the Temporal clients:
+[Java](https://github.com/temporalio/sdk-java),
+[Ruby](https://github.com/temporalio/sdk-ruby),
+[Rust](https://github.com/temporalio/sdk-core),
+[Typescript](https://github.com/temporalio/sdk-typescript),
+[PHP](https://github.com/temporalio/sdk-php),
+and [Go](https://github.com/temporalio/sdk-go).
+
+Going inside the `proto` directoy, you can see that the Temporal APIs are stored
+in the following structure:
+
+```
+temporal/api/{type}/{version}/{name}.proto
+```
+
+More precisely:
+
+```
+➜  sdk-java git:(mincong/notes|u=) tree temporal-serviceclient/src/main/proto/temporal/api
+temporal-serviceclient/src/main/proto/temporal/api
+├── command
+│   └── v1
+│       └── message.proto
+├── common
+│   └── v1
+│       └── message.proto
+├── enums
+│   └── v1
+│       ├── command_type.proto
+│       ├── common.proto
+│       ├── event_type.proto
+│       ├── failed_cause.proto
+│       ├── namespace.proto
+│       ├── query.proto
+│       ├── reset.proto
+│       ├── schedule.proto
+│       ├── task_queue.proto
+│       └── workflow.proto
+├── ...
+```
 
 ## Section 3
 
