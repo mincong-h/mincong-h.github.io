@@ -189,11 +189,11 @@ plugins {
 and `io.grpc:protoc-gen-grpc-java`:
 
 ```groovy
-        plugins {
-            grpc {
-                artifact = 'io.grpc:protoc-gen-grpc-java:1.48.1'
-            }
-        }
+plugins {
+    grpc {
+        artifact = 'io.grpc:protoc-gen-grpc-java:1.48.1'
+    }
+}
 ```
 
 When building in macOS, there are some small differences beteween building the
@@ -207,6 +207,35 @@ generated for you:
 ```
 ➜  sdk-java git:(mincong/notes|u=) ./gradlew clean build -x test
 ```
+
+The key generated classes are the blocking stub and the future stub of the gRPC
+service. They are part of the implmenetation of the workflow service stubs
+(`WorkflowServiceStubsImpl`) as you can see in the source code below:
+
+```java
+package io.temporal.serviceclient;
+
+// ...
+import io.temporal.api.workflowservice.v1.GetSystemInfoResponse;
+import io.temporal.api.workflowservice.v1.WorkflowServiceGrpc;
+
+final class WorkflowServiceStubsImpl implements WorkflowServiceStubs {
+
+  private final WorkflowServiceGrpc.WorkflowServiceBlockingStub blockingStub;
+  private final WorkflowServiceGrpc.WorkflowServiceFutureStub futureStub;
+
+  // ...
+}
+```
+
+Blocking stub runs the actions in the blocking style (synchronous), i.e. it
+waits until the
+completion (success or failure) of the execution. On the other side, future stub
+runs the actions in asynchronous style. Below, you can see some of the methods
+provided by the blocking stub, such as the method for starting a new workflow
+execution:
+
+![Block stubs](/assets/20220925-blocking-stub.png)
 
 ## Going Further
 
