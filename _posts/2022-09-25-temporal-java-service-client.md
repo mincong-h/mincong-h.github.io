@@ -316,6 +316,53 @@ converter? Global data converter is powered by the default data converter, which
 delegates conversion to type specific PayloadConverter instance. It supports 5
 encoding types: null, byte-array, protobuf json, protobuf, and jackson json. As
 for the codec data converter, it is specific to one codec (Json, Zlib, ...).
+For more details, read [What is a Data
+Converter?](https://docs.temporal.io/concepts/what-is-a-data-converter/) in the
+official documentation.
+
+## Authorization
+
+The authorization of the Temporal service client is customizable. It's up to the
+users (us) to implement the logic. But at the end, we will need to provide the
+authorization token as a header for each gRPC request.
+
+Temporal service client helps us to do so by providing an interface for
+supplying the token:
+
+```java
+public interface AuthorizationTokenSupplier {
+  /**
+   * @return token to be passed in authorization header
+   */
+  String supply();
+}
+```
+
+It supplies the tokens that will be sent to the Temporal server to perform authorization.
+The default JWT ClaimMapper expects authorization tokens to be in the following format:
+
+```
+Bearer {token}
+```
+
+where `{token}` must be the Base64 url-encoded value of the token. You can see
+more details about the [JWT web token
+format](https://docs.temporal.io/clusters/#json-web-token-format) under the
+Claim Mapper section of the official documentation.
+
+But how to hook the suppplier into the gRPC request? Well, this is done by using
+the `AuthorizationGrpcMetadataProvider`, which should be registered as part of
+the options of workflow service stubs (`WorkflowServiceStubsOptions`). Below,
+you can see the relationship between the stub options, the metadata provider,
+and the authorization token supplier:
+
+```java
+WorkflowServiceStubsOptions stubOptions =
+    WorkflowServiceStubsOptions.newBuilder()
+        .addGrpcClientInterceptor(...)
+        .addGrpcMetadataProvider(new AuthorizationGrpcMetadataProvider(supplier))
+        .build();
+```
 
 ## Going Further
 
@@ -332,3 +379,5 @@ on [Twitter](https://twitter.com/mincong_h) or
 
 - [Protocol Buffer Basics: Java](https://developers.google.com/protocol-buffers/docs/javatutorial)
 - [GitHub: Temporal gRPC API and proto files](https://github.com/temporalio/api)
+- [Temporal: What is a Data
+  Converter?](https://docs.temporal.io/concepts/what-is-a-data-converter/)
