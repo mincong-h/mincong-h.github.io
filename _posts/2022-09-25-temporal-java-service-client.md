@@ -95,7 +95,7 @@ tries to understand how it works.
 
 As most of the gRPC services, Temporal service client in Java uses
 [protobuf](https://developers.google.com/protocol-buffers/) (protocol buffers)
-to describe RPC actions and messages. The source code is store under the path:
+to describe RPC actions and messages. The source code is stored under the path:
 
 ```
 temporal-serviceclient/src/main/proto
@@ -157,7 +157,56 @@ temporal-serviceclient/src/main/proto/temporal/api
 ├── ...
 ```
 
-## Section 3
+For example, you can see the message `StartWorkflowExecutionRequest` in the
+`request_response.proto` and the related RPC action in the `service.proto`:
+
+```
+➜  sdk-java git:(mincong/notes|u=) rg '[^\w]StartWorkflowExecutionRequest' temporal-serviceclient/src/main/proto/temporal/api/
+temporal-serviceclient/src/main/proto/temporal/api/workflowservice/v1/service.proto
+90:    rpc StartWorkflowExecution (StartWorkflowExecutionRequest) returns (StartWorkflowExecutionResponse) {
+
+temporal-serviceclient/src/main/proto/temporal/api/workflowservice/v1/request_response.proto
+138:message StartWorkflowExecutionRequest {
+```
+
+These proto files are used for generating the service stubs. In the next
+section, we will see how it works in Java.
+
+## Code Generation
+
+The code generation from protobuf to Java is done by the protocol buffer
+compiler. The compiler reads the `.proto` description of the data structure and
+creates classes that implements automatic encoding and parsing of the protocol
+buffer data with an efficient binary format. In the case of Temporal service
+client, this is hooked into the Gradle build system using the protobuf plugin:
+
+```groovy
+plugins {
+    id 'com.google.protobuf' version '0.8.19'
+}
+```
+
+and `io.grpc:protoc-gen-grpc-java`:
+
+```groovy
+        plugins {
+            grpc {
+                artifact = 'io.grpc:protoc-gen-grpc-java:1.48.1'
+            }
+        }
+```
+
+When building in macOS, there are some small differences beteween building the
+code in Intel (x86\_64) or in M1 (aarch64). But this is handled internally by
+the Gradle build script, so you don't have to know about it.
+
+When running the Gradle build
+command (skip tests if you want to be faster), you will have all the messages
+generated for you:
+
+```
+➜  sdk-java git:(mincong/notes|u=) ./gradlew clean build -x test
+```
 
 ## Going Further
 
@@ -171,3 +220,6 @@ on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
+
+- [Protocol Buffer Basics: Java](https://developers.google.com/protocol-buffers/docs/javatutorial)
+- [GitHub: Temporal gRPC API and proto files](https://github.com/temporalio/api)
