@@ -3,7 +3,7 @@ layout:              post
 type:                classic
 title:               Internal Working of Temporal Java Service Client
 subtitle:            >
-    The package structure, APIs in protobuf, code generation, data conversion,
+    The module structure, APIs in protobuf, code generation, data conversion,
     authorization, and more.
 
 lang:                en
@@ -35,7 +35,7 @@ inspiration for similar implementations.
 
 In this article, we will talk about:
 
-* the package structure of the service client
+* the module structure of the service client
 * the API contracts in protobuf
 * the code generation
 * the data conversion
@@ -44,7 +44,49 @@ In this article, we will talk about:
 
 This article is written based on Temporal Java SDK v1.16. Now, let's get started!
 
-## Section 1
+## Module Structure
+
+The Temporal service client is located under the path `temporal-serviceclient`
+of the Java SDK, which is split into the source code (main) and the test code.
+The source code is then split into Java source code and the protobuf messages
+for code generation.
+
+```
+➜  sdk-java git:(mincong/notes|u=) tree temporal-serviceclient/src -L 2
+temporal-serviceclient/src
+├── main
+│   ├── java
+│   └── proto
+└── test
+    ├── java
+    └── resources
+
+6 directories, 0 files
+```
+
+Going further into the Java source code, it contains 4 Java packages:
+authorization, configuration, internal, and service-client. The `authorization`
+package contains classes to supply the authorization info as the metadata (gRPC
+headers) for each gRPC request; the `config` package contains classes for
+storing keys for different configuration settings; the `internal` package
+is a catch-all package, it contains different utility classes for different
+proposes: options, retry mechanism, testing, throttling, etc; and the
+`serviceclient` package contains classes for handling communication in gRPC:
+channel management, exception handling, interceptions (header, metrics,
+deadline, ...), stubs, and more.
+
+```
+➜  sdk-java git:(mincong/notes|u=) tree temporal-serviceclient/src/main/java -L 3
+temporal-serviceclient/src/main/java
+└── io
+    └── temporal
+        ├── authorization
+        ├── conf
+        ├── internal
+        └── serviceclient
+
+6 directories, 0 files
+```
 
 ## Section 2
 
