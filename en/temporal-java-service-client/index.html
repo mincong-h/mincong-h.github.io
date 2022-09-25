@@ -10,42 +10,42 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Activity in Temporal - Mincong Huang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>Internal Working of Temporal Java Service Client - Mincong Huang</title>
 
-<meta name="description" content="This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal.">
+<meta name="description" content="This article studies the internal working of Temporal service client in Java, a client to interact with Temporal server over gRPC. We discuss the module stru...">
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Activity in Temporal | Mincong Huang</title>
+<title>Internal Working of Temporal Java Service Client | Mincong Huang</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Activity in Temporal" />
+<meta property="og:title" content="Internal Working of Temporal Java Service Client" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal." />
-<meta property="og:description" content="This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal." />
-<link rel="canonical" href="https://mincong.io/en/activity-in-temporal/" />
-<meta property="og:url" content="https://mincong.io/en/activity-in-temporal/" />
+<meta name="description" content="This article studies the internal working of Temporal service client in Java, a client to interact with Temporal server over gRPC. We discuss the module structure, protobuf messages, code generation, data conversion, authorization service stubs, and more." />
+<meta property="og:description" content="This article studies the internal working of Temporal service client in Java, a client to interact with Temporal server over gRPC. We discuss the module structure, protobuf messages, code generation, data conversion, authorization service stubs, and more." />
+<link rel="canonical" href="https://mincong.io/en/temporal-java-service-client/" />
+<meta property="og:url" content="https://mincong.io/en/temporal-java-service-client/" />
 <meta property="og:site_name" content="Mincong Huang" />
-<meta property="og:image" content="https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" />
+<meta property="og:image" content="https://mincong.io/assets/bg-1920px-Messier51_sRGB.jpeg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-07-30T11:28:39+02:00" />
+<meta property="article:published_time" content="2022-09-25T08:38:43+02:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" />
-<meta property="twitter:title" content="Activity in Temporal" />
+<meta property="twitter:image" content="https://mincong.io/assets/bg-1920px-Messier51_sRGB.jpeg" />
+<meta property="twitter:title" content="Internal Working of Temporal Java Service Client" />
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"datePublished":"2022-07-30T11:28:39+02:00","description":"This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal.","author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/activity-in-temporal/"},"@type":"BlogPosting","url":"https://mincong.io/en/activity-in-temporal/","image":"https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg","headline":"Activity in Temporal","dateModified":"2022-07-30T11:28:39+02:00","@context":"https://schema.org"}</script>
+{"datePublished":"2022-09-25T08:38:43+02:00","description":"This article studies the internal working of Temporal service client in Java, a client to interact with Temporal server over gRPC. We discuss the module structure, protobuf messages, code generation, data conversion, authorization service stubs, and more.","author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/temporal-java-service-client/"},"@type":"BlogPosting","url":"https://mincong.io/en/temporal-java-service-client/","image":"https://mincong.io/assets/bg-1920px-Messier51_sRGB.jpeg","headline":"Internal Working of Temporal Java Service Client","dateModified":"2022-09-25T08:38:43+02:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
 <!-- Extra Open Graph :: Start -->
 
-<meta property="og:image:width" content="1261"/>
+<meta property="og:image:width" content="1332"/>
 <meta property="og:image:height" content="1920"/>
 
 <!-- Extra Open Graph :: End -->
 
-<link rel="canonical" href="https://mincong.io/en/activity-in-temporal/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="canonical" href="https://mincong.io/en/temporal-java-service-client/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -362,7 +362,7 @@
         </ul>
       </nav></div>
   </header>
-</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4)),url(/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg);background-color:#203028;"><div class="hero__content"><div class ="main">
+</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4)),url(/assets/bg-1920px-Messier51_sRGB.jpeg);background-color:#203028;"><div class="hero__content"><div class ="main">
 
   
   <div class="article__info clearfix">
@@ -372,14 +372,17 @@
                 href="/en/archive/?tag=temporal">temporal</a>
             </li><li>
               <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=go">go</a>
+                href="/en/archive/?tag=java">java</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=grpc">grpc</a>
             </li>
 
         <li class="separator">|</li>
           
             <li>
               <a class="button button--circle button--primary focus lang"
-                 href="/en/activity-in-temporal/"><span>EN</span></a>
+                 href="/en/temporal-java-service-client/"><span>EN</span></a>
 
               
 
@@ -394,19 +397,19 @@
             </li>
           
         
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 30, 2022</span>
-            </li></ul></div><div class="article__header"><header><h1>Activity in Temporal</h1></header></div><div class="article__header">
-                        <p class="overlay__excerpt">If you want to use Temporal, you need to know about Activity.</p>
+      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Sep 25, 2022</span>
+            </li></ul></div><div class="article__header"><header><h1>Internal Working of Temporal Java Service Client</h1></header></div><div class="article__header">
+                        <p class="overlay__excerpt">The module structure, APIs in protobuf, code generation, data conversion, authorization, and more.</p>
                       </div><div class="article__info clearfix">
   <ul class="left-col menu">
     <li>
       <i class="fas fa-camera"></i>
       
       Photo by
-      <a href="https://unsplash.com/@gferla" target="_blank">Guillermo Ferla</a>
+      <a href="https://apod.nasa.gov/apod/ap050428.html" target="_blank">S. Beckwith</a>
       
       on
-      <a href="https://unsplash.com/license" target="_blank">Unplash </a>
+      <a href="https://apod.nasa.gov/apod/ap050428.html" target="_blank">NASA</a>
     </li>
   </ul>
 </div>
@@ -420,268 +423,414 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article><meta itemprop="headline" content="Activity in Temporal"><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-07-30T11:28:39+02:00">
-    <meta itemprop="keywords" content="temporal,go"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+<article><meta itemprop="headline" content="Internal Working of Temporal Java Service Client"><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-09-25T08:38:43+02:00">
+    <meta itemprop="keywords" content="temporal,java,grpc"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 
 <!-- end custom article top snippet -->
 <div class="article__content" itemprop="articleBody"><h2 id="introduction">Introduction</h2>
 
-<p>If you want to use <a href="https://temporal.io/">https://temporal.io/</a> as your workflow engine, you need to
-know about Activity, which is one of the key concepts of the Temporal workflow
-engine. After reading this article, you will understand:</p>
+<p>The service client of Temporal is the key component for talking to the Temporal
+server, it’s built on top of gPRC. Today, I want to discuss the
+internal working of Temporal service client with you so that we can better
+understand how it works. This may be useful for troubleshooting and getting some
+for similar implementations.</p>
+
+<p>In this article, we will talk about:</p>
 
 <ul>
-  <li>What is an activity?</li>
-  <li>Activity execution</li>
-  <li>Observe an activity</li>
-  <li>Test an activity</li>
-  <li>Use-cases</li>
-  <li>Trade-offs</li>
+  <li>the module structure of the service client</li>
+  <li>the API contracts in protobuf</li>
+  <li>the code generation</li>
+  <li>the data conversion</li>
+  <li>the authorization</li>
+  <li>the workflow service stubs</li>
+  <li>and how to go further from this article</li>
 </ul>
 
-<p>Now, let’s get started!</p>
+<p>This article is written based on Temporal Java SDK v1.16. Now, let’s get started!</p>
 
-<h2 id="what-is-an-activity">What is an activity?</h2>
+<h2 id="module-structure">Module Structure</h2>
 
-<p>According to the <a href="https://docs.temporal.io/concepts/what-is-an-activity">official documentation of
-Temporal</a>, <em>“an Activity is
-a normal function or object method that executes a single, well-defined action
-(either short or long-running), such as calling another service, transcoding a
-media file, or sending an email message”</em>. In the basic <a href="https://github.com/temporalio/samples-go/tree/main/helloworld">“Hello
-World”</a> sample,
-we can see how the actual code looks like:</p>
+<p>The Temporal service client is located under the path <code class="language-plaintext highlighter-rouge">temporal-serviceclient</code>
+of the Java SDK. It is split into the source code (main) and the test code.
+The source code is then split into Java source code and the protobuf messages
+for code generation.</p>
 
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">// Workflow is a Hello World workflow definition.</span>
-<span class="k">func</span> <span class="n">Workflow</span><span class="p">(</span><span class="n">ctx</span> <span class="n">workflow</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="c">// ...</span>
-	<span class="k">var</span> <span class="n">result</span> <span class="kt">string</span>
-	<span class="n">err</span> <span class="o">:=</span> <span class="n">workflow</span><span class="o">.</span><span class="n">ExecuteActivity</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">Activity</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">result</span><span class="p">)</span>
-	<span class="k">if</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>
-		<span class="n">logger</span><span class="o">.</span><span class="n">Error</span><span class="p">(</span><span class="s">"Activity failed."</span><span class="p">,</span> <span class="s">"Error"</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
-		<span class="k">return</span> <span class="s">""</span><span class="p">,</span> <span class="n">err</span>
-	<span class="p">}</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  sdk-java git:(mincong/notes|u=) tree temporal-serviceclient/src -L 2
+temporal-serviceclient/src
+├── main
+│   ├── java
+│   └── proto
+└── test
+    ├── java
+    └── resources
 
-	<span class="n">logger</span><span class="o">.</span><span class="n">Info</span><span class="p">(</span><span class="s">"HelloWorld workflow completed."</span><span class="p">,</span> <span class="s">"result"</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-
-	<span class="k">return</span> <span class="n">result</span><span class="p">,</span> <span class="no">nil</span>
-<span class="p">}</span>
-
-<span class="k">func</span> <span class="n">Activity</span><span class="p">(</span><span class="n">ctx</span> <span class="n">context</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">name</span> <span class="kt">string</span><span class="p">)</span> <span class="p">(</span><span class="kt">string</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
-	<span class="n">logger</span> <span class="o">:=</span> <span class="n">activity</span><span class="o">.</span><span class="n">GetLogger</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
-	<span class="n">logger</span><span class="o">.</span><span class="n">Info</span><span class="p">(</span><span class="s">"Activity"</span><span class="p">,</span> <span class="s">"name"</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
-	<span class="k">return</span> <span class="s">"Hello "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"!"</span><span class="p">,</span> <span class="no">nil</span>
-<span class="p">}</span>
+6 directories, 0 files
 </code></pre></div></div>
 
-<p>where we have a function <code class="language-plaintext highlighter-rouge">Activity</code> for logging “Hello $name!” which is called
-by the <code class="language-plaintext highlighter-rouge">Workflow</code> using <code class="language-plaintext highlighter-rouge">workflow.ExecuteActivity(...)</code>.</p>
+<p>Going further into the Java source code, it contains 4 packages:
+authorization, configuration, internal, and service-client. The <code class="language-plaintext highlighter-rouge">authorization</code>
+package contains classes to supply the authorization info as the metadata (gRPC
+headers) for each gRPC request; the <code class="language-plaintext highlighter-rouge">config</code> package contains classes for
+storing keys for different configuration settings; the <code class="language-plaintext highlighter-rouge">internal</code> package
+is a catch-all package, it contains utility classes for different
+proposes: options, retry mechanism, testing, throttling, etc; and the
+<code class="language-plaintext highlighter-rouge">serviceclient</code> package contains classes for handling communication in gRPC:
+channel management, exception handling, interceptions (header, metrics,
+deadline, …), stubs, and more.</p>
 
-<h2 id="activity-execution">Activity Execution</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  sdk-java git:(mincong/notes|u=) tree temporal-serviceclient/src/main/java -L 3
+temporal-serviceclient/src/main/java
+└── io
+    └── temporal
+        ├── authorization
+        ├── conf
+        ├── internal
+        └── serviceclient
 
-<p>Now, what happens when a workflow executes an activity? Basically, it contains 3
-stages in the lifecycle of the execution: scheduled, started, and completed.</p>
-
-<ol>
-  <li><a href="https://docs.temporal.io/references/events/#activitytaskscheduled"><strong>ActivityTaskScheduled</strong></a>
-  – The activity task is sent to the Temporal server. More precisely, sent to a
-  specific namespace and specific task queue inside the Temporal server via gRPC. Then,
-  this activity waits to be picked up by a
-  Temporal worker (client) to execute the actual logic. During this time, the
-  event is persisted in the database and you can see it from the Web UI in the
-  <a href="https://docs.temporal.io/concepts/what-is-an-event-history">event history</a>.</li>
-  <li><a href="https://docs.temporal.io/references/events/#activitytaskstarted"><strong>ActivityTaskStarted</strong></a>
-  – The activity task is picked by a Temporal worker that is listening to that
-  task queue. Therefore, the task is considered as “started”. The task is
-  being processed by the SDK client.</li>
-  <li><a href="https://docs.temporal.io/references/events/#activitytaskcompleted"><strong>ActivityTaskCompleted</strong></a>
-  – The activity task is now completed. The SDK client has picked up and
-  successfully completed the Activity Task.</li>
-</ol>
-
-<p>Your best friend for better understanding these concepts is the Temporal Web UI
-because it shows the execution of the workflow as event history, where all the
-events are listed in chronological order. It’s quite simple.</p>
-
-<p>However, for advanced users, the reality is more complex than that. Here are
-some details that you
-may need to know if you need to run workflows in production:</p>
-
-<ul>
-  <li><strong>Pending task.</strong> When an activity task is scheduled, it won’t necessarily be picked up because
-the worker may not be deployed or may not listen to that task queue.</li>
-  <li><strong>Heartbeating.</strong> When an activity task is being processed, the duration can be short or long.
-You may need to set up heartbeating for long-running activities so that
-Temporal server knows that the activity is making progress so that it won’t
-abort the execution. For example, if the activity reads a large file from
-Amazon S3 or runs an ML training job on some local GPUs. For short execution,
-such as a quick API call or reading a small file from a disk, heartbeating is
-not necessary.</li>
-  <li><strong>Execution retries</strong>. You can define a retry policy in the activity options
-from the workflow context to allow retrying failed activity tasks. One
-“Activity Execution” contains multiple “Activity Task Executions”. A task can
-be retried due to timeout or failure. The number of retries or other
-conditions is defined in the retry policy. You can see more details in the official
-document <a href="https://docs.temporal.io/concepts/what-is-an-activity-execution">“What is an Activity
-Execution?”</a></li>
-  <li><strong>Other task results.</strong> <code class="language-plaintext highlighter-rouge">ActivityTaskCompleted</code> isn’t the only type of result
-for the execution. An activity task can also be failed (<code class="language-plaintext highlighter-rouge">ActivityTaskFailed</code>),
-timed out (<code class="language-plaintext highlighter-rouge">ActivityTaskTimedOut</code>), cancel-requested (<code class="language-plaintext highlighter-rouge">ActivityTaskCancelRequested</code>),
-or canceled (<code class="language-plaintext highlighter-rouge">ActivityTaskCanceled</code>). You can browse those events in the
-<a href="https://docs.temporal.io/references/events">Events reference</a>.</li>
-</ul>
-
-<h2 id="observability">Observability</h2>
-
-<p>Now I have a workflow running and I want to inspect the activities, what should
-I do?</p>
-
-<h3 id="logging">Logging</h3>
-
-<p>When defining your activity, you may retrieve a logger from the <code class="language-plaintext highlighter-rouge">activity</code>
-package as</p>
-
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logger</span> <span class="o">:=</span> <span class="n">activity</span><span class="o">.</span><span class="n">GetLogger</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+6 directories, 0 files
 </code></pre></div></div>
 
-<p>Internally, the logger not only logs the message and severity but also adds
-additional key-value pairs such as the namespace, the task queue, worker ID, the
-workflow type, the workflow ID, the run ID, etc.</p>
+<p>In the following sections, we will go further into some of these components and
+tries to understand how it works.</p>
 
-<h3 id="tracing">Tracing</h3>
+<h2 id="protobuf">Protobuf</h2>
 
-<p>The Go SDK provides support for distributed tracing through OpenTracing. Tracing
-allows you to view the call graph of a workflow execution along with its
-activities and child workflows. See
-<a href="https://docs.temporal.io/go/tracing/">documentation</a>. Otherwise, you can also
-create a custom
-interceptor by extending the
-<a href="https://github.com/temporalio/sdk-go/blob/master/interceptor/tracing_interceptor.go">BaseTracer</a>
-and providing your own implementation. It provides functions to
-intercept the activity and workflow, in particular,
-extracting span from the gRPC headers and injecting it into the context or vice versa.</p>
+<p>Like most of the gRPC services, Temporal service client in Java uses
+<a href="https://developers.google.com/protocol-buffers/">protobuf</a> (protocol buffers)
+to describe RPC actions and messages. The source code is stored under the path:</p>
 
-<h2 id="testing">Testing</h2>
-
-<p>To test activity, you probably cannot use a normal unit test anymore. Because
-some logic assumes that the current function is located inside an activity, such
-as <code class="language-plaintext highlighter-rouge">activity.GetLogger(ctx)</code>. It will panic if your test isn’t inside an
-activity.</p>
-
-<p>Therefore, you need to prepare an activity environment or workflow environment
-for it. This can be done using the testing framework provided by the Temporal Go
-SDK or other language SDKs via a Temporal test suite. Once the environment is created, you will need to
-register the activity into the environment so that you can execute the activity.</p>
-
-<p>The test file <a href="https://github.com/temporalio/samples-go/blob/main/helloworld/helloworld_test.go">helloworld_test.go</a> in the “hello world” sample very well resumed what you need to do,
-either using <code class="language-plaintext highlighter-rouge">NewTestWorkflowEnvironment()</code> or <code class="language-plaintext highlighter-rouge">NewTestActivityEnvironment()</code>.</p>
-
-<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">package</span> <span class="n">helloworld</span>
-
-<span class="k">import</span> <span class="p">(</span>
-	<span class="s">"testing"</span>
-
-	<span class="s">"github.com/stretchr/testify/mock"</span>
-
-	<span class="s">"github.com/stretchr/testify/require"</span>
-	<span class="s">"go.temporal.io/sdk/testsuite"</span>
-<span class="p">)</span>
-
-<span class="k">func</span> <span class="n">Test_Workflow</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="p">{</span>
-	<span class="n">testSuite</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">testsuite</span><span class="o">.</span><span class="n">WorkflowTestSuite</span><span class="p">{}</span>
-	<span class="n">env</span> <span class="o">:=</span> <span class="n">testSuite</span><span class="o">.</span><span class="n">NewTestWorkflowEnvironment</span><span class="p">()</span>
-
-	<span class="c">// Mock activity implementation</span>
-	<span class="n">env</span><span class="o">.</span><span class="n">OnActivity</span><span class="p">(</span><span class="n">Activity</span><span class="p">,</span> <span class="n">mock</span><span class="o">.</span><span class="n">Anything</span><span class="p">,</span> <span class="s">"Temporal"</span><span class="p">)</span><span class="o">.</span><span class="n">Return</span><span class="p">(</span><span class="s">"Hello Temporal!"</span><span class="p">,</span> <span class="no">nil</span><span class="p">)</span>
-
-	<span class="n">env</span><span class="o">.</span><span class="n">ExecuteWorkflow</span><span class="p">(</span><span class="n">Workflow</span><span class="p">,</span> <span class="s">"Temporal"</span><span class="p">)</span>
-
-	<span class="n">require</span><span class="o">.</span><span class="n">True</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">IsWorkflowCompleted</span><span class="p">())</span>
-	<span class="n">require</span><span class="o">.</span><span class="n">NoError</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">GetWorkflowError</span><span class="p">())</span>
-	<span class="k">var</span> <span class="n">result</span> <span class="kt">string</span>
-	<span class="n">require</span><span class="o">.</span><span class="n">NoError</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">GetWorkflowResult</span><span class="p">(</span><span class="o">&amp;</span><span class="n">result</span><span class="p">))</span>
-	<span class="n">require</span><span class="o">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s">"Hello Temporal!"</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="k">func</span> <span class="n">Test_Activity</span><span class="p">(</span><span class="n">t</span> <span class="o">*</span><span class="n">testing</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="p">{</span>
-	<span class="n">testSuite</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">testsuite</span><span class="o">.</span><span class="n">WorkflowTestSuite</span><span class="p">{}</span>
-	<span class="n">env</span> <span class="o">:=</span> <span class="n">testSuite</span><span class="o">.</span><span class="n">NewTestActivityEnvironment</span><span class="p">()</span>
-	<span class="n">env</span><span class="o">.</span><span class="n">RegisterActivity</span><span class="p">(</span><span class="n">Activity</span><span class="p">)</span>
-
-	<span class="n">val</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">env</span><span class="o">.</span><span class="n">ExecuteActivity</span><span class="p">(</span><span class="n">Activity</span><span class="p">,</span> <span class="s">"World"</span><span class="p">)</span>
-	<span class="n">require</span><span class="o">.</span><span class="n">NoError</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">err</span><span class="p">)</span>
-
-	<span class="k">var</span> <span class="n">res</span> <span class="kt">string</span>
-	<span class="n">require</span><span class="o">.</span><span class="n">NoError</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">val</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="o">&amp;</span><span class="n">res</span><span class="p">))</span>
-	<span class="n">require</span><span class="o">.</span><span class="n">Equal</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s">"Hello World!"</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
-<span class="p">}</span>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>temporal-serviceclient/src/main/proto
 </code></pre></div></div>
 
-<h2 id="use-cases">Use-cases</h2>
+<p>If you visit the source code on
+<a href="https://github.com/temporalio/sdk-java/tree/master/temporal-serviceclient/src/main">Github</a>,
+you will probably notice that the <code class="language-plaintext highlighter-rouge">proto</code> directory is actually a Git submodule,
+meaning that the source code is not stored in the same Git repository
+(<code class="language-plaintext highlighter-rouge">temporalio/sdk-java</code>), but in another one called API (<code class="language-plaintext highlighter-rouge">temporalio/api</code>). You
+can find this in the <code class="language-plaintext highlighter-rouge">.gitmodules</code> file as well:</p>
 
-<p><em>But when should I use activities?</em></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  sdk-java git:(mincong/notes|u=) cat .gitmodules
+[submodule "temporal-serviceclient/src/main/proto"]
+	path = temporal-serviceclient/src/main/proto
+	url = https://github.com/temporalio/api.git
+</code></pre></div></div>
 
-<p>Using activities has multiple benefits: the logic encapsulated by the activity
-can be retried based on the retry policy; you can see the input and output in
-JSON format in the event history; you can rely on
-<code class="language-plaintext highlighter-rouge">workflow.ExecuteActivity(...)</code> to handle asynchronous processing, etc. Given
-the benefits above, I believe that you can use activities:</p>
+<p>This is smart! By doing so, there is one source of truth for the Temporal gRPC
+APIs, and all the SDKs can reference it as a Git submodule.
+Currently, there are 6 SDKs for the Temporal clients:
+<a href="https://github.com/temporalio/sdk-java">Java</a>,
+<a href="https://github.com/temporalio/sdk-ruby">Ruby</a>,
+<a href="https://github.com/temporalio/sdk-core">Rust</a>,
+<a href="https://github.com/temporalio/sdk-typescript">Typescript</a>, <a href="https://github.com/temporalio/sdk-php">PHP</a>,
+and <a href="https://github.com/temporalio/sdk-go">Go</a>.</p>
 
-<ul>
-  <li>when your workflow talks to an external service so that you can retry on failures</li>
-  <li>when you need clear input and output for a section of your workflow so that
-you can inspect the event history</li>
-  <li>when you need to execute multiple tasks concurrently or asynchronously so that
-you can combine them with <a href="https://docs.temporal.io/go/selectors/#overview">workflow selectors and
-channels</a>.</li>
-</ul>
+<p>Going inside the <code class="language-plaintext highlighter-rouge">proto</code> directoy, you can see that the Temporal APIs are stored
+in the following structure:</p>
 
-<p>If other cases are not covered by this section, please let me
-know, I am happy to update it! :D</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>temporal/api/{type}/{version}/{name}.proto
+</code></pre></div></div>
 
-<h2 id="trade-offs">Trade-Offs</h2>
+<p>More precisely:</p>
 
-<p>One trade-off about using activity is the risk of function signature mismatch
-between the definition (e.g. <code class="language-plaintext highlighter-rouge">Activity(ctx context.Context, name string) (string,
-error)</code> in the hello world sample) and the execution (e.g.
-<code class="language-plaintext highlighter-rouge">workflow.ExecuteActivity(ctx, Activity, name)</code>). If you updated the activity
-definition without updating the executions (callers), then your workflow
-execution will probably not work anymore – because the Temporal worker cannot find
-the function in its registry… because the signature is changed. One
-mitigation is to avoid using <code class="language-plaintext highlighter-rouge">ExecuteActivity</code> directly, but generate a client,
-which encapsulates the logic. Therefore, you can rely on the compiler to find
-out the issue.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  sdk-java git:(mincong/notes|u=) tree temporal-serviceclient/src/main/proto/temporal/api
+temporal-serviceclient/src/main/proto/temporal/api
+├── command
+│   └── v1
+│       └── message.proto
+├── common
+│   └── v1
+│       └── message.proto
+├── enums
+│   └── v1
+│       ├── command_type.proto
+│       ├── common.proto
+│       ├── event_type.proto
+│       ├── failed_cause.proto
+│       ├── namespace.proto
+│       ├── query.proto
+│       ├── reset.proto
+│       ├── schedule.proto
+│       ├── task_queue.proto
+│       └── workflow.proto
+├── ...
+</code></pre></div></div>
+
+<p>For example, you can see the message <code class="language-plaintext highlighter-rouge">StartWorkflowExecutionRequest</code> in the
+<code class="language-plaintext highlighter-rouge">request_response.proto</code> and the related RPC action in the <code class="language-plaintext highlighter-rouge">service.proto</code>:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  sdk-java git:(mincong/notes|u=) rg '[^\w]StartWorkflowExecutionRequest' temporal-serviceclient/src/main/proto/temporal/api/
+temporal-serviceclient/src/main/proto/temporal/api/workflowservice/v1/service.proto
+90:    rpc StartWorkflowExecution (StartWorkflowExecutionRequest) returns (StartWorkflowExecutionResponse) {
+
+temporal-serviceclient/src/main/proto/temporal/api/workflowservice/v1/request_response.proto
+138:message StartWorkflowExecutionRequest {
+</code></pre></div></div>
+
+<p>These proto files are used for generating the service stubs. In the next
+section, we will see how code generation works in Java.</p>
+
+<h2 id="code-generation">Code Generation</h2>
+
+<p>The code generation from protobuf to Java is done by the protocol buffer
+compiler. The compiler reads the <code class="language-plaintext highlighter-rouge">.proto</code> description of the data structure and
+creates classes that implement automatic encoding and parsing of the protocol
+buffer data with an efficient binary format. In the case of Temporal service
+client, this is hooked into the Gradle build system using the protobuf plugin:</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plugins</span> <span class="o">{</span>
+    <span class="n">id</span> <span class="s1">'com.google.protobuf'</span> <span class="n">version</span> <span class="s1">'0.8.19'</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>and <code class="language-plaintext highlighter-rouge">io.grpc:protoc-gen-grpc-java</code>:</p>
+
+<div class="language-groovy highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plugins</span> <span class="o">{</span>
+    <span class="n">grpc</span> <span class="o">{</span>
+        <span class="n">artifact</span> <span class="o">=</span> <span class="s1">'io.grpc:protoc-gen-grpc-java:1.48.1'</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>When building in macOS, there are small differences between building the
+code in Intel (x86_64) or in M1 (aarch64). But this is handled internally by
+the Gradle build script, so you don’t have to know about it.
+When running the Gradle build
+command (skip tests if you want to be faster), you will have all the messages
+generated for you:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>➜  sdk-java git:(mincong/notes|u=) ./gradlew clean build -x test
+</code></pre></div></div>
+
+<p>The key generated classes are the blocking stub and the future stub of the gRPC
+service. They are part of the implementation of the workflow service stubs
+(<code class="language-plaintext highlighter-rouge">WorkflowServiceStubsImpl</code>) as you can see in the source code below:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="nn">io.temporal.serviceclient</span><span class="o">;</span>
+
+<span class="c1">// ...</span>
+<span class="kn">import</span> <span class="nn">io.temporal.api.workflowservice.v1.GetSystemInfoResponse</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">io.temporal.api.workflowservice.v1.WorkflowServiceGrpc</span><span class="o">;</span>
+
+<span class="kd">final</span> <span class="kd">class</span> <span class="nc">WorkflowServiceStubsImpl</span> <span class="kd">implements</span> <span class="nc">WorkflowServiceStubs</span> <span class="o">{</span>
+
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">WorkflowServiceGrpc</span><span class="o">.</span><span class="na">WorkflowServiceBlockingStub</span> <span class="n">blockingStub</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">WorkflowServiceGrpc</span><span class="o">.</span><span class="na">WorkflowServiceFutureStub</span> <span class="n">futureStub</span><span class="o">;</span>
+
+  <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Blocking stub runs the actions in blocking style (synchronously), i.e. it
+waits until the
+completion (success or failure) of the execution before returning the result.
+On the other side, future stub
+runs the actions in an asynchronous style. Below, you can see some of the methods
+provided by the blocking stub, such as the method for starting a new workflow
+execution:</p>
+
+<p><img src="/assets/20220925-blocking-stub.png" alt="Block stubs" /></p>
+
+<p>The source code is located under the generated directory
+(<code class="language-plaintext highlighter-rouge">temporal-serviceclient/build/generated/main/java</code>).</p>
+
+<h2 id="data-conversion">Data Conversion</h2>
+
+<p>Now we know about the data conversion, but we don’t know how the user data is
+serialized into gRPC 🤔 How do we get the input parameters or the metadata (gRPC
+headers) converted correctly? We will discuss them in this section.</p>
+
+<p>This is done using the data converter (<code class="language-plaintext highlighter-rouge">DataConverter</code>). The data converter
+provides a method to convert an input T to a Temporal payload, useful for
+converting either the headers or the input message itself:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">DataConverter</span> <span class="o">{</span>
+
+  <span class="cm">/**
+   * This method converts the given value to a payload, either for the headers or the input message.
+   *
+   * @param value value to convert
+   * @return a {@link Payload} which is a protobuf message containing byte-array serialized
+   *     representation of {@code value}. Optional here is for legacy and backward compatibility
+   *     reasons. This Optional is expected to always be filled.
+   * @throws DataConverterException if conversion fails
+   */</span>
+  <span class="o">&lt;</span><span class="no">T</span><span class="o">&gt;</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">Payload</span><span class="o">&gt;</span> <span class="nf">toPayload</span><span class="o">(</span><span class="no">T</span> <span class="n">value</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">DataConverterException</span><span class="o">;</span>
+
+  <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>As you can see, the data converter is an interface, so it does not contain any
+actual logic. It’s rather a specification to describe the behavior and served as
+a boundary between the clients (callers) and the implementation providers. There are two
+implementations provided by the SDK, the <code class="language-plaintext highlighter-rouge">GlobalDataConverter</code>
+(default) and the <code class="language-plaintext highlighter-rouge">CodecDataConverter</code>. We will talk about them
+later on. For now, let’s first focus on the client side,
+that is, how to use the converter.</p>
+
+<p>We use the converter to convert headers or user input. The input parameters
+are passed to the method <code class="language-plaintext highlighter-rouge">toPayloads(...)</code> or <code class="language-plaintext highlighter-rouge">toPayload(...)</code> of the data
+converter, which converts it into <code class="language-plaintext highlighter-rouge">Payloads</code>. Below, you can see an example coming from the
+<code class="language-plaintext highlighter-rouge">WorkflowClientRequestFactory</code>, part of the Temporal SDK, for starting a new
+workflow execution:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@Nonnull</span>
+  <span class="nc">StartWorkflowExecutionRequest</span><span class="o">.</span><span class="na">Builder</span> <span class="nf">newStartWorkflowExecutionRequest</span><span class="o">(</span>
+      <span class="nc">WorkflowClientCallsInterceptor</span><span class="o">.</span><span class="na">WorkflowStartInput</span> <span class="n">input</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">WorkflowOptions</span> <span class="n">options</span> <span class="o">=</span> <span class="n">input</span><span class="o">.</span><span class="na">getOptions</span><span class="o">();</span>
+
+    <span class="nc">StartWorkflowExecutionRequest</span><span class="o">.</span><span class="na">Builder</span> <span class="n">request</span> <span class="o">=</span>
+        <span class="nc">StartWorkflowExecutionRequest</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">()</span>
+            <span class="o">.</span><span class="na">setNamespace</span><span class="o">(</span><span class="n">clientOptions</span><span class="o">.</span><span class="na">getNamespace</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">setRequestId</span><span class="o">(</span><span class="n">generateUniqueId</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">setWorkflowId</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getWorkflowId</span><span class="o">())</span>
+            <span class="o">.</span><span class="na">setWorkflowType</span><span class="o">(</span><span class="nc">WorkflowType</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">().</span><span class="na">setName</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getWorkflowType</span><span class="o">()))</span>
+            <span class="c1">// ...</span>
+
+    <span class="c1">//</span>
+    <span class="c1">// HERE is the data conversion: input arguments -&gt; Payloads</span>
+    <span class="c1">//</span>
+    <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">Payloads</span><span class="o">&gt;</span> <span class="n">inputArgs</span> <span class="o">=</span>
+        <span class="n">clientOptions</span><span class="o">.</span><span class="na">getDataConverter</span><span class="o">().</span><span class="na">toPayloads</span><span class="o">(</span><span class="n">input</span><span class="o">.</span><span class="na">getArguments</span><span class="o">());</span>
+    <span class="n">inputArgs</span><span class="o">.</span><span class="na">ifPresent</span><span class="o">(</span><span class="nl">request:</span><span class="o">:</span><span class="n">setInput</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">options</span><span class="o">.</span><span class="na">getWorkflowIdReusePolicy</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">request</span><span class="o">.</span><span class="na">setWorkflowIdReusePolicy</span><span class="o">(</span><span class="n">options</span><span class="o">.</span><span class="na">getWorkflowIdReusePolicy</span><span class="o">());</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>Since the data converter is defined as client options, it also means that we can
+set the data converters ourselves depending on the need, e.g. using the new
+codec data converter rather than the global data converter.</p>
+
+<p>But, what are the differences between the global data converter and the codec data
+converter? The global data converter is powered by the default data converter, which
+delegates conversion to type specific PayloadConverter instance. It supports 5
+encoding types: null, byte-array, protobuf json, protobuf, and jackson json. As
+for the codec data converter, it is specific to one codec (Json, Zlib, …).
+For more details, read <a href="https://docs.temporal.io/concepts/what-is-a-data-converter/">What is a Data
+Converter?</a> in the
+official documentation.</p>
+
+<h2 id="authorization">Authorization</h2>
+
+<p>The authorization of the Temporal service client is customizable. It’s up to the
+users (us) to implement the logic. But at the end, we will need to provide the
+authorization token as a header for each gRPC request.
+The Temporal service client helps us to do so by providing an interface for
+supplying the token:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">AuthorizationTokenSupplier</span> <span class="o">{</span>
+  <span class="cm">/**
+   * @return token to be passed in authorization header
+   */</span>
+  <span class="nc">String</span> <span class="nf">supply</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>It supplies the tokens that will be sent to the Temporal server to perform authorization.
+The default JWT ClaimMapper expects authorization tokens to be in the following format:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bearer {token}
+</code></pre></div></div>
+
+<p>where <code class="language-plaintext highlighter-rouge">{token}</code> must be the Base64 url-encoded value of the token. You can see
+more details about the <a href="https://docs.temporal.io/clusters/#json-web-token-format">JWT web token
+format</a> under the
+Claim Mapper section of the official documentation.</p>
+
+<p>But how to hook the supplier into the gRPC request? Well, this is done by using
+the <code class="language-plaintext highlighter-rouge">AuthorizationGrpcMetadataProvider</code>, which should be registered as part of
+the options of workflow service stubs (<code class="language-plaintext highlighter-rouge">WorkflowServiceStubsOptions</code>). Below,
+you can see the relationship between the stub options, the metadata provider,
+and the authorization token supplier:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">WorkflowServiceStubsOptions</span> <span class="n">stubOptions</span> <span class="o">=</span>
+    <span class="nc">WorkflowServiceStubsOptions</span><span class="o">.</span><span class="na">newBuilder</span><span class="o">()</span>
+        <span class="o">.</span><span class="na">addGrpcClientInterceptor</span><span class="o">(...)</span>
+        <span class="o">.</span><span class="na">addGrpcMetadataProvider</span><span class="o">(</span><span class="k">new</span> <span class="nc">AuthorizationGrpcMetadataProvider</span><span class="o">(</span><span class="n">supplier</span><span class="o">))</span>
+        <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+</code></pre></div></div>
+
+<h2 id="workflow-service-stubs">Workflow Service Stubs</h2>
+
+<p>Workflow service stubs are an interface to represent the gRPC service stubs for
+the workflow. It consists of two stubs: a blocking stub and a future stub. As
+mentioned above, the blocking and future stubs are generated by the gRPC
+compiler based on the Temporal APIs, described in another Git repository <code class="language-plaintext highlighter-rouge">temporalio/api</code>, and used by the
+workflow stubs as follows:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">WorkflowServiceStubs</span>
+    <span class="kd">extends</span> <span class="nc">ServiceStubs</span><span class="o">&lt;</span>
+        <span class="nc">WorkflowServiceGrpc</span><span class="o">.</span><span class="na">WorkflowServiceBlockingStub</span><span class="o">,</span>
+        <span class="nc">WorkflowServiceGrpc</span><span class="o">.</span><span class="na">WorkflowServiceFutureStub</span><span class="o">&gt;</span> <span class="o">{</span>
+  <span class="c1">// ...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Besides the blocking and future stubs, the service stubs also encapsulate
+several elements: the raw gRPC channel, the connecting and shutdown logic, and also
+the health check.</p>
+
+<p>The workflow service stubs can be created using the factory method provided by
+the interface:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">WorkflowServiceStubs</span>
+  <span class="c1">// ...</span>
+
+  <span class="kd">static</span> <span class="nc">WorkflowServiceStubs</span> <span class="nf">newServiceStubs</span><span class="o">(</span><span class="nc">WorkflowServiceStubsOptions</span> <span class="n">options</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">enforceNonWorkflowThread</span><span class="o">();</span>
+    <span class="k">return</span> <span class="nc">WorkflowThreadMarker</span><span class="o">.</span><span class="na">protectFromWorkflowThread</span><span class="o">(</span>
+        <span class="k">new</span> <span class="nf">WorkflowServiceStubsImpl</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">options</span><span class="o">),</span> <span class="nc">WorkflowServiceStubs</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+  <span class="o">}</span>
+</code></pre></div></div>
+
+<p>In the end, you can use it as follows. You can create a service and use it to
+perform blocking or non-blocking actions. For example, use it to start a new
+workflow execution:</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">service</span> <span class="o">=</span> <span class="nc">WorkflowServiceStubs</span><span class="o">.</span><span class="na">newServiceStubs</span><span class="o">(</span><span class="n">stubsOptions</span><span class="o">);</span>
+<span class="kt">var</span> <span class="n">response</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="na">blockingStub</span><span class="o">().</span><span class="na">startWorkflowExecution</span><span class="o">(</span><span class="n">request</span><span class="o">);</span>
+</code></pre></div></div>
 
 <h2 id="going-further">Going Further</h2>
 
 <p>How to go further from here?</p>
 
 <ul>
-  <li>If you want to know more about activities in Temporal, you should read the
-official documentation <a href="https://docs.temporal.io/activities">https://docs.temporal.io/activities</a></li>
-  <li>If you want to know more about the Go SDK, visit <a href="https://docs.temporal.io/go/">https://docs.temporal.io/go/</a></li>
-  <li>If you want to know more about observability, visit
-<a href="https://docs.temporal.io/application-development/observability">https://docs.temporal.io/application-development/observability</a>.</li>
+  <li>If you want to learn more about gRPC, visit the official documentation
+<a href="https://grpc.io/docs/">https://grpc.io/docs/</a>.</li>
+  <li>If you want to learn more about the Temporal Java SDK, visit the source code
+on GitHub <a href="https://github.com/temporalio/sdk-java">https://github.com/temporalio/sdk-java</a></li>
+  <li>If you want to learn more about the Temporal proto files, visit the source
+code on GitHub <a href="https://github.com/temporalio/api">https://github.com/temporalio/api</a></li>
+  <li>If you want to learn more about data converter, visit <a href="https://docs.temporal.io/concepts/what-is-a-data-converter/">https://docs.temporal.io/concepts/what-is-a-data-converter/</a></li>
+  <li>If you want to learn more about authorization, visit <a href="https://docs.temporal.io/server/security/#authorization">https://docs.temporal.io/server/security/#authorization</a></li>
 </ul>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>In this article, we talk about activities in temporal: the definition of activity,
-the execution of an activity, observability, testing, use-cases, trade-offs, and finally
-some additional resources to go further.
+<p>In this article, we discussed the service client of the Temporal in Java. As
+part of the Java SDK, it handles interactions with the Temporal server (Temporal
+frontend) over gRPC. We discussed the module structure, the messages in
+protobuf, the code generation, the data conversion and converters, the
+authorization with JWT token, and the workflow services stubs (blocking and
+future), and some useful links to go further from this article.
 Interested to know more? You can subscribe to <a href="/feed.xml">the feed of my blog</a>, follow me
 on <a href="https://twitter.com/mincong_h">Twitter</a> or
 <a href="https://github.com/mincong-h/">GitHub</a>. Hope you enjoy this article, see you the next time!</p>
 
-<p><em>P.S. Special thanks to <a href="https://github.com/coran">Charles Oran</a> for reviewing
-this post.</em></p>
-
 <h2 id="references">References</h2>
 
 <ul>
-  <li><a href="https://docs.temporal.io/">https://docs.temporal.io/</a></li>
+  <li><a href="https://developers.google.com/protocol-buffers/docs/javatutorial">Protocol Buffer Basics: Java</a></li>
+  <li><a href="https://github.com/temporalio/api">GitHub: Temporal gRPC API and proto files</a></li>
+  <li><a href="https://docs.temporal.io/concepts/what-is-a-data-converter/">Temporal: What is a Data
+Converter?</a></li>
+  <li><a href="https://docs.temporal.io/server/security/">Temporal: server security</a></li>
 </ul>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-07-30T11:28:39+02:00"><!-- start custom article footer snippet -->
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-09-25T08:38:43+02:00"><!-- start custom article footer snippet -->
 
 
   
@@ -692,7 +841,7 @@ this post.</em></p>
     
       <div id="ea-article"
            data-ea-publisher="mincongio"
-           data-ea-keywords="temporal|go|workflow|automation|devops"
+           data-ea-keywords="temporal|java|grpc|api"
            data-ea-type="image">
     
     </div>
@@ -709,7 +858,7 @@ this post.</em></p>
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/en/my-hackathon-projects-at-datadog/">My Hackathon Projects At Datadog</a></div><div class="next"><span>NEXT</span><a href="/en/temporal-java-service-client/">Internal Working of Temporal Java Service Client</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/en/activity-in-temporal/">Activity in Temporal</a></div></div></div>
 
 </div>
 
@@ -744,8 +893,8 @@ this post.</em></p>
   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
   var disqus_config = function () {
-    this.page.url = 'https://mincong.io/en/activity-in-temporal/';
-    this.page.identifier = '/en/activity-in-temporal';
+    this.page.url = 'https://mincong.io/en/temporal-java-service-client/';
+    this.page.identifier = '/en/temporal-java-service-client';
   };
   (function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');

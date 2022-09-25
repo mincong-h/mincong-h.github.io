@@ -1,5 +1,406 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-08-28T22:02:11+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
-</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Activity in Temporal</title><link href="https://mincong.io/en/activity-in-temporal/" rel="alternate" type="text/html" title="Activity in Temporal" /><published>2022-07-30T11:28:39+02:00</published><updated>2022-07-30T11:28:39+02:00</updated><id>https://mincong.io/en/activity-in-temporal</id><content type="html" xml:base="https://mincong.io/en/activity-in-temporal/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-09-25T21:28:23+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Internal Working of Temporal Java Service Client</title><link href="https://mincong.io/en/temporal-java-service-client/" rel="alternate" type="text/html" title="Internal Working of Temporal Java Service Client" /><published>2022-09-25T08:38:43+02:00</published><updated>2022-09-25T08:38:43+02:00</updated><id>https://mincong.io/en/temporal-java-service-client</id><content type="html" xml:base="https://mincong.io/en/temporal-java-service-client/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;The service client of Temporal is the key component for talking to the Temporal
+server, it’s built on top of gPRC. Today, I want to discuss the
+internal working of Temporal service client with you so that we can better
+understand how it works. This may be useful for troubleshooting and getting some
+for similar implementations.&lt;/p&gt;
+
+&lt;p&gt;In this article, we will talk about:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;the module structure of the service client&lt;/li&gt;
+  &lt;li&gt;the API contracts in protobuf&lt;/li&gt;
+  &lt;li&gt;the code generation&lt;/li&gt;
+  &lt;li&gt;the data conversion&lt;/li&gt;
+  &lt;li&gt;the authorization&lt;/li&gt;
+  &lt;li&gt;the workflow service stubs&lt;/li&gt;
+  &lt;li&gt;and how to go further from this article&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This article is written based on Temporal Java SDK v1.16. Now, let’s get started!&lt;/p&gt;
+
+&lt;h2 id=&quot;module-structure&quot;&gt;Module Structure&lt;/h2&gt;
+
+&lt;p&gt;The Temporal service client is located under the path &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;temporal-serviceclient&lt;/code&gt;
+of the Java SDK. It is split into the source code (main) and the test code.
+The source code is then split into Java source code and the protobuf messages
+for code generation.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  sdk-java git:(mincong/notes|u=) tree temporal-serviceclient/src -L 2
+temporal-serviceclient/src
+├── main
+│   ├── java
+│   └── proto
+└── test
+    ├── java
+    └── resources
+
+6 directories, 0 files
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Going further into the Java source code, it contains 4 packages:
+authorization, configuration, internal, and service-client. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;authorization&lt;/code&gt;
+package contains classes to supply the authorization info as the metadata (gRPC
+headers) for each gRPC request; the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;config&lt;/code&gt; package contains classes for
+storing keys for different configuration settings; the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;internal&lt;/code&gt; package
+is a catch-all package, it contains utility classes for different
+proposes: options, retry mechanism, testing, throttling, etc; and the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;serviceclient&lt;/code&gt; package contains classes for handling communication in gRPC:
+channel management, exception handling, interceptions (header, metrics,
+deadline, …), stubs, and more.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  sdk-java git:(mincong/notes|u=) tree temporal-serviceclient/src/main/java -L 3
+temporal-serviceclient/src/main/java
+└── io
+    └── temporal
+        ├── authorization
+        ├── conf
+        ├── internal
+        └── serviceclient
+
+6 directories, 0 files
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the following sections, we will go further into some of these components and
+tries to understand how it works.&lt;/p&gt;
+
+&lt;h2 id=&quot;protobuf&quot;&gt;Protobuf&lt;/h2&gt;
+
+&lt;p&gt;Like most of the gRPC services, Temporal service client in Java uses
+&lt;a href=&quot;https://developers.google.com/protocol-buffers/&quot;&gt;protobuf&lt;/a&gt; (protocol buffers)
+to describe RPC actions and messages. The source code is stored under the path:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;temporal-serviceclient/src/main/proto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you visit the source code on
+&lt;a href=&quot;https://github.com/temporalio/sdk-java/tree/master/temporal-serviceclient/src/main&quot;&gt;Github&lt;/a&gt;,
+you will probably notice that the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;proto&lt;/code&gt; directory is actually a Git submodule,
+meaning that the source code is not stored in the same Git repository
+(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;temporalio/sdk-java&lt;/code&gt;), but in another one called API (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;temporalio/api&lt;/code&gt;). You
+can find this in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.gitmodules&lt;/code&gt; file as well:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  sdk-java git:(mincong/notes|u=) cat .gitmodules
+[submodule &quot;temporal-serviceclient/src/main/proto&quot;]
+	path = temporal-serviceclient/src/main/proto
+	url = https://github.com/temporalio/api.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This is smart! By doing so, there is one source of truth for the Temporal gRPC
+APIs, and all the SDKs can reference it as a Git submodule.
+Currently, there are 6 SDKs for the Temporal clients:
+&lt;a href=&quot;https://github.com/temporalio/sdk-java&quot;&gt;Java&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/temporalio/sdk-ruby&quot;&gt;Ruby&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/temporalio/sdk-core&quot;&gt;Rust&lt;/a&gt;,
+&lt;a href=&quot;https://github.com/temporalio/sdk-typescript&quot;&gt;Typescript&lt;/a&gt;, &lt;a href=&quot;https://github.com/temporalio/sdk-php&quot;&gt;PHP&lt;/a&gt;,
+and &lt;a href=&quot;https://github.com/temporalio/sdk-go&quot;&gt;Go&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Going inside the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;proto&lt;/code&gt; directoy, you can see that the Temporal APIs are stored
+in the following structure:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;temporal/api/{type}/{version}/{name}.proto
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;More precisely:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  sdk-java git:(mincong/notes|u=) tree temporal-serviceclient/src/main/proto/temporal/api
+temporal-serviceclient/src/main/proto/temporal/api
+├── command
+│   └── v1
+│       └── message.proto
+├── common
+│   └── v1
+│       └── message.proto
+├── enums
+│   └── v1
+│       ├── command_type.proto
+│       ├── common.proto
+│       ├── event_type.proto
+│       ├── failed_cause.proto
+│       ├── namespace.proto
+│       ├── query.proto
+│       ├── reset.proto
+│       ├── schedule.proto
+│       ├── task_queue.proto
+│       └── workflow.proto
+├── ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For example, you can see the message &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;StartWorkflowExecutionRequest&lt;/code&gt; in the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;request_response.proto&lt;/code&gt; and the related RPC action in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service.proto&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  sdk-java git:(mincong/notes|u=) rg '[^\w]StartWorkflowExecutionRequest' temporal-serviceclient/src/main/proto/temporal/api/
+temporal-serviceclient/src/main/proto/temporal/api/workflowservice/v1/service.proto
+90:    rpc StartWorkflowExecution (StartWorkflowExecutionRequest) returns (StartWorkflowExecutionResponse) {
+
+temporal-serviceclient/src/main/proto/temporal/api/workflowservice/v1/request_response.proto
+138:message StartWorkflowExecutionRequest {
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;These proto files are used for generating the service stubs. In the next
+section, we will see how code generation works in Java.&lt;/p&gt;
+
+&lt;h2 id=&quot;code-generation&quot;&gt;Code Generation&lt;/h2&gt;
+
+&lt;p&gt;The code generation from protobuf to Java is done by the protocol buffer
+compiler. The compiler reads the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.proto&lt;/code&gt; description of the data structure and
+creates classes that implement automatic encoding and parsing of the protocol
+buffer data with an efficient binary format. In the case of Temporal service
+client, this is hooked into the Gradle build system using the protobuf plugin:&lt;/p&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plugins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'com.google.protobuf'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;version&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'0.8.19'&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;io.grpc:protoc-gen-grpc-java&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-groovy highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;plugins&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;grpc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;artifact&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'io.grpc:protoc-gen-grpc-java:1.48.1'&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;When building in macOS, there are small differences between building the
+code in Intel (x86_64) or in M1 (aarch64). But this is handled internally by
+the Gradle build script, so you don’t have to know about it.
+When running the Gradle build
+command (skip tests if you want to be faster), you will have all the messages
+generated for you:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  sdk-java git:(mincong/notes|u=) ./gradlew clean build -x test
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The key generated classes are the blocking stub and the future stub of the gRPC
+service. They are part of the implementation of the workflow service stubs
+(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WorkflowServiceStubsImpl&lt;/code&gt;) as you can see in the source code below:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;package&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io.temporal.serviceclient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io.temporal.api.workflowservice.v1.GetSystemInfoResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;io.temporal.api.workflowservice.v1.WorkflowServiceGrpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WorkflowServiceStubsImpl&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WorkflowServiceStubs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WorkflowServiceGrpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;WorkflowServiceBlockingStub&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;blockingStub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WorkflowServiceGrpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;WorkflowServiceFutureStub&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;futureStub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Blocking stub runs the actions in blocking style (synchronously), i.e. it
+waits until the
+completion (success or failure) of the execution before returning the result.
+On the other side, future stub
+runs the actions in an asynchronous style. Below, you can see some of the methods
+provided by the blocking stub, such as the method for starting a new workflow
+execution:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/20220925-blocking-stub.png&quot; alt=&quot;Block stubs&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The source code is located under the generated directory
+(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;temporal-serviceclient/build/generated/main/java&lt;/code&gt;).&lt;/p&gt;
+
+&lt;h2 id=&quot;data-conversion&quot;&gt;Data Conversion&lt;/h2&gt;
+
+&lt;p&gt;Now we know about the data conversion, but we don’t know how the user data is
+serialized into gRPC 🤔 How do we get the input parameters or the metadata (gRPC
+headers) converted correctly? We will discuss them in this section.&lt;/p&gt;
+
+&lt;p&gt;This is done using the data converter (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DataConverter&lt;/code&gt;). The data converter
+provides a method to convert an input T to a Temporal payload, useful for
+converting either the headers or the input message itself:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DataConverter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;cm&quot;&gt;/**
+   * This method converts the given value to a payload, either for the headers or the input message.
+   *
+   * @param value value to convert
+   * @return a {@link Payload} which is a protobuf message containing byte-array serialized
+   *     representation of {@code value}. Optional here is for legacy and backward compatibility
+   *     reasons. This Optional is expected to always be filled.
+   * @throws DataConverterException if conversion fails
+   */&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Optional&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Payload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;toPayload&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;T&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DataConverterException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;As you can see, the data converter is an interface, so it does not contain any
+actual logic. It’s rather a specification to describe the behavior and served as
+a boundary between the clients (callers) and the implementation providers. There are two
+implementations provided by the SDK, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;GlobalDataConverter&lt;/code&gt;
+(default) and the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CodecDataConverter&lt;/code&gt;. We will talk about them
+later on. For now, let’s first focus on the client side,
+that is, how to use the converter.&lt;/p&gt;
+
+&lt;p&gt;We use the converter to convert headers or user input. The input parameters
+are passed to the method &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;toPayloads(...)&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;toPayload(...)&lt;/code&gt; of the data
+converter, which converts it into &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Payloads&lt;/code&gt;. Below, you can see an example coming from the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WorkflowClientRequestFactory&lt;/code&gt;, part of the Temporal SDK, for starting a new
+workflow execution:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Nonnull&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;StartWorkflowExecutionRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Builder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;newStartWorkflowExecutionRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+      &lt;span class=&quot;nc&quot;&gt;WorkflowClientCallsInterceptor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;WorkflowStartInput&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;WorkflowOptions&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getOptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;nc&quot;&gt;StartWorkflowExecutionRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Builder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;StartWorkflowExecutionRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setNamespace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clientOptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getNamespace&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setRequestId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;generateUniqueId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setWorkflowId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWorkflowId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
+            &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setWorkflowType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;WorkflowType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWorkflowType&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()))&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// HERE is the data conversion: input arguments -&amp;gt; Payloads&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;//&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;Optional&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Payloads&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputArgs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;clientOptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getDataConverter&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;toPayloads&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;input&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getArguments&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;inputArgs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;ifPresent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;request:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setInput&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWorkflowIdReusePolicy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setWorkflowIdReusePolicy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getWorkflowIdReusePolicy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Since the data converter is defined as client options, it also means that we can
+set the data converters ourselves depending on the need, e.g. using the new
+codec data converter rather than the global data converter.&lt;/p&gt;
+
+&lt;p&gt;But, what are the differences between the global data converter and the codec data
+converter? The global data converter is powered by the default data converter, which
+delegates conversion to type specific PayloadConverter instance. It supports 5
+encoding types: null, byte-array, protobuf json, protobuf, and jackson json. As
+for the codec data converter, it is specific to one codec (Json, Zlib, …).
+For more details, read &lt;a href=&quot;https://docs.temporal.io/concepts/what-is-a-data-converter/&quot;&gt;What is a Data
+Converter?&lt;/a&gt; in the
+official documentation.&lt;/p&gt;
+
+&lt;h2 id=&quot;authorization&quot;&gt;Authorization&lt;/h2&gt;
+
+&lt;p&gt;The authorization of the Temporal service client is customizable. It’s up to the
+users (us) to implement the logic. But at the end, we will need to provide the
+authorization token as a header for each gRPC request.
+The Temporal service client helps us to do so by providing an interface for
+supplying the token:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AuthorizationTokenSupplier&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/**
+   * @return token to be passed in authorization header
+   */&lt;/span&gt;
+  &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;supply&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It supplies the tokens that will be sent to the Temporal server to perform authorization.
+The default JWT ClaimMapper expects authorization tokens to be in the following format:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Bearer {token}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{token}&lt;/code&gt; must be the Base64 url-encoded value of the token. You can see
+more details about the &lt;a href=&quot;https://docs.temporal.io/clusters/#json-web-token-format&quot;&gt;JWT web token
+format&lt;/a&gt; under the
+Claim Mapper section of the official documentation.&lt;/p&gt;
+
+&lt;p&gt;But how to hook the supplier into the gRPC request? Well, this is done by using
+the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AuthorizationGrpcMetadataProvider&lt;/code&gt;, which should be registered as part of
+the options of workflow service stubs (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WorkflowServiceStubsOptions&lt;/code&gt;). Below,
+you can see the relationship between the stub options, the metadata provider,
+and the authorization token supplier:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;WorkflowServiceStubsOptions&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stubOptions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+    &lt;span class=&quot;nc&quot;&gt;WorkflowServiceStubsOptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addGrpcClientInterceptor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(...)&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addGrpcMetadataProvider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AuthorizationGrpcMetadataProvider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;supplier&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+        &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;workflow-service-stubs&quot;&gt;Workflow Service Stubs&lt;/h2&gt;
+
+&lt;p&gt;Workflow service stubs are an interface to represent the gRPC service stubs for
+the workflow. It consists of two stubs: a blocking stub and a future stub. As
+mentioned above, the blocking and future stubs are generated by the gRPC
+compiler based on the Temporal APIs, described in another Git repository &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;temporalio/api&lt;/code&gt;, and used by the
+workflow stubs as follows:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WorkflowServiceStubs&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ServiceStubs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;WorkflowServiceGrpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;WorkflowServiceBlockingStub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nc&quot;&gt;WorkflowServiceGrpc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;WorkflowServiceFutureStub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Besides the blocking and future stubs, the service stubs also encapsulate
+several elements: the raw gRPC channel, the connecting and shutdown logic, and also
+the health check.&lt;/p&gt;
+
+&lt;p&gt;The workflow service stubs can be created using the factory method provided by
+the interface:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WorkflowServiceStubs&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WorkflowServiceStubs&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;newServiceStubs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;WorkflowServiceStubsOptions&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;enforceNonWorkflowThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WorkflowThreadMarker&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;protectFromWorkflowThread&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WorkflowServiceStubsImpl&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WorkflowServiceStubs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the end, you can use it as follows. You can create a service and use it to
+perform blocking or non-blocking actions. For example, use it to start a new
+workflow execution:&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;WorkflowServiceStubs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;newServiceStubs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;stubsOptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;blockingStub&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;startWorkflowExecution&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
+
+&lt;p&gt;How to go further from here?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If you want to learn more about gRPC, visit the official documentation
+&lt;a href=&quot;https://grpc.io/docs/&quot;&gt;https://grpc.io/docs/&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;If you want to learn more about the Temporal Java SDK, visit the source code
+on GitHub &lt;a href=&quot;https://github.com/temporalio/sdk-java&quot;&gt;https://github.com/temporalio/sdk-java&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;If you want to learn more about the Temporal proto files, visit the source
+code on GitHub &lt;a href=&quot;https://github.com/temporalio/api&quot;&gt;https://github.com/temporalio/api&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;If you want to learn more about data converter, visit &lt;a href=&quot;https://docs.temporal.io/concepts/what-is-a-data-converter/&quot;&gt;https://docs.temporal.io/concepts/what-is-a-data-converter/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;If you want to learn more about authorization, visit &lt;a href=&quot;https://docs.temporal.io/server/security/#authorization&quot;&gt;https://docs.temporal.io/server/security/#authorization&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;In this article, we discussed the service client of the Temporal in Java. As
+part of the Java SDK, it handles interactions with the Temporal server (Temporal
+frontend) over gRPC. We discussed the module structure, the messages in
+protobuf, the code generation, the data conversion and converters, the
+authorization with JWT token, and the workflow services stubs (blocking and
+future), and some useful links to go further from this article.
+Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
+on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
+&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developers.google.com/protocol-buffers/docs/javatutorial&quot;&gt;Protocol Buffer Basics: Java&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/temporalio/api&quot;&gt;GitHub: Temporal gRPC API and proto files&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.temporal.io/concepts/what-is-a-data-converter/&quot;&gt;Temporal: What is a Data
+Converter?&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.temporal.io/server/security/&quot;&gt;Temporal: server security&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="temporal" /><category term="temporal" /><category term="java" /><category term="grpc" /><summary type="html">This article studies the internal working of Temporal service client in Java, a client to interact with Temporal server over gRPC. We discuss the module structure, protobuf messages, code generation, data conversion, authorization service stubs, and more.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-1920px-Messier51_sRGB.jpeg" /><media:content medium="image" url="https://mincong.io/assets/bg-1920px-Messier51_sRGB.jpeg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Activity in Temporal</title><link href="https://mincong.io/en/activity-in-temporal/" rel="alternate" type="text/html" title="Activity in Temporal" /><published>2022-07-30T11:28:39+02:00</published><updated>2022-07-30T11:28:39+02:00</updated><id>https://mincong.io/en/activity-in-temporal</id><content type="html" xml:base="https://mincong.io/en/activity-in-temporal/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;If you want to use &lt;a href=&quot;https://temporal.io/&quot;&gt;https://temporal.io/&lt;/a&gt; as your workflow engine, you need to
 know about Activity, which is one of the key concepts of the Temporal workflow
@@ -3167,109 +3568,4 @@ Opster, 2021.&lt;/li&gt;
   &lt;li&gt;Emily Chang, &lt;a href=&quot;https://www.datadoghq.com/blog/elasticsearch-unassigned-shards/&quot;&gt;“How to resolve unassigned shards in
 Elasticsearch”&lt;/a&gt;,
 &lt;em&gt;Datadog&lt;/em&gt;, 2019.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="elasticsearch" /><category term="java" /><category term="elasticsearch" /><category term="system-design" /><summary type="html">Curious about how does a decision system work? This article explains the deciders for shard allocation in Elasticsearch by going through their responsibility, structure, decision making, lifecycle, testing, and more.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-patrick-federi-LJEjI7LXABU-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-patrick-federi-LJEjI7LXABU-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Using Component in Vue.js</title><link href="https://mincong.io/en/use-component-in-vue-js/" rel="alternate" type="text/html" title="Using Component in Vue.js" /><published>2021-12-24T08:05:27+01:00</published><updated>2021-12-24T08:05:27+01:00</updated><id>https://mincong.io/en/use-component-in-vue-js</id><content type="html" xml:base="https://mincong.io/en/use-component-in-vue-js/">&lt;h2 id=&quot;question&quot;&gt;Question&lt;/h2&gt;
-
-&lt;p&gt;My &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*.vue&lt;/code&gt; files are getting bigger and bigger. It’s hard to maintain. I would
-like to split the file and move part of the structure (HTML) and the logic
-(JS) to another location. Is it possible?&lt;/p&gt;
-
-&lt;h2 id=&quot;answer&quot;&gt;Answer&lt;/h2&gt;
-
-&lt;p&gt;You can do that by using components. You can extract part of the structure from
-the original vue file to a new file and then import the component again into
-the original one. Let’s say we have two files:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my-page.vue&lt;/code&gt; – the main page that contains most of the logic and
-it’s getting big, probably 1000+ lines of code.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;my-component.vue&lt;/code&gt; – the new component that you are creating&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;First of all, you need to declare the structure in the component file. The
-component should contain the HTML structure in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;template&lt;/code&gt; section and the
-logic in the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;script&lt;/code&gt; section. The logic usually contains the properties
-(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;props&lt;/code&gt;), which are the fields passed from the main page when creating the
-component; the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;data&lt;/code&gt; fields that are present during the lifecycle of the
-component; the methods that are used for operating the template, such as loading
-resources from the backend via RESTful APIs, methods for displaying or hiding
-certain blocks, etc.&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;template&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- TODO Add content for your resource (component) here --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/template&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;resourceId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;isLoading&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;resource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;loadResource&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;c1&quot;&gt;// TODO Implement async HTTP call here&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;CSS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;goes&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;here&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Then you need to import and use the new component in your main page.&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;template&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;c&quot;&gt;&amp;lt;!--
-      Use the component here.
-
-      The property &quot;resourceId&quot; becomes kebab case: &quot;resource-id&quot;
-    --&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;my-component&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;resource-id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;foo&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-
-    &lt;span class=&quot;c&quot;&gt;&amp;lt;!-- ... --&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/template&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyComponent&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@/path/to/my-component.vue&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;components&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyComponent&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;style&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;CSS&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;goes&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;here&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/style&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Using components has many benefits. Some of them are:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Having clear input parameters for an element&lt;/li&gt;
-  &lt;li&gt;Making logic easy to understand, i.e. avoid having huge files&lt;/li&gt;
-  &lt;li&gt;Making tests easy&lt;/li&gt;
-  &lt;li&gt;Re-use the same component in multiple pages&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
-
-&lt;p&gt;How to go further from here?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Read the official &lt;a href=&quot;https://vuejs.org/v2/style-guide/&quot;&gt;Style Guide&lt;/a&gt; provided by
-Vue.js to learn the best practices about this framework.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="frontend" /><category term="javascript" /><category term="vuejs" /><category term="vuejs2" /><summary type="html">Your vue file is getting big? This Q&amp;A explains how to use component in Vue.js by extracting logic from your existing page.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/vuebigwhite.png" /><media:content medium="image" url="https://mincong.io/assets/vuebigwhite.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="elasticsearch" /><category term="java" /><category term="elasticsearch" /><category term="system-design" /><summary type="html">Curious about how does a decision system work? This article explains the deciders for shard allocation in Elasticsearch by going through their responsibility, structure, decision making, lifecycle, testing, and more.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-patrick-federi-LJEjI7LXABU-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-patrick-federi-LJEjI7LXABU-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
