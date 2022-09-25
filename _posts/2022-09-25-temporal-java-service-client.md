@@ -237,6 +237,85 @@ execution:
 
 ![Block stubs](/assets/20220925-blocking-stub.png)
 
+The source code is located under the generated directory
+(`temporal-serviceclient/build/generated/main/java`).
+
+## Data Conversion
+
+Now we know about the data conversion, but we don't know how user's data is
+serialized into gRPC 🤔 How do we get the input parameters or the metadata (gRPC
+headers) converted correctly? We will discuss that in this section.
+
+This is done using the data converter (`DataConverter`). The data convert
+provide a method to convert an input T to a Temporal payload, useful for
+converting either the headers or the input message itself:
+
+```java
+public interface DataConverter {
+
+  /**
+   * This method converts the given value to a payload, either for the headers or the input message.
+   *
+   * @param value value to convert
+   * @return a {@link Payload} which is a protobuf message containing byte-array serialized
+   *     representation of {@code value}. Optional here is for legacy and backward compatibility
+   *     reasons. This Optional is expected to always be filled.
+   * @throws DataConverterException if conversion fails
+   */
+  <T> Optional<Payload> toPayload(T value) throws DataConverterException;
+
+  // ...
+}
+```
+
+As you can see, the data converter is an interface, so it does not contain any
+actual logic. It's rather a specification to describe the behavior and served as
+a boundary betwee the clients (callers) and the implementation providers. There are two
+implementations provided by the SDK, the `GlobalDataConverter`
+(default) and the new `CodecDataConverter`. We will talk a bit about the
+codec data converter later on. For now, let's first focus on the client side,
+that is, how to use the converter.
+
+We use the converter to convert headers or user's input. The input parameters
+are passed to the method `toPayloads(...)` or `toPayload(...)` of the data
+converter, which converts it into `Payloads`. Below, you can see an example coming from the
+`WorkflowClientRequestFactory`, part of the Temporal SDK, for starting a new
+workflow execution:
+
+```java
+  @Nonnull
+  StartWorkflowExecutionRequest.Builder newStartWorkflowExecutionRequest(
+      WorkflowClientCallsInterceptor.WorkflowStartInput input) {
+    WorkflowOptions options = input.getOptions();
+
+    StartWorkflowExecutionRequest.Builder request =
+        StartWorkflowExecutionRequest.newBuilder()
+            .setNamespace(clientOptions.getNamespace())
+            .setRequestId(generateUniqueId())
+            .setWorkflowId(input.getWorkflowId())
+            .setWorkflowType(WorkflowType.newBuilder().setName(input.getWorkflowType()))
+            // ...
+
+    //
+    // HERE is the data conversion: input arguments -> Payloads
+    //
+    Optional<Payloads> inputArgs =
+        clientOptions.getDataConverter().toPayloads(input.getArguments());
+    inputArgs.ifPresent(request::setInput);
+    if (options.getWorkflowIdReusePolicy() != null) {
+      request.setWorkflowIdReusePolicy(options.getWorkflowIdReusePolicy());
+    }
+```
+
+Since the data converter is defined as client options, it also means that we can
+set the data converters ourselves depending on the need, e.g. using the new
+codec data converter rather than the default global data converter.
+
+But, what are the differences between global data converter and coder data
+converter? Global data converter is powered by the default data converter, which
+supports 5 encoding types (null, byte-array, protobuf json, protobuf, jackson json); and
+the codec data converter is specific to one codec (Json, Zlib, ...).
+
 ## Going Further
 
 How to go further from here?
