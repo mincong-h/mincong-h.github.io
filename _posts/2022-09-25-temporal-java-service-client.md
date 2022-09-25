@@ -3,13 +3,14 @@ layout:              post
 type:                classic
 title:               Internal Working of Temporal Java Service Client
 subtitle:            >
-    Given one sentence to expand the title or explain why this article may interest your readers.
+    The package structure, APIs in protobuf, code generation, data conversion,
+    authorization, and more.
 
 lang:                en
 date:                2022-09-25 08:38:43 +0200
-categories:          [java-core]
-tags:                []
-ads_tags:            []
+categories:          [temporal]
+tags:                [temporal, java, grpc]
+ads_tags:            [api]
 comments:            true
 excerpt:             >
     TODO
@@ -26,31 +27,22 @@ wechat:              false
 
 ## Introduction
 
-Explain context here to attract people's attention... like:
-- topic: what you want to talk about?
-- audience: who are you targeting?
-- motiviation: why is it interesting for them? Or why is it important to understand this topic?
+The service client of Temporal is the key component for talking to the Temporal
+server, it's built on top of gPRC. Today, I want to discuss the
+internal working of Temporal service client with you so that we can better
+understand how does it work, help us for troubleshooting, and get some
+inspiration for similar implementations.
 
-After reading this article, you will understand:
+In this article, we will talk about:
 
-(choose one of the following structures)
+* the package structure of the service client
+* the API contracts in protobuf
+* the code generation
+* the data conversion
+* the authorization
+* and how to go further from this article
 
-dive deep:
-
-* Some prequisites
-* Some general concepts
-* Some specific concepts to dig deeper
-* How to go further from this article
-
-different dimensions (broad):
-
-* section 1
-* section 2
-* section 3
-* How to go further from this article
-
-... then specify some information about the context, such as framework version, language version.
-Now, let's get started!
+This article is written based on Temporal Java SDK v1.16. Now, let's get started!
 
 ## Section 1
 
