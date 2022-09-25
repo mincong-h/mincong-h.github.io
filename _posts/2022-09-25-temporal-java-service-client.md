@@ -13,7 +13,11 @@ tags:                [temporal, java, grpc]
 ads_tags:            [api]
 comments:            true
 excerpt:             >
-    TODO
+    This article studies the internal working of Temporal service client in
+    Java, a client to interact with Temporal server over gRPC. We discuss the
+    module structure, protobuf messages, code generation, data conversion,
+    authorization service stubs, and more.
+
 image:               /assets/bg-1920px-Messier51_sRGB.jpeg
 cover:               /assets/bg-1920px-Messier51_sRGB.jpeg
 article_header:
