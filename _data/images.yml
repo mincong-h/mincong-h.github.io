@@ -1,3 +1,11 @@
+/assets/bg-1920px-Messier51_sRGB.jpeg:
+    author:      S. Beckwith
+    url:         https://apod.nasa.gov/apod/ap050428.html
+    height:      1920
+    width:       1332
+    license:     NASA
+    license_url: https://apod.nasa.gov/apod/ap050428.html
+
 /assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg:
     author:      Guillermo Ferla
     url:         https://unsplash.com/@gferla
