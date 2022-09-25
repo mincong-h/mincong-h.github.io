@@ -313,8 +313,9 @@ codec data converter rather than the default global data converter.
 
 But, what are the differences between global data converter and coder data
 converter? Global data converter is powered by the default data converter, which
-supports 5 encoding types (null, byte-array, protobuf json, protobuf, jackson json); and
-the codec data converter is specific to one codec (Json, Zlib, ...).
+delegates conversion to type specific PayloadConverter instance. It supports 5
+encoding types: null, byte-array, protobuf json, protobuf, and jackson json. As
+for the codec data converter, it is specific to one codec (Json, Zlib, ...).
 
 ## Going Further
 
