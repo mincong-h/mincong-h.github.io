@@ -34,8 +34,8 @@ wechat:              false
 The service client of Temporal is the key component for talking to the Temporal
 server, it's built on top of gPRC. Today, I want to discuss the
 internal working of Temporal service client with you so that we can better
-understand how does it work, help us for troubleshooting, and get some
-inspiration for similar implementations.
+understand how it works. This may be useful for troubleshooting and getting some
+for similar implementations.
 
 In this article, we will talk about:
 
@@ -52,7 +52,7 @@ This article is written based on Temporal Java SDK v1.16. Now, let's get started
 ## Module Structure
 
 The Temporal service client is located under the path `temporal-serviceclient`
-of the Java SDK, which is split into the source code (main) and the test code.
+of the Java SDK. It is split into the source code (main) and the test code.
 The source code is then split into Java source code and the protobuf messages
 for code generation.
 
@@ -69,12 +69,12 @@ temporal-serviceclient/src
 6 directories, 0 files
 ```
 
-Going further into the Java source code, it contains 4 Java packages:
+Going further into the Java source code, it contains 4 packages:
 authorization, configuration, internal, and service-client. The `authorization`
 package contains classes to supply the authorization info as the metadata (gRPC
 headers) for each gRPC request; the `config` package contains classes for
 storing keys for different configuration settings; the `internal` package
-is a catch-all package, it contains different utility classes for different
+is a catch-all package, it contains utility classes for different
 proposes: options, retry mechanism, testing, throttling, etc; and the
 `serviceclient` package contains classes for handling communication in gRPC:
 channel management, exception handling, interceptions (header, metrics,
@@ -98,7 +98,7 @@ tries to understand how it works.
 
 ## Protobuf
 
-As most of the gRPC services, Temporal service client in Java uses
+Like most of the gRPC services, Temporal service client in Java uses
 [protobuf](https://developers.google.com/protocol-buffers/) (protocol buffers)
 to describe RPC actions and messages. The source code is stored under the path:
 
@@ -110,7 +110,8 @@ If you visit the source code on
 [Github](https://github.com/temporalio/sdk-java/tree/master/temporal-serviceclient/src/main),
 you will probably notice that the `proto` directory is actually a Git submodule,
 meaning that the source code is not stored in the same Git repository
-(`temporalio/sdk-java`), but in another one called API (`temporalio/api`):
+(`temporalio/sdk-java`), but in another one called API (`temporalio/api`). You
+can find this in the `.gitmodules` file as well:
 
 ```
 ➜  sdk-java git:(mincong/notes|u=) cat .gitmodules
@@ -120,13 +121,12 @@ meaning that the source code is not stored in the same Git repository
 ```
 
 This is smart! By doing so, there is one source of truth for the Temporal gRPC
-API and proto files, and all the SDKs can reference it as a Git submodule.
-Currently there are 6 SDKs for the Temporal clients:
+APIs, and all the SDKs can reference it as a Git submodule.
+Currently, there are 6 SDKs for the Temporal clients:
 [Java](https://github.com/temporalio/sdk-java),
 [Ruby](https://github.com/temporalio/sdk-ruby),
 [Rust](https://github.com/temporalio/sdk-core),
-[Typescript](https://github.com/temporalio/sdk-typescript),
-[PHP](https://github.com/temporalio/sdk-php),
+[Typescript](https://github.com/temporalio/sdk-typescript), [PHP](https://github.com/temporalio/sdk-php),
 and [Go](https://github.com/temporalio/sdk-go).
 
 Going inside the `proto` directoy, you can see that the Temporal APIs are stored
@@ -175,13 +175,13 @@ temporal-serviceclient/src/main/proto/temporal/api/workflowservice/v1/request_re
 ```
 
 These proto files are used for generating the service stubs. In the next
-section, we will see how it works in Java.
+section, we will see how code generation works in Java.
 
 ## Code Generation
 
 The code generation from protobuf to Java is done by the protocol buffer
 compiler. The compiler reads the `.proto` description of the data structure and
-creates classes that implements automatic encoding and parsing of the protocol
+creates classes that implement automatic encoding and parsing of the protocol
 buffer data with an efficient binary format. In the case of Temporal service
 client, this is hooked into the Gradle build system using the protobuf plugin:
 
@@ -201,10 +201,9 @@ plugins {
 }
 ```
 
-When building in macOS, there are some small differences beteween building the
+When building in macOS, there are small differences between building the
 code in Intel (x86\_64) or in M1 (aarch64). But this is handled internally by
 the Gradle build script, so you don't have to know about it.
-
 When running the Gradle build
 command (skip tests if you want to be faster), you will have all the messages
 generated for you:
@@ -214,7 +213,7 @@ generated for you:
 ```
 
 The key generated classes are the blocking stub and the future stub of the gRPC
-service. They are part of the implmenetation of the workflow service stubs
+service. They are part of the implementation of the workflow service stubs
 (`WorkflowServiceStubsImpl`) as you can see in the source code below:
 
 ```java
@@ -233,10 +232,11 @@ final class WorkflowServiceStubsImpl implements WorkflowServiceStubs {
 }
 ```
 
-Blocking stub runs the actions in the blocking style (synchronous), i.e. it
+Blocking stub runs the actions in blocking style (synchronously), i.e. it
 waits until the
-completion (success or failure) of the execution. On the other side, future stub
-runs the actions in asynchronous style. Below, you can see some of the methods
+completion (success or failure) of the execution before returning the result.
+On the other side, future stub
+runs the actions in an asynchronous style. Below, you can see some of the methods
 provided by the blocking stub, such as the method for starting a new workflow
 execution:
 
@@ -247,12 +247,12 @@ The source code is located under the generated directory
 
 ## Data Conversion
 
-Now we know about the data conversion, but we don't know how user's data is
+Now we know about the data conversion, but we don't know how the user data is
 serialized into gRPC 🤔 How do we get the input parameters or the metadata (gRPC
-headers) converted correctly? We will discuss that in this section.
+headers) converted correctly? We will discuss them in this section.
 
-This is done using the data converter (`DataConverter`). The data convert
-provide a method to convert an input T to a Temporal payload, useful for
+This is done using the data converter (`DataConverter`). The data converter
+provides a method to convert an input T to a Temporal payload, useful for
 converting either the headers or the input message itself:
 
 ```java
@@ -275,13 +275,13 @@ public interface DataConverter {
 
 As you can see, the data converter is an interface, so it does not contain any
 actual logic. It's rather a specification to describe the behavior and served as
-a boundary betwee the clients (callers) and the implementation providers. There are two
+a boundary between the clients (callers) and the implementation providers. There are two
 implementations provided by the SDK, the `GlobalDataConverter`
-(default) and the new `CodecDataConverter`. We will talk a bit about the
-codec data converter later on. For now, let's first focus on the client side,
+(default) and the `CodecDataConverter`. We will talk about them
+later on. For now, let's first focus on the client side,
 that is, how to use the converter.
 
-We use the converter to convert headers or user's input. The input parameters
+We use the converter to convert headers or user input. The input parameters
 are passed to the method `toPayloads(...)` or `toPayload(...)` of the data
 converter, which converts it into `Payloads`. Below, you can see an example coming from the
 `WorkflowClientRequestFactory`, part of the Temporal SDK, for starting a new
@@ -314,10 +314,10 @@ workflow execution:
 
 Since the data converter is defined as client options, it also means that we can
 set the data converters ourselves depending on the need, e.g. using the new
-codec data converter rather than the default global data converter.
+codec data converter rather than the global data converter.
 
-But, what are the differences between global data converter and coder data
-converter? Global data converter is powered by the default data converter, which
+But, what are the differences between the global data converter and the codec data
+converter? The global data converter is powered by the default data converter, which
 delegates conversion to type specific PayloadConverter instance. It supports 5
 encoding types: null, byte-array, protobuf json, protobuf, and jackson json. As
 for the codec data converter, it is specific to one codec (Json, Zlib, ...).
@@ -330,8 +330,7 @@ official documentation.
 The authorization of the Temporal service client is customizable. It's up to the
 users (us) to implement the logic. But at the end, we will need to provide the
 authorization token as a header for each gRPC request.
-
-Temporal service client helps us to do so by providing an interface for
+The Temporal service client helps us to do so by providing an interface for
 supplying the token:
 
 ```java
@@ -355,7 +354,7 @@ more details about the [JWT web token
 format](https://docs.temporal.io/clusters/#json-web-token-format) under the
 Claim Mapper section of the official documentation.
 
-But how to hook the suppplier into the gRPC request? Well, this is done by using
+But how to hook the supplier into the gRPC request? Well, this is done by using
 the `AuthorizationGrpcMetadataProvider`, which should be registered as part of
 the options of workflow service stubs (`WorkflowServiceStubsOptions`). Below,
 you can see the relationship between the stub options, the metadata provider,
@@ -371,10 +370,10 @@ WorkflowServiceStubsOptions stubOptions =
 
 ## Workflow Service Stubs
 
-Workflow service stubs is an interface to represent the gRPC service stubs for
+Workflow service stubs are an interface to represent the gRPC service stubs for
 the workflow. It consists of two stubs: a blocking stub and a future stub. As
-mentioned above, the blocking and future stubs are generated by the Temporal
-APIs, described in another Git repository `temporalio/api`, and used by the
+mentioned above, the blocking and future stubs are generated by the gRPC
+compiler based on the Temporal APIs, described in another Git repository `temporalio/api`, and used by the
 workflow stubs as follows:
 
 ```java
@@ -387,11 +386,11 @@ public interface WorkflowServiceStubs
 ```
 
 Besides the blocking and future stubs, the service stubs also encapsulate
-several elements: the raw gRPC channel, the connect and shutdown logic, and also
+several elements: the raw gRPC channel, the connecting and shutdown logic, and also
 the health check.
 
 The workflow service stubs can be created using the factory method provided by
-the interface using the stubs options:
+the interface:
 
 ```java
 public interface WorkflowServiceStubs
@@ -404,8 +403,9 @@ public interface WorkflowServiceStubs
   }
 ```
 
-where internally the implementation adapts the behaviors using the options
-provided by the user. At the end, you can use it as:
+In the end, you can use it as follows. You can create a service and use it to
+perform blocking or non-blocking actions. For example, use it to start a new
+workflow execution:
 
 ```java
 var service = WorkflowServiceStubs.newServiceStubs(stubsOptions);
@@ -420,7 +420,7 @@ How to go further from here?
   <https://grpc.io/docs/>.
 * If you want to learn more about the Temporal Java SDK, visit the source code
   on GitHub <https://github.com/temporalio/sdk-java>
-* If you want to learn more about the Temporal proto files, visite the source
+* If you want to learn more about the Temporal proto files, visit the source
   code on GitHub <https://github.com/temporalio/api>
 * If you want to learn more about data converter, visit <https://docs.temporal.io/concepts/what-is-a-data-converter/>
 * If you want to learn more about authorization, visit <https://docs.temporal.io/server/security/#authorization>
@@ -429,7 +429,7 @@ How to go further from here?
 
 In this article, we discussed the service client of the Temporal in Java. As
 part of the Java SDK, it handles interactions with the Temporal server (Temporal
-frontend) over gRPC. We discussed about the module structure, the messages in
+frontend) over gRPC. We discussed the module structure, the messages in
 protobuf, the code generation, the data conversion and converters, the
 authorization with JWT token, and the workflow services stubs (blocking and
 future), and some useful links to go further from this article.
