@@ -26,10 +26,10 @@ titles:
 show_title: false
 ---
 
-articles:
-
-Java Core
-
+<div class="article__content">
+  <h2>Java Core</h2>
+</div>
+  
 <div class="layout--articles">
   <section class="my-5">
     {% assign _articles = site.categories["java-core"] %}
@@ -37,7 +37,9 @@ Java Core
   </section>
 </div>
 
-Java Core
+<div class="article__content">
+  <h2>Java Testing</h2>
+</div>
 
 <div class="layout--articles">
   <section class="my-5">
@@ -46,8 +48,9 @@ Java Core
   </section>
 </div>
 
-
-Java Rest
+<div class="article__content">
+  <h2>RESTful APIs</h2>
+</div>
 
 <div class="layout--articles">
   <section class="my-5">
@@ -55,15 +58,3 @@ Java Rest
     {%- include article-list.html articles=_articles type='grid' size='md' cover_type='background' -%}
   </section>
 </div>
-
-
-<!-- 
-<div class="layout--home">
-  {%- include paginator.html paginate_pattern=page.paginate_pattern baseurl=page.baseurl -%}
-</div> -->
-
-<script>
-  {%- include scripts/home.js -%}
-</script>
-
-{{ content }}
