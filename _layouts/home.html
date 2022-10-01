@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: articles
 titles:
   # @start locale config
   en      : &EN       Home
@@ -24,33 +24,21 @@ titles:
   fr-LU   : *FR
   # @end locale config
 show_title: false
+articles:
+  data_source: paginator.posts
+  article_type: BlogPosting
+  show_cover: true
+  cover_size: lg
+  show_excerpt: true
+  show_readmore: true
+  show_info: true
 ---
 
-{%- assign _highlighted_categories = 'temporal:Automation, elasticsearch:Elasticsearch, java-core:Java, java-testing:Testing, java-concurrency:Java Concurrency, java-rest:RESTful APIs, git:Git' | split: ', ' -%}
+<div class="layout--home">
+  {%- include paginator.html paginate_pattern=page.paginate_pattern baseurl=page.baseurl -%}
+</div>
+<script>
+  {%- include scripts/home.js -%}
+</script>
 
-{%- for _category in _highlighted_categories -%}
-  {%- assign _kv = _category | split: ':' -%}
-  {%- assign _category_id = _kv.first -%}
-  {%- assign _category_title = _kv.last -%}
-
-  <div class="article__content">
-    <h2>{{ _category_title }}</h2>
-  </div>
-
-  <div class="layout--articles">
-    <section class="my-5">
-      {% assign _articles = site.categories[_category_id] %}
-      {%- include article-list.html
-            articles=_articles
-            type='grid'
-            size='md'
-            cover_type='background'
-            limit='6'
-            with_date='true'
-      -%}
-      <p>
-        <a href="/en/categories/{{ _category_id }}/">Read more...</a> ({{ site.categories[_category_id] | size }} articles)
-      </p>
-    </section>
-  </div>
-{%- endfor -%}
+{{ content }}
