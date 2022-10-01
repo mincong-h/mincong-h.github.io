@@ -7,6 +7,12 @@ layout: page
 <div class="layout--articles">
   <section class="my-5">
     {% assign _articles = site.categories[page.category] %}
-    {%- include article-list.html articles=_articles type='grid' size='md' cover_type='background' -%}
+    {%- include article-list.html
+            articles=_articles
+            type='grid'
+            size='md'
+            cover_type='background'
+            with_date='true'
+    -%}
   </section>
 </div>
