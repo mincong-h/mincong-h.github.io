@@ -40,7 +40,14 @@ show_title: false
   <div class="layout--articles">
     <section class="my-5">
       {% assign _articles = site.categories[_category_id] %}
-      {%- include article-list.html articles=_articles type='grid' size='md' cover_type='background' limit='6' -%}
+      {%- include article-list.html
+            articles=_articles
+            type='grid'
+            size='md'
+            cover_type='background'
+            limit='6'
+            with_date='true'
+      -%}
       <p>
         <a href="/en/categories/{{ _category_id }}/">Read more...</a> ({{ site.categories[_category_id] | size }} articles)
       </p>

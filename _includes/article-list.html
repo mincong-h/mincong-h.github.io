@@ -155,6 +155,9 @@
                 <p>
                   {{ _article.excerpt }}
                 </p>
+                {%- if include.with_date -%}
+                  <p>{{ _article.date | date_to_string }}</p>
+                {%- endif -%}
               </div>
           </div>
         </div>
