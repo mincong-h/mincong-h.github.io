@@ -128,7 +128,7 @@
                 </div>
               </div>
             {%- endif -%}
-            </div>
+          </div>
         </div>
       {%- else -%}
 
@@ -147,6 +147,9 @@
                 <header>
                   <a href="{{ _article_url }}"><h2 class="card__header">{{ _article.title }}</h2></a>
                 </header>
+                <p>
+                  {{ _article.excerpt }}
+                </p>
               </div>
           </div>
         </div>
