@@ -9,7 +9,7 @@ baseurl: '/'
 ads_tags: [java, elasticsearch, devops, git, api, backend]
 ---
 
-{%- assign _highlighted_categories = 'temporal:Automation, elasticsearch:Elasticsearch, java-core:Java, java-testing:Testing, java-concurrency:Java Concurrency, java-rest:RESTful APIs, git:Git' | split: ', ' -%}
+{%- assign _highlighted_categories = 'temporal:Automation, elasticsearch:Elasticsearch, java-core:Java, java-testing:Testing, java-concurrency:Concurrency, java-rest:RESTful APIs, git:Git' | split: ', ' -%}
 
 {%- for _category in _highlighted_categories -%}
   {%- assign _kv = _category | split: ':' -%}
@@ -37,3 +37,15 @@ ads_tags: [java, elasticsearch, devops, git, api, backend]
     </section>
   </div>
 {%- endfor -%}
+
+
+<div class="article__content">
+  <h2>All Categories</h2>
+  <p>If you didn't find what you want in the highlighted categories above, here are more categories to discover :D</p>
+</div>
+
+<div class="layout--articles">
+  <section class="my-5">
+    {%- include article-list.html articles=site.displayed_en_categories type='grid' size='sm' cover_type='background' -%}
+  </section>
+</div>
