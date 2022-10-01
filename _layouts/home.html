@@ -26,44 +26,24 @@ titles:
 show_title: false
 ---
 
-<div class="article__content">
-  <h2>Java Core</h2>
-</div>
-  
-<div class="layout--articles">
-  <section class="my-5">
-    {% assign _articles = site.categories["java-core"] %}
-    {%- include article-list.html articles=_articles type='grid' size='md' cover_type='background' limit='6' -%}
-    <p>
-      <a href="/en/categories/java-core/">Read more...</a> ({{ site.categories["java-core"] | size }} articles)
-    </p>
-  </section>
-</div>
+{%- assign _highlighted_categories = 'temporal:Automation, elasticsearch:Elasticsearch, java-core:Java, java-testing:Testing, java-concurrency:Java Concurrency, java-rest:RESTful APIs, git:Git' | split: ', ' -%}
 
+{%- for _category in _highlighted_categories -%}
+  {%- assign _kv = _category | split: ':' -%}
+  {%- assign _category_id = _kv.first -%}
+  {%- assign _category_title = _kv.last -%}
 
-<div class="layout--articles">
   <div class="article__content">
-    <h2>Java Testing</h2>
+    <h2>{{ _category_title }}</h2>
   </div>
-  <section class="my-5">
-    {% assign _articles = site.categories["java-testing"] %}
-    {%- include article-list.html articles=_articles type='grid' size='md' cover_type='background' limit='6' -%}
-    <p>
-      <a href="/en/categories/java-testing/">Read more...</a> ({{ site.categories["java-testing"] | size }} articles)
-    </p>
-  </section>
-</div>
 
-<div class="article__content">
-  <h2>RESTful APIs</h2>
-</div>
-
-<div class="layout--articles">
-  <section class="my-5">
-    {% assign _articles = site.categories["java-rest"] %}
-    {%- include article-list.html articles=_articles type='grid' size='md' cover_type='background' limit='6' -%}
-    <p>
-      <a href="/en/categories/java-rest/">Read more...</a> ({{ site.categories["java-rest"] | size }} articles)
-    </p>
-  </section>
-</div>
+  <div class="layout--articles">
+    <section class="my-5">
+      {% assign _articles = site.categories[_category_id] %}
+      {%- include article-list.html articles=_articles type='grid' size='md' cover_type='background' limit='6' -%}
+      <p>
+        <a href="/en/categories/{{ _category_id }}/">Read more...</a> ({{ site.categories[_category_id] | size }} articles)
+      </p>
+    </section>
+  </div>
+{%- endfor -%}
