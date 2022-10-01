@@ -9,3 +9,6 @@ sidebar:
 comments:          false
 redirect_from:     /series/maven-plugins/
 ---
+
+This series goes through the essential Maven plugins, which allows you to be more
+efficient using Maven as a Java developer.
