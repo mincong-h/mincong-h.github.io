@@ -103,7 +103,8 @@ tags:                []
 ads_tags:            []
 comments:            true
 excerpt:             >
-    TODO
+    Try to limit at 140 character, two lines: (80-4) *2 = 152
+
 image:               /assets/bg-coffee-84624_1280.jpg
 cover:               /assets/bg-coffee-84624_1280.jpg
 article_header:

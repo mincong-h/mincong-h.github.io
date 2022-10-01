@@ -26,7 +26,6 @@
 <link rel="canonical" href="https://mincong.io/" />
 <meta property="og:url" content="https://mincong.io/" />
 <meta property="og:site_name" content="Mincong Huang" />
-<link rel="next" href="https://mincong.io/page2/" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Home" />
 <meta name="twitter:site" content="@mincong_h" />
@@ -367,221 +366,566 @@
 <article itemscope itemtype="http://schema.org/WebPage"><header style="display:none;"><h1>Home</h1></header><meta itemprop="headline" content="Home">
 
   
-  <meta itemprop="author" content="Mincong Huang"/><div class="js-article-content"><div class="layout--articles"><div class="article-list items items--divided"><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-1920px-Messier51_sRGB.jpeg" /></div><div class="item__content">
-          <header><a href="/en/temporal-java-service-client/"><h2 itemprop="headline" class="item__header">Internal Working of Temporal Java Service Client</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">This article studies the internal working of Temporal service client in Java, a client to interact with Temporal server over gRPC. We discuss the module structure, protobuf messages, code generation, data conversion, authorization service stubs, and more.</div><p><a href="/en/temporal-java-service-client/">Read more</a></p></div>
+  <meta itemprop="author" content="Mincong Huang"/><div class="js-article-content"><div class="article__content">
+    <h2>Automation</h2>
+  </div>
 
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=temporal">temporal</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=grpc">grpc</a>
-            </li>
+  <div class="layout--articles">
+    <section class="my-5">
+      <div class="article-list grid grid--p-3"><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-1920px-Messier51_sRGB.jpeg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/temporal-java-service-client/"><h2 class="card__header">Internal Working of Temporal Java Service Client</h2></a>
+                </header>
+                <p>
+                  This article studies the internal working of Temporal service client in Java, a client to interact with Temporal server over gRPC. We discuss the module structure, protobuf messages, code generation, data conversion, authorization service stubs, and more.
 
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Sep 25, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-09-25T08:38:43+02:00">
-    <meta itemprop="keywords" content="temporal,java,grpc"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" /></div><div class="item__content">
-          <header><a href="/en/activity-in-temporal/"><h2 itemprop="headline" class="item__header">Activity in Temporal</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal.</div><p><a href="/en/activity-in-temporal/">Read more</a></p></div>
+                </p><p>25 Sep 2022</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/activity-in-temporal/"><h2 class="card__header">Activity in Temporal</h2></a>
+                </header>
+                <p>
+                  This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal.
 
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=temporal">temporal</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=go">go</a>
-            </li>
+                </p><p>30 Jul 2022</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-pablo-garcia-saldana-lPQIndZz8Mo-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/error-retries-in-temporal/"><h2 class="card__header">Error Retries in Temporal Workflow</h2></a>
+                </header>
+                <p>
+                  This article discusses the error retries in workflow engine Temporal, including retryable and non-retryable application errors, error types in retry policy, retry policy usage in different levels, maximum attempts, and more.
 
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 30, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-07-30T11:28:39+02:00">
-    <meta itemprop="keywords" content="temporal,go"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-karsten-winegeart-ewfHXBcuFA0-unsplash.jpg" /></div><div class="item__content">
-          <header><a href="/en/my-hackathon-projects-at-datadog/"><h2 itemprop="headline" class="item__header">My Hackathon Projects At Datadog</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">This article shared the 4 projects that I did over the last hackathons in Datadog and the lessons learned from those experiences.</div><p><a href="/en/my-hackathon-projects-at-datadog/">Read more</a></p></div>
+                </p><p>09 Oct 2021</p></div>
+          </div>
+        </div></div>
+<p>
+        <a href="/en/categories/temporal/">Read more...</a> (3 articles)
+      </p>
+    </section>
+  </div><div class="article__content">
+    <h2>Elasticsearch</h2>
+  </div>
 
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=python">python</a>
-            </li>
+  <div class="layout--articles">
+    <section class="my-5">
+      <div class="article-list grid grid--p-3"><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/elasticsearch-hlrc/"><h2 class="card__header">Internal Structure Of Elasticsearch Java High-Level REST Client</h2></a>
+                </header>
+                <p>
+                  This article explores the implementation of Elasticsearch Java High-Level REST Client (HLRC) by analyzing the structure of the client, the dependencies, the error handling mechanism, serialization, its observability, and more.
 
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jul 17, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-07-17T14:31:57+02:00">
-    <meta itemprop="keywords" content="java,python"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-jon-tyson-FKkK1hnTe-Q-unsplash.jpg" /></div><div class="item__content">
-          <header><a href="/en/managing-code-complexity/"><h2 itemprop="headline" class="item__header">Managing Code Complexity</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">This article discusses how to manage code complexity when the codebase is getting more and more complex, how to refactor continuously, and what kinds of strategies you need to succeed.</div><p><a href="/en/managing-code-complexity/">Read more</a></p></div>
+                </p><p>23 Jan 2022</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-patrick-federi-LJEjI7LXABU-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/shard-allocation-deciders/"><h2 class="card__header">The Decision System For Shard Allocation in Elasticsearch</h2></a>
+                </header>
+                <p>
+                  Curious about how does a decision system work? This article explains the deciders for shard allocation in Elasticsearch by going through their responsibility, structure, decision making, lifecycle, testing, and more.
 
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=system-design">system-design</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=go">go</a>
-            </li>
+                </p><p>27 Dec 2021</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-nareeta-martin-cOWn-bYGmlc-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/slow-logs-in-elasticsearch/"><h2 class="card__header">Slow Query Logs In Elasticsearch</h2></a>
+                </header>
+                <p>
+                  Better understand the slow queries in Elasticsearch by using the slow logs. In this article, we discuss the log structure, the thresholds, and some potential root causes.
 
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jun 25, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-06-25T10:31:04+02:00">
-    <meta itemprop="keywords" content="system-design,java,go"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-steve-johnson--AugcHptjuQ-unsplash.jpg" /></div><div class="item__content">
-          <header><a href="/en/blogsearch-architecture/"><h2 itemprop="headline" class="item__header">BlogSearch Architecture</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">The overview of the BlogSearch, a simple search service for blog posts.</div><p><a href="/en/blogsearch-architecture/">Read more</a></p></div>
+                </p><p>27 Nov 2021</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-aaron-burden-GFpxQ2ZyNc0-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/elasticsearch-snapshot-plugins/"><h2 class="card__header">Elasticsearch Snapshot Plugins</h2></a>
+                </header>
+                <p>
+                  Elasticsearch snapshot repository plugins for AWS, GCP, and Azure
 
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=blogsearch">blogsearch</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=system-design">system-design</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=elasticsearch">elasticsearch</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=jekyll">jekyll</a>
-            </li>
+                </p><p>01 Nov 2021</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-alfons-morales-YLSwjSy7stw-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/elasticsearch-snapshot-apis/"><h2 class="card__header">Elasticsearch Snapshot APIs</h2></a>
+                </header>
+                <p>
+                  This article summarizes the list of APIs for "Snapshot and Restore" in Elasticsearch, which allows you to perform operations easily and navigate to official documentation if you need more detail.
 
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>May 26, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-05-26T09:54:25+02:00">
-    <meta itemprop="keywords" content="blogsearch,system-design,java,elasticsearch,jekyll"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg" /></div><div class="item__content">
-          <header><a href="/en/setting-up-monitoring-for-java-with-datadog/"><h2 itemprop="headline" class="item__header">Setting Up Monitoring For Java With Datadog</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">This article explains how to set up Datadog monitoring for a Java application and an Elasticsearch service running in Alibaba Cloud.</div><p><a href="/en/setting-up-monitoring-for-java-with-datadog/">Read more</a></p></div>
+                </p><p>25 Oct 2021</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/elasticsearch-snapshot-repository-structure/"><h2 class="card__header">Internal Structure Of Snapshot Repository</h2></a>
+                </header>
+                <p>
+                  This article takes you to the Elasticsearch snapshot repository to explore its internal structure and understand the contents and uses of different files. 
 
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=datadog">datadog</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=elasticsearch">elasticsearch</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=aliyun">aliyun</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=logging">logging</a>
-            </li>
+                </p><p>04 Sep 2021</p></div>
+          </div>
+        </div></div>
+<p>
+        <a href="/en/categories/elasticsearch/">Read more...</a> (27 articles)
+      </p>
+    </section>
+  </div><div class="article__content">
+    <h2>Java</h2>
+  </div>
 
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Mar 27, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-03-27T17:52:01+02:00">
-    <meta itemprop="keywords" content="java,datadog,elasticsearch,aliyun,logging"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg" /></div><div class="item__content">
-          <header><a href="/en/elasticsearch-hlrc/"><h2 itemprop="headline" class="item__header">Internal Structure Of Elasticsearch Java High-Level REST Client</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">This article explores the implementation of Elasticsearch Java High-Level REST Client (HLRC) by analyzing the structure of the client, the dependencies, the error handling mechanism, serialization, its observability, and more.</div><p><a href="/en/elasticsearch-hlrc/">Read more</a></p></div>
+  <div class="layout--articles">
+    <section class="my-5">
+      <div class="article-list grid grid--p-3"><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-steve-johnson--AugcHptjuQ-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/blogsearch-architecture/"><h2 class="card__header">BlogSearch Architecture</h2></a>
+                </header>
+                <p>
+                  The overview of the BlogSearch, a simple search service for blog posts.
 
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=elasticsearch">elasticsearch</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=rest">rest</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=api">api</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=system-design">system-design</a>
-            </li>
+                </p><p>26 May 2022</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/setting-up-monitoring-for-java-with-datadog/"><h2 class="card__header">Setting Up Monitoring For Java With Datadog</h2></a>
+                </header>
+                <p>
+                  This article explains how to set up Datadog monitoring for a Java application and an Elasticsearch service running in Alibaba Cloud.
 
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jan 23, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-01-23T15:47:40+01:00">
-    <meta itemprop="keywords" content="elasticsearch,java,rest,api,system-design"></div>
-      </article><article class="item" itemscope itemtype="http://schema.org/BlogPosting"><div class="item__image"><img class="image image--lg" src="/assets/vuebigwhite.png" /></div><div class="item__content">
-          <header><a href="/en/query-params-vue.js/"><h2 itemprop="headline" class="item__header">Adding Query Parameters in Vue.js</h2></a></header>
-          <div class="item__description"><div class="article__content" itemprop="description articleBody">What to have better URL for sharing? This Q&A shares how to retrieve query parameters in Vue.js, how to update component data using it, and vise versa.</div><p><a href="/en/query-params-vue.js/">Read more</a></p></div>
+                </p><p>27 Mar 2022</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-icons8-team-dhZtNlvNE8M-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/change-log-level-at-runtime-in-logback/"><h2 class="card__header">Change Log Level At Runtime in Logback</h2></a>
+                </header>
+                <p>
+                  This Q&A explains how to change logger level dynamically at runtime via RESTful API for your Java application when using Logback.
 
-  
-  <div class="article__info clearfix">
-      <ul class="left-col menu">
-        <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=javascript">javascript</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=vuejs">vuejs</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=vuejs2">vuejs2</a>
-            </li>
+                </p><p>18 Dec 2021</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-markus-spiske-gnhxvdGmGG8-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/audit-logs/"><h2 class="card__header">Audit Logs</h2></a>
+                </header>
+                <p>
+                  This article discusses how to implement a simple audit logs solution with Java JAX-RS, including requirements, considerations for the implementation, and 3 different solutions based on Java Servlet, Jetty, and JAX-RS filter.
 
-        
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Jan 05, 2022</span>
-            </li></ul></div><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-01-05T21:48:43+01:00">
-    <meta itemprop="keywords" content="javascript,vuejs,vuejs2"></div>
-      </article></div>
-</div><div class="layout--home"><div class="pagination"><p>191 post articles, 24 pages.</p>
-    <div class="pagination__menu">
-      <ul class="menu menu--nowrap"><li><div class="button button--secondary button--circle disabled">
-            <i class="fas fa-angle-left"></i>
-          </div></li><li>
-              <div class="button button--primary button--circle focus"><span>1</span></div>
-            </li><li>
-                  <a class="button button--secondary button--circle" href="/page2/"><span>2</span></a>
-                </li><li>
-                  <a class="button button--secondary button--circle" href="/page3/"><span>3</span></a>
-                </li><li>
-                  <a class="button button--secondary button--circle" href="/page4/"><span>4</span></a>
-                </li><li><span class="pagination__omit"><i class="fas fa-ellipsis-h"></i></span></li><li>
-                  <a class="button button--secondary button--circle" href="/page24/"><span>24</span></a>
-                </li><li><a class="button button--secondary button--circle" href="/page2/">
-            <i class="fas fa-angle-right"></i>
-          </a></li></ul>
-    </div>
-  </div></div>
-<script>/*(function () {
+                </p><p>20 Nov 2021</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-lukas-blazek-UAvYasdkzq8-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/10/25/java-time/"><h2 class="card__header">Using Java Time In Different Frameworks</h2></a>
+                </header>
+                <p>
+                  How to use Java Time in different frameworks? This article shares examples in Java concurrency classes, Jackson, Akka, and Elasticsearch.
 
-})();*/
-</script>
+                </p><p>25 Oct 2020</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-sonja-langford-eIkbSc3SDtI-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/05/24/java-clock/"><h2 class="card__header">Controlling Time with Java Clock</h2></a>
+                </header>
+                <p>
+                  Use java.time.Clock to control time in your unit tests. This article will mainly focus on usage of fixed clock and offset clock.
 
+                </p><p>24 May 2020</p></div>
+          </div>
+        </div></div>
+<p>
+        <a href="/en/categories/java-core/">Read more...</a> (31 articles)
+      </p>
+    </section>
+  </div><div class="article__content">
+    <h2>Testing</h2>
+  </div>
 
+  <div class="layout--articles">
+    <section class="my-5">
+      <div class="article-list grid grid--p-3"><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2021/04/09/junit-5-dynamic-tests/"><h2 class="card__header">JUnit 5: Dynamic Tests with TestFactory</h2></a>
+                </header>
+                <p>
+                  How to write dynamic tests using @TestFactory in JUnit 5? This article explains the syntax, different return types, the test lifecycle, and potential use-cases.
 
+                </p><p>09 Apr 2021</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-jean-louis-paulin-lHwmE58fW4Y-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2021/01/31/juni5-parameterized-tests/"><h2 class="card__header">Writing Parameterized Tests in JUnit 5</h2></a>
+                </header>
+                <p>
+                  Improving code quality using parameterized tests of JUnit 5! This article explains the motivation, the basic syntax, different annotations, and IDE-related actions about parameterized tests. Also, when you should or shouldn't use it and how to go further from here.
+
+                </p><p>31 Jan 2021</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-sonja-langford-eIkbSc3SDtI-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/05/24/java-clock/"><h2 class="card__header">Controlling Time with Java Clock</h2></a>
+                </header>
+                <p>
+                  Use java.time.Clock to control time in your unit tests. This article will mainly focus on usage of fixed clock and offset clock.
+
+                </p><p>24 May 2020</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/05/10/completablefuture-test/"><h2 class="card__header">How CompletableFuture is tested in OpenJDK?</h2></a>
+                </header>
+                <p>
+                  How CompletableFuture is tested in OpenJDK 14? What can we learn from it?
+
+                </p><p>10 May 2020</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-edward-howell-hYcriIw0gHc-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/04/19/mockito-junit5/"><h2 class="card__header">Mockito: 3 Ways to Init Mock in JUnit 5</h2></a>
+                </header>
+                <p>
+                  Initialize Mockito mock objects in JUnit 5 using MockitoExtension, MockitoAnnotations#initMocks, or Mockito#mock.
+
+                </p><p>19 Apr 2020</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/04/05/testing-elasticsearch-with-docker-and-java-client/"><h2 class="card__header">Testing Elasticsearch With Docker And Java High Level REST Client</h2></a>
+                </header>
+                <p>
+                  Testing Elasticsearch with docker and Java High Level REST Client
+
+                </p><p>05 Apr 2020</p></div>
+          </div>
+        </div></div>
+<p>
+        <a href="/en/categories/java-testing/">Read more...</a> (14 articles)
+      </p>
+    </section>
+  </div><div class="article__content">
+    <h2>Concurrency</h2>
+  </div>
+
+  <div class="layout--articles">
+    <section class="my-5">
+      <div class="article-list grid grid--p-3"><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-2242213_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/07/26/es-client-completablefuture/"><h2 class="card__header">Wrap Elasticsearch Response Into CompletableFuture</h2></a>
+                </header>
+                <p>
+                  Wrap Elasticsearch client response into CompletableFuture in Java for Elasticsearch transport client or Java high level REST client.
+
+                </p><p>26 Jul 2020</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-park-troopers-RAtKWVlfdf4-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/06/26/completable-future/"><h2 class="card__header">Why Do We Need Completable Future?</h2></a>
+                </header>
+                <p>
+                  Why do we need CompletableFuture? What is its strength compared to synchronous code and classic future in Java? How to remember its APIs?
+
+                </p><p>26 Jun 2020</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-2306471_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/06/20/akka-actor/"><h2 class="card__header">Write An Actor In Akka</h2></a>
+                </header>
+                <p>
+                  How to write a new actor in Akka in Java? This post explains actor creation, message reception, and testing.
+
+                </p><p>20 Jun 2020</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/05/30/exception-handling-in-completable-future/"><h2 class="card__header">3 Ways to Handle Exception In Completable Future</h2></a>
+                </header>
+                <p>
+                  How to handle exception in CompletableFuture? This article explains the difference between handle(), whenComplete(), and exceptionally().
+
+                </p><p>30 May 2020</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/05/10/completablefuture-test/"><h2 class="card__header">How CompletableFuture is tested in OpenJDK?</h2></a>
+                </header>
+                <p>
+                  How CompletableFuture is tested in OpenJDK 14? What can we learn from it?
+
+                </p><p>10 May 2020</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-983955_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/03/15/jaxrs-async-processing/"><h2 class="card__header">Asynchronous Processing in JAX-RS 2.x</h2></a>
+                </header>
+                <p>
+                  Quick introduction of asynchrnous processing in JAX-RS 2.x on both server-side and client-side.
+
+                </p><p>15 Mar 2020</p></div>
+          </div>
+        </div></div>
+<p>
+        <a href="/en/categories/java-concurrency/">Read more...</a> (10 articles)
+      </p>
+    </section>
+  </div><div class="article__content">
+    <h2>RESTful APIs</h2>
+  </div>
+
+  <div class="layout--articles">
+    <section class="my-5">
+      <div class="article-list grid grid--p-3"><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-983955_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2020/03/15/jaxrs-async-processing/"><h2 class="card__header">Asynchronous Processing in JAX-RS 2.x</h2></a>
+                </header>
+                <p>
+                  Quick introduction of asynchrnous processing in JAX-RS 2.x on both server-side and client-side.
+
+                </p><p>15 Mar 2020</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-171653_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2018/12/18/testing-jax-rs-resources/"><h2 class="card__header">Testing JAX-RS Resources</h2></a>
+                </header>
+                <p>
+                  This article explains how to set up and tear down a Grizzly Server for testing JAX-RS resources, how to create a HTTP request and assert the response using JUnit 4. And finally, the limits of testing API in reality.
+
+                </p><p>18 Dec 2018</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-notebook-1280538_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2018/12/11/jax-rs-client-api/"><h2 class="card__header">JAX-RS Client API</h2></a>
+                </header>
+                <p>
+                  This post explains what is JAX-RS Client API and how to use it via Jersey Client API. We will talk about the Maven dependencies, Client, WebTarget, and HTTP response.
+
+                </p><p>11 Dec 2018</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-983955_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2018/12/03/exception-handling-in-jax-rs/"><h2 class="card__header">Exception Handling in JAX-RS</h2></a>
+                </header>
+                <p>
+                  This post explains exception mapper, how to register it in JAX-RS application programmatically or via annotation, the exception matching mechanism (nearest-superclass), and more.
+
+                </p><p>03 Dec 2018</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-2306471_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2018/11/27/jax-rs-parameters/"><h2 class="card__header">JAX-RS Param Annotations</h2></a>
+                </header>
+                <p>
+                  This post explains different param annotations in JAX-RS 2.1 and their use-cases, including @QueryParam, @MatrixParam, @PathParam, @HeaderParam, @CookieParam, @FormParam and @BeanParam.
+
+                </p><p>27 Nov 2018</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-1030971_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2018/11/20/http-methods-in-jax-rs/"><h2 class="card__header">HTTP Methods in JAX-RS</h2></a>
+                </header>
+                <p>
+                  This article explains the common HTTP methods in JAX-RS: annotation @GET, @POST, @PUT, and @DELETE.
+
+                </p><p>20 Nov 2018</p></div>
+          </div>
+        </div></div>
+<p>
+        <a href="/en/categories/java-rest/">Read more...</a> (8 articles)
+      </p>
+    </section>
+  </div><div class="article__content">
+    <h2>Git</h2>
+  </div>
+
+  <div class="layout--articles">
+    <section class="my-5">
+      <div class="article-list grid grid--p-3"><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-josh-calabrese-zcYRw547Dps-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2019/09/08/jgit-config-loading-optimization/"><h2 class="card__header">JGit: Config Loading Optimization</h2></a>
+                </header>
+                <p>
+                  How JGit optimizes internally the configuration loading process using file snapshots and reduces unnecessary file I/O?
+
+                </p><p>08 Sep 2019</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-light-bulbs-1125016_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2019/07/23/prepare-commit-message-using-git-hook/"><h2 class="card__header">Prepare Commit Message using Git Hook</h2></a>
+                </header>
+                <p>
+                  Create a Git hook prepare-commit-msg for inferring JIRA ticket as commit message prefix, based on the branch name.
+
+                </p><p>23 Jul 2019</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-ferris-wheel-2575709_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2019/03/09/merging-20-git-repositories/"><h2 class="card__header">Merging 20 Git Repositories</h2></a>
+                </header>
+                <p>
+                  Recently, I merged 20 Git repositories into a single one while keeping the history. Here's how I did it.
+
+                </p><p>09 Mar 2019</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/20181111-title.png')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2018/11/11/customize-git-prompt-in-mingw/"><h2 class="card__header">Customize Git Prompt in MinGW</h2></a>
+                </header>
+                <p>
+                  Customize Git prompt to show dirty-state, untracked files, stash, upstream in your Bash console: MinGW64 (Minimalist GNU for Windows x64).
+
+                </p><p>11 Nov 2018</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/railway-1245906_1280.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/2018/11/06/merging-git-repositories/"><h2 class="card__header">Merging Git Repositories</h2></a>
+                </header>
+                <p>
+                  Engineering story: how I merge two Git repositories and what are the hidden tasks you didn't think about.
+
+                </p><p>06 Nov 2018</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__content">
+                <header>
+                  <a href="/2018/07/30/jgit-protect-master-branch-on-git-server/"><h2 class="card__header">JGit: Protect Branches on Git Server</h2></a>
+                </header>
+                <p>
+                  If you're using JGit for your Git server, you can combine Git config (.git/config) and a customized pre-receive hook to protect branches on a specific Git repository.
+
+                </p><p>30 Jul 2018</p></div>
+          </div>
+        </div></div>
+<p>
+        <a href="/en/categories/git/">Read more...</a> (17 articles)
+      </p>
+    </section>
+  </div><div class="article__content">
+  <h2>All Categories</h2>
+  <p>If you didn't find what you want in the highlighted categories above, here are more categories to discover :D</p>
+</div>
+
+<div class="layout--articles">
+  <section class="my-5"><div class="article-list grid grid--sm grid--p-3"><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-c-dustin-91AQt9p4Mo8-unsplash.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/build/"><h2 class="card__header">Build Tools</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-cristian-escobar-abkEAOjnY0s-unsplash.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/elasticsearch/"><h2 class="card__header">Elasticsearch</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-josh-calabrese-zcYRw547Dps-unsplash.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/git/"><h2 class="card__header">Git</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-powerboat-2784250_1280.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/java-concurrency/"><h2 class="card__header">Java Concurrency</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/java-core/"><h2 class="card__header">Java Core</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-park-troopers-RAtKWVlfdf4-unsplash.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/java-rest/"><h2 class="card__header">Java RESTful APIs</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-lance-grandahl-hF6TtT-xz80-unsplash.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/java-serialization/"><h2 class="card__header">Java Serialization</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-board-2450236_1280.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/java-testing/"><h2 class="card__header">Java Testing</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-snake-37585_1280.png')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/python/"><h2 class="card__header">Python</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-sarah-kilian-52jRtc2S_VE-unsplash.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/reliability/"><h2 class="card__header">Reliability</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-markus-winkler-afW1hht0NSs-unsplash.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/review/"><h2 class="card__header">Review</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div><div class="cell cell--12 cell--md-4 cell--lg-3">
+          <div class="card card--flat"><div class="card__image"><div class="image card__background_image card__background_image_sm" style="background-image: url('/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg')"></div><div class="overlay overlay--bottom">
+                  <header>
+                    <a href="/en/categories/temporal/"><h2 class="card__header">Temporal</h2></a>
+                  </header>
+                </div>
+              </div></div>
+        </div></div>
+</section>
+</div>
 </div><section class="page__comments d-print-none"></section></article><!-- start custom main bottom snippet -->
 
   

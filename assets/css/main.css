@@ -1127,6 +1127,8 @@ input:focus { outline: none; }
 
 .card--flat .card__content { padding-top: 0; padding-left: 0; }
 
+.card--flat .card__content > p { color: rgba(0, 0, 0, 0.54); }
+
 .gallery { height: 100%; display: -webkit-box; display: -webkit-flex; display: -moz-flex; display: -ms-flexbox; display: flex; -webkit-box-direction: normal; -webkit-box-orient: vertical; -webkit-flex-direction: column; -moz-flex-direction: column; -ms-flex-direction: column; flex-direction: column; }
 
 .gallery__swiper { -webkit-box-flex: 1; -webkit-flex: 1; -moz-box-flex: 1; -moz-flex: 1; -ms-flex: 1; flex: 1; }

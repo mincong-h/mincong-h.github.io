@@ -376,14 +376,37 @@
                 <header>
                   <a href="/2016/04/05/run-ssis-package-using-32-bit-drivers/"><h2 class="card__header">Run SSIS package using 32-bit drivers</h2></a>
                 </header>
-              </div>
+                <p>
+                  <p>Today, when I used an OLD DB source to connect a MS Access database, I met the 
+following message error during debug :</p>
+
+<blockquote>
+  <p>[Connection manager “\DVDSIB46\d$\DVI_Datas\Source\Dise\EXTRACTION DONNEES 
+MOBILITE.accdb”] Error: The requested OLE DB provider Microsoft.ACE.OLEDB.12.0 
+is not registered. If the 64-bit driver is not installed, run the package in 
+32-bit mode. Error code: 0x00000000.
+An OLE DB record is available.  Source: “Microsoft OLE DB Service Components”<br />
+Hresult: 0x80040154  Description: “Class not registered”.</p>
+</blockquote>
+
+<p>The message suggests me to use 32-bit driver because the driver of 64-bit is not 
+available. This is caused by the MS Access provider.</p>
+
+<p>In order to resolve this problem, I configured the SSIS pakcages to run by
+referencing the 32-bit dlls :</p>
+
+
+                </p></div>
           </div>
         </div><div class="cell cell--12 cell--md-6 cell--lg-4">
           <div class="card card--flat"><div class="card__content">
                 <header>
                   <a href="/2016/03/21/release-unused-space-using-shink/"><h2 class="card__header">Release unused space using Shrink</h2></a>
                 </header>
-              </div>
+                <p>
+                  Database's size can be optimized using Shrink command. It helps to release unused space. There're 2 ways to do it: via GUI or via T-SQL.
+
+                </p></div>
           </div>
         </div></div>
 </section>
