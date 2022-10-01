@@ -12,6 +12,11 @@
 {%- if include.reverse -%}
   {%- assign _sorted_list = _sorted_list | reverse -%}
 {%- endif -%}
+{%- if include.limit -%}
+  {%- assign limit = include.limit -%}
+{%- else -%}
+  {%- assign limit = _sorted_list | size -%}
+{%- endif -%}
 
 {%- if include.type == 'item' -%}
 <div class="article-list items items--divided">
@@ -25,7 +30,7 @@
   {%- endif -%}
 {%- endif -%}
 
-  {%- for _article in _sorted_list -%}
+  {%- for _article in _sorted_list limit: limit -%}
 
     {%- include snippets/prepend-baseurl.html path=_article.url -%}
     {%- assign _article_url = __return -%}
