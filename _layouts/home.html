@@ -1,5 +1,5 @@
 ---
-layout: articles
+layout: page
 titles:
   # @start locale config
   en      : &EN       Home
@@ -24,26 +24,43 @@ titles:
   fr-LU   : *FR
   # @end locale config
 show_title: false
-articles:
-  data_source: paginator.posts
-  article_type: BlogPosting
-  show_cover: true
-  cover_size: lg
-  show_excerpt: true
-  show_readmore: true
-  show_info: true
 ---
+
+articles:
+
+Java Core
 
 <div class="layout--articles">
   <section class="my-5">
-    {% assign _articles = site.categories[page.category] %}
+    {% assign _articles = site.categories["java-core"] %}
     {%- include article-list.html articles=_articles type='grid' size='md' cover_type='background' -%}
   </section>
 </div>
 
+Java Core
+
+<div class="layout--articles">
+  <section class="my-5">
+    {% assign _articles = site.categories["java-testing"] %}
+    {%- include article-list.html articles=_articles type='grid' size='md' cover_type='background' -%}
+  </section>
+</div>
+
+
+Java Rest
+
+<div class="layout--articles">
+  <section class="my-5">
+    {% assign _articles = site.categories["java-test"] %}
+    {%- include article-list.html articles=_articles type='grid' size='md' cover_type='background' -%}
+  </section>
+</div>
+
+
+<!-- 
 <div class="layout--home">
   {%- include paginator.html paginate_pattern=page.paginate_pattern baseurl=page.baseurl -%}
-</div>
+</div> -->
 
 <script>
   {%- include scripts/home.js -%}
