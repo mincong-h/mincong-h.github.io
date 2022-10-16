@@ -51,7 +51,7 @@ documentation these days is
 [Confluence](https://www.atlassian.com/software/confluence). So my experience may not apply to your
 domain. Leave me a comment if you have suggestion :) Now, let's get started!
 
-## Types Of Documentation
+## Types of documentation
 
 The first thing to clarify is that there isn't just one type of
 documentation: there are multiple ones. In this
