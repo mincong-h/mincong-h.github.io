@@ -67,7 +67,27 @@ Structuring documentation according to its four distinct functions helps ensure
 that each of them is adequately served. It also makes it far easier to write
 and maintain.
 
-Learning-oriented tutorials need to be 
+Learning-oriented tutorials are designed for newcomers and beginners. They are
+new to your framework and don't know much about it. You need to ensure that the
+documentation explains the terminologies, highlights the architecture of the
+framework, and avoid dive deep into implemtation of the framework. The primary
+goal of these documents are to onboard your readers into the framework.
+
+Goal-oriented how-to guide targets more intermediate users. They know the basic
+concepts of your framework, but they need to know more to solve a specific
+problem. Therefore, your document should focus on their problem and tries to
+solve that. Solving the problem means giving the solutions, the context around
+the problem, the relationship between this component and others, etc.
+
+Understand-oriented discussions focus on keeping track of some pieces of
+dicusssion that happened in the past. The goal is to remember the concerns,
+decisions, attempts of solutions, etc that may be useful for further
+discussions or plan. Otherwise, it's easy to forget them.
+
+Information-oriented reference material are detailed documentation about the
+specification and implementation about your framework. They dive deep into
+technical details and describe the behavior of certain components, functions,
+etc.
 
 ## Section 2
 
