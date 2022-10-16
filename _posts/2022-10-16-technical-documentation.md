@@ -60,36 +60,67 @@ Daniele Procida explained that there are 4 kinds of documentation:
 
 1. learning-oriented tutorials
 2. goal-oriented how-to guides
-3. understanding-oriented discussions
 4. information-oriented reference material
+3. understanding-oriented explanations
 
 Structuring documentation according to its four distinct functions helps ensure
 that each of them is adequately served. It also makes it far easier to write
 and maintain.
 
-Learning-oriented tutorials are designed for newcomers and beginners. They are
+
+**Tutorials** are designed for newcomers and beginners. They are learning-oriented.
+Your users are
 new to your framework and don't know much about it. You need to ensure that the
 documentation explains the terminologies, highlights the architecture of the
 framework, and avoid dive deep into implemtation of the framework. The primary
-goal of these documents are to onboard your readers into the framework.
+goal of these documents is to let your readers to achieve something with your
+framework. It does not matter than much if you cover all the details, the most
+important is that your readers find it enjoyable and learn something from your
+documentation.
 
-Goal-oriented how-to guide targets more intermediate users. They know the basic
+**How-to** guides target more intermediate users. They are goal-oriented. Your
+readers know the basic
 concepts of your framework, but they need to know more to solve a specific
-problem. Therefore, your document should focus on their problem and tries to
-solve that. Solving the problem means giving the solutions, the context around
-the problem, the relationship between this component and others, etc.
+problem. The key difference between tutorials and how-to guides is that now your
+users know exactly what their problem is. Therefore, your document should focus
+on their problem and tries to solve that. Solving the problem means describing the
+problem properly, the context around the problem (upstream, downstream,
+timeline, ...), the relationship between this component and other components in
+the architecture, scenarios, etc.
 
-Understand-oriented discussions focus on keeping track of some pieces of
-dicusssion that happened in the past. The goal is to remember the concerns,
-decisions, attempts of solutions, etc that may be useful for further
-discussions or plan. Otherwise, it's easy to forget them.
-
-Information-oriented reference material are detailed documentation about the
+**Reference materials** are detailed documentation about the
 specification and implementation about your framework. They dive deep into
 technical details and describe the behavior of certain components, functions,
-etc.
+etc. They are information-oriented.
 
-## Section 2
+**Explanations** are discussions that illuminates and clarifies a particular topic.
+They are oriented understanding. It provides different kinds of background
+knowledge of the topic, explain why it was done this way, and provides
+alternatives of considering things.
+
+## Who are your readers?
+
+Once we know the types of documentation, it's time to understand who are your
+readers. How your documentation can help them? In my working environment, my
+readers can be my teammates, managers, leaderships, engineers in other teams,
+etc. Depending on the readers, they have different goals when reading the
+documentation and it's important to write the documentation to serve the
+purpose. 
+
+* For your teammates, they are probably the contributors of the framework. They
+  care both the theoritical and the partical part of the framework. You
+  can write documentation to explain the concept and decisions about the system
+  design; write reference guide to describe technical details; write
+  troubleshooting articles to debug some problems happened in production; etc.
+* For managers and leaderships (big bosses), they don't care much about the
+  practical side of the project, but more focus on the high-level overview of
+  the project so we should emphasize the connections between component, impact,
+  and other aspects which can give the indention of the project.
+* For engineers in other teams, they are probably users of your framework. You
+  need to write tutorials, how-to guides to help them to use your framework.
+
+It's important to think about your audience before writing a new documentation.
+It makes the intention much clearer.
 
 ## Section 3
 
