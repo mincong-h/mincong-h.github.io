@@ -13,6 +13,7 @@ ads_tags:            []
 comments:            true
 excerpt:             >
     TODO
+
 image:               /assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg
 cover:               /assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg
 article_header:
@@ -102,27 +103,79 @@ alternatives of considering things.
 
 Once we know the types of documentation, it's time to understand who are your
 readers. How your documentation can help them? In my working environment, my
-readers can be my teammates, managers, leaderships, engineers in other teams,
-etc. Depending on the readers, they have different goals when reading the
+readers can be my teammates, managers, leaderships, and engineers in other
+teams. Depending on the readers, they have different goals when reading the
 documentation and it's important to write the documentation to serve the
 purpose. 
 
-* For your teammates, they are probably the contributors of the framework. They
+* **Your teammates** are probably the contributors of the framework. They
   care both the theoritical and the partical part of the framework. You
   can write documentation to explain the concept and decisions about the system
   design; write reference guide to describe technical details; write
   troubleshooting articles to debug some problems happened in production; etc.
-* For managers and leaderships (big bosses), they don't care much about the
-  practical side of the project, but more focus on the high-level overview of
+* **Managers and leaderships (big bosses)** care less about the
+  practical side of the project, they are more focus on the high-level overview of
   the project so we should emphasize the connections between component, impact,
   and other aspects which can give the indention of the project.
-* For engineers in other teams, they are probably users of your framework. You
+* **Engineers in other teams** are probably users of your framework. You
   need to write tutorials, how-to guides to help them to use your framework.
 
 It's important to think about your audience before writing a new documentation.
-It makes the intention much clearer.
+It makes the intention much clearer. Also, try to think about "what can help
+them solve their problems" rather than "what I want to write" makes it easier
+for readers to understand your doc. Obviously, everyone's situation is
+different and what I listed here may not be appliable to you. However, I think
+the general concept about "thinking about your readers" remain the same.
 
-## Section 3
+## How to improve each page?
+
+Now, focus on pages, how can we improve each of them? Here are some ideas that I
+want to share.
+
+**Choose the type of documentation.** In the previous section, we mentioned that
+there are tutorials, how-to guides, reference material, and explanations.
+Choosing the type of documentation makes it for you (the writer) to focus on
+what you want to write and drop what you don't want.
+
+**Define your readers.** In the previous section, we mentioned that we need to
+understand who are your readers and what are their goals. This also helps you to
+focus on what you want to write and drop what you don't want.
+
+**Keep the read time under 10 minutes.** I believe that a long document is very hard
+for readers. It's hard to navigate and hard to keep the focus during long time.
+Depending on the type of document, it may be better to split a big one into
+smaller ones, each of which serves for a different purpose. For example, if an
+article contains some high-level concepts of your framework, detailed
+explanation of some conponents, and a section for describing potential issues.
+It may be worth splitting it into 3 documents: one focus on describing the
+high-level concept (tutorial); one focus on the detailed feature of some
+components (reference materials); and the last one on the troubleshooting
+(how-to guides). Therefore, it's easier for your readers.
+
+**Having a common thread running through different sections.** This is an idea
+or theme that is consistenly present in those sections. It makes the logic easy
+to follow and keep the attention of your readers.
+
+**Use diagrams to express your idea.** It allows you to better express the
+relationship accross multiple dimensions: time, components, exchange protocols,
+system boundary, object's lifecycle, synchronization, etc. I use a lot of
+diagrams in my documentation. To draw and maintain diagrams, here are two
+important aspects that you need to know:
+
+* Types: there are many types of diagrams, such as flow chart, sequence diagram,
+  class diagram, state diagram, entity relationship diagram, and more.
+  You can choose the type based on what you need.
+* Tools: there are many tools that help you to draw diagrams. In my work, I
+  mainly use GitHub and Confluence. Both of them support
+  [Mermaid](https://mermaid-js.github.io/mermaid/#/): a framework to
+  draw diagrams from code using simple syntax. On GitHub, just use `mermaid` as
+  the language syntax, and on Confluence, there is a [Mermaid
+Diagrams](https://marketplace.atlassian.com/apps/1226567/mermaid-diagrams-for-confluence?hosting=cloud&tab=overview)
+  plugin to let you describe diagram in code and generate the results for you.
+  For quick drawing, I also use [Excalidraw](https://excalidraw.com), a
+  whiteboard tool that lets you easily sketch diagrams that have a hand-drawn feel
+  to them. There are other paid tools like
+  [Lucidchart](https://www.lucidchart.com/pages/).
 
 ## Going Further
 
