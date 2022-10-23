@@ -42,9 +42,7 @@ After reading this article, you will understand:
 * Who are your readers?
 * How to improve each page?
 * How to write less documentations?
-* How to ensure that they are up-to-date?
 * How to organize multiple pages?
-* How to go further from this article?
 
 Before continuing, I want you to know that I am a backend software enginer
 and site reliability engineer (SRE). And my primary tool for writting
@@ -191,15 +189,66 @@ section concise. I can write another article about this if you are interested.
 Now, let's go to the next section, where we are going to talk about how to write
 less documentations.
 
-## Going Further
+## Write Less
 
-How to go further from here?
+Documentation can be really useful, but we don't write it for its own sake. It's
+here to help people to get stuff done. And often though writing documentation,
+you discover much bigger problems. Maybe there is the producre you're writing is
+really complicated and messy. Maybe you're building something that has a concept
+that is really hard to explain, or maybe you find out that things don't work in
+the way that you thought or they should. **If you find yourselve documenting
+around the problem, try to fix it may be a better solution.** This is what
+Beth Aitman explained in her presentation [Writing effective
+documentation (YouTube)](https://youtu.be/R6zeikbTgVc) in the conference "Lead Dev" in
+Berlin. She is a technical writer working at Google.
+
+## Organize pages
+
+Now you wrote some pages but it start becoming hard for readers to find
+information. So what should you do? It's time to think about organization of the
+pages.
+
+**Structure documents into domains.** You can put pages into multiple domains,
+each of them has different purposes. Therefore, when people are looking for
+pages related one domain, it's natural to go that that domain to find it. For
+example, in a data engineering team, you can imagine having domains: processing,
+storage, operations, etc. If the team becomes bigger, consider having sub-domains
+under the top domain, such as processing (service P1, service P2, service P3),
+storage (write W1, write W2, read R1, read R2, ...), CI/CD (build, release,
+deployment), operations (alerting, on-call, automation), etc. You can also think
+it as a file system:
+
+```
+/domain/sub-domain/.../page
+```
+
+Therefore, it helps people to understand how to find your documents. In
+Confluence, you can achieve that by using child pages.
+
+**Tags.** The domain-drive logic works well. However, sometimes you need
+more ways to group pages. For example, if you want to organize your documents in
+non-technical aspects (team, project, ...). Therefore, you may need other tools
+to help you as well. One possible way is to use tags. In Confluence, you can use
+macro ["Content by
+Label"](https://confluence.atlassian.com/doc/content-by-label-macro-145566.html)
+to achieve that. You need to add labels to each page that you want to be
+selected, and provide those labels as query in the macro. Then, you can see them
+being displayed in your page. Therefore, you can link to multiple pages easily.
 
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
+In this article, we talked about how to write technical documentations,
+including the 4 types of documentation, the audience, improving each page, how
+to write less documents, how to organize multiple pages.
 Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
+
+- Beth Aitman, "Writing effective documentation", _Lead Dev Berlin_, 2019.
+  <https://youtu.be/R6zeikbTgVc>
+- Daniele Procida, "The four kinds of documentation, and why you need to
+  understand what they are", _Write the Docs Prague_, 2017.
+  <https://www.writethedocs.org/videos/eu/2017/the-four-kinds-of-documentation-and-why-you-need-to-understand-what-they-are-daniele-procida/>
+
