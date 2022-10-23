@@ -3,7 +3,7 @@ layout:              post
 type:                classic
 title:               How to write technical documentation?
 subtitle:            >
-    Given one sentence to expand the title or explain why this article may interest your readers.
+    5 tips for writing documentation as a software engineer.
 
 lang:                en
 date:                2022-10-16 10:04:02 +0200
@@ -12,7 +12,8 @@ tags:                [doc]
 ads_tags:            []
 comments:            true
 excerpt:             >
-    TODO
+    Define the types of documentation, your audience, improve page content,
+    write less, organize relationship between pages, and more.
 
 image:               /assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg
 cover:               /assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg
@@ -27,8 +28,9 @@ wechat:              false
 
 ## Introduction
 
-I have contributed a lot to company's internal documenatations and also wrote 210
-blog posts in this website in the past 6 years. Therefore, I want to share my
+I have contributed a lot to company's internal documenatation. I also wrote 210
+blog posts in this website in the past 6 years and gained about 1 million page
+views. Therefore, I want to share my
 experience about how to write technical documentations.
 
 Writing technical documentation has many benefits: it allows users to understand
@@ -43,6 +45,7 @@ After reading this article, you will understand:
 * How to improve each page?
 * How to write less documentations?
 * How to organize multiple pages?
+* Going further from this article
 
 Before continuing, I want you to know that I am a backend software enginer
 and site reliability engineer (SRE). And my primary tool for writting
@@ -199,7 +202,7 @@ that is really hard to explain, or maybe you find out that things don't work in
 the way that you thought or they should. **If you find yourselve documenting
 around the problem, try to fix it may be a better solution.** This is what
 Beth Aitman explained in her presentation [Writing effective
-documentation (YouTube)](https://youtu.be/R6zeikbTgVc) in the conference "Lead Dev" in
+documentation - YouTube](https://youtu.be/R6zeikbTgVc) in the conference "Lead Dev" in
 Berlin. She is a technical writer working at Google.
 
 ## Organize pages
@@ -235,6 +238,29 @@ to achieve that. You need to add labels to each page that you want to be
 selected, and provide those labels as query in the macro. Then, you can see them
 being displayed in your page. Therefore, you can link to multiple pages easily.
 
+**Make title searchable.** You need to make the title of the page
+comprehensible. People do not always look into your documentation
+through links that you provided. They may search the title using the search
+engine (either Google, Confluence search, or anything else). Therefore, the
+title of your articles plays a critical role about the documentation. People
+won't be able to read the awesome content you wrote if they cannot find it in
+the search engine. See [Writing technical documentation (16:00) -
+YouTube](https://youtu.be/a4L9GhldTHo?t=960), made by Fredrik Christenson, for
+more details.
+
+## Going Further
+
+If you want to go further from this article ...
+
+* To learn more about Mermaid Diagrams and its syntax, visit the official
+  documentation <https://mermaid-js.github.io/mermaid/#/>
+* To learn more about the four kinds of documentation, watch Daniele Procida's
+  video ["What nobody tells you about
+  documentation"](https://youtu.be/p0PPtdRHG6M) on YouTube.
+* To learn more about how to write effective documentation from a Google's
+  technical writer's point of view, watch Beth Aitman's video ["How to write
+  effective documentation"](https://www.youtube.com/watch?v=R6zeikbTgVc) on YouTube.
+
 ## Conclusion
 
 In this article, we talked about how to write technical documentations,
@@ -251,4 +277,5 @@ on [Twitter](https://twitter.com/mincong_h) or
 - Daniele Procida, "The four kinds of documentation, and why you need to
   understand what they are", _Write the Docs Prague_, 2017.
   <https://www.writethedocs.org/videos/eu/2017/the-four-kinds-of-documentation-and-why-you-need-to-understand-what-they-are-daniele-procida/>
-
+- Fredrik Christenson, "Writing technical documentation", _YouTube_, 2018.
+  <https://youtu.be/a4L9GhldTHo>
