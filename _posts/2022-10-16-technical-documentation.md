@@ -177,6 +177,20 @@ Diagrams](https://marketplace.atlassian.com/apps/1226567/mermaid-diagrams-for-co
   to them. There are other paid tools like
   [Lucidchart](https://www.lucidchart.com/pages/).
 
+**Use templates to structure your idea.** Using templates can help you better
+structure your document without too much effort. In Confluence, there are
+[Confluence Templates](https://www.atlassian.com/software/confluence/templates)
+that allow you to bootstrap your document with a predefined style: how-to
+article, retrospective, toubleshooting article, product requirements, ... they
+allows you to create faster and in a more consistent way over time (both for you
+and for your team). Here I am using Confluence as example, but you can imagine
+similar things for other documentations product.
+
+There are probably much more details that we can discuss but I want to keep this
+section concise. I can write another article about this if you are interested.
+Now, let's go to the next section, where we are going to talk about how to write
+less documentations.
+
 ## Going Further
 
 How to go further from here?
