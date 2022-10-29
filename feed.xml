@@ -1,5 +1,281 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-10-01T19:30:33+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
-</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Internal Working of Temporal Java Service Client</title><link href="https://mincong.io/en/temporal-java-service-client/" rel="alternate" type="text/html" title="Internal Working of Temporal Java Service Client" /><published>2022-09-25T08:38:43+02:00</published><updated>2022-09-25T08:38:43+02:00</updated><id>https://mincong.io/en/temporal-java-service-client</id><content type="html" xml:base="https://mincong.io/en/temporal-java-service-client/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-10-29T10:18:06+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">How to write technical documentation</title><link href="https://mincong.io/en/technical-documentation/" rel="alternate" type="text/html" title="How to write technical documentation" /><published>2022-10-16T10:04:02+02:00</published><updated>2022-10-16T10:04:02+02:00</updated><id>https://mincong.io/en/technical-documentation</id><content type="html" xml:base="https://mincong.io/en/technical-documentation/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;I have contributed a lot to the company’s internal documentation. I also wrote 210
+blog posts on this website and gained about 1 million page
+views. Therefore, I want to share my
+experience with you about how to write technical documentation.&lt;/p&gt;
+
+&lt;p&gt;Writing technical documentation has many benefits: it allows users to understand
+how to use your framework without jumping into the source code; it clarifies the
+needs and the goals of your project; it helps teammates to understand the system
+and succeed in their missions.&lt;/p&gt;
+
+&lt;p&gt;After reading this article, you will understand:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What are the different types of documentation?&lt;/li&gt;
+  &lt;li&gt;Who are your readers?&lt;/li&gt;
+  &lt;li&gt;How to improve each page?&lt;/li&gt;
+  &lt;li&gt;How to write fewer documents?&lt;/li&gt;
+  &lt;li&gt;How to organize multiple pages?&lt;/li&gt;
+  &lt;li&gt;How to go further from this article?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Before continuing, I want you to let know that I am a backend software engineer
+and a site reliability engineer (SRE). My primary tool for writing
+documentation these days is
+&lt;a href=&quot;https://www.atlassian.com/software/confluence&quot;&gt;Confluence&lt;/a&gt;. Because of the
+differences in our backgrounds, my experience may not apply to your cases.
+Leave me a comment if you have any suggestions :) Now, let’s get started!&lt;/p&gt;
+
+&lt;h2 id=&quot;types-of-documentation&quot;&gt;Types of documentation&lt;/h2&gt;
+
+&lt;p&gt;The first thing to clarify is that there isn’t just one type of
+documentation: there are multiple ones. In this talk 
+&lt;a href=&quot;https://www.writethedocs.org/videos/eu/2017/the-four-kinds-of-documentation-and-why-you-need-to-understand-what-they-are-daniele-procida/&quot;&gt;“The four kinds of documentation, and why you need to understand what they are”&lt;/a&gt;,
+Daniele Procida explained that there are 4 kinds of documentation:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;learning-oriented tutorials&lt;/li&gt;
+  &lt;li&gt;goal-oriented how-to guides&lt;/li&gt;
+  &lt;li&gt;information-oriented reference material&lt;/li&gt;
+  &lt;li&gt;understanding-oriented explanations&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Structuring documentation according to its four distinct functions helps ensure
+that each of them is adequately served. It also makes it far easier to write
+and maintain.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tutorials&lt;/strong&gt; are designed for newcomers and beginners. They are learning-oriented.
+Your users are
+new to your framework and don’t know much about it. You need to ensure that the
+documentation explains the terminologies, highlights the architecture of the
+framework, and avoids dive deep into implementation. The primary
+goal of these documents is to let your readers achieve something with your
+framework. It does not matter if you cover all the details, the most
+important is that your readers find it enjoyable and learn something from your
+documentation.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How-to&lt;/strong&gt; guides target more intermediate users. They are goal-oriented. Your
+readers know the basic
+concepts of your framework, but they need to know more to solve a specific
+problem. The key difference between tutorials and how-to guides is that now your
+users know exactly what their problem is. Therefore, your document should focus
+on their problem and tries to solve that. Solving the problem means describing the
+problem properly, the context around the problem (upstream, downstream,
+timeline, …), the relationship between this component and other components in
+the architecture, the coverage of different scenarios, etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Reference materials&lt;/strong&gt; are detailed documentation about the
+specification and implementation of your framework. They dive deep into
+technical details and describe the behavior of certain components, functions,
+etc. They are information-oriented.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Explanations&lt;/strong&gt; are discussions that illuminate and clarify a particular topic.
+They are understanding-oriented. It provides different kinds of background
+knowledge of the topic, explains why it was done this way, and provides
+alternative solutions.&lt;/p&gt;
+
+&lt;h2 id=&quot;who-are-your-readers&quot;&gt;Who are your readers?&lt;/h2&gt;
+
+&lt;p&gt;Once we know the types of documentation, it’s time to understand who are your
+readers. How your documentation can help them? In my working environment, my
+readers can be my teammates, managers, leaders (VP+), and engineers in other
+teams. Depending on the readers, they have different goals when reading the
+documentation and it’s important to write the documentation to serve the
+purpose.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Your teammates&lt;/strong&gt; are probably the contributors of the framework. They
+care both the theoretical and the practical parts of the framework. You
+can write documentation to explain the concept and decisions about the system
+design; write a reference guide to describe technical details; write
+troubleshooting articles to debug some problems that happened in production; etc.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Managers and leaderships&lt;/strong&gt; care less about the
+practical side of the project since they don’t participate actively in
+development. They are more focused on high-level things: the overview of
+the project, the progress of the work, the important decisions made, or some
+critical pieces. Therefore, we should emphasize the connections between
+components,
+the impact, the indention of the project, the reasons, or anything else that
+can be easy to read and follow.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Engineers in other teams&lt;/strong&gt; are probably users of your framework. You
+need to write tutorials, and how-to guides to help them to use your framework.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;It’s important to think about your audience before writing new documentation.
+It makes the intention much clearer. Also, try to think about “what can I do to help
+them solve their problems” rather than “what I want to write” makes it easier
+for readers to understand your doc. Obviously, everyone’s situation is
+different but I believe that
+the general concept of “thinking about your readers” remains the same.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-improve-each-page&quot;&gt;How to improve each page?&lt;/h2&gt;
+
+&lt;p&gt;Now, focus on pages, how can we improve each of them? Here are some ideas that I
+want to share.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Choose the type of documentation.&lt;/strong&gt; In the previous section, we mentioned that
+there are tutorials, how-to guides, reference material, and explanations.
+Choosing the type of documentation lets you, the writer, focus on
+what you want to write and drop what you don’t want.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Define your readers.&lt;/strong&gt; In the previous section, we mentioned that we need to
+understand who are your readers and what are their goals. This also helps you
+for structuring your content.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Keep the read time under 10 minutes.&lt;/strong&gt; I believe that a long document is very hard
+for readers. It’s hard to navigate and hard to keep focus for a long time.
+Depending on the type of document, it may be better to split a big one into
+smaller ones, each of which serves a different purpose. For example, if an
+article is mixed with high-level concepts of your framework, a detailed
+explanation of some components, and a section for describing potential issues.
+Then, it may be worth splitting it into 3 documents: one focus on describing the
+high-level concept (tutorial); one focus on the detailed feature of some
+components (reference materials); and the last one on the troubleshooting
+(how-to guides). Therefore, it’s easier for your readers.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Having a common thread running through different sections.&lt;/strong&gt; A common thread
+is an idea
+or theme that is consistently present in those sections. It makes the logic easy
+to follow and keeps the attention of your readers. This common thread can be in
+one of these dimensions: the timeline, the project development lifecycle,
+different aspects of the project, upstream and downstream, … It is also a good
+practice to write the outline before writing the whole documention.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Using diagrams to express your idea.&lt;/strong&gt; A good diagram is worth a thousand
+words. It allows you to better express the
+relationship across multiple dimensions: time, components, exchange protocols,
+system boundary, object’s lifecycle, synchronization, etc. Also, it is more
+visual and easy to understand. I use a lot of
+diagrams in my documentation. To draw and maintain diagrams, here are two
+important aspects that you need to know:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Types:&lt;/strong&gt; there are many types of diagrams, such as flow chart, sequence diagram,
+class diagram, state diagram, entity relationship diagram, and more.
+You can choose the type based on what you need.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tools:&lt;/strong&gt; there are many tools that help you to draw diagrams. In my work, I
+mainly use GitHub and Confluence. Both of them support
+&lt;a href=&quot;https://mermaid-js.github.io/mermaid/#/&quot;&gt;Mermaid&lt;/a&gt;: a framework to
+draw diagrams from code using a simple syntax. On GitHub, just use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mermaid&lt;/code&gt; as
+the language syntax for your code blocks; on Confluence, there is a &lt;a href=&quot;https://marketplace.atlassian.com/apps/1226567/mermaid-diagrams-for-confluence?hosting=cloud&amp;amp;tab=overview&quot;&gt;Mermaid
+Diagrams&lt;/a&gt;
+plugin that allows you to describe diagram in code and generate the results for you.
+For quick drawing, I also use &lt;a href=&quot;https://excalidraw.com&quot;&gt;Excalidraw&lt;/a&gt;, a
+whiteboard tool that lets you easily sketch diagrams that have a hand-drawn feel
+to them. There are other paid tools like
+&lt;a href=&quot;https://www.lucidchart.com/pages/&quot;&gt;Lucidchart&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Using templates to structure your idea.&lt;/strong&gt; Using templates can help you better
+structure your document without too much effort. In Confluence, there are
+&lt;a href=&quot;https://www.atlassian.com/software/confluence/templates&quot;&gt;Confluence Templates&lt;/a&gt;
+that allow you to bootstrap your document with a predefined style: how-to
+article, retrospective, troubleshooting article, or product requirements, … they
+allow you to write documents faster and in a more consistent way over time (both for you
+and for your team). Here, I am using Confluence as an example, but you can imagine
+similar things for other documentation products.&lt;/p&gt;
+
+&lt;p&gt;There are probably much more details that we can discuss but I want to keep this
+section concise. I can write another article about this if you are interested.
+Now, let’s go to the next section, where we are going to talk about how to write
+less documentation.&lt;/p&gt;
+
+&lt;h2 id=&quot;write-less&quot;&gt;Write Less&lt;/h2&gt;
+
+&lt;p&gt;Documentation can be really useful, but we don’t write it for its own sake. It’s
+here to help people to get stuff done. And often through writing documentation,
+you discover much bigger problems. Maybe the procedure you’re writing is
+really complicated and messy. Maybe you’re building something that has a concept
+that is really hard to explain, or maybe you find out that things don’t work in
+the way that you thought or they should. &lt;strong&gt;If you find yourself documenting
+around the problem, try to fix it may be a better solution.&lt;/strong&gt; This is what
+Beth Aitman explained in her presentation &lt;a href=&quot;https://youtu.be/R6zeikbTgVc&quot;&gt;Writing effective
+documentation - YouTube&lt;/a&gt; in the conference “Lead Dev” in
+Berlin. She is a technical writer working at Google.&lt;/p&gt;
+
+&lt;h2 id=&quot;organize-pages&quot;&gt;Organize pages&lt;/h2&gt;
+
+&lt;p&gt;Now you wrote some pages but it starts becoming hard for readers to find
+information. So what should you do? It’s time to think about the organization of the
+pages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Structure documents into domains.&lt;/strong&gt; You can put pages into multiple domains,
+each of them having different purposes. Therefore, when people are looking for
+pages related to one domain, it’s natural to go to that domain to find it. For
+example, in a data engineering team, you can imagine having domains: processing,
+storage, operations, etc. If the team becomes bigger, consider having sub-domains
+under the top domain, such as processing (service P1, service P2, service P3),
+storage (writer W1, writer W2, reader R1, reader R2, …), CI/CD (build, release,
+deployment), operations (alerting, on-call, automation), etc. You can also think
+it as a file system:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/domain/sub-domain/.../page
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Therefore, it helps people to understand how to find your documents. In
+Confluence, you can achieve that by using child pages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tags.&lt;/strong&gt; Sometimes you need
+more ways to group pages. For example, if you want to organize your documents in
+non-technical aspects (team, project, …). You may need other tools
+to help you as well. One possible way is to use tags. In Confluence, you can use
+the macro &lt;a href=&quot;https://confluence.atlassian.com/doc/content-by-label-macro-145566.html&quot;&gt;“Content by
+Label”&lt;/a&gt;
+to achieve that. You need to add labels to each page that you want to be
+selected and provide those labels as a query in the macro. Then, you can see them
+being displayed on your page. Therefore, you can link to multiple pages easily.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Make the title searchable.&lt;/strong&gt; You need to make the title of the page
+comprehensible. People do not always look into your documentation
+through the links that you provided. They may search the title using the search
+engine (either Google, Confluence search, or anything else). Therefore, the
+title of your articles plays a critical role in the documentation. People
+won’t be able to read the awesome content you wrote if they cannot find it in
+the search engine. See &lt;a href=&quot;https://youtu.be/a4L9GhldTHo?t=960&quot;&gt;Writing technical documentation (16:00) -
+YouTube&lt;/a&gt;, made by Fredrik Christenson, for
+more details.&lt;/p&gt;
+
+&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
+
+&lt;p&gt;If you want to go further from this article …&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;To learn more about Mermaid Diagrams and its syntax, visit the official
+documentation &lt;a href=&quot;https://mermaid-js.github.io/mermaid/#/&quot;&gt;https://mermaid-js.github.io/mermaid/#/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;To learn more about the four kinds of documentation, watch Daniele Procida’s
+video &lt;a href=&quot;https://youtu.be/p0PPtdRHG6M&quot;&gt;“What nobody tells you about
+documentation”&lt;/a&gt; on YouTube.&lt;/li&gt;
+  &lt;li&gt;To learn more about how to write effective documentation from a Google’s
+technical writer’s point of view, watch Beth Aitman’s video &lt;a href=&quot;https://www.youtube.com/watch?v=R6zeikbTgVc&quot;&gt;“How to write
+effective documentation”&lt;/a&gt; on YouTube.&lt;/li&gt;
+  &lt;li&gt;This article does not mention the maintenance effort, doc versionning, doc
+generation from code, doc hosting, and more advanced topcis. But they are
+important aspects to be considered as well.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;In this article, we talked about how to write technical documentation,
+including the 4 types of documentation, the audience, improving each page, how
+to write less documentation, and how to organize multiple pages.
+Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
+on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
+&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Beth Aitman, “Writing effective documentation”, &lt;em&gt;Lead Dev Berlin&lt;/em&gt;, 2019.
+&lt;a href=&quot;https://youtu.be/R6zeikbTgVc&quot;&gt;https://youtu.be/R6zeikbTgVc&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Daniele Procida, “The four kinds of documentation, and why you need to
+understand what they are”, &lt;em&gt;Write the Docs Prague&lt;/em&gt;, 2017.
+&lt;a href=&quot;https://www.writethedocs.org/videos/eu/2017/the-four-kinds-of-documentation-and-why-you-need-to-understand-what-they-are-daniele-procida/&quot;&gt;https://www.writethedocs.org/videos/eu/2017/the-four-kinds-of-documentation-and-why-you-need-to-understand-what-they-are-daniele-procida/&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Fredrik Christenson, “Writing technical documentation”, &lt;em&gt;YouTube&lt;/em&gt;, 2018.
+&lt;a href=&quot;https://youtu.be/a4L9GhldTHo&quot;&gt;https://youtu.be/a4L9GhldTHo&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="documentation" /><category term="doc" /><summary type="html">Define the types of documentation, your audience, improve page content, write less, organize the relationship between pages, and more.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Internal Working of Temporal Java Service Client</title><link href="https://mincong.io/en/temporal-java-service-client/" rel="alternate" type="text/html" title="Internal Working of Temporal Java Service Client" /><published>2022-09-25T08:38:43+02:00</published><updated>2022-09-25T08:38:43+02:00</updated><id>https://mincong.io/en/temporal-java-service-client</id><content type="html" xml:base="https://mincong.io/en/temporal-java-service-client/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;The service client of Temporal is the key component for talking to the Temporal
 server, it’s built on top of gPRC. Today, I want to discuss the
@@ -3223,349 +3499,4 @@ or important tasks that I did at Datadog as a software engineer, my blogging
 experience, and some other projects that I explored.
 Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
 on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
-&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="review" /><category term="review" /><category term="career" /><summary type="html">My tech journey at Datadog as a software engineer in 2021 and some side-projects in my free time.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-markus-winkler-EcgyryGygeE-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-markus-winkler-EcgyryGygeE-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">The Decision System For Shard Allocation in Elasticsearch</title><link href="https://mincong.io/en/shard-allocation-deciders/" rel="alternate" type="text/html" title="The Decision System For Shard Allocation in Elasticsearch" /><published>2021-12-27T14:36:13+01:00</published><updated>2021-12-27T14:36:13+01:00</updated><id>https://mincong.io/en/shard-allocation-deciders</id><content type="html" xml:base="https://mincong.io/en/shard-allocation-deciders/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Shard allocation plays an important role in the data distribution of an
-Elasticsearch cluster. Having all the shards allocated ensures the good health
-of your cluster and avoids potential data loss. That’s why it’s important to
-avoid unassigned shards and avoid yellow cluster. But as a software engineer or
-as a database administrator (DBA), do you know how the decision is made
-internally? How does Elasticsearch know which node should be used? In this
-article, we are going to study this part by exploring the decider system.&lt;/p&gt;
-
-&lt;p&gt;After reading this article, you will understand:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The responsibility of allocation service and allocation deciders.&lt;/li&gt;
-  &lt;li&gt;The structure of these 19 deciders.&lt;/li&gt;
-  &lt;li&gt;How do they make decisions?&lt;/li&gt;
-  &lt;li&gt;The deciders’ position in the lifecycle of an ES node.&lt;/li&gt;
-  &lt;li&gt;How to test them?&lt;/li&gt;
-  &lt;li&gt;How to go further from this article?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;And hopefully, this article will help you better understand the internal mechanism
-or inspire you to make your decision system based on a similar
-architecture. Note that this article is written with Elasticsearch 7.16.2
-(latest), which may be different from what you are using. Now, let’s get started!&lt;/p&gt;
-
-&lt;h2 id=&quot;responsibility&quot;&gt;Responsibility&lt;/h2&gt;
-
-&lt;p&gt;Allocation deciders are part of the allocation service in Elasticsearch. This
-service manages the shard allocation of a cluster. For this reason, the
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AllocationService&lt;/code&gt; contains an instance of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AllocationDeciders&lt;/code&gt; to choose nodes for shard
-allocation. This class also manages new nodes joining the cluster
-and the rerouting of shards. If none of the nodes accepts the allocation, the shard
-will remain unassigned. Having unassigned shard leads to under-replicated
-shards. It will probably result to a yellow cluster and increase the risk of data loss.&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;Which actions require decisions?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;We can find this information from the abstract class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AllocationDecider&lt;/code&gt;.
-An allocation decider can decide for many actions: allocation,
-rebalancing, keeping the shard in the current node (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;canRemain&lt;/code&gt;), and auto-expanding the
-shards of a given index. Each method returns a decision so that the allocation service knows
-how to react. Each action respects the naming convention &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;can{Action}&lt;/code&gt; or
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;should{Action}&lt;/code&gt;. Here is a more detailed version:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  elasticsearch git:(v7.16.2 u=) ✗ grep &quot;public Decision&quot; server/src/main/java/org/elasticsearch/cluster/routing/allocation/decider/AllocationDecider.java | sort
-    public Decision canAllocate(IndexMetadata indexMetadata, RoutingNode node, RoutingAllocation allocation) {
-    public Decision canAllocate(ShardRouting shardRouting, RoutingAllocation allocation) {
-    public Decision canAllocate(ShardRouting shardRouting, RoutingNode node, RoutingAllocation allocation) {
-    public Decision canAllocateReplicaWhenThereIsRetentionLease(ShardRouting shardRouting, RoutingNode node, RoutingAllocation allocation) {
-    public Decision canForceAllocateDuringReplace(ShardRouting shardRouting, RoutingNode node, RoutingAllocation allocation) {
-    public Decision canForceAllocatePrimary(ShardRouting shardRouting, RoutingNode node, RoutingAllocation allocation) {
-    public Decision canRebalance(RoutingAllocation allocation) {
-    public Decision canRebalance(ShardRouting shardRouting, RoutingAllocation allocation) {
-    public Decision canRemain(ShardRouting shardRouting, RoutingNode node, RoutingAllocation allocation) {
-    public Decision shouldAutoExpandToNode(IndexMetadata indexMetadata, DiscoveryNode node, RoutingAllocation allocation) {
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;deciders-structure&quot;&gt;Deciders Structure&lt;/h2&gt;
-
-&lt;p&gt;In Elasticsearch 7.16, there are 19 deciders for the shard allocation. You can
-find them as follows:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  elasticsearch git:(v7.16.2 u=) rg -l --sort-files &quot;extends AllocationDecider&quot; server/src/main | sed 's/.*\///g'
-AllocationDeciders.java
-AwarenessAllocationDecider.java
-ClusterRebalanceAllocationDecider.java
-ConcurrentRebalanceAllocationDecider.java
-DiskThresholdDecider.java
-EnableAllocationDecider.java
-FilterAllocationDecider.java
-MaxRetryAllocationDecider.java
-NodeReplacementAllocationDecider.java
-NodeShutdownAllocationDecider.java
-NodeVersionAllocationDecider.java
-RebalanceOnlyWhenActiveAllocationDecider.java
-ReplicaAfterPrimaryActiveAllocationDecider.java
-ResizeAllocationDecider.java
-RestoreInProgressAllocationDecider.java
-SameShardAllocationDecider.java
-ShardsLimitAllocationDecider.java
-SnapshotInProgressAllocationDecider.java
-ThrottlingAllocationDecider.java
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Among these deciders, there is a root decider, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AllocationDeciders&lt;/code&gt;, which
-contains the references of all other deciders. When making a decision, it will
-ask those deciders to decide for the shard allocation, and then assemble them to
-make a global decision. We will discuss more details in the following
-section. As for other deciders, you can see their purposes from
-their filenames, such as for awareness key-value pairs (e.g. availability zone),
-cluster rebalancing, concurrent rebalancing, disk threshold, and much more.&lt;/p&gt;
-
-&lt;h2 id=&quot;making-decisions&quot;&gt;Making Decisions&lt;/h2&gt;
-
-&lt;p&gt;There are two types of decision in the decider system: single decision and
-multi-decision. A single decision represents a decision made on one
-dimension, e.g. awareness or disk threshold. While a multi-decision represents a decision
-container that contains a list of child decisions. Let’s take a closer look at
-both of them.&lt;/p&gt;
-
-&lt;h3 id=&quot;single-decision&quot;&gt;Single Decision&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DiskThresholdDecider&lt;/code&gt; is a good example of making a single decision. Let’s check its method
-for shard allocation: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;canAllocate(...)&lt;/code&gt;. First of all, it retrieves the settings from the
-class member
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;diskThresholdSettings&lt;/code&gt; for the low and high thresholds, then it retrieves the disk
-usage from the given information (node, routing allocation, usages), and finally
-compare both of them to make the decision.
-Depending on the situation, we will either get a YES or a NO decision. Here is the code
-snippet:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Decision&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;canAllocate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ShardRouting&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shardRouting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RoutingNode&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RoutingAllocation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allocation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// retrieve settings&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;usedDiskThresholdLow&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;100.0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diskThresholdSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFreeDiskThresholdLow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;usedDiskThresholdHigh&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;100.0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diskThresholdSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFreeDiskThresholdHigh&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// checks for exact byte comparisons&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;freeBytes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diskThresholdSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFreeBytesThresholdLow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getBytes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;c1&quot;&gt;// checks for percentage comparisons&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;freeDiskPercentage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;diskThresholdSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getFreeDiskThresholdLow&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Note that YES and NO are not the only types for the decision. It also exists a
-THROTTLE type, which allows users to control the shard allocation based on the
-concurrency. We can consider it as a “temporary NO”, as
-the allocation is not allowed right now, but may be YES in the future.&lt;/p&gt;
-
-&lt;h3 id=&quot;multi-decision&quot;&gt;Multi-Decision&lt;/h3&gt;
-
-&lt;p&gt;Now let’s take a look at the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AllocationDeciders&lt;/code&gt; to see how it makes a
-multi-decision. When starting the decision, it accepts information about the shard
-routing, node routing, and the current allocation. Then, it either ignores the
-shard or delegates the decision-making to its child deciders and assembles them at the end.
-All child
-deciders make a decision synchronously, probably because they don’t require
-additional information (such as HTTP requests) from an external service. Once the
-decision is made by a child decider, the result is processed with the fail-fast
-strategy. That is, whenever one child decision is negative (NO), we consider the
-whole decision as NO without asking the remaining deciders. It’s a short
-circuit. We do that unless we are in the debug mode, in which case, we
-gather all the decisions, including the NO decisions, before returning the final
-result. If my explanation is a bit confusing for you, here is the source code of
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AllocationDeciders&lt;/code&gt;, hopefully, it makes things clearer.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Decision&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;canAllocate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ShardRouting&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;shardRouting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RoutingNode&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RoutingAllocation&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allocation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allocation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;shouldIgnoreShardForNode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shardRouting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;shardId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nodeId&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Decision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;NO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;nc&quot;&gt;Decision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Multi&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Decision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Multi&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;AllocationDecider&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allocationDecider&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allocations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;Decision&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decision&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allocationDecider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;canAllocate&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shardRouting&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allocation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// short track if a NO is returned.&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Decision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;NO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isTraceEnabled&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-                &lt;span class=&quot;c1&quot;&gt;// short circuit only if debugging is not enabled&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;allocation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;debugDecision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Decision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;NO&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;decision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;addDecision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allocation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ret&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now if we go further into the structure of the value class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Decision.Multi&lt;/code&gt;,
-we can see that a multi-decision is a decision container, it contains
-multiple child decisions inside it:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Multi&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Decision&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ToXContentFragment&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-        &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Decision&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;decisions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ArrayList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Unlike single decisions, it does not have a label and explanation. More precisely,
-getting a label from a multi-decision returns &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;null&lt;/code&gt;, and getting an explanation
-throws an unsupported operation exception. In my opinion,
-the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Decision&lt;/code&gt; base class is too vague and we shouldn’t return null or raise an
-exception. But that’s a design choice and probably does not matter as this
-decider system is internal to Elasticsearch.&lt;/p&gt;
-
-&lt;h2 id=&quot;lifecycle&quot;&gt;Lifecycle&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;When are deciders created? I.e. where are deciders positioned in the lifecycle of
-an Elasticsearch cluster?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;When starting a new node, the class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bootstrap&lt;/code&gt; is called. Before starting the
-node, it creates a new &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Node&lt;/code&gt; instance, which creates and adds a list of modules.
-One of these modules is
-called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ClusterModule&lt;/code&gt; and it contains the deciders. So the whole logic happens
-at the early stage of the lifecycle, more precisely, the creation happens before the
-startup of a node.&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;boostrap&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;- construct node&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;- create modules&lt;/span&gt;
-      &lt;span class=&quot;s&quot;&gt;- create master module&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;- create deciders&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;- create root decider (AllocationDeciders)&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;- create allocation service&lt;/span&gt;
-        &lt;span class=&quot;s&quot;&gt;- ...&lt;/span&gt;
-    &lt;span class=&quot;s&quot;&gt;- add modules&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;- start node&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Now another question is: &lt;em&gt;when updating a setting of a cluster, do we need to restart
-the node to take the new value into account?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;I don’t think so. I handled such
-cases many times in production and it never requires a restart. These settings are dynamic.
-When looking into Elasticsearch’s source code, such as awareness allocation decider and
-disk threshold decider, we can find out that the settings are passed
-from the constructor of the deciders. Here are the code snippets:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;AwarenessAllocationDecider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClusterSettings&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clusterSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DiskThresholdDecider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClusterSettings&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clusterSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;diskThresholdSettings&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DiskThresholdSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clusterSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;CURRENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;major&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;remove enable_for_single_data_node in 9&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;enableForSingleDataNode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;ENABLE_FOR_SINGLE_DATA_NODE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;And the decider is subscribed to the settings update. In other words, when a setting is updated,
-the decider is notified and its setting is updated as well. Here is the code for subscribing to the settings update
-for disk thresholds (low watermark, high watermark, flood-stage) in class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DiskThresholdSettings&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DiskThresholdSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Settings&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;settings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClusterSettings&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clusterSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;clusterSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addSettingsUpdateConsumer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;CLUSTER_ROUTING_ALLOCATION_LOW_DISK_WATERMARK_SETTING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setLowWatermark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;clusterSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addSettingsUpdateConsumer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;CLUSTER_ROUTING_ALLOCATION_HIGH_DISK_WATERMARK_SETTING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setHighWatermark&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;clusterSettings&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addSettingsUpdateConsumer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;CLUSTER_ROUTING_ALLOCATION_DISK_FLOOD_STAGE_WATERMARK_SETTING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;setFloodStage&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;where you can see that when those cluster settings are updated, the class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DiskThresholdSettings&lt;/code&gt;
-sets the new value into its instance.&lt;/p&gt;
-
-&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
-
-&lt;p&gt;There are three types of testing related to the deciders: 1) the tests for the
-single deciders which make one decision at a time; 2) the tests for the root
-decider which gathers information from multiple single decisions and makes a
-multi-decision; 3) other services that depend on deciders since deciders are
-part of the cluster module. And … we are going to discuss three of them right now.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Testing a single-decision decider.&lt;/strong&gt; To understand this, let’s take the disk threshold
-decider as an example (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DiskThresholdDeciderTests&lt;/code&gt;). As we saw in the previous sections “Responsibility” and
-“Making Decisions”, the allocation is made using the index metadata, shard routing,
-routing allocation, etc. All these data are fetched eagerly and passed as input parameters.
-Therefore, it makes the test quite simple: we just need to provide this information to
-a decider without mocking anything as there are no external calls. More precisely, in a test case, we:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;prepare settings that are relevant to this decider&lt;/li&gt;
-  &lt;li&gt;create a decider instance using these settings&lt;/li&gt;
-  &lt;li&gt;prepare a cluster state (including index metadata, shard routing, etc) which are
-necessary for making the decision&lt;/li&gt;
-  &lt;li&gt;create an allocation service that encapsulates the decider under test&lt;/li&gt;
-  &lt;li&gt;require re-routing the shards by calling the service, which asks the deciders to make the
-decision behind the screen&lt;/li&gt;
-  &lt;li&gt;finally assert the result&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;Testing a multi-decision decider.&lt;/strong&gt; To understand this, let’s take
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;AllocationDecidersTests&lt;/code&gt; as an example. In this test suite, it tests the debug mode and
-the early termination. Because these expectations are not tight to any specific child
-deciders, the setup simply uses some mocked deciders instantiated as anonymous classes.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AllocationDeciders&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;allocationDeciders&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AllocationDeciders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Arrays&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;asList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;AllocationDecider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AllocationDecider&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;}));&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Testing a service that depends on the deciders.&lt;/strong&gt; In this case, the testing is more complex
-to set up because we need to prepare the deciders. Depending on the needs of that service,
-it may plug some decider during the setup phase. The easiest setup is to prepare
-a no-operation decider system,
-which requires an empty all-deciders decider.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClusterAllocationExplainActionTests&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ESTestCase&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AllocationDeciders&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;NOOP_DECIDERS&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AllocationDeciders&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Collections&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;emptyList&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;());&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
-
-&lt;p&gt;How to go further from here?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;To better understand what do all those deciders do, you can read another article
-that I wrote last year: &lt;a href=&quot;/2020/09/27/shard-allocation/&quot;&gt;18 Allocation Deciders in Elasticsearch 7.9&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;To better understand the disk watermarks in Elasticsearch, you can read another article
-that I wrote early this year: &lt;a href=&quot;/04/10/disk-watermarks-in-elasticsearch/&quot;&gt;Disk Watermarks In Elasticsearch&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;To better understand how to resolve unassigned shards in Elasticsearch, I suggest you
-to read Datadog’s blog &lt;a href=&quot;https://www.datadoghq.com/blog/elasticsearch-unassigned-shards/&quot;&gt;“How to resolve unassigned shards in Elasticsearch”&lt;/a&gt;, written by Emily Chang.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;In this article, we saw the decider system for shard allocation. More precisely,
-we saw that the allocation service is responsible for allocating shards and balancing shards;
-we saw that there are 19 deciders in Elasticsearch 7.16 and there are two types of decisions:
-single decision and multi-decision. When making a decision, a decider relies on information from the ES settings and from
-cluster state (index metadata, node, routing allocation info).
-The deciders are created early in the lifecycle during node bootstrap. We also saw
-how the testing works for testing a single-decision decider, a multi-decision decider, and
-other services that depend on deciders. Finally, I suggested some resources for you so that you can
-go further from this article. Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
-on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
-&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/elastic/elasticsearch/&quot;&gt;“Elasticsearch 7.16 source code (elastic/elasticsearch)&lt;/a&gt;, &lt;em&gt;GitHub&lt;/em&gt;, 2021.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://opster.com/guides/elasticsearch/glossary/elasticsearch-shards/&quot;&gt;“Elasticsearch Shards”&lt;/a&gt;,
-Opster, 2021.&lt;/li&gt;
-  &lt;li&gt;Emily Chang, &lt;a href=&quot;https://www.datadoghq.com/blog/elasticsearch-unassigned-shards/&quot;&gt;“How to resolve unassigned shards in
-Elasticsearch”&lt;/a&gt;,
-&lt;em&gt;Datadog&lt;/em&gt;, 2019.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="elasticsearch" /><category term="java" /><category term="elasticsearch" /><category term="system-design" /><summary type="html">Curious about how does a decision system work? This article explains the deciders for shard allocation in Elasticsearch by going through their responsibility, structure, decision making, lifecycle, testing, and more.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-patrick-federi-LJEjI7LXABU-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-patrick-federi-LJEjI7LXABU-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="review" /><category term="review" /><category term="career" /><summary type="html">My tech journey at Datadog as a software engineer in 2021 and some side-projects in my free time.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-markus-winkler-EcgyryGygeE-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-markus-winkler-EcgyryGygeE-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
