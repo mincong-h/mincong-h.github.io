@@ -12,7 +12,10 @@ tags:                []
 ads_tags:            []
 comments:            true
 excerpt:             >
-    TODO
+    Different components provided by the OpenAPI Initiative, e.g. OpenAPI spec,
+    code generator, schema, build, api-diff, and how they may be useful for
+    your Java project.
+
 image:               /assets/bg-fahmi-fakhrudin-nzyzAUsbV0M-unsplash.jpg
 cover:               /assets/bg-fahmi-fakhrudin-nzyzAUsbV0M-unsplash.jpg
 article_header:
