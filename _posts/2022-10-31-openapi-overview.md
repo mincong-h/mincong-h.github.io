@@ -52,8 +52,7 @@ Now, let's get started!
 The OpenAPI specification (OAS) defines a standard, language-agnostic interface
 to RESTful APIs to discover and understand the capabilities of the services
 wihtout access to source code, documnetation, or through network traffic
-inspection. See more details in [OpenAPI Specification, Version 3.0.0 -
-Swagger](https://swagger.io/specification/).
+inspection.
 
 Below, you can see an example for the demo project "Pet Store", provided by the
 official OpenAPI generator ([source
@@ -124,7 +123,15 @@ the exchange format, the expectation about the successful response and the
 error, and so on. It makes it possible to generate documentation, test helpers,
 and generate stubs in different frameworks in different languages.
 
-## Section 2
+To learn more about the specification, you can visit the web page [OpenAPI Specification, Version 3.0.0 -
+Swagger](https://swagger.io/specification/) or see more samples of
+`openapi.yaml` on GitHub project `openapi-generator`, under the section
+"samples", like [this one for the Java RESTful APIs
+(JAX-RS)](https://github.com/OpenAPITools/openapi-generator/blob/v6.2.0/samples/server/petstore/jaxrs-spec-interface/src/main/openapi/openapi.yaml).
+
+## Code Generator
+
+The code generator is the second concept
 
 ## Section 3
 
