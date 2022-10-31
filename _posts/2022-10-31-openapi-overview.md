@@ -131,7 +131,19 @@ Swagger](https://swagger.io/specification/) or see more samples of
 
 ## Code Generator
 
-The code generator is the second concept
+The code generator is the second key concept of the OpenAPI project. It allows
+you to generate things based on the specification. The code generation can be
+used for many cases:
+
+* For generating the specification of the backend service as a collection of
+  interfaces
+* For generating client code for different programming languages, like Go or
+  Java.
+* For generating documentation for your project
+* For generating schema for your project
+
+You can see more details in the official website
+<https://openapi-generator.tech>.
 
 ## Section 3
 
