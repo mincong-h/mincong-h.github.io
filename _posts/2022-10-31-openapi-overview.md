@@ -37,7 +37,6 @@ most of the concepts should be language agnostic.
 After reading this article, you will understand:
 
 * OpenAPI Specification
-* Code generator
 * Schema
 * Build tools
 * IDE support
@@ -137,13 +136,19 @@ used for many cases:
 
 * For generating the specification of the backend service as a collection of
   interfaces
-* For generating client code for different programming languages, like Go or
+* For generating the client code for different programming languages, like Go or
   Java.
-* For generating documentation for your project
-* For generating schema for your project
+* For generating the documentation for your project
+* For generating the schema for your project
 
-You can see more details in the official website
-<https://openapi-generator.tech>.
+There are different ways to use OpenAPI generator. You can use it via the CLI tools
+(available under all major operating systems), via plugins (hooked into your
+build system, such as Maven or gradle) or use it from websites. You can see more
+details in the official website: <https://openapi-generator.tech>.
+
+Having those choices means that you have the possibility to trigger the code
+generation in different parts of the development: either on-demand, before
+commit to Git (pre-commit hook via CLI), or as part of the build process (plugins).
 
 ## Section 3
 
