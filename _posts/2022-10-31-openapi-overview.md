@@ -157,7 +157,7 @@ operations. The request and response body are represented as "schema" under each
 operation. For Java project, these schemas are generated into Plain Old Java
 Objects (POJOs). Let's take a deeper look into
 that part. For the `addPet` operation mentioned in the section above, it's
-defined as a reference for the Pet schema:
+defined as a reference for the Pet schema ([source code](https://github.com/OpenAPITools/openapi-generator/blob/24f476a38161a797c773577cab775ef285baeaba/samples/server/petstore/jaxrs-spec/src/main/openapi/openapi.yaml#L24-L40)):
 
 ```yaml
       requestBody:
