@@ -279,6 +279,13 @@ public class Pet  implements Serializable {
 It contains not only the POJOs but also the annotations for Java bean validation
 and the annotations for Jackson.
 
+## Change Detection
+
+There are some toolings about change detection, such as
+[Azure/openapi-diff](https://github.com/Azure/openapi-diff) and
+[OpenAPITools/openapi-diff](https://github.com/OpenAPITools/openapi-diff). These
+are command line tools to detect changes between two OpenAPI specifications.
+
 ## Going Further
 
 How to go further from here?
