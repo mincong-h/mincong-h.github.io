@@ -150,7 +150,131 @@ Having those choices means that you have the possibility to trigger the code
 generation in different parts of the development: either on-demand, before
 commit to Git (pre-commit hook via CLI), or as part of the build process (plugins).
 
-## Section 3
+## Schema
+
+An API specification needs to specify the HTTP request and response for all API
+operations. The request and response body are represented as "schema" under each
+operation. For Java project, these schemas are generated into Plain Old Java
+Objects (POJOs). Let's take a deeper look into
+that part. For the `addPet` operation mentioned in the section above, it's
+defined as a reference for the Pet schema:
+
+```yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        description: Pet object that needs to be added to the store
+        required: true
+      responses:
+        "200":
+          content: {}
+          description: successful operation
+```
+
+where the Pet schema is defined as the code block below ([source code](https://github.com/OpenAPITools/openapi-generator/blob/24f476a38161a797c773577cab775ef285baeaba/samples/server/petstore/jaxrs-spec/src/main/openapi/openapi.yaml#L1316-L1369)). You can see the an
+example payload, the properties defined in different types (primitives, embeded
+object, array, enum), the required fields, etc.
+
+```yaml
+components:
+  schemas:
+    # ...
+    Pet:
+      example:
+        photoUrls:
+        - photoUrls
+        - photoUrls
+        name: doggie
+        id: 0
+        category:
+          name: default-name
+          id: 6
+        tags:
+        - name: name
+          id: 1
+        - name: name
+          id: 1
+        status: available
+      properties:
+        id:
+          format: int64
+          type: integer
+          x-is-unique: true
+        category:
+          $ref: '#/components/schemas/Category'
+        name:
+          example: doggie
+          type: string
+        photoUrls:
+          items:
+            type: string
+          type: array
+          uniqueItems: true
+          xml:
+            name: photoUrl
+            wrapped: true
+        tags:
+          items:
+            $ref: '#/components/schemas/Tag'
+          type: array
+          xml:
+            name: tag
+            wrapped: true
+        status:
+          description: pet status in the store
+          enum:
+          - available
+          - pending
+          - sold
+          type: string
+      required:
+      - name
+      - photoUrls
+      type: object
+      xml:
+        name: Pet
+```
+
+And the generated POJO `Pet.java` looks like this ([source code](https://github.com/OpenAPITools/openapi-generator/blob/v6.2.0/samples/server/petstore/jaxrs-spec/src/gen/java/org/openapitools/model/Pet.java)):
+
+```java
+@JsonTypeName("Pet")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen")
+public class Pet  implements Serializable {
+  private @Valid Long id;
+  private @Valid Category category;
+  private @Valid String name;
+  private @Valid Set<String> photoUrls = new LinkedHashSet<>();
+  private @Valid List<Tag> tags = null;
+  public enum StatusEnum {
+
+    AVAILABLE(String.valueOf("available")), PENDING(String.valueOf("pending")), SOLD(String.valueOf("sold"));
+
+
+    private String value;
+
+    StatusEnum (String v) {
+        value = v;
+    }
+
+    public String value() {
+        return value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    ...
+}
+```
 
 ## Going Further
 
