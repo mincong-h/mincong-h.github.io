@@ -286,6 +286,12 @@ There are some toolings about change detection, such as
 [OpenAPITools/openapi-diff](https://github.com/OpenAPITools/openapi-diff). These
 are command line tools to detect changes between two OpenAPI specifications.
 
+They allow you to review the changes between two versions easily, as part of the
+Git flow, and make your developement more efficient. It may be beneficial for
+troubleshooting as well. The feature about breaking changes detection from the
+`Azure/openapi-diff` brings confidence for the development and allows you to
+avoid incident easily.
+
 ## Going Further
 
 How to go further from here?
