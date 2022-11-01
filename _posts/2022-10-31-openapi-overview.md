@@ -276,6 +276,9 @@ public class Pet  implements Serializable {
 }
 ```
 
+It contains not only the POJOs but also the annotations for Java bean validation
+and the annotations for Jackson.
+
 ## Going Further
 
 How to go further from here?
