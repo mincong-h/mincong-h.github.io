@@ -10,42 +10,42 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>How to write technical documentation - Mincong Huang</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>OpenAPI Overview - Mincong Huang</title>
 
-<meta name="description" content="Define the types of documentation, your audience, improve page content, write less, organize the relationship between pages, and more.">
+<meta name="description" content="The key concepts provided by the OpenAPI Initiative, e.g. OpenAPI spec, code generator, schema, build, api-diff, and how they may be useful for your project.">
 
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>How to write technical documentation | Mincong Huang</title>
+<title>OpenAPI Overview | Mincong Huang</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="How to write technical documentation" />
+<meta property="og:title" content="OpenAPI Overview" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="Define the types of documentation, your audience, improve page content, write less, organize the relationship between pages, and more." />
-<meta property="og:description" content="Define the types of documentation, your audience, improve page content, write less, organize the relationship between pages, and more." />
-<link rel="canonical" href="https://mincong.io/en/technical-documentation/" />
-<meta property="og:url" content="https://mincong.io/en/technical-documentation/" />
+<meta name="description" content="The key concepts provided by the OpenAPI Initiative, e.g. OpenAPI spec, code generator, schema, build, api-diff, and how they may be useful for your project." />
+<meta property="og:description" content="The key concepts provided by the OpenAPI Initiative, e.g. OpenAPI spec, code generator, schema, build, api-diff, and how they may be useful for your project." />
+<link rel="canonical" href="https://mincong.io/en/openapi-overview/" />
+<meta property="og:url" content="https://mincong.io/en/openapi-overview/" />
 <meta property="og:site_name" content="Mincong Huang" />
-<meta property="og:image" content="https://mincong.io/assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg" />
+<meta property="og:image" content="https://mincong.io/assets/bg-fahmi-fakhrudin-nzyzAUsbV0M-unsplash.jpg" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-10-16T10:04:02+02:00" />
+<meta property="article:published_time" content="2022-10-31T14:33:24+01:00" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta property="twitter:image" content="https://mincong.io/assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg" />
-<meta property="twitter:title" content="How to write technical documentation" />
+<meta property="twitter:image" content="https://mincong.io/assets/bg-fahmi-fakhrudin-nzyzAUsbV0M-unsplash.jpg" />
+<meta property="twitter:title" content="OpenAPI Overview" />
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/technical-documentation/"},"description":"Define the types of documentation, your audience, improve page content, write less, organize the relationship between pages, and more.","@type":"BlogPosting","url":"https://mincong.io/en/technical-documentation/","image":"https://mincong.io/assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg","headline":"How to write technical documentation","dateModified":"2022-10-16T10:04:02+02:00","datePublished":"2022-10-16T10:04:02+02:00","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/openapi-overview/"},"description":"The key concepts provided by the OpenAPI Initiative, e.g. OpenAPI spec, code generator, schema, build, api-diff, and how they may be useful for your project.","@type":"BlogPosting","url":"https://mincong.io/en/openapi-overview/","image":"https://mincong.io/assets/bg-fahmi-fakhrudin-nzyzAUsbV0M-unsplash.jpg","headline":"OpenAPI Overview","dateModified":"2022-10-31T14:33:24+01:00","datePublished":"2022-10-31T14:33:24+01:00","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
 <!-- Extra Open Graph :: Start -->
 
-<meta property="og:image:width" content="1279"/>
+<meta property="og:image:width" content="1074"/>
 <meta property="og:image:height" content="1920"/>
 
 <!-- Extra Open Graph :: End -->
 
-<link rel="canonical" href="https://mincong.io/en/technical-documentation/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
+<link rel="canonical" href="https://mincong.io/en/openapi-overview/"><link rel="alternate" type="application/rss+xml" title="Mincong Huang" href="/feed.xml"><!-- start favicons snippet, use https://realfavicongenerator.net/ --><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"><link rel="manifest" href="/assets/site.webmanifest"><link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#fc4d50"><link rel="shortcut icon" href="/assets/favicon.ico">
 
 <meta name="msapplication-TileColor" content="#ffc40d"><meta name="msapplication-config" content="/assets/browserconfig.xml">
 
@@ -355,21 +355,30 @@
         </ul>
       </nav></div>
   </header>
-</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4)),url(/assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg);background-color:#203028;"><div class="hero__content"><div class ="main">
+</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4)),url(/assets/bg-fahmi-fakhrudin-nzyzAUsbV0M-unsplash.jpg);background-color:#203028;"><div class="hero__content"><div class ="main">
 
   
   <div class="article__info clearfix">
       <ul class="left-col menu">
         <li>
               <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=java">java</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=api">api</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
                 href="/en/archive/?tag=doc">doc</a>
+            </li><li>
+              <a class="button button--secondary button--pill button--sm"
+                href="/en/archive/?tag=build">build</a>
             </li>
 
         <li class="separator">|</li>
           
             <li>
               <a class="button button--circle button--primary focus lang"
-                 href="/en/technical-documentation/"><span>EN</span></a>
+                 href="/en/openapi-overview/"><span>EN</span></a>
 
               
 
@@ -384,16 +393,16 @@
             </li>
           
         
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Oct 16, 2022</span>
-            </li></ul></div><div class="article__header"><header><h1>How to write technical documentation</h1></header></div><div class="article__header">
-                        <p class="overlay__excerpt">5 tips for writing documentation as a software engineer.</p>
+      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Oct 31, 2022</span>
+            </li></ul></div><div class="article__header"><header><h1>OpenAPI Overview</h1></header></div><div class="article__header">
+                        <p class="overlay__excerpt">The key concepts of OpenAPI and how they improve your RESTful APIs.</p>
                       </div><div class="article__info clearfix">
   <ul class="left-col menu">
     <li>
       <i class="fas fa-camera"></i>
       
       Photo by
-      <a href="https://unsplash.com/@zeak" target="_blank">Dmitrij Paskevic</a>
+      <a href="https://unsplash.com/@fahmipaping" target="_blank">Fahmi Fakhrudin</a>
       
       on
       <a href="https://unsplash.com/license" target="_blank">Unplash </a>
@@ -410,273 +419,315 @@
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article><meta itemprop="headline" content="How to write technical documentation"><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-10-16T10:04:02+02:00">
-    <meta itemprop="keywords" content="doc"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+<article><meta itemprop="headline" content="OpenAPI Overview"><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2022-10-31T14:33:24+01:00">
+    <meta itemprop="keywords" content="java,api,doc,build"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 
 <!-- end custom article top snippet -->
 <div class="article__content" itemprop="articleBody"><h2 id="introduction">Introduction</h2>
 
-<p>I have contributed a lot to the company’s internal documentation. I also wrote 210
-blog posts on this website and gained about 1 million page
-views. Therefore, I want to share my
-experience with you about how to write technical documentation.</p>
-
-<p>Writing technical documentation has many benefits: it allows users to understand
-how to use your framework without jumping into the source code; it clarifies the
-needs and the goals of your project; it helps teammates to understand the system
-and succeed in their missions.</p>
+<p>Recently I studied OpenAPI and made some notes about OpenAPI. can improve
+your RESTful APIs. Today, I want to share them with you and I hope that they can
+be useful for you as well. This article is focused on the Java backend service but
+most of the concepts should be language agnostic.</p>
 
 <p>After reading this article, you will understand:</p>
 
 <ul>
-  <li>What are the different types of documentation?</li>
-  <li>Who are your readers?</li>
-  <li>How to improve each page?</li>
-  <li>How to write fewer documents?</li>
-  <li>How to organize multiple pages?</li>
-  <li>How to go further from this article?</li>
+  <li>OpenAPI Specification</li>
+  <li>Code generator</li>
+  <li>Schema</li>
+  <li>IDE support</li>
+  <li>API change detection</li>
 </ul>
 
-<p>Before continuing, I want you to let know that I am a backend software engineer
-and a site reliability engineer (SRE). My primary tool for writing
-documentation these days is
-<a href="https://www.atlassian.com/software/confluence">Confluence</a>. Because of the
-differences in our backgrounds, my experience may not apply to your cases.
-Leave me a comment if you have any suggestions :) Now, let’s get started!</p>
+<p>Now, let’s get started!</p>
 
-<h2 id="types-of-documentation">Types of documentation</h2>
+<h2 id="openapi-specification">OpenAPI Specification</h2>
 
-<p>The first thing to clarify is that there isn’t just one type of
-documentation: there are multiple ones. In this talk 
-<a href="https://www.writethedocs.org/videos/eu/2017/the-four-kinds-of-documentation-and-why-you-need-to-understand-what-they-are-daniele-procida/">“The four kinds of documentation, and why you need to understand what they are”</a>,
-Daniele Procida explained that there are 4 kinds of documentation:</p>
+<p>The OpenAPI specification (OAS) defines a standard, language-agnostic interface
+to RESTful APIs to discover and understand the capabilities of the services
+without access to source code, documentation, or through network traffic
+inspection.</p>
 
-<ol>
-  <li>learning-oriented tutorials</li>
-  <li>goal-oriented how-to guides</li>
-  <li>information-oriented reference material</li>
-  <li>understanding-oriented explanations</li>
-</ol>
+<p>Below, you can see an example for the demo project “Pet Store”, provided by the
+official OpenAPI generator (<a href="https://github.com/OpenAPITools/openapi-generator/blob/v6.2.0/samples/server/petstore/jaxrs-spec-interface/src/main/openapi/openapi.yaml">source
+code</a>).
+The specification describes all the API endpoints under the <code class="language-plaintext highlighter-rouge">paths</code>
+section, with the path of the resource, the operation, the schema, the response,
+and many other things. It also includes some metadata of the specification, the
+servers using this specification, etc.</p>
 
-<p>Structuring documentation according to its four distinct functions helps ensure
-that each of them is adequately served. It also makes it far easier to write
-and maintain.</p>
-
-<p><strong>Tutorials</strong> are designed for newcomers and beginners. They are learning-oriented.
-Your users are
-new to your framework and don’t know much about it. You need to ensure that the
-documentation explains the terminologies, highlights the architecture of the
-framework, and avoids dive deep into implementation. The primary
-goal of these documents is to let your readers achieve something with your
-framework. It does not matter if you cover all the details, the most
-important is that your readers find it enjoyable and learn something from your
-documentation.</p>
-
-<p><strong>How-to</strong> guides target more intermediate users. They are goal-oriented. Your
-readers know the basic
-concepts of your framework, but they need to know more to solve a specific
-problem. The key difference between tutorials and how-to guides is that now your
-users know exactly what their problem is. Therefore, your document should focus
-on their problem and tries to solve that. Solving the problem means describing the
-problem properly, the context around the problem (upstream, downstream,
-timeline, …), the relationship between this component and other components in
-the architecture, the coverage of different scenarios, etc.</p>
-
-<p><strong>Reference materials</strong> are detailed documentation about the
-specification and implementation of your framework. They dive deep into
-technical details and describe the behavior of certain components, functions,
-etc. They are information-oriented.</p>
-
-<p><strong>Explanations</strong> are discussions that illuminate and clarify a particular topic.
-They are understanding-oriented. It provides different kinds of background
-knowledge of the topic, explains why it was done this way, and provides
-alternative solutions.</p>
-
-<h2 id="who-are-your-readers">Who are your readers?</h2>
-
-<p>Once we know the types of documentation, it’s time to understand who are your
-readers. How your documentation can help them? In my working environment, my
-readers can be my teammates, managers, leaders (VP+), and engineers in other
-teams. Depending on the readers, they have different goals when reading the
-documentation and it’s important to write the documentation to serve the
-purpose.</p>
-
-<ul>
-  <li><strong>Your teammates</strong> are probably the contributors of the framework. They
-care both the theoretical and the practical parts of the framework. You
-can write documentation to explain the concept and decisions about the system
-design; write a reference guide to describe technical details; write
-troubleshooting articles to debug some problems that happened in production; etc.</li>
-  <li><strong>Managers and leaderships</strong> care less about the
-practical side of the project since they don’t participate actively in
-development. They are more focused on high-level things: the overview of
-the project, the progress of the work, the important decisions made, or some
-critical pieces. Therefore, we should emphasize the connections between
-components,
-the impact, the indention of the project, the reasons, or anything else that
-can be easy to read and follow.</li>
-  <li><strong>Engineers in other teams</strong> are probably users of your framework. You
-need to write tutorials, and how-to guides to help them to use your framework.</li>
-</ul>
-
-<p>It’s important to think about your audience before writing new documentation.
-It makes the intention much clearer. Also, try to think about “what can I do to help
-them solve their problems” rather than “what I want to write” makes it easier
-for readers to understand your doc. Obviously, everyone’s situation is
-different but I believe that
-the general concept of “thinking about your readers” remains the same.</p>
-
-<h2 id="how-to-improve-each-page">How to improve each page?</h2>
-
-<p>Now, focus on pages, how can we improve each of them? Here are some ideas that I
-want to share.</p>
-
-<p><strong>Choose the type of documentation.</strong> In the previous section, we mentioned that
-there are tutorials, how-to guides, reference material, and explanations.
-Choosing the type of documentation lets you, the writer, focus on
-what you want to write and drop what you don’t want.</p>
-
-<p><strong>Define your readers.</strong> In the previous section, we mentioned that we need to
-understand who are your readers and what are their goals. This also helps you
-for structuring your content.</p>
-
-<p><strong>Keep the read time under 10 minutes.</strong> I believe that a long document is very hard
-for readers. It’s hard to navigate and hard to keep focus for a long time.
-Depending on the type of document, it may be better to split a big one into
-smaller ones, each of which serves a different purpose. For example, if an
-article is mixed with high-level concepts of your framework, a detailed
-explanation of some components, and a section for describing potential issues.
-Then, it may be worth splitting it into 3 documents: one focus on describing the
-high-level concept (tutorial); one focus on the detailed feature of some
-components (reference materials); and the last one on the troubleshooting
-(how-to guides). Therefore, it’s easier for your readers.</p>
-
-<p><strong>Having a common thread running through different sections.</strong> A common thread
-is an idea
-or theme that is consistently present in those sections. It makes the logic easy
-to follow and keeps the attention of your readers. This common thread can be in
-one of these dimensions: the timeline, the project development lifecycle,
-different aspects of the project, upstream and downstream, … It is also a good
-practice to write the outline before writing the whole documention.</p>
-
-<p><strong>Using diagrams to express your idea.</strong> A good diagram is worth a thousand
-words. It allows you to better express the
-relationship across multiple dimensions: time, components, exchange protocols,
-system boundary, object’s lifecycle, synchronization, etc. Also, it is more
-visual and easy to understand. I use a lot of
-diagrams in my documentation. To draw and maintain diagrams, here are two
-important aspects that you need to know:</p>
-
-<ul>
-  <li><strong>Types:</strong> there are many types of diagrams, such as flow chart, sequence diagram,
-class diagram, state diagram, entity relationship diagram, and more.
-You can choose the type based on what you need.</li>
-  <li><strong>Tools:</strong> there are many tools that help you to draw diagrams. In my work, I
-mainly use GitHub and Confluence. Both of them support
-<a href="https://mermaid-js.github.io/mermaid/#/">Mermaid</a>: a framework to
-draw diagrams from code using a simple syntax. On GitHub, just use <code class="language-plaintext highlighter-rouge">mermaid</code> as
-the language syntax for your code blocks; on Confluence, there is a <a href="https://marketplace.atlassian.com/apps/1226567/mermaid-diagrams-for-confluence?hosting=cloud&amp;tab=overview">Mermaid
-Diagrams</a>
-plugin that allows you to describe diagram in code and generate the results for you.
-For quick drawing, I also use <a href="https://excalidraw.com">Excalidraw</a>, a
-whiteboard tool that lets you easily sketch diagrams that have a hand-drawn feel
-to them. There are other paid tools like
-<a href="https://www.lucidchart.com/pages/">Lucidchart</a>.</li>
-</ul>
-
-<p><strong>Using templates to structure your idea.</strong> Using templates can help you better
-structure your document without too much effort. In Confluence, there are
-<a href="https://www.atlassian.com/software/confluence/templates">Confluence Templates</a>
-that allow you to bootstrap your document with a predefined style: how-to
-article, retrospective, troubleshooting article, or product requirements, … they
-allow you to write documents faster and in a more consistent way over time (both for you
-and for your team). Here, I am using Confluence as an example, but you can imagine
-similar things for other documentation products.</p>
-
-<p>There are probably much more details that we can discuss but I want to keep this
-section concise. I can write another article about this if you are interested.
-Now, let’s go to the next section, where we are going to talk about how to write
-less documentation.</p>
-
-<h2 id="write-less">Write Less</h2>
-
-<p>Documentation can be really useful, but we don’t write it for its own sake. It’s
-here to help people to get stuff done. And often through writing documentation,
-you discover much bigger problems. Maybe the procedure you’re writing is
-really complicated and messy. Maybe you’re building something that has a concept
-that is really hard to explain, or maybe you find out that things don’t work in
-the way that you thought or they should. <strong>If you find yourself documenting
-around the problem, try to fix it may be a better solution.</strong> This is what
-Beth Aitman explained in her presentation <a href="https://youtu.be/R6zeikbTgVc">Writing effective
-documentation - YouTube</a> in the conference “Lead Dev” in
-Berlin. She is a technical writer working at Google.</p>
-
-<h2 id="organize-pages">Organize pages</h2>
-
-<p>Now you wrote some pages but it starts becoming hard for readers to find
-information. So what should you do? It’s time to think about the organization of the
-pages.</p>
-
-<p><strong>Structure documents into domains.</strong> You can put pages into multiple domains,
-each of them having different purposes. Therefore, when people are looking for
-pages related to one domain, it’s natural to go to that domain to find it. For
-example, in a data engineering team, you can imagine having domains: processing,
-storage, operations, etc. If the team becomes bigger, consider having sub-domains
-under the top domain, such as processing (service P1, service P2, service P3),
-storage (writer W1, writer W2, reader R1, reader R2, …), CI/CD (build, release,
-deployment), operations (alerting, on-call, automation), etc. You can also think
-it as a file system:</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/domain/sub-domain/.../page
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">openapi</span><span class="pi">:</span> <span class="s">3.0.1</span>
+<span class="na">info</span><span class="pi">:</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">This</span><span class="nv"> </span><span class="s">spec</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">mainly</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">testing</span><span class="nv"> </span><span class="s">Petstore</span><span class="nv"> </span><span class="s">server</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">contains</span><span class="nv"> </span><span class="s">fake</span><span class="se">\
+</span>    <span class="se">\ </span><span class="s">endpoints,</span><span class="nv"> </span><span class="s">models.</span><span class="nv"> </span><span class="s">Please</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">not</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">this</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">any</span><span class="nv"> </span><span class="s">other</span><span class="nv"> </span><span class="s">purpose.</span><span class="nv"> </span><span class="s">Special</span><span class="nv"> </span><span class="s">characters:</span><span class="se">\
+</span>    <span class="se">\ \"</span><span class="nv"> </span><span class="se">\\</span><span class="s">"</span>
+  <span class="na">license</span><span class="pi">:</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">Apache-2.0</span>
+    <span class="na">url</span><span class="pi">:</span> <span class="s">https://www.apache.org/licenses/LICENSE-2.0.html</span>
+  <span class="na">title</span><span class="pi">:</span> <span class="s">OpenAPI Petstore</span>
+  <span class="na">version</span><span class="pi">:</span> <span class="s">1.0.0</span>
+<span class="na">servers</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">url</span><span class="pi">:</span> <span class="s">http://petstore.swagger.io:80/v2</span>
+<span class="na">tags</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">description</span><span class="pi">:</span> <span class="s">Everything about your Pets</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">pet</span>
+<span class="pi">-</span> <span class="na">description</span><span class="pi">:</span> <span class="s">Access to Petstore orders</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">store</span>
+<span class="pi">-</span> <span class="na">description</span><span class="pi">:</span> <span class="s">Operations about user</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">user</span>
+<span class="na">paths</span><span class="pi">:</span>
+  <span class="s">/pet</span><span class="pi">:</span>
+    <span class="na">post</span><span class="pi">:</span>
+      <span class="na">operationId</span><span class="pi">:</span> <span class="s">addPet</span>
+      <span class="na">requestBody</span><span class="pi">:</span>
+        <span class="na">content</span><span class="pi">:</span>
+          <span class="s">application/json</span><span class="pi">:</span>
+            <span class="na">schema</span><span class="pi">:</span>
+              <span class="s">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/schemas/Pet'</span>
+          <span class="s">application/xml</span><span class="pi">:</span>
+            <span class="na">schema</span><span class="pi">:</span>
+              <span class="s">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/schemas/Pet'</span>
+        <span class="na">description</span><span class="pi">:</span> <span class="s">Pet object that needs to be added to the store</span>
+        <span class="na">required</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">responses</span><span class="pi">:</span>
+        <span class="s2">"</span><span class="s">200"</span><span class="pi">:</span>
+          <span class="na">content</span><span class="pi">:</span> <span class="pi">{}</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">successful operation</span>
+        <span class="s2">"</span><span class="s">405"</span><span class="pi">:</span>
+          <span class="na">content</span><span class="pi">:</span> <span class="pi">{}</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">Invalid input</span>
+      <span class="na">security</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">petstore_auth</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">write:pets</span>
+        <span class="pi">-</span> <span class="s">read:pets</span>
+      <span class="na">summary</span><span class="pi">:</span> <span class="s">Add a new pet to the store</span>
+      <span class="na">tags</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">pet</span>
+      <span class="na">x-codegen-request-body-name</span><span class="pi">:</span> <span class="s">body</span>
+      <span class="na">x-content-type</span><span class="pi">:</span> <span class="s">application/json</span>
+      <span class="na">x-accepts</span><span class="pi">:</span> <span class="s">application/json</span>
+      <span class="na">x-tags</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="na">tag</span><span class="pi">:</span> <span class="s">pet</span>
 </code></pre></div></div>
 
-<p>Therefore, it helps people to understand how to find your documents. In
-Confluence, you can achieve that by using child pages.</p>
+<p>The key value of this concept is to have a contract that specifies the behavior
+of the service. It allows both the client and the server to agree on
+the exchange format, the expectation about the successful response and the
+error, and so on. It makes it possible to generate documentation, test helpers,
+and generate stubs in different frameworks in different languages.</p>
 
-<p><strong>Tags.</strong> Sometimes you need
-more ways to group pages. For example, if you want to organize your documents in
-non-technical aspects (team, project, …). You may need other tools
-to help you as well. One possible way is to use tags. In Confluence, you can use
-the macro <a href="https://confluence.atlassian.com/doc/content-by-label-macro-145566.html">“Content by
-Label”</a>
-to achieve that. You need to add labels to each page that you want to be
-selected and provide those labels as a query in the macro. Then, you can see them
-being displayed on your page. Therefore, you can link to multiple pages easily.</p>
+<p>To learn more about the specification, you can visit the web page <a href="https://swagger.io/specification/">OpenAPI Specification, Version 3.0.0 -
+Swagger</a> or see more samples of
+<code class="language-plaintext highlighter-rouge">openapi.yaml</code> on GitHub project <code class="language-plaintext highlighter-rouge">openapi-generator</code>, under the section
+“samples”, like <a href="https://github.com/OpenAPITools/openapi-generator/blob/v6.2.0/samples/server/petstore/jaxrs-spec-interface/src/main/openapi/openapi.yaml">this one for the Java RESTful APIs
+(JAX-RS)</a>.</p>
 
-<p><strong>Make the title searchable.</strong> You need to make the title of the page
-comprehensible. People do not always look into your documentation
-through the links that you provided. They may search the title using the search
-engine (either Google, Confluence search, or anything else). Therefore, the
-title of your articles plays a critical role in the documentation. People
-won’t be able to read the awesome content you wrote if they cannot find it in
-the search engine. See <a href="https://youtu.be/a4L9GhldTHo?t=960">Writing technical documentation (16:00) -
-YouTube</a>, made by Fredrik Christenson, for
-more details.</p>
+<h2 id="code-generator">Code Generator</h2>
 
-<h2 id="going-further">Going Further</h2>
-
-<p>If you want to go further from this article …</p>
+<p>The code generator is the second key concept of the OpenAPI project. It allows
+you to generate things based on the specification. The code generation can be
+used for many cases:</p>
 
 <ul>
-  <li>To learn more about Mermaid Diagrams and its syntax, visit the official
-documentation <a href="https://mermaid-js.github.io/mermaid/#/">https://mermaid-js.github.io/mermaid/#/</a></li>
-  <li>To learn more about the four kinds of documentation, watch Daniele Procida’s
-video <a href="https://youtu.be/p0PPtdRHG6M">“What nobody tells you about
-documentation”</a> on YouTube.</li>
-  <li>To learn more about how to write effective documentation from a Google’s
-technical writer’s point of view, watch Beth Aitman’s video <a href="https://www.youtube.com/watch?v=R6zeikbTgVc">“How to write
-effective documentation”</a> on YouTube.</li>
-  <li>This article does not mention the maintenance effort, doc versionning, doc
-generation from code, doc hosting, and more advanced topcis. But they are
-important aspects to be considered as well.</li>
+  <li>For generating the specification of the backend service as a collection of
+interfaces</li>
+  <li>For generating the client code for different programming languages, like Go or
+Java.</li>
+  <li>For generating the documentation for your project</li>
+  <li>For generating the schema for your project</li>
 </ul>
+
+<p>There are different ways to use OpenAPI generator. You can use it via the CLI tools
+(available under all major operating systems), via plugins (hooked into your
+build system, such as Maven or Gradle), or use it from websites.</p>
+
+<ul>
+  <li><strong>CLI</strong> via Homebrew, Docker, npm</li>
+  <li><strong>Plugin</strong> via Maven, Gradle, Bazel, SBT, Cake</li>
+  <li><strong>SaaS</strong> generator</li>
+</ul>
+
+<p>Having those choices means that you have the possibility to trigger the code
+generation in different parts of the development: either on-demand, before
+committing to Git (pre-commit hook via CLI), or as part of the build process (plugins).
+If you need something more advanced to adopt your use case, you can also create
+your custom generator using <a href="https://mustache.github.io">mustache</a> templates
+(search <code class="language-plaintext highlighter-rouge">*.mustache</code> in Github repo
+<a href="https://github.com/OpenAPITools/openapi-generator">openapi-generator</a> to see
+concrete examples). You can also see more details in the official website:
+<a href="https://openapi-generator.tech">https://openapi-generator.tech</a>.</p>
+
+<h2 id="schema">Schema</h2>
+
+<p>An API specification needs to specify the HTTP request and response for all API
+operations. The request and response body are represented as “schema” under each
+operation. For Java projects, these schemas are generated into Plain Old Java
+Objects (POJOs). Let’s take a deeper look into
+that part. For the <code class="language-plaintext highlighter-rouge">addPet</code> operation mentioned in the section above, it’s
+defined as a reference for the Pet schema (<a href="https://github.com/OpenAPITools/openapi-generator/blob/24f476a38161a797c773577cab775ef285baeaba/samples/server/petstore/jaxrs-spec/src/main/openapi/openapi.yaml#L24-L40">source code</a>):</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>      <span class="na">requestBody</span><span class="pi">:</span>
+        <span class="na">content</span><span class="pi">:</span>
+          <span class="s">application/json</span><span class="pi">:</span>
+            <span class="na">schema</span><span class="pi">:</span>
+              <span class="s">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/schemas/Pet'</span>
+          <span class="s">application/xml</span><span class="pi">:</span>
+            <span class="na">schema</span><span class="pi">:</span>
+              <span class="s">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/schemas/Pet'</span>
+        <span class="na">description</span><span class="pi">:</span> <span class="s">Pet object that needs to be added to the store</span>
+        <span class="na">required</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">responses</span><span class="pi">:</span>
+        <span class="s2">"</span><span class="s">200"</span><span class="pi">:</span>
+          <span class="na">content</span><span class="pi">:</span> <span class="pi">{}</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">successful operation</span>
+</code></pre></div></div>
+
+<p>where the Pet schema is defined as the code block below (<a href="https://github.com/OpenAPITools/openapi-generator/blob/24f476a38161a797c773577cab775ef285baeaba/samples/server/petstore/jaxrs-spec/src/main/openapi/openapi.yaml#L1316-L1369">source code</a>). You can see an
+example payload, the properties defined in different types (primitives, embedded
+object, array, enum), the required fields, etc.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">components</span><span class="pi">:</span>
+  <span class="na">schemas</span><span class="pi">:</span>
+    <span class="c1"># ...</span>
+    <span class="na">Pet</span><span class="pi">:</span>
+      <span class="na">example</span><span class="pi">:</span>
+        <span class="na">photoUrls</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">photoUrls</span>
+        <span class="pi">-</span> <span class="s">photoUrls</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">doggie</span>
+        <span class="na">id</span><span class="pi">:</span> <span class="m">0</span>
+        <span class="na">category</span><span class="pi">:</span>
+          <span class="na">name</span><span class="pi">:</span> <span class="s">default-name</span>
+          <span class="na">id</span><span class="pi">:</span> <span class="m">6</span>
+        <span class="na">tags</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">name</span>
+          <span class="na">id</span><span class="pi">:</span> <span class="m">1</span>
+        <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">name</span>
+          <span class="na">id</span><span class="pi">:</span> <span class="m">1</span>
+        <span class="na">status</span><span class="pi">:</span> <span class="s">available</span>
+      <span class="na">properties</span><span class="pi">:</span>
+        <span class="na">id</span><span class="pi">:</span>
+          <span class="na">format</span><span class="pi">:</span> <span class="s">int64</span>
+          <span class="na">type</span><span class="pi">:</span> <span class="s">integer</span>
+          <span class="na">x-is-unique</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">category</span><span class="pi">:</span>
+          <span class="s">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/schemas/Category'</span>
+        <span class="na">name</span><span class="pi">:</span>
+          <span class="na">example</span><span class="pi">:</span> <span class="s">doggie</span>
+          <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+        <span class="na">photoUrls</span><span class="pi">:</span>
+          <span class="na">items</span><span class="pi">:</span>
+            <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+          <span class="na">type</span><span class="pi">:</span> <span class="s">array</span>
+          <span class="na">uniqueItems</span><span class="pi">:</span> <span class="no">true</span>
+          <span class="na">xml</span><span class="pi">:</span>
+            <span class="na">name</span><span class="pi">:</span> <span class="s">photoUrl</span>
+            <span class="na">wrapped</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">tags</span><span class="pi">:</span>
+          <span class="na">items</span><span class="pi">:</span>
+            <span class="s">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/components/schemas/Tag'</span>
+          <span class="na">type</span><span class="pi">:</span> <span class="s">array</span>
+          <span class="na">xml</span><span class="pi">:</span>
+            <span class="na">name</span><span class="pi">:</span> <span class="s">tag</span>
+            <span class="na">wrapped</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">status</span><span class="pi">:</span>
+          <span class="na">description</span><span class="pi">:</span> <span class="s">pet status in the store</span>
+          <span class="na">enum</span><span class="pi">:</span>
+          <span class="pi">-</span> <span class="s">available</span>
+          <span class="pi">-</span> <span class="s">pending</span>
+          <span class="pi">-</span> <span class="s">sold</span>
+          <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+      <span class="na">required</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">name</span>
+      <span class="pi">-</span> <span class="s">photoUrls</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">object</span>
+      <span class="na">xml</span><span class="pi">:</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">Pet</span>
+</code></pre></div></div>
+
+<p>And the generated POJO <code class="language-plaintext highlighter-rouge">Pet.java</code> looks like this (<a href="https://github.com/OpenAPITools/openapi-generator/blob/v6.2.0/samples/server/petstore/jaxrs-spec/src/gen/java/org/openapitools/model/Pet.java">source code</a>):</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@JsonTypeName</span><span class="o">(</span><span class="s">"Pet"</span><span class="o">)</span>
+<span class="nd">@javax</span><span class="o">.</span><span class="na">annotation</span><span class="o">.</span><span class="na">Generated</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pet</span>  <span class="kd">implements</span> <span class="nc">Serializable</span> <span class="o">{</span>
+  <span class="kd">private</span> <span class="nd">@Valid</span> <span class="nc">Long</span> <span class="n">id</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nd">@Valid</span> <span class="nc">Category</span> <span class="n">category</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nd">@Valid</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+  <span class="kd">private</span> <span class="nd">@Valid</span> <span class="nc">Set</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">photoUrls</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LinkedHashSet</span><span class="o">&lt;&gt;();</span>
+  <span class="kd">private</span> <span class="nd">@Valid</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Tag</span><span class="o">&gt;</span> <span class="n">tags</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+  <span class="kd">public</span> <span class="kd">enum</span> <span class="nc">StatusEnum</span> <span class="o">{</span>
+
+    <span class="no">AVAILABLE</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">"available"</span><span class="o">)),</span> <span class="no">PENDING</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">"pending"</span><span class="o">)),</span> <span class="no">SOLD</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="s">"sold"</span><span class="o">));</span>
+
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">value</span><span class="o">;</span>
+
+    <span class="nc">StatusEnum</span> <span class="o">(</span><span class="nc">String</span> <span class="n">v</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">v</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">value</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">value</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="nd">@JsonValue</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="n">value</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="o">...</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>It contains not only the POJOs but also the annotations for Java bean validation
+and the annotations for Jackson.</p>
+
+<h2 id="ide-support">IDE Support</h2>
+
+<p>Different IDEs also provide support for Open API to make edition easy:</p>
+
+<ul>
+  <li>IntelliJ (Ultimate) has an
+<a href="https://www.jetbrains.com/help/idea/openapi.html">OpenAPI plugin</a> for editing an
+OpenAPI specification</li>
+  <li>VS Code has an <a href="https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi">OpenAPI (Swagger)
+Editor</a>
+extension, maintained by 42Crunch.</li>
+</ul>
+
+<h2 id="change-detection">Change Detection</h2>
+
+<p>There are some toolings for change detection, such as
+<a href="https://github.com/Azure/openapi-diff">Azure/openapi-diff</a> and
+<a href="https://github.com/OpenAPITools/openapi-diff">OpenAPITools/openapi-diff</a>. These
+are command line tools to detect changes between two OpenAPI specifications.
+They allow you to review the changes between two versions easily, as part of the
+Git flow, and make your development more efficient. It may be beneficial for
+troubleshooting as well. The feature about breaking changes detection from the
+<code class="language-plaintext highlighter-rouge">Azure/openapi-diff</code> brings confidence for the development and allows you to
+avoid incidents easily.</p>
+
+<h2 id="documentation">Documentation</h2>
+
+<p>By using the OpenAPI spec, you can generate the documentation easily. Here is
+an example from <a href="https://petstore3.swagger.io">https://petstore3.swagger.io</a>. Inside the documentation, you can
+see different things: 1) the servers used; 2) the list of endpoints under each
+resource; 3) inside each endpoint, the parameter, the content type, the example
+payload, possible response and error, etc. You can even send a request directly
+by filling the parameters required by the endpoint.</p>
+
+<p align="center">
+  <img src="/assets/20221031-openapi-doc.png" alt="OpenAPI documentation preview" />
+</p>
 
 <h2 id="conclusion">Conclusion</h2>
 
-<p>In this article, we talked about how to write technical documentation,
-including the 4 types of documentation, the audience, improving each page, how
-to write less documentation, and how to organize multiple pages.
+<p>In this article, we discover some key concepts of the OpenAPI project, including
+the specification (API contract), the code generator, the IDE support, the
+change detection mechanism, and documentation.
 Interested to know more? You can subscribe to <a href="/feed.xml">the feed of my blog</a>, follow me
 on <a href="https://twitter.com/mincong_h">Twitter</a> or
 <a href="https://github.com/mincong-h/">GitHub</a>. Hope you enjoy this article, see you the next time!</p>
@@ -684,15 +735,10 @@ on <a href="https://twitter.com/mincong_h">Twitter</a> or
 <h2 id="references">References</h2>
 
 <ul>
-  <li>Beth Aitman, “Writing effective documentation”, <em>Lead Dev Berlin</em>, 2019.
-<a href="https://youtu.be/R6zeikbTgVc">https://youtu.be/R6zeikbTgVc</a></li>
-  <li>Daniele Procida, “The four kinds of documentation, and why you need to
-understand what they are”, <em>Write the Docs Prague</em>, 2017.
-<a href="https://www.writethedocs.org/videos/eu/2017/the-four-kinds-of-documentation-and-why-you-need-to-understand-what-they-are-daniele-procida/">https://www.writethedocs.org/videos/eu/2017/the-four-kinds-of-documentation-and-why-you-need-to-understand-what-they-are-daniele-procida/</a></li>
-  <li>Fredrik Christenson, “Writing technical documentation”, <em>YouTube</em>, 2018.
-<a href="https://youtu.be/a4L9GhldTHo">https://youtu.be/a4L9GhldTHo</a></li>
+  <li><a href="https://mustache.github.io">https://mustache.github.io</a></li>
+  <li><a href="https://openapi-generator.tech">https://openapi-generator.tech</a></li>
 </ul>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-10-16T10:04:02+02:00"><!-- start custom article footer snippet -->
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-10-31T14:33:24+01:00"><!-- start custom article footer snippet -->
 
 
   
@@ -703,7 +749,7 @@ understand what they are”, <em>Write the Docs Prague</em>, 2017.
     
       <div id="ea-article"
            data-ea-publisher="mincongio"
-           data-ea-keywords="doc"
+           data-ea-keywords="java|api|doc|build"
            data-ea-type="image">
     
     </div>
@@ -720,7 +766,7 @@ understand what they are”, <em>Write the Docs Prague</em>, 2017.
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/en/temporal-java-service-client/">Internal Working of Temporal Java Service Client</a></div><div class="next"><span>NEXT</span><a href="/en/openapi-overview/">OpenAPI Overview</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/en/technical-documentation/">How to write technical documentation</a></div></div></div>
 
 </div>
 
@@ -755,8 +801,8 @@ understand what they are”, <em>Write the Docs Prague</em>, 2017.
   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
   var disqus_config = function () {
-    this.page.url = 'https://mincong.io/en/technical-documentation/';
-    this.page.identifier = '/en/technical-documentation';
+    this.page.url = 'https://mincong.io/en/openapi-overview/';
+    this.page.identifier = '/en/openapi-overview';
   };
   (function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');

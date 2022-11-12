@@ -1,5 +1,318 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-10-29T10:18:06+02:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
-</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">How to write technical documentation</title><link href="https://mincong.io/en/technical-documentation/" rel="alternate" type="text/html" title="How to write technical documentation" /><published>2022-10-16T10:04:02+02:00</published><updated>2022-10-16T10:04:02+02:00</updated><id>https://mincong.io/en/technical-documentation</id><content type="html" xml:base="https://mincong.io/en/technical-documentation/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-11-12T11:29:15+01:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">OpenAPI Overview</title><link href="https://mincong.io/en/openapi-overview/" rel="alternate" type="text/html" title="OpenAPI Overview" /><published>2022-10-31T14:33:24+01:00</published><updated>2022-10-31T14:33:24+01:00</updated><id>https://mincong.io/en/openapi-overview</id><content type="html" xml:base="https://mincong.io/en/openapi-overview/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Recently I studied OpenAPI and made some notes about OpenAPI. can improve
+your RESTful APIs. Today, I want to share them with you and I hope that they can
+be useful for you as well. This article is focused on the Java backend service but
+most of the concepts should be language agnostic.&lt;/p&gt;
+
+&lt;p&gt;After reading this article, you will understand:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;OpenAPI Specification&lt;/li&gt;
+  &lt;li&gt;Code generator&lt;/li&gt;
+  &lt;li&gt;Schema&lt;/li&gt;
+  &lt;li&gt;IDE support&lt;/li&gt;
+  &lt;li&gt;API change detection&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, let’s get started!&lt;/p&gt;
+
+&lt;h2 id=&quot;openapi-specification&quot;&gt;OpenAPI Specification&lt;/h2&gt;
+
+&lt;p&gt;The OpenAPI specification (OAS) defines a standard, language-agnostic interface
+to RESTful APIs to discover and understand the capabilities of the services
+without access to source code, documentation, or through network traffic
+inspection.&lt;/p&gt;
+
+&lt;p&gt;Below, you can see an example for the demo project “Pet Store”, provided by the
+official OpenAPI generator (&lt;a href=&quot;https://github.com/OpenAPITools/openapi-generator/blob/v6.2.0/samples/server/petstore/jaxrs-spec-interface/src/main/openapi/openapi.yaml&quot;&gt;source
+code&lt;/a&gt;).
+The specification describes all the API endpoints under the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;paths&lt;/code&gt;
+section, with the path of the resource, the operation, the schema, the response,
+and many other things. It also includes some metadata of the specification, the
+servers using this specification, etc.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;openapi&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;3.0.1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;This&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;spec&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;is&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;mainly&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;testing&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Petstore&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;contains&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;fake&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;endpoints,&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;models.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Please&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;do&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;not&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;other&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;purpose.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Special&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;characters:&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\
+&lt;/span&gt;    &lt;span class=&quot;se&quot;&gt;\ \&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;license&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Apache-2.0&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;https://www.apache.org/licenses/LICENSE-2.0.html&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;OpenAPI Petstore&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1.0.0&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;servers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http://petstore.swagger.io:80/v2&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Everything about your Pets&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pet&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Access to Petstore orders&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;store&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Operations about user&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;user&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;/pet&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;operationId&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;addPet&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;requestBody&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;application/json&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;s&quot;&gt;$ref&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#/components/schemas/Pet'&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;application/xml&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;s&quot;&gt;$ref&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#/components/schemas/Pet'&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Pet object that needs to be added to the store&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;responses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;200&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;successful operation&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;405&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Invalid input&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;security&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;petstore_auth&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;write:pets&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;read:pets&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;summary&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Add a new pet to the store&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pet&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;x-codegen-request-body-name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;body&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;x-content-type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;application/json&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;x-accepts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;application/json&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;x-tags&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pet&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The key value of this concept is to have a contract that specifies the behavior
+of the service. It allows both the client and the server to agree on
+the exchange format, the expectation about the successful response and the
+error, and so on. It makes it possible to generate documentation, test helpers,
+and generate stubs in different frameworks in different languages.&lt;/p&gt;
+
+&lt;p&gt;To learn more about the specification, you can visit the web page &lt;a href=&quot;https://swagger.io/specification/&quot;&gt;OpenAPI Specification, Version 3.0.0 -
+Swagger&lt;/a&gt; or see more samples of
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;openapi.yaml&lt;/code&gt; on GitHub project &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;openapi-generator&lt;/code&gt;, under the section
+“samples”, like &lt;a href=&quot;https://github.com/OpenAPITools/openapi-generator/blob/v6.2.0/samples/server/petstore/jaxrs-spec-interface/src/main/openapi/openapi.yaml&quot;&gt;this one for the Java RESTful APIs
+(JAX-RS)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;code-generator&quot;&gt;Code Generator&lt;/h2&gt;
+
+&lt;p&gt;The code generator is the second key concept of the OpenAPI project. It allows
+you to generate things based on the specification. The code generation can be
+used for many cases:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;For generating the specification of the backend service as a collection of
+interfaces&lt;/li&gt;
+  &lt;li&gt;For generating the client code for different programming languages, like Go or
+Java.&lt;/li&gt;
+  &lt;li&gt;For generating the documentation for your project&lt;/li&gt;
+  &lt;li&gt;For generating the schema for your project&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;There are different ways to use OpenAPI generator. You can use it via the CLI tools
+(available under all major operating systems), via plugins (hooked into your
+build system, such as Maven or Gradle), or use it from websites.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;CLI&lt;/strong&gt; via Homebrew, Docker, npm&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Plugin&lt;/strong&gt; via Maven, Gradle, Bazel, SBT, Cake&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SaaS&lt;/strong&gt; generator&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Having those choices means that you have the possibility to trigger the code
+generation in different parts of the development: either on-demand, before
+committing to Git (pre-commit hook via CLI), or as part of the build process (plugins).
+If you need something more advanced to adopt your use case, you can also create
+your custom generator using &lt;a href=&quot;https://mustache.github.io&quot;&gt;mustache&lt;/a&gt; templates
+(search &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*.mustache&lt;/code&gt; in Github repo
+&lt;a href=&quot;https://github.com/OpenAPITools/openapi-generator&quot;&gt;openapi-generator&lt;/a&gt; to see
+concrete examples). You can also see more details in the official website:
+&lt;a href=&quot;https://openapi-generator.tech&quot;&gt;https://openapi-generator.tech&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;schema&quot;&gt;Schema&lt;/h2&gt;
+
+&lt;p&gt;An API specification needs to specify the HTTP request and response for all API
+operations. The request and response body are represented as “schema” under each
+operation. For Java projects, these schemas are generated into Plain Old Java
+Objects (POJOs). Let’s take a deeper look into
+that part. For the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;addPet&lt;/code&gt; operation mentioned in the section above, it’s
+defined as a reference for the Pet schema (&lt;a href=&quot;https://github.com/OpenAPITools/openapi-generator/blob/24f476a38161a797c773577cab775ef285baeaba/samples/server/petstore/jaxrs-spec/src/main/openapi/openapi.yaml#L24-L40&quot;&gt;source code&lt;/a&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;      &lt;span class=&quot;na&quot;&gt;requestBody&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;application/json&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;s&quot;&gt;$ref&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#/components/schemas/Pet'&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;application/xml&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;s&quot;&gt;$ref&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#/components/schemas/Pet'&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Pet object that needs to be added to the store&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;responses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;200&quot;&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;successful operation&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;where the Pet schema is defined as the code block below (&lt;a href=&quot;https://github.com/OpenAPITools/openapi-generator/blob/24f476a38161a797c773577cab775ef285baeaba/samples/server/petstore/jaxrs-spec/src/main/openapi/openapi.yaml#L1316-L1369&quot;&gt;source code&lt;/a&gt;). You can see an
+example payload, the properties defined in different types (primitives, embedded
+object, array, enum), the required fields, etc.&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;components&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;schemas&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;# ...&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;Pet&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;photoUrls&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;photoUrls&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;photoUrls&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;doggie&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;default-name&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;6&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;available&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;properties&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;int64&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;integer&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;x-is-unique&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;$ref&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#/components/schemas/Category'&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;doggie&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;string&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;photoUrls&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;string&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;array&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;uniqueItems&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;xml&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;photoUrl&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;tags&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;$ref&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#/components/schemas/Tag'&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;array&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;xml&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;tag&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;wrapped&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pet status in the store&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;enum&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;available&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;pending&lt;/span&gt;
+          &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;sold&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;string&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;photoUrls&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;object&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;xml&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Pet&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And the generated POJO &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Pet.java&lt;/code&gt; looks like this (&lt;a href=&quot;https://github.com/OpenAPITools/openapi-generator/blob/v6.2.0/samples/server/petstore/jaxrs-spec/src/gen/java/org/openapitools/model/Pet.java&quot;&gt;source code&lt;/a&gt;):&lt;/p&gt;
+
+&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@JsonTypeName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Pet&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nd&quot;&gt;@javax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;annotation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Generated&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Pet&lt;/span&gt;  &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Serializable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@Valid&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@Valid&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Category&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;category&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@Valid&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@Valid&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Set&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;photoUrls&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;LinkedHashSet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&amp;gt;();&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;@Valid&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Tag&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tags&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;enum&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;StatusEnum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;no&quot;&gt;AVAILABLE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;available&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)),&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;PENDING&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;pending&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)),&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;SOLD&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;sold&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
+
+
+    &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nc&quot;&gt;StatusEnum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
+    &lt;span class=&quot;nd&quot;&gt;@JsonValue&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;toString&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It contains not only the POJOs but also the annotations for Java bean validation
+and the annotations for Jackson.&lt;/p&gt;
+
+&lt;h2 id=&quot;ide-support&quot;&gt;IDE Support&lt;/h2&gt;
+
+&lt;p&gt;Different IDEs also provide support for Open API to make edition easy:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;IntelliJ (Ultimate) has an
+&lt;a href=&quot;https://www.jetbrains.com/help/idea/openapi.html&quot;&gt;OpenAPI plugin&lt;/a&gt; for editing an
+OpenAPI specification&lt;/li&gt;
+  &lt;li&gt;VS Code has an &lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi&quot;&gt;OpenAPI (Swagger)
+Editor&lt;/a&gt;
+extension, maintained by 42Crunch.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;change-detection&quot;&gt;Change Detection&lt;/h2&gt;
+
+&lt;p&gt;There are some toolings for change detection, such as
+&lt;a href=&quot;https://github.com/Azure/openapi-diff&quot;&gt;Azure/openapi-diff&lt;/a&gt; and
+&lt;a href=&quot;https://github.com/OpenAPITools/openapi-diff&quot;&gt;OpenAPITools/openapi-diff&lt;/a&gt;. These
+are command line tools to detect changes between two OpenAPI specifications.
+They allow you to review the changes between two versions easily, as part of the
+Git flow, and make your development more efficient. It may be beneficial for
+troubleshooting as well. The feature about breaking changes detection from the
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Azure/openapi-diff&lt;/code&gt; brings confidence for the development and allows you to
+avoid incidents easily.&lt;/p&gt;
+
+&lt;h2 id=&quot;documentation&quot;&gt;Documentation&lt;/h2&gt;
+
+&lt;p&gt;By using the OpenAPI spec, you can generate the documentation easily. Here is
+an example from &lt;a href=&quot;https://petstore3.swagger.io&quot;&gt;https://petstore3.swagger.io&lt;/a&gt;. Inside the documentation, you can
+see different things: 1) the servers used; 2) the list of endpoints under each
+resource; 3) inside each endpoint, the parameter, the content type, the example
+payload, possible response and error, etc. You can even send a request directly
+by filling the parameters required by the endpoint.&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+  &lt;img src=&quot;/assets/20221031-openapi-doc.png&quot; alt=&quot;OpenAPI documentation preview&quot; /&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;In this article, we discover some key concepts of the OpenAPI project, including
+the specification (API contract), the code generator, the IDE support, the
+change detection mechanism, and documentation.
+Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
+on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
+&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://mustache.github.io&quot;&gt;https://mustache.github.io&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://openapi-generator.tech&quot;&gt;https://openapi-generator.tech&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="java-rest" /><category term="java" /><category term="api" /><category term="doc" /><category term="build" /><summary type="html">The key concepts provided by the OpenAPI Initiative, e.g. OpenAPI spec, code generator, schema, build, api-diff, and how they may be useful for your project.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-fahmi-fakhrudin-nzyzAUsbV0M-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-fahmi-fakhrudin-nzyzAUsbV0M-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">How to write technical documentation</title><link href="https://mincong.io/en/technical-documentation/" rel="alternate" type="text/html" title="How to write technical documentation" /><published>2022-10-16T10:04:02+02:00</published><updated>2022-10-16T10:04:02+02:00</updated><id>https://mincong.io/en/technical-documentation</id><content type="html" xml:base="https://mincong.io/en/technical-documentation/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;I have contributed a lot to the company’s internal documentation. I also wrote 210
 blog posts on this website and gained about 1 million page
@@ -3309,194 +3622,4 @@ visit their &lt;a href=&quot;https://router.vuejs.org/&quot;&gt;official website
 Diagram” in &lt;a href=&quot;https://vuejs.org/v2/guide/instance.html&quot;&gt;The Vue Instance&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="frontend" /><category term="javascript" /><category term="vuejs" /><category term="vuejs2" /><summary type="html">What to have better URL for sharing? This Q&amp;A shares how to retrieve query parameters in Vue.js, how to update component data using it, and vise versa.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/vuebigwhite.png" /><media:content medium="image" url="https://mincong.io/assets/vuebigwhite.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Highlight 2021</title><link href="https://mincong.io/en/highlight-2021/" rel="alternate" type="text/html" title="Highlight 2021" /><published>2021-12-30T14:12:23+01:00</published><updated>2021-12-30T14:12:23+01:00</updated><id>https://mincong.io/en/highlight-2021</id><content type="html" xml:base="https://mincong.io/en/highlight-2021/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Writing an article for an annual review becomes a tradition for me. After
-writing it for 5 consecutive years
-(&lt;a href=&quot;/2016/09/01/projects-highlight-2015-2016/&quot;&gt;2016&lt;/a&gt;,
-&lt;a href=&quot;/2017/11/26/highlight-2017/&quot;&gt;2017&lt;/a&gt;,
-&lt;a href=&quot;/2018/12/21/highlight-2018/&quot;&gt;2018&lt;/a&gt;,
-&lt;a href=&quot;/2019/12/31/highlight-2019/&quot;&gt;2019&lt;/a&gt;,
-&lt;a href=&quot;/2021/01/02/highlight-2020/&quot;&gt;2020&lt;/a&gt;), I decided to
-continue this year, to share with you my journey in the tech
-industry, as a software engineer at Datadog and as an explorer for other side-projects
-during my free time. Hopefully, they will let you learn something or inspire
-you to create your story. Now, let’s get started!&lt;/p&gt;
-
-&lt;h2 id=&quot;datadog&quot;&gt;Datadog&lt;/h2&gt;
-
-&lt;p&gt;I joined Datadog at the end of 2019 as a software engineer working for the Event
-Platform. Event Platform ingests trillions of events per day for 30+ products:
-Logs, APM, Profiling, Real User Monitoring (RUM), Security Analytics, Error
-Tracking, Network Monitoring, and more. This year, I kept working on the storage
-part of the platform, developing new solutions to ensure data reliability,
-reduce costs, and reduce operational work for other engineers. I was part of
-the “Event Storage Lifecycle” team and then moved to “Event Platform Automation”
-team on October. Here are some of my contributions related to these teams.&lt;/p&gt;
-
-&lt;p&gt;Why “Event Platform Automation”? Since the platform grew fast, having manual operations became
-more and more painful. Operating a large-scale system without dedicated
-operations engineers and site-reliability engineers (SRE) became very challenging.
-I had the privilege to be part of this team since October 2021. The goals are to improve
-the system operability at different levels (workflow automation, configuration
-simplification, automatic checks, admin UI), pushing the
-reliability to the next level, and improve the deployment process for our microservices.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Indexold.&lt;/strong&gt; Indexold is a custom solution for data lifecycle management. It is
-a state machine that manages the lifecycle of the data once they are stored in
-our system. Similar to Elasticsearch’s &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/reference/7.16/overview-index-lifecycle-management.html&quot;&gt;Index Lifecycle Management
-(ILM)&lt;/a&gt;,
-it allows moving data from one machine to another.
-It allows storing historical data in a cost-efficient way, making
-operations easy, having control about the data placement, and being resilient to node
-failures. I mainly participated to: storage
-optimization (data compression), snapshotting, data deletion, rollout to
-production (AWS, GCP, Azure), and maintenance.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Automation.&lt;/strong&gt; At Datadog, we use &lt;a href=&quot;https://temporal.io/&quot;&gt;Temporal&lt;/a&gt; as a workflow
-engine for our automation. I made several workflows, such as one for
-decommissioning
-Elasticsearch cluster and one for providing checks for the provisioning our
-pipelines. These workflows contain interactions to other services in the system
-to read content (GitHub), communicate with the operator (Slack), improve
-observability (Datadog), or manipulate resources (Kubernetes, Elasticsearch,
-internal services). This year, I also wrote one article &lt;a href=&quot;/en/error-retries-in-temporal/&quot;&gt;Error Retries in Temporal
-Workflow&lt;/a&gt; and I made my first contribution to Temporal Java SDK (&lt;a href=&quot;https://github.com/temporalio/sdk-java/releases/tag/v1.5.0&quot;&gt;release
-notes v1.5.0&lt;/a&gt;) and
-hopefully, I can contribute more next year!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/20211231-temporal-java-sdk-1st-contribution.png&quot; alt=&quot;First contribution to Temporal SDK&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Operations.&lt;/strong&gt; Our operations were mainly to upgrade our data stores (VM at
-node level, JVM, ES, configuration), deploying to zonal clusters, moving existing data stores from
-one Kubernetes cluster to another due to capacity constraint, etc. It’s not
-something very interesting in terms of development but it’s essential to be
-compliant and keeping the business running.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;On-call.&lt;/strong&gt; According to &lt;a href=&quot;https://www.pagerduty.com/&quot;&gt;PagerDuty&lt;/a&gt;, I was on-call
-for 1265h 20m in 2021 (actually I am still on-call when I am writing
-this article 😅). I handled 228 high-urgency issues in total and 32 of them
-were incidents. I suspect the total on-call duration is wrong because it may
-include the Interrupt Handling (IH) work that is also in PagerDuty with much
-lower priority. But anyway, it provides a sense of how important it is to
-keep the production running at Datadog. And I am quite proud of it because it’s
-a collective work and it contributed to the success of the business. Perhaps I
-will write some articles around how to be on-call since I have some experience
-in it.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Interviewer.&lt;/strong&gt; I started the training to become an interviewer in October 2021. 
-I saw many colleagues were doing well on this, so why not try to be part of
-the team? One major reason that I want to do this is that this YouTube video,
-&lt;a href=&quot;https://youtu.be/s6tLGo9yij0&quot;&gt;I Increased My Productivity 10x - By Turning My Life Into a
-Game&lt;/a&gt;, motivated me to gamify my activities and
-explore new possibilities, like being an interviewer. I handled 3
-shadow interviews so far.
-My colleagues told me that I lead the exercise and technical aspect
-of the interview well; selling, behavior, and communication went well; they also
-appreciated my feedback which gives them detailed
-and precise information about the candidate. All these made me happy.
-They also suggested improvement around the time management and explanation
-around some important details. For me, it’s also a good opportunity to learn what
-other people are doing as well.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;What’s next?&lt;/strong&gt; In 2022, I would like to own more OKRs to help the team to
-solve more problems. It probably requires expanding my skill set so that I can
-implement the solutions from end to end. I would also like to create some
-opportunities to encourage teamwork because together we can go more further. And
-finally, I’d like to explore some new areas, such as the read path of
-Elasticsearch, other data storage systems, or data processing as the upstream of
-data storage.&lt;/p&gt;
-
-&lt;h2 id=&quot;blogging&quot;&gt;Blogging&lt;/h2&gt;
-
-&lt;p&gt;In 2021, I wrote 42 articles (25 in English and 17 in Chinese). 19 of them are
-related to Elasticsearch, 7 of them are related to Java, and some posts on other
-topics like Bash scripting, Nginx, MongoDB, Jekyll, and Javascript. This year I
-changed the blog theme to &lt;a href=&quot;https://github.com/kitian616/jekyll-TeXt-theme&quot;&gt;Jekyll TeXt
-Theme&lt;/a&gt; and added
-&lt;a href=&quot;/en/jekyll-i18n/&quot;&gt;internationalization&lt;/a&gt; support to make the blog more
-consistent when navigating between English and Chinese blog posts.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Focus on search.&lt;/strong&gt; Most of these new articles are
-related to Elasticsearch. For example, there are series &lt;a href=&quot;/en/series/dvf/&quot;&gt;“DVF”&lt;/a&gt;
-which demonstrates Elasticsearch’s usage for indexing, storage, search, and analytics
-using French open dataset for real-estate: “Demande de valeurs foncières
-(DVF)”; series &lt;a href=&quot;/en/series/es-snapshots/&quot;&gt;“Elasticsearch Snapshots”&lt;/a&gt; which
-explores different aspects of the feature “Snapshot And Restore” in Elasticsearch;
-series &lt;a href=&quot;/en/series/es-admin/&quot;&gt;“Elasticsearch Cluster Administration”&lt;/a&gt; which
-provides hints for managing Elasticsearch clusters in production. Here are the
-articles for the DVF series:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/20211231-dvf.png&quot; alt=&quot;DVF&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Advertising.&lt;/strong&gt; This year I added the advertising feature for my blog. I wanted
-to do this because having revenue gives me the motivation to keep writing. I chose
-&lt;a href=&quot;https://www.ethicalads.io/&quot;&gt;EthicalAds&lt;/a&gt; because its advertising is transparent
-for readers: they don’t use cookies to track users, but they match ads based on
-the content of the site. The ads are relevant to technologies. Currently, I am
-going to earn about $51.67 (before tax) over the last 2 months and a half.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Audience.&lt;/strong&gt; 2021 continued to be a great year. More and more people visited my
-blog. In 2021, I received 294k page views from 222k users, that is a 25%
-increase in terms of page views and a 21% increase in terms of users. Seeing my
-articles are useful for other people really motivates me to keep writing.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/20211231-blog-audience.png&quot; alt=&quot;Audience Overview 2021 vs 2020 via Google Analytics&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;What’s next?&lt;/strong&gt; In 2022, I would like to continue my focus on data storage because this is
-my expertise and hopefully they will be valuable for you as well. Then, I would
-also like to expand the scope to see the bigger picture: performing architecture
-reviews, translating engineering blogs written by other engineers, writing a series of blog
-posts, etc. Then it will also be great to increase the publishing cadence
-because it took me too long to write one article. I want to improve
-that by introducing a new blog post type: question-and-answer (Q&amp;amp;A), which is a
-short article containing one question and one answer. Hopefully, it would be
-possible for readers to subscribe to my mailing list so that I can share the
-update on a weekly or monthly basis. This should help reduce the bounce rate
-as well. To summarize, the 4 goals are: keeping the focus on data storage,
-expanding the scope, improving delivery speed, and attracting more loyal users.&lt;/p&gt;
-
-&lt;h2 id=&quot;other-projects&quot;&gt;Other Projects&lt;/h2&gt;
-
-&lt;p&gt;I tried other projects as well. But most of the projects are unsuccessful, but
-I think it’s still worth sharing why I tried and why it didn’t work.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Vavr&lt;/strong&gt; (❌). Vavr is an object-functional library that runs with Java 8+. I tried to
-persuade my teammates to integrate this library in our backend during a
-hackathon. However, the idea was rejected because the naming of vavr’s types
-(List, Set, Map, …) are too invasive and therefore conflicting with the
-standard Java library. So it’s hard to keep both during migration. Also, it’s
-hard to prove its performance for the critical path (having millions of messages
-being handled per second). My proposal was rejected. I didn’t see
-any perspective of using this framework in the short-term or mid-term. Therefore, I
-decided to stop the contribution and move forwards to something else.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Finance-toolkit&lt;/strong&gt; (🐢). Finance toolkit is a small library helping you to
-understand your personal financial situation by extracting, transforming, and
-aggregating transactions from different companies into a single place:
-BNP Paribas, Boursorama, Degiro, October, and Revolut. It generates CSV files
-that can be used for data visualization in Jupyter Notebook.
-It was created in 2019 and written in Python by
-&lt;a href=&quot;https://github.com/jingwen-z/&quot;&gt;Jingwen Zheng&lt;/a&gt; and I, with some help from
-&lt;a href=&quot;https://github.com/BoboTiG&quot;&gt;Mickaël Schoentgen&lt;/a&gt;.
-This project still continues at a slow pace.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Sunny&lt;/strong&gt; (🤔). &lt;a href=&quot;https://sunnytj.info/#/&quot;&gt;Sunny Tejiao&lt;/a&gt; (阳光特教网) is a
-non-commercial website that I created last year. It aims to help Chinese
-teachers working in special education to better gather Chinese-version
-material for preparing their courses. I did this during my holidays because I
-feel that there is a lack of Chinese resources in mainland China and it’s
-hard for teachers to search from the open internet due to government
-restrictions. I did this also because my mother is a teacher working in a school for
-special education. Therefore, I feel like it’s a good opportunity for doing so.
-However, I had to pause the project because my mother didn’t have enough time to
-help me and she probably had other priorities in her life.&lt;/p&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;Thank you for reading this whole article. In this post, I shared some projects
-or important tasks that I did at Datadog as a software engineer, my blogging
-experience, and some other projects that I explored.
-Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
-on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
-&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="review" /><category term="review" /><category term="career" /><summary type="html">My tech journey at Datadog as a software engineer in 2021 and some side-projects in my free time.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-markus-winkler-EcgyryGygeE-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-markus-winkler-EcgyryGygeE-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;p&gt;Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="frontend" /><category term="javascript" /><category term="vuejs" /><category term="vuejs2" /><summary type="html">What to have better URL for sharing? This Q&amp;A shares how to retrieve query parameters in Vue.js, how to update component data using it, and vise versa.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/vuebigwhite.png" /><media:content medium="image" url="https://mincong.io/assets/vuebigwhite.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
