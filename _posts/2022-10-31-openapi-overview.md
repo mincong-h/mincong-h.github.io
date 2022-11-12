@@ -41,7 +41,6 @@ After reading this article, you will understand:
 * Schema
 * IDE support
 * API change detection
-* How to go further from this article
 
 Now, let's get started!
 
@@ -310,15 +309,29 @@ troubleshooting as well. The feature about breaking changes detection from the
 `Azure/openapi-diff` brings confidence for the development and allows you to
 avoid incident easily.
 
-## Going Further
+## Documentation
 
-How to go further from here?
+By using the OpenAPI spec, you can generate the documentation easily. Here is
+example from <https://petstore3.swagger.io>. Inside the documentation, you can
+see different things: 1) the servers used; 2) the list of endpoints under each
+resource; 3) inside each endpoint, the parameter, the content type, the example
+payload, possible response and error, etc. You can even send a request directly
+by filling the parameters required by the endpoint.
+
+<p align="center">
+  <img src="/assets/20221031-openapi-doc.png" alt="OpenAPI documentation preview">
+</p>
 
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
+In this article, we discover some key concepts of the OpenAPI project, including
+the specification (API contract), the code generator, the IDE support, the
+change detection mechanism, and documentation.
 Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
+
+- <https://mustache.github.io>
+- <https://openapi-generator.tech>
