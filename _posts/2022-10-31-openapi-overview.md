@@ -29,7 +29,7 @@ wechat:              false
 
 ## Introduction
 
-Rencently I studied OpenAPI and made some notes about how OpenAPI can improve
+Rencently I studied OpenAPI and made some notes about OpenAPI. can improve
 your RESTful APIs. Today, I want to share them with you and I hope that they can
 be useful for you as well. This article is focus on the Java backend service but
 most of the concepts should be language agnostic.
@@ -37,10 +37,9 @@ most of the concepts should be language agnostic.
 After reading this article, you will understand:
 
 * OpenAPI Specification
+* Code generator
 * Schema
-* Build tools
 * IDE support
-* Testing
 * API change detection
 * How to go further from this article
 
@@ -50,7 +49,7 @@ Now, let's get started!
 
 The OpenAPI specification (OAS) defines a standard, language-agnostic interface
 to RESTful APIs to discover and understand the capabilities of the services
-wihtout access to source code, documnetation, or through network traffic
+without access to source code, documnetation, or through network traffic
 inspection.
 
 Below, you can see an example for the demo project "Pet Store", provided by the
@@ -143,12 +142,21 @@ used for many cases:
 
 There are different ways to use OpenAPI generator. You can use it via the CLI tools
 (available under all major operating systems), via plugins (hooked into your
-build system, such as Maven or gradle) or use it from websites. You can see more
-details in the official website: <https://openapi-generator.tech>.
+build system, such as Maven or gradle) or use it from websites.
+
+* **CLI** via Homebrew, Docker, npm
+* **Plugin** via Maven, Gradle, Bazel, SBT, Cake
+* **SaaS** generator
 
 Having those choices means that you have the possibility to trigger the code
 generation in different parts of the development: either on-demand, before
 commit to Git (pre-commit hook via CLI), or as part of the build process (plugins).
+If you need something more advanced to adopt your use-case, you can also create
+your custom generator using [mustache](https://mustache.github.io) templates
+(search `*.mustache` in Github repo
+[openapi-generator](https://github.com/OpenAPITools/openapi-generator) to see
+concrete examples). You can also see more details in the official website:
+<https://openapi-generator.tech>.
 
 ## Schema
 
@@ -279,13 +287,23 @@ public class Pet  implements Serializable {
 It contains not only the POJOs but also the annotations for Java bean validation
 and the annotations for Jackson.
 
+## IDE Support
+
+Different IDEs also provide supports for Open API to make edition easy:
+
+* IntelliJ (Ultimate) has an
+  [OpenAPI plugin](https://www.jetbrains.com/help/idea/openapi.html) for editing an
+  OpenAPI specification
+* VS Code has an [OpenAPI (Swagger)
+  Editor](https://marketplace.visualstudio.com/items?itemName=42Crunch.vscode-openapi)
+  extension, maintained by 42Crunch.
+
 ## Change Detection
 
 There are some toolings about change detection, such as
 [Azure/openapi-diff](https://github.com/Azure/openapi-diff) and
 [OpenAPITools/openapi-diff](https://github.com/OpenAPITools/openapi-diff). These
 are command line tools to detect changes between two OpenAPI specifications.
-
 They allow you to review the changes between two versions easily, as part of the
 Git flow, and make your developement more efficient. It may be beneficial for
 troubleshooting as well. The feature about breaking changes detection from the
