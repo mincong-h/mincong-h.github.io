@@ -7,12 +7,13 @@ subtitle:            >
 
 lang:                en
 date:                2022-07-17 14:31:57 +0200
+date_modified:       2022-12-13 17:37:58 +0100
 categories:          [review]
-tags:                [java, python]
+tags:                [java, python, javascript, go]
 ads_tags:            []
 comments:            true
 excerpt:             >
-    This article shared the 4 projects that I did over the last hackathons in
+    This article shared the 5 projects that I did over the last hackathons in
     Datadog and the lessons learned from those experiences.
 
 image:               /assets/bg-karsten-winegeart-ewfHXBcuFA0-unsplash.jpg
@@ -28,8 +29,8 @@ wechat:              false
 
 ## Introduction
 
-It's been 2 years and a half since I joined Datadog and I had the chance to
-participate in 4 hackathon projects. They were a great experience and  I learned a
+It's been 3 years since I joined Datadog and I had the chance to
+participate in 5 hackathon projects. They were a great experience and  I learned a
 lot from them! That's why I want to share my experience with you, to give you an
 idea of what can an engineer build in a short period. And perhaps give you
 some inspiration to do the same.
@@ -50,23 +51,17 @@ projects that I participated in in the past.
 
 ## Auto-completion For Python Scripts
 
-Field | Value | Comment
-:--- | :--- | :---
-Date | February 2020 |
-Duration | 2 days |
-Participants | [Mincong Huang](https://github.com/mincong-h) |
-Keywords | `python`, `script`, [argparse](https://docs.python.org/3/library/argparse.html) |
-Status | Abandoned | I didn't complete after the hackathon deadline, the potential impact is low.
-
 The first hackathon project that I did was adding auto-completion for some
-internal Python scripts, built for handling operations for the logs team.
+internal Python scripts, built for handling operations for the logs team. It
+happened in February 2020.
 At that time, I was in the logs storage team, where we had a lot of operations
 to do every day. Those operations were related to multiple domains: Elasticsearch,
 Kafka, MongoDB, etc. Therefore, it involved many scripts and each of those has
 multiple options and values. It's hard to remember what are the right options or
 values. To make things easier, I wanted to add an auto-completion feature so
 that we can use a `tab` to let the system show the options or the list of values
-that are related to the current option.
+that are related to the current option. This was built on top of
+[argparse](https://docs.python.org/3/library/argparse.html).
 
 _Below, you can find a more detailed and technical version._
 
@@ -121,21 +116,13 @@ on it.
 
 ## Completable Future And Vavr
 
-For the second Hackathon, I didn't find out anything too interesting to work on,
+For the second Hackathon in July 2022, I didn't find out anything too interesting to work on,
 so I picked some refactoring at the last minute. It was about Completable
 Future in Java. However, one day later, my
 colleague convinced me that I should try something cooler, so I started to work
 on Vavr integration, an object-functional library.
 
 ### Completable Future
-
-Field | Value | Comment
-:--- | :--- | :---
-Date | July 2020 |
-Duration | 1 day | Day 1 of the Hackathon
-Participants | [Mincong Huang](https://github.com/mincong-h) |
-Keywords | `java`, `concurrency` |
-Status | Completed |
 
 If you are familiar with the [Completable
 Future](https://docs.oracle.com/en/java/javase/18/docs/api/java.base/java/util/concurrent/CompletableFuture.html)
@@ -171,15 +158,8 @@ Now I re-think this initiative, I won't do this again. Because:
 
 ### Vavr
 
-Field | Value | Comment
-:--- | :--- | :---
-Date | July 2020 |
-Duration | 1 day | Day 2 of the Hackathon
-Participants | [Mincong Huang](https://github.com/mincong-h) |
-Keywords | `java`, `vavr` |
-Status | Rejected |
-
-This project demonstrated the usage of Java object-functional library
+In the 2nd day of the hackathon, I moved to something else.
+I wanted to demonstrate the usage of Java object-functional library
 [vavr](https://github.com/vavr-io/vavr), which brings many concepts of Scala
 into the Java world. In my hackathon, I tried to integrate Vavr into an existing
 service. I demonstrated multiple data types: streams, map, tuple, optional,
@@ -197,16 +177,9 @@ any use-cases in the near future.
 
 ## Datadog Instant
 
-Field | Value | Comment
-:--- | :--- | :---
-Date | August 2020 |
-Duration | 2 days |
-Participants | [Arnaud Leloup](https://github.com/aleloup-dd), [Mincong Huang](https://github.com/mincong-h) |
-Keywords | `javascript`, `search` |
-Status | Completed |
-
-Datadog Instant is an experimental project proposed by [Arnaud
-Leloup](https://github.com/aleloup-dd), which allows users to have instant
+In the 3rd hackathon in August 2022, I worked with a colleage on a frontend
+project called "Datadog Instant". This is an experimental project
+proposed by my colleage, which allows users to have instant
 recommendations in the [Log Explorer](https://docs.datadoghq.com/logs/explorer/)
 in Datadog, like what Google proposes in their search bar (see screenshot
 below). The idea is to provide more relevant results to the user based on the search
@@ -239,14 +212,7 @@ distribute tasks so that we can work more efficiently as a team.
 
 ## Temporal Java Worker
 
-Field | Value | Comment
-:--- | :--- | :---
-Date | April 2022 |
-Duration | 2 days |
-Participants | [Julien Crestin](https://github.com/juliendangers), [Mincong Huang](https://github.com/mincong-h) |
-Keywords | `java`, `temporal` |
-Status | On-hold | It's not the priority to continue on this project at the moment.
-
+In April 2022, I worked with another colleague on workflows.
 At Datadog, we use the workflow engine [Temporal](https://temporal.io/) to
 handle internal deployments and running workflows for different usages. All the
 existing code is written in Go. It works well for most of the team. However,
@@ -275,6 +241,19 @@ possible to plan the work with much better visibility. Although we didn't have a
 chance to move forward right now, there is a good chance that we will do that
 again soon.
 
+## Query Troubleshooting Assistant
+
+In November 2022, I made a query troubleshooting assistant (QTA), a small static web page
+which allows administrators to troubleshoot query problems. Different services
+have different facets and it leads to confusion and slowness in the
+troubleshooting process. This tool unifies the user input and provides mappings
+between user input and service outputs, which allows users to
+troubleshoot more efficiently. For example, it asks you to provide information
+related to customer, storage location, sources, request ID or other information,
+and then suggests different outputs as URLs for you. The facet mappings between
+the input and output is handled by the tool. You can also share the result with
+others because all parameters are reflected as query parameters.
+
 ## Lessons Learned
 
 _What did I learn across these projects?_
@@ -299,10 +278,11 @@ _What did I learn across these projects?_
 ## Conclusion
 
 Today I shared the previous Hackathon projects with you in this article. I
-showed the 4 projects that I did: auto-completion for Python scripts; the
+showed the 5 projects that I did: auto-completion for Python scripts; the
 completable features refactoring and Vavr integration; the Datadog Instant,
-providing Google-like instant recommendations in the search bar; and the
-Temporal Java worker to write workflows in Java. Then I also shared some
+providing Google-like instant recommendations in the search bar; the
+Temporal Java worker to write workflows in Java; and finally the query
+troubleshooting assistant. I also shared some
 lessons learned from these projects.
 Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
