@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-11-12T11:29:15+01:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-12-13T17:59:35+01:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
 </subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">OpenAPI Overview</title><link href="https://mincong.io/en/openapi-overview/" rel="alternate" type="text/html" title="OpenAPI Overview" /><published>2022-10-31T14:33:24+01:00</published><updated>2022-10-31T14:33:24+01:00</updated><id>https://mincong.io/en/openapi-overview</id><content type="html" xml:base="https://mincong.io/en/openapi-overview/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Recently I studied OpenAPI and made some notes about OpenAPI. can improve
@@ -1246,8 +1246,8 @@ this post.&lt;/em&gt;&lt;/p&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.temporal.io/&quot;&gt;https://docs.temporal.io/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="temporal" /><category term="temporal" /><category term="go" /><summary type="html">This article explains the definition of an activity, execution, observability, testing, use-cases, and trade-offs in the workflow engine Temporal.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-guillermo-ferla-kEEl9csCutg-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">My Hackathon Projects At Datadog</title><link href="https://mincong.io/en/my-hackathon-projects-at-datadog/" rel="alternate" type="text/html" title="My Hackathon Projects At Datadog" /><published>2022-07-17T14:31:57+02:00</published><updated>2022-07-17T14:31:57+02:00</updated><id>https://mincong.io/en/my-hackathon-projects-at-datadog</id><content type="html" xml:base="https://mincong.io/en/my-hackathon-projects-at-datadog/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
-&lt;p&gt;It’s been 2 years and a half since I joined Datadog and I had the chance to
-participate in 4 hackathon projects. They were a great experience and  I learned a
+&lt;p&gt;It’s been 3 years since I joined Datadog and I had the chance to
+participate in 5 hackathon projects. They were a great experience and  I learned a
 lot from them! That’s why I want to share my experience with you, to give you an
 idea of what can an engineer build in a short period. And perhaps give you
 some inspiration to do the same.&lt;/p&gt;
@@ -1268,52 +1268,17 @@ projects that I participated in in the past.&lt;/p&gt;
 
 &lt;h2 id=&quot;auto-completion-for-python-scripts&quot;&gt;Auto-completion For Python Scripts&lt;/h2&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Comment&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Date&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;February 2020&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Duration&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;2 days&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Participants&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://github.com/mincong-h&quot;&gt;Mincong Huang&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Keywords&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;python&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;script&lt;/code&gt;, &lt;a href=&quot;https://docs.python.org/3/library/argparse.html&quot;&gt;argparse&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Status&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Abandoned&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;I didn’t complete after the hackathon deadline, the potential impact is low.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
 &lt;p&gt;The first hackathon project that I did was adding auto-completion for some
-internal Python scripts, built for handling operations for the logs team.
+internal Python scripts, built for handling operations for the logs team. It
+happened in February 2020.
 At that time, I was in the logs storage team, where we had a lot of operations
 to do every day. Those operations were related to multiple domains: Elasticsearch,
 Kafka, MongoDB, etc. Therefore, it involved many scripts and each of those has
 multiple options and values. It’s hard to remember what are the right options or
 values. To make things easier, I wanted to add an auto-completion feature so
 that we can use a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tab&lt;/code&gt; to let the system show the options or the list of values
-that are related to the current option.&lt;/p&gt;
+that are related to the current option. This was built on top of
+&lt;a href=&quot;https://docs.python.org/3/library/argparse.html&quot;&gt;argparse&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;Below, you can find a more detailed and technical version.&lt;/em&gt;&lt;/p&gt;
 
@@ -1370,50 +1335,13 @@ on it.&lt;/p&gt;
 
 &lt;h2 id=&quot;completable-future-and-vavr&quot;&gt;Completable Future And Vavr&lt;/h2&gt;
 
-&lt;p&gt;For the second Hackathon, I didn’t find out anything too interesting to work on,
+&lt;p&gt;For the second Hackathon in July 2022, I didn’t find out anything too interesting to work on,
 so I picked some refactoring at the last minute. It was about Completable
 Future in Java. However, one day later, my
 colleague convinced me that I should try something cooler, so I started to work
 on Vavr integration, an object-functional library.&lt;/p&gt;
 
 &lt;h3 id=&quot;completable-future&quot;&gt;Completable Future&lt;/h3&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Comment&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Date&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;July 2020&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Duration&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;1 day&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Day 1 of the Hackathon&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Participants&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://github.com/mincong-h&quot;&gt;Mincong Huang&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Keywords&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;concurrency&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Status&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Completed&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
 
 &lt;p&gt;If you are familiar with the &lt;a href=&quot;https://docs.oracle.com/en/java/javase/18/docs/api/java.base/java/util/concurrent/CompletableFuture.html&quot;&gt;Completable
 Future&lt;/a&gt;
@@ -1453,44 +1381,8 @@ everyone uses the APIs carefully.&lt;/li&gt;
 
 &lt;h3 id=&quot;vavr&quot;&gt;Vavr&lt;/h3&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Comment&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Date&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;July 2020&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Duration&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;1 day&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Day 2 of the Hackathon&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Participants&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://github.com/mincong-h&quot;&gt;Mincong Huang&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Keywords&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vavr&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Status&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Rejected&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;This project demonstrated the usage of Java object-functional library
+&lt;p&gt;In the 2nd day of the hackathon, I moved to something else.
+I wanted to demonstrate the usage of Java object-functional library
 &lt;a href=&quot;https://github.com/vavr-io/vavr&quot;&gt;vavr&lt;/a&gt;, which brings many concepts of Scala
 into the Java world. In my hackathon, I tried to integrate Vavr into an existing
 service. I demonstrated multiple data types: streams, map, tuple, optional,
@@ -1508,45 +1400,9 @@ any use-cases in the near future.&lt;/p&gt;
 
 &lt;h2 id=&quot;datadog-instant&quot;&gt;Datadog Instant&lt;/h2&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Comment&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Date&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;August 2020&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Duration&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;2 days&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Participants&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://github.com/aleloup-dd&quot;&gt;Arnaud Leloup&lt;/a&gt;, &lt;a href=&quot;https://github.com/mincong-h&quot;&gt;Mincong Huang&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Keywords&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;javascript&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;search&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Status&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Completed&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;Datadog Instant is an experimental project proposed by &lt;a href=&quot;https://github.com/aleloup-dd&quot;&gt;Arnaud
-Leloup&lt;/a&gt;, which allows users to have instant
+&lt;p&gt;In the 3rd hackathon in August 2022, I worked with a colleage on a frontend
+project called “Datadog Instant”. This is an experimental project
+proposed by my colleage, which allows users to have instant
 recommendations in the &lt;a href=&quot;https://docs.datadoghq.com/logs/explorer/&quot;&gt;Log Explorer&lt;/a&gt;
 in Datadog, like what Google proposes in their search bar (see screenshot
 below). The idea is to provide more relevant results to the user based on the search
@@ -1581,44 +1437,8 @@ distribute tasks so that we can work more efficiently as a team.&lt;/p&gt;
 
 &lt;h2 id=&quot;temporal-java-worker&quot;&gt;Temporal Java Worker&lt;/h2&gt;
 
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Field&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Value&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Comment&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Date&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;April 2022&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Duration&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;2 days&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Participants&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;a href=&quot;https://github.com/juliendangers&quot;&gt;Julien Crestin&lt;/a&gt;, &lt;a href=&quot;https://github.com/mincong-h&quot;&gt;Mincong Huang&lt;/a&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Keywords&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;java&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;temporal&lt;/code&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Status&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;On-hold&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;It’s not the priority to continue on this project at the moment.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;At Datadog, we use the workflow engine &lt;a href=&quot;https://temporal.io/&quot;&gt;Temporal&lt;/a&gt; to
+&lt;p&gt;In April 2022, I worked with another colleague on workflows.
+At Datadog, we use the workflow engine &lt;a href=&quot;https://temporal.io/&quot;&gt;Temporal&lt;/a&gt; to
 handle internal deployments and running workflows for different usages. All the
 existing code is written in Go. It works well for most of the team. However,
 some teams use Java. Using Go means having an additional barrier to benefit from
@@ -1648,6 +1468,19 @@ possible to plan the work with much better visibility. Although we didn’t have
 chance to move forward right now, there is a good chance that we will do that
 again soon.&lt;/p&gt;
 
+&lt;h2 id=&quot;query-troubleshooting-assistant&quot;&gt;Query Troubleshooting Assistant&lt;/h2&gt;
+
+&lt;p&gt;In November 2022, I made a query troubleshooting assistant (QTA), a small static web page
+which allows administrators to troubleshoot query problems. Different services
+have different facets and it leads to confusion and slowness in the
+troubleshooting process. This tool unifies the user input and provides mappings
+between user input and service outputs, which allows users to
+troubleshoot more efficiently. For example, it asks you to provide information
+related to customer, storage location, sources, request ID or other information,
+and then suggests different outputs as URLs for you. The facet mappings between
+the input and output is handled by the tool. You can also share the result with
+others because all parameters are reflected as query parameters.&lt;/p&gt;
+
 &lt;h2 id=&quot;lessons-learned&quot;&gt;Lessons Learned&lt;/h2&gt;
 
 &lt;p&gt;&lt;em&gt;What did I learn across these projects?&lt;/em&gt;&lt;/p&gt;
@@ -1674,14 +1507,15 @@ information for further discussion and decisions.&lt;/li&gt;
 &lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
 
 &lt;p&gt;Today I shared the previous Hackathon projects with you in this article. I
-showed the 4 projects that I did: auto-completion for Python scripts; the
+showed the 5 projects that I did: auto-completion for Python scripts; the
 completable features refactoring and Vavr integration; the Datadog Instant,
-providing Google-like instant recommendations in the search bar; and the
-Temporal Java worker to write workflows in Java. Then I also shared some
+providing Google-like instant recommendations in the search bar; the
+Temporal Java worker to write workflows in Java; and finally the query
+troubleshooting assistant. I also shared some
 lessons learned from these projects.
 Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
 on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
-&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="review" /><category term="java" /><category term="python" /><summary type="html">This article shared the 4 projects that I did over the last hackathons in Datadog and the lessons learned from those experiences.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-karsten-winegeart-ewfHXBcuFA0-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-karsten-winegeart-ewfHXBcuFA0-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Managing Code Complexity</title><link href="https://mincong.io/en/managing-code-complexity/" rel="alternate" type="text/html" title="Managing Code Complexity" /><published>2022-06-25T10:31:04+02:00</published><updated>2022-06-25T10:31:04+02:00</updated><id>https://mincong.io/en/managing-code-complexity</id><content type="html" xml:base="https://mincong.io/en/managing-code-complexity/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="review" /><category term="java" /><category term="python" /><category term="javascript" /><category term="go" /><summary type="html">This article shared the 5 projects that I did over the last hackathons in Datadog and the lessons learned from those experiences.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-karsten-winegeart-ewfHXBcuFA0-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-karsten-winegeart-ewfHXBcuFA0-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Managing Code Complexity</title><link href="https://mincong.io/en/managing-code-complexity/" rel="alternate" type="text/html" title="Managing Code Complexity" /><published>2022-06-25T10:31:04+02:00</published><updated>2022-06-25T10:31:04+02:00</updated><id>https://mincong.io/en/managing-code-complexity</id><content type="html" xml:base="https://mincong.io/en/managing-code-complexity/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;In late 2021, I had the chance to join a new team at
 &lt;a href=&quot;https://www.datadoghq.com/&quot;&gt;Datadog&lt;/a&gt; called “Event Platform Automation”, which
