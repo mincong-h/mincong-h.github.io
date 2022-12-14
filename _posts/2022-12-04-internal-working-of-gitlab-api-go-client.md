@@ -209,6 +209,30 @@ sequenceDiagram
     Job Service-->>Caller: Jobs, Raw Response, Error
 ```
 
+TODO: marshaling and unmarshaling
+
+## Error Handling
+
+Status code, error
+
+## Dependency
+
+TODO
+
+## CI
+
+## Advanced Features
+
+Retry mechanism
+
+Pagination
+
+Observability
+
+Option Functions
+
+## Documentation
+
 ## Going Further
 
 How to go further from here?
