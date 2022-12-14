@@ -174,7 +174,23 @@ func newClient(options ...ClientOptionFunc) (*Client, error) {
 	c.AwardEmoji = &AwardEmojiService{client: c}
 ```
 
-## Section 3
+## Request and Response
+
+Thanks to section above, we have a better overview of the package structure.
+However, it's still not very clear how the SDK handles an HTTP request
+for us. In this section, we are going to discuss it. More precisely, we will use
+the "List Project Jobs API" as an example to learn the internal mechanism.
+
+```mermaid
+graph TB;
+    A[Do you have a problem in your life?]
+    B[Then don't worry]
+    C[Can you do something about it?]
+    A--no-->B;
+    A--yes-->C;
+    C--no-->B;
+    C--yes-->B;
+```
 
 ## Going Further
 
