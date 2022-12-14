@@ -177,19 +177,36 @@ func newClient(options ...ClientOptionFunc) (*Client, error) {
 ## Request and Response
 
 Thanks to section above, we have a better overview of the package structure.
-However, it's still not very clear how the SDK handles an HTTP request
+However, it's still not clear how the SDK handles an HTTP request
 for us. In this section, we are going to discuss it. More precisely, we will use
-the "List Project Jobs API" as an example to learn the internal mechanism.
+the "List Project Jobs API" as an example to learn the internal mechanism and
+master the exact sequence of the related actions.
+
+Before listing the jobs, you need to instantiate a new GitLab client via the
+method `NewClient(...)`. Once it is created, you can list the jobs of a given
+project. This is done by invoking the sub-client `client.Jobs`, which represents the
+job service of GitLab. This service uses the `ListProjectJobs` to achieve the
+goal. Internally, it delegates the logic to the low-level client `*Client` to
+perform the HTTP request. The low-level client sets up the headers, marchals the
+input Go structure into JSON, then delegates again the actual request to HashiCorp
+Retryable HTTP, a third-party library. This library interacts with the GitLab
+server and waits for the HTTP response to be returned. Once done, it returns
+either the correct response or the error to the upper levels. At the job service
+level, if it receives the correct response, it will unmarshal it back to a Go
+structure `[]*Job` before returning it to the user.
 
 ```mermaid
-graph TB;
-    A[Do you have a problem in your life?]
-    B[Then don't worry]
-    C[Can you do something about it?]
-    A--no-->B;
-    A--yes-->C;
-    C--no-->B;
-    C--yes-->B;
+sequenceDiagram
+    Caller->>GitLab Client: New Client
+    GitLab Client-->>Caller: Client
+    Caller->>Job Service: List Project Jobs
+    Job Service->>GitLab Client: New Request
+    GitLab Client->>HashiCorp Retryable HTTP: New Request
+    HashiCorp Retryable HTTP->>GitLab: Request
+    GitLab-->>HashiCorp Retryable HTTP: Raw Response, Error
+    HashiCorp Retryable HTTP-->>GitLab Client: Raw Response, Error
+    GitLab Client-->>Job Service: Raw Response, Error
+    Job Service-->>Caller: Jobs, Raw Response, Error
 ```
 
 ## Going Further
@@ -204,3 +221,7 @@ on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
+
+- [Sequence Diagram Tutorial – Complete Guide with Examples](https://creately.com/blog/diagrams/sequence-diagram-tutorial/)
+- [Sequence Diagram -
+  Mermaid](https://mermaid-js.github.io/mermaid/#/sequenceDiagram)
