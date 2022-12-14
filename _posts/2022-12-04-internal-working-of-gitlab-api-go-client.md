@@ -106,6 +106,74 @@ the methods related to this domain. For example, for the domain "jobs"
 the structures `Job`, `Bridge` which are related to jobs in the file. Also, we
 can see the methods for listing project jobs, pipeline jobs, pipeline bridges,
 and other related functions.
+
+```go
+// JobsService handles communication with the ci builds related methods
+// of the GitLab API.
+//
+// GitLab API docs: https://docs.gitlab.com/ce/api/jobs.html
+type JobsService struct {
+	client *Client
+}
+
+type Job struct {
+	Commit            *Commit    `json:"commit"`
+	Coverage          float64    `json:"coverage"`
+	// ...
+}
+
+type Bridge struct {
+	Commit             *Commit       `json:"commit"`
+	Coverage           float64       `json:"coverage"`
+	// ...
+}
+
+// ...
+
+func (s *JobsService) ListProjectJobs(...) ([]*Job, *Response, error) { ... }
+```
+
+Then, if you want to further into the HTTP request handling, you will find
+out that the actual preparation of the request is not handled by the domain.
+It's delegated to the underlying `*Client`, which is a low-level HTTP client
+shared by all the domains. Internally, it marshals the Go structure into HTTP
+request, sends the request, waits for the HTTP response, unmarchals it back to
+Go structure and handle error if needed. To better understand the relationship
+between the domain-specific client and the low-level HTTP client, let's draw a
+diagram
+([excalidraw](https://excalidraw.com/#json=Pys3pvu180BqEIHimIMQr,KWR8EauTyVMsOie7b2h7PA)):
+
+<img src="/assets/20221214-excalidraw-gitlab-clients.svg"
+     alt="GitLab API clients: high-level clients and low-level client" />
+
+This structure uses the delegation pattern
+([wikipedia](https://en.wikipedia.org/wiki/Delegation_pattern)), which allows to
+reuse the same low-level logic for every domain. Therefore, you don't have to
+repeat yourself. It's pretty cool, isn't it?
+
+However, this requires some work. During the initialization of the GitLab Go
+client, you need to initialize the low-level client and the high-level clients
+correctly. Inside the `gitlab.go` file, we can see that a new structure is
+created for each public service (domain), and the low-level client is wired to
+the current client `c`. Without it, the service (domain) cannot handle the HTTP
+request correctly.
+
+```go
+// gitlab.go
+func newClient(options ...ClientOptionFunc) (*Client, error) {
+	c := &Client{UserAgent: userAgent}
+
+	// Configure the HTTP client.
+	// ...
+
+	// Create all the public services.
+	c.AccessRequests = &AccessRequestsService{client: c}
+	c.Applications = &ApplicationsService{client: c}
+	c.AuditEvents = &AuditEventsService{client: c}
+	c.Avatar = &AvatarRequestsService{client: c}
+	c.AwardEmoji = &AwardEmojiService{client: c}
+```
+
 ## Section 3
 
 ## Going Further
