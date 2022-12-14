@@ -29,30 +29,20 @@ wechat:              false
 
 ## Introduction
 
-Explain context here to attract people's attention... like:
-- topic: what you want to talk about?
-- audience: who are you targeting?
-- motiviation: why is it interesting for them? Or why is it important to understand this topic?
+During my daily work at Datadog, I had the chance to use the GitLab Go API
+client ([xanzy/go-gitlab](https://github.com/xanzy/go-gitlab)) to interact with
+our GitLab server. I feel like that the library is well written and I want to learn
+how to write a library in the same way. That's why I spent some time to study
+its source code and I would like to share with you today. After reading this
+article, you will understand:
 
-After reading this article, you will understand:
+- The structure of the Go package
+- The HTTP request and response
+- Its dependencies
+- The CI pipeline
+- Its advanced features
+- Publishing the documentation
 
-(choose one of the following structures)
-
-dive deep:
-
-* Some prequisites
-* Some general concepts
-* Some specific concepts to dig deeper
-* How to go further from this article
-
-different dimensions (broad):
-
-* section 1
-* section 2
-* section 3
-* How to go further from this article
-
-... then specify some information about the context, such as framework version, language version.
 Now, let's get started!
 
 ## Section 1
