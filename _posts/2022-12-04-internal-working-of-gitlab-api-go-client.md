@@ -36,6 +36,7 @@ how to write a library in the same way. That's why I spent some time to study
 its source code and I would like to share with you today. After reading this
 article, you will understand:
 
+- How to use this package
 - The structure of the Go package
 - The HTTP request and response
 - Its dependencies
@@ -45,9 +46,40 @@ article, you will understand:
 
 Now, let's get started!
 
-## Section 1
+## Usage
 
-## Section 2
+Using the GitLab library is very simple, you need to create a new client with a
+token and then use the domain-specific sub-client to access certain resources.
+For example, this is the code for listing users, provided by the official
+documentation:
+
+```go
+import "github.com/xanzy/go-gitlab"
+
+// ...
+
+git, err := gitlab.NewClient("yourtokengoeshere")
+if err != nil {
+  log.Fatalf("Failed to create client: %v", err)
+}
+users, _, err := git.Users.ListUsers(&gitlab.ListUsersOptions{})
+```
+
+There are a few `With...` option functions that can be used to customize the API
+client. For example, to set a custom base URL:
+
+```go
+git, err := gitlab.NewClient("yourtokengoeshere", gitlab.WithBaseURL("https://git.mydomain.com/api/v4"))
+if err != nil {
+  log.Fatalf("Failed to create client: %v", err)
+}
+users, _, err := git.Users.ListUsers(&gitlab.ListUsersOptions{})
+```
+
+We will discuss more into details in the following sections.
+
+## Package Structure
+
 
 ## Section 3
 
