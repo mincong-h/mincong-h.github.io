@@ -372,7 +372,9 @@ HTTP response is successful or cached, it is not considered as an error. Else,
 we retrieve the response body as bytes and parse it. The parsing logic is split
 into 2 steps: 1) we verify if this is a valid JSON format by unmarshalling it
 via the `json.Unmarshal` function; 2) then, we parse the fields one by one and
-create a string representation of the error.
+create a string representation of the error. Finally, the function returns a
+reference of the structure `*ErrorResponse`, which encapsulates both the raw
+HTTP response `r` and the string representation of the error message.
 
 ```go
 // CheckResponse checks the API response for errors, and returns them if present.
