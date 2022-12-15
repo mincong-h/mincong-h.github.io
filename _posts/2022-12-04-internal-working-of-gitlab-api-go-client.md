@@ -159,7 +159,7 @@ the current client `c`. Without it, the service (domain) cannot handle the HTTP
 request correctly.
 
 ```go
-// gitlab.go
+// file: gitlab.go
 func newClient(options ...ClientOptionFunc) (*Client, error) {
 	c := &Client{UserAgent: userAgent}
 
@@ -209,7 +209,94 @@ sequenceDiagram
     Job Service-->>Caller: Jobs, Raw Response, Error
 ```
 
-TODO: marshaling and unmarshaling
+Now, let's go further into marshalling and unmarshalling. Marshalling happens
+when preparing the HTTP request and unmarshalling happens when receiving the
+HTTP response. The marshalling process transforms the Go structure into JSON.
+For listing the project's jobs, the related Go structure is `ListJobsOptions`.
+
+```go
+// file: jobs.go
+
+// ListJobsOptions represents the available ListProjectJobs() options.
+//
+// GitLab API docs:
+// https://docs.gitlab.com/ce/api/jobs.html#list-project-jobs
+type ListJobsOptions struct {
+	ListOptions
+	Scope          *[]BuildStateValue `url:"scope[],omitempty" json:"scope,omitempty"`
+	IncludeRetried *bool              `url:"include_retried,omitempty" json:"include_retried,omitempty"`
+}
+```
+
+The marshalling happens inside the low-level client, where the function
+`NewRequest` accepts whatever input option as interface, and marshals it as the
+request body. This is handled by the built-in package "encoding/json" in Go. The
+function also sets the media type as "application/json" to let the server knows
+the type of the content.
+
+```go
+// file: gitlab.go
+import (
+	"bytes"
+	"context"
+	"encoding/json"
+	// ...
+)
+
+func (c *Client) NewRequest(method, path string, opt interface{}, options []RequestOptionFunc) (*retryablehttp.Request, error) {
+	//...
+	var body interface{}
+	switch {
+	case method == http.MethodPost || method == http.MethodPut:
+		reqHeaders.Set("Content-Type", "application/json")
+
+		if opt != nil {
+			body, err = json.Marshal(opt)
+			if err != nil {
+				return nil, err
+			}
+		}
+```
+
+Once the response is received by the client, the unmarshalling process starts.
+More precisely, it is initialized in the domain level client but handled by the
+low-level client. Let's take "list project jobs" as an example, the jobs service
+declares the variable `var job []*Job` withouth assigning the variable. This
+reference of this variable is passed to the low-level `s.client`. Internally,
+it uses the builtin Go package "encoding/json" to unmarshal the HTTP response.
+Note that this variable `v` is not returned as output of the function, because
+the assignment happens in-place. That is, when we decode the variable `v`, the
+caller already has access to this information because both the low-level client
+and the caller point to the same reference of `*ListJobsOptions`. You may notice
+that the GitLab client also support I/O stream, this is useful for downloading
+resources, such as the artifacts of a job.
+
+```go
+// file: jobs.go
+func (s *JobsService) ListProjectJobs(pid interface{}, opts *ListJobsOptions, options ...RequestOptionFunc) ([]*Job, *Response, error) {
+	// ...
+	var jobs []*Job
+	resp, err := s.client.Do(req, &jobs)
+	if err != nil {
+		return nil, resp, err
+	}
+```
+
+```go
+// file: gitlab.go
+func (c *Client) Do(req *retryablehttp.Request, v interface{}) (*Response, error) {
+	// ...
+	if v != nil {
+		if w, ok := v.(io.Writer); ok {
+			_, err = io.Copy(w, resp.Body)
+		} else {
+			err = json.NewDecoder(resp.Body).Decode(v)
+		}
+	}
+
+	return response, err
+}
+```
 
 ## Error Handling
 
