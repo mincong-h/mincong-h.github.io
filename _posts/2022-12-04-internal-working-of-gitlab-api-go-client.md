@@ -309,7 +309,9 @@ that the error is provided by the GitLab server with a standard error structure.
 
 The non-API errors happen in the low-level client (`gitlab.go`) where we try to
 prepare the HTTP request with a limiter; request an OAuth token; submit an HTTP
-request; etc
+request; etc. As you can see, in none of the cases, we have the response from
+the GitLab Server. It means that the error happens before receiving the response
+or even before sending the request.
 
 ```go
 // Wait will block until the limiter can obtain a new token.
@@ -336,6 +338,8 @@ if err != nil {
 	return nil, err
 }
 ```
+
+
 Status code, error
 
 ## Dependency
