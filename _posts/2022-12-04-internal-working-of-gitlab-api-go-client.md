@@ -339,8 +339,65 @@ if err != nil {
 }
 ```
 
+Now, let's take a look at the API errors. API errors are representations of the
+failures returned by the GitLab server. This happens when the request has been
+successfully sent but the client received a failing response. According the
+GitLab official documentation ["Data validation and error
+reporting"](https://docs.gitlab.com/ee/api/index.html#data-validation-and-error-reporting),
+the structure of the error message can be described as follows:
 
-Status code, error
+```json
+{
+    "message": {
+        "<property-name>": [
+            "<error-message>",
+            "<error-message>",
+            ...
+        ],
+        "<embed-entity>": {
+            "<property-name>": [
+                "<error-message>",
+                "<error-message>",
+                ...
+            ],
+        }
+    }
+}
+```
+
+In the GitLab client SDK, it parses the error following exactly this structure
+via function `parseError(...)`.
+If we take a step back, an API error is created in the following way. If the
+HTTP response is successful or cached, it is not considered as an error. Else,
+we retrieve the response body as bytes and parse it. The parsing logic is split
+into 2 steps: 1) we verify if this is a valid JSON format by unmarshalling it
+via the `json.Unmarshal` function; 2) then, we parse the fields one by one and
+create a string representation of the error.
+
+```go
+// CheckResponse checks the API response for errors, and returns them if present.
+func CheckResponse(r *http.Response) error {
+	switch r.StatusCode {
+	case 200, 201, 202, 204, 304:
+		return nil
+	}
+
+	errorResponse := &ErrorResponse{Response: r}
+	data, err := io.ReadAll(r.Body)
+	if err == nil && data != nil {
+		errorResponse.Body = data
+
+		var raw interface{}
+		if err := json.Unmarshal(data, &raw); err != nil {
+			errorResponse.Message = fmt.Sprintf("failed to parse unknown error format: %s", data)
+		} else {
+			errorResponse.Message = parseError(raw)
+		}
+	}
+
+	return errorResponse
+}
+```
 
 ## Dependency
 
