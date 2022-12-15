@@ -569,7 +569,44 @@ func (s *JobsService) ListProjectJobs(
 	options ...RequestOptionFunc) ([]*Job, *Response, error) { ... }
 ```
 
-Option Functions
+**Option Functions.** The GitLab SDK provides some `With...` option functions to
+let you customize the API client. Why? Because the default values may not fit
+100% of your need and you want to do something differently. The GitLab API
+client provides options to set the base URL, configure backoff policy, logging,
+error handling, HTTP client, etc.
+
+```go
+git, err := gitlab.NewClient("yourtokengoeshere", gitlab.WithBaseURL("https://git.mydomain.com/api/v4"))
+if err != nil {
+  log.Fatalf("Failed to create client: %v", err)
+}
+users, _, err := git.Users.ListUsers(&gitlab.ListUsersOptions{})
+```
+
+Using the `With...` style functions to configure options is common in Go. You
+can see similar patterns in gRPC when creating a client connection to the given
+target ([doc](https://pkg.go.dev/google.golang.org/grpc#Dial)). For example:
+
+```go
+conn, err := grpc.Dial(addr,
+	grpc.WithTransportCredentials(insecure.NewCredentials()),
+	grpc.WithChainUnaryInterceptor(myInterceptor),
+	// ...
+)
+```
+
+Or simply changing the context using the builtin `context` library to inject new
+key value pair, setting timeout, etc as mentioned by Kshitij Kumar in his
+article ["Notes: Golang Context"](https://btree.dev/golang-context):
+
+```go
+ctx := context.WithValue(context.Background(), "my_key", "my_value")
+```
+
+```go
+// context with deadline after 2 millisecond
+ctx, cancel := context.WithTimeout(context.Background(), 2*time.Millisecond)
+```
 
 ## Documentation
 
