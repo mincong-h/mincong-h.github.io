@@ -408,7 +408,7 @@ sequence of the actions. Now, let's change an angle and look at its
 dependencies. Below is the `go.mod` file which describes the module's
 properties, including its dependencies.
 
-```mod
+```go
 module github.com/xanzy/go-gitlab
 
 go 1.18
@@ -453,6 +453,31 @@ dependencies mentioned above. They are transistive dependencies. See
 about this.
 
 ## CI
+
+Continuous integration also plays an important part of the success of the
+project. It allows maintainers to focus on what matters and reduce the burden.
+This GitLab SDK uses GitHub actions to run lints and tests. It is configured to
+test the 3 major Go versions: 1.18, 1.19 and the latest one.
+
+```yaml
+    name: Lint and Test - ${{ matrix.go-version }}
+    strategy:
+      matrix:
+        go-version: [1.18.x, 1.19.x, 1.x]
+        platform: [ubuntu-latest]
+    runs-on: ${{ matrix.platform }}
+```
+
+The lint is handled by the Golang CI lint action and the tests are handled by
+the builtin `go test` command, which traverse the repository recursively with
+coverage measurement enabled.
+
+```yaml
+      - name: Test package
+        run: |
+          go test -v ./... -coverprofile=coverage.txt -covermode count
+          go tool cover -func coverage.txt
+```
 
 ## Advanced Features
 
