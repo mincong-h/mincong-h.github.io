@@ -269,7 +269,7 @@ the assignment happens in-place. That is, when we decode the variable `v`, the
 caller already has access to this information because both the low-level client
 and the caller point to the same reference of `*ListJobsOptions`. You may notice
 that the GitLab client also support I/O stream, this is useful for downloading
-resources, such as the artifacts of a job.
+resources, such as downloading the artifacts of a job.
 
 ```go
 // file: jobs.go
@@ -300,6 +300,42 @@ func (c *Client) Do(req *retryablehttp.Request, v interface{}) (*Response, error
 
 ## Error Handling
 
+Error handling is an important part of any SDK. In this section, we are going to
+discuss how GitLab SDK handles errors. In general, there are two types of
+errors: non-API errors and API errors. Non-API errors are errors that are
+unrelated to the GitLab APIs. This can happen before sending an
+HTTP reqest. API errors are errors that are related to the GitLab APIs. It means
+that the error is provided by the GitLab server with a standard error structure.
+
+The non-API errors happen in the low-level client (`gitlab.go`) where we try to
+prepare the HTTP request with a limiter; request an OAuth token; submit an HTTP
+request; etc
+
+```go
+// Wait will block until the limiter can obtain a new token.
+err := c.limiter.Wait(req.Context())
+if err != nil {
+	return nil, err
+}
+```
+
+```go
+if basicAuthToken == "" {
+	// If we don't have a token yet, we first need to request one.
+	basicAuthToken, err = c.requestOAuthToken(req.Context(), basicAuthToken)
+	if err != nil {
+		return nil, err
+	}
+}
+req.Header.Set("Authorization", "Bearer "+basicAuthToken)
+```
+
+```go
+resp, err := c.client.Do(req)
+if err != nil {
+	return nil, err
+}
+```
 Status code, error
 
 ## Dependency
