@@ -13,7 +13,7 @@ ads_tags:            [ci, test]
 comments:            true
 excerpt:             >
     The internal working of the GitLab API Go Client (xanzy/go-gitlab):
-    usage, structure, request, marshalling, error handling, CI,
+    usage, structure, request, marshaling, error handling, CI,
     advanced features, and more.
 
 image:               /assets/bg-drmakete-lab-hsg538WrP0Y-unsplash.jpg
@@ -31,9 +31,9 @@ wechat:              false
 
 During my daily work at Datadog, I had the chance to use the GitLab Go API
 client ([xanzy/go-gitlab](https://github.com/xanzy/go-gitlab)) to interact with
-our GitLab server. I feel like that the library is well written and I want to learn
-how to write a library in the same way. That's why I spent some time to study
-its source code and I would like to share with you today. After reading this
+our GitLab server. I feel that the library is well written and I want to learn
+how to write a library in the same way. That's why I spent some time studying
+its source code and I would like to share it with you today. After reading this
 article, you will understand:
 
 - How to use this package
@@ -76,7 +76,7 @@ if err != nil {
 users, _, err := git.Users.ListUsers(&gitlab.ListUsersOptions{})
 ```
 
-We will discuss more into details in the following sections.
+We will discuss this more in detail in the following sections.
 
 ## Package Structure
 
@@ -99,13 +99,13 @@ the test code, e.g. `access_requests.go` and `access_requests_test.go`.
 ├── avatar.go
 ```
 
-Inside each domain, we can find the sub-client of this domain, the Go structues
-representing the HTTP requests and responses related to the current domain, and
-the methods related to this domain. For example, for the domain "jobs"
-(`jobs.go`), we can find `JobsService` is the sub-client of the domain "jobs",
-the structures `Job`, `Bridge` which are related to jobs in the file. Also, we
-can see the methods for listing project jobs, pipeline jobs, pipeline bridges,
-and other related functions.
+Inside each domain, we can find multiple things: the sub-client of this domain; the Go structures
+representing the HTTP requests and responses for this domain; and
+the related methods. For example, for the domain "jobs"
+(`jobs.go`), we can find the `JobsService` which is the client of the domain
+"jobs"; we can find the structures: `Job` and `Bridge`; we
+can also see the methods for different purposes: listing project jobs, listing
+pipeline jobs, listing pipeline bridges, etc.
 
 ```go
 // JobsService handles communication with the ci builds related methods
@@ -133,12 +133,12 @@ type Bridge struct {
 func (s *JobsService) ListProjectJobs(...) ([]*Job, *Response, error) { ... }
 ```
 
-Then, if you want to further into the HTTP request handling, you will find
+Then, if you want to go further into the HTTP request handling, you will find
 out that the actual preparation of the request is not handled by the domain.
 It's delegated to the underlying `*Client`, which is a low-level HTTP client
-shared by all the domains. Internally, it marshals the Go structure into HTTP
+shared by all the domains. Internally, it marshals the Go structure into an HTTP
 request, sends the request, waits for the HTTP response, unmarchals it back to
-Go structure and handle error if needed. To better understand the relationship
+Go structure, and handle eventual errors. To better understand the relationship
 between the domain-specific client and the low-level HTTP client, let's draw a
 diagram
 ([excalidraw](https://excalidraw.com/#json=Pys3pvu180BqEIHimIMQr,KWR8EauTyVMsOie7b2h7PA)):
@@ -147,13 +147,13 @@ diagram
      alt="GitLab API clients: high-level clients and low-level client" />
 
 This structure uses the delegation pattern
-([wikipedia](https://en.wikipedia.org/wiki/Delegation_pattern)), which allows to
-reuse the same low-level logic for every domain. Therefore, you don't have to
+([wikipedia](https://en.wikipedia.org/wiki/Delegation_pattern)), which allows
+reusing the same logic for every domain. Therefore, you don't have to
 repeat yourself. It's pretty cool, isn't it?
 
 However, this requires some work. During the initialization of the GitLab Go
 client, you need to initialize the low-level client and the high-level clients
-correctly. Inside the `gitlab.go` file, we can see that a new structure is
+correctly as shown below. Inside the `gitlab.go` file, we can see that a new structure is
 created for each public service (domain), and the low-level client is wired to
 the current client `c`. Without it, the service (domain) cannot handle the HTTP
 request correctly.
@@ -176,11 +176,11 @@ func newClient(options ...ClientOptionFunc) (*Client, error) {
 
 ## Request and Response
 
-Thanks to section above, we have a better overview of the package structure.
+Thanks to the section above, we have a better overview of the package structure.
 However, it's still not clear how the SDK handles an HTTP request
 for us. In this section, we are going to discuss it. More precisely, we will use
 the "List Project Jobs API" as an example to learn the internal mechanism and
-master the exact sequence of the related actions.
+get the exact sequence of the related actions.
 
 Before listing the jobs, you need to instantiate a new GitLab client via the
 method `NewClient(...)`. Once it is created, you can list the jobs of a given
@@ -209,9 +209,9 @@ sequenceDiagram
     Job Service-->>Caller: Jobs, Raw Response, Error
 ```
 
-Now, let's go further into marshalling and unmarshalling. Marshalling happens
-when preparing the HTTP request and unmarshalling happens when receiving the
-HTTP response. The marshalling process transforms the Go structure into JSON.
+Now, let's go further into marshaling and unmarshaling. Marshalling happens
+when preparing the HTTP request and unmarshaling happens when receiving the
+HTTP response. The marshaling process transforms the Go structure into JSON.
 For listing the project's jobs, the related Go structure is `ListJobsOptions`.
 
 ```go
@@ -228,11 +228,11 @@ type ListJobsOptions struct {
 }
 ```
 
-The marshalling happens inside the low-level client, where the function
-`NewRequest` accepts whatever input option as interface, and marshals it as the
+The marshaling happens inside the low-level client, where the function
+`NewRequest` accepts whatever input option as an interface, and marshals it as the
 request body. This is handled by the built-in package "encoding/json" in Go. The
 function also sets the media type as "application/json" to let the server knows
-the type of the content.
+the type of content.
 
 ```go
 // file: gitlab.go
@@ -258,17 +258,18 @@ func (c *Client) NewRequest(method, path string, opt interface{}, options []Requ
 		}
 ```
 
-Once the response is received by the client, the unmarshalling process starts.
-More precisely, it is initialized in the domain level client but handled by the
+Once the response is received by the client, the unmarshaling process starts.
+More precisely, it is initialized in the domain-level client but handled by the
 low-level client. Let's take "list project jobs" as an example, the jobs service
-declares the variable `var job []*Job` withouth assigning the variable. This
-reference of this variable is passed to the low-level `s.client`. Internally,
-it uses the builtin Go package "encoding/json" to unmarshal the HTTP response.
-Note that this variable `v` is not returned as output of the function, because
-the assignment happens in-place. That is, when we decode the variable `v`, the
+declares the variable `var job []*Job` without assigning the variable. This
+reference of this variable is passed to the low-level `s.client`. Inside the
+low-level client,
+it uses the built-in Go package "encoding/json" to unmarshal the HTTP response.
+Note that this variable `v` is not returned as part of the function output, because
+the assignment happens in place. That is, when we decode the variable `v`, the
 caller already has access to this information because both the low-level client
 and the caller point to the same reference of `*ListJobsOptions`. You may notice
-that the GitLab client also support I/O stream, this is useful for downloading
+that the GitLab client also supports I/O stream, which is useful for downloading
 resources, such as downloading the artifacts of a job.
 
 ```go
@@ -304,12 +305,12 @@ Error handling is an important part of any SDK. In this section, we are going to
 discuss how GitLab SDK handles errors. In general, there are two types of
 errors: non-API errors and API errors. Non-API errors are errors that are
 unrelated to the GitLab APIs. This can happen before sending an
-HTTP reqest. API errors are errors that are related to the GitLab APIs. It means
+HTTP request. API errors are errors that are related to the GitLab APIs. It means
 that the error is provided by the GitLab server with a standard error structure.
 
 The non-API errors happen in the low-level client (`gitlab.go`) where we try to
 prepare the HTTP request with a limiter; request an OAuth token; submit an HTTP
-request; etc. As you can see, in none of the cases, we have the response from
+request; etc. As you can see, in any of the cases, we don't have a response from
 the GitLab Server. It means that the error happens before receiving the response
 or even before sending the request.
 
@@ -341,7 +342,7 @@ if err != nil {
 
 Now, let's take a look at the API errors. API errors are representations of the
 failures returned by the GitLab server. This happens when the request has been
-successfully sent but the client received a failing response. According the
+successfully sent but the client received a failing response. According to the
 GitLab official documentation ["Data validation and error
 reporting"](https://docs.gitlab.com/ee/api/index.html#data-validation-and-error-reporting),
 the structure of the error message can be described as follows:
@@ -366,11 +367,11 @@ the structure of the error message can be described as follows:
 ```
 
 In the GitLab client SDK, it parses the error following exactly this structure
-via function `parseError(...)`.
+via the function `parseError(...)`.
 If we take a step back, an API error is created in the following way. If the
 HTTP response is successful or cached, it is not considered as an error. Else,
 we retrieve the response body as bytes and parse it. The parsing logic is split
-into 2 steps: 1) we verify if this is a valid JSON format by unmarshalling it
+into 2 steps: 1) we verify if this is a valid JSON format by unmarshaling it
 via the `json.Unmarshal` function; 2) then, we parse the fields one by one and
 create a string representation of the error. Finally, the function returns a
 reference of the structure `*ErrorResponse`, which encapsulates both the raw
@@ -403,7 +404,7 @@ func CheckResponse(r *http.Response) error {
 
 ## Dependency
 
-In the previous section we focused on one single request and studied the
+In the previous section, we focused on one single request and studied the
 sequence of the actions. Now, let's change an angle and look at its
 dependencies. Below is the `go.mod` file which describes the module's
 properties, including its dependencies.
@@ -433,7 +434,7 @@ require (
 )
 ```
 
-Here are some brief analysis of each direct dependency:
+Here is a brief analysis of each direct dependency:
 
 * `github.com/google/go-querystring` is used for constructing query parameters
   for HTTP requests. This is useful for URL encoding.
@@ -444,20 +445,20 @@ Here are some brief analysis of each direct dependency:
   mechansim for the http requests.
 * `github.com/stretchr/testify` is used for writing tests.
 * `golang.org/x/oauth2` is used for handling open authorization (OAuth).
-* `golang.org/x/time` is used for facilitating the operations related to
+* `golang.org/x/time` is used for facilitating operations related to
   datetime.
 
-As for the indirect dependencies, they are dependencies used the direct
-dependencies mentioned above. They are transistive dependencies. See
+As for the indirect dependencies, they are dependencies used by the direct
+dependencies mentioned above. They are transitive dependencies. See
 ["//indirect for a dependency in go.mod file in Go (Golang)"](https://golangbyexample.com/indirect-dependency-golang/) to learn more
 about this.
 
 ## CI
 
-Continuous integration also plays an important part of the success of the
+Continuous integration also plays an important part in the success of the
 project. It allows maintainers to focus on what matters and reduce the burden.
-This GitLab SDK uses GitHub actions to run lints and tests. It is configured to
-test the 3 major Go versions: 1.18, 1.19 and the latest one.
+This GitLab SDK uses GitHub actions to run linting and tests. It is configured to
+test the 3 major Go versions: 1.18, 1.19, and the latest one.
 
 ```yaml
     name: Lint and Test - ${% raw %}{{ matrix.go-version }}{% endraw %}
@@ -469,7 +470,7 @@ test the 3 major Go versions: 1.18, 1.19 and the latest one.
 ```
 
 The lint is handled by the Golang CI lint action and the tests are handled by
-the builtin `go test` command, which traverse the repository recursively with
+the built-in `go test` command, which traverses the repository recursively with
 coverage measurement enabled.
 
 ```yaml
@@ -482,7 +483,7 @@ coverage measurement enabled.
 ## Advanced Features
 
 The GitLab Go SDK also contains some advanced features that we didn't have
-chance to discuss so far, such as its retry mechanism, the pagination, and
+a chance to discuss so far, such as its retry mechanism, pagination, and
 its option functions. Here, I want to briefly talk about them.
 
 **Retry mechanism.** According to [HashiCorp's official
@@ -492,9 +493,9 @@ retries and exponential backoff. It's a thin wrapper over the standard
 `net/http` client library and exposes nearly the same public API. This makes
 `retryablehttp` very easy to drop into existing programs."_. The retry mechanism
 is triggered automatically under certain conditions, such as when a connection
-error occured, or a 500-range response is received (except 501 Not Implemented).
-Some of the configurations are exposed as client option function, where you can
-customize your GitLab client as you want. Below, you can see an example which
+error occurred, or a 500-range response is received (except 501 Not Implemented).
+Some of the configurations are exposed as a client option function, where you can
+customize your GitLab client as you want. Below, you can see an example that
 allows you to configure a custom backoff policy:
 
 ```go
@@ -509,18 +510,18 @@ func WithCustomBackoff(backoff retryablehttp.Backoff) ClientOptionFunc {
 }
 ```
 
-There are also options to configure the maximum number of retry, the retry
-policy, logger, etc.
+There are also options to configure the maximum number of retries, the retry
+policy, the logger, etc.
 
 **Pagination.** GitLab supports two types of pagination methods: offset-based
-pagination and the keyset-based pagination
+pagination and keyset-based pagination
 ([documentation](https://docs.gitlab.com/ee/api/#pagination)). The offset-based
 pagination is supported by the GitLab API Go client. This is achieved by two
 pieces of code: the listing options in the request and the pagination-related
 info in the response. More precisely, when listing some resources, you can
 specify the offset and the limit of your pagination via the `ListOptions`
 structure using variables "Page" and "PerPage". When returning the HTTP response,
-the SDK uses a wrapper structure around the builtin HTTP response to contain
+the SDK uses a wrapper structure around the built-in HTTP response to contain
 the information related to pagination.
 
 ```go
@@ -558,8 +559,8 @@ type Response struct {
 ```
 
 But isn't the response being transformed into the actual Go structure before
-returning to the caller? Well, actually both of them are returned, not only the
-actual Go structure, but also the wrapped HTTP response. Below, you can see an
+returning to the caller? Well, actually both of them are returned: not only the
+actual Go structure but also the wrapped HTTP response. Below, you can see an
 example from "listing project jobs":
 
 ```go
@@ -610,7 +611,7 @@ ctx, cancel := context.WithTimeout(context.Background(), 2*time.Millisecond)
 
 ## Documentation
 
-As many other open source projects written in Go, the documentation of this SDK
+As many other open-source projects written in Go, the documentation of this SDK
 is published to [Go package repository](https://pkg.go.dev) under
 <https://pkg.go.dev/github.com/xanzy/go-gitlab>.
 
@@ -629,8 +630,8 @@ learned about different aspects of this library, including the package
 structure, the request and response, the error handling, its dependency, the CI
 pipeline, its advanced features (retry mechanism, pagination, client options),
 and its documentation. I hope that it gives a better understanding of this
-library, provide you ideas for troubleshooting, or inspire you to write your
-SDK.
+library, gives you ideas for troubleshooting, or inspires you to write your
+SDK!
 Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
