@@ -622,13 +622,15 @@ because I don't see integration in the CI. It should be very simple, the Go
 official website has instructions about the publishing process
 [here](https://go.dev/doc/modules/publishing).
 
-## Going Further
-
-How to go further from here?
-
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
+In this article, we went into the implementation of the GitLab API Go client and
+learned about different aspects of this library, including the package
+structure, the request and response, the error handling, its dependency, the CI
+pipeline, its advanced features (retry mechanism, pagination, client options),
+and its documentation. I hope that it gives a better understanding of this
+library, provide you ideas for troubleshooting, or inspire you to write your
+SDK.
 Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
