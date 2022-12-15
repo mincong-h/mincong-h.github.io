@@ -512,9 +512,62 @@ func WithCustomBackoff(backoff retryablehttp.Backoff) ClientOptionFunc {
 There are also options to configure the maximum number of retry, the retry
 policy, logger, etc.
 
-Pagination
+**Pagination.** GitLab supports two types of pagination methods: offset-based
+pagination and the keyset-based pagination
+([documentation](https://docs.gitlab.com/ee/api/#pagination)). The offset-based
+pagination is supported by the GitLab API Go client. This is achieved by two
+pieces of code: the listing options in the request and the pagination-related
+info in the response. More precisely, when listing some resources, you can
+specify the offset and the limit of your pagination via the `ListOptions`
+structure using variables "Page" and "PerPage". When returning the HTTP response,
+the SDK uses a wrapper structure around the builtin HTTP response to contain
+the information related to pagination.
 
-Observability
+```go
+// file: gitlab.go
+
+// ListOptions specifies the optional parameters to various List methods that
+// support pagination.
+type ListOptions struct {
+	// For paginated result sets, page of results to retrieve.
+	Page int `url:"page,omitempty" json:"page,omitempty"`
+
+	// For paginated result sets, the number of results to include per page.
+	PerPage int `url:"per_page,omitempty" json:"per_page,omitempty"`
+}
+
+// ...
+
+// Response is a GitLab API response. This wraps the standard http.Response
+// returned from GitLab and provides convenient access to things like
+// pagination links.
+type Response struct {
+	*http.Response
+
+	// These fields provide the page values for paginating through a set of
+	// results. Any or all of these may be set to the zero value for
+	// responses that are not part of a paginated set, or for which there
+	// are no additional pages.
+	TotalItems   int
+	TotalPages   int
+	ItemsPerPage int
+	CurrentPage  int
+	NextPage     int
+	PreviousPage int
+}
+```
+
+But isn't the response being transformed into the actual Go structure before
+returning to the caller? Well, actually both of them are returned, not only the
+actual Go structure, but also the wrapped HTTP response. Below, you can see an
+example from "listing project jobs":
+
+```go
+func (s *JobsService) ListProjectJobs(
+	pid interface{},
+	opts *ListJobsOptions,
+	options ...RequestOptionFunc) ([]*Job, *Response, error) { ... }
+```
 
 Option Functions
 
@@ -551,3 +604,5 @@ on [Twitter](https://twitter.com/mincong_h) or
 - [//indirect for a dependency in go.mod file in Go (Golang)](https://golangbyexample.com/indirect-dependency-golang/)
 - [github.com/xanzy/go-gitlab](https://pkg.go.dev/github.com/xanzy/go-gitlab)
 - [Publishing a module - Go](https://go.dev/doc/modules/publishing)
+- [Web API Pagination | Offset-based vs Cursor-based - Ambient
+  Coder](https://youtu.be/WUICbOOtAic)
