@@ -1,7 +1,7 @@
 ---
 layout:              post
 type:                classic
-title:               Internal Working of GitLab API Go Client
+title:               Internal Working of the GitLab API Go Client
 subtitle:            >
     How does this SDK work and what can we learn from it?
 
