@@ -646,3 +646,4 @@ on [Twitter](https://twitter.com/mincong_h) or
 - [Publishing a module - Go](https://go.dev/doc/modules/publishing)
 - [Web API Pagination | Offset-based vs Cursor-based - Ambient
   Coder](https://youtu.be/WUICbOOtAic)
+- [API Docs - GitLab](https://docs.gitlab.com/ee/api/)
