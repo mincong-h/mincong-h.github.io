@@ -460,12 +460,12 @@ This GitLab SDK uses GitHub actions to run lints and tests. It is configured to
 test the 3 major Go versions: 1.18, 1.19 and the latest one.
 
 ```yaml
-    name: Lint and Test - ${{ matrix.go-version }}
+    name: Lint and Test - ${% raw %}{{ matrix.go-version }}{% endraw %}
     strategy:
       matrix:
         go-version: [1.18.x, 1.19.x, 1.x]
         platform: [ubuntu-latest]
-    runs-on: ${{ matrix.platform }}
+    runs-on: ${% raw %}{{ matrix.platform }}{% endraw %}
 ```
 
 The lint is handled by the Golang CI lint action and the tests are handled by
