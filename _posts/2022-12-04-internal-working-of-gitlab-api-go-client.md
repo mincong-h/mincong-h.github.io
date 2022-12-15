@@ -481,7 +481,36 @@ coverage measurement enabled.
 
 ## Advanced Features
 
-Retry mechanism
+The GitLab Go SDK also contains some advanced features that we didn't have
+chance to discuss so far, such as its retry mechanism, the pagination, and
+its option functions. Here, I want to briefly talk about them.
+
+**Retry mechanism.** According to [HashiCorp's official
+documentation](https://github.com/hashicorp/go-retryablehttp), _"the
+`retryable` package provides a familiar HTTP client interface with automatic
+retries and exponential backoff. It's a thin wrapper over the standard
+`net/http` client library and exposes nearly the same public API. This makes
+`retryablehttp` very easy to drop into existing programs."_. The retry mechanism
+is triggered automatically under certain conditions, such as when a connection
+error occured, or a 500-range response is received (except 501 Not Implemented).
+Some of the configurations are exposed as client option function, where you can
+customize your GitLab client as you want. Below, you can see an example which
+allows you to configure a custom backoff policy:
+
+```go
+// file: client_options.go
+
+// WithCustomBackoff can be used to configure a custom backoff policy.
+func WithCustomBackoff(backoff retryablehttp.Backoff) ClientOptionFunc {
+	return func(c *Client) error {
+		c.client.Backoff = backoff
+		return nil
+	}
+}
+```
+
+There are also options to configure the maximum number of retry, the retry
+policy, logger, etc.
 
 Pagination
 
