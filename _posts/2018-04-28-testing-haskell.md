@@ -1,4 +1,5 @@
 ---
+article_num: 52
 layout:      post
 title:       "Testing Haskell"
 lang:                en

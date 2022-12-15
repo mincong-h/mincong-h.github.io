@@ -1,4 +1,5 @@
 ---
+article_num: 192
 layout:              post
 title:               String Operations in Bash
 subtitle:            >

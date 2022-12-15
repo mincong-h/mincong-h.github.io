@@ -1,4 +1,5 @@
 ---
+article_num: 194
 layout:              post
 type:                Q&A
 title:               Using Component in Vue.js

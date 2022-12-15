@@ -1,4 +1,5 @@
 ---
+article_num: 69
 layout:            post
 title:             "JGit: Protect Branches on Git Server"
 lang:              en

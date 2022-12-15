@@ -1,4 +1,5 @@
 ---
+article_num: 73
 layout:            post
 title:             Create JSON-LD Structured Data in Jekyll
 lang:                en

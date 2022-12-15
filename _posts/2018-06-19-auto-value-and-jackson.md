@@ -1,4 +1,5 @@
 ---
+article_num: 58
 layout:            post
 title:             Use Auto Value and Jackson in REST API
 lang:                en

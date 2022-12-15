@@ -1,4 +1,5 @@
 ---
+article_num: 150
 layout:            post
 title:             GC in Elasticsearch
 lang:              en

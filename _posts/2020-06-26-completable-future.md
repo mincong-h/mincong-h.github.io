@@ -1,4 +1,5 @@
 ---
+article_num: 146
 layout:            post
 title:             Why Do We Need Completable Future?
 lang:                en

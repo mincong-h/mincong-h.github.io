@@ -1,4 +1,5 @@
 ---
+article_num: 6
 layout:     post
 title:      "Boolean query in Apache Lucene"
 lang:       en

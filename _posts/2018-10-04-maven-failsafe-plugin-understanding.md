@@ -1,4 +1,5 @@
 ---
+article_num: 78
 layout:            post
 title:             Maven Failsafe Plugin Understanding
 lang:                en

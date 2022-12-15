@@ -1,4 +1,5 @@
 ---
+article_num: 23
 layout:     post
 title:      "Setup GitLab Sever Locally"
 lang:                en

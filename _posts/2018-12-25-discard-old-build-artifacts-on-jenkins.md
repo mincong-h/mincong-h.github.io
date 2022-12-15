@@ -1,4 +1,5 @@
 ---
+article_num: 91
 layout:            post
 title:             Discard Old Build Artifacts on Jenkins
 lang:                en

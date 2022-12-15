@@ -1,4 +1,5 @@
 ---
+article_num: 96
 layout:            post
 title:             Security Training Day 3
 lang:                en

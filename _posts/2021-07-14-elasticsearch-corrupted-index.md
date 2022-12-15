@@ -1,4 +1,5 @@
 ---
+article_num: 182
 layout:              post
 title:               Fix Corrupted Index in Elasticsearch
 subtitle:            >

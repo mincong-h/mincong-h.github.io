@@ -1,4 +1,5 @@
 ---
+article_num: 98
 layout:            post
 title:             "TDD: After 3 Months' Practice"
 lang:                en

@@ -1,4 +1,5 @@
 ---
+article_num: 182
 layout:              post
 title:               修复 Elasticsearch 中损坏的索引
 subtitle:            >

@@ -1,4 +1,5 @@
 ---
+article_num: 57
 layout:            post
 title:             My Java Code Style
 lang:                en

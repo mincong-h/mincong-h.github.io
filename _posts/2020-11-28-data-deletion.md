@@ -1,4 +1,5 @@
 ---
+article_num: 157
 layout:            post
 title:             8 Lessons Learned From Data Deletion
 lang:                en

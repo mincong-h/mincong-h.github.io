@@ -1,4 +1,5 @@
 ---
+article_num: 169
 layout:              post
 title:               "DVF: Real Estate Analysis For Île-de-France in 2020"
 subtitle:            >

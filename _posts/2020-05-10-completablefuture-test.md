@@ -1,4 +1,5 @@
 ---
+article_num: 142
 layout:            post
 title:             How CompletableFuture is tested in OpenJDK?
 lang:                en

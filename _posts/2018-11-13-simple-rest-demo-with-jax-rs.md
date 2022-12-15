@@ -1,4 +1,5 @@
 ---
+article_num: 84
 layout:            post
 title:             Simple REST Demo With JAX-RS
 lang:                en

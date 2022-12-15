@@ -1,4 +1,5 @@
 ---
+article_num: 44
 layout:      post
 title:       "Learning JNI"
 lang:                en

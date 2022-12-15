@@ -1,4 +1,5 @@
 ---
+article_num: 7
 layout:     post
 title:      "Starting Hibernate Search"
 lang:       en

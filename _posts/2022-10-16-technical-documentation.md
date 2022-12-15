@@ -1,4 +1,5 @@
 ---
+article_num: 205
 layout:              post
 type:                classic
 title:               How to write technical documentation

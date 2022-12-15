@@ -1,4 +1,5 @@
 ---
+article_num: 151
 layout:            post
 title:             "Elasticsearch: Common Index Exceptions"
 lang:              en

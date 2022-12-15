@@ -1,4 +1,5 @@
 ---
+article_num: 93
 layout:            post
 title:             VAVR HashMap vs Java HashMap
 lang:                en

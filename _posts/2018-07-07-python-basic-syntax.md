@@ -1,4 +1,5 @@
 ---
+article_num: 64
 layout:              post
 title:               Python 3 Basic Syntax
 lang:                en

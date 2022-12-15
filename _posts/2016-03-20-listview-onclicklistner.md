@@ -1,4 +1,5 @@
 ---
+article_num: 1
 layout: post
 title:  "Add listener to Android ListView"
 lang:                en

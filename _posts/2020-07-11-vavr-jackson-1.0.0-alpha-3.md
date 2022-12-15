@@ -1,4 +1,5 @@
 ---
+article_num: 147
 layout:            post
 title:             Vavr Jackson 1.0.0 Alpha 3
 lang:                en

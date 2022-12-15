@@ -1,4 +1,5 @@
 ---
+article_num: 63
 layout:            post
 title:             Java Server on Raspberry Pi
 lang:                en

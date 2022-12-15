@@ -1,4 +1,5 @@
 ---
+article_num: 177
 layout:              post
 title:               M 语言是什么鬼？
 subtitle:            >

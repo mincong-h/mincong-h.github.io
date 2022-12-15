@@ -1,4 +1,5 @@
 ---
+article_num: 77
 layout:            post
 title:             Maven Surefire Plugin Understanding
 lang:                en

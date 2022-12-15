@@ -1,4 +1,5 @@
 ---
+article_num: 43
 layout:      post
 title:       "Learning GWT with Maven"
 lang:                en

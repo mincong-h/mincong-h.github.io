@@ -1,4 +1,5 @@
 ---
+article_num: 125
 layout:            post
 title:             Inspect Maven Dependency Tree
 lang:                en

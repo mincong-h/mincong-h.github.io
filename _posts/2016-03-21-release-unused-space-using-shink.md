@@ -1,4 +1,5 @@
 ---
+article_num: 2
 layout:     post
 title:      "Release unused space using Shrink"
 lang:       en

@@ -1,4 +1,5 @@
 ---
+article_num: 133
 layout:            post
 title:             'Akka: Testing Actor with TestActorRef'
 lang:                en

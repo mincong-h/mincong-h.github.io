@@ -1,4 +1,5 @@
 ---
+article_num: 5
 layout:     post
 title:      "Install Apache Lucene"
 lang:       en

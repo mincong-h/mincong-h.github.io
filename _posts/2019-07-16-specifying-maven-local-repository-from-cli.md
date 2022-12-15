@@ -1,4 +1,5 @@
 ---
+article_num: 109
 layout:            post
 title:             Specifying Maven Local Repository From CLI
 lang:                en

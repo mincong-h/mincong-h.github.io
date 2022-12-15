@@ -1,4 +1,5 @@
 ---
+article_num: 100
 layout:            post
 title:             "Design Pattern: Static Factory Method"
 lang:                en

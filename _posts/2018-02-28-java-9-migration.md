@@ -1,4 +1,5 @@
 ---
+article_num: 46
 layout:      post
 title:       "Java 9 Migration"
 lang:                en

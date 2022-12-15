@@ -1,4 +1,5 @@
 ---
+article_num: 141
 layout:            post
 title:             "Mockito: 3 Ways to Init Mock in JUnit 5"
 lang:                en

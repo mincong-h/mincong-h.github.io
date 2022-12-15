@@ -1,4 +1,5 @@
 ---
+article_num: 85
 layout:            post
 title:             HTTP Methods in JAX-RS
 lang:                en

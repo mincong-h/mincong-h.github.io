@@ -1,4 +1,5 @@
 ---
+article_num: 139
 layout:            post
 title:             Testing Elasticsearch With Docker And Java High Level REST Client
 lang:                en

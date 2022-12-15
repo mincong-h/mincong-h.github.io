@@ -1,4 +1,5 @@
 ---
+article_num: 186
 layout:              post
 title:               Internal Structure Of Snapshot Repository
 subtitle:            >

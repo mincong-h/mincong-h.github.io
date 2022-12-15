@@ -1,4 +1,5 @@
 ---
+article_num: 16
 layout:      post
 title:       "Learning Git Basics"
 lang:                en

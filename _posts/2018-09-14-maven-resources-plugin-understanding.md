@@ -1,4 +1,5 @@
 ---
+article_num: 76
 layout:            post
 title:             Maven Resources Plugin Understanding
 lang:                en

@@ -1,4 +1,5 @@
 ---
+article_num: 59
 layout:            post
 title:             Create a HTTP Request in JS
 lang:                en

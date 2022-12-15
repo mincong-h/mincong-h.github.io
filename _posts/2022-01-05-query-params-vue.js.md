@@ -1,4 +1,5 @@
 ---
+article_num: 197
 layout:              post
 type:                Q&A
 title:               Adding Query Parameters in Vue.js

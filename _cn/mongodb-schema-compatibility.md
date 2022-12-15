@@ -1,4 +1,5 @@
 ---
+article_num: 173
 layout:              post
 title:               在MongoDB中增删字段真的这么简单？
 subtitle:            >

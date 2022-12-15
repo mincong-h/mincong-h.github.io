@@ -1,4 +1,5 @@
 ---
+article_num: 152
 layout:            post
 title:             18 Allocation Deciders in Elasticsearch
 lang:                en

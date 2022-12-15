@@ -1,4 +1,5 @@
 ---
+article_num: 129
 layout:            post
 title:             Typesafe Config Introduction
 lang:              en

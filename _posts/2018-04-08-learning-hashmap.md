@@ -1,4 +1,5 @@
 ---
+article_num: 50
 layout:            post
 title:             "Learning HashMap"
 lang:                en

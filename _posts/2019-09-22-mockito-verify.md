@@ -1,4 +1,5 @@
 ---
+article_num: 120
 layout:            post
 title:             "Mockito: 4 Ways to Verify Interactions"
 lang:                en

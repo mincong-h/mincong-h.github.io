@@ -1,4 +1,5 @@
 ---
+article_num: 13
 layout:      post
 title:       "Git Hook for JIRA Number"
 lang:                en
