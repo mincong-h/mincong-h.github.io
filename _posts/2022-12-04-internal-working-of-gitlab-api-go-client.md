@@ -12,8 +12,8 @@ tags:                [go, api, system-design]
 ads_tags:            [ci, test]
 comments:            true
 excerpt:             >
-    The internal working of the GitLab API Go Client (xanzy/go-gitlab),
-    including domain sub-clients, serialization, error mapping, testing, CI,
+    The internal working of the GitLab API Go Client (xanzy/go-gitlab):
+    usage, structure, request, marshalling, error handling, CI,
     advanced features, and more.
 
 image:               /assets/bg-drmakete-lab-hsg538WrP0Y-unsplash.jpg
