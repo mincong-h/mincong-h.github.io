@@ -278,7 +278,7 @@
         },
         valine: 'https://unpkg.com/valine/dist/Valine.min.js',
         mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
-        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+        mermaid: 'https://cdn.bootcss.com/mermaid/9.2.2/mermaid.min.js'
       },
       site: {
         toc: {
@@ -766,7 +766,7 @@ on <a href="https://twitter.com/mincong_h">Twitter</a> or
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/en/technical-documentation/">How to write technical documentation</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/en/technical-documentation/">How to write technical documentation</a></div><div class="next"><span>NEXT</span><a href="/en/internal-working-of-gitlab-api-go-client/">Internal Working of the GitLab API Go Client</a></div></div></div>
 
 </div>
 
@@ -1488,7 +1488,15 @@ ethicalads.wait.then((placements) => {
     console.debug('EthicalAds are loaded');
   }
 });
+</script><script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/9.2.2/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
 </script>
+
     </div>
     <script>(function () {
   var $root = document.getElementsByClassName('root')[0];

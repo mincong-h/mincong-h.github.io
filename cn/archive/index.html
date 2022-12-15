@@ -272,7 +272,7 @@
         },
         valine: 'https://unpkg.com/valine/dist/Valine.min.js',
         mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
-        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+        mermaid: 'https://cdn.bootcss.com/mermaid/9.2.2/mermaid.min.js'
       },
       site: {
         toc: {
@@ -363,7 +363,7 @@
   <ul class="menu">
     <li>
       <button type="button" class="button button--secondary button--pill tag-button tag-button--all" data-encode="">
-        Show All<div class="tag-button__count">193</div>
+        Show All<div class="tag-button__count">194</div>
       </button>
     </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="akka">
           <span>akka</span><div class="tag-button__count">3</div>
@@ -378,7 +378,7 @@
           <span>apache-lucene</span><div class="tag-button__count">2</div>
         </button>
       </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="api">
-          <span>api</span><div class="tag-button__count">5</div>
+          <span>api</span><div class="tag-button__count">6</div>
         </button>
       </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="auto-value">
           <span>auto-value</span><div class="tag-button__count">2</div>
@@ -465,7 +465,7 @@
           <span>glob</span><div class="tag-button__count">1</div>
         </button>
       </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="go">
-          <span>go</span><div class="tag-button__count">4</div>
+          <span>go</span><div class="tag-button__count">5</div>
         </button>
       </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="google-analytics">
           <span>google-analytics</span><div class="tag-button__count">1</div>
@@ -657,7 +657,7 @@
           <span>study-note</span><div class="tag-button__count">8</div>
         </button>
       </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="system-design">
-          <span>system-design</span><div class="tag-button__count">6</div>
+          <span>system-design</span><div class="tag-button__count">7</div>
         </button>
       </li><li><button type="button" class="button button--pill tag-button tag-button-1" data-encode="systemd">
           <span>systemd</span><div class="tag-button__count">2</div>
@@ -701,7 +701,9 @@
     <i>Due to technical constraints, only the tags of English posts are shown.</i>
   </p>
 
-  <div class="js-result layout--archive__result d-none"><div class="article-list items"><section><h2 class="article-list__group-header">2022</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="java,api,doc,build">
+  <div class="js-result layout--archive__result d-none"><div class="article-list items"><section><h2 class="article-list__group-header">2022</h2><ul class="items"><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="go,api,system-design">
+        <div class="item__content"><span class="item__meta">12月04日</span><a itemprop="headline" class="item__header" href="/en/internal-working-of-gitlab-api-go-client/">Internal Working of the GitLab API Go Client</a></div>
+      </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="java,api,doc,build">
         <div class="item__content"><span class="item__meta">10月31日</span><a itemprop="headline" class="item__header" href="/en/openapi-overview/">OpenAPI Overview</a></div>
       </li><li class="item" itemscope itemtype="http://schema.org/BlogPosting" data-tags="doc">
         <div class="item__content"><span class="item__meta">10月16日</span><a itemprop="headline" class="item__header" href="/en/technical-documentation/">How to write technical documentation</a></div>
@@ -1876,7 +1878,15 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
 /*(function () {
 
 })();*/
+</script><script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/9.2.2/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
 </script>
+
     </div>
     <script>(function () {
   var $root = document.getElementsByClassName('root')[0];

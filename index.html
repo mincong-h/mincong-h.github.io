@@ -272,7 +272,7 @@
         },
         valine: 'https://unpkg.com/valine/dist/Valine.min.js',
         mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
-        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+        mermaid: 'https://cdn.bootcss.com/mermaid/9.2.2/mermaid.min.js'
       },
       site: {
         toc: {
@@ -691,6 +691,16 @@
   <div class="layout--articles">
     <section class="my-5">
       <div class="article-list grid grid--p-3"><div class="cell cell--12 cell--md-6 cell--lg-4">
+          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-drmakete-lab-hsg538WrP0Y-unsplash.jpg')"></div></div><div class="card__content">
+                <header>
+                  <a href="/en/internal-working-of-gitlab-api-go-client/"><h2 class="card__header">Internal Working of the GitLab API Go Client</h2></a>
+                </header>
+                <p>
+                  The internal working of the GitLab API Go Client (xanzy/go-gitlab): usage, structure, request, marshaling, error handling, CI, advanced features, and more.
+
+                </p><p>04 Dec 2022</p></div>
+          </div>
+        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
           <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-fahmi-fakhrudin-nzyzAUsbV0M-unsplash.jpg')"></div></div><div class="card__content">
                 <header>
                   <a href="/en/openapi-overview/"><h2 class="card__header">OpenAPI Overview</h2></a>
@@ -740,19 +750,9 @@
 
                 </p><p>03 Dec 2018</p></div>
           </div>
-        </div><div class="cell cell--12 cell--md-6 cell--lg-4">
-          <div class="card card--flat"><div class="card__image"><div class="card__background_image card__background_image_md" style="background-image: url('/assets/bg-coffee-2306471_1280.jpg')"></div></div><div class="card__content">
-                <header>
-                  <a href="/2018/11/27/jax-rs-parameters/"><h2 class="card__header">JAX-RS Param Annotations</h2></a>
-                </header>
-                <p>
-                  This post explains different param annotations in JAX-RS 2.1 and their use-cases, including @QueryParam, @MatrixParam, @PathParam, @HeaderParam, @CookieParam, @FormParam and @BeanParam.
-
-                </p><p>27 Nov 2018</p></div>
-          </div>
         </div></div>
 <p>
-        <a href="/en/categories/java-rest/">Read more...</a> (9 articles)
+        <a href="/en/categories/java-rest/">Read more...</a> (10 articles)
       </p>
     </section>
   </div><div class="article__content">
@@ -1552,7 +1552,15 @@ ethicalads.wait.then((placements) => {
     console.debug('EthicalAds are loaded');
   }
 });
+</script><script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/9.2.2/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
 </script>
+
     </div>
     <script>(function () {
   var $root = document.getElementsByClassName('root')[0];

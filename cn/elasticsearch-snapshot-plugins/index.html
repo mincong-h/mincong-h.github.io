@@ -278,7 +278,7 @@
         },
         valine: 'https://unpkg.com/valine/dist/Valine.min.js',
         mathjax: 'https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML',
-        mermaid: 'https://cdn.bootcss.com/mermaid/8.0.0-rc.8/mermaid.min.js'
+        mermaid: 'https://cdn.bootcss.com/mermaid/9.2.2/mermaid.min.js'
       },
       site: {
         toc: {
@@ -1373,7 +1373,15 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
     window.pageAsideAffix = affix;
   });
 })();
+</script><script>
+  window.Lazyload.js('https://cdn.bootcss.com/mermaid/9.2.2/mermaid.min.js', function() {
+    mermaid.initialize({
+      startOnLoad: true
+    });
+    mermaid.init(undefined, '.language-mermaid');
+  });
 </script>
+
     </div>
     <script>(function () {
   var $root = document.getElementsByClassName('root')[0];
