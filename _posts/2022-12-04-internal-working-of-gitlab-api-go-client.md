@@ -491,6 +491,18 @@ Option Functions
 
 ## Documentation
 
+As many other open source projects written in Go, the documentation of this SDK
+is published to [Go package repository](https://pkg.go.dev) under
+<https://pkg.go.dev/github.com/xanzy/go-gitlab>.
+
+<img src="/assets/20221215-pkg.go.dev-xanzy-go-gitlab.png"
+     alt="Documentation of xanzy/go-gitlab on https://pkg.go.dev" />
+
+The documentation is probably published manually to the Go package repository
+because I don't see integration in the CI. It should be very simple, the Go
+official website has instructions about the publishing process
+[here](https://go.dev/doc/modules/publishing).
+
 ## Going Further
 
 How to go further from here?
@@ -508,3 +520,5 @@ on [Twitter](https://twitter.com/mincong_h) or
 - [Sequence Diagram -
   Mermaid](https://mermaid-js.github.io/mermaid/#/sequenceDiagram)
 - [//indirect for a dependency in go.mod file in Go (Golang)](https://golangbyexample.com/indirect-dependency-golang/)
+- [github.com/xanzy/go-gitlab](https://pkg.go.dev/github.com/xanzy/go-gitlab)
+- [Publishing a module - Go](https://go.dev/doc/modules/publishing)
