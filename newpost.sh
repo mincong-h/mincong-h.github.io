@@ -55,6 +55,7 @@ function append_metadata_en {
   post_type="$3"
   cat << EOF >> "$path"
 ---
+article_num:         ${article_num_curr}
 layout:              post
 type:                ${post_type}
 title:               ${title}
@@ -90,6 +91,7 @@ function append_metadata_cn {
   post_type="$3"
   cat << EOF >> "$path"
 ---
+article_num:         ${article_num_curr}
 layout:              post
 type:                ${post_type}
 title:               ${title}
@@ -258,6 +260,8 @@ create_en=1
 create_cn=0
 debug=0
 post_type="classic"
+article_num_prev="$(cat "${bloghome}/.article_num" | xargs)"
+article_num_curr="$((article_num_prev + 1))"
 
 for i in "$@"
 do
@@ -313,6 +317,8 @@ debug=${debug}
 title=${title}
 url=${url}
 post_type=${post_type}
+article_num_prev=${article_num_prev}
+article_num_curr=${article_num_curr}
 EOF
 fi
 
@@ -364,3 +370,6 @@ Blog post (${post_type}) created!
   CN: ${filepath_cn}
 EOF
 fi
+
+# Increment article number
+echo "$article_num_curr" > "${bloghome}/.article_num"
