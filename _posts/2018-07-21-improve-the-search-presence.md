@@ -1,4 +1,5 @@
 ---
+article_num: 67
 layout:            post
 title:             Improve Blog Ranking in Google Search
 subtitle:          Simple SEO improvements that I used for this site.

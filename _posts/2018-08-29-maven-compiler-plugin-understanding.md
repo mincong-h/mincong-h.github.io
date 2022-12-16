@@ -1,4 +1,5 @@
 ---
+article_num: 74
 layout:            post
 title:             Maven Compiler Plugin Understanding
 lang:                en

@@ -1,4 +1,5 @@
 ---
+article_num: 189
 layout:              post
 title:               Elasticsearch 的快照插件
 subtitle:            >

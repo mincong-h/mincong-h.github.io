@@ -1,4 +1,5 @@
 ---
+article_num: 89
 layout:            post
 title:             Testing JAX-RS Resources
 lang:                en

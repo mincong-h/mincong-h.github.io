@@ -1,4 +1,5 @@
 ---
+article_num: 79
 layout:            post
 title:             How Quick Switcher is implemented?
 lang:                en

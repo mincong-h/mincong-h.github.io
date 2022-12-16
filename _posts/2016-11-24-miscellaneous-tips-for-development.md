@@ -1,4 +1,5 @@
 ---
+article_num: 15
 layout:        post
 title:         "Miscellaneous Tips for Development"
 lang:                en

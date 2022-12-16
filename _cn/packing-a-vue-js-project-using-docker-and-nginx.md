@@ -1,4 +1,5 @@
 ---
+article_num: 174
 layout:              post
 title:               用Docker和Nginx打包一个Vue.js项目
 subtitle:            >

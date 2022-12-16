@@ -1,4 +1,5 @@
 ---
+article_num: 19
 layout:     post
 title:      "Configuring IntelliJ for Nuxeo"
 lang:                en

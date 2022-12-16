@@ -1,4 +1,5 @@
 ---
+article_num: 128
 layout:            post
 title:             Indexing New Data in Elasticsearch
 lang:                en

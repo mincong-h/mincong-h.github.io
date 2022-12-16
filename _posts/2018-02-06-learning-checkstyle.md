@@ -1,4 +1,5 @@
 ---
+article_num: 45
 layout:      post
 title:       "Learning Checkstyle"
 lang:                en

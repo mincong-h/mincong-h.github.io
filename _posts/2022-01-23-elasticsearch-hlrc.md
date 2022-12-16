@@ -1,4 +1,5 @@
 ---
+article_num: 198
 layout:              post
 type:                classic
 title:               Internal Structure Of Elasticsearch Java High-Level REST Client

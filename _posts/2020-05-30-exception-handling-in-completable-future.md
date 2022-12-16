@@ -1,4 +1,5 @@
 ---
+article_num: 144
 layout:            post
 title:             "3 Ways to Handle Exception In Completable Future"
 lang:                en

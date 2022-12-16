@@ -1,4 +1,5 @@
 ---
+article_num: 48
 layout:      post
 title:       "GWT SafeCSS Internal"
 lang:                en

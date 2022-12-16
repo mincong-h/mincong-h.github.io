@@ -1,4 +1,5 @@
 ---
+article_num: 75
 layout:            post
 title:             Maven JAR Plugin Understanding
 lang:                en

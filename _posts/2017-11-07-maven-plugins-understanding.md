@@ -1,4 +1,5 @@
 ---
+article_num: 39
 layout:      post
 title:       "Maven Plugins Understanding"
 lang:                en

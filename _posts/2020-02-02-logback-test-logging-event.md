@@ -1,4 +1,5 @@
 ---
+article_num: 135
 layout:            post
 title:             "Logback: Test Logging Event"
 lang:                en

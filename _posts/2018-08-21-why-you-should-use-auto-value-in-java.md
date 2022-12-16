@@ -1,4 +1,5 @@
 ---
+article_num: 72
 layout:            post
 title:             "Why You Should Use Auto Value in Java?"
 lang:                en

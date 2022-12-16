@@ -1,4 +1,5 @@
 ---
+article_num: 106
 layout:            post
 title:             Understanding ISO-8859-1 / UTF-8
 lang:                en

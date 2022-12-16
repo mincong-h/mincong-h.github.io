@@ -1,4 +1,5 @@
 ---
+article_num: 183
 layout:              post
 title:               Netflix 资产管理平台 (AMP) 中的 Elasticsearch 索引策略
 subtitle:            >

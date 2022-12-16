@@ -1,4 +1,5 @@
 ---
+article_num: 88
 layout:            post
 title:             JAX-RS Client API
 lang:                en

@@ -1,4 +1,5 @@
 ---
+article_num: 172
 layout:              post
 title:               用Java创建一个简单的节流阀
 subtitle:            >

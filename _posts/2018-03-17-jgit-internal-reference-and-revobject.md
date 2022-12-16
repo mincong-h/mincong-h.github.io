@@ -1,4 +1,5 @@
 ---
+article_num: 47
 layout:      post
 title:       "JGit Internal: Reference and RevObject"
 lang:                en

@@ -1,4 +1,5 @@
 ---
+article_num: 11
 layout:        post
 title:         "New repo: Java Examples"
 lang:                en

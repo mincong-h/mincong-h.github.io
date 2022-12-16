@@ -141,6 +141,7 @@ $ ./newpost.sh --qna My Question
 
 Property | Type | Description
 :--- | :--- | :---
+`article_num` | Integer | The number of the article (post). This is a positive decimal value which represents the number of the article starting from 1. Don't confuse with article id (post id) is the URL of the article, e.g. "elasticsearch-corrupted-index". One article number can correspond to multiple pages, one per language. For example, article Nº 182 is Elasticsearch corrupted index, which has two versions, respectively written in English and Chinese. When using the generator script (`newpost.sh`), the number will be incremented automatically under file `.article_num`.
 `type` | String | The type of the blog post: "classic", "Q&A".
 `image` | URL | Related path to image resource, such as `/assets/my-image.jpg`. Jekyll will complete it as an absolute path. Used by [Jekyll Feed](https://github.com/jekyll/jekyll-feed#optional-front-matter) plugin, [Jekyll SEO tag](https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/advanced-usage.md) and Twitter cards.
 `cover` | URL | Related path to image resource, such as `/assets/my-image.jpg`. Used for Jekyll TeXt Theme.

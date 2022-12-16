@@ -1,4 +1,5 @@
 ---
+article_num: 186
 layout:              post
 title:               Elasticsearch 快照仓库的内部结构
 subtitle:            >

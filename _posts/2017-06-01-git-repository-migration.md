@@ -1,4 +1,5 @@
 ---
+article_num: 30
 layout:      post
 title:       "Git Repository Transfer"
 lang:                en

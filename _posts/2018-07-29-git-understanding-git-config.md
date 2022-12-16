@@ -1,4 +1,5 @@
 ---
+article_num: 68
 layout:            post
 title:             "Git: Understanding Git Config"
 lang:                en

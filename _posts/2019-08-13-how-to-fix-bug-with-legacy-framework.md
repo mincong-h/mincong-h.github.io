@@ -1,4 +1,5 @@
 ---
+article_num: 113
 layout:            post
 title:             6 Tips for Fixing Bugs with Legacy Frameworks
 lang:                en

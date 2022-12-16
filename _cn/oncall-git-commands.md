@@ -1,4 +1,5 @@
 ---
+article_num: 178
 layout:              post
 title:               三个排除故障必备的 Git 命令
 subtitle:            >

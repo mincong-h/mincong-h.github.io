@@ -1,4 +1,5 @@
 ---
+article_num: 127
 layout:            post
 title:             Testing Elasticsearch with ESSingleNodeTestCase
 lang:                en

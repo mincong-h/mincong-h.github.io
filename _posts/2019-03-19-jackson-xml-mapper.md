@@ -1,4 +1,5 @@
 ---
+article_num: 105
 layout:            post
 title:             Jackson XML Mapper
 lang:                en

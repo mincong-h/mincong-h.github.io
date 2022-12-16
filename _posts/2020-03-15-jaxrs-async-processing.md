@@ -1,4 +1,5 @@
 ---
+article_num: 138
 layout:            post
 title:             "Asynchronous Processing in JAX-RS 2.x"
 lang:                en

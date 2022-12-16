@@ -1,4 +1,5 @@
 ---
+article_num: 42
 layout:      post
 title:       "OCP Java 8 Review Notes"
 lang:                en

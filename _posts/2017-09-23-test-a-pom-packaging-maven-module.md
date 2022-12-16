@@ -1,4 +1,5 @@
 ---
+article_num: 35
 layout:      post
 title:       "Test a POM-Packaging Maven Module"
 lang:                en

@@ -1,4 +1,5 @@
 ---
+article_num: 180
 layout:              post
 title:               Spring Data MongoDB 入门
 subtitle:            >

@@ -23,6 +23,7 @@
   {%- endif -%}
 
   {%- assign _show_author = include.article.author -%}
+  {%- assign _show_article_num = include.article.article_num -%}
 
   {%- include snippets/assign.html target=site.data.variables.default.page.pageview
     source0=layout.pageview source1=page.pageview -%}
@@ -97,7 +98,7 @@
         {% endif %}
       </ul>
 
-      {%- if _show_author or _show_date or _pageview -%}
+      {%- if _show_author or _show_article_num or _show_date or _pageview -%}
         <ul class="right-col menu">
           {%- if _show_author  -%}
             <li><i class="fas fa-user"></i> <span>{{ _author.name }}</span></li>
@@ -107,6 +108,12 @@
             <li>
               {%- include snippets/get-locale-string.html key='ARTICLE_DATE_FORMAT' -%}
               <i class="far fa-calendar-alt"></i> <span>{{ include.article.date | date: __return }}</span>
+            </li>
+          {%- endif -%}
+
+          {%- if _show_article_num -%}
+            <li>
+              <i class="far fa-bookmark"></i> <span>Post Nº {{ include.article.article_num }}</span>
             </li>
           {%- endif -%}
 

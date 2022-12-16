@@ -1,4 +1,5 @@
 ---
+article_num: 167
 layout:              post
 title:               "Elasticsearch: Generate Configuration With Python Jinja 2"
 subtitle:            >

@@ -1,4 +1,5 @@
 ---
+article_num: 80
 layout:            post
 title:             "Personal Finance: Data Collection"
 lang:                en

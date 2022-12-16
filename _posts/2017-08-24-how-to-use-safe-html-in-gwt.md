@@ -1,4 +1,5 @@
 ---
+article_num: 34
 layout:      post
 title:       "How to Use Safe HTML in GWT"
 lang:                en

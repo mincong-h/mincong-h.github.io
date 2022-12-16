@@ -1,4 +1,5 @@
 ---
+article_num: 185
 layout:              post
 title:               一文了解 Elasticsearch 设置
 subtitle:            >

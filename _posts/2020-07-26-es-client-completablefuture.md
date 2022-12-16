@@ -1,4 +1,5 @@
 ---
+article_num: 148
 layout:            post
 title:             Wrap Elasticsearch Response Into CompletableFuture
 lang:                en

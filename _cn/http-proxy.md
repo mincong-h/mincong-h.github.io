@@ -1,4 +1,5 @@
 ---
+article_num: 32
 layout:            post
 title:             "什么是HTTP代理服务器（HTTP Proxy）？"
 lang:              zh

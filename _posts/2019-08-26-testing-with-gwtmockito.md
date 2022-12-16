@@ -1,4 +1,5 @@
 ---
+article_num: 115
 layout:            post
 title:             Testing with GwtMockito
 lang:                en

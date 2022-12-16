@@ -1,4 +1,5 @@
 ---
+article_num: 17
 layout:      post
 title:       "Code Quality Improvement For Newbies"
 lang:                en

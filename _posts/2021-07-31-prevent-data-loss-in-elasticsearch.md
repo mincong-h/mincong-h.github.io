@@ -1,4 +1,5 @@
 ---
+article_num: 184
 layout:              post
 title:               How to prevent data loss in Elasticsearch?
 subtitle:            >

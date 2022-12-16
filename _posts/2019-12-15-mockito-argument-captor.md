@@ -1,4 +1,5 @@
 ---
+article_num: 130
 layout:            post
 title:             "Mockito: ArgumentCaptor"
 lang:                en

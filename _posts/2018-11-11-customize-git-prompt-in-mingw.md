@@ -1,4 +1,5 @@
 ---
+article_num: 83
 layout:            post
 title:             Customize Git Prompt in MinGW
 lang:                en

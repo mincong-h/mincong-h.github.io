@@ -1,4 +1,5 @@
 ---
+article_num: 60
 layout:            post
 title:             "JGit: Customize Git references using RefFilter"
 lang:                en

@@ -1,4 +1,5 @@
 ---
+article_num: 95
 layout:            post
 title:             Security Training Day 2
 lang:                en

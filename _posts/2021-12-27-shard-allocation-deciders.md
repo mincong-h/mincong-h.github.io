@@ -1,4 +1,5 @@
 ---
+article_num: 195
 layout:              post
 type:                classic
 title:               The Decision System For Shard Allocation in Elasticsearch

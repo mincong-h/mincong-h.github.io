@@ -1,4 +1,5 @@
 ---
+article_num: 86
 layout:            post
 title:             JAX-RS Param Annotations
 lang:                en

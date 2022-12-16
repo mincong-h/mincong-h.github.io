@@ -1,4 +1,5 @@
 ---
+article_num: 36
 layout:      post
 title:       "What Is Git Branch?"
 lang:                en

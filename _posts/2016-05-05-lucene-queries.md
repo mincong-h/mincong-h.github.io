@@ -1,4 +1,5 @@
 ---
+article_num: 9
 layout:     post
 title:      "Lucene queries in Hibernate Search"
 lang:       en

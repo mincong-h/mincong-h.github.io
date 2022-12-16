@@ -1,4 +1,5 @@
 ---
+article_num: 200
 layout:              post
 type:                classic
 title:               BlogSearch Architecture

@@ -1,4 +1,5 @@
 ---
+article_num: 14
 layout:            post
 title:             2016法国技术面试总结
 lang:              zh

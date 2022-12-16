@@ -1,4 +1,5 @@
 ---
+article_num: 110
 layout:            post
 title:             Fixing Comparator
 lang:                en

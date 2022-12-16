@@ -1,4 +1,5 @@
 ---
+article_num: 22
 layout:      post
 title:       "OCA Review 2 - Java Core APIs"
 lang:                en

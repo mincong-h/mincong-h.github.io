@@ -1,4 +1,5 @@
 ---
+article_num: 10
 layout:         post
 title:          "MassIndexer in Hibernate Search"
 lang:                en

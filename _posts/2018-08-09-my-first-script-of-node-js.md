@@ -1,4 +1,5 @@
 ---
+article_num: 71
 layout:            post
 title:             My First Script in Node JS
 lang:                en

@@ -1,4 +1,5 @@
 ---
+article_num: 70
 layout:            post
 title:             "Maven: Deploy Artifacts to Nexus"
 lang:                en

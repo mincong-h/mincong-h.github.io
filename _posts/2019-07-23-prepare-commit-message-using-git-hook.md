@@ -1,4 +1,5 @@
 ---
+article_num: 111
 layout:            post
 title:             Prepare Commit Message using Git Hook
 lang:                en

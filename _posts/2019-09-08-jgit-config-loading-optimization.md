@@ -1,4 +1,5 @@
 ---
+article_num: 117
 layout:            post
 title:             'JGit: Config Loading Optimization'
 lang:                en
