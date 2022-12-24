@@ -1,5 +1,120 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-12-23T09:37:40+01:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
-</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Internal Working of the GitLab API Go Client</title><link href="https://mincong.io/en/go-gitlab/" rel="alternate" type="text/html" title="Internal Working of the GitLab API Go Client" /><published>2022-12-04T10:23:14+01:00</published><updated>2022-12-04T10:23:14+01:00</updated><id>https://mincong.io/en/go-gitlab</id><content type="html" xml:base="https://mincong.io/en/go-gitlab/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-12-24T17:10:17+01:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+</subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Highlight 2022</title><link href="https://mincong.io/en/highlight-2022/" rel="alternate" type="text/html" title="Highlight 2022" /><published>2022-12-23T17:46:31+01:00</published><updated>2022-12-23T17:46:31+01:00</updated><id>https://mincong.io/en/highlight-2022</id><content type="html" xml:base="https://mincong.io/en/highlight-2022/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;Writing an article for an annual review becomes a tradition for me. After
+writing for 6 consecutive years
+(&lt;a href=&quot;/en/categories/review/&quot;&gt;link&lt;/a&gt;), I decided to continue this year, to share with
+you my journey in the tech industry, as a software engineer at Datadog, and as an
+explorer for other side projects during my free time. Hopefully, they will let
+you learn something new or inspire you to create your story. Now, let’s get started!&lt;/p&gt;
+
+&lt;h2 id=&quot;datadog&quot;&gt;Datadog&lt;/h2&gt;
+
+&lt;p&gt;I joined Datadog at the end of 2019 as a software engineer working for the Event
+Platform. This year, I was part of the automation team, which improves the
+platform’s
+reliability, reduces toil, and facilitates engineers’ daily work. My
+contributions are around automation development and can be summarized in 4 parts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Operation workflows.&lt;/strong&gt; Developing operation-related workflows which create
+or delete complex data pipelines or data stores. Before having these workflows, we
+had to create or delete them manually: the process was complex and time-consuming.
+By using workflows, we can achieve these actions more efficiently. The
+configuration, deployment, registration, notification, and other tasks are
+automated. They excel the platform’s goals, such as data-store migration, incident
+remediation, and data isolation improvement. The operation workflows are
+developed using the workflow engine &lt;a href=&quot;https://temporal.io&quot;&gt;Temporal&lt;/a&gt;. You can see
+the case study &lt;a href=&quot;https://temporal.io/case-studies/how-datadog-ensures-database-reliability-with-temporal&quot;&gt;Temporal at Datadog by Kevin
+Devroede&lt;/a&gt;
+or the YouTube video &lt;a href=&quot;https://youtu.be/LxgkAoTSI8Q&quot;&gt;Temporal at Datadog by Jacob
+LeGrone&lt;/a&gt; to learn more.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Automation safety.&lt;/strong&gt; To ensure the automation can be performed safely
+without any customer impact, I
+also developed a verification process, which collects data in different
+dimensions and makes decisions based on business requirements. Thanks to this
+framework, we were able to see the state of the whole system in one
+place and perform operations with great confidence. It allowed the storage
+team to migrate all data stores from the old system to the new one.
+The framework is also extensible: it’s easy to add additional deciders to make
+additional decisions.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Automation utilities.&lt;/strong&gt; Writing workflows can be very complex. We need
+different utilities to facilitate the development. This year, I developed a
+RESTful API client in Go, some frontend integration for workflows, a custom
+release mechanism, an analytics helper, some workflow templates, a Go package for
+config manipulation, and some other tools to simplify the development
+for other
+engineers. For example, a junior engineer was able to create a new workflow
+in less than 2 days during the hackathon, which was pretty cool!&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Other works.&lt;/strong&gt; There are also other contributions made in different aspects:
+cross-team collaboration, being an interviewer, being an interrupt handler (IH),
+being on call, participating in RFC review and code review, documentation,
+presentation, and more.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Compared to last year, the main difference in my contributions is that I was
+more involved in system understanding, system design, planning, and team
+collaboration.
+These are beyond coding: I needed to understand what people need, how our
+team can help, how to design an extensible framework and more. It was great!
+For the coming year, I want to continue supporting the growth of the platform
+and other storage systems by bringing more solutions related to SRE and
+automation.&lt;/p&gt;
+
+&lt;h2 id=&quot;blog&quot;&gt;Blog&lt;/h2&gt;
+
+&lt;p&gt;This year I put less energy into blogging and prioritized my work at Datadog. The
+blog was mainly about system design (5 posts). If I need to pick 3
+articles to share with you, I want to pick this mini-series of SDK design,
+composed by the GitLab, Temporal, and Elasticsearch API client.
+They will help you to understand how to write an SDK and different
+aspects that you should care about when doing so:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/go-gitlab/&quot;&gt;Internal Working of the GitLab API Go Client&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/temporal-java-service-client/&quot;&gt;Internal Working of the Temporal Java Service Client&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;/en/elasticsearch-hlrc/&quot;&gt;Internal Working of the Elasticsearch Java High-Level REST Client&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To improve the user experience, I developed several new features for
+my blog: rebranding the home page, adding the search capability, and introducing
+the post id. This wasn’t easy because each feature requires some work: for the
+home page, I need to get some inspiration from other websites, modify the Jekyll
+template and adjust some CSS. As for the search feature, I needed to set up a
+search service with Java and Elasticsearch, and I also needed to integrate with
+Datadog. But I loved this side project as it is useful for this community and
+helped me to gain more experience in development and operations.&lt;/p&gt;
+
+&lt;p&gt;What’s next? Last year I was too ambitious so this year I want to keep it simple
+😀 I want to keep a stable delivery cadence and write 17 posts next
+year (1 post every 3 weeks). The content should focus on one or two main topics,
+e.g. microservices and system design. Also, I want to share these posts
+on Medium so that more people can subscribe easily.&lt;/p&gt;
+
+&lt;h2 id=&quot;finance&quot;&gt;Finance&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/mincong-h/finance-toolkit/&quot;&gt;Finance toolkit&lt;/a&gt; is a small
+library helping you to understand your personal financial situation by
+extracting, transforming, and aggregating transactions from different companies
+into a single place. The companies supported are: BNP Paribas, Boursorama,
+Revolut, and some others. It generates CSV files that can be used for data
+visualization. It was created in 2019 and written in Python by &lt;a href=&quot;https://github.com/jingwen-z&quot;&gt;Jingwen
+Zheng&lt;/a&gt; and me,
+with some help from &lt;a href=&quot;https://github.com/BoboTiG&quot;&gt;Mickaël Schoentgen&lt;/a&gt;. This
+year, we improved the Revolut
+integration, added support for multiple currencies (EUR, USD), brought some
+technical improvements (e.g. logging, testing, error handling), and open-sourced
+the project on GitHub. This tool helped us increase our savings by 7.3 times
+over the last 4 years.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Thank you for reading this article. In this article, I shared some projects that
+I did at Datadog as a software engineer, my blogging experience, and the finance
+toolkit that I open-sourced this year.
+Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
+on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
+&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="review" /><category term="review" /><category term="career" /><summary type="html">My tech journey at Datadog as a software engineer in 2022 and some side projects in my free time.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-kelly-sikkema--64OzuZ8ThE-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-kelly-sikkema--64OzuZ8ThE-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Internal Working of the GitLab API Go Client</title><link href="https://mincong.io/en/go-gitlab/" rel="alternate" type="text/html" title="Internal Working of the GitLab API Go Client" /><published>2022-12-04T10:23:14+01:00</published><updated>2022-12-04T10:23:14+01:00</updated><id>https://mincong.io/en/go-gitlab</id><content type="html" xml:base="https://mincong.io/en/go-gitlab/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;During my daily work at Datadog, I had the chance to use the GitLab Go API
 client (&lt;a href=&quot;https://github.com/xanzy/go-gitlab&quot;&gt;xanzy/go-gitlab&lt;/a&gt;) to interact with
@@ -3272,693 +3387,4 @@ on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://docs.datadoghq.com/&quot;&gt;Datadog Docs&lt;/a&gt;, 2022.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="java-core" /><category term="java" /><category term="datadog" /><category term="elasticsearch" /><category term="aliyun" /><category term="logging" /><summary type="html">This article explains how to set up Datadog monitoring for a Java application and an Elasticsearch service running in Alibaba Cloud.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry xml:lang="en"><title type="html">Internal Structure Of Elasticsearch Java High-Level REST Client</title><link href="https://mincong.io/en/elasticsearch-hlrc/" rel="alternate" type="text/html" title="Internal Structure Of Elasticsearch Java High-Level REST Client" /><published>2022-01-23T15:47:40+01:00</published><updated>2022-01-23T15:47:40+01:00</updated><id>https://mincong.io/en/elasticsearch-hlrc</id><content type="html" xml:base="https://mincong.io/en/elasticsearch-hlrc/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;The &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html&quot;&gt;Elasticsearch Java High-Level REST
-Client&lt;/a&gt;
-was &lt;a href=&quot;https://www.elastic.co/fr/blog/the-elasticsearch-java-high-level-rest-client-is-out&quot;&gt;out in
-2017&lt;/a&gt;
-as the replacement of the classical native Java Client (also known as the
-Transport Client). This client can be used for communicating to the
-Elasticsearch cluster via RESTful API. During my side project &lt;a href=&quot;/en/series/dvf/&quot;&gt;DVF - Demande de
-Valeurs Foncières&lt;/a&gt;, I had the chance to use this client to
-index documents in Elasticsearch and search them. Then recently, I need to create an internal API
-client for our team to communicate with a Java backend service. That’s why
-I am interested in the implementation of
-Elasticsearch’s REST client and want to get some
-inspiration from it. If you are a Java developer, a database administrator
-(DBA), or a regular user of Elasticsearch, this article is also for you:
-it can help you to better understand the design of this client and the different
-aspects of an API library.&lt;/p&gt;
-
-&lt;p&gt;After reading this article, you will understand:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;The client and sub-clients&lt;/li&gt;
-  &lt;li&gt;The structure of the Java package&lt;/li&gt;
-  &lt;li&gt;Its dependencies&lt;/li&gt;
-  &lt;li&gt;Error handling mechanism&lt;/li&gt;
-  &lt;li&gt;JSON serialization and deserialization&lt;/li&gt;
-  &lt;li&gt;Asynchronous processing&lt;/li&gt;
-  &lt;li&gt;Observability&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;By the way, this article is written with the source code of Elasticsearch
-v7.16.2 and Java 16. And to simplify the naming, you will see the acronym
-“HLRC”, which means High-Level REST Client. Now, let’s get started!&lt;/p&gt;
-
-&lt;h2 id=&quot;client&quot;&gt;Client&lt;/h2&gt;
-
-&lt;p&gt;To initialize a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RestHighLevelClient&lt;/code&gt; instance, you need a REST low-level client
-builder to be built as follows:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RestClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HttpHost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9200&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;http&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HttpHost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9201&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;http&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;));&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;restClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RestHighLevelClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// implement logic here&lt;/span&gt;
-  &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;response&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;indices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RequestOptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DEFAULT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// handle exception here&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;builder&quot;&gt;Builder&lt;/h3&gt;
-
-&lt;p&gt;As you can see from the initialization, Elasticsearch High-Level REST Client
-(HLRC) uses a &lt;a href=&quot;https://refactoring.guru/design-patterns/builder/java/example&quot;&gt;builder
-pattern&lt;/a&gt; to build
-the client. This builder allows us to set
-a lot of parameters that are used for each HTTP request, or in general, allows
-us to set configurations that are valid during the entire lifecycle of the API
-client. Here are some examples:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setDefaultHeaders&lt;/code&gt; – the default HTTP request headers that will be sent
-along with each HTTP request&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setFailureListener&lt;/code&gt; – to be notified for each request failure&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setCompressionEnable&lt;/code&gt; – whether the request should be compressed using gzip
-content&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Thanks to this builder class, we can set configuration easily in a
-single place – inside the class whether we construct the API client. Each
-parameter has its method, served as a named parameter. In Java, we don’t have
-named parameters, so this is an excellent alternative. The presence of the
-builder also makes the signature of the API client constructor simple. this is
-also extensive for Elasticsearch developers – when they need more parameters,
-they just need to add those parameters in the builder without breaking the
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RestHighLevelClient&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;closeable&quot;&gt;Closeable&lt;/h3&gt;
-
-&lt;p&gt;The client is auto-closeable. It means that a user can use it with the concise
-try-with-resources syntax in Java because the actual closing logic is delegated
-to HLRC.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;restClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RestHighLevelClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Going further into this direction, we can see that the closing logic is simple:
-it just calls the underlying client &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CloseableHttpAsyncClient&lt;/code&gt;, a class from
-the HTTP async Client (org.apache.httpcomponents:httpasyncclient:4.1.4), one
-of the &lt;a href=&quot;https://github.com/apache/httpcomponents-client&quot;&gt;Apache HttpComponents
-Client&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;close&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;sub-clients&quot;&gt;Sub-clients&lt;/h3&gt;
-
-&lt;p&gt;Elasticsearch is a complex ecosystem these days. There are many modules in it:
-cluster, core, index-lifecycle, cross-cluster replication (CCR), search,
-analytics, security, snapshot lifecycle management (SLM), … There is no way
-that all APIs can fit inside one single client. To better organize the code,
-Elasticsearch groups the APIs by domain inside the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RestHighLevelClient&lt;/code&gt;, so
-that the interaction with that one domain is handled specifically by the domain
-sub-client. Here is the code:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RestHighLevelClient&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;implements&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Closeable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IndicesClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;indicesClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IndicesClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClusterClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;clusterClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClusterClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IngestClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ingestClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IngestClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;As you may see, each sub-client is instantiated using the instance of the
-rest client, such as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new IndicesClient(this)&lt;/code&gt;. This is because the sub-client does
-not handle the actual HTTP request, it asks the low-level rest client to do it. This is a
-smart choice because, at the low level, the domain notion is gone – it’s just a
-matter of sending the JSON payload from the client to the server and waiting for the
-response. Then, inside the sub-client, there is a pointer to the original class:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IndicesClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RestHighLevelClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;restHighLevelClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-   &lt;span class=&quot;nc&quot;&gt;IndicesClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;RestHighLevelClient&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;restHighLevelClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;restHighLevelClient&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;restHighLevelClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-   &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;From a user point of view, the API can be accessed as follows:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;indices&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RequestOptions&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;DEFAULT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;And inside the create method, the implementation is:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;CreateIndexResponse&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;CreateIndexRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;createIndexRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nc&quot;&gt;RequestOptions&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;restHighLevelClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;performRequestAndParseEntity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;createIndexRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nl&quot;&gt;IndicesRequestConverters:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;createIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nl&quot;&gt;CreateIndexResponse:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fromXContent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;n&quot;&gt;emptySet&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;where the wrapper class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;InidicesClient&lt;/code&gt; just calls the rest client to perform
-the actual HTTP request. More precisely, the rest client performs the HTTP
-request using the given input structure (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CreateIndexRequest&lt;/code&gt;), the
-converter &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IndicesRequestConverters&lt;/code&gt; for JSON serialization, alongside the
-given request options. Then, when receiving the response, it uses the method
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fromXContent&lt;/code&gt; to deserialize the JSON content back to the Java structure.&lt;/p&gt;
-
-&lt;p&gt;From my point of view, having sub-clients is a brilliant idea. It is extremely
-useful when the server APIs grow and become more complex. Having these
-sub-clients allows the framework developers (the Elastic employees or community
-contributors) to:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Avoid a giant class containing all the logic.&lt;/li&gt;
-  &lt;li&gt;Decouple the business logic (high-level) and the actual API logic
-(low-level), where the business logic is delegated to different sub-client,
-specific to a target module (index, cluster, snapshot, …) and let the rest
-client itself to handle the low-level HTTP request and response.&lt;/li&gt;
-  &lt;li&gt;It increases significantly the readability of the code.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;packaging&quot;&gt;Packaging&lt;/h2&gt;
-
-&lt;p&gt;As a library, how is the High-Level REST Client (HLRC) organized? What can we
-learn from it? Since Elasticsearch is open-source, let’s go to the source code
-and find it out. 👀&lt;/p&gt;
-
-&lt;h3 id=&quot;request-and-response&quot;&gt;Request And Response&lt;/h3&gt;
-
-&lt;p&gt;From the following &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tree&lt;/code&gt; command, we can see that the request and response
-representations are stored inside a package, specific to the given domain, like
-asynchronous search, cluster, core, etc.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  elasticsearch git:(v7.16.2-rest-client u=) tree -P 'cluster|core|asyncsearch' --matchdirs -L 2 client/rest-high-level/src/main/java/org/elasticsearch/client | head -n 20
-client/rest-high-level/src/main/java/org/elasticsearch/client
-├── analytics
-├── asyncsearch
-│   ├── AsyncSearchResponse.java
-│   ├── DeleteAsyncSearchRequest.java
-│   ├── GetAsyncSearchRequest.java
-│   └── SubmitAsyncSearchRequest.java
-├── ccr
-├── cluster
-│   ├── ProxyModeInfo.java
-│   ├── RemoteConnectionInfo.java
-│   ├── RemoteInfoRequest.java
-│   ├── RemoteInfoResponse.java
-│   └── SniffModeInfo.java
-├── common
-├── core
-│   ├── AcknowledgedResponse.java
-│   ├── BroadcastResponse.java
-│   ├── CountRequest.java
-│   ├── CountResponse.java
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This is a good idea because it provides a clear separation between different
-modules and ensure that the structure remains clear when the business grows –
-i.e. when we will have more and more modules in the API client.&lt;/p&gt;
-
-&lt;p&gt;However, there is a counter-example – the machine learning (ML) package,
-which contains 107 files, most of them are structures of request and response.
-Maybe it’s time for Elasticsearch to split them into a better structure, i.e.
-multiple sub-domains for machine learning.&lt;/p&gt;
-
-&lt;h3 id=&quot;other-classes&quot;&gt;Other Classes&lt;/h3&gt;
-
-&lt;p&gt;Sub-clients and converters are stored directly inside the root directory. There
-are other classes as well but let’s focus on sub-clients and converters first.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  elasticsearch git:(v7.16.2-rest-client u=) tree -I '*Request.java|*Response.java' -L 1 client/rest-high-level/src/main/java/org/elasticsearch/client | head
-client/rest-high-level/src/main/java/org/elasticsearch/client
-├── AsyncSearchClient.java
-├── AsyncSearchRequestConverters.java
-├── CcrClient.java
-├── CcrRequestConverters.java
-├── ClusterClient.java
-├── ClusterRequestConverters.java
-├── EnrichClient.java
-├── EnrichRequestConverters.java
-├── EqlClient.java
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;I am not sure why they are not stored inside the domain packages. Putting them
-into sub-packages could simplify the structure of the root package
-(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;org.elasticsearch.client&lt;/code&gt;).
-Perhaps it has to be in the root package because the conversion methods are
-package-private (without &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;private&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;public&lt;/code&gt; modifiers), so they have to be in
-the same Java package of the rest client so that they can be used during the
-HTTP request handling.&lt;/p&gt;
-
-&lt;h2 id=&quot;dependencies&quot;&gt;Dependencies&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;What are the dependencies used by this client?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Understanding the list of dependencies is useful for software development. It
-gives us some hints about the structure of the client, its complexity, the
-potential vulnerabilities, classpath conflicts, etc. We can find the list using
-the &lt;a href=&quot;https://riptutorial.com/gradle/example/10909/list-dependencies&quot;&gt;Gradle dependency command&lt;/a&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gradle &amp;lt;subproject&amp;gt;:dependencies
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;in our case, it is:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;➜  elasticsearch git:(v7.16.2-rest-client u=) ./gradlew client:rest-high-level:dependencies
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Here we can see the dependencies used by the compile classpath. There are
-dependencies coming from Elasticsearch, dependencies from Jackson for
-serialization, dependencies from Log4J for logging, and dependencies from Apache
-HTTP for HTTP requests, etc.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;compileClasspath - Compile classpath for source set 'main'.
-+--- project :server
-|    +--- project :libs:elasticsearch-core
-|    +--- project :libs:elasticsearch-secure-sm
-|    +--- project :libs:elasticsearch-x-content
-|    |    +--- project :libs:elasticsearch-core
-|    |    +--- org.yaml:snakeyaml:1.26
-|    |    +--- com.fasterxml.jackson.core:jackson-core:2.10.4
-|    |    +--- com.fasterxml.jackson.dataformat:jackson-dataformat-smile:2.10.4
-|    |    +--- com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.10.4
-|    |    \--- com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:2.10.4
-|    +--- project :libs:elasticsearch-geo
-|    +--- project :libs:elasticsearch-lz4
-|    |    +--- org.lz4:lz4-java:1.8.0
-|    |    \--- project :libs:elasticsearch-core
-|    +--- org.apache.lucene:lucene-core:8.10.1
-|    +--- org.apache.lucene:lucene-analyzers-common:8.10.1
-|    +--- org.apache.lucene:lucene-backward-codecs:8.10.1
-|    +--- org.apache.lucene:lucene-grouping:8.10.1
-|    +--- org.apache.lucene:lucene-highlighter:8.10.1
-|    +--- org.apache.lucene:lucene-join:8.10.1
-|    +--- org.apache.lucene:lucene-memory:8.10.1
-|    +--- org.apache.lucene:lucene-misc:8.10.1
-|    +--- org.apache.lucene:lucene-queries:8.10.1
-|    +--- org.apache.lucene:lucene-queryparser:8.10.1
-|    +--- org.apache.lucene:lucene-sandbox:8.10.1
-|    +--- org.apache.lucene:lucene-spatial3d:8.10.1
-|    +--- org.apache.lucene:lucene-suggest:8.10.1
-|    +--- project :libs:elasticsearch-cli
-|    |    +--- net.sf.jopt-simple:jopt-simple:5.0.2
-|    |    \--- project :libs:elasticsearch-core
-|    +--- com.carrotsearch:hppc:0.8.1
-|    +--- joda-time:joda-time:2.10.10
-|    +--- com.tdunning:t-digest:3.2
-|    +--- org.hdrhistogram:HdrHistogram:2.1.9
-|    +--- org.apache.logging.log4j:log4j-api:2.17.0
-|    +--- org.apache.logging.log4j:log4j-core:2.17.0
-|    \--- net.java.dev.jna:jna:5.10.0
-+--- project :client:rest
-|    +--- org.apache.httpcomponents:httpclient:4.5.10
-|    +--- org.apache.httpcomponents:httpcore:4.4.12
-|    +--- org.apache.httpcomponents:httpasyncclient:4.1.4
-|    +--- org.apache.httpcomponents:httpcore-nio:4.4.12
-|    +--- commons-codec:commons-codec:1.11
-|    \--- commons-logging:commons-logging:1.1.3
-+--- project :modules:mapper-extras
-+--- project :modules:parent-join
-+--- project :modules:aggs-matrix-stats
-+--- project :modules:rank-eval
-\--- project :modules:lang-mustache
-     \--- com.github.spullara.mustache.java:compiler:0.9.6
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;serialization&quot;&gt;Serialization&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;How to serialize Java request into JSON and deserialize it from JSON to Java?&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;xcontent&quot;&gt;XContent&lt;/h3&gt;
-
-&lt;p&gt;In Elasticsearch, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;XContent&lt;/code&gt; is a generic abstraction for content handling,
-inspired by JSON and pull parsing. There are 4 types of XContent:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Type&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Description&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;JSON&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;A JSON based content type.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;SMILE&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;The jackson based smile binary format. Fast and compact binary format.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;YAML&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;A YAML based content type.&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;CBOR&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;A CBOR based content type.&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;In our case, we are mostly interested in the JSON content type.&lt;/p&gt;
-
-&lt;h3 id=&quot;serialization-1&quot;&gt;Serialization&lt;/h3&gt;
-
-&lt;p&gt;The serialization of the request is handled by the converters. There are many of
-them, perhaps one per domain (sub-client). Their naming convention is the name
-of the domain, followed by the suffix &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*Converters.java&lt;/code&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;source: org.elasticsearch.client.{domain}.XxxRequest
-target: org.elasticsearch.client.Request
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;In each converter, you can find a manual process for converting each field of a
-domain-specific request into a low-level HTTP request.&lt;/p&gt;
-
-&lt;h3 id=&quot;deserialization&quot;&gt;Deserialization&lt;/h3&gt;
-
-&lt;p&gt;On the other side, there is a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fromXContent(XContentParser parser)&lt;/code&gt; method for
-deserialization. You can from it in the domain-specific response, which allows
-parsing the low-level JSON response back to a high-level response in Java.&lt;/p&gt;
-
-&lt;p&gt;Here is an example from the Cluster Health API:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ClusterHealthResponse&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;health&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;ClusterHealthRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;healthRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RequestOptions&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;restHighLevelClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;performRequestAndParseEntity&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;healthRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// domain-specific request&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;ClusterRequestConverters:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;clusterHealth&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// serialization&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nl&quot;&gt;ClusterHealthResponse:&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fromXContent&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// deserialization&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;singleton&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;RestStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;REQUEST_TIMEOUT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;())&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;error-handling&quot;&gt;Error Handling&lt;/h2&gt;
-
-&lt;p&gt;According to the Javadoc of the HTTP response listener, there are two main
-categories of failures: connection failures (usually I/O exception), or
-responses that were treated as errors based on their error response code as
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ResponseException&lt;/code&gt;.&lt;/p&gt;
-
-&lt;h3 id=&quot;ioexception&quot;&gt;IOException&lt;/h3&gt;
-
-&lt;p&gt;The I/O exception is thrown during the execution of the HTTP request, in case of
-a problem or the connection was aborted. Unfortunately, I didn’t find out more
-information about this part. If you know more details about it, please let me
-know.&lt;/p&gt;
-
-&lt;h3 id=&quot;responseexception&quot;&gt;ResponseException&lt;/h3&gt;
-
-&lt;p&gt;Response exception is an exception thrown when an Elasticsearch node responds to
-a request with a status code that indicates an error. It holds the response that
-was returned. Its message contains the HTTP method, the host name, the URI, and
-the status line (protocol version, status code, and the reason), the list of
-warnings if there is any, and finally the entity of the HTTP response. Here is
-the structure:&lt;/p&gt;
-
-&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;method [{method}], host [{host}], URI [{uri}], status line [{status}]
-Warnings: {warnings}
-{entity}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;A response exception is constructed after having received the HTTP response in
-the low-level RESTful client. You can see that in the following code block
-(after the try-catch statement):&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Response&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;performRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NodeTuple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Iterator&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;InternalRequest&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;previousException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;throws&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IOException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;RequestContext&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;createContextForNextAttempt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nodes&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tuple&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;authCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;HttpResponse&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;n&quot;&gt;httpResponse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;requestProducer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;asyncResponseConsumer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Exception&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Note: conversion happens here&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;ResponseOrResponseException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;responseOrResponseException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;convertResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;responseOrResponseException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;responseException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;responseOrResponseException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;runtimeexception&quot;&gt;RuntimeException&lt;/h3&gt;
-
-&lt;p&gt;It is also possible that the client throws a runtime exception. From what I
-see, it happens in at least the two following cases: when the input argument is
-invalid and when the parsing failed during the deserialization.&lt;/p&gt;
-
-&lt;p&gt;When the input argument is incorrect, such as giving a negative value to a field
-that requires a positive number, it raises a runtime exception:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HeapBufferedAsyncResponseConsumer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bufferLimit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bufferLimit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;IllegalArgumentException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;bufferLimit must be greater than 0&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;bufferLimitBytes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;bufferLimit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Another case in the XContent parsing:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;XContentParser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Token&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;currentToken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;XContentParser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;START_OBJECT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;nextToken&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;token&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;XContentParser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;Token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;START_OBJECT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ParsingException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;parser&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getTokenLocation&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Failed to parse object: Expected START_OBJECT but was: &quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;token&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;exception-retry&quot;&gt;Exception Retry&lt;/h3&gt;
-
-&lt;p&gt;Elasticsearch HLRC may connect to multiple nodes of a given cluster. It selects
-a host out of the provided ones in a round-robin fashion. Failing hosts are
-marked dead and retried after a certain amount of time (minimum 1 minute,
-maximum 30 minutes), depending on how many times they priviously failed (the more
-failures, the later they will be retried). In case of failures, all of the alive
-nodes (or dead nodes that deserve a retry) are retried until one responds or
-none of them does, in which case an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;IOException&lt;/code&gt; will be thrown.&lt;/p&gt;
-
-&lt;p&gt;To mark a node as dead, the client reads the status code returned by the HTTP
-response and determines if it is one of the following codes (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;isRetryStatus&lt;/code&gt;): &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502&quot;&gt;502 Bad
-Gateway&lt;/a&gt;, &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/503&quot;&gt;503
-Service
-Unavailable&lt;/a&gt;, and
-&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/504&quot;&gt;504 Gateway
-Timeout&lt;/a&gt;. If yes,
-then the host is marked as dead. Otherwise, the host is marked alive and the request
-won’t be retried as the error should be a request problem. We can find the logic
-inside the response conversion method of the low-level RESTful client:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;ResponseException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;responseException&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ResponseException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isRetryStatus&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;statusCode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// mark host dead and retry against next one&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;onFailure&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ResponseOrResponseException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;responseException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// mark host alive and don't retry, as the error should be a request problem&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;onResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;responseException&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;testing&quot;&gt;Testing&lt;/h2&gt;
-
-&lt;p&gt;&lt;em&gt;How is the source code tested?&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;There are several types of tests in this package: unit tests for a given method,
-unit tests with a mock HTTP server, and integration tests with a real
-Elasticsearch environment. In this section, we are going to take a quick look
-into them.&lt;/p&gt;
-
-&lt;h3 id=&quot;unit-test&quot;&gt;Unit Test&lt;/h3&gt;
-
-&lt;p&gt;Unit tests are stored in files having the name &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*Tests.java&lt;/code&gt; in the Git repository.
-If I take &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RestClientBuilderTests&lt;/code&gt; as an example, we can see that it tests the
-input validation of the builder. That is, the builder should raise an example
-when the input argument is not valid: hosts must not be null nor empty, default
-headers must not be null, etc. These tests are simple unit tests without an HTTP
-server.&lt;/p&gt;
-
-&lt;h3 id=&quot;mock-http-server&quot;&gt;Mock HTTP Server&lt;/h3&gt;
-
-&lt;p&gt;Some tests are specific for validating a given HTTP behavior. For example,
-the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RestClientGzipCompressionTests&lt;/code&gt;, which validates the Gzip compression.
-These tests are also considered as unit tests in Elasticsearch, since their
-filenames also end with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*Tests.java&lt;/code&gt;. In the example of Gzip tests, the test
-suite sets up an HTTP server (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;com.sun.net.httpserver.HttpServer&lt;/code&gt;) with a Gzip
-response handler. The test suite ensure that the low-level REST client handles
-the compression correctly according to the client options
-(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setCompressionEnabled(boolean)&lt;/code&gt;).&lt;/p&gt;
-
-&lt;h3 id=&quot;integration-test&quot;&gt;Integration Test&lt;/h3&gt;
-
-&lt;p&gt;Integration tests are stored in files having the name &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*IntegTests.java&lt;/code&gt; or
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*IT.java&lt;/code&gt;. They extend the class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ESRestTestCase&lt;/code&gt; which can talk to a real
-Elasticsearch cluster with a list of hosts. The high-level client wraps the
-low-level client and the low-level client connects to those &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;clusterHosts&lt;/code&gt;.
-Therefore, we can create a request, let it be handled by the cluster, and then
-assert the response.&lt;/p&gt;
-
-&lt;h2 id=&quot;observability&quot;&gt;Observability&lt;/h2&gt;
-
-&lt;p&gt;When running code in production, it’s important to have the possibility to observe
-the behavior of the source code, for troubleshooting problems or other purposes.
-In this section, we are going to discuss what the rest client offers us.&lt;/p&gt;
-
-&lt;h3 id=&quot;logging&quot;&gt;Logging&lt;/h3&gt;
-
-&lt;p&gt;The client contains a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RequestLogger&lt;/code&gt;, which provides methods to log requests and
-responses. More precisely, it can log failed requests and successful or failed
-responses. In other words, a successful request won’t be logged until a response
-is returned – which makes sense, because having the request and response in the
-same log is more contextual, it provides more information for troubleshooting.&lt;/p&gt;
-
-&lt;p&gt;The request logger can be used as follows:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;RequestLogger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;logResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;logger&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;httpRequest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;node&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getHost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpResponse&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;As you can see, the logger is injected as the first input argument of the
-method. In this way, the logger used by the helper class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RequestLogger&lt;/code&gt; is
-always to the logger of the caller. It facilitates the lookup of the failure
-since all the logs can be found by filtering one single class (logger).&lt;/p&gt;
-
-&lt;p&gt;There are three levels of logs that are used inside the logger for logging HTTP
-responses:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;WARN&lt;/code&gt;: when warn level is enabled, the logger logs the warnings retrieved from
-the HTTP response header &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Warning&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DEBUG&lt;/code&gt;: when debug level is enabled, the logger logs the debug HTTP request and
-response, including the method name, the host, the URI, and the status line
-from the response&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TRACE&lt;/code&gt;: when trace level is enabled, the internal tracer (another logger)
-will build a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;curl&lt;/code&gt; request so that you can reproduce the HTTP request
-directly in your terminal without using HLRC! 😲&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;You can also find more information from the official documentation &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.15/java-rest-low-usage-logging.html&quot;&gt;Logging
-(7.15)&lt;/a&gt;
-of Elasticsearch.&lt;/p&gt;
-
-&lt;h3 id=&quot;tracing&quot;&gt;Tracing&lt;/h3&gt;
-
-&lt;p&gt;If you need a tracing solution, I think there is no built-in solution. However, I
-saw that there is a third-party library that helps to do this: it’s the
-&lt;a href=&quot;https://github.com/opentracing-contrib/java-elasticsearch-client&quot;&gt;OpenTracing Elasticsearch Client
-Instrumentation&lt;/a&gt;.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Instantiate tracer&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;Tracer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tracer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Optionally register tracer with GlobalTracer&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;GlobalTracer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tracer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Build RestClient adding TracingHttpClientConfigCallback&lt;/span&gt;
-&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;builder&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;RestClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;builder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HttpHost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9200&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;http&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;),&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;HttpHost&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;localhost&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9201&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;http&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;setHttpClientConfigCallback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;TracingHttpClientConfigCallback&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tracer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// set more options...&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;From what I see in the source code, the class &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TracingHttpClientConfigCallback&lt;/code&gt;
-implements the method of Elasticsearch’s HLRC interface
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;HttpClientConfigCallback&lt;/code&gt;:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HttpClientConfigCallback&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nc&quot;&gt;HttpAsyncClientBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;customizeHttpClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HttpAsyncClientBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;var1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;in which it registers two interceptors into the rest client: an HTTP request
-interceptor and an HTTP response interceptor. More precisely, the HTTP request
-interceptor is registered at the &lt;strong&gt;last&lt;/strong&gt; position of the HTTP request
-interceptor chain, while the HTTP response interceptor is registered at the
-&lt;strong&gt;first&lt;/strong&gt; position of the HTTP response interceptor chain. This makes sense
-because we want to record the request only if it will be successfully sent and
-after all the modifications; as for the response, we want to record it as soon
-as possible before any modification, such as transforming the response into
-exception. Here is the source code:&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nd&quot;&gt;@Override&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HttpAsyncClientBuilder&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;customizeHttpClient&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HttpAsyncClientBuilder&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpAsyncClientBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;httpClientBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addInterceptorLast&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HttpRequestInterceptor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;n&quot;&gt;httpClientBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;addInterceptorFirst&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HttpResponseInterceptor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;response&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;httpClientBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h2 id=&quot;going-further&quot;&gt;Going Further&lt;/h2&gt;
-
-&lt;p&gt;How to go further from here?&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;If you want to learn more about Java High Level REST Client, visit the
-official documentation &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-rest/7.15/java-rest-high.html&quot;&gt;Java High Level REST Client&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;If you want to learn more about the Java API Client, the replacement of Java
-High Level REST Client, visit the official documentation &lt;a href=&quot;https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/index.html&quot;&gt;Elasticsearch Java
-API
-Client&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;If you want to learn more about the instrumentation of the Elasticsearch client,
-visit GitHub project &lt;a href=&quot;https://github.com/opentracing-contrib/java-elasticsearch-client&quot;&gt;OpenTracing Elasticsearch Client
-Instrumentation&lt;/a&gt;.&lt;/li&gt;
-  &lt;li&gt;If you are interested in other system-design articles, you can find them in my
-blog by filtering the &lt;a href=&quot;/en/archive/?tag=system-design&quot;&gt;system-design&lt;/a&gt; tag. I
-wrote two posts last year related to Elasticsearch: the internal structure of
-a snapshot repository and the decision system for the shard allocation in
-Elasticsearch.&lt;/li&gt;
-  &lt;li&gt;If you are interested in learning more design patterns, &lt;a href=&quot;https://refactoring.guru/&quot;&gt;Refactoring
-Guru&lt;/a&gt; is an amazing website for you. It is visual
-and provides code examples in different programming languages.&lt;/li&gt;
-  &lt;li&gt;To learn more about Apache HttpComponents Client, you can visit their project
-on &lt;a href=&quot;https://github.com/apache/httpcomponents-client/&quot;&gt;GitHub&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
-
-&lt;p&gt;In this article, we explored the Java High-Level REST Client of Elasticsearch.
-We saw its client by visiting the builder pattern, the auto-closing behavior,
-and the domain-driven sub-client structure. We saw its packaging, including
-request, response, sub-client, and converters. We also saw its dependencies, its
-serialization and deserialization, and the error handling mechanism. Inside the
-error handling, we discussed different types of exceptions, their meaning, and how to
-retry. Then, we saw the testing part and the observability part of the client.
-Finally, I provided some resources for going further on this
-topic. Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
-on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
-&lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;P.S. Special thanks to &lt;a href=&quot;https://github.com/dintskirveli&quot;&gt;Daniel Intskirveli&lt;/a&gt;
-for reviewing this post.&lt;/em&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/apache/httpcomponents-client&quot;&gt;“Apache HttpComponents
-Client”&lt;/a&gt;, &lt;em&gt;GitHub&lt;/em&gt;, 2021.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/HTTP/Status&quot;&gt;“HTTP response status
-codes”&lt;/a&gt;, &lt;em&gt;MDN Web
-Docs&lt;/em&gt;, 2022.&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/opentracing-contrib/java-elasticsearch-client&quot;&gt;“OpenTracing Elasticsearch Client
-Instrumentation”&lt;/a&gt;,
-&lt;em&gt;GitHub&lt;/em&gt;, 2022.&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="elasticsearch" /><category term="system-design" /><category term="elasticsearch" /><category term="java" /><category term="rest" /><category term="api" /><category term="system-design" /><summary type="html">This article explores the implementation of Elasticsearch Java High-Level REST Client (HLRC) by analyzing the structure of the client, the dependencies, the error handling mechanism, serialization, its observability, and more.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-mike-kenneally-tNALoIZhqVM-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+&lt;/ul&gt;</content><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><category term="java-core" /><category term="java" /><category term="datadog" /><category term="elasticsearch" /><category term="aliyun" /><category term="logging" /><summary type="html">This article explains how to set up Datadog monitoring for a Java application and an Elasticsearch service running in Alibaba Cloud.</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="https://mincong.io/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg" /><media:content medium="image" url="https://mincong.io/assets/bg-joe-caione-qO-PIF84Vxg-unsplash.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
