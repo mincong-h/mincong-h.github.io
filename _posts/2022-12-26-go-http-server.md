@@ -14,8 +14,9 @@ ads_tags:            []
 comments:            true
 excerpt:             >
     TODO
-image:               /assets/bg-coffee-84624_1280.jpg
-cover:               /assets/bg-coffee-84624_1280.jpg
+
+image:               /assets/mountain/krzysztof-kowalik-_HLLHiD9Ik4-unsplash.jpg
+cover:               /assets/mountain/krzysztof-kowalik-_HLLHiD9Ik4-unsplash.jpg
 article_header:
   type:              overlay
   theme:             dark
