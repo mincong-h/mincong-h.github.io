@@ -83,3 +83,7 @@ on [Twitter](https://twitter.com/mincong_h) or
 ## References
 
 * <https://en.wikipedia.org/wiki/Multitier_architecture>
+* <https://en.wikipedia.org/wiki/Microservices>
+* <https://yourbasic.org/golang/http-server-example/>
+* <https://gobyexample.com/http-servers>
+* <https://stackoverflow.com/questions/12429729/controller-belongs-to-the-presentation-layer>
