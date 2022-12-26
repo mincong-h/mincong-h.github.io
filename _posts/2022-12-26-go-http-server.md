@@ -63,6 +63,8 @@ Wikipedia has an excellent diagram to discribe their relationship in the page [M
   style="width: 100%"
 />
 
+Now we understand the 3-tier architecture, we can bring these concepts to Go and see how are they applied in the code.
+
 ## Section 2
 
 ## Section 3
