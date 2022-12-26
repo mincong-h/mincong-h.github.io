@@ -4,12 +4,12 @@ layout:              post
 type:                classic
 title:               Go Http Server Example
 subtitle:            >
-    Given one sentence to expand the title or explain why this article may interest your readers.
+    How to create a simple HTTP server in Go?
 
 lang:                en
 date:                2022-12-26 15:42:24 +0100
 categories:          [java-rest, microservices]
-tags:                [go]
+tags:                [go, microservices]
 ads_tags:            []
 comments:            true
 excerpt:             >
@@ -28,33 +28,40 @@ wechat:              false
 
 ## Introduction
 
-Explain context here to attract people's attention... like:
-- topic: what you want to talk about?
-- audience: who are you targeting?
-- motiviation: why is it interesting for them? Or why is it important to understand this topic?
+Choosing Go as the programming language for your backend service is a common choice.
+In this article, we will see how to implement an HTTP server for RESTful API in Go.
+Today, we will visit some simple Go HTTP servers and see how are they implemented.
 
 After reading this article, you will understand:
 
-(choose one of the following structures)
+* The 3-tier architecture (presentation, application, data tier)
+* How to build the RESTful tier
+* How to build the application (business) tier
+* How to build the data tier
+* How to package everything as a Go application
 
-dive deep:
-
-* Some prequisites
-* Some general concepts
-* Some specific concepts to dig deeper
-* How to go further from this article
-
-different dimensions (broad):
-
-* section 1
-* section 2
-* section 3
-* How to go further from this article
-
-... then specify some information about the context, such as framework version, language version.
 Now, let's get started!
 
-## Section 1
+## Three-Tier Architecture
+
+A three-tier architecture is commonly used by web application. As the name indicates, there are three tiers
+in this architecture: the presentation tier, the application (business) tier, and the data tier.
+
+* **The presentation tier** displays information to the client. In the case of a web application, this can
+  be the HTTP requests and the responses provided by the web application.
+* **The application (business) tier** implements the logic related to the application, it processes commands,
+  queries data models, performs calculations, assembles results and return to the presentation layer. It interacts
+  with both the presetnation tier and the data tier.
+* **The data tier** connects to a data storage, usually a database, a file system, or a cloud storage. In any
+  case, the information retrieved is passed back to the logic tier for processing.
+
+Wikipedia has an excellent diagram to discribe their relationship in the page [Multitier Architecture](https://en.wikipedia.org/wiki/Multitier_architecture):
+
+<img
+  src="https://upload.wikimedia.org/wikipedia/commons/5/51/Overview_of_a_three-tier_application_vectorVersion.svg"
+  alt="Overview of a three-tier application"
+  style="width: 100%"
+/>
 
 ## Section 2
 
@@ -72,3 +79,5 @@ on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
+
+* <https://en.wikipedia.org/wiki/Multitier_architecture>
