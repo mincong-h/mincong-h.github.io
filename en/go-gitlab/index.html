@@ -531,7 +531,7 @@ pipeline jobs, listing pipeline bridges, etc.</p>
 out that the actual preparation of the request is not handled by the domain.
 It’s delegated to the underlying <code class="language-plaintext highlighter-rouge">*Client</code>, which is a low-level HTTP client
 shared by all the domains. Internally, it marshals the Go structure into an HTTP
-request, sends the request, waits for the HTTP response, unmarchals it back to
+request, sends the request, waits for the HTTP response, unmarshals it back to
 Go structure, and handle eventual errors. To better understand the relationship
 between the domain-specific client and the low-level HTTP client, let’s draw a
 diagram
@@ -950,8 +950,15 @@ example from “listing project jobs”:</p>
 
 <p><strong>Option Functions.</strong> The GitLab SDK provides some <code class="language-plaintext highlighter-rouge">With...</code> option functions to
 let you customize the API client. Why? Because the default values may not fit
-100% of your need and you want to do something differently. The GitLab API
-client provides options to set the base URL, configure backoff policy, logging,
+100% of your need and you want to do something differently. This notion is
+probably introduced by Dave Cheney in his post <a href="https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis">“Functional options for friendly
+APIs”</a>
+back to 2014. The main benefits of using functional options are: letting you
+write beautiful APIs that can grow over time; enabling the default use case to be
+its simplest; giving more readable and meaningful parameters; and providing direct
+control over the initialization of complex values.</p>
+
+<p>The GitLab API client provides options to set the base URL, configure backoff policy, logging,
 error handling, HTTP client, etc.</p>
 
 <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">git</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">gitlab</span><span class="o">.</span><span class="n">NewClient</span><span class="p">(</span><span class="s">"yourtokengoeshere"</span><span class="p">,</span> <span class="n">gitlab</span><span class="o">.</span><span class="n">WithBaseURL</span><span class="p">(</span><span class="s">"https://git.mydomain.com/api/v4"</span><span class="p">))</span>
@@ -1009,6 +1016,9 @@ Interested to know more? You can subscribe to <a href="/feed.xml">the feed of my
 on <a href="https://twitter.com/mincong_h">Twitter</a> or
 <a href="https://github.com/mincong-h/">GitHub</a>. Hope you enjoy this article, see you the next time!</p>
 
+<p><em>P.S. Special thanks to <a href="https://github.com/behos">Giorgos Georgiou</a> for
+reviewing this post.</em></p>
+
 <h2 id="references">References</h2>
 
 <ul>
@@ -1022,7 +1032,9 @@ Mermaid</a></li>
 Coder</a></li>
   <li><a href="https://docs.gitlab.com/ee/api/">API Docs - GitLab</a></li>
 </ul>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2022-12-04T10:23:14+01:00"><!-- start custom article footer snippet -->
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><span>Last updated
+      <time itemprop="dateModified" datetime="2022-12-27T13:50:06+01:00">Dec 27, 2022</time>
+    </span><!-- start custom article footer snippet -->
 
 
   

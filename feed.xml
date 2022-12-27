@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-12-24T17:10:17+01:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://mincong.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://mincong.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2022-12-27T13:53:03+01:00</updated><id>https://mincong.io/feed.xml</id><title type="html">Mincong Huang</title><subtitle>Hi, welcome to my blog! I'm a software engineer at Datadog. I write blog posts in my free time. My blogs are bits and pieces of my tech journey. Most of them are related to Java. Hope you enjoy them! My opinions are my own, not Datadog's. This blog is powered by Jekyll, a simple, blog-aware, static sites solution.
 </subtitle><author><name>Mincong Huang</name><email>mincong.h@gmail.com</email></author><entry xml:lang="en"><title type="html">Highlight 2022</title><link href="https://mincong.io/en/highlight-2022/" rel="alternate" type="text/html" title="Highlight 2022" /><published>2022-12-23T17:46:31+01:00</published><updated>2022-12-23T17:46:31+01:00</updated><id>https://mincong.io/en/highlight-2022</id><content type="html" xml:base="https://mincong.io/en/highlight-2022/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Writing an article for an annual review becomes a tradition for me. After
@@ -222,7 +222,7 @@ pipeline jobs, listing pipeline bridges, etc.&lt;/p&gt;
 out that the actual preparation of the request is not handled by the domain.
 It’s delegated to the underlying &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*Client&lt;/code&gt;, which is a low-level HTTP client
 shared by all the domains. Internally, it marshals the Go structure into an HTTP
-request, sends the request, waits for the HTTP response, unmarchals it back to
+request, sends the request, waits for the HTTP response, unmarshals it back to
 Go structure, and handle eventual errors. To better understand the relationship
 between the domain-specific client and the low-level HTTP client, let’s draw a
 diagram
@@ -641,8 +641,15 @@ example from “listing project jobs”:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Option Functions.&lt;/strong&gt; The GitLab SDK provides some &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;With...&lt;/code&gt; option functions to
 let you customize the API client. Why? Because the default values may not fit
-100% of your need and you want to do something differently. The GitLab API
-client provides options to set the base URL, configure backoff policy, logging,
+100% of your need and you want to do something differently. This notion is
+probably introduced by Dave Cheney in his post &lt;a href=&quot;https://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis&quot;&gt;“Functional options for friendly
+APIs”&lt;/a&gt;
+back to 2014. The main benefits of using functional options are: letting you
+write beautiful APIs that can grow over time; enabling the default use case to be
+its simplest; giving more readable and meaningful parameters; and providing direct
+control over the initialization of complex values.&lt;/p&gt;
+
+&lt;p&gt;The GitLab API client provides options to set the base URL, configure backoff policy, logging,
 error handling, HTTP client, etc.&lt;/p&gt;
 
 &lt;div class=&quot;language-go highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;git&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;err&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gitlab&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;NewClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;yourtokengoeshere&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gitlab&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;WithBaseURL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://git.mydomain.com/api/v4&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
@@ -699,6 +706,9 @@ SDK!
 Interested to know more? You can subscribe to &lt;a href=&quot;/feed.xml&quot;&gt;the feed of my blog&lt;/a&gt;, follow me
 on &lt;a href=&quot;https://twitter.com/mincong_h&quot;&gt;Twitter&lt;/a&gt; or
 &lt;a href=&quot;https://github.com/mincong-h/&quot;&gt;GitHub&lt;/a&gt;. Hope you enjoy this article, see you the next time!&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;P.S. Special thanks to &lt;a href=&quot;https://github.com/behos&quot;&gt;Giorgos Georgiou&lt;/a&gt; for
+reviewing this post.&lt;/em&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
 
