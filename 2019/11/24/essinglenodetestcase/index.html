@@ -14,9 +14,9 @@
 
 <meta name="description" content="Writing unit tests for Elasticsearch using Elasticsearch Single Node Test Case (ESSingleNodeTestCase), a derived class of ESTestCase which simplifies the tes...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Testing Elasticsearch with ESSingleNodeTestCase | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Testing Elasticsearch with ESSingleNodeTestCase" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2019/11/24/essinglenodetestcase/"},"description":"Writing unit tests for Elasticsearch using Elasticsearch Single Node Test Case (ESSingleNodeTestCase), a derived class of ESTestCase which simplifies the testing set up for you.","@type":"BlogPosting","url":"https://mincong.io/2019/11/24/essinglenodetestcase/","image":"https://mincong.io/assets/bg-coffee-2306471_1280.jpg","headline":"Testing Elasticsearch with ESSingleNodeTestCase","dateModified":"2019-11-24T10:01:48+01:00","datePublished":"2019-11-24T10:01:48+01:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2019-11-24T10:01:48+01:00","datePublished":"2019-11-24T10:01:48+01:00","description":"Writing unit tests for Elasticsearch using Elasticsearch Single Node Test Case (ESSingleNodeTestCase), a derived class of ESTestCase which simplifies the testing set up for you.","headline":"Testing Elasticsearch with ESSingleNodeTestCase","image":"https://mincong.io/assets/bg-coffee-2306471_1280.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2019/11/24/essinglenodetestcase/"},"url":"https://mincong.io/2019/11/24/essinglenodetestcase/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,
@@ -319,9 +319,12 @@
 </head>
   <body>
     <div class="root" data-is-touch="false">
-      <div class="layout--page js-page-root"><div class="page__main js-page-main page__viewport has-aside cell cell--auto">
+      <div class="layout--page js-page-root">
+<div class="page__main js-page-main page__viewport has-aside cell cell--auto">
 
-      <div class="page__main-inner"><div class="page__header d-print-none"><header class="header"><div class="main">
+      <div class="page__main-inner">
+<div class="page__header d-print-none">
+<header class="header"><div class="main">
       <div class="header__title">
         <div class="header__brand">
           
@@ -342,40 +345,50 @@
           
 
           <a href="/">Home</a>
-        </div><button class="button button--secondary button--circle search-button js-search-toggle" data-dd-action-name="search">
+        </div>
+<button class="button button--secondary button--circle search-button js-search-toggle" data-dd-action-name="search">
             <i class="fas fa-search"></i>
-          </button></div><nav class="navigation">
-        <ul><li class="navigation__item"><a href="/en/categories/">Categories</a></li><li class="navigation__item"><a href="/en/series/">Series</a></li><li class="navigation__item"><a href="/en/archive/">Archive</a></li><li class="navigation__item"><a href="/en/about/">About</a></li><li><button class="button button--secondary button--circle search-button js-search-toggle" data-dd-action-name="search"><i class="fas fa-search"></i></button></li><li>
+          </button>
+</div>
+<nav class="navigation">
+        <ul>
+<li class="navigation__item"><a href="/en/categories/">Categories</a></li>
+<li class="navigation__item"><a href="/en/series/">Series</a></li>
+<li class="navigation__item"><a href="/en/archive/">Archive</a></li>
+<li class="navigation__item"><a href="/en/about/">About</a></li>
+<li><button class="button button--secondary button--circle search-button js-search-toggle" data-dd-action-name="search"><i class="fas fa-search"></i></button></li>
+<li>
             <a href="/cn/">
-             <img src="/assets/flag-CN.png"
-                  alt=""
-                  class="naviation__lang_img">
+             <img src="/assets/flag-CN.png" alt="" class="naviation__lang_img">
             </a>
           </li>
         </ul>
-      </nav></div>
+      </nav>
+</div>
   </header>
-</div><div class="page__content"><div class="article__header--overlay"><div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4)),url(/assets/bg-coffee-2306471_1280.jpg);background-color:#203028;"><div class="hero__content"><div class ="main">
+</div>
+<div class="page__content">
+<div class="article__header--overlay">
+<div class="hero hero--dark overlay" style="background-image:linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4)),url(/assets/bg-coffee-2306471_1280.jpg);background-color:#203028;">
+<div class="hero__content"><div class="main">
 
   
   <div class="article__info clearfix">
       <ul class="left-col menu">
         <li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=java">java</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=elasticsearch">elasticsearch</a>
-            </li><li>
-              <a class="button button--secondary button--pill button--sm"
-                href="/en/archive/?tag=testing">testing</a>
+              <a class="button button--secondary button--pill button--sm" href="/en/archive/?tag=java">java</a>
+            </li>
+<li>
+              <a class="button button--secondary button--pill button--sm" href="/en/archive/?tag=elasticsearch">elasticsearch</a>
+            </li>
+<li>
+              <a class="button button--secondary button--pill button--sm" href="/en/archive/?tag=testing">testing</a>
             </li>
 
         <li class="separator">|</li>
           
             <li>
-              <a class="button button--circle button--primary focus lang"
-                 href="/2019/11/24/essinglenodetestcase/"><span>EN</span></a>
+              <a class="button button--circle button--primary focus lang" href="/2019/11/24/essinglenodetestcase/"><span>EN</span></a>
 
               
 
@@ -390,12 +403,21 @@
             </li>
           
         
-      </ul><ul class="right-col menu"><li><i class="far fa-calendar-alt"></i> <span>Nov 24, 2019</span>
-            </li><li>
+      </ul>
+<ul class="right-col menu">
+<li>
+<i class="far fa-calendar-alt"></i> <span>Nov 24, 2019</span>
+            </li>
+<li>
               <i class="far fa-bookmark"></i> <span>Post Nº 127</span>
-            </li></ul></div><div class="article__header"><header><h1>Testing Elasticsearch with ESSingleNodeTestCase</h1></header></div><div class="article__header">
+            </li>
+</ul>
+</div>
+<div class="article__header"><header><h1>Testing Elasticsearch with ESSingleNodeTestCase</h1></header></div>
+<div class="article__header">
                         <p class="overlay__excerpt">Writing unit tests for Elasticsearch using Elasticsearch Single Node Test Case (ESSingleNodeTestCase), a derived class of ESTestCase which simplifies the testing set up for you.</p>
-                      </div><div class="article__info clearfix">
+                      </div>
+<div class="article__info clearfix">
   <ul class="left-col menu">
     <li>
       <i class="fas fa-camera"></i>
@@ -410,20 +432,28 @@
 </div>
 </div></div>
               </div>
-            </div><div class ="main"><div class="grid grid--reverse">
+            </div>
+<div class="main"><div class="grid grid--reverse">
 
               <div class="col-aside d-print-none js-col-aside"><aside class="page__aside js-page-aside"><div class="toc-aside js-toc-root"></div>
 </aside></div>
 
-              <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
+              <div class="col-main cell cell--auto">
+<!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><meta itemprop="headline" content="Testing Elasticsearch with ESSingleNodeTestCase"><meta itemprop="author" content="Mincong Huang"/><meta itemprop="datePublished" content="2019-11-24T10:01:48+01:00">
-    <meta itemprop="keywords" content="java,elasticsearch,testing"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
+<article itemscope itemtype="http://schema.org/Article"><meta itemprop="headline" content="Testing Elasticsearch with ESSingleNodeTestCase">
+<meta itemprop="author" content="Mincong Huang">
+<meta itemprop="datePublished" content="2019-11-24T10:01:48+01:00">
+    <meta itemprop="keywords" content="java,elasticsearch,testing">
+<div class="js-article-content">
+<div class="layout--article">
+<!-- start custom article top snippet -->
 
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><h2 id="overview">Overview</h2>
+<div class="article__content" itemprop="articleBody">
+<h2 id="overview">Overview</h2>
 
 <p>Recently I need to learn Elasticsearch basics and the best way to do
 that is to write some basic use-cases as unit tests. However, I did not
@@ -437,7 +467,7 @@ the same disappointment: there are not enough code examples about
 <code class="language-plaintext highlighter-rouge">ESTestCase</code> and <code class="language-plaintext highlighter-rouge">ESIntegTestCase</code> on the internet. See screenshot below:</p>
 
 <blockquote>
-  <p><img src="/assets/20191124-stackoverflow.png" alt="Stack Overflow: not enough code examples about ESTestCase" /></p>
+  <p><img src="/assets/20191124-stackoverflow.png" alt="Stack Overflow: not enough code examples about ESTestCase"></p>
 </blockquote>
 
 <p>That’s why I want to share what I learn for you. In this article, I will mainly
@@ -447,7 +477,8 @@ Elasticsearch behavior easily. After reading this article, you will understand:<
 
 <ul>
   <li>Declare Elasticsearch Testing Framework dependency in Maven</li>
-  <li>The basic structure of <code class="language-plaintext highlighter-rouge">ESSingleNodeTestCase</code></li>
+  <li>The basic structure of <code class="language-plaintext highlighter-rouge">ESSingleNodeTestCase</code>
+</li>
   <li>Testing the basics feature: index, get and search documents</li>
   <li>Avoid JAR hell problem</li>
 </ul>
@@ -469,7 +500,7 @@ the testing framework in 7.4 as well:</p>
 <p>However, declaring the Elasticsearch Testing Framwork is not enough, you may also
 need to declare some additional dependencies to make it work. The first one is
 the logging framework. Elasticsearch uses Log4J API as logging API:
-<em>“org.apache.logging.log4j:log4j-api:jar:2.11.1”</em>, you need to find an
+<em>“org.apache.logging.log4j:log4j-api<img class="emoji" title=":jar:" alt=":jar:" src="https://github.githubassets.com/images/icons/emoji/unicode/1fad9.png" height="20" width="20">2.11.1”</em>, you need to find an
 implementation for it to avoid classpath problem.
 This dependency is added by transitivity, because the testing framework
 (<code class="language-plaintext highlighter-rouge">framework</code>) depends on Elasticsearch (<code class="language-plaintext highlighter-rouge">elasticsearch</code>), which
@@ -716,12 +747,14 @@ Tests</a>
 to get rid of this problem. In particular:</p>
 
 <ul>
-  <li>Set VM option <code class="language-plaintext highlighter-rouge">idea.no.launcher=true</code> in <em>“Help &gt; Edit VM Options”</em></li>
+  <li>Set VM option <code class="language-plaintext highlighter-rouge">idea.no.launcher=true</code> in <em>“Help &gt; Edit VM Options”</em>
+</li>
   <li>Remove <code class="language-plaintext highlighter-rouge">ant-javafx.jar</code> from the classpath of your SDK in <em>“Project Structure
-(<code class="language-plaintext highlighter-rouge">cmd</code> + <code class="language-plaintext highlighter-rouge">;</code>) &gt; 1.8 (Java 8) &gt; Classpath”</em></li>
+(<code class="language-plaintext highlighter-rouge">cmd</code> + <code class="language-plaintext highlighter-rouge">;</code>) &gt; 1.8 (Java 8) &gt; Classpath”</em>
+</li>
 </ul>
 
-<p><img src="/assets/20191124-remove-ant-javafx.png" alt="Remove ant-javafx.jar from Java classpath in IntelliJ" /></p>
+<p><img src="/assets/20191124-remove-ant-javafx.png" alt="Remove ant-javafx.jar from Java classpath in IntelliJ"></p>
 
 <p>If these two actions were not enough, please read the official documentation
 described above.</p>
@@ -740,9 +773,13 @@ on <a href="https://twitter.com/mincong_h">Twitter</a> or
 
 <ul>
   <li>Elastic, “Java High Level REST Client”, <em>Elastic</em>.
-<a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html">https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html</a></li>
+<a href="https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html">https://www.elastic.co/guide/en/elasticsearch/client/java-rest/current/java-rest-high.html</a>
+</li>
 </ul>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2019-11-24T10:01:48+01:00"><!-- start custom article footer snippet -->
+</div>
+<section class="article__sharing d-print-none"></section><div class="d-print-none">
+<footer class="article__footer"><meta itemprop="dateModified" content="2019-11-24T10:01:48+01:00">
+<!-- start custom article footer snippet -->
 
 
   
@@ -751,10 +788,7 @@ on <a href="https://twitter.com/mincong_h">Twitter</a> or
 
   <div class="article__ads">
     
-      <div id="ea-article"
-           data-ea-publisher="mincongio"
-           data-ea-keywords="java|elasticsearch|testing"
-           data-ea-type="image">
+      <div id="ea-article" data-ea-publisher="mincongio" data-ea-keywords="java|elasticsearch|testing" data-ea-type="image">
     
     </div>
   </div>
@@ -763,14 +797,23 @@ on <a href="https://twitter.com/mincong_h">Twitter</a> or
 <div class="article__subscribe"><div class="subscribe">
   <i class="fas fa-rss"></i>
   <a type="application/rss+xml" href="/feed.xml">Subscribe</a>
-</div></div><div class="article__license"><div class="license">
+</div></div>
+<div class="article__license"><div class="license">
     <p>This work is licensed under a <a itemprop="license" rel="license" href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International</a> license.
       <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">
-        <img alt="Attribution 4.0 International" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+        <img alt="Attribution 4.0 International" src="https://i.creativecommons.org/l/by/4.0/88x31.png">
       </a>
     </p>
   </div></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/2019/11/17/dd-onboarding/">Datadog Onboarding Recap</a></div><div class="next"><span>NEXT</span><a href="/2019/12/02/indexing-new-data-in-elasticsearch/">Indexing New Data in Elasticsearch</a></div></div></div>
+<div class="article__section-navigator clearfix">
+<div class="previous">
+<span>PREVIOUS</span><a href="/2019/11/17/dd-onboarding/">Datadog Onboarding Recap</a>
+</div>
+<div class="next">
+<span>NEXT</span><a href="/2019/12/02/indexing-new-data-in-elasticsearch/">Indexing New Data in Elasticsearch</a>
+</div>
+</div>
+</div>
 
 </div>
 
@@ -799,7 +842,8 @@ on <a href="https://twitter.com/mincong_h">Twitter</a> or
   });
 })();
 </script>
-</div><section class="page__comments d-print-none"><div id="disqus_thread"></div>
+</div>
+<section class="page__comments d-print-none"><div id="disqus_thread"></div>
   <script>
   /**
   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -815,51 +859,70 @@ on <a href="https://twitter.com/mincong_h">Twitter</a> or
     (d.head || d.body).appendChild(s);
   })();
   </script>
-  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></section></article><!-- start custom main bottom snippet -->
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript></section></article><!-- start custom main bottom snippet -->
 
 <!-- end custom main bottom snippet -->
 </div>
-            </div></div></div><div class="page__footer d-print-none">
+            </div></div>
+</div>
+<div class="page__footer d-print-none">
 <footer class="footer py-4 js-page-footer">
-  <div class="main"><div itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Mincong Huang"><meta itemprop="url" content="/"><meta itemprop="description" content="I am an amazing person."><div class="footer__author-links"><div class="author-links">
-  <ul class="menu menu--nowrap menu--inline"><li title="Send me an Email.">
+  <div class="main">
+<div itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mincong Huang">
+<meta itemprop="url" content="/">
+<meta itemprop="description" content="I am an amazing person.">
+<div class="footer__author-links">
+<div class="author-links">
+  <ul class="menu menu--nowrap menu--inline">
+<li title="Send me an Email.">
       <a class="button button--circle mail-button" itemprop="email" href="mailto:mincong.h@gmail.com" target="_blank">
         <i class="fas fa-envelope"></i>
-      </a><li title="Follow me on Twitter.">
+      </a>
+</li>
+<li title="Follow me on Twitter.">
         <a class="button button--circle twitter-button" itemprop="sameAs" href="https://twitter.com/mincong_h" target="_blank">
-          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M1024.032 194.432c-37.664 16.704-78.176 28-120.672 33.088 43.36-26.016 76.672-67.168 92.384-116.224-40.608 24.064-85.568 41.568-133.408 50.976-38.336-40.832-92.928-66.336-153.344-66.336-116.032 0-210.08 94.048-210.08 210.08 0 16.48 1.856 32.512 5.44 47.872-174.592-8.768-329.408-92.416-433.024-219.52-18.08 31.04-28.448 67.104-28.448 105.632 0 72.896 37.088 137.184 93.472 174.88-34.432-1.088-66.816-10.528-95.168-26.272-0.032 0.864-0.032 1.76-0.032 2.656 0 101.792 72.416 186.688 168.512 205.984-17.632 4.8-36.192 7.36-55.36 7.36-13.536 0-26.688-1.312-39.52-3.776 26.72 83.456 104.32 144.192 196.256 145.888-71.904 56.352-162.496 89.92-260.928 89.92-16.96 0-33.664-0.992-50.112-2.944 92.96 59.616 203.392 94.4 322.048 94.4 386.432 0 597.728-320.128 597.728-597.76 0-9.12-0.192-18.176-0.608-27.168 41.056-29.632 76.672-66.624 104.832-108.736z" />
+          <div class="icon">
+<svg fill="#000000" width="24px" height="24px" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M1024.032 194.432c-37.664 16.704-78.176 28-120.672 33.088 43.36-26.016 76.672-67.168 92.384-116.224-40.608 24.064-85.568 41.568-133.408 50.976-38.336-40.832-92.928-66.336-153.344-66.336-116.032 0-210.08 94.048-210.08 210.08 0 16.48 1.856 32.512 5.44 47.872-174.592-8.768-329.408-92.416-433.024-219.52-18.08 31.04-28.448 67.104-28.448 105.632 0 72.896 37.088 137.184 93.472 174.88-34.432-1.088-66.816-10.528-95.168-26.272-0.032 0.864-0.032 1.76-0.032 2.656 0 101.792 72.416 186.688 168.512 205.984-17.632 4.8-36.192 7.36-55.36 7.36-13.536 0-26.688-1.312-39.52-3.776 26.72 83.456 104.32 144.192 196.256 145.888-71.904 56.352-162.496 89.92-260.928 89.92-16.96 0-33.664-0.992-50.112-2.944 92.96 59.616 203.392 94.4 322.048 94.4 386.432 0 597.728-320.128 597.728-597.76 0-9.12-0.192-18.176-0.608-27.168 41.056-29.632 76.672-66.624 104.832-108.736z"></path>
 </svg>
 </div>
         </a>
-      </li><li title="Follow me on Linkedin.">
+      </li>
+<li title="Follow me on Linkedin.">
         <a class="button button--circle linkedin-button" itemprop="sameAs" href="https://www.linkedin.com/in/mincong-huang" target="_blank">
-          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path d="M260.096 155.648c0 27.307008-9.899008 50.516992-29.696 69.632-19.796992 19.115008-45.396992 28.672-76.8 28.672-30.036992 0-54.612992-9.556992-73.728-28.672-19.115008-19.115008-28.672-42.324992-28.672-69.632 0-28.672 9.556992-52.224 28.672-70.656 19.115008-18.432 44.372992-27.648 75.776-27.648 31.403008 0 56.32 9.216 74.752 27.648 18.432 18.432 28.331008 41.984 29.696 70.656 0 0 0 0 0 0m-202.752 808.96c0 0 0-632.832 0-632.832 0 0 196.608 0 196.608 0 0 0 0 632.832 0 632.832 0 0-196.608 0-196.608 0 0 0 0 0 0 0m313.344-430.08c0-58.708992-1.364992-126.292992-4.096-202.752 0 0 169.984 0 169.984 0 0 0 10.24 88.064 10.24 88.064 0 0 4.096 0 4.096 0 40.96-68.267008 105.812992-102.4 194.56-102.4 68.267008 0 123.220992 22.868992 164.864 68.608 41.643008 45.739008 62.464 113.664 62.464 203.776 0 0 0 374.784 0 374.784 0 0-196.608 0-196.608 0 0 0 0-350.208 0-350.208 0-91.476992-33.451008-137.216-100.352-137.216-47.787008 0-81.236992 24.576-100.352 73.728-4.096 8.192-6.144 24.576-6.144 49.152 0 0 0 364.544 0 364.544 0 0-198.656 0-198.656 0 0 0 0-430.08 0-430.08 0 0 0 0 0 0" />
+          <div class="icon">
+<svg fill="#000000" width="24px" height="24px" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M260.096 155.648c0 27.307008-9.899008 50.516992-29.696 69.632-19.796992 19.115008-45.396992 28.672-76.8 28.672-30.036992 0-54.612992-9.556992-73.728-28.672-19.115008-19.115008-28.672-42.324992-28.672-69.632 0-28.672 9.556992-52.224 28.672-70.656 19.115008-18.432 44.372992-27.648 75.776-27.648 31.403008 0 56.32 9.216 74.752 27.648 18.432 18.432 28.331008 41.984 29.696 70.656 0 0 0 0 0 0m-202.752 808.96c0 0 0-632.832 0-632.832 0 0 196.608 0 196.608 0 0 0 0 632.832 0 632.832 0 0-196.608 0-196.608 0 0 0 0 0 0 0m313.344-430.08c0-58.708992-1.364992-126.292992-4.096-202.752 0 0 169.984 0 169.984 0 0 0 10.24 88.064 10.24 88.064 0 0 4.096 0 4.096 0 40.96-68.267008 105.812992-102.4 194.56-102.4 68.267008 0 123.220992 22.868992 164.864 68.608 41.643008 45.739008 62.464 113.664 62.464 203.776 0 0 0 374.784 0 374.784 0 0-196.608 0-196.608 0 0 0 0-350.208 0-350.208 0-91.476992-33.451008-137.216-100.352-137.216-47.787008 0-81.236992 24.576-100.352 73.728-4.096 8.192-6.144 24.576-6.144 49.152 0 0 0 364.544 0 364.544 0 0-198.656 0-198.656 0 0 0 0-430.08 0-430.08 0 0 0 0 0 0"></path>
 </svg>
 </div>
         </a>
-      </li><li title="Follow me on Github.">
+      </li>
+<li title="Follow me on Github.">
         <a class="button button--circle github-button" itemprop="sameAs" href="https://github.com/mincong-h" target="_blank">
-          <div class="icon"><svg fill="#000000" width="24px" height="24px" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <path class="svgpath" data-index="path_0" fill="#272636" d="M0 525.2c0 223.6 143.3 413.7 343 483.5 26.9 6.8 22.8-12.4 22.8-25.4l0-88.7c-155.3 18.2-161.5-84.6-172-101.7-21.1-36-70.8-45.2-56-62.3 35.4-18.2 71.4 4.6 113.1 66.3 30.2 44.7 89.1 37.2 119 29.7 6.5-26.9 20.5-50.9 39.7-69.6C248.8 728.2 181.7 630 181.7 513.2c0-56.6 18.7-108.7 55.3-150.7-23.3-69.3 2.2-128.5 5.6-137.3 66.5-6 135.5 47.6 140.9 51.8 37.8-10.2 80.9-15.6 129.1-15.6 48.5 0 91.8 5.6 129.8 15.9 12.9-9.8 77-55.8 138.8-50.2 3.3 8.8 28.2 66.7 6.3 135 37.1 42.1 56 94.6 56 151.4 0 117-67.5 215.3-228.8 243.7 26.9 26.6 43.6 63.4 43.6 104.2l0 128.8c0.9 10.3 0 20.5 17.2 20.5C878.1 942.4 1024 750.9 1024 525.3c0-282.9-229.3-512-512-512C229.1 13.2 0 242.3 0 525.2L0 525.2z" />
+          <div class="icon">
+<svg fill="#000000" width="24px" height="24px" viewbox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path class="svgpath" data-index="path_0" fill="#272636" d="M0 525.2c0 223.6 143.3 413.7 343 483.5 26.9 6.8 22.8-12.4 22.8-25.4l0-88.7c-155.3 18.2-161.5-84.6-172-101.7-21.1-36-70.8-45.2-56-62.3 35.4-18.2 71.4 4.6 113.1 66.3 30.2 44.7 89.1 37.2 119 29.7 6.5-26.9 20.5-50.9 39.7-69.6C248.8 728.2 181.7 630 181.7 513.2c0-56.6 18.7-108.7 55.3-150.7-23.3-69.3 2.2-128.5 5.6-137.3 66.5-6 135.5 47.6 140.9 51.8 37.8-10.2 80.9-15.6 129.1-15.6 48.5 0 91.8 5.6 129.8 15.9 12.9-9.8 77-55.8 138.8-50.2 3.3 8.8 28.2 66.7 6.3 135 37.1 42.1 56 94.6 56 151.4 0 117-67.5 215.3-228.8 243.7 26.9 26.6 43.6 63.4 43.6 104.2l0 128.8c0.9 10.3 0 20.5 17.2 20.5C878.1 942.4 1024 750.9 1024 525.3c0-282.9-229.3-512-512-512C229.1 13.2 0 242.3 0 525.2L0 525.2z"></path>
 </svg>
 </div>
         </a>
-      </li></ul>
+      </li>
+</ul>
 </div>
 </div>
-    </div><div class="site-info mt-2">
+    </div>
+<div class="site-info mt-2">
       <div>© Mincong Huang 2022,
-        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> & <a
-        title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.
+        Powered by <a title="Jekyll is a simple, blog-aware, static site generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="TeXt is a super customizable Jekyll theme." href="https://github.com/kitian616/jekyll-TeXt-theme">TeXt Theme</a>.
       </div>
     </div>
   </div>
 </footer>
-</div></div>
-    </div><script>(function() {
+</div>
+</div>
+    </div>
+<script>(function() {
   var SOURCES = window.TEXT_VARIABLES.sources;
   window.Lazyload.js(SOURCES.jquery, function() {
     var $body = $('body'), $window = $(window);
@@ -923,7 +986,8 @@ on <a href="https://twitter.com/mincong_h">Twitter</a> or
     $.fn.modal = modal;
   });
 })();
-</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal"><script>
+</script><div class="modal modal--overflow page__search-modal d-print-none js-page-search-modal">
+<script>
 (function () {
   var SOURCES = window.TEXT_VARIABLES.sources;
   window.Lazyload.js(SOURCES.jquery, function() {
@@ -1015,7 +1079,7 @@ on <a href="https://twitter.com/mincong_h">Twitter</a> or
     <div class="search-bar">
       <div class="search-box js-search-box">
         <div class="search-box__icon-search"><i class="fas fa-search"></i></div>
-        <input type="text" />
+        <input type="text">
         <div class="search-box__icon-clear js-icon-clear">
           <a><i class="fas fa-times"></i></a>
         </div>
@@ -1182,7 +1246,8 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
   });
 });
 </script>
-</div></div>
+</div>
+</div>
 
 
 <script>(function() {

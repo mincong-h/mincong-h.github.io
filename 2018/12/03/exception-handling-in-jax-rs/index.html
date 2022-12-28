@@ -14,9 +14,9 @@
 
 <meta name="description" content="This post explains exception mapper, how to register it in JAX-RS application programmatically or via annotation, the exception matching mechanism (nearest-s...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Exception Handling in JAX-RS | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Exception Handling in JAX-RS" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2018/12/03/exception-handling-in-jax-rs/"},"description":"This post explains exception mapper, how to register it in JAX-RS application programmatically or via annotation, the exception matching mechanism (nearest-superclass), and more.","@type":"BlogPosting","url":"https://mincong.io/2018/12/03/exception-handling-in-jax-rs/","image":"https://mincong.io/assets/bg-coffee-983955_1280.jpg","headline":"Exception Handling in JAX-RS","dateModified":"2018-12-03T07:15:28+01:00","datePublished":"2018-12-03T07:15:28+01:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2018-12-03T07:15:28+01:00","datePublished":"2018-12-03T07:15:28+01:00","description":"This post explains exception mapper, how to register it in JAX-RS application programmatically or via annotation, the exception matching mechanism (nearest-superclass), and more.","headline":"Exception Handling in JAX-RS","image":"https://mincong.io/assets/bg-coffee-983955_1280.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2018/12/03/exception-handling-in-jax-rs/"},"url":"https://mincong.io/2018/12/03/exception-handling-in-jax-rs/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

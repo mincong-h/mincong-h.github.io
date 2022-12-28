@@ -14,9 +14,9 @@
 
 <meta name="description" content="让我们通过Akka框架学习什么是指数退避（Exponential Backoff），它在高负荷环境下如何担任重要的角色。它的基本参数，如何测试，应用场景，软件监控等等。">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>通过Akka学习指数退避（Exponential Backoff） | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="通过Akka学习指数退避（Exponential Backoff）" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="zh" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/cn/exponential-backoff-in-akka/"},"description":"让我们通过Akka框架学习什么是指数退避（Exponential Backoff），它在高负荷环境下如何担任重要的角色。它的基本参数，如何测试，应用场景，软件监控等等。","@type":"BlogPosting","url":"https://mincong.io/cn/exponential-backoff-in-akka/","image":"https://mincong.io/assets/bg-ocean-ng-L0xOtAnv94Y-unsplash.jpg","headline":"通过Akka学习指数退避（Exponential Backoff）","dateModified":"2021-04-20T05:21:16+02:00","datePublished":"2021-04-20T05:21:16+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-04-20T05:21:16+02:00","datePublished":"2021-04-20T05:21:16+02:00","description":"让我们通过Akka框架学习什么是指数退避（Exponential Backoff），它在高负荷环境下如何担任重要的角色。它的基本参数，如何测试，应用场景，软件监控等等。","headline":"通过Akka学习指数退避（Exponential Backoff）","image":"https://mincong.io/assets/bg-ocean-ng-L0xOtAnv94Y-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/cn/exponential-backoff-in-akka/"},"url":"https://mincong.io/cn/exponential-backoff-in-akka/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

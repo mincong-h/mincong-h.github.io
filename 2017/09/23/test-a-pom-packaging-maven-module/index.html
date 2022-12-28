@@ -14,9 +14,9 @@
 
 <meta name="description" content="Recently, I need to write tests for resources inside a Maven module and I metsome technical issues. The context of the situation is that I need to test somer...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Test a POM-Packaging Maven Module | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Test a POM-Packaging Maven Module" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -32,7 +32,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2017/09/23/test-a-pom-packaging-maven-module/"},"description":"Recently, I need to write tests for resources inside a Maven module and I met some technical issues. The context of the situation is that I need to test some resources located in a Maven module, where its packaging value is pom. I think it’s worth to take some notes, so I wrote them down and share with you.","@type":"BlogPosting","url":"https://mincong.io/2017/09/23/test-a-pom-packaging-maven-module/","headline":"Test a POM-Packaging Maven Module","dateModified":"2017-09-23T08:59:24+02:00","datePublished":"2017-09-23T08:59:24+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2017-09-23T08:59:24+02:00","datePublished":"2017-09-23T08:59:24+02:00","description":"Recently, I need to write tests for resources inside a Maven module and I met some technical issues. The context of the situation is that I need to test some resources located in a Maven module, where its packaging value is pom. I think it’s worth to take some notes, so I wrote them down and share with you.","headline":"Test a POM-Packaging Maven Module","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2017/09/23/test-a-pom-packaging-maven-module/"},"url":"https://mincong.io/2017/09/23/test-a-pom-packaging-maven-module/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -301,7 +301,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

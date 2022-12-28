@@ -14,9 +14,9 @@
 
 <meta name="description" content="Fun experience on fixing a custom comparator by identifying the sub-problems, testing different combinations, and finally fix it.">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Fixing Comparator | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Fixing Comparator" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2019/07/18/fixing-comparator/"},"description":"Fun experience on fixing a custom comparator by identifying the sub-problems, testing different combinations, and finally fix it.","@type":"BlogPosting","url":"https://mincong.io/2019/07/18/fixing-comparator/","image":"https://mincong.io/assets/bg-cup-of-coffee-1280537_1280.jpg","headline":"Fixing Comparator","dateModified":"2019-07-18T20:47:15+02:00","datePublished":"2019-07-18T20:47:15+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2019-07-18T20:47:15+02:00","datePublished":"2019-07-18T20:47:15+02:00","description":"Fun experience on fixing a custom comparator by identifying the sub-problems, testing different combinations, and finally fix it.","headline":"Fixing Comparator","image":"https://mincong.io/assets/bg-cup-of-coffee-1280537_1280.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2019/07/18/fixing-comparator/"},"url":"https://mincong.io/2019/07/18/fixing-comparator/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

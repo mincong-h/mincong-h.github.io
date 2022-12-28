@@ -14,9 +14,9 @@
 
 <meta name="description" content="Define the types of documentation, your audience, improve page content, write less, organize the relationship between pages, and more.">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>How to write technical documentation | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="How to write technical documentation" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/technical-documentation/"},"description":"Define the types of documentation, your audience, improve page content, write less, organize the relationship between pages, and more.","@type":"BlogPosting","url":"https://mincong.io/en/technical-documentation/","image":"https://mincong.io/assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg","headline":"How to write technical documentation","dateModified":"2022-10-16T10:04:02+02:00","datePublished":"2022-10-16T10:04:02+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2022-10-16T10:04:02+02:00","datePublished":"2022-10-16T10:04:02+02:00","description":"Define the types of documentation, your audience, improve page content, write less, organize the relationship between pages, and more.","headline":"How to write technical documentation","image":"https://mincong.io/assets/bg-dmitrij-paskevic-YjVa-F9P9kk-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/technical-documentation/"},"url":"https://mincong.io/en/technical-documentation/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

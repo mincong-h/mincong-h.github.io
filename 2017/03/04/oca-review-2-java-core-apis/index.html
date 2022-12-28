@@ -14,9 +14,9 @@
 
 <meta name="description" content="I’m preparing the OCAJP: Oracle Certified Associate Java SE 8 Programmer. Here’sthe second review of the certification training. In this review, I’ll talk ab...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>OCA Review 2 - Java Core APIs | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="OCA Review 2 - Java Core APIs" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -32,7 +32,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2017/03/04/oca-review-2-java-core-apis/"},"description":"I’m preparing the OCAJP: Oracle Certified Associate Java SE 8 Programmer. Here’s the second review of the certification training. In this review, I’ll talk about the Java Core APIs, including operations of String, StringBuiler, Arrays, ArrayList, and Java Time in Java 8.","@type":"BlogPosting","url":"https://mincong.io/2017/03/04/oca-review-2-java-core-apis/","headline":"OCA Review 2 - Java Core APIs","dateModified":"2017-03-04T08:30:00+01:00","datePublished":"2017-03-04T08:30:00+01:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2017-03-04T08:30:00+01:00","datePublished":"2017-03-04T08:30:00+01:00","description":"I’m preparing the OCAJP: Oracle Certified Associate Java SE 8 Programmer. Here’s the second review of the certification training. In this review, I’ll talk about the Java Core APIs, including operations of String, StringBuiler, Arrays, ArrayList, and Java Time in Java 8.","headline":"OCA Review 2 - Java Core APIs","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2017/03/04/oca-review-2-java-core-apis/"},"url":"https://mincong.io/2017/03/04/oca-review-2-java-core-apis/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -301,7 +301,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

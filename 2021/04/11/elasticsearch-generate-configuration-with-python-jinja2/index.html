@@ -14,9 +14,9 @@
 
 <meta name="description" content="This article explains how to generate the configuration for Elasticsearch using Python templating engine Jinja 2 by going through a basic use-case. It also e...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Elasticsearch: Generate Configuration With Python Jinja 2 | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Elasticsearch: Generate Configuration With Python Jinja 2" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2021/04/11/elasticsearch-generate-configuration-with-python-jinja2/"},"description":"This article explains how to generate the configuration for Elasticsearch using Python templating engine Jinja 2 by going through a basic use-case. It also explains features about Jinja2, testing, and more.","@type":"BlogPosting","url":"https://mincong.io/2021/04/11/elasticsearch-generate-configuration-with-python-jinja2/","image":"https://mincong.io/assets/bg-heiman-ip-iFk8n8ntVDU-unsplash.jpg","headline":"Elasticsearch: Generate Configuration With Python Jinja 2","dateModified":"2021-04-11T02:31:10+02:00","datePublished":"2021-04-11T02:31:10+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-04-11T02:31:10+02:00","datePublished":"2021-04-11T02:31:10+02:00","description":"This article explains how to generate the configuration for Elasticsearch using Python templating engine Jinja 2 by going through a basic use-case. It also explains features about Jinja2, testing, and more.","headline":"Elasticsearch: Generate Configuration With Python Jinja 2","image":"https://mincong.io/assets/bg-heiman-ip-iFk8n8ntVDU-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2021/04/11/elasticsearch-generate-configuration-with-python-jinja2/"},"url":"https://mincong.io/2021/04/11/elasticsearch-generate-configuration-with-python-jinja2/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,
@@ -477,9 +477,9 @@ requirements. But you can remove it if you don’t feel that it is necessary.</p
 <code class="language-plaintext highlighter-rouge">elasticsearch.yml</code>, it can be as easy as:</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># template: elasticsearch.yml.j2</span>
-<span class="s">cluster.name</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">cluster_name</span> <span class="pi">}}</span>
-<span class="s">node.name</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">node_name</span> <span class="pi">}}</span>
-<span class="s">network.host</span><span class="pi">:</span> <span class="s">0.0.0.0</span>
+<span class="na">cluster.name</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">cluster_name</span> <span class="pi">}}</span>
+<span class="na">node.name</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">node_name</span> <span class="pi">}}</span>
+<span class="na">network.host</span><span class="pi">:</span> <span class="s">0.0.0.0</span>
 </code></pre></div></div>
 
 <p>… where we inject two variables <code class="language-plaintext highlighter-rouge">cluster_name</code> and <code class="language-plaintext highlighter-rouge">node_name</code> to the template
@@ -516,9 +516,9 @@ passing all the variables as input parameters:</p>
 <p>Thanks to this method, we can generate an Elasticsearch configuration file like
 this:</p>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">cluster.name</span><span class="pi">:</span> <span class="s">es-demo</span>
-<span class="s">node.name</span><span class="pi">:</span> <span class="s">es-demo-data-1</span>
-<span class="s">network.host</span><span class="pi">:</span> <span class="s">0.0.0.0</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">cluster.name</span><span class="pi">:</span> <span class="s">es-demo</span>
+<span class="na">node.name</span><span class="pi">:</span> <span class="s">es-demo-data-1</span>
+<span class="na">network.host</span><span class="pi">:</span> <span class="s">0.0.0.0</span>
 </code></pre></div></div>
 
 <p>And starting an Elasticsearch node with this custom configuration will work (you
@@ -586,9 +586,9 @@ for the template rendering. For example, we can modify the variable from
 <code class="language-plaintext highlighter-rouge">cluster_name</code> to <code class="language-plaintext highlighter-rouge">cluster.name</code> so that we only need to pass the object
 <code class="language-plaintext highlighter-rouge">cluster</code>. And the same for <code class="language-plaintext highlighter-rouge">node</code>. The new template can look like this:</p>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">cluster.name</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">cluster.name</span> <span class="pi">}}</span>
-<span class="s">node.name</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">node.name</span> <span class="pi">}}</span>
-<span class="s">network.host</span><span class="pi">:</span> <span class="s">0.0.0.0</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">cluster.name</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">cluster.name</span> <span class="pi">}}</span>
+<span class="na">node.name</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">node.name</span> <span class="pi">}}</span>
+<span class="na">network.host</span><span class="pi">:</span> <span class="s">0.0.0.0</span>
 </code></pre></div></div>
 
 <p>And the associated data classes in Python:</p>
@@ -638,13 +638,13 @@ of course, Jinja is much more powerful than that. I will explain that later on.<
 <p>If statement:</p>
 
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">{</span><span class="err">%</span> <span class="nv">if node_name %</span><span class="pi">}</span>
-<span class="s">node.name</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">node_name</span> <span class="pi">}}</span>
+<span class="na">node.name</span><span class="pi">:</span> <span class="pi">{{</span> <span class="nv">node_name</span> <span class="pi">}}</span>
 <span class="pi">{</span><span class="err">%</span> <span class="nv">endif %</span><span class="pi">}</span>
 </code></pre></div></div>
 
 <p>For loop:</p>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">discovery.seed_hosts</span><span class="pi">:</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">discovery.seed_hosts</span><span class="pi">:</span>
 <span class="pi">{</span><span class="err">%</span> <span class="nv">for seed_host in seed_hosts %</span><span class="pi">}</span>
 <span class="pi">-</span> <span class="pi">{{</span> <span class="nv">seed_host</span> <span class="pi">}}</span>
 <span class="pi">{</span><span class="err">%</span> <span class="nv">endfor %</span><span class="pi">}</span>

@@ -14,9 +14,9 @@
 
 <meta name="description" content="Create your own cheatsheets in Bash.">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Create Your Own Cheatsheets | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Create Your Own Cheatsheets" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2020/02/22/create-your-own-cheatsheets/"},"description":"Create your own cheatsheets in Bash.","@type":"BlogPosting","url":"https://mincong.io/2020/02/22/create-your-own-cheatsheets/","image":"https://mincong.io/assets/bg-absolutvision-82TpEld0_e4-unsplash.jpg","headline":"Create Your Own Cheatsheets","dateModified":"2020-02-22T20:40:24+01:00","datePublished":"2020-02-22T20:40:24+01:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2020-02-22T20:40:24+01:00","datePublished":"2020-02-22T20:40:24+01:00","description":"Create your own cheatsheets in Bash.","headline":"Create Your Own Cheatsheets","image":"https://mincong.io/assets/bg-absolutvision-82TpEld0_e4-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2020/02/22/create-your-own-cheatsheets/"},"url":"https://mincong.io/2020/02/22/create-your-own-cheatsheets/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

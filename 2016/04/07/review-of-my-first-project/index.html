@@ -14,9 +14,9 @@
 
 <meta name="description" content="After 8 weeks intensive works in nights and weekends, we've finally released the first application of our life: &quot;eRallye&quot;. This Android application...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Review of my first project | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Review of my first project" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -32,7 +32,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2016/04/07/review-of-my-first-project/"},"description":"After 8 weeks intensive works in nights and weekends, we’ve finally released the first application of our life: “eRallye”. This Android application is an app built for French association “Elles bougent”. This article reviews what have been done and how to do better in the future.","@type":"BlogPosting","url":"https://mincong.io/2016/04/07/review-of-my-first-project/","headline":"Review of my first project","dateModified":"2016-04-07T09:10:00+02:00","datePublished":"2016-04-07T09:10:00+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2016-04-07T09:10:00+02:00","datePublished":"2016-04-07T09:10:00+02:00","description":"After 8 weeks intensive works in nights and weekends, we’ve finally released the first application of our life: “eRallye”. This Android application is an app built for French association “Elles bougent”. This article reviews what have been done and how to do better in the future.","headline":"Review of my first project","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2016/04/07/review-of-my-first-project/"},"url":"https://mincong.io/2016/04/07/review-of-my-first-project/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -301,7 +301,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

@@ -14,9 +14,9 @@
 
 <meta name="description" content="A concret Sonar integration example for your Java project, using Maven + JaCoCo + SonarCloud + Jenkins.">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Sonar Integration with Maven | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Sonar Integration with Maven" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -32,7 +32,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2017/12/09/sonar-integration-with-maven/"},"description":"A concret Sonar integration example for your Java project, using Maven + JaCoCo + SonarCloud + Jenkins.","@type":"BlogPosting","url":"https://mincong.io/2017/12/09/sonar-integration-with-maven/","headline":"Sonar Integration with Maven","dateModified":"2017-12-09T17:23:09+01:00","datePublished":"2017-12-09T17:23:09+01:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2017-12-09T17:23:09+01:00","datePublished":"2017-12-09T17:23:09+01:00","description":"A concret Sonar integration example for your Java project, using Maven + JaCoCo + SonarCloud + Jenkins.","headline":"Sonar Integration with Maven","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2017/12/09/sonar-integration-with-maven/"},"url":"https://mincong.io/2017/12/09/sonar-integration-with-maven/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -301,7 +301,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

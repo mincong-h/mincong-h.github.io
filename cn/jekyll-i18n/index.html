@@ -14,9 +14,9 @@
 
 <meta name="description" content="一个博客两种语言！这篇文章跟大家分享我是如何把个人博客 https://mincong.io 国际化，以此带给读者更好的阅读体验。">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>自定义 Jekyll 国际化实践 | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="自定义 Jekyll 国际化实践" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="zh" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/cn/jekyll-i18n/"},"description":"一个博客两种语言！这篇文章跟大家分享我是如何把个人博客 https://mincong.io 国际化，以此带给读者更好的阅读体验。","@type":"BlogPosting","url":"https://mincong.io/cn/jekyll-i18n/","image":"https://mincong.io/assets/bg-chuttersnap-aku7Zlj_x_o-unsplash.jpg","headline":"自定义 Jekyll 国际化实践","dateModified":"2021-07-11T22:02:53+02:00","datePublished":"2021-07-11T22:02:53+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-07-11T22:02:53+02:00","datePublished":"2021-07-11T22:02:53+02:00","description":"一个博客两种语言！这篇文章跟大家分享我是如何把个人博客 https://mincong.io 国际化，以此带给读者更好的阅读体验。","headline":"自定义 Jekyll 国际化实践","image":"https://mincong.io/assets/bg-chuttersnap-aku7Zlj_x_o-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/cn/jekyll-i18n/"},"url":"https://mincong.io/cn/jekyll-i18n/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,
@@ -964,7 +964,7 @@ https://mincong.io/archive/ -&gt; https://mincong.io/en/archive/
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">site</span><span class="pi">:</span>
   <span class="s">...</span>
   <span class="s"># switch to the other langage</span>
-  <span class="s">urls2</span><span class="pi">:</span>
+  <span class="s">urls2</span><span class="err">:</span>
     <span class="na">en        </span><span class="pi">:</span> <span class="s">/cn/</span>
     <span class="na">zh        </span><span class="pi">:</span> <span class="s">/</span>
   <span class="na">urls2_src</span><span class="pi">:</span>

@@ -14,9 +14,9 @@
 
 <meta name="description" content="Understanding different disk watermarks: low, high, and flood-stage in Elasticsearch. The symptom when the cluster reaches these values and how to mitigate o...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Disk Watermarks In Elasticsearch | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Disk Watermarks In Elasticsearch" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2021/04/10/disk-watermarks-in-elasticsearch/"},"description":"Understanding different disk watermarks: low, high, and flood-stage in Elasticsearch. The symptom when the cluster reaches these values and how to mitigate or avoid the issues. Also, how to better operate your clusters using these watermarks.","@type":"BlogPosting","url":"https://mincong.io/2021/04/10/disk-watermarks-in-elasticsearch/","image":"https://mincong.io/assets/bg-kelly-sikkema-_whs7FPfkwQ-unsplash.jpg","headline":"Disk Watermarks In Elasticsearch","dateModified":"2021-04-10T01:00:00+02:00","datePublished":"2021-04-10T01:00:00+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-04-10T01:00:00+02:00","datePublished":"2021-04-10T01:00:00+02:00","description":"Understanding different disk watermarks: low, high, and flood-stage in Elasticsearch. The symptom when the cluster reaches these values and how to mitigate or avoid the issues. Also, how to better operate your clusters using these watermarks.","headline":"Disk Watermarks In Elasticsearch","image":"https://mincong.io/assets/bg-kelly-sikkema-_whs7FPfkwQ-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2021/04/10/disk-watermarks-in-elasticsearch/"},"url":"https://mincong.io/2021/04/10/disk-watermarks-in-elasticsearch/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

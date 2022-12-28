@@ -14,9 +14,9 @@
 
 <meta name="description" content="A quick introduction to Selenium WebDriver, a practical tool for running functional tests and browser automation. The sample is written with Firefox 58 and G...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Introduction to Selenium WebDriver | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Introduction to Selenium WebDriver" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2018/04/03/learning-selenium-webdriver/"},"description":"A quick introduction to Selenium WebDriver, a practical tool for running functional tests and browser automation. The sample is written with Firefox 58 and GeckoDriver 0.20.","@type":"BlogPosting","url":"https://mincong.io/2018/04/03/learning-selenium-webdriver/","image":"https://mincong.io/assets/bg-board-2450236_1280.jpg","headline":"Introduction to Selenium WebDriver","dateModified":"2018-04-03T20:50:21+02:00","datePublished":"2018-04-03T20:50:21+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2018-04-03T20:50:21+02:00","datePublished":"2018-04-03T20:50:21+02:00","description":"A quick introduction to Selenium WebDriver, a practical tool for running functional tests and browser automation. The sample is written with Firefox 58 and GeckoDriver 0.20.","headline":"Introduction to Selenium WebDriver","image":"https://mincong.io/assets/bg-board-2450236_1280.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2018/04/03/learning-selenium-webdriver/"},"url":"https://mincong.io/2018/04/03/learning-selenium-webdriver/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

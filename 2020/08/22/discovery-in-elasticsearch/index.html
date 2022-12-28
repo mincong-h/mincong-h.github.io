@@ -14,9 +14,9 @@
 
 <meta name="description" content="How does discovery work in Elasticsearch? This article explains different mechanisms of discovery, the key settings, fault detection, related logs, and more.">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Discovery in Elasticsearch | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Discovery in Elasticsearch" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2020/08/22/discovery-in-elasticsearch/"},"description":"How does discovery work in Elasticsearch? This article explains different mechanisms of discovery, the key settings, fault detection, related logs, and more.","@type":"BlogPosting","url":"https://mincong.io/2020/08/22/discovery-in-elasticsearch/","image":"https://mincong.io/assets/bg-tim-graf-ErO0E8wZaTA-unsplash.jpg","headline":"Discovery in Elasticsearch","dateModified":"2020-08-22T18:38:54+02:00","datePublished":"2020-08-22T18:38:54+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2020-08-22T18:38:54+02:00","datePublished":"2020-08-22T18:38:54+02:00","description":"How does discovery work in Elasticsearch? This article explains different mechanisms of discovery, the key settings, fault detection, related logs, and more.","headline":"Discovery in Elasticsearch","image":"https://mincong.io/assets/bg-tim-graf-ErO0E8wZaTA-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2020/08/22/discovery-in-elasticsearch/"},"url":"https://mincong.io/2020/08/22/discovery-in-elasticsearch/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,
@@ -453,7 +453,7 @@ from Elasticsearch 2.0 onwards, and that plugin was removed in Elasticsearch
 Here is an example of a unicast configuration inside the Elasticsearch configuration file
 (<code class="language-plaintext highlighter-rouge">elasticsearch.yml</code>):</p>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">discovery.zen.ping.unicast.hosts</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">10.0.0.3:9300"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">10.0.0.4:9300"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">10.0.0.5:9300"</span><span class="pi">]</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">discovery.zen.ping.unicast.hosts</span><span class="pi">:</span> <span class="pi">[</span><span class="s2">"</span><span class="s">10.0.0.3:9300"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">10.0.0.4:9300"</span><span class="pi">,</span> <span class="s2">"</span><span class="s">10.0.0.5:9300"</span><span class="pi">]</span>
 </code></pre></div></div>
 
 <blockquote>
@@ -478,7 +478,7 @@ changes on this file and reload it so that the list of seed hosts can be
 changed dynamically without needing to restart a node. To enable the filed-based
 discovery, configure the <code class="language-plaintext highlighter-rouge">file</code> hosts provider as:</p>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">discovery.zen.hosts_provider</span><span class="pi">:</span> <span class="s">file</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">discovery.zen.hosts_provider</span><span class="pi">:</span> <span class="s">file</span>
 </code></pre></div></div>
 
 <p>Then, you need to create a new file under the configuration directory of
@@ -529,7 +529,7 @@ setting, the cluster may suffer from split-brain issues. A split-brain scenario 
 
 <p>For example, if you have 3 master-eligible nodes, set the minimum of master nodes as 2 because “(3 / 2) + 1 = 2”.</p>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">discovery.zen.minimum_master_nodes</span><span class="pi">:</span> <span class="m">2</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">discovery.zen.minimum_master_nodes</span><span class="pi">:</span> <span class="m">2</span>
 </code></pre></div></div>
 
 <h2 id="fault-detection">Fault Detection</h2>

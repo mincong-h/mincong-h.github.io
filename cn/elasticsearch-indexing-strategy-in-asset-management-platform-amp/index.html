@@ -14,9 +14,9 @@
 
 <meta name="description" content="Netflix 资产管理平台（AMP）在多类资产的大数据场景下，对于 Elasticsearch 的应用：如何设计初版索引策略、在业务增长后如何将策略改造成按时间建立索引、如何避开字段上限、性能比较等。">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Netflix 资产管理平台 (AMP) 中的 Elasticsearch 索引策略 | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Netflix 资产管理平台 (AMP) 中的 Elasticsearch 索引策略" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="zh" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/cn/elasticsearch-indexing-strategy-in-asset-management-platform-amp/"},"description":"Netflix 资产管理平台（AMP）在多类资产的大数据场景下，对于 Elasticsearch 的应用：如何设计初版索引策略、在业务增长后如何将策略改造成按时间建立索引、如何避开字段上限、性能比较等。","@type":"BlogPosting","url":"https://mincong.io/cn/elasticsearch-indexing-strategy-in-asset-management-platform-amp/","image":"https://mincong.io/assets/bg-mollie-sivaram-yubCnXAA3H8-unsplash.jpg","headline":"Netflix 资产管理平台 (AMP) 中的 Elasticsearch 索引策略","dateModified":"2021-07-20T22:11:22+02:00","datePublished":"2021-07-20T22:11:22+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-07-20T22:11:22+02:00","datePublished":"2021-07-20T22:11:22+02:00","description":"Netflix 资产管理平台（AMP）在多类资产的大数据场景下，对于 Elasticsearch 的应用：如何设计初版索引策略、在业务增长后如何将策略改造成按时间建立索引、如何避开字段上限、性能比较等。","headline":"Netflix 资产管理平台 (AMP) 中的 Elasticsearch 索引策略","image":"https://mincong.io/assets/bg-mollie-sivaram-yubCnXAA3H8-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/cn/elasticsearch-indexing-strategy-in-asset-management-platform-amp/"},"url":"https://mincong.io/cn/elasticsearch-indexing-strategy-in-asset-management-platform-amp/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

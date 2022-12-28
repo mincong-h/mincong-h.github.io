@@ -14,9 +14,9 @@
 
 <meta name="description" content="This post explains how to create a systemd unit file for Java, so that you can run your Java application as a service in Linux. It also explains the structur...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Create Systemd Unit File for Java | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Create Systemd Unit File for Java" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2018/07/03/create-systemd-unit-file-for-java/"},"description":"This post explains how to create a systemd unit file for Java, so that you can run your Java application as a service in Linux. It also explains the structure of a service file, and tells your the useful commands after service’s creation.","@type":"BlogPosting","url":"https://mincong.io/2018/07/03/create-systemd-unit-file-for-java/","image":"https://mincong.io/assets/bg-coffee-2242213_1280.jpg","headline":"Create Systemd Unit File for Java","dateModified":"2018-07-03T21:33:29+02:00","datePublished":"2018-07-03T21:33:29+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2018-07-03T21:33:29+02:00","datePublished":"2018-07-03T21:33:29+02:00","description":"This post explains how to create a systemd unit file for Java, so that you can run your Java application as a service in Linux. It also explains the structure of a service file, and tells your the useful commands after service’s creation.","headline":"Create Systemd Unit File for Java","image":"https://mincong.io/assets/bg-coffee-2242213_1280.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2018/07/03/create-systemd-unit-file-for-java/"},"url":"https://mincong.io/2018/07/03/create-systemd-unit-file-for-java/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

@@ -14,9 +14,9 @@
 
 <meta name="description" content="One blog and two languages: bringing a better reading experience for the readers! This article shares how I internationalize my blog https://mincong.io">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Custom Internationalization (i18n) with Jekyll | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Custom Internationalization (i18n) with Jekyll" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/jekyll-i18n/"},"description":"One blog and two languages: bringing a better reading experience for the readers! This article shares how I internationalize my blog https://mincong.io","@type":"BlogPosting","url":"https://mincong.io/en/jekyll-i18n/","image":"https://mincong.io/assets/bg-chuttersnap-aku7Zlj_x_o-unsplash.jpg","headline":"Custom Internationalization (i18n) with Jekyll","dateModified":"2021-07-11T22:02:53+02:00","datePublished":"2021-07-11T22:02:53+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-07-11T22:02:53+02:00","datePublished":"2021-07-11T22:02:53+02:00","description":"One blog and two languages: bringing a better reading experience for the readers! This article shares how I internationalize my blog https://mincong.io","headline":"Custom Internationalization (i18n) with Jekyll","image":"https://mincong.io/assets/bg-chuttersnap-aku7Zlj_x_o-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/jekyll-i18n/"},"url":"https://mincong.io/en/jekyll-i18n/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,
@@ -966,7 +966,7 @@ https://mincong.io/archive/ -&gt; https://mincong.io/en/archive/
 <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">site</span><span class="pi">:</span>
   <span class="s">...</span>
   <span class="s"># switch to the other langage</span>
-  <span class="s">urls2</span><span class="pi">:</span>
+  <span class="s">urls2</span><span class="err">:</span>
     <span class="na">en </span><span class="pi">:</span> <span class="s">/cn/</span>
     <span class="na">zh </span><span class="pi">:</span> <span class="s">/</span>
   <span class="na">urls2_src</span><span class="pi">:</span>

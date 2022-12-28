@@ -14,9 +14,9 @@
 
 <meta name="description" content="Unzipping zip file in Java 8 using builtin Java classes: ZipInputStream and ZipEntry. Implementation supports sub-directories as well.">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Unzipping File in Java | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Unzipping File in Java" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2019/10/27/unzipping-file-in-java/"},"description":"Unzipping zip file in Java 8 using builtin Java classes: ZipInputStream and ZipEntry. Implementation supports sub-directories as well.","@type":"BlogPosting","url":"https://mincong.io/2019/10/27/unzipping-file-in-java/","image":"https://mincong.io/assets/bg-coffee-2242213_1280.jpg","headline":"Unzipping File in Java","dateModified":"2019-10-27T22:07:58+01:00","datePublished":"2019-10-27T22:07:58+01:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2019-10-27T22:07:58+01:00","datePublished":"2019-10-27T22:07:58+01:00","description":"Unzipping zip file in Java 8 using builtin Java classes: ZipInputStream and ZipEntry. Implementation supports sub-directories as well.","headline":"Unzipping File in Java","image":"https://mincong.io/assets/bg-coffee-2242213_1280.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2019/10/27/unzipping-file-in-java/"},"url":"https://mincong.io/2019/10/27/unzipping-file-in-java/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

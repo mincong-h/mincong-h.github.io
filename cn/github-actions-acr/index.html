@@ -14,9 +14,9 @@
 
 <meta name="description" content="如何通过GitHub Actions创建Docker image，并且持续集成到阿里云容器镜像服务（Aliyun Container Registry）？">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>GitHub Actions持续集成阿里云容器镜像服务（ACR） | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="GitHub Actions持续集成阿里云容器镜像服务（ACR）" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="zh" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/cn/github-actions-acr/"},"description":"如何通过GitHub Actions创建Docker image，并且持续集成到阿里云容器镜像服务（Aliyun Container Registry）？","@type":"BlogPosting","url":"https://mincong.io/cn/github-actions-acr/","image":"https://mincong.io/assets/bg-parsoa-khorsand-GPwBgILMy3M-unsplash.jpg","headline":"GitHub Actions持续集成阿里云容器镜像服务（ACR）","dateModified":"2021-05-15T11:50:13+02:00","datePublished":"2021-05-15T11:50:13+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-05-15T11:50:13+02:00","datePublished":"2021-05-15T11:50:13+02:00","description":"如何通过GitHub Actions创建Docker image，并且持续集成到阿里云容器镜像服务（Aliyun Container Registry）？","headline":"GitHub Actions持续集成阿里云容器镜像服务（ACR）","image":"https://mincong.io/assets/bg-parsoa-khorsand-GPwBgILMy3M-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/cn/github-actions-acr/"},"url":"https://mincong.io/cn/github-actions-acr/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

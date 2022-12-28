@@ -14,9 +14,9 @@
 
 <meta name="description" content="Six practical solutions to improve data reliability: improve number of replicas, snapshot and restore, RAID, MQ, etc.">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>How to prevent data loss in Elasticsearch? | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="How to prevent data loss in Elasticsearch?" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/prevent-data-loss-in-elasticsearch/"},"description":"Six practical solutions to improve data reliability: improve number of replicas, snapshot and restore, RAID, MQ, etc.","@type":"BlogPosting","url":"https://mincong.io/en/prevent-data-loss-in-elasticsearch/","image":"https://mincong.io/assets/bg-chase-charaba-uRHzV3ca2fk-unsplash.jpg","headline":"How to prevent data loss in Elasticsearch?","dateModified":"2021-07-31T09:50:49+02:00","datePublished":"2021-07-31T09:50:49+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-07-31T09:50:49+02:00","datePublished":"2021-07-31T09:50:49+02:00","description":"Six practical solutions to improve data reliability: improve number of replicas, snapshot and restore, RAID, MQ, etc.","headline":"How to prevent data loss in Elasticsearch?","image":"https://mincong.io/assets/bg-chase-charaba-uRHzV3ca2fk-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/prevent-data-loss-in-elasticsearch/"},"url":"https://mincong.io/en/prevent-data-loss-in-elasticsearch/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,
@@ -524,8 +524,8 @@
 
 <p>Avoid using a single availability availability zone. When the cluster nodes are deployed in multiple availability zones, it can effectively reduce the possibility of data loss, especially the probability that the cluster will be affected by cloud provider availability zone accidents. Elasticsearch clusters from vendors such as AWS and Alibaba Cloud all support multi-zone deployment. For specific operations, please refer to <a href="https://aws.amazon.com/fr/blogs/database/increase-availability-for-amazon- elasticsearch-service-by-deploying-in-three-availability-zones-2/" title="Increase availability for Amazon Elasticsearch Service by deploying in three Availability Zones-AWS Database Blog">AWS Blog</a> and <a href="https://partners- intl.aliyun.com/help/doc-detail/151655.htm" title="High availability-Alibaba Cloud">Alibaba Cloud Documentation</a>. Then, in the Elasticsearch cluster, you can set the cluster’s shard allocation strategy through allocation awareness attributes. For example, the following configuration in the configuration file <code class="language-plaintext highlighter-rouge">elasticsearch.yml</code> of each cluster node</p>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">node.attr.availabilityzone</span><span class="pi">:</span> <span class="s">az1</span>
-<span class="s">cluster.routing.allocation.awareness.attributes</span><span class="pi">:</span> <span class="s">availabilityzone</span>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">node.attr.availabilityzone</span><span class="pi">:</span> <span class="s">az1</span>
+<span class="na">cluster.routing.allocation.awareness.attributes</span><span class="pi">:</span> <span class="s">availabilityzone</span>
 </code></pre></div></div>
 
 <p>You can set the node in the available zone az1 / az2 / az3 and so on. For specific operations, please refer to Opster’s article <a href="https://opster.com/elasticsearch-glossary/elasticsearch-zone-awareness/" title="Setting Up Zone Awareness for Shard Allocation in Elasticsearch">Setting Up Zone Awareness for Shard Allocation in Elasticsearch</a> .</p>

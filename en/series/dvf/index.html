@@ -14,9 +14,9 @@
 
 <meta name="description" content="Open data “Demande de valeurs foncières géolocalisées(DVF)”is an open dataset provided by the French government which collects all the real-estatetransaction...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>DVF | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="DVF" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -32,7 +32,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/series/dvf/"},"description":"Open data “Demande de valeurs foncières géolocalisées (DVF)” is an open dataset provided by the French government which collects all the real-estate transactions since January 2014, in mainland France and the overseas departments and territories, except in Mayotte and Alsace-Moselle. This series uses DVF dataset to demonstrate the features of Elasticsearch, including indexing, storage, search, and analytics.","@type":"BlogPosting","url":"https://mincong.io/en/series/dvf/","headline":"DVF","dateModified":"2021-04-17T09:00:00+02:00","datePublished":"2021-04-17T09:00:00+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-04-17T09:00:00+02:00","datePublished":"2021-04-17T09:00:00+02:00","description":"Open data “Demande de valeurs foncières géolocalisées (DVF)” is an open dataset provided by the French government which collects all the real-estate transactions since January 2014, in mainland France and the overseas departments and territories, except in Mayotte and Alsace-Moselle. This series uses DVF dataset to demonstrate the features of Elasticsearch, including indexing, storage, search, and analytics.","headline":"DVF","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/series/dvf/"},"url":"https://mincong.io/en/series/dvf/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -301,7 +301,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

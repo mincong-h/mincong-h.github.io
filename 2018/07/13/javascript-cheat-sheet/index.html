@@ -14,9 +14,9 @@
 
 <meta name="description" content="A simple JS cheat sheet for newbies, containing the basic syntax of commonly used statements: variable, class, array, JSON, ...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>JavaScript Cheat Sheet | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="JavaScript Cheat Sheet" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -32,7 +32,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2018/07/13/javascript-cheat-sheet/"},"description":"A simple JS cheat sheet for newbies, containing the basic syntax of commonly used statements: variable, class, array, JSON, …","@type":"BlogPosting","url":"https://mincong.io/2018/07/13/javascript-cheat-sheet/","headline":"JavaScript Cheat Sheet","dateModified":"2018-07-13T21:17:11+02:00","datePublished":"2018-07-13T21:17:11+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2018-07-13T21:17:11+02:00","datePublished":"2018-07-13T21:17:11+02:00","description":"A simple JS cheat sheet for newbies, containing the basic syntax of commonly used statements: variable, class, array, JSON, …","headline":"JavaScript Cheat Sheet","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2018/07/13/javascript-cheat-sheet/"},"url":"https://mincong.io/2018/07/13/javascript-cheat-sheet/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -301,7 +301,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

@@ -14,9 +14,9 @@
 
 <meta name="description" content="BlogSearch is a custom search engine for searching blog posts. It is built usingJava and Elasticsearch. Currently, BlogSearch is used by this site(https://mi...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>BlogSearch | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="BlogSearch" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -32,7 +32,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/series/blogsearch/"},"description":"BlogSearch is a custom search engine for searching blog posts. It is built using Java and Elasticsearch. Currently, BlogSearch is used by this site (https://mincong.io). The background images used by the documentation is found on Unplash under keyword “Modern Art”.","@type":"BlogPosting","url":"https://mincong.io/en/series/blogsearch/","headline":"BlogSearch","dateModified":"2021-04-17T09:00:00+02:00","datePublished":"2021-04-17T09:00:00+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-04-17T09:00:00+02:00","datePublished":"2021-04-17T09:00:00+02:00","description":"BlogSearch is a custom search engine for searching blog posts. It is built using Java and Elasticsearch. Currently, BlogSearch is used by this site (https://mincong.io). The background images used by the documentation is found on Unplash under keyword “Modern Art”.","headline":"BlogSearch","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/series/blogsearch/"},"url":"https://mincong.io/en/series/blogsearch/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -301,7 +301,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

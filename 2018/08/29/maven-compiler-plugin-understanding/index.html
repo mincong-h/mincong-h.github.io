@@ -14,9 +14,9 @@
 
 <meta name="description" content="A step-by-step guide for understanding Maven Compiler Plugin in Java 11.">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Maven Compiler Plugin Understanding | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Maven Compiler Plugin Understanding" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2018/08/29/maven-compiler-plugin-understanding/"},"description":"A step-by-step guide for understanding Maven Compiler Plugin in Java 11.","@type":"BlogPosting","url":"https://mincong.io/2018/08/29/maven-compiler-plugin-understanding/","image":"https://mincong.io/assets/bg-tools-1209764_1280.jpg","headline":"Maven Compiler Plugin Understanding","dateModified":"2018-08-29T19:08:27+02:00","datePublished":"2018-08-29T19:08:27+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2018-08-29T19:08:27+02:00","datePublished":"2018-08-29T19:08:27+02:00","description":"A step-by-step guide for understanding Maven Compiler Plugin in Java 11.","headline":"Maven Compiler Plugin Understanding","image":"https://mincong.io/assets/bg-tools-1209764_1280.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2018/08/29/maven-compiler-plugin-understanding/"},"url":"https://mincong.io/2018/08/29/maven-compiler-plugin-understanding/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

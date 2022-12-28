@@ -14,9 +14,9 @@
 
 <meta name="description" content="The internal working of Temporal Java service client: module structure, protobuf messages, code generation, data conversion, authorization service stubs, and...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Internal Working of Temporal Java Service Client | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Internal Working of Temporal Java Service Client" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/temporal-java-service-client/"},"description":"The internal working of Temporal Java service client: module structure, protobuf messages, code generation, data conversion, authorization service stubs, and more.","@type":"BlogPosting","url":"https://mincong.io/en/temporal-java-service-client/","image":"https://mincong.io/assets/bg-1920px-Messier51_sRGB.jpeg","headline":"Internal Working of Temporal Java Service Client","dateModified":"2022-09-25T08:38:43+02:00","datePublished":"2022-09-25T08:38:43+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2022-09-25T08:38:43+02:00","datePublished":"2022-09-25T08:38:43+02:00","description":"The internal working of Temporal Java service client: module structure, protobuf messages, code generation, data conversion, authorization service stubs, and more.","headline":"Internal Working of Temporal Java Service Client","image":"https://mincong.io/assets/bg-1920px-Messier51_sRGB.jpeg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/en/temporal-java-service-client/"},"url":"https://mincong.io/en/temporal-java-service-client/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

@@ -14,9 +14,9 @@
 
 <meta name="description" content="Unit testing Akka actor with &quot;TestActorRef&quot;, which gives you access to underlying actor instance and runs the logic synchronously in a single-threa...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Akka: Testing Actor with TestActorRef | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Akka: Testing Actor with TestActorRef" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2020/01/08/akka-testing-actor-with-testactorref/"},"description":"Unit testing Akka actor with “TestActorRef”, which gives you access to underlying actor instance and runs the logic synchronously in a single-threaded environment.","@type":"BlogPosting","url":"https://mincong.io/2020/01/08/akka-testing-actor-with-testactorref/","image":"https://mincong.io/assets/bg-board-2450236_1280.jpg","headline":"Akka: Testing Actor with TestActorRef","dateModified":"2020-01-08T20:56:26+01:00","datePublished":"2020-01-08T20:56:26+01:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2020-01-08T20:56:26+01:00","datePublished":"2020-01-08T20:56:26+01:00","description":"Unit testing Akka actor with “TestActorRef”, which gives you access to underlying actor instance and runs the logic synchronously in a single-threaded environment.","headline":"Akka: Testing Actor with TestActorRef","image":"https://mincong.io/assets/bg-board-2450236_1280.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2020/01/08/akka-testing-actor-with-testactorref/"},"url":"https://mincong.io/2020/01/08/akka-testing-actor-with-testactorref/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

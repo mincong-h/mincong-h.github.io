@@ -14,9 +14,9 @@
 
 <meta name="description" content="How to do Java / XML mapping using Jackson XML Mapper. This article explains the annotations used for root element, property, and collection mapping. Also, t...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Jackson XML Mapper | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="Jackson XML Mapper" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2019/03/19/jackson-xml-mapper/"},"description":"How to do Java / XML mapping using Jackson XML Mapper. This article explains the annotations used for root element, property, and collection mapping. Also, the basic configuration of Jackson XML Mapper.","@type":"BlogPosting","url":"https://mincong.io/2019/03/19/jackson-xml-mapper/","image":"https://mincong.io/assets/bg-coffee-2242213_1280.jpg","headline":"Jackson XML Mapper","dateModified":"2019-03-19T20:47:13+01:00","datePublished":"2019-03-19T20:47:13+01:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2019-03-19T20:47:13+01:00","datePublished":"2019-03-19T20:47:13+01:00","description":"How to do Java / XML mapping using Jackson XML Mapper. This article explains the annotations used for root element, property, and collection mapping. Also, the basic configuration of Jackson XML Mapper.","headline":"Jackson XML Mapper","image":"https://mincong.io/assets/bg-coffee-2242213_1280.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2019/03/19/jackson-xml-mapper/"},"url":"https://mincong.io/2019/03/19/jackson-xml-mapper/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,

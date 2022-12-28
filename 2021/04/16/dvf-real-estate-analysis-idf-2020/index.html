@@ -14,9 +14,9 @@
 
 <meta name="description" content="This article studies the real estate market of Île-de-France in 2020 by exploring and visualizing the dataset DVF using Kibana. We will discuss the global la...">
 
-<!-- Begin Jekyll SEO tag v2.7.1 -->
+<!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>DVF: Real Estate Analysis For Île-de-France in 2020 | Mincong Huang</title>
-<meta name="generator" content="Jekyll v4.2.0" />
+<meta name="generator" content="Jekyll v4.3.1" />
 <meta property="og:title" content="DVF: Real Estate Analysis For Île-de-France in 2020" />
 <meta name="author" content="Mincong Huang" />
 <meta property="og:locale" content="en" />
@@ -34,7 +34,7 @@
 <meta name="twitter:site" content="@mincong_h" />
 <meta name="twitter:creator" content="@mincong_h" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Mincong Huang"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2021/04/16/dvf-real-estate-analysis-idf-2020/"},"description":"This article studies the real estate market of Île-de-France in 2020 by exploring and visualizing the dataset DVF using Kibana. We will discuss the global landscape, the impact of COVID-19, the situation in different departments, and more.","@type":"BlogPosting","url":"https://mincong.io/2021/04/16/dvf-real-estate-analysis-idf-2020/","image":"https://mincong.io/assets/bg-alexander-kagan-t9Td0zfDTwI-unsplash.jpg","headline":"DVF: Real Estate Analysis For Île-de-France in 2020","dateModified":"2021-04-16T02:03:43+02:00","datePublished":"2021-04-16T02:03:43+02:00","@context":"https://schema.org"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Mincong Huang"},"dateModified":"2021-04-16T02:03:43+02:00","datePublished":"2021-04-16T02:03:43+02:00","description":"This article studies the real estate market of Île-de-France in 2020 by exploring and visualizing the dataset DVF using Kibana. We will discuss the global landscape, the impact of COVID-19, the situation in different departments, and more.","headline":"DVF: Real Estate Analysis For Île-de-France in 2020","image":"https://mincong.io/assets/bg-alexander-kagan-t9Td0zfDTwI-unsplash.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://mincong.io/2021/04/16/dvf-real-estate-analysis-idf-2020/"},"url":"https://mincong.io/2021/04/16/dvf-real-estate-analysis-idf-2020/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -306,7 +306,7 @@
       service: 'mincong.io',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
-      // version: '1.0.0',
+      version: 'v${GITHUB_RUN_ID}-${GITHUB_SHA::7}',
       sampleRate: 100,
       allowedTracingOrigins: ["https://search.jimidata.info"],
       trackInteractions: true,
