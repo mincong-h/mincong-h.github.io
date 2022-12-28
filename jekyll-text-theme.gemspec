@@ -17,11 +17,13 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_runtime_dependency "jekyll", ">= 3.6", "< 5.0"
+  spec.add_runtime_dependency "jekyll-environment-variables", "~> 1.0.1"
   spec.add_runtime_dependency "jekyll-paginate-v2", "~> 3.0"
   spec.add_runtime_dependency "jekyll-redirect-from", "~> 0.16"
   spec.add_runtime_dependency "jekyll-seo-tag", "~> 2.7"
   spec.add_runtime_dependency "jekyll-sitemap", "~> 1.0"
   spec.add_runtime_dependency "jekyll-feed", "~> 0.1"
+  spec.add_runtime_dependency "jekyll-sass-converter", "~> 2.2"  # postpone migration to 3.0
   spec.add_runtime_dependency "jemoji", "~> 0.8"
 
   spec.add_development_dependency "bundler"
