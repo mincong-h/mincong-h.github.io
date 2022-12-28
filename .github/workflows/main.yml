@@ -19,6 +19,9 @@ jobs:
       uses: actions/checkout@v2
       with:
         persist-credentials: false
+    - name: Set service version
+      run: |
+        echo "SERVICE_VERSION=v${GITHUB_RUN_ID}-${GITHUB_SHA::7}" >> $GITHUB_ENV
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -31,7 +34,7 @@ jobs:
       run: |
          bundle exec jekyll build --trace
       env:
-        SERVICE_VERSION: "v${GITHUB_RUN_ID}-${GITHUB_SHA::7}"
+        SERVICE_VERSION: "${{ env.SERVICE_VERSION }}"
         JIMI_USERNAME: "${{ secrets.JIMI_USERNAME }}"
         JIMI_PASSWORD: "${{ secrets.JIMI_PASSWORD }}"
         JIMI_ENABLED: true
