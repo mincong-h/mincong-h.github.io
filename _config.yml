@@ -244,6 +244,7 @@ defaults:
 ## => Plugins
 ##############################
 plugins:
+  - jekyll-environment-variables
   - jekyll-feed
   - jekyll-paginate-v2
   - jekyll-redirect-from
