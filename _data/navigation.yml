@@ -103,14 +103,14 @@ en_categories:
         url:    /en/categories/java-concurrency/
       - title:  Java Core
         url:    /en/categories/java-core/
-      - title:  Java RESTful APIs
-        url:    /en/categories/java-rest/
       - title:  Java Serialization
         url:    /en/categories/java-serialization/
       - title:  Java Testing
         url:    /en/categories/java-testing/
       - title:  Python
         url:    /en/categories/python/
+      - title:  RESTful APIs
+        url:    /en/categories/rest/
       - title:  Reliability
         url:    /en/categories/reliability/
       - title:  Review
@@ -131,14 +131,14 @@ cn_categories:
         url:    /cn/categories/java-concurrency/
       - title:  Java 核心
         url:    /cn/categories/java-core/
-      - title:  Java RESTful APIs
-        url:    /cn/categories/java-rest/
       - title:  Java 序列化
         url:    /cn/categories/java-serialization/
       - title:  Java 测试
         url:    /cn/categories/java-testing/
       - title:  Python
         url:    /cn/categories/python/
+      - title:  RESTful APIs
+        url:    /cn/categories/rest/
       - title:  可靠性
         url:    /cn/categories/reliability/
       - title:  总结
