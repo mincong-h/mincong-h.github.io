@@ -2,9 +2,9 @@
 article_num: 84
 layout:            post
 title:             Simple REST Demo With JAX-RS
-lang:                en
+lang:              en
 date:              2018-11-13 21:08:54 +0100
-categories:        [java-rest]
+categories:        [rest]
 tags:              [jax-rs, java, rest]
 permalink:         /2018/11/13/simple-rest-demo-with-jax-rs/
 comments:          true

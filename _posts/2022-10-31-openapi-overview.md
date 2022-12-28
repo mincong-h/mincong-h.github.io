@@ -8,7 +8,7 @@ subtitle:            >
 
 lang:                en
 date:                2022-10-31 14:33:24 +0100
-categories:          [java-rest]
+categories:          [rest]
 tags:                [java, api, doc, build]
 ads_tags:            []
 comments:            true

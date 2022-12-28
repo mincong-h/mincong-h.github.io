@@ -2,9 +2,9 @@
 article_num: 85
 layout:            post
 title:             HTTP Methods in JAX-RS
-lang:                en
+lang:              en
 date:              2018-11-20 21:04:14 +0100
-categories:        [java-rest]
+categories:        [rest]
 tags:              [http, java, jax-rs, rest]
 permalink:         /2018/11/20/http-methods-in-jax-rs/
 comments:          true

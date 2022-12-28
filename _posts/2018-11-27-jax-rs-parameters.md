@@ -2,9 +2,9 @@
 article_num: 86
 layout:            post
 title:             JAX-RS Param Annotations
-lang:                en
+lang:              en
 date:              2018-11-27 22:22:23 +0100
-categories:        [java-rest]
+categories:        [rest]
 tags:              [http, java, jax-rs, rest]
 permalink:         /2018/11/27/jax-rs-parameters/
 comments:          true
