@@ -2,9 +2,9 @@
 article_num: 88
 layout:            post
 title:             JAX-RS Client API
-lang:                en
+lang:              en
 date:              2018-12-11 20:11:39 +0100
-categories:        [java-rest]
+categories:        [rest]
 tags:              [http, java, jax-rs, rest]
 permalink:         /2018/12/11/jax-rs-client-api/
 comments:          true

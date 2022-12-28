@@ -4,7 +4,7 @@ layout:            post
 title:             Testing JAX-RS Resources
 lang:                en
 date:              2018-12-18 20:49:46 +0100
-categories:        [java-rest, java-testing]
+categories:        [rest, java-testing]
 tags:              [http, java, jax-rs, rest, testing]
 permalink:         /2018/12/18/testing-jax-rs-resources/
 comments:          true
