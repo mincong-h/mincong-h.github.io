@@ -6,10 +6,10 @@
   })(window,document,'script','https://www.datadoghq-browser-agent.com/datadog-rum-v4.js','DD_RUM')
   DD_RUM.onReady(function() {
     DD_RUM.init({
-      clientToken: 'pub1212981d8cc6f0997eb39addafaefc3d',
-      applicationId: 'bc39e1cb-2fe4-4ba3-aa97-e077d1593720',
-      site: 'datadoghq.eu',
-      service: 'mincong.io',
+      clientToken: '{{ site.analytics.datadog.client_token }}',
+      applicationId: '{{ site.analytics.datadog.application_id }}',
+      site: '{{ site.analytics.datadog.site }}',
+      service: '{{ site.analytics.datadog.service }}',
       env: 'prod',
       // Specify a version number to identify the deployed version of your application in Datadog
       // version: '1.0.0',
