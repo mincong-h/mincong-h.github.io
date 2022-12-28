@@ -21,6 +21,7 @@ jobs:
         persist-credentials: false
     - name: Set service version
       run: |
+        echo "SERVICE_VERSION=v${GITHUB_RUN_ID}-${GITHUB_SHA::7}"
         echo "SERVICE_VERSION=v${GITHUB_RUN_ID}-${GITHUB_SHA::7}" >> $GITHUB_ENV
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
