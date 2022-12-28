@@ -13,6 +13,7 @@ short_commit=$(git rev-parse --short HEAD)
 pipeline_id="${GITHUB_RUN_ID:-0}"
 version="v${pipeline_id}-${short_commit}"
 
+echo "version: ${version}"
 docker run --rm \
   -p 4000:4000 \
   --env "JIMI_USERNAME=${JIMI_USERNAME}" \
