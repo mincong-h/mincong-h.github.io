@@ -1,5 +1,6 @@
 # Changelog
 
+- 2022-12-28 Move Datadog configuration to `_config.yml`
 - 2021-04-24 Add WeChat QR code (#28)
 - 2021-04-17 Add "series" collection (#27)
 - 2021-04-13 Add missing image attribute for backgound image, e.g. "Photo by Tom
