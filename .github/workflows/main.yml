@@ -29,7 +29,7 @@ jobs:
          bundler install --path vendor/bundle
     - name: Build Jekyll website
       run: |
-         bundle exec jekyll build
+         bundle exec jekyll build --trace
       env:
         SERVICE_VERSION: "v${GITHUB_RUN_ID}-${GITHUB_SHA::7}"
         JIMI_USERNAME: "${{ secrets.JIMI_USERNAME }}"
