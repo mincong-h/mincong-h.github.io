@@ -185,6 +185,11 @@ analytics:
     tracking_id : UA-87129300-1  # Google Analytics id for the site
     anonymize_ip: false # Anonymize IP tracking for Analytics
 
+  datadog:
+    client_token: pub1212981d8cc6f0997eb39addafaefc3d
+    application_id: bc39e1cb-2fe4-4ba3-aa97-e077d1593720
+    site: datadoghq.eu
+    service: mincong.io
 
 ## => Build
 ##############################
