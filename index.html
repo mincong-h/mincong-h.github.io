@@ -9,7 +9,7 @@ baseurl: '/'
 ads_tags: [java, elasticsearch, devops, git, api, backend]
 ---
 
-{%- assign _highlighted_categories = 'temporal:Automation, elasticsearch:Elasticsearch, java-core:Java, java-testing:Testing, java-concurrency:Concurrency, java-rest:RESTful APIs, git:Git' | split: ', ' -%}
+{%- assign _highlighted_categories = 'temporal:Automation, elasticsearch:Elasticsearch, java-core:Java, java-testing:Testing, java-concurrency:Concurrency, rest:RESTful APIs, git:Git' | split: ', ' -%}
 
 {%- for _category in _highlighted_categories -%}
   {%- assign _kv = _category | split: ':' -%}
