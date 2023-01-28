@@ -78,9 +78,9 @@ Below is a diagram provided by the [official website of gRPC](https://grpc.io/do
        alt="gRPC overview from https://grpc.io/docs/what-is-grpc/introduction/">
 </p>
 
-## Service Definition in Proto Buffers
+## Service Definition in Protocol Buffers
 
-Proto Buffers (protobuf) is a mature mechanism for serializing structured data, developed by Google. In the context of gRPC, it is used to define the API contracts shared between the server and the clients. It defines the structure of the messages, the RPC methods, and some information around the package. This information is described inside a proto file: an ordinary text file with a `.proto` extension. Here is an example:
+Protocol Buffers (protobuf) is a mature mechanism for serializing structured data, developed by Google. In the context of gRPC, it is used to define the API contracts shared between the server and the clients. It defines the structure of the messages, the RPC methods, and some information around the package. This information is described inside a proto file: an ordinary text file with a `.proto` extension. Here is an example:
 
 ```proto
 message Person {
@@ -90,12 +90,32 @@ message Person {
 }
 ```
 
+A typical gRPC service looks like this: it's a proto file with RPC method (name of the method, type of the request, type of the response) and the definition of each type of message.
+
+```proto
+service WorkflowService {
+  rpc StartWorkflow(StartWorkflowRequest) returns (StartWorkflowResponse) {}
+}
+
+message StartWorkflowRequest {
+  string workflow_type = 1;
+  string task_queue = 2;
+}
+
+message StartWorkflowResponse {
+  string message = 1;
+}
+```
+
+The main benifits of using protocol buffers are to provide a language-neutral, platform-neutral way to serialize structured data in efficient way. It is available in many programming languages, and use binary serialization to compact data and optimize storage.
+
 ## Section 3
 
 ## Going Further
 
 How to go further from here?
 
+* Visit [Protocol Buffers - Language Guide (proto3)](https://developers.google.com/protocol-buffers/docs/proto3) to learn more about the syntax of protobuf.
 * Protobuf formatting using Buf, visit blog post ["Introducing buf format"](https://buf.build/blog/introducing-buf-format)
 
 ## Conclusion
