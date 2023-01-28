@@ -4,12 +4,12 @@ layout:              post
 type:                classic
 title:               Microservices Communication using gRPC
 subtitle:            >
-    Given one sentence to expand the title or explain why this article may interest your readers.
+    gRPC, a high performance, open source universal RPC framework.
 
 lang:                en
 date:                2023-01-28 10:38:40 +0100
-categories:          [java-core]
-tags:                []
+categories:          [microservices]
+tags:                [microservices, system-design, grpc]
 ads_tags:            []
 comments:            true
 excerpt:             >
