@@ -78,7 +78,7 @@ Below is a diagram provided by the [official website of gRPC](https://grpc.io/do
        alt="gRPC overview from https://grpc.io/docs/what-is-grpc/introduction/">
 </p>
 
-## Service Definition in Protocol Buffers
+## Protocol Buffers
 
 Protocol Buffers (protobuf) is a mature mechanism for serializing structured data, developed by Google. In the context of gRPC, it is used to define the API contracts shared between the server and the clients. It defines the structure of the messages, the RPC methods, and some information around the package. This information is described inside a proto file: an ordinary text file with a `.proto` extension. Here is an example:
 
@@ -109,7 +109,9 @@ message StartWorkflowResponse {
 
 The main benifits of using protocol buffers are to provide a language-neutral, platform-neutral way to serialize structured data in efficient way. It is available in many programming languages, and use binary serialization to compact data and optimize storage.
 
-## Section 3
+## Code Generation
+
+In the section above, we know that protobuf can be used to define messages and RPC methods. But how those messages can be used in your services? You can use a protocol buffer compiler `protoc` on the `.proto` files, either directly via your CLI or any plugin hooked into your build system, such as the [Protocol Buffer Rules in Bazel](https://bazel.build/reference/be/protocol-buffer).
 
 ## Going Further
 
