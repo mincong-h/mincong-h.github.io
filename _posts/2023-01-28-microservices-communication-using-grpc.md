@@ -93,16 +93,19 @@ message Person {
 A typical gRPC service looks like this: it's a proto file with RPC method (name of the method, type of the request, type of the response) and the definition of each type of message.
 
 ```proto
-service WorkflowService {
-  rpc StartWorkflow(StartWorkflowRequest) returns (StartWorkflowResponse) {}
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
 }
 
-message StartWorkflowRequest {
-  string workflow_type = 1;
-  string task_queue = 2;
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
 }
 
-message StartWorkflowResponse {
+// The response message containing the greetings
+message HelloReply {
   string message = 1;
 }
 ```
@@ -164,6 +167,60 @@ public class HelloWorldClient {
 
 Overall, the main important point to remember is that protobuf and gRPC generates everything for you so you don't have to worry about them. You can just focus on the developing the business logic.
 
+## RPC Lifecycle
+
+In this section, we are going to take a closer look at what happens when a gRPC client calls a GRPC server method by using the simple unary RPC as example, that is, seding a single request and gets back a single response. This can happen in two different styles: synchrnous (blocking) or asynchronous (future).
+
+Let's imagine an e-commerce scenario where a customer just bought something on your website and it's time to prepare the shipment. The shipment service needs to fetch some additional information about the customer and the product via the customer service and product service. In this case, we want to make two unary RPCs, one for getting the customer and the other for getting the product. Let's see how blocking stub and future stub are different in such scenario.
+
+In blocking stub scenario, the shipment service submits a gRPC request GetCustomerRequest via the blocking stub. The service waits until the completion of the response before continuing to the next call. Then perform similar request for product and waits for the response.
+
+```mermaid
+sequenceDiagram
+    autonumber
+
+    participant shipmentService as Shipment Service
+    participant customerStub as Customer Blocking Stub
+    participant productStub as Product Blocking Stub
+
+    participant customerService as Customer Service
+    participant productService as Product Service
+
+    shipmentService->>customerStub: GetCustomer (local)
+    customerStub->>customerService: GetCustomerRequest (HTTP/2)
+    customerService-->>customerStub: GetCustomerResponse (HTTP/2)
+    customerStub-->>shipmentService: Customer (local)
+
+    shipmentService->>productStub: GetProduct (local)
+    productStub->>productService: GetProductRequest (HTTP/2)
+    productService-->>productStub: GetProductResponse (HTTP/2)
+    productStub-->>shipmentService: Product (local)
+```
+
+In future stub scenario, the shipment service submits two gRPC requests and waits for both of them to be completed. Therefore, it optimizes the wait time as it waits two responses simultaneously.
+
+```mermaid
+sequenceDiagram
+    autonumber
+
+    participant shipmentService as Shipment Service
+    participant customerStub as Customer Future Stub
+    participant productStub as Product Future Stub
+
+    participant customerService as Customer Service
+    participant productService as Product Service
+
+    shipmentService->>customerStub: GetCustomer (local)
+    shipmentService->>productStub: GetProduct (local)
+
+    customerStub-)customerService: GetCustomerRequest (HTTP/2)
+    productStub-)productService: GetProductRequest (HTTP/2)
+    productService--)productStub: GetProductResponse (HTTP/2)
+    customerService--)customerStub: GetCustomerResponse (HTTP/2)
+```
+
+There are other types of RPCs, such as server streaming RPC, client streaming RPC, and bidirectional streaming RPC. But I believe that they are for advanced use-cases and we don't need to discuss them here. Visit [RPC life cycle - gRPC](https://grpc.io/docs/what-is-grpc/core-concepts/#rpc-life-cycle) for more details.
+
 ## Going Further
 
 How to go further from here?
@@ -182,3 +239,5 @@ on [Twitter](https://twitter.com/mincong_h) or
 
 - Chris Richardson, _"Microservices Patterns"_, ISBN: 9781617294549, Manning Publications Co.
 - gRPC authors, ["Introduction to gRPC"](https://grpc.io/docs/what-is-grpc/introduction/), gRPC, 2023.
+- Lucidchart, [UML Sequence Diagram Tutorial](https://www.lucidchart.com/pages/uml-sequence-diagram)
+- Mermaid authors, [Sequence diagrams](https://mermaid.js.org/syntax/sequenceDiagram.html)
