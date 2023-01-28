@@ -78,15 +78,25 @@ Below is a diagram provided by the [official website of gRPC](https://grpc.io/do
        alt="gRPC overview from https://grpc.io/docs/what-is-grpc/introduction/">
 </p>
 
-## Service Deinition in Proto Buffer
+## Service Definition in Proto Buffers
 
+Proto Buffers (protobuf) is a mature mechanism for serializing structured data, developed by Google. In the context of gRPC, it is used to define the API contracts shared between the server and the clients. It defines the structure of the messages, the RPC methods, and some information around the package. This information is described inside a proto file: an ordinary text file with a `.proto` extension. Here is an example:
 
+```proto
+message Person {
+  string name = 1;
+  int32 id = 2;
+  bool has_ponycopter = 3;
+}
+```
 
 ## Section 3
 
 ## Going Further
 
 How to go further from here?
+
+* Protobuf formatting using Buf, visit blog post ["Introducing buf format"](https://buf.build/blog/introducing-buf-format)
 
 ## Conclusion
 
@@ -98,3 +108,4 @@ on [Twitter](https://twitter.com/mincong_h) or
 ## References
 
 - Chris Richardson, _"Microservices Patterns"_, ISBN: 9781617294549, Manning Publications Co.
+- gRPC authors, ["Introduction to gRPC"](https://grpc.io/docs/what-is-grpc/introduction/), gRPC, 2023.
