@@ -50,13 +50,13 @@ Before talking about gRPC, we need to see the big picture of microservices commu
 
 When a service sends a message, the message can be either received by one or multiple services.
 
-* One-to-one -- Each request is processed by exactly one service.
-* One-to-many -- Each request is procssed by multipl services.
+* **One-to-one** -- Each request is processed by exactly one service.
+* **One-to-many** -- Each request is procssed by multipl services.
 
 And the message can be handled differently:
 
-* Synchronous -- The sender expects a timely response from the receiver and might event block while it waits.
-* Asynchronous -- The sender does not block and the response is optional. If it is present, it does not need to be sent immediately.
+* **Synchronous** -- The sender expects a timely response from the receiver and might event block while it waits.
+* **Asynchronous** -- The sender does not block and the response is optional. If it is present, it does not need to be sent immediately.
 
 In the book "Microservices Patterns" of Chris Richardson, he made an excellent table about these two dimensions:
 
@@ -67,7 +67,20 @@ Asynchronous | Asyncrhounous request/response<br>One-way notifications | Publish
 
 For gRPC, it's typically useful for one-to-one communication. It supports both synchronous or asynchronous style. But it does not fit the one-to-many needs, which requires a message queue and a subscription mechanism to concume the message sent.
 
-## Section 2
+## gRPC
+
+gRPC is a modern open source high performance Remote Procedure Call (RPC) framework that can run in any environment. It can efficiently connect services in and across data centers with pluggable support for load balancing, tracing, health checking and authentication. It is also applicable in last mile of distributed computing to connect devices, mobile applications and browsers to backend services.
+
+Below is a diagram provided by the [official website of gRPC](https://grpc.io/docs/what-is-grpc/introduction/), which demonstrates how the gRPC server interacts with other clients. On the server side, the service implements the service methods and runs a gRPC server to handle the requests coming from different clients; on the client side, the client has a stub, which provides the same methods as the server. Note that gRPC is language agnostic: you can implement the server and clients in different languages and it can still work fine. gRPC contains plugins to generate the related stub or base implementations for different languages. In the example below, the server is implemented in C++ while the clients are implemented in Ruby and Android-Java.
+
+<p align="center">
+  <img src="/assets/grpc-overview.svg"
+       alt="gRPC overview from https://grpc.io/docs/what-is-grpc/introduction/">
+</p>
+
+## Service Deinition in Proto Buffer
+
+
 
 ## Section 3
 
