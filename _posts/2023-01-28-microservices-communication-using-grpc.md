@@ -46,6 +46,27 @@ Now, let's get started!
 
 ## Communication Styles
 
+Before talking about gRPC, we need to see the big picture of microservices communication, to better understand in which cases can gRPC fit. The communication styles can mainly grouped into two dimensions: the service relationship and the synchronization.
+
+When a service sends a message, the message can be either received by one or multiple services.
+
+* One-to-one -- Each request is processed by exactly one service.
+* One-to-many -- Each request is procssed by multipl services.
+
+And the message can be handled differently:
+
+* Synchronous -- The sender expects a timely response from the receiver and might event block while it waits.
+* Asynchronous -- The sender does not block and the response is optional. If it is present, it does not need to be sent immediately.
+
+In the book "Microservices Patterns" of Chris Richardson, he made an excellent table about these two dimensions:
+
+Synchronization | one-to-one | one-to-many
+------------ | ---------- | -----------
+Synchronous  | Request/esponse | -
+Asynchronous | Asyncrhounous request/response<br>One-way notifications | Publish/subscribe<br>Publish/async response
+
+For gRPC, it's typically useful for one-to-one communication. It supports both synchronous or asynchronous style. But it does not fit the one-to-many needs, which requires a message queue and a subscription mechanism to concume the message sent.
+
 ## Section 2
 
 ## Section 3
@@ -62,3 +83,5 @@ on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
+
+- Chris Richardson, _"Microservices Patterns"_, ISBN: 9781617294549, Manning Publications Co.
