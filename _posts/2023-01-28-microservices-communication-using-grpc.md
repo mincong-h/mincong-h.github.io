@@ -40,6 +40,7 @@ After reading this article, you will understand:
 - gRPC tools to help troubleshooting
 - Real-world scenarios using gRPC in microservices architecture
 - Comparison to RESTful API
+- How to go further from here
 
 Now, let's get started!
 
