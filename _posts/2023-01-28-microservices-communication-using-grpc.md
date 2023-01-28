@@ -28,30 +28,19 @@ wechat:              false
 
 ## Introduction
 
-Explain context here to attract people's attention... like:
-- topic: what you want to talk about?
-- audience: who are you targeting?
-- motiviation: why is it interesting for them? Or why is it important to understand this topic?
+Inter-process communication (IPC) refers to the mechanisms an operating system provides to allow processes to communicate with each other. Different forms of IPC include pipes, message queues, semaphores, and shared memory. These mechanisms enable processes to share data, synchronize their actions, and communicate with each other in a coordinated manner. Inside a microservices architecture, diffrent service instances are typically running on different machines, which requires remote communication. That's why it's important to understand different types of interaction styles in such this scenario. In this article, we are going to explore gRPC, one of the commonly used framework such communication.
 
 After reading this article, you will understand:
 
-(choose one of the following structures)
+- What are the different communication styles
+- What is gRPC
+- Service definition using Protocol Bufferes (protobuf)
+- gRPC compiler for code generation
+- RPC lifecycle
+- gRPC tools to help troubleshooting
+- Real-world scenarios using gRPC in microservices architecture
+- Comparison to RESTful API
 
-dive deep:
-
-* Some prequisites
-* Some general concepts
-* Some specific concepts to dig deeper
-* How to go further from this article
-
-different dimensions (broad):
-
-* section 1
-* section 2
-* section 3
-* How to go further from this article
-
-... then specify some information about the context, such as framework version, language version.
 Now, let's get started!
 
 ## Section 1
