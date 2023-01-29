@@ -211,10 +211,11 @@ sequenceDiagram
     participant productService as Product Service
 
     shipmentService->>customerStub: GetCustomer (local)
-    shipmentService->>productStub: GetProduct (local)
-
     customerStub-)customerService: GetCustomerRequest (HTTP/2)
+
+    shipmentService->>productStub: GetProduct (local)
     productStub-)productService: GetProductRequest (HTTP/2)
+
     productService--)productStub: GetProductResponse (HTTP/2)
     customerService--)customerStub: GetCustomerResponse (HTTP/2)
 ```
