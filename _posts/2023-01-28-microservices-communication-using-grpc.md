@@ -222,6 +222,72 @@ sequenceDiagram
 
 There are other types of RPCs, such as server streaming RPC, client streaming RPC, and bidirectional streaming RPC. But I believe that they are for advanced use-cases and we don't need to discuss them here. Visit the official documentation about [RPC life cycle - gRPC](https://grpc.io/docs/what-is-grpc/core-concepts/#rpc-life-cycle) for more details.
 
+## gRPC Tools
+
+Maybe you already used gRPC in production. In this case, what tools can you use to troubleshoot gRPC?
+
+Before talking about those tools, let's start a sample gRPC server:
+
+```bash
+# Download the source code, but use a release (non-snapshot version)
+# to avoid building the snapshot code.
+git clone -b v1.52.0 --depth 1 https://github.com/grpc/grpc-java
+
+cd grpc-java/examples
+
+# Set up everything
+./gradlew installDist
+
+# Run demo
+./build/install/examples/bin/hello-world-server
+```
+
+`evans` is an expressive universal gRPC client. The motivation of Evans is to create an better experience than other existing gRPC clients. It mainly completes two use-cases: manually gRPC API inspection and automate some tasks by scripting. They correspond to two modes of Evans: REPL mode and CLI mode. You can find more information about `evans` on [GitHub](https://github.com/ktr0731/evans). It's really cool. Below, you can see a quick demo using Evans' REPL mode.
+
+```bash
+brew tap ktr0731/evans
+brew install evans
+```
+
+```
+➜  examples git:((v1.52.0)) evans --proto src/main/proto/helloworld.proto repl
+
+  ______
+ |  ____|
+ | |__    __   __   __ _   _ __    ___
+ |  __|   \ \ / /  / _. | | '_ \  / __|
+ | |____   \ V /  | (_| | | | | | \__ \
+ |______|   \_/    \__,_| |_| |_| |___/
+
+ more expressive universal gRPC client
+
+helloworld.Greeter@127.0.0.1:50051> show package
++------------+
+|  PACKAGE   |
++------------+
+| helloworld |
++------------+
+
+helloworld.Greeter@127.0.0.1:50051> show service
++---------+----------+--------------+---------------+
+| SERVICE |   RPC    | REQUEST TYPE | RESPONSE TYPE |
++---------+----------+--------------+---------------+
+| Greeter | SayHello | HelloRequest | HelloReply    |
++---------+----------+--------------+---------------+
+
+helloworld.Greeter@127.0.0.1:50051> service Greeter
+
+helloworld.Greeter@127.0.0.1:50051> call SayHello
+name (TYPE_STRING) => gRPC
+{
+  "message": "Hello gRPC"
+}
+```
+
+`grpc_cli` is the official gRPC command line tool provided by gRPC ([documentation](https://github.com/grpc/grpc/blob/master/doc/command_line_tool.md)). At this point, the tool needs to be built from source. Therefore, it's quite inconvenient for people who don't want to build from source themselves. But building it is quite easy, you can do that by following the official [installation instructions](https://github.com/grpc/grpc/blob/master/BUILDING.md). With `grpc_cli`, you can list the services available for a given gRPC server, list all the methods available under a given service, inspect the message types, call a remote method, etc.
+
+Postman now supports gRPC as well ([blog post](https://blog.postman.com/postman-now-supports-grpc/)). So you can use that. According to that blog post, you can call gRPC methods, autocomplete messages, perform type check, loading services using the reflection, generate examples messages, send metadata, and more.
+
 ## Going Further
 
 How to go further from here?
