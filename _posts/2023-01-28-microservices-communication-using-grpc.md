@@ -13,7 +13,7 @@ tags:                [microservices, system-design, grpc]
 ads_tags:            []
 comments:            true
 excerpt:             >
-    TODO
+    Different communication styles in microservices architecture, gRPC and protobuf basics, code generation, RPC lifecycle, gRPC tools, real world use cases, and more.
 
 image:               /assets/mountain/krzysztof-kowalik-_HLLHiD9Ik4-unsplash.jpg
 cover:               /assets/mountain/krzysztof-kowalik-_HLLHiD9Ik4-unsplash.jpg
