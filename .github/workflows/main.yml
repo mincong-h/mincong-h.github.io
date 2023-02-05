@@ -9,14 +9,19 @@ on:
       - master
       - docker # testing
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     env:
       JEKYLL_ENV: production
     steps:
     - name: Checkout source code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         persist-credentials: false
     - name: Set service version
@@ -24,23 +29,33 @@ jobs:
         echo "SERVICE_VERSION=v${GITHUB_RUN_ID}-${GITHUB_SHA::7}"
         echo "SERVICE_VERSION=v${GITHUB_RUN_ID}-${GITHUB_SHA::7}" >> $GITHUB_ENV
     - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
+      uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.115.3
       with:
-        ruby-version: 2.6 # Not needed with a .ruby-version file
+        ruby-version: 3.0 # Not needed with a .ruby-version file
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Install dependencies in the Gemfile
-      run: |
-         bundler install --path vendor/bundle
+        cache-version: 0 # Increment this number if you need to re-download cached gems
+    - name: Setup Pages
+      id: pages
+      uses: actions/configure-pages@v2
     - name: Build Jekyll website
       run: |
-         bundle exec jekyll build --trace
+         bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
       env:
         SERVICE_VERSION: "${{ env.SERVICE_VERSION }}"
         JIMI_USERNAME: "${{ secrets.JIMI_USERNAME }}"
         JIMI_PASSWORD: "${{ secrets.JIMI_PASSWORD }}"
         JIMI_ENABLED: true
-    - name: Deploy GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@4.1.4
-      with:
-        branch: gh-pages
-        folder: _site
+    - name: Upload artifact
+      # Automatically uploads an artifact from the './_site' directory by default
+      uses: actions/upload-pages-artifact@v1
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
