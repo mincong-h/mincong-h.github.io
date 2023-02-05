@@ -28,7 +28,7 @@ wechat:              false
 
 ## Introduction
 
-Inter-process communication (IPC) refers to the mechanisms an operating system provides to allow processes to communicate with each other. Different forms of IPC include pipes, message queues, semaphores, and shared memory. These mechanisms enable processes to share data, synchronize their actions, and communicate with each other in a coordinated manner. Inside a microservices architecture, diffrent service instances are typically running on different machines, which requires remote communication. That's why it's important to understand different types of interaction styles in such this scenario. In this article, we are going to explore gRPC, one of the commonly used framework for such communication.
+Inter-process communication (IPC) refers to the mechanisms an operating system provides to allow processes to communicate with each other. Different forms of IPC include pipes, message queues, semaphores, and shared memory. These mechanisms enable processes to share data, synchronize their actions, and communicate with each other in a coordinated manner. Inside a microservices architecture, diffrent service instances are typically running on different machines, which requires remote communication. That's why it's important to understand different types of interaction styles in such scenario. In this article, we are going to explore gRPC, one of the commonly used framework.
 
 After reading this article, you will understand:
 
@@ -51,14 +51,14 @@ Before talking about gRPC, we need to see the big picture of microservices commu
 When a service sends a message, the message can be either received by one or multiple services.
 
 * **One-to-one** -- Each request is processed by exactly one service.
-* **One-to-many** -- Each request is procssed by multipl services.
+* **One-to-many** -- Each request is procssed by multiple services.
 
 And the message can be handled differently:
 
 * **Synchronous** -- The sender expects a timely response from the receiver and might event block while it waits.
 * **Asynchronous** -- The sender does not block and the response is optional. If it is present, it does not need to be sent immediately.
 
-In the book "Microservices Patterns" of Chris Richardson, he made an excellent table about these two dimensions:
+In the book ["Microservices Patterns"](https://www.manning.com/books/microservices-patterns) of Chris Richardson, he made an excellent table to summarize these two dimensions:
 
 Synchronization | one-to-one | one-to-many
 ------------ | ---------- | -----------
@@ -165,11 +165,11 @@ public class HelloWorldClient {
   }
 ```
 
-Overall, the main important point to remember is that protobuf and gRPC generates everything for you so you don't have to worry about them. You can just focus on the developing the business logic.
+Overall, the main important point to remember is that protobuf and gRPC generates everything for you so you don't have to worry about them. You can just focus on developing the business logic.
 
 ## RPC Lifecycle
 
-In this section, we are going to take a closer look at what happens when a gRPC client calls a GRPC server method by using the simple unary RPC as example, that is, seding a single request and gets back a single response. This can happen in two different styles: synchrnous (blocking) or asynchronous (future).
+In this section, we are going to take a closer look at what happens when a gRPC client calls a gRPC server method by using the simple unary RPC as example, that is, seding a single request and gets back a single response. This can happen in two different styles: synchrnous (blocking) or asynchronous (future).
 
 Let's imagine an e-commerce scenario where a customer just bought something on your website and it's time to prepare the shipment. The shipment service needs to fetch some additional information about the customer and the product via the customer service and product service. In this case, we want to make two unary RPCs, one for getting the customer and the other for getting the product. Let's see how blocking stub and future stub are different in such scenario.
 
@@ -220,7 +220,7 @@ sequenceDiagram
     customerService--)customerStub: GetCustomerResponse (HTTP/2)
 ```
 
-There are other types of RPCs, such as server streaming RPC, client streaming RPC, and bidirectional streaming RPC. But I believe that they are for advanced use-cases and we don't need to discuss them here. Visit [RPC life cycle - gRPC](https://grpc.io/docs/what-is-grpc/core-concepts/#rpc-life-cycle) for more details.
+There are other types of RPCs, such as server streaming RPC, client streaming RPC, and bidirectional streaming RPC. But I believe that they are for advanced use-cases and we don't need to discuss them here. Visit the official documentation about [RPC life cycle - gRPC](https://grpc.io/docs/what-is-grpc/core-concepts/#rpc-life-cycle) for more details.
 
 ## Going Further
 
