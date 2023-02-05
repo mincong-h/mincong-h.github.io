@@ -38,8 +38,7 @@ After reading this article, you will understand:
 - gRPC compiler for code generation
 - gRPC lifecycle
 - gRPC tools to help troubleshooting
-- Real-world scenarios using gRPC in microservices architecture
-- Comparison to RESTful API
+- Real-world scenarios using gRPC
 - How to go further from here
 
 Now, let's get started!
@@ -288,23 +287,36 @@ name (TYPE_STRING) => gRPC
 
 Postman now supports gRPC as well ([blog post](https://blog.postman.com/postman-now-supports-grpc/)). So you can use that. According to that blog post, you can call gRPC methods, autocomplete messages, perform type check, loading services using the reflection, generate examples messages, send metadata, and more.
 
+## Real-World Scenarios
+
+But who use gRPC these days?
+
+* **Netflix**, an American entertainment services provider, has been using RESTful API and gRPC for its microservices. Below is the a reference of Backend architecture based on various sources, summarized by Cao Duc Nguyen on his Medium article ["A Design Analysis of Cloud-based Microservices Architecture at Netflix"](https://medium.com/swlh/a-design-analysis-of-cloud-based-microservices-architecture-at-netflix-98836b2da45f)
+* **Temporal**, an open source workflow platform, uses gRPC to unify workflow activities written in several programming languages. For executing a workflow in a distributed way, you can have one worker implementing its activities (job steps) in Java, while another worker implementing its activities in Go. They have SDKs written in PHP, Go, Ruby, Typescript, Java, and Rust.
+* **Lyft**, a taxi-replacement service, uses gRPC to transmit the location of a vehicle in a continuous stream of gRPC messages. It allows real-time communication between the server and the mobile devices.
+
+There are many other examples, you can visit Bob Reselman's article ["4 ways enterprise architects are using gRPC in the real world"](https://www.redhat.com/architect/grpc-use-cases) and the [22 use cases from Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/case-studies/?_sft_lf-project=grpc).
+
 ## Going Further
 
 How to go further from here?
 
-* Visit [Protocol Buffers - Language Guide (proto3)](https://developers.google.com/protocol-buffers/docs/proto3) to learn more about the syntax of protobuf.
-* Protobuf formatting using Buf, visit blog post ["Introducing buf format"](https://buf.build/blog/introducing-buf-format)
+* Protobuf basics. Visit [Protocol Buffers - Language Guide (proto3)](https://developers.google.com/protocol-buffers/docs/proto3) to learn more about the syntax of protobuf; Formatting protobuf using Buf, visit blog post ["Introducing buf format"](https://buf.build/blog/introducing-buf-format).
+* gRPC basics. Visit [introduction to gRPC](https://grpc.io/docs/what-is-grpc/introduction/) and [core concepts](https://grpc.io/docs/what-is-grpc/core-concepts/)
+* gRPC advanced topics. Visit [gRPC Load Balancing](https://grpc.io/blog/grpc-load-balancing/) for understanding different load balancing options; visit [a guide to gRPC and interceptors](https://edgehog.blog/a-guide-to-grpc-and-interceptors-265c306d3773) to learn more about interception for tracing, authorization, registering additional metadata, etc.
+* gRPC use-cases. Visit [case studies](https://www.cncf.io/case-studies/?_sft_lf-project=grpc) in CNCF
 
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
-Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
+In this article, we talked about microservices communcation using gRPC. We discussed different communication styles in microservices architecture, what is gRPC and proto buffers, the code generation, the RPC lifecycle for unary RPC, different tools for inspecting gRPC server, some real world scenarios, and finally how to go further from here. Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
 
-- Chris Richardson, _"Microservices Patterns"_, ISBN: 9781617294549, Manning Publications Co.
-- gRPC authors, ["Introduction to gRPC"](https://grpc.io/docs/what-is-grpc/introduction/), gRPC, 2023.
-- Lucidchart, [UML Sequence Diagram Tutorial](https://www.lucidchart.com/pages/uml-sequence-diagram)
-- Mermaid authors, [Sequence diagrams](https://mermaid.js.org/syntax/sequenceDiagram.html)
+- Chris Richardson, "Microservices Patterns", ISBN: 9781617294549, _Manning Publications Co._
+- gRPC authors, ["Introduction to gRPC"](https://grpc.io/docs/what-is-grpc/introduction/), _grpc.io_, 2023.
+- Lucidchart, ["UML Sequence Diagram Tutorial"](https://www.lucidchart.com/pages/uml-sequence-diagram)
+- Mermaid authors, ["Sequence diagrams"](https://mermaid.js.org/syntax/sequenceDiagram.html)
+- Cao Duc Nguyen, ["A Design Analysis of Cloud-based Microservices Architecture at Netflix"](https://medium.com/swlh/a-design-analysis-of-cloud-based-microservices-architecture-at-netflix-98836b2da45f), _Medium_, 2020.
+- Bob Reselman, ["4 ways enterprise architects are using gRPC in the real world"](https://www.redhat.com/architect/grpc-use-cases), _Red Hat_, 2021.
