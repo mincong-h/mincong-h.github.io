@@ -27,7 +27,7 @@ wechat:              false
 
 ## Introduction
 
-If you were born in China or live there, you must be familiar with WeChat.
+If you are born in China or live there, you must be familiar with WeChat.
 WeChat (微信) is a Chinese instant messaging, social media, and mobile payment
 app developed by Tencent. But do you ever wonder: what happens when you use
 WeChat? What kinds of interactions it has with the server? What are the
