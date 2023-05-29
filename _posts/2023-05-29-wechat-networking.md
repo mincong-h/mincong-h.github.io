@@ -2,7 +2,7 @@
 article_num:         210
 layout:              post
 type:                classic
-title:               What happens in networking when you use WeChat?
+title:               What happens in networking when using WeChat?
 subtitle:            >
     Given one sentence to expand the title or explain why this article may interest your readers.
 
@@ -14,8 +14,8 @@ ads_tags:            []
 comments:            true
 excerpt:             >
     TODO
-image:               /assets/bg-adem-ay-ik_AuIWeBBM-unsplash.jpg
-cover:               /assets/bg-adem-ay-ik_AuIWeBBM-unsplash.jpg
+image:               /assets/bg-giulia-may-hclMkLbYE_M-unsplash.jpg
+cover:               /assets/bg-giulia-may-hclMkLbYE_M-unsplash.jpg
 article_header:
   type:              overlay
   theme:             dark
@@ -27,31 +27,20 @@ wechat:              false
 
 ## Introduction
 
-Explain context here to attract people's attention... like:
-- topic: what you want to talk about?
-- audience: who are you targeting?
-- motiviation: why is it interesting for them? Or why is it important to understand this topic?
+If you were born in China or live there, you must be familiar with WeChat.
+WeChat (微信) is a Chinese instant messaging, social media, and mobile payment
+app developed by Tencent. But do you ever wonder: what happens when you use
+WeChat? What kinds of interactions it has with the server? What are the
+information stored in your device? Why sometime is it slow to use WeChat?
+In this article, we are going to explore part
+of this question, with a main focus on the networking part. I am going to use my
+personal account as a test, and see what happens.
 
-After reading this article, you will understand:
-
-(choose one of the following structures)
-
-dive deep:
-
-* Some prequisites
-* Some general concepts
-* Some specific concepts to dig deeper
-* How to go further from this article
-
-different dimensions (broad):
-
-* section 1
-* section 2
-* section 3
-* How to go further from this article
-
-... then specify some information about the context, such as framework version, language version.
-Now, let's get started!
+Note that I am currently living in Paris, France. So the interactions may be different from yours.
+After reading this article, you will understand what are the main websites used
+by WeChat, how is a typical route of an HTTP request, how does it store the
+information in MacOS, etc. Hopefully, it will allow you to learn a bit more
+about network troubleshooting as well. Now, let's get started!
 
 ## Section 1
 
