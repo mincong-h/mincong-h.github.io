@@ -31,12 +31,12 @@ If you are born in China or live there, you must be familiar with WeChat.
 WeChat (微信) is a Chinese instant messaging, social media, and mobile payment
 app developed by Tencent. But do you ever wonder: what happens when you use
 WeChat? What kinds of interactions it has with the server? What are the
-information stored in your device? Why sometime is it slow to use WeChat?
-In this article, we are going to explore part
-of this question, with a main focus on the networking part. I am going to use my
-personal account as a test, and see what happens.
+information stored in your device? Why sometime is it slow to use WeChat as an
+overseas Chinese? In this article, we are going to explore these questions, with
+a main focus on the networking part. I am going to use my personal account as a
+test, and see what happens. Note that I am currently living in Paris, France. So
+the interactions may be different from yours.
 
-Note that I am currently living in Paris, France. So the interactions may be different from yours.
 After reading this article, you will understand what are the main websites used
 by WeChat, how is a typical route of an HTTP request, how does it store the
 information in MacOS, etc. Hopefully, it will allow you to learn a bit more
