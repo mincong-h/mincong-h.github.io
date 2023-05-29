@@ -9,13 +9,13 @@ subtitle:            >
 lang:                en
 date:                2023-05-29 22:04:53 +0200
 categories:          [java-core]
-tags:                []
+tags:                [network]
 ads_tags:            []
 comments:            true
 excerpt:             >
     TODO
-image:               /assets/bg-coffee-84624_1280.jpg
-cover:               /assets/bg-coffee-84624_1280.jpg
+image:               /assets/bg-adem-ay-ik_AuIWeBBM-unsplash.jpg
+cover:               /assets/bg-adem-ay-ik_AuIWeBBM-unsplash.jpg
 article_header:
   type:              overlay
   theme:             dark
