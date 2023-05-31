@@ -38,11 +38,20 @@ test, and see what happens. Note that I am currently living in Paris, France. So
 the interactions may be different from yours.
 
 After reading this article, you will understand what are the main websites used
-by WeChat, how is a typical route of an HTTP request, how does it store the
+by WeChat, how is a typical route of an HTTP request, how does WeChat store the
 information in MacOS, etc. Hopefully, it will allow you to learn a bit more
-about network troubleshooting as well. Now, let's get started!
+about network troubleshooting and Tencent Cloud as well. Now, let's get started!
 
-## Section 1
+## Environment
+
+The test is made with the following hardware and software:
+
+* Apple MacBook Pro (13-inch, 2019)
+* WeChat MacOS (3.8.0)
+* OWASP Zed Attack Proxy (2.12.0)
+* Wireshark - Network Protocol Analyzer (4.0.6)
+* `traceroute` (1.4a12+Darwin)
+* `host` (9.10.6)
 
 ## Section 2
 
