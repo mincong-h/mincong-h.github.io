@@ -241,6 +241,10 @@ Now, let's check the ICP license of one of the website used by WeChat: `qpic.cn`
 ![ICP license of qpic.cn](/assets/2023-05-29_wechat-networking/ICP-qpic.cn.png)
 
 ## mmTLS
+
+In the section above, I inspected some traffic based on HTTP/S. However, I realized very quickly that most of the traffic didn't go through HTTP/S. For example, when a friend sends a message to me in the chat, when I refresh the "moments (朋友圈)", etc. This confused me a lot. After reading some research papers, I found out that Tencent does not rely on HTTP/S for communcation: they use a proprietary encryption protocol called as MMTLS for most of its communications. It is designed based on Transport Layer Security (TLS) 1.3 drafts for both performance and security.
+
+
 ## Going Further
 
 How to go further from here?
