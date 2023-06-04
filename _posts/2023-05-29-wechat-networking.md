@@ -132,6 +132,115 @@ From the traceroute command above, we can summarize that:
 * It's slow for european countries to use WeChat, since the data is not stored in Europe, but in Singapore.
 * There are two telecommunication companies involved: Orange and Tata.
 
+## DNS
+
+Now I want to change the direction and study another aspect of the networking problem: the Domain Name System (DNS). For the same URL in the article, does people in mainland China see the same content as the people in other places? To answer this question, I picked one subdomain found in ZAP: <https://cmmsns.qpic.cn>, I want to know where are servers hosted based in different geographical zones. Therefore, I picked 3 DNS servers: the CloudFlare DNS server (1.1.1.1), the Orange DNS server in France (80.10.246.2), and the Baidu DNS server in China (180.76.76.76). This is done by changing the network settings in the local machine.
+
+Here is the result using CloudFlare DNS (1.1.1.1):
+
+```
+➜ ~ dig cmmsns.qpic.cn
+
+; <<>> DiG 9.10.6 <<>> cmmsns.qpic.cn
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52419
+;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;cmmsns.qpic.cn.			IN	A
+
+;; ANSWER SECTION:
+cmmsns.qpic.cn.		60	IN	CNAME	mmsns.qpic.wechatos.net.
+mmsns.qpic.wechatos.net. 300	IN	A	43.130.30.140
+mmsns.qpic.wechatos.net. 300	IN	A	43.130.30.221
+mmsns.qpic.wechatos.net. 300	IN	A	43.130.30.120
+mmsns.qpic.wechatos.net. 300	IN	A	43.130.30.12
+
+;; Query time: 493 msec
+;; SERVER: 1.1.1.1#53(1.1.1.1)
+;; WHEN: Sun Jun 04 18:19:43 CEST 2023
+;; MSG SIZE  rcvd: 144
+```
+
+In this case, the sub-domain `cmmsns.qpic.cn` is a CNAME record, an alias, pointing to `mmsns.qpic.wechatos.net`, which is hosted in the United States. It means that when we open an article or any resource in WeChat, some pictures are probably loaded from the United States. This can be slow or fast depending on where do you live.
+
+Now, I switched to Orange DNS in France (80.10.246.2):
+
+```
+➜ ~ dig cmmsns.qpic.cn
+
+; <<>> DiG 9.10.6 <<>> cmmsns.qpic.cn
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 5407
+;; flags: qr rd ra; QUERY: 1, ANSWER: 5, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1232
+;; QUESTION SECTION:
+;cmmsns.qpic.cn.			IN	A
+
+;; ANSWER SECTION:
+cmmsns.qpic.cn.		46	IN	CNAME	mmsns.qpic.wechatos.net.
+mmsns.qpic.wechatos.net. 25	IN	A	43.130.30.120
+mmsns.qpic.wechatos.net. 25	IN	A	43.130.30.12
+mmsns.qpic.wechatos.net. 25	IN	A	43.130.30.140
+mmsns.qpic.wechatos.net. 25	IN	A	43.130.30.221
+
+;; Query time: 14 msec
+;; SERVER: 80.10.246.2#53(80.10.246.2)
+;; WHEN: Sun Jun 04 18:37:09 CEST 2023
+;; MSG SIZE  rcvd: 144
+```
+
+The data are stored in the same place, it's still pointed to `mmsns.qpic.wechatos.net` which is hosted in the United States.
+
+Now, let's use Baidu DNS server (180.76.76.76):
+
+```
+➜ ~ dig cmmsns.qpic.cn
+
+; <<>> DiG 9.10.6 <<>> cmmsns.qpic.cn
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 64007
+;; flags: qr rd ra; QUERY: 1, ANSWER: 16, AUTHORITY: 0, ADDITIONAL: 0
+
+;; QUESTION SECTION:
+;cmmsns.qpic.cn.			IN	A
+
+;; ANSWER SECTION:
+cmmsns.qpic.cn.		190	IN	A	36.248.45.104
+cmmsns.qpic.cn.		190	IN	A	36.248.45.105
+cmmsns.qpic.cn.		190	IN	A	36.248.45.106
+...
+
+;; Query time: 371 msec
+;; SERVER: 180.76.76.76#53(180.76.76.76)
+;; WHEN: Sun Jun 04 18:21:57 CEST 2023
+;; MSG SIZE  rcvd: 288
+```
+
+This time, I got a complete different answer: the domain name is not a CNAME record anymore. It's an A record, directly points to the servers hosted in mainland China. For example, the first IP address in the result, the server 36.248.45.104, is hosted in Fuzhou, Fujian, China, under AS4837, operated by China Unicom, according to Ip2Location (<https://www.ip2location.com/36.248.45.104>).
+
+What does it actually mean? It means that from the web hosting point of view, Chinese regions and international regions are serving the content using the different servers, respectively hosted in mainlain China and in the United States. Tecent Cloud provides multiple solutions for data replication that may fit such scenario, there are [Cross-Region Replication (CRR)](https://www.tencentcloud.com/document/product/436/35272?lang=en) in the Cloud Object Storage (COS) level, [Data Transmission Service (DTS)](https://www.tencentcloud.com/products/dts) at database level, and maybe more.
+
+## ICP License
+
+Any internet content provider (ICP) providing online services in China needs to have an ICP license (ICP备案). This is a permit issued by the Chinese Ministry of Industry and Information Technology (MIIT). The ICP license numbers for Chinese websites can often be found on the bottom of the front webpage.
+
+According to the [Alibaba Cloud](https://www.alibabacloud.com/help/en/icp-filing/latest/prepare-and-check-the-domain-name), you cannot apply for an ICP filing for a domain name whose top-level domain name is not approved by the MIIT. To check whether your domain name is qualified for an ICP filing application. Here is the graph provided by the MIIT (中华人民共和国工业和信息化部). You can see that `.cn` is a country top-level domain name:
+
+![MIIT Domains](/assets/2023-05-29_wechat-networking/MIIT-domains.png)
+
+Now, let's check the ICP license of one of the website used by WeChat: `qpic.cn`. If you go to the website of MIIT, you can find this information by querying the domain name. So for `qpic.cn`, its license is 粤B2-20090059, granted by the the Guangdong region. Note that 1) the regulations of sightly different for each region, Alibaba Cloud has [detailed instructions for each region](https://www.alibabacloud.com/help/en/icp-filing/latest/read-and-understand-the-icp-regulations) on its website; 2) the content of the MIIT website is only in Chinese; 3) the URL of the result is not sharable since it does not contain the query you entered in the search bar.
+
+![ICP license of qpic.cn](/assets/2023-05-29_wechat-networking/ICP-qpic.cn.png)
+
+## mmTLS
 ## Going Further
 
 How to go further from here?
@@ -144,3 +253,11 @@ on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
+
+- [How to Use Traceroute to Identify Network Problems](https://www.howtogeek.com/134132/how-to-use-traceroute-to-identify-network-problems/)
+- [Network: Underestanding the traceroute output](https://www.lumen.com/help/en-us/network/traceroute/understanding-the-traceroute-output.html)
+- [Les adresses DNS des fournisseurs d'accès Internet](https://www.ariase.com/box/dossiers/adresses-dns)
+- [What is Traceroute? How It Works and How to Read Results](https://www.varonis.com/blog/what-is-traceroute)
+- [Autonomous system (Internet)](https://en.wikipedia.org/wiki/Autonomous_system_%28Internet%29)
+- [Ip2Location: Identify Geographical Location and Proxy by IP Address](https://www.ip2location.com/)
+- [Prepare and check the domain name - Alibaba Cloud](https://www.alibabacloud.com/help/en/icp-filing/latest/prepare-and-check-the-domain-name)
