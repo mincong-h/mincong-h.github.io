@@ -110,6 +110,28 @@ traceroute to socwxsns.video.qq.com (101.33.110.25), 64 hops max, 52 byte packet
 17  * * *
 ```
 
+Traceroute traces the path an IP packet takes across one or many networks. In my case, it goes throught 14 devices/hops before reaching the destination, i.e. `vweixinthumb.tc.qq.com`. The first line provides a warning about the multiple choices of the same domain name, so the traceroute command only picked one of them, which was 101.33.110.25 to perform the test. Then, traceroute found out that the domain name `vweixinthumb.tc.qq.com` is actually an alias of `socwxsns.video.qq.com` (i.e. a CNAME record in the DNS server). This execution is configured to go through maximum 64 hops, and using packets of 52 bytes.
+
+```
+ 7  81.253.184.6 (81.253.184.6)  5.208 ms  5.443 ms  5.148 ms
+ 8  * tatateleglobe-8.gw.opentransit.net (193.251.251.20)  6.442 ms *
+```
+
+Now, let's take a closer look into each hop recorded by the `traceroute` command. Each hop contains several information: the hop number, the domain name, the underlying IP address, and the round-trip time (RTT) of the 3 responses sent back by the hop. Then, the character asterisk (`*`) means that the hop did not respond within the given timeout. It's important to note that some hops may not respond or may have their IP addresses hidden for security reasons. This is why you see asterisks in some of the lines.
+
+As you may see, the speed of the exchange was very fast at the beginning of the traceroute command, I got the response within 10 ms, but starting from the open transit (hop 8), the round-trip time (RTT) increased significantly. But how to explain this phenomenon? To better understand this, I enriched the IP address with more information, retrieved from Ip2Location (<https://www.ip2location.com>), regarding the geographical information, internet service provider (ISP), and the autonomous system number (ASN) and draw the digram below:
+
+![Traceroute Visualization (2023-05-29)](/assets/2023-05-29_wechat-networking/wechat-traceroute.png)
+
+The request went through 3 autonomous systems: AS2278 Orange S.A., AS5511 Orange S.A. and AS6453 Tata Communications (America) Inc. In the field of telecommunications, an autonomous system refers to a network or a collection of connected networks that are operated by a single organization or entity and have a common routing policy. It's commonly know by its abbreviation "AS". Each autonomous system is assigned a unique identification number called an Autonomous System Number (ASN). Our traceroute command went 3 autonomous systems, two of them owned by Orange S.A. and one owned by Tata Communications (America) Inc. You can see that the route used by the request wasn't really optimal: the request went from Paris to Côte d'Azur, to Bretagne, to Rhone-Alpes and back to Paris again, before going to the AS of Tata communications. But I guess this is hard to optimized since different autonomous system is operated by different companies.
+
+In hop 13, you can see two results. It indicates that there are multiple network paths or interfaces available at that specific hop, and traceroute is displaying the RTT measurements for each of those paths or interfaces. This can occur to various factors, such as network redundancy, load balancing, or different routing policies. Similar for hop 14.
+
+From the traceroute command above, we can summarize that:
+
+* It's slow for european countries to use WeChat, since the data is not stored in Europe, but in Singapore.
+* There are two telecommunication companies involved: Orange and Tata.
+
 ## Going Further
 
 How to go further from here?
