@@ -38,8 +38,7 @@ test, and see what happens. Note that I am currently living in Paris, France. So
 the interactions may be different from yours.
 
 After reading this article, you will understand what are the main websites used
-by WeChat, how is a typical route of an HTTP request, how does WeChat store the
-information in MacOS, etc. Hopefully, it will allow you to learn a bit more
+by WeChat, how is a typical route of an HTTP request, the difference of DNS configuration between mainland China and oversea, the ICP license of Tencent, and their proprietary protocal mmTLS. Hopefully, it will allow you to learn a bit more
 about network troubleshooting and Tencent Cloud as well. Now, let's get started!
 
 ## Environment
@@ -244,15 +243,15 @@ Now, let's check the ICP license of one of the website used by WeChat: `qpic.cn`
 
 In the section above, I inspected some traffic based on HTTP/S. However, I realized very quickly that most of the traffic didn't go through HTTP/S. For example, when a friend sends a message to me in the chat, when I refresh the "moments (朋友圈)", etc. This confused me a lot. After reading some research papers, I found out that Tencent does not rely on HTTP/S for communcation: they use a proprietary encryption protocol called as MMTLS for most of its communications. It is designed based on Transport Layer Security (TLS) 1.3 drafts for both performance and security.
 
+ZAP can only intercept HTTP-based traffic, therefore, it cannot intercept mmTLS traffic. To intercept mmTLS, I used [Wireshark](https://www.wireshark.org/). But since the data is encrypted and I don't know where is the key for the decryption, I couldn't read the content of the request or response. According to Ip2Location, the server (<https://www.ip2location.com/162.62.115.23>) that interacts with me is a server hosted in Frankfurt am Main, Hessen, Germany, in Tencent's datacenter.
 
-## Going Further
+![wireshark](/assets/2023-05-29_wechat-networking/wireshark.png)
 
-How to go further from here?
+If you want to learn more about mmtls, I recommand you to read this article on GitHub: [基于TLS1.3的微信安全通信协议mmtls介绍.md](https://github.com/WeMobileDev/article/blob/master/%E5%9F%BA%E4%BA%8ETLS1.3%E7%9A%84%E5%BE%AE%E4%BF%A1%E5%AE%89%E5%85%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AEmmtls%E4%BB%8B%E7%BB%8D.md) (introduction to mmtls, the WeChat secure communication protocol based on TLS 1.3).
 
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
-Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
+In this article, we intercepted the traffic of WeChat (MacOS) using two tools: Zed Attack Proxy (ZAP) and Wireshark. We saw the route between my computer in France and the server in Singapore, the different DNS settings for the domain `cmmsns.qpic.cn` in mainland China and overseas, the information of the ICP license of `qpic.cn` and finally some basic information related to mmtls. Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
