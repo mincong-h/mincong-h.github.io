@@ -66,11 +66,11 @@ flowchart LR
 
 然而，在默认情况下，它只拦截HTTP流量，不拦截HTTPS请求，因为HTTPS的设计是为了提供双方的安全通信。当客户端与服务器建立HTTPS连接时，它直接启动SSL/TLS握手并建立加密连接。因此，代理不能拦截或修改流量。为了使拦截HTTPS流量成为可能，我通过生成一个根CA并将其导入MacOS的系统密钥链，将ZAP配置为TLS终端代理。然后，我在系统层面上配置了代理，这样所有的流量都将被ZAP拦截，包括微信。
 
- ![Set up HTTP proxy and HTTPS proxy](/assets/2023-05-29_wechat-networking/system-network-proxies.png)
+ ![Set up HTTP proxy and HTTPS proxy](/assets/2023-05-29_wechat-network/system-network-proxies.png)
 
 现在，如果我在微信中进行一些操作，比如刷新朋友圈，访问官方账号中的文章，或者在搜索栏中搜索一些关键词，等等。我可以看到许多请求被拦截了：
 
-<img src="/assets/2023-05-29_wechat-networking/wechat-domains.png" alt="WeChat domains" style="max-width: 400px"/>
+<img src="/assets/2023-05-29_wechat-network/wechat-domains.png" alt="WeChat domains" style="max-width: 400px"/>
 
 你可以猜测其中一些域名的用途：关键词为 "mp" 的域名可能是指微信小程序，而关键词为 "channels" 的域名可能是指微信小视频。另外，我认为qpic指的是 "QQ图片"，qlogo指的是 "QQ标志"，它作为腾讯集团（以前的QQ）的一部分存储图片和标志。还有很多其他可以探索的，但由于了解所有的域名不是这篇文章的目的，所以点到为止。
 
@@ -117,7 +117,7 @@ Traceroute追踪一个IP数据包在一个或多个网络中的路径。在上�
 
 正如你所看到的，在traceroute命令开始时，交换的速度非常快，我在10毫秒内得到了响应，但是从开放中转（第8跳）开始，往返时间（RTT）明显增加。如何解释这种现象呢？为了更好地理解这一点，我用从Ip2Location (<https://www.ip2location.com>）检索到的更多信息来丰富IP地址，涉及地理信息、互联网服务提供商（ISP）和自治系统号码（ASN），并绘制了下图：
 
-![Traceroute Visualization (2023-05-29)](/assets/2023-05-29_wechat-networking/wechat-traceroute.png)
+![Traceroute Visualization (2023-05-29)](/assets/2023-05-29_wechat-network/wechat-traceroute.png)
 
 从图中可以看出，该请求经过了3个自主系统： AS2278 Orange S.A.、AS5511 Orange S.A.和AS6453 Tata通信（美国）公司。在电信领域，自治系统是指由一个组织或实体运营的、具有共同路由策略的网络或连接网络的集合。它通常以其缩写 "AS"而闻名。每个自治系统都被分配一个独特的识别号码，称为自治系统号码（ASN）。我们的traceroute命令穿过了3个自治系统，其中两个属于Orange S.A.，一个属于Tata Communications (America) Inc。你可以看到，请求所使用的路线并不是真正的最佳路线：请求从巴黎到蓝色海岸，到布列塔尼，到罗纳-阿尔卑斯，回到巴黎，然后再到Tata通信的自治系统。但我想这很难优化，因为不同的自治系统由不同公司运营的。
 
@@ -231,11 +231,11 @@ cmmsns.qpic.cn.		190	IN	A	36.248.45.106
 
 根据[阿里云的官方文档](https://www.alibabacloud.com/help/zh/icp-filing/latest/prepare-and-check-the-domain-name)，如果域名的顶级域名没有得到工信部的批准，你就不能为其申请ICP备案。要检查你的域名是否有资格申请ICP备案。以下是由工信部提供的图表。你可以看到，`.cn`是一个国家顶级域名：
 
-![MIIT Domains](/assets/2023-05-29_wechat-networking/MIIT-domains.png)
+![MIIT Domains](/assets/2023-05-29_wechat-network/MIIT-domains.png)
 
 现在，让我们检查一下微信使用的一个网站的ICP许可证： `qpic.cn`。如果你去工信部的网站，你可以通过查询域名找到这些信息。所以对于`qpic.cn`，它的许可证是粤B2-20090059，由广东分局授予的。需要注意的是：1）每个地区的规定略有不同，阿里云在其网站上有[每个地区的详细说明](https://www.alibabacloud.com/help/en/icp-filing/latest/read-and-understand-the-icp-regulations)；2）工信部网站的内容只有中文；3）显示结果的链接是无法分享的，因为它并不包含你在搜索栏中输入的查询语句。
 
-![qpic.cn的ICP许可证](/assets/2023-05-29_wechat-networking/ICP-qpic.cn.png)
+![qpic.cn的ICP许可证](/assets/2023-05-29_wechat-network/ICP-qpic.cn.png)
 
 ## mmTLS
 
@@ -243,7 +243,7 @@ cmmsns.qpic.cn.		190	IN	A	36.248.45.106
 
 ZAP只能拦截基于HTTP的通信，因此，它不能拦截mmTLS的通信。为了拦截mmTLS，我使用了Wireshark。但由于数据是加密的，我不知道解密的密钥在哪里，所以我无法读取请求或响应的内容。根据Ip2Location，与我互动的服务器（https://www.ip2location.com/162.62.115.23）是一台托管在德国黑森州法兰克福的服务器，位于腾讯的数据中心。
 
-![wireshark](/assets/2023-05-29_wechat-networking/wireshark.png)
+![wireshark](/assets/2023-05-29_wechat-network/wireshark.png)
 
 如果你想了解更多关于mmtls的信息，我推荐你阅读GitHub上的这篇文章： [基于TLS1.3的微信安全通信协议mmtls介绍.md](https://github.com/WeMobileDev/article/blob/master/%E5%9F%BA%E4%BA%8ETLS1.3%E7%9A%84%E5%BE%AE%E4%BF%A1%E5%AE%89%E5%85%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AEmmtls%E4%BB%8B%E7%BB%8D.md)，它的讲解非常详细。
 
