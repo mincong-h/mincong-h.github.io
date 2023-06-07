@@ -8,12 +8,12 @@ subtitle:            >
 
 lang:                zh
 date:                2023-05-29 22:04:54 +0200
-categories:          [java-core]
+categories:          []
 tags:                [network]
 ads_tags:            []
 comments:            true
 excerpt:             >
-    Try to limit at 140 character, two lines: (80-4) *2 = 152
+    这篇文章从微信Mac客户端出发，在不同方面探索微信背后的网络运作：路由、DNS、ICP许可证等。
 
 image:               /assets/bg-giulia-may-hclMkLbYE_M-unsplash.jpg
 cover:               /assets/bg-giulia-may-hclMkLbYE_M-unsplash.jpg
@@ -225,17 +225,38 @@ cmmsns.qpic.cn.		190	IN	A	36.248.45.106
 
 这实际上意味着什么呢？这意味着从网站托管的角度来看，中国地区和国际地区使用不同的服务器提供内容，分别托管在中国大陆和美国。即使用了同一个网址，在海外和境内访问的服务器还是不一样的。这样的后台涉及到数据复制的问题。腾讯云提供了多种数据复制的解决方案，可能适合这样的场景，比如在在云对象存储（COS）层面有[跨区域复制（CRR）](https://www.tencentcloud.com/document/product/436/35272?lang=en)，在数据库层面有[数据传输服务（DTS）](https://www.tencentcloud.com/products/dts)，或许还有别的方案。
 
+## ICP许可证
+
+任何在中国提供在线服务的互联网内容提供商（ICP）都需要有ICP备案（ICP许可证）。这是由中国工业和信息化部（MIIT）颁发的许可证。中国网站的ICP许可证号码通常可以在前台网页的底部找到。
+
+根据[阿里云的官方文档](https://www.alibabacloud.com/help/zh/icp-filing/latest/prepare-and-check-the-domain-name)，如果域名的顶级域名没有得到工信部的批准，你就不能为其申请ICP备案。要检查你的域名是否有资格申请ICP备案。以下是由工信部提供的图表。你可以看到，`.cn`是一个国家顶级域名：
+
+![MIIT Domains](/assets/2023-05-29_wechat-networking/MIIT-domains.png)
+
+现在，让我们检查一下微信使用的一个网站的ICP许可证： `qpic.cn`。如果你去工信部的网站，你可以通过查询域名找到这些信息。所以对于`qpic.cn`，它的许可证是粤B2-20090059，由广东分局授予的。需要注意的是：1）每个地区的规定略有不同，阿里云在其网站上有[每个地区的详细说明](https://www.alibabacloud.com/help/en/icp-filing/latest/read-and-understand-the-icp-regulations)；2）工信部网站的内容只有中文；3）显示结果的链接是无法分享的，因为它并不包含你在搜索栏中输入的查询语句。
+
+![qpic.cn的ICP许可证](/assets/2023-05-29_wechat-networking/ICP-qpic.cn.png)
+
+## mmTLS
+
+在上面的章节中，我检查了一些基于HTTP/S的流量。然而，我很快意识到，大部分的流量并没有通过HTTP/S。比如说，当一个朋友在聊天中给我发信息时，或者当我刷新 "时刻（朋友圈）"时，等等。这让我很困惑。在阅读了一些研究论文后，我发现腾讯并不依赖HTTP/S进行通信：他们在大多数通信中使用一种名为mmTLS的专有加密协议。它是基于传输层安全（TLS）1.3草案设计的，在性能和安全方面都有保障。
+
+ZAP只能拦截基于HTTP的通信，因此，它不能拦截mmTLS的通信。为了拦截mmTLS，我使用了Wireshark。但由于数据是加密的，我不知道解密的密钥在哪里，所以我无法读取请求或响应的内容。根据Ip2Location，与我互动的服务器（https://www.ip2location.com/162.62.115.23）是一台托管在德国黑森州法兰克福的服务器，位于腾讯的数据中心。
+
+![wireshark](/assets/2023-05-29_wechat-networking/wireshark.png)
+
+如果你想了解更多关于mmtls的信息，我推荐你阅读GitHub上的这篇文章： [基于TLS1.3的微信安全通信协议mmtls介绍.md](https://github.com/WeMobileDev/article/blob/master/%E5%9F%BA%E4%BA%8ETLS1.3%E7%9A%84%E5%BE%AE%E4%BF%A1%E5%AE%89%E5%85%A8%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AEmmtls%E4%BB%8B%E7%BB%8D.md)，它的讲解非常详细。
+
 ## 结论
 
-在本文中，我们看到了。。。最后，我们还简要讨论了其他的场景，并且分享了一些让大家拓展出去的资源。希望这篇文章能够给你带来一些思考，让你的系统变得。。。如果你有兴趣了解更多的资讯，欢迎关注我的 GitHub 账号 [mincong-h](https://github.com/mincong-h "GitHub") 或者微信订阅号【码农小黄】。谢谢大家！
+在这篇文章中，我们使用两个工具拦截了微信（MacOS）的流量： Zed Attack Proxy（ZAP）和Wireshark。我们看到了我在法国的电脑和新加坡的服务器之间的路由，中国大陆和海外的域名cmmsns.qpic.cn的不同DNS设置，qpic.cn的ICP许可证信息，以及最后一些与mmtls有关的基本信息。有兴趣了解更多吗？欢迎关注我的 GitHub 账号 [mincong-h](https://github.com/mincong-h "GitHub") 或者微信订阅号【码农小黄】。谢谢大家！
 
 ## 参考文献
 
-<!--
- WeChat:
-   原创不易，希望大家点个赞、点个在看支持一下，谢谢！
-   ![](https://mincong.io/assets/wechat-QR-code.jpg)
-
- CSDN:
-   ![扫码关注](https://img-blog.csdnimg.cn/img_convert/f07c6cc9272c721180bad20c599e4ff7.png#pic_center =600x333)
--->
+- [How to Use Traceroute to Identify Network Problems](https://www.howtogeek.com/134132/how-to-use-traceroute-to-identify-network-problems/)
+- [Network: Underestanding the traceroute output](https://www.lumen.com/help/en-us/network/traceroute/understanding-the-traceroute-output.html)
+- [Les adresses DNS des fournisseurs d'accès Internet](https://www.ariase.com/box/dossiers/adresses-dns)
+- [What is Traceroute? How It Works and How to Read Results](https://www.varonis.com/blog/what-is-traceroute)
+- [Autonomous system (Internet)](https://en.wikipedia.org/wiki/Autonomous_system_%28Internet%29)
+- [Ip2Location: Identify Geographical Location and Proxy by IP Address](https://www.ip2location.com/)
+- [Prepare and check the domain name - Alibaba Cloud](https://www.alibabacloud.com/help/en/icp-filing/latest/prepare-and-check-the-domain-name)
