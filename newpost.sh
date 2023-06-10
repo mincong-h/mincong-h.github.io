@@ -66,7 +66,6 @@ lang:                en
 date:                $(date +"%Y-%m-%d %H:%M:%S %z")
 categories:          [java-core]
 tags:                []
-ads_tags:            []
 comments:            true
 excerpt:             >
     TODO
@@ -102,7 +101,6 @@ lang:                zh
 date:                $(date +"%Y-%m-%d %H:%M:%S %z")
 categories:          [java-core]
 tags:                []
-ads_tags:            []
 comments:            true
 excerpt:             >
     Try to limit at 140 character, two lines: (80-4) *2 = 152
@@ -116,7 +114,6 @@ article_header:
   background_image:
     gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 wechat:              true
-ads:                 none
 ---
 
 EOF
