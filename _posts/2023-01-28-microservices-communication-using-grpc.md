@@ -10,7 +10,6 @@ lang:                en
 date:                2023-01-28 10:38:40 +0100
 categories:          [microservices]
 tags:                [microservices, system-design, grpc]
-ads_tags:            []
 comments:            true
 excerpt:             >
     Different communication styles in microservices architecture, gRPC and protobuf basics, code generation, RPC lifecycle, gRPC tools, real world use cases, and more.

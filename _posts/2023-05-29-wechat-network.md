@@ -10,7 +10,6 @@ lang:                en
 date:                2023-05-29 22:04:53 +0200
 categories:          []
 tags:                [network]
-ads_tags:            []
 comments:            true
 excerpt:             >
     This article studies different aspects of the network based on service-client interactions: routing, DNS, ICP license, and more.

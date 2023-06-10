@@ -10,7 +10,6 @@ lang:                en
 date:                2022-07-30 11:28:39 +0200
 categories:          [temporal]
 tags:                [temporal, go]
-ads_tags:            [workflow, automation, devops]
 comments:            true
 excerpt:             >
     This article explains the definition of an activity, execution, observability,

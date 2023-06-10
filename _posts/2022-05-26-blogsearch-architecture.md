@@ -11,7 +11,6 @@ date:                2022-05-26 09:54:25 +0200
 categories:          [java-core]
 tags:                [blogsearch, system-design, java, elasticsearch, jekyll]
 series:              [blogsearch]
-ads_tags:            []
 comments:            true
 excerpt:             >
     The overview of the BlogSearch, a simple search service for blog posts.

@@ -10,7 +10,6 @@ lang:                en
 date:                2021-12-27 14:36:13 +0100
 categories:          [elasticsearch]
 tags:                [java, elasticsearch, system-design]
-ads_tags:            [search]
 comments:            true
 excerpt:             >
     Curious about how does a decision system work? This article explains

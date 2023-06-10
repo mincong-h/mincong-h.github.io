@@ -12,7 +12,6 @@ date_modified:       2022-04-10 11:22:47 +0200
 categories:          [java-core]
 tags:                [java, datadog, elasticsearch, aliyun, logging]
 series:              [blogsearch]
-ads_tags:            []
 comments:            true
 excerpt:             >
     This article explains how to set up Datadog monitoring for a Java

@@ -10,7 +10,6 @@ lang:                en
 date:                2022-10-16 10:04:02 +0200
 categories:          [documentation]
 tags:                [doc]
-ads_tags:            []
 comments:            true
 excerpt:             >
     Define the types of documentation, your audience, improve page content,

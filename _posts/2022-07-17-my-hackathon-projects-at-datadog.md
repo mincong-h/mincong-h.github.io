@@ -11,7 +11,6 @@ date:                2022-07-17 14:31:57 +0200
 date_modified:       2022-12-13 17:37:58 +0100
 categories:          [review]
 tags:                [java, python, javascript, go]
-ads_tags:            []
 comments:            true
 excerpt:             >
     This article shared the 5 projects that I did over the last hackathons in

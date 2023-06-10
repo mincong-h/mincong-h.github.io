@@ -10,7 +10,6 @@ lang:                en
 date:                2022-10-31 14:33:24 +0100
 categories:          [rest]
 tags:                [java, api, doc, build]
-ads_tags:            []
 comments:            true
 excerpt:             >
     The key concepts provided by the OpenAPI Initiative, e.g. OpenAPI spec,
