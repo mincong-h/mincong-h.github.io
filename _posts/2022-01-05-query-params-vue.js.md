@@ -10,7 +10,6 @@ lang:                en
 date:                2022-01-05 21:48:43 +0100
 categories:          [frontend]
 tags:                [javascript, vuejs, vuejs2]
-ads_tags:            []
 comments:            true
 excerpt:             >
     What to have better URL for sharing? This Q&A shares how to retrieve query

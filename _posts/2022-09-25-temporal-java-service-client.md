@@ -11,7 +11,6 @@ lang:                en
 date:                2022-09-25 08:38:43 +0200
 categories:          [temporal]
 tags:                [temporal, java, grpc, system-design]
-ads_tags:            [api]
 comments:            true
 excerpt:             >
     The internal working of Temporal Java service client: module structure,

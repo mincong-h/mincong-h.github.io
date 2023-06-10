@@ -10,7 +10,6 @@ lang:                zh
 date:                2023-05-29 22:04:54 +0200
 categories:          []
 tags:                [network]
-ads_tags:            []
 comments:            true
 excerpt:             >
     这篇文章从微信Mac客户端出发，在不同方面探索微信背后的网络运作：路由、DNS、ICP许可证等。

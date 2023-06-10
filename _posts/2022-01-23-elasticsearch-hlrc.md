@@ -10,7 +10,6 @@ lang:                en
 date:                2022-01-23 15:47:40 +0100
 categories:          [elasticsearch, system-design]
 tags:                [elasticsearch, java, rest, api, system-design]
-ads_tags:            []
 comments:            true
 excerpt:             >
     This article explores the implementation of Elasticsearch Java High-Level

@@ -9,7 +9,6 @@ lang:                en
 date:                2021-11-20 08:40:44 +0100
 categories:          [java-core]
 tags:                [java, jetty, jersey, api, jax-rs]
-ads_tags:            []
 comments:            true
 excerpt:             >
     This article discusses how to implement a simple audit logs solution with

@@ -10,7 +10,6 @@ lang:                en
 date:                2021-12-18 09:02:43 +0100
 categories:          [java-core]
 tags:                [java, logging]
-ads_tags:            []
 comments:            true
 excerpt:             >
     This Q&A explains how to change logger level dynamically at runtime via

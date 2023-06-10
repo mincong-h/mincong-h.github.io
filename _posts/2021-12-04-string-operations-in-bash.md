@@ -9,7 +9,6 @@ lang:                en
 date:                2021-12-04 12:10:41 +0100
 categories:          [bash]
 tags:                [bash, scripting]
-ads_tags:            []
 comments:            true
 excerpt:             >
     This article shares tips for different string operations in Bash, including

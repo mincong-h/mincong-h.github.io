@@ -11,7 +11,6 @@ date:                2022-06-25 10:31:04 +0200
 date_modified:       2022-08-27 10:20:58 +0200
 categories:          []
 tags:                [system-design, java, go]
-ads_tags:            []
 comments:            true
 excerpt:             >
     This article discusses how to manage code complexity when the codebase is

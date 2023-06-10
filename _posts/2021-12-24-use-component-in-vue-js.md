@@ -10,7 +10,6 @@ lang:                en
 date:                2021-12-24 08:05:27 +0100
 categories:          [frontend]
 tags:                [javascript, vuejs, vuejs2]
-ads_tags:            []
 comments:            true
 excerpt:             >
     Your vue file is getting big? This Q&A explains how to use component in

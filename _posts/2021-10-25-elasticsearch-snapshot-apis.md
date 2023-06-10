@@ -9,7 +9,6 @@ lang:                en
 date:                2021-10-25 16:34:05 +0200
 categories:          [elasticsearch]
 tags:                [elasticsearch, api]
-ads_tags:            [aws, azure, hdfs, gcp]
 series:              [es-snapshots]
 comments:            true
 excerpt:             >
