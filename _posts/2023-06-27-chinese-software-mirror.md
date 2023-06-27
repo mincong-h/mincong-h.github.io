@@ -224,6 +224,21 @@ AWS 似乎没有提供对外镜像服务，需要自己搭建[在 AWS 中国区�
 内网
 删除包列表
 
+## Problem
+
+### Missing Package
+
+Some packages may not be available.
+
+```
+Retrying fetcher due to error (2/4): Bundler::HTTPError Could not fetch specs from https://mirrors.aliyun.com/rubygems/
+Gem::RemoteFetcher::UnknownHostError: timed out (https://mirrors.aliyun.com/rubygems/specs.4.8.gz)
+/usr/local/lib/ruby/site_ruby/2.6.0/rubygems/remote_fetcher.rb:277:in `rescue in fetch_path'
+  /usr/local/lib/ruby/site_ruby/2.6.0/rubygems/remote_fetcher.rb:254:in `fetch_path'
+  /usr/local/lib/ruby/gems/2.6.0/gems/bundler-2.0.2/lib/bundler/rubygems_integration.rb:758:in `fetch_specs'
+  /usr/local/lib/ruby/gems/2.6.0/gems/bundler-2.0.2/lib/bundler/rubygems_integration.rb:768:in `fetch_all_remote_specs'
+  /usr/local/lib/ruby/gems/2.6.0/gems/bundler-2.0.2/lib/bundler/fetcher/index.rb:10:in `specs'
+```
 
 ## Going Further
 
