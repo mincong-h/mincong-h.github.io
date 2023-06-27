@@ -13,8 +13,8 @@ tags:                []
 comments:            true
 excerpt:             >
     TODO
-image:               /assets/bg-coffee-84624_1280.jpg
-cover:               /assets/bg-coffee-84624_1280.jpg
+image:               /assets/2023-06-27_chinese-software-mirrors/20230627-ping-google.com.png
+cover:               /assets/2023-06-27_chinese-software-mirrors/20230627-ping-google.com.png
 article_header:
   type:              overlay
   theme:             dark
@@ -130,17 +130,34 @@ This is because brew uses GitHub by default and the access to GitHub is slow in
 China:
 
 ```
-dig github.com
-
-; <<>> DiG 9.10.6 <<>> github.com
-;; global options: +cmd
-;; connection timed out; no servers could be reached
+host github.com
+github.com has address 192.30.255.113
+github.com mail is handled by 1 aspmx.l.google.com.
+github.com mail is handled by 10 alt3.aspmx.l.google.com.
+github.com mail is handled by 10 alt4.aspmx.l.google.com.
+github.com mail is handled by 5 alt1.aspmx.l.google.com.
+github.com mail is handled by 5 alt2.aspmx.l.google.com.
 ```
 
-```sh
-git -C "$(brew --repo)" remote -v
-origin	https://github.com/Homebrew/brew (fetch)
-origin	https://github.com/Homebrew/brew (push)
+```
+ping github.com
+PING github.com (192.30.255.113): 56 data bytes
+64 bytes from 192.30.255.113: icmp_seq=0 ttl=49 time=235.683 ms
+Request timeout for icmp_seq 1
+64 bytes from 192.30.255.113: icmp_seq=2 ttl=49 time=232.373 ms
+64 bytes from 192.30.255.113: icmp_seq=3 ttl=49 time=247.802 ms
+64 bytes from 192.30.255.113: icmp_seq=4 ttl=49 time=233.777 ms
+64 bytes from 192.30.255.113: icmp_seq=5 ttl=49 time=390.340 ms
+64 bytes from 192.30.255.113: icmp_seq=6 ttl=49 time=308.513 ms
+Request timeout for icmp_seq 7
+Request timeout for icmp_seq 8
+64 bytes from 192.30.255.113: icmp_seq=9 ttl=49 time=233.143 ms
+Request timeout for icmp_seq 10
+64 bytes from 192.30.255.113: icmp_seq=11 ttl=49 time=229.434 ms
+^C
+--- github.com ping statistics ---
+13 packets transmitted, 8 packets received, 38.5% packet loss
+round-trip min/avg/max/stddev = 229.434/263.883/390.340/53.698 ms
 ```
 
 You can replace them by setting the remote to a Chinese mirror:
@@ -149,7 +166,17 @@ You can replace them by setting the remote to a Chinese mirror:
 git remote set-url origin https://mirrors.aliyun.com/Homebrew/brew.git
 ```
 
-## Section 3
+## Ruby
+
+```
+./docker-serve.sh
+version: v0-0f7edc15
+ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux-musl]
+Could not find concurrent-ruby-1.2.0 in any of the sources
+Run `bundle install` to install missing gems.
+```
+
+## Mirror Choices
 
 <https://developer.aliyun.com/mirror/>
 
@@ -182,6 +209,12 @@ Tsinghua EDU
 
 
 AWS 似乎没有提供对外镜像服务，需要自己搭建[在 AWS 中国区方便安全的使用海外公开容器镜像](https://aws.amazon.com/cn/blogs/china/convenient-and-safe-use-of-overseas-public-container-images-in-aws-china/)
+
+163 网易镜像
+<https://mirrors.163.com/>
+
+华为镜像
+<https://mirrors.huaweicloud.com/home>
 
 ## Feature
 
