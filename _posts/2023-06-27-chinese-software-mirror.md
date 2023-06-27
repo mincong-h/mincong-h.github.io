@@ -50,11 +50,23 @@ different dimensions (broad):
 * How to go further from this article
 
 ... then specify some information about the context, such as framework version, language version.
+
+This article is written in Guangzhou, China using China 
+
 Now, let's get started!
 
 ## Motivation
 
 - China Great Firewall
+
+<!--
+## DNS
+
+Check your DNS before going to China. Don't use
+
+* CloudFlare DNS `1.1.1.1` => Use `1.0.0.1`, version for China
+* Google DNS `8.8.8.8`, (todo) => Use something else
+-->
 
 ## Docker
 
@@ -168,6 +180,9 @@ sudo vim /etc/docker/daemon.json
 Tsinghua EDU 
 <https://mirrors.tuna.tsinghua.edu.cn/>
 
+
+AWS 似乎没有提供对外镜像服务，需要自己搭建[在 AWS 中国区方便安全的使用海外公开容器镜像](https://aws.amazon.com/cn/blogs/china/convenient-and-safe-use-of-overseas-public-container-images-in-aws-china/)
+
 ## Feature
 
 公网
@@ -192,5 +207,5 @@ on [Twitter](https://twitter.com/mincong_h) or
 - <https://developer.aliyun.com/mirror/pypi>
 - <https://luanlengli.github.io/2019/12/16/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Azure%E4%B8%AD%E5%9B%BD%E6%8F%90%E4%BE%9B%E7%9A%84Docker%E9%95%9C%E5%83%8F%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1.html>
 - [Homebrew brew update 长时间没反应（或卡在 Updating Homebrew...）](https://blog.csdn.net/zz00008888/article/details/113880633)
-
+- [DNS 1.1.1.1——不仅仅是速度第一](https://zhuanlan.zhihu.com/p/135319565)
 
