@@ -7,7 +7,7 @@
 #
 #     --env JEKYLL_ENV=production
 #
-export JEKYLL_VERSION=3.8
+export JEKYLL_VERSION=latest
 
 short_commit=$(git rev-parse --short HEAD)
 pipeline_id="${GITHUB_RUN_ID:-0}"
@@ -32,8 +32,9 @@ docker run --rm \
   -it "jekyll/jekyll:${JEKYLL_VERSION}" \
   sh -c "echo \"gem version $(gem --version)\" && \
          bundle --version && \
+         echo \"jekyll version $JEKYLL_VERSION\" && \
          echo \"config bundle ...\" && \
-         bundle config mirror.https://rubygems.org https://gems.ruby-china.com && \
+         bundle config mirror.https://rubygems.org https://mirrors.aliyun.com/rubygems/ && \
          echo \"install bundle ...\" && \
          bundle install --verbose && \
          jekyll $@"
