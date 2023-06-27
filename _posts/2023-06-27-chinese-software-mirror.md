@@ -52,6 +52,10 @@ different dimensions (broad):
 ... then specify some information about the context, such as framework version, language version.
 Now, let's get started!
 
+## Motivation
+
+- China Great Firewall
+
 ## Docker
 
 Using the default Docker registry is a bit slow, but it is working:
@@ -74,9 +78,94 @@ docker.io/library/nginx:latest
 
 <https://www.cnblogs.com/boonya/p/15954368.html>
 
-## Section 2
+## Python
+
+Python works without any problem. You can install from the default Python
+Package Index (<https://pypi.org/>) without changing.
+
+## Brew
+
+```
+brew update --verbose --debug
+```
+
+which is quite slow understand the following section (it tooks seconds to
+minutes):
+
+```
++ git fetch --tags --force origin refs/heads/master:refs/remotes/origin/master
++ UPSTREAM_SHA_HTTP_CODE=200
++ [[ -f /usr/local/Homebrew/.git/FETCH_HEAD ]]
++ touch /usr/local/Homebrew/.git/FETCH_HEAD
++ UPSTREAM_SHA_HTTP_CODE=304
++ [[ -f /usr/local/Homebrew/Library/Taps/ktr0731/homebrew-evans/.git/FETCH_HEAD ]]
++ touch /usr/local/Homebrew/Library/Taps/ktr0731/homebrew-evans/.git/FETCH_HEAD
++ [[ -z '' ]]
++ [[ 200 == \3\0\4 ]]
++ [[ -n 1 ]]
++ echo 'Fetching /usr/local/Homebrew...'
+Fetching /usr/local/Homebrew...
++ local tmp_failure_file=/usr/local/Homebrew/.git/TMP_FETCH_FAILURES
++ rm -f /usr/local/Homebrew/.git/TMP_FETCH_FAILURES
++ [[ -z '' ]]
++ [[ 304 == \3\0\4 ]]
++ exit
++ [[ -n '' ]]
++ git fetch --tags --force origin refs/heads/master:refs/remotes/origin/master
+```
+
+This is because brew uses GitHub by default and the access to GitHub is slow in
+China:
+
+```sh
+git -C "$(brew --repo)" remote -v
+origin	https://github.com/Homebrew/brew (fetch)
+origin	https://github.com/Homebrew/brew (push)
+```
+
+You can replace them by setting the remote to a Chinese mirror:
+
+```
+git remote set-url origin https://mirrors.aliyun.com/Homebrew/brew.git
+```
 
 ## Section 3
+
+<https://developer.aliyun.com/mirror/>
+
+
+docker国内镜像源Azure 中国(最快镜像源)
+
+
+```
+sudo vim /etc/docker/daemon.json
+```
+
+
+```json
+{
+  "registry-mirrors": [
+    "https://dockerhub.azk8s.cn",
+    "http://hub-mirror.c.163.com"
+  ]
+}
+```
+
+
+* Azure的`*.azk8s.cn` 镜像源在2020年4月3日凌晨开始，只允许【Azure中国IP】访问，其他公网IP访问azk8s.cn都会返回403!
+  项目原文如下 ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure.
+* 相关issue  <https://github.com/Azure/container-service-for-azure-china/issues/60>
+
+
+Tsinghua EDU 
+<https://mirrors.tuna.tsinghua.edu.cn/>
+
+## Feature
+
+公网
+内网
+删除包列表
+
 
 ## Going Further
 
@@ -90,3 +179,10 @@ on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
+
+- <https://www.cnblogs.com/aric2016/p/12423226.html>
+- <https://developer.aliyun.com/mirror/pypi>
+- <https://luanlengli.github.io/2019/12/16/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Azure%E4%B8%AD%E5%9B%BD%E6%8F%90%E4%BE%9B%E7%9A%84Docker%E9%95%9C%E5%83%8F%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1.html>
+- [Homebrew brew update 长时间没反应（或卡在 Updating Homebrew...）](https://blog.csdn.net/zz00008888/article/details/113880633)
+
+
