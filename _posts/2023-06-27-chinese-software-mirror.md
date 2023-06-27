@@ -2,9 +2,9 @@
 article_num:         211
 layout:              post
 type:                classic
-title:               chinese software mirror
+title:               Set Up Chinese Software Mirrors
 subtitle:            >
-    Given one sentence to expand the title or explain why this article may interest your readers.
+    How to download different softwares in China?
 
 lang:                en
 date:                2023-06-27 01:40:43 +0800
