@@ -90,6 +90,18 @@ docker.io/library/nginx:latest
 
 <https://www.cnblogs.com/boonya/p/15954368.html>
 
+![Settings in Docker Desktop for changing the registry mirrors](/assets/2023-06-27_chinese-software-mirrors/20230627-docker-settings.png)
+
+If you successfully added the registry mirrors to Docker Engine, you should find
+the information below in the docker info:
+
+```
+docker info
+[...]
+ Registry Mirrors:
+  https://registry.cn-hangzhou.aliyuncs.com/
+```
+
 ## Python
 
 Python works without any problem. You can install from the default Python
