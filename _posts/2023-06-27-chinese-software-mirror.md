@@ -117,6 +117,14 @@ Fetching /usr/local/Homebrew...
 This is because brew uses GitHub by default and the access to GitHub is slow in
 China:
 
+```
+dig github.com
+
+; <<>> DiG 9.10.6 <<>> github.com
+;; global options: +cmd
+;; connection timed out; no servers could be reached
+```
+
 ```sh
 git -C "$(brew --repo)" remote -v
 origin	https://github.com/Homebrew/brew (fetch)
