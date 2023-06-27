@@ -207,6 +207,8 @@ sudo vim /etc/docker/daemon.json
 Tsinghua EDU 
 <https://mirrors.tuna.tsinghua.edu.cn/>
 
+USTC (中国科学技术大学)
+<http://mirrors.ustc.edu.cn/>
 
 AWS 似乎没有提供对外镜像服务，需要自己搭建[在 AWS 中国区方便安全的使用海外公开容器镜像](https://aws.amazon.com/cn/blogs/china/convenient-and-safe-use-of-overseas-public-container-images-in-aws-china/)
 
