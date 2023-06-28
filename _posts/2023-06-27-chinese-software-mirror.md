@@ -9,10 +9,11 @@ subtitle:            >
 lang:                en
 date:                2023-06-27 01:40:43 +0800
 categories:          [java-core]
-tags:                []
+tags:                [docker]
 comments:            true
 excerpt:             >
     TODO
+
 image:               /assets/2023-06-27_chinese-software-mirrors/20230627-ping-google.com.png
 cover:               /assets/2023-06-27_chinese-software-mirrors/20230627-ping-google.com.png
 article_header:
@@ -26,32 +27,12 @@ wechat:              false
 
 ## Introduction
 
-Explain context here to attract people's attention... like:
-- topic: what you want to talk about?
-- audience: who are you targeting?
-- motiviation: why is it interesting for them? Or why is it important to understand this topic?
+This article helps you set up mirrors for your software projects in China. We
+will talk about the different kinds of mirrors, different languages, and more.
+It is essential to run your software in China.
 
-After reading this article, you will understand:
-
-(choose one of the following structures)
-
-dive deep:
-
-* Some prequisites
-* Some general concepts
-* Some specific concepts to dig deeper
-* How to go further from this article
-
-different dimensions (broad):
-
-* section 1
-* section 2
-* section 3
-* How to go further from this article
-
-... then specify some information about the context, such as framework version, language version.
-
-This article is written in Guangzhou, China using China 
+This article is written in Guangzhou, China using [China Mobile
+(中国移动)](https://www.chinamobileltd.com/en/global/home.php).
 
 Now, let's get started!
 
@@ -88,12 +69,16 @@ Status: Downloaded newer image for nginx:latest
 docker.io/library/nginx:latest
 ```
 
-<https://www.cnblogs.com/boonya/p/15954368.html>
+You can also set up the mirrors using Chinese sources. There are multiple
+choices: Aliyun (<https://registry.cn-hangzhou.aliyuncs.com>), Tencent cloud
+(<https://mirror.ccs.tencentyun.com>), Wangyi cloud
+(<https://mirrors.163.com>), etc. If you were using the Docker Desktop, you can
+find the settings in the preferences under "Docker Engine".
 
 ![Settings in Docker Desktop for changing the registry mirrors](/assets/2023-06-27_chinese-software-mirrors/20230627-docker-settings.png)
 
-If you successfully added the registry mirrors to Docker Engine, you should find
-the information below in the docker info:
+Once you successfully added the registry mirrors to Docker Engine, you should
+also find the information using the `docker info` as shown below:
 
 ```
 docker info
@@ -270,4 +255,5 @@ on [Twitter](https://twitter.com/mincong_h) or
 - <https://luanlengli.github.io/2019/12/16/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Azure%E4%B8%AD%E5%9B%BD%E6%8F%90%E4%BE%9B%E7%9A%84Docker%E9%95%9C%E5%83%8F%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1.html>
 - [Homebrew brew update 长时间没反应（或卡在 Updating Homebrew...）](https://blog.csdn.net/zz00008888/article/details/113880633)
 - [DNS 1.1.1.1——不仅仅是速度第一](https://zhuanlan.zhihu.com/p/135319565)
+- [Docker必备六大国内镜像](https://www.cnblogs.com/boonya/p/15954368.html)
 
