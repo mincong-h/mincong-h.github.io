@@ -4,7 +4,7 @@ layout:              post
 type:                classic
 title:               Set Up Chinese Software Mirrors
 subtitle:            >
-    How to download different softwares in China?
+    How to download libraries, containers, or softwares in China?
 
 lang:                en
 date:                2023-06-27 01:40:43 +0800
@@ -21,24 +21,20 @@ article_header:
   theme:             dark
   background_color:  "#203028"
   background_image:
-    gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
+    gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7))"
 wechat:              false
 ---
 
 ## Introduction
 
-This article helps you set up mirrors for your software projects in China. We
-will talk about the different kinds of mirrors, different languages, and more.
-It is essential to run your software in China.
+This article helps you set up mirrors for your software projects in China. There are important network restrictions in China (GFW) which block the access to selected foreign websites and slows down cross-border internet traffic. Therefore, when you want to expand your business to China or simply travel to China, you probably need to set up mirrors for various apsects of your software project, to be compliant and to accelerate the process of your development and operations. Setting up mirrors become an obvious choice: it allows you to work in mainland China without VPN, and the solution will be compliant for the source code hosting and cloud providers in China.
+
+In this article, we are going to discuss the choices of mirrors at different levels: container, programming language, operating system (OS); the different sources of mirrors; the limitations of using mirrors; and some useful websites to go further.
 
 This article is written in Guangzhou, China using [China Mobile
-(中国移动)](https://www.chinamobileltd.com/en/global/home.php).
+(中国移动)](https://www.chinamobileltd.com/en/global/home.php) using an Apple Macbook Pro. So my setup may be different from yours.
 
 Now, let's get started!
-
-## Motivation
-
-- China Great Firewall
 
 <!--
 ## DNS
@@ -69,22 +65,35 @@ Status: Downloaded newer image for nginx:latest
 docker.io/library/nginx:latest
 ```
 
-You can also set up the mirrors using Chinese sources. There are multiple
-choices: Aliyun (<https://registry.cn-hangzhou.aliyuncs.com>), Tencent cloud
-(<https://mirror.ccs.tencentyun.com>), Wangyi cloud
-(<https://mirrors.163.com>), etc. If you were using the Docker Desktop, you can
-find the settings in the preferences under "Docker Engine".
+You can also set up the mirrors using Chinese sources. There are multiple choices: Aliyun 阿里云 (<https://registry.cn-hangzhou.aliyuncs.com>), Tencent cloud 腾讯云 (<https://mirror.ccs.tencentyun.com>), Wangyi cloud 网易云 (<https://mirrors.163.com>), Azure cloud (<https://dockerhub.azk8s.cn>), etc. Note that ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure ([link](https://github.com/Azure/container-service-for-azure-china/issues/60)). If you were using the Docker Desktop, you can find the settings in the preferences under "Docker Engine".
 
 ![Settings in Docker Desktop for changing the registry mirrors](/assets/2023-06-27_chinese-software-mirrors/20230627-docker-settings.png)
 
 Once you successfully added the registry mirrors to Docker Engine, you should
-also find the information using the `docker info` as shown below:
+also find the mirror using the `docker info` as shown below:
 
 ```
 docker info
 [...]
  Registry Mirrors:
   https://registry.cn-hangzhou.aliyuncs.com/
+```
+
+In Linux, you may need to modify the settings under path `/etc/docker/daemon.json` (Docker version ≥ 1.10) according to [this article](https://www.cnblogs.com/boonya/p/15954368.html):
+
+```json
+{
+  "registry-mirrors": [
+    "https://registry.cn-hangzhou.aliyuncs.com/"
+  ]
+}
+```
+
+and restart the service:
+
+```
+systemctl daemon-reload
+systemctl restart docker
 ```
 
 ## Python
@@ -185,15 +194,6 @@ docker国内镜像源Azure 中国(最快镜像源)
 sudo vim /etc/docker/daemon.json
 ```
 
-
-```json
-{
-  "registry-mirrors": [
-    "https://dockerhub.azk8s.cn",
-    "http://hub-mirror.c.163.com"
-  ]
-}
-```
 
 
 * Azure的`*.azk8s.cn` 镜像源在2020年4月3日凌晨开始，只允许【Azure中国IP】访问，其他公网IP访问azk8s.cn都会返回403!
