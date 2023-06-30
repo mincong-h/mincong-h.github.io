@@ -14,20 +14,20 @@ comments:            true
 excerpt:             >
     TODO
 
-image:               /assets/2023-06-27_chinese-software-mirrors/20230627-ping-google.com.png
-cover:               /assets/2023-06-27_chinese-software-mirrors/20230627-ping-google.com.png
+image:               /assets/2023-06-27_chinese-software-mirrors/jamie-street-zhiQORykuwQ-unsplash.jpg
+cover:               /assets/2023-06-27_chinese-software-mirrors/jamie-street-zhiQORykuwQ-unsplash.jpg
 article_header:
   type:              overlay
   theme:             dark
   background_color:  "#203028"
   background_image:
-    gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7))"
+    gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 wechat:              false
 ---
 
 ## Introduction
 
-This article helps you set up mirrors for your software projects in China. There are important network restrictions in China (GFW) which block the access to selected foreign websites and slows down cross-border internet traffic. Therefore, when you want to expand your business to China or simply travel to China, you probably need to set up mirrors for various apsects of your software project, to be compliant and to accelerate the process of your development and operations. Setting up mirrors become an obvious choice: it allows you to work in mainland China without VPN, and the solution will be compliant for the source code hosting and cloud providers in China.
+This article helps you set up mirrors for your software projects in China. There are important network restrictions in China (GFW) which block the access to selected foreign websites and slows down cross-border internet traffic. Therefore, when you want to expand your business to China or simply travel to China, you will need to find solutions for various apsects of your software project, to be compliant and to accelerate the process of your development and operations. Setting up mirrors is an obvious choice: it allows you to work in mainland China without VPN, and the solution will work for any server hosted in China, either in the CI or in your production in any Chinese cloud providers.
 
 In this article, we are going to discuss the choices of mirrors at different levels: container, programming language, operating system (OS); the different sources of mirrors; the limitations of using mirrors; and some useful websites to go further.
 
@@ -47,7 +47,7 @@ Check your DNS before going to China. Don't use
 
 ## Docker
 
-Using the default Docker registry is a bit slow, but it is working:
+Docker can be used directly in China with the default registry (<https://docker.io>). It is a bit slow, but it is working:
 
 ```
 ➜  docker pull nginx
@@ -65,12 +65,14 @@ Status: Downloaded newer image for nginx:latest
 docker.io/library/nginx:latest
 ```
 
-You can also set up the mirrors using Chinese sources. There are multiple choices: Aliyun 阿里云 (<https://registry.cn-hangzhou.aliyuncs.com>), Tencent cloud 腾讯云 (<https://mirror.ccs.tencentyun.com>), Wangyi cloud 网易云 (<https://mirrors.163.com>), Azure cloud (<https://dockerhub.azk8s.cn>), etc. Note that ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure ([link](https://github.com/Azure/container-service-for-azure-china/issues/60)). If you were using the Docker Desktop, you can find the settings in the preferences under "Docker Engine".
+You can also set up the mirrors using Chinese sources. There are multiple choices: Aliyun 阿里云 (<https://registry.cn-hangzhou.aliyuncs.com>), Tencent cloud 腾讯云 (<https://mirror.ccs.tencentyun.com>), Wangyi cloud 网易云 (<https://mirrors.163.com>), Azure cloud (<https://dockerhub.azk8s.cn>), etc. Note that ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure ([link](https://github.com/Azure/container-service-for-azure-china/issues/60)).
+
+If you were using the Docker Desktop, you can find the settings in the preferences under "Docker Engine":
 
 ![Settings in Docker Desktop for changing the registry mirrors](/assets/2023-06-27_chinese-software-mirrors/20230627-docker-settings.png)
 
-Once you successfully added the registry mirrors to Docker Engine, you should
-also find the mirror using the `docker info` as shown below:
+Once you successfully added the registry mirrors to the Docker Engine, you should
+also find the mirror using the command `docker info` as shown below:
 
 ```
 docker info
@@ -98,10 +100,59 @@ systemctl restart docker
 
 ## Python
 
-Python works without any problem. You can install from the default Python
-Package Index (<https://pypi.org/>) without changing.
+Python works without any problem. You can install from the default Python Package Index (<https://pypi.org>) without changing. For example, downloading the `black` formatter took me 8.46 seconds, which is an acceptable speed.
+
+```
+(venv) ➜  ~ time brew install black
+==> Downloading https://formulae.brew.sh/api/cask.jws.json
+######################################################################## 100.0%
+==> Fetching dependencies for black: openssl@3
+==> Fetching openssl@3
+==> Downloading https://ghcr.io/v2/homebrew/core/openssl/3/manifests/3.1.1_1
+######################################################################## 100.0%
+...
+==> Summary
+🍺  /usr/local/Cellar/black/23.3.0: 1,124 files, 13.9MB
+==> Running `brew cleanup black`...
+Disable this behaviour by setting HOMEBREW_NO_INSTALL_CLEANUP.
+Hide these hints with HOMEBREW_NO_ENV_HINTS (see `man brew`).
+==> Caveats
+==> black
+To start black now and restart at login:
+  brew services start black
+brew install black  8.46s user 7.04s system 33% cpu 46.080 total
+```
+
+If you encountered any performance issues, you can also consider switching the package index to a Chinese index. There are multiple ones available coming from different universities or cloud providers, such as [Aliyun PyPI Mirror (阿里云PyPI镜像)](https://developer.aliyun.com/mirror/pypi), [Tsinghua PyPI Mirror (清华大学PyPI镜像)](https://mirror.tuna.tsinghua.edu.cn/help/pypi/), [Cernet PyPI Mirror (校园网PyPI镜像)](https://mirrors.cernet.edu.cn/list/pypi), etc.
+
+According to [Aliyun's documentation](https://developer.aliyun.com/mirror/pypi), you can set up PyPI by changing the setting as shown below:
+
+Find out the file:
+
+```
+~/.pip/pip.conf
+```
+
+Add or modify the content below:
+
+```toml
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple/
+
+[install]
+trusted-host=mirrors.aliyun.com
+```
+
+This can also be done using the `pip` command:
+
+```bash
+pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+pip config set install.trusted-host mirrors.aliyun.com
+```
 
 ## Brew
+
+If you use MacOS, you are probably using `brew` as well. If you update the brew index, you will find out that it's a bit slow:
 
 ```
 brew update --verbose --debug
@@ -168,11 +219,42 @@ round-trip min/avg/max/stddev = 229.434/263.883/390.340/53.698 ms
 
 You can replace them by setting the remote to a Chinese mirror:
 
-```
-git remote set-url origin https://mirrors.aliyun.com/Homebrew/brew.git
+```bash
+# homebrew.git
+git -C "$(brew --repo)" remote set-url origin https://mirrors.aliyun.com/Homebrew/brew.git
+
+# homebrew-core
+git -C "$(brew --repo)/Library/Taps/homebrew/homebrew-core" remote set-url origin https://mirrors.aliyun.com/homebrew/homebrew-core.git
+
+brew update
+
+# bash
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles' >> ~/.bash_profile
+source ~/.bash_profile
 ```
 
+Reset
+
+```bash
+# reset homebrew
+git -C "$(brew --repo)" remote set-url origin https://github.com/Homebrew/brew.git
+
+# reset homebrew-core
+git -C "$(brew --repo)/Library/Taps/homebrew/homebrew-core" remote set-url origin https://github.com/Homebrew/homebrew-core.git
+```
+
+and then remove `HOMEBREW_BOTTLE_DOMAIN` from bash profile or `.zshrc` and `source` it.
+
 ## Ruby
+
+When you use Ruby, you need to change the mirror in your `Gemfile` or provide the source via the `bundle` command. By default, Ruby use <https://rubygems.org>, which is not accessible in mainland China.
+
+> Could not fetch specs from https://rubygems.org/
+
+
+```diff
+
+```
 
 ```
 ./docker-serve.sh
@@ -223,6 +305,12 @@ AWS 似乎没有提供对外镜像服务，需要自己搭建[在 AWS 中国区�
 
 ## Problem
 
+language
+
+google translate
+
+cleanup when leaving China
+
 ### Missing Package
 
 Some packages may not be available.
@@ -256,4 +344,5 @@ on [Twitter](https://twitter.com/mincong_h) or
 - [Homebrew brew update 长时间没反应（或卡在 Updating Homebrew...）](https://blog.csdn.net/zz00008888/article/details/113880633)
 - [DNS 1.1.1.1——不仅仅是速度第一](https://zhuanlan.zhihu.com/p/135319565)
 - [Docker必备六大国内镜像](https://www.cnblogs.com/boonya/p/15954368.html)
+- [Homebrew镜像](https://developer.aliyun.com/mirror/homebrew)
 
