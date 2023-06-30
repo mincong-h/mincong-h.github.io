@@ -13,7 +13,7 @@ PATH
       jemoji (~> 0.8)
 
 GEM
-  remote: https://mirrors.aliyun.com/rubygems/
+  remote: https://rubygems.org/
   specs:
     activesupport (7.0.4.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
