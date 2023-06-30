@@ -1,5 +1,5 @@
 # Use the official source outside of China:
-source "https://rubygems.org"
+# source "https://rubygems.org"
 
 # Use a mirror in China:
 # source "https://gems.ruby-china.com/"                    # Ruby China
