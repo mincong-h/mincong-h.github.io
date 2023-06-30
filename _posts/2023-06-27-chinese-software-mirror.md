@@ -281,7 +281,7 @@ You can also modify the source in the `Gemfile`
 + source "https://mirrors.aliyun.com/rubygems/"
 ```
 
-There are at least 3 pupoluar choices: Ruby China Gems (<https://gems.ruby-china.com/>), Aliyun Gems (<https://mirrors.aliyun.com/rubygems/>) and Tsinghua Gems (<https://mirrors.tuna.tsinghua.edu.cn/rubygems/>).
+There are at least 3 pupoluar choices: Ruby China Gems (<https://gems.ruby-china.com>), Aliyun Gems (<https://mirrors.aliyun.com/rubygems>) and Tsinghua Gems (<https://mirrors.tuna.tsinghua.edu.cn/rubygems>).
 
 ## Mirror Choices
 
@@ -364,4 +364,4 @@ on [Twitter](https://twitter.com/mincong_h) or
 - [DNS 1.1.1.1——不仅仅是速度第一](https://zhuanlan.zhihu.com/p/135319565)
 - [Docker必备六大国内镜像](https://www.cnblogs.com/boonya/p/15954368.html)
 - [Homebrew镜像](https://developer.aliyun.com/mirror/homebrew)
-
+- [Ruby Gem切换国内源](https://blog.csdn.net/a2824256/article/details/107916014)
