@@ -9,10 +9,10 @@ subtitle:            >
 lang:                en
 date:                2023-06-27 01:40:43 +0800
 categories:          [java-core]
-tags:                [docker]
+tags:                [docker, mirror, brew, python, ruby]
 comments:            true
 excerpt:             >
-    TODO
+    This article explains how to download libraries, containers and other types of softwares in China by setting mirrors. It also provides candidates and comparison to help you choose the right one.
 
 image:               /assets/2023-06-27_chinese-software-mirrors/jamie-street-zhiQORykuwQ-unsplash.jpg
 cover:               /assets/2023-06-27_chinese-software-mirrors/jamie-street-zhiQORykuwQ-unsplash.jpg
@@ -158,8 +158,7 @@ If you use MacOS, you are probably using `brew` as well. If you update the brew 
 brew update --verbose --debug
 ```
 
-which is quite slow understand the following section (it tooks seconds to
-minutes):
+For example, it it tooks seconds to minutes in the block below:
 
 ```
 + git fetch --tags --force origin refs/heads/master:refs/remotes/origin/master
@@ -185,16 +184,6 @@ Fetching /usr/local/Homebrew...
 
 This is because brew uses GitHub by default and the access to GitHub is slow in
 China:
-
-```
-host github.com
-github.com has address 192.30.255.113
-github.com mail is handled by 1 aspmx.l.google.com.
-github.com mail is handled by 10 alt3.aspmx.l.google.com.
-github.com mail is handled by 10 alt4.aspmx.l.google.com.
-github.com mail is handled by 5 alt1.aspmx.l.google.com.
-github.com mail is handled by 5 alt2.aspmx.l.google.com.
-```
 
 ```
 ping github.com
@@ -233,7 +222,7 @@ echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew
 source ~/.bash_profile
 ```
 
-Reset
+Once you quit China, you can reset it using the commands below:
 
 ```bash
 # reset homebrew
@@ -251,7 +240,7 @@ When you use Ruby, you need to use a mirror because by default, Ruby use <https:
 
 > Could not fetch specs from https://rubygems.org/
 
-The changes can be made at multiple level: via the `bundle` command line, in the `gem` sources, and the `Gemfile`:
+The changes can be made at multiple levels: via the `bundle` command line, in the `gem` sources, and the `Gemfile`:
 
 In the bundler, replace all the calls to <https://rubygems.org> to a mirror, such as <https://mirrors.aliyun.com/rubygems/>
 
@@ -285,83 +274,66 @@ There are at least 3 pupoluar choices: Ruby China Gems (<https://gems.ruby-china
 
 ## Mirror Choices
 
-<https://developer.aliyun.com/mirror/>
+There are multiple choices of mirror in China:
 
+* **Aliyun Mirror (阿里巴巴开源镜像站)** <https://developer.aliyun.com/mirror/>, which is a multipurpose mirror. It can be used for different categories: container, framework/tool, operating system (OS), programming language, etc. Founded in 2009, Alibaba Cloud is the world's leading cloud computing and artificial intelligence technology company, serving enterprises, developers, and government agencies in more than 200 countries and regions.
+* **Azure Container Registry** <https://dockerhub.azk8s.cn>. Azure cloud service is a flexible enterprise-level public cloud platform, providing database, cloud service, cloud storage, artificial intelligence Internet, CDN and other efficient, stable and scalable cloud services. _Note that ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure  ([link](https://github.com/Azure/container-service-for-azure-china/issues/60))._
+* **163 Mirror (网易镜像)** <https://mirrors.163.com> 163 Wangyi is a leading Internet technology company in China, providing users with free mailboxes, games, search engine services, more than 30 content channels such as news, entertainment, sports, and blogs, videos, forums and other interactive exchanges.
+* **Huawei Mirror (华为镜像)** <https://mirrors.huaweicloud.com/home> Huawei Cloud provides stable, reliable, secure, reliable, and sustainable cloud services, and is committed to empower the cloud and building a cloud foundation for the intelligent world. Help enterprises reduce costs and increase efficiency, the common choice of 3 million customers around the world.
+* **Tsinghua EDU Mirror (清华大学镜像站)** <https://mirrors.tuna.tsinghua.edu.cn>, which is a multipurpose mirror, maintained by the Tshinghua University. Tsinghua University is a famous institution of higher education in China, located in the scenic Tsinghua Park in the northwestern suburbs of Beijing, and is an important base for China's high-level talent training and scientific and technological research.
+* **USTC (中国科学技术大学镜像站)** <http://mirrors.ustc.edu.cn/>, which is a multipurpose mirror, maintained by the University of Science and Technology of China (USTC). The University of Science and Technology of China is a science and engineering university affiliated to the Chinese Academy of Sciences that focuses on cutting-edge science and high technology, and combines medicine, characteristic management and humanities.
+* **~~Amazon Web Services~~** :warning: It seems that AWS does not provide builtin solution for using container image registry for Chinese users. You need to build a custom solution yourself, here is an article written in Chinese [在 AWS 中国区方便安全的使用海外公开容器镜像](https://aws.amazon.com/cn/blogs/china/convenient-and-safe-use-of-overseas-public-container-images-in-aws-china/) (Convenient and safe use of overseas' public container images in AWS China). This solution is not suitable for you if you were a simple user who wants to focus on using existing images.
 
-docker国内镜像源Azure 中国(最快镜像源)
+There are probably other mirrors as well. If you found other sources, please leave a comment so that I can update the post.
 
+## Pros and Cons
 
-```
-sudo vim /etc/docker/daemon.json
-```
+What are the pros and cons of using a mirror?
 
+Pros:
 
+* **Speed:** a mirror is usually faster than the official sources since it is hosted in China.
+* **Security:** some mirrors, e.g. Aliyun, filter packages with security threats.
+* **Compliance:** you are not using a VPN to access the source code, so you are not taking the risk to access the oversea's internet.
 
-* Azure的`*.azk8s.cn` 镜像源在2020年4月3日凌晨开始，只允许【Azure中国IP】访问，其他公网IP访问azk8s.cn都会返回403!
-  项目原文如下 ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure.
-* 相关issue  <https://github.com/Azure/container-service-for-azure-china/issues/60>
+Cons:
 
+* **Pricing:** some mirrors cannot be used for free. They are paid and reserved for certain users, e.g. Azure Container Registry is reserved for Azure users.
+* **Delay:** mirrors can have delay on replicating an image from the official source.
+* **Missing resources:** some packages or endpoints of the source are unavailable due to various reasons (legal compliance, oudated versions, lack of implementation, ...)
+* **Coverage** of the mirrors: some websites are multipurposes while others focus on a certain types of mirrors, e.g. container, programming language, etc. Therefore, it may not cover all your use cases.
+* **Language:** some websites are only written in Chinese. So they are not very user-friendly for non-Chinese speakers. Also, you cannot use Google Translate to help you anymore since it's unavailable in China. You can use [Bing Translator](https://cn.bing.com/translator) or [DeepL Translator](https://www.deepl.com/translator) to help you.
+* **Cleanup:** you need to reset all the configuration when you leave China... If you still remembered what you have configured :)
+* **Security:** I am not 100% sure that the packages available in the mirrors have exactly the same content as those in the official source.
+* **Time-consuming:** it is very time consuming to set up the mirrors for many reasons: some tutorials are outdated, some tutorials are written in Chinese, the Google Search is not available in China, each tool/framework has its own way of configuration, and each attempt needs to be timed out to fail, etc. Therefore, it can take you a lot of time to tune all parameters.
 
-Tsinghua EDU 
-<https://mirrors.tuna.tsinghua.edu.cn/>
+An alternative is to use VPN in China so that you can access to the oversea internet directly. However, you need to understand that using VPN is not a compliant choice and it is on your risk. According to [lawyer Kai Deng 邓凯](https://zhuanlan.zhihu.com/p/640173283):
 
-USTC (中国科学技术大学)
-<http://mirrors.ustc.edu.cn/>
-
-AWS 似乎没有提供对外镜像服务，需要自己搭建[在 AWS 中国区方便安全的使用海外公开容器镜像](https://aws.amazon.com/cn/blogs/china/convenient-and-safe-use-of-overseas-public-container-images-in-aws-china/)
-
-163 网易镜像
-<https://mirrors.163.com/>
-
-华为镜像
-<https://mirrors.huaweicloud.com/home>
-
-## Feature
-
-公网
-内网
-删除包列表
-
-## Problem
-
-language
-
-google translate
-
-cleanup when leaving China
-
-### Missing Package
-
-Some packages may not be available.
-
-```
-Retrying fetcher due to error (2/4): Bundler::HTTPError Could not fetch specs from https://mirrors.aliyun.com/rubygems/
-Gem::RemoteFetcher::UnknownHostError: timed out (https://mirrors.aliyun.com/rubygems/specs.4.8.gz)
-/usr/local/lib/ruby/site_ruby/2.6.0/rubygems/remote_fetcher.rb:277:in `rescue in fetch_path'
-  /usr/local/lib/ruby/site_ruby/2.6.0/rubygems/remote_fetcher.rb:254:in `fetch_path'
-  /usr/local/lib/ruby/gems/2.6.0/gems/bundler-2.0.2/lib/bundler/rubygems_integration.rb:758:in `fetch_specs'
-  /usr/local/lib/ruby/gems/2.6.0/gems/bundler-2.0.2/lib/bundler/rubygems_integration.rb:768:in `fetch_all_remote_specs'
-  /usr/local/lib/ruby/gems/2.6.0/gems/bundler-2.0.2/lib/bundler/fetcher/index.rb:10:in `specs'
-```
+> 《中华人民共和国计算机信息网络国际联网管理暂行规定》第六条规定：计算机信息网络直接进行国际联网，必须使用邮电部国家公用电信网提供的国际出入口信道。任何单位和个人不得自行建立或者使用其他信道进行国际联网；
+> 
+> The People's Republic of China Computer Information Network International Networking Management Interim Provisions" Article VI: Computer information networks directly for international networking, must use the Ministry of Posts and Telecommunications national public telecommunications network to provide international access channels. Any unit and individual may not establish or use other channels for international networking;
+>
+> 第十四条规定：违反本规定第六条、第八条和第十条的规定的，由公安机关责令停止联网，给予警告，可以并处15000元以下的罚款；有违法所得的，没收违法所得。
+>
+> Article 14: Violation of the provisions of Article VI, Article VIII and Article X, the public security organs shall order the cessation of networking, give a warning, and may impose a fine of up to 15,000 yuan; illegal income, confiscate the illegal income.
 
 ## Going Further
 
 How to go further from here?
 
+* Visit <https://developer.aliyun.com/mirror/> to find documentation for the detailed set up for each mirror (container, tool, OS, programming languages, ...)
+
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
-Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
-on [Twitter](https://twitter.com/mincong_h) or
-[GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
+In this article, we talked about how to set up mirrors for different softwares in China. We took Docker, Python, Homebrew, and Ruby as examples to dig into details. We also discussed various choices coming different cloud providers and universities, and compared the pros and cons of using mirrors. Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me on [Twitter](https://twitter.com/mincong_h) or [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
 
-- <https://www.cnblogs.com/aric2016/p/12423226.html>
-- <https://developer.aliyun.com/mirror/pypi>
-- <https://luanlengli.github.io/2019/12/16/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Azure%E4%B8%AD%E5%9B%BD%E6%8F%90%E4%BE%9B%E7%9A%84Docker%E9%95%9C%E5%83%8F%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1.html>
+- [docker国内镜像源Azure 中国(最快镜像源)](https://www.cnblogs.com/aric2016/p/12423226.html)
+- [PyPI 镜像](https://developer.aliyun.com/mirror/pypi)
+- [如何使用Azure中国提供的容器镜像代理服务【2020年4月3日开始仅限于Azure中国IP使用，不再对外提供服务】](https://luanlengli.github.io/2019/12/16/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8Azure%E4%B8%AD%E5%9B%BD%E6%8F%90%E4%BE%9B%E7%9A%84Docker%E9%95%9C%E5%83%8F%E4%BB%A3%E7%90%86%E6%9C%8D%E5%8A%A1.html)
 - [Homebrew brew update 长时间没反应（或卡在 Updating Homebrew...）](https://blog.csdn.net/zz00008888/article/details/113880633)
-- [DNS 1.1.1.1——不仅仅是速度第一](https://zhuanlan.zhihu.com/p/135319565)
 - [Docker必备六大国内镜像](https://www.cnblogs.com/boonya/p/15954368.html)
 - [Homebrew镜像](https://developer.aliyun.com/mirror/homebrew)
 - [Ruby Gem切换国内源](https://blog.csdn.net/a2824256/article/details/107916014)
+- [使用VPN翻墙违法吗？](https://zhuanlan.zhihu.com/p/640173283)
