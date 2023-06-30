@@ -247,22 +247,41 @@ and then remove `HOMEBREW_BOTTLE_DOMAIN` from bash profile or `.zshrc` and `sour
 
 ## Ruby
 
-When you use Ruby, you need to change the mirror in your `Gemfile` or provide the source via the `bundle` command. By default, Ruby use <https://rubygems.org>, which is not accessible in mainland China.
+When you use Ruby, you need to use a mirror because by default, Ruby use <https://rubygems.org>, which is not accessible in mainland China.
 
 > Could not fetch specs from https://rubygems.org/
 
+The changes can be made at multiple level: via the `bundle` command line, in the `gem` sources, and the `Gemfile`:
+
+In the bundler, replace all the calls to <https://rubygems.org> to a mirror, such as <https://mirrors.aliyun.com/rubygems/>
+
+```
+bundle config mirror.https://rubygems.org https://mirrors.aliyun.com/rubygems/
+```
+
+In the gem command line, change the gem sources:
+
+```
+gem sources -r https://rubygems.org -a https://mirrors.aliyun.com/rubygems/
+```
+
+and list the gem sources again to ensure that the changes have been taken into account:
+
+```bash
+gem sources
+# *** CURRENT SOURCES ***
+#
+# https://mirrors.aliyun.com/rubygems/
+```
+
+You can also modify the source in the `Gemfile`
 
 ```diff
-
+- source "https://rubygems.org"
++ source "https://mirrors.aliyun.com/rubygems/"
 ```
 
-```
-./docker-serve.sh
-version: v0-0f7edc15
-ruby 2.6.3p62 (2019-04-16 revision 67580) [x86_64-linux-musl]
-Could not find concurrent-ruby-1.2.0 in any of the sources
-Run `bundle install` to install missing gems.
-```
+There are at least 3 pupoluar choices: Ruby China Gems (<https://gems.ruby-china.com/>), Aliyun Gems (<https://mirrors.aliyun.com/rubygems/>) and Tsinghua Gems (<https://mirrors.tuna.tsinghua.edu.cn/rubygems/>).
 
 ## Mirror Choices
 
