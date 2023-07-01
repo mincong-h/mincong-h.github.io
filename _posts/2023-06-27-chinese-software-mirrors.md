@@ -65,7 +65,7 @@ Status: Downloaded newer image for nginx:latest
 docker.io/library/nginx:latest
 ```
 
-You can also set up the mirrors using Chinese sources. There are multiple choices: Aliyun 阿里云 (<https://registry.cn-hangzhou.aliyuncs.com>), Tencent cloud 腾讯云 (<https://mirror.ccs.tencentyun.com>), Wangyi cloud 网易云 (<https://mirrors.163.com>), Azure cloud (<https://dockerhub.azk8s.cn>), etc. Note that ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure ([link](https://github.com/Azure/container-service-for-azure-china/issues/60)).
+You can also set up the mirrors using Chinese sources. There are multiple choices: Aliyun 阿里云 (<https://registry.cn-hangzhou.aliyuncs.com>), Tencent cloud 腾讯云 (<https://mirrors.tencent.com>), Wangyi cloud 网易云 (<https://mirrors.163.com>), Azure cloud (<https://dockerhub.azk8s.cn>), etc. Note that ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure ([link](https://github.com/Azure/container-service-for-azure-china/issues/60)).
 
 If you were using the Docker Desktop, you can find the settings in the preferences under "Docker Engine":
 
@@ -100,7 +100,7 @@ systemctl restart docker
 
 ## Python
 
-Python works without any problem. You can install from the default Python Package Index (<https://pypi.org>) without changing. For example, downloading the `black` formatter took me 8.46 seconds, which is an acceptable speed.
+Python works without any problem. You can install from the default Python Package Index (<https://pypi.org>) without changing anything. For example, downloading the `black` formatter took me 8.46 seconds, which is an acceptable speed.
 
 ```
 (venv) ➜  ~ time brew install black
@@ -236,7 +236,7 @@ and then remove `HOMEBREW_BOTTLE_DOMAIN` from bash profile or `.zshrc` and `sour
 
 ## Ruby
 
-When you use Ruby, you need to use a mirror because by default, Ruby use <https://rubygems.org>, which is not accessible in mainland China.
+When you use Ruby, you need to use a mirror because Ruby uses <https://rubygems.org> by default, which is not accessible in mainland China.
 
 > Could not fetch specs from https://rubygems.org/
 
@@ -274,9 +274,10 @@ There are at least 3 pupoluar choices: Ruby China Gems (<https://gems.ruby-china
 
 ## Mirror Choices
 
-There are multiple choices of mirror in China:
+In the previous sections, we discussed examples from Docker, Python, Brew, and Ruby. But we didn't mention the possible choices for mirrors. There are multiple choices of mirror in China:
 
 * **Aliyun Mirror (阿里巴巴开源镜像站)** <https://developer.aliyun.com/mirror/>, which is a multipurpose mirror. It can be used for different categories: container, framework/tool, operating system (OS), programming language, etc. Founded in 2009, Alibaba Cloud is the world's leading cloud computing and artificial intelligence technology company, serving enterprises, developers, and government agencies in more than 200 countries and regions.
+* **Tencent Mirror (腾讯云)** <https://mirrors.tencent.com/> which is a multipurpose mirror. Tencent Cloud provides secure and stable cloud computing services for millions of enterprises and developers, covering a full range of cloud services and solutions for various industries, including cloud servers, cloud database, cloud storage, video and CDN, domain name registration, etc.
 * **Azure Container Registry** <https://dockerhub.azk8s.cn>. Azure cloud service is a flexible enterprise-level public cloud platform, providing database, cloud service, cloud storage, artificial intelligence Internet, CDN and other efficient, stable and scalable cloud services. _Note that ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure  ([link](https://github.com/Azure/container-service-for-azure-china/issues/60))._
 * **163 Mirror (网易镜像)** <https://mirrors.163.com> 163 Wangyi is a leading Internet technology company in China, providing users with free mailboxes, games, search engine services, more than 30 content channels such as news, entertainment, sports, and blogs, videos, forums and other interactive exchanges.
 * **Huawei Mirror (华为镜像)** <https://mirrors.huaweicloud.com/home> Huawei Cloud provides stable, reliable, secure, reliable, and sustainable cloud services, and is committed to empower the cloud and building a cloud foundation for the intelligent world. Help enterprises reduce costs and increase efficiency, the common choice of 3 million customers around the world.
@@ -301,13 +302,13 @@ Cons:
 * **Pricing:** some mirrors cannot be used for free. They are paid and reserved for certain users, e.g. Azure Container Registry is reserved for Azure users.
 * **Delay:** mirrors can have delay on replicating an image from the official source.
 * **Missing resources:** some packages or endpoints of the source are unavailable due to various reasons (legal compliance, oudated versions, lack of implementation, ...)
-* **Coverage** of the mirrors: some websites are multipurposes while others focus on a certain types of mirrors, e.g. container, programming language, etc. Therefore, it may not cover all your use cases.
+* **Coverage** of the mirrors: some websites are multipurposes while others focus on a certain types of mirrors, e.g. container, programming language. Therefore, it may not cover all your use cases.
 * **Language:** some websites are only written in Chinese. So they are not very user-friendly for non-Chinese speakers. Also, you cannot use Google Translate to help you anymore since it's unavailable in China. You can use [Bing Translator](https://cn.bing.com/translator) or [DeepL Translator](https://www.deepl.com/translator) to help you.
 * **Cleanup:** you need to reset all the configuration when you leave China... If you still remembered what you have configured :)
 * **Security:** I am not 100% sure that the packages available in the mirrors have exactly the same content as those in the official source.
-* **Time-consuming:** it is very time consuming to set up the mirrors for many reasons: some tutorials are outdated, some tutorials are written in Chinese, the Google Search is not available in China, each tool/framework has its own way of configuration, and each attempt needs to be timed out to fail, etc. Therefore, it can take you a lot of time to tune all parameters.
+* **Time-consuming:** it is very time consuming to set up the mirrors for many reasons: some tutorials are outdated, some tutorials are written in Chinese, the Google Search is not available in China, each tool/framework has its own way of configuration, and each attempt needs to be timed out to fail, etc. Therefore, it can take you a lot of time to tune all parameters and figure out what you want.
 
-An alternative is to use VPN in China so that you can access to the oversea internet directly. However, you need to understand that using VPN is not a compliant choice and it is on your risk. According to [lawyer Kai Deng 邓凯](https://zhuanlan.zhihu.com/p/640173283):
+An alternative is to use VPN in China so that you can access to the global internet directly. However, you need to understand that using VPN is not a compliant choice and it is on your risk. According to [lawyer Kai Deng 邓凯](https://zhuanlan.zhihu.com/p/640173283):
 
 > 《中华人民共和国计算机信息网络国际联网管理暂行规定》第六条规定：计算机信息网络直接进行国际联网，必须使用邮电部国家公用电信网提供的国际出入口信道。任何单位和个人不得自行建立或者使用其他信道进行国际联网；
 > 
@@ -321,7 +322,7 @@ An alternative is to use VPN in China so that you can access to the oversea inte
 
 How to go further from here?
 
-* Visit <https://developer.aliyun.com/mirror/> to find documentation for the detailed set up for each mirror (container, tool, OS, programming languages, ...)
+* Visit <https://developer.aliyun.com/mirror/> to find documentation for the detailed set up for each mirror (container, tool, OS, programming languages, ...). Even though the documentation is provided by Aliyun, the configuration is mirror-agnostic. You can still apply them to the mirror that you've chosen.
 
 ## Conclusion
 
