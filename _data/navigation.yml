@@ -95,6 +95,8 @@ en_categories:
     children:
       - title:  Build Tools
         url:    /en/categories/build/
+      - title:  Chinese Cloud
+        url:    /en/categories/chinese-cloud/
       - title:  Elasticsearch
         url:    /en/categories/elasticsearch/
       - title:  Git
@@ -123,6 +125,8 @@ cn_categories:
     children:
       - title:  构建工具
         url:    /cn/categories/build/
+      - title:  中国云服务
+        url:    /cn/categories/chinese-cloud/
       - title:  Elasticsearch
         url:    /cn/categories/elasticsearch/
       - title:  Git
