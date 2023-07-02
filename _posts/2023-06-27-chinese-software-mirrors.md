@@ -8,7 +8,7 @@ subtitle:            >
 
 lang:                en
 date:                2023-06-27 01:40:43 +0800
-categories:          [java-core]
+categories:          [chinese-cloud]
 tags:                [docker, mirror, brew, python, ruby]
 comments:            true
 excerpt:             >

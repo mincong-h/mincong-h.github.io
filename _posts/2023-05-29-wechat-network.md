@@ -8,7 +8,7 @@ subtitle:            >
 
 lang:                en
 date:                2023-05-29 22:04:53 +0200
-categories:          []
+categories:          [chinese-cloud]
 tags:                [network]
 comments:            true
 excerpt:             >
