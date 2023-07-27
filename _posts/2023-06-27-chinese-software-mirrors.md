@@ -4,7 +4,7 @@ layout:              post
 type:                classic
 title:               Set Up Chinese Software Mirrors
 subtitle:            >
-    How to download libraries, containers, or softwares in China?
+    How to download libraries, containers, or software in China?
 
 lang:                en
 date:                2023-06-27 01:40:43 +0800
@@ -12,7 +12,7 @@ categories:          [chinese-cloud]
 tags:                [docker, mirror, brew, python, ruby]
 comments:            true
 excerpt:             >
-    This article explains how to download libraries, containers and other types of softwares in China by setting mirrors. It also provides candidates and comparison to help you choose the right one.
+    This article explains how to download libraries, containers, and other types of software in China by setting mirrors. It also provides candidates and comparisons to help you choose the right one.
 
 image:               /assets/2023-06-27_chinese-software-mirrors/jamie-street-zhiQORykuwQ-unsplash.jpg
 cover:               /assets/2023-06-27_chinese-software-mirrors/jamie-street-zhiQORykuwQ-unsplash.jpg
@@ -27,7 +27,7 @@ wechat:              false
 
 ## Introduction
 
-This article helps you set up mirrors for your software projects in China. There are important network restrictions in China (GFW) which block the access to selected foreign websites and slows down cross-border internet traffic. Therefore, when you want to expand your business to China or simply travel to China, you will need to find solutions for various apsects of your software project, to be compliant and to accelerate the process of your development and operations. Setting up mirrors is an obvious choice: it allows you to work in mainland China without VPN, and the solution will work for any server hosted in China, either in the CI or in your production in any Chinese cloud providers.
+This article helps you set up mirrors for your software projects in China. There are important network restrictions in China (GFW) that block access to selected foreign websites and slow down cross-border internet traffic. Therefore, when you want to expand your business to China or simply travel to China, you will need to find solutions for various aspects of your software project, to be compliant and accelerate the process of your development and operations. Setting up mirrors is an obvious choice: it allows you to work in mainland China without VPN, and the solution will work for any server hosted in China, either in the CI or in your production in any Chinese cloud provider.
 
 In this article, we are going to discuss the choices of mirrors at different levels: container, programming language, operating system (OS); the different sources of mirrors; the limitations of using mirrors; and some useful websites to go further.
 
@@ -100,7 +100,7 @@ systemctl restart docker
 
 ## Python
 
-Python works without any problem. You can install from the default Python Package Index (<https://pypi.org>) without changing anything. For example, downloading the `black` formatter took me 8.46 seconds, which is an acceptable speed.
+Python works without any problem. You can install it from the default Python Package Index (<https://pypi.org>) without changing anything. For example, downloading the `black` formatter took me 8.46 seconds, which is an acceptable speed.
 
 ```
 (venv) ➜  ~ time brew install black
@@ -158,7 +158,7 @@ If you use MacOS, you are probably using `brew` as well. If you update the brew 
 brew update --verbose --debug
 ```
 
-For example, it it tooks seconds to minutes in the block below:
+For example, it took seconds to minutes in the block below:
 
 ```
 + git fetch --tags --force origin refs/heads/master:refs/remotes/origin/master
@@ -182,7 +182,7 @@ Fetching /usr/local/Homebrew...
 + git fetch --tags --force origin refs/heads/master:refs/remotes/origin/master
 ```
 
-This is because brew uses GitHub by default and the access to GitHub is slow in
+This is because brew uses GitHub by default and access to GitHub is slow in
 China:
 
 ```
@@ -240,7 +240,7 @@ When you use Ruby, you need to use a mirror because Ruby uses <https://rubygems.
 
 > Could not fetch specs from https://rubygems.org/
 
-The changes can be made at multiple levels: via the `bundle` command line, in the `gem` sources, and the `Gemfile`:
+The changes can be made at multiple levels: via the `bundle` command line, in the `gem` sources, and `Gemfile`:
 
 In the bundler, replace all the calls to <https://rubygems.org> to a mirror, such as <https://mirrors.aliyun.com/rubygems/>
 
@@ -270,20 +270,20 @@ You can also modify the source in the `Gemfile`
 + source "https://mirrors.aliyun.com/rubygems/"
 ```
 
-There are at least 3 pupoluar choices: Ruby China Gems (<https://gems.ruby-china.com>), Aliyun Gems (<https://mirrors.aliyun.com/rubygems>) and Tsinghua Gems (<https://mirrors.tuna.tsinghua.edu.cn/rubygems>).
+There are at least 3 popular choices: Ruby China Gems (<https://gems.ruby-china.com>), Aliyun Gems (<https://mirrors.aliyun.com/rubygems>) and Tsinghua Gems (<https://mirrors.tuna.tsinghua.edu.cn/rubygems>).
 
 ## Mirror Choices
 
 In the previous sections, we discussed examples from Docker, Python, Brew, and Ruby. But we didn't mention the possible choices for mirrors. There are multiple choices of mirror in China:
 
 * **Aliyun Mirror (阿里巴巴开源镜像站)** <https://developer.aliyun.com/mirror/>, which is a multipurpose mirror. It can be used for different categories: container, framework/tool, operating system (OS), programming language, etc. Founded in 2009, Alibaba Cloud is the world's leading cloud computing and artificial intelligence technology company, serving enterprises, developers, and government agencies in more than 200 countries and regions.
-* **Tencent Mirror (腾讯云)** <https://mirrors.tencent.com/> which is a multipurpose mirror. Tencent Cloud provides secure and stable cloud computing services for millions of enterprises and developers, covering a full range of cloud services and solutions for various industries, including cloud servers, cloud database, cloud storage, video and CDN, domain name registration, etc.
-* **Azure Container Registry** <https://dockerhub.azk8s.cn>. Azure cloud service is a flexible enterprise-level public cloud platform, providing database, cloud service, cloud storage, artificial intelligence Internet, CDN and other efficient, stable and scalable cloud services. _Note that ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure  ([link](https://github.com/Azure/container-service-for-azure-china/issues/60))._
-* **163 Mirror (网易镜像)** <https://mirrors.163.com> 163 Wangyi is a leading Internet technology company in China, providing users with free mailboxes, games, search engine services, more than 30 content channels such as news, entertainment, sports, and blogs, videos, forums and other interactive exchanges.
+* **Tencent Mirror (腾讯云)** <https://mirrors.tencent.com/> which is a multipurpose mirror. Tencent Cloud provides secure and stable cloud computing services for millions of enterprises and developers, covering a full range of cloud services and solutions for various industries, including cloud servers, cloud databases, cloud storage, video and CDN, domain name registration, etc.
+* **Azure Container Registry** <https://dockerhub.azk8s.cn>. Azure cloud service is a flexible enterprise-level public cloud platform, providing database, cloud service, cloud storage, artificial intelligence Internet, CDN, and other efficient, stable, and scalable cloud services. _Note that ACR does not provide public anonymous access functionality on Azure China, this feature is in public preview on global Azure  ([link](https://github.com/Azure/container-service-for-azure-china/issues/60))._
+* **163 Mirror (网易镜像)** <https://mirrors.163.com> 163 Wangyi is a leading Internet technology company in China, providing users with free mailboxes, games, search engine services, more than 30 content channels such as news, entertainment, sports, and blogs, videos, forums, and other interactive exchanges.
 * **Huawei Mirror (华为镜像)** <https://mirrors.huaweicloud.com/home> Huawei Cloud provides stable, reliable, secure, reliable, and sustainable cloud services, and is committed to empower the cloud and building a cloud foundation for the intelligent world. Help enterprises reduce costs and increase efficiency, the common choice of 3 million customers around the world.
 * **Tsinghua EDU Mirror (清华大学镜像站)** <https://mirrors.tuna.tsinghua.edu.cn>, which is a multipurpose mirror, maintained by the Tshinghua University. Tsinghua University is a famous institution of higher education in China, located in the scenic Tsinghua Park in the northwestern suburbs of Beijing, and is an important base for China's high-level talent training and scientific and technological research.
-* **USTC (中国科学技术大学镜像站)** <http://mirrors.ustc.edu.cn/>, which is a multipurpose mirror, maintained by the University of Science and Technology of China (USTC). The University of Science and Technology of China is a science and engineering university affiliated to the Chinese Academy of Sciences that focuses on cutting-edge science and high technology, and combines medicine, characteristic management and humanities.
-* **~~Amazon Web Services~~** :warning: It seems that AWS does not provide builtin solution for using container image registry for Chinese users. You need to build a custom solution yourself, here is an article written in Chinese [在 AWS 中国区方便安全的使用海外公开容器镜像](https://aws.amazon.com/cn/blogs/china/convenient-and-safe-use-of-overseas-public-container-images-in-aws-china/) (Convenient and safe use of overseas' public container images in AWS China). This solution is not suitable for you if you were a simple user who wants to focus on using existing images.
+* **USTC (中国科学技术大学镜像站)** <http://mirrors.ustc.edu.cn/>, which is a multipurpose mirror, maintained by the University of Science and Technology of China (USTC). The University of Science and Technology of China is a science and engineering university affiliated to the Chinese Academy of Sciences that focuses on cutting-edge science and high technology, and combines medicine, characteristic management, and humanities.
+* **~~Amazon Web Services~~** :warning: It seems that AWS does not provide a built-in solution for using container image registry for Chinese users. You need to build a custom solution yourself, here is an article written in Chinese [在 AWS 中国区方便安全的使用海外公开容器镜像](https://aws.amazon.com/cn/blogs/china/convenient-and-safe-use-of-overseas-public-container-images-in-aws-china/) (Convenient and safe use of overseas' public container images in AWS China). This solution is not suitable for you if you were a simple user who wants to focus on using existing images.
 
 There are probably other mirrors as well. If you found other sources, please leave a comment so that I can update the post.
 
@@ -300,13 +300,13 @@ Pros:
 Cons:
 
 * **Pricing:** some mirrors cannot be used for free. They are paid and reserved for certain users, e.g. Azure Container Registry is reserved for Azure users.
-* **Delay:** mirrors can have delay on replicating an image from the official source.
-* **Missing resources:** some packages or endpoints of the source are unavailable due to various reasons (legal compliance, oudated versions, lack of implementation, ...)
-* **Coverage** of the mirrors: some websites are multipurposes while others focus on a certain types of mirrors, e.g. container, programming language. Therefore, it may not cover all your use cases.
+* **Delay:** mirrors can have delays in replicating an image from the official source.
+* **Missing resources:** some packages or endpoints of the source are unavailable due to various reasons (legal compliance, outdated versions, lack of implementation, ...)
+* **Coverage** of the mirrors: some websites are multipurpose while others focus on certain types of mirrors, e.g. container, and programming language. Therefore, it may not cover all your use cases.
 * **Language:** some websites are only written in Chinese. So they are not very user-friendly for non-Chinese speakers. Also, you cannot use Google Translate to help you anymore since it's unavailable in China. You can use [Bing Translator](https://cn.bing.com/translator) or [DeepL Translator](https://www.deepl.com/translator) to help you.
-* **Cleanup:** you need to reset all the configuration when you leave China... If you still remembered what you have configured :)
+* **Cleanup:** you need to reset all the configurations when you leave China... If you still remembered what you have configured :)
 * **Security:** I am not 100% sure that the packages available in the mirrors have exactly the same content as those in the official source.
-* **Time-consuming:** it is very time consuming to set up the mirrors for many reasons: some tutorials are outdated, some tutorials are written in Chinese, the Google Search is not available in China, each tool/framework has its own way of configuration, and each attempt needs to be timed out to fail, etc. Therefore, it can take you a lot of time to tune all parameters and figure out what you want.
+* **Time-consuming:** it is very time consuming to set up the mirrors for many reasons: some tutorials are outdated, some tutorials are written in Chinese, Google Search is not available in China, each tool/framework has its own way of configuration, and each attempt needs to be timed out to fail, etc. Therefore, it can take you a lot of time to tune all parameters and figure out what you want.
 
 An alternative is to use VPN in China so that you can access to the global internet directly. However, you need to understand that using VPN is not a compliant choice and it is on your risk. According to [lawyer Kai Deng 邓凯](https://zhuanlan.zhihu.com/p/640173283):
 
@@ -322,11 +322,11 @@ An alternative is to use VPN in China so that you can access to the global inter
 
 How to go further from here?
 
-* Visit <https://developer.aliyun.com/mirror/> to find documentation for the detailed set up for each mirror (container, tool, OS, programming languages, ...). Even though the documentation is provided by Aliyun, the configuration is mirror-agnostic. You can still apply them to the mirror that you've chosen.
+* Visit <https://developer.aliyun.com/mirror/> to find documentation for the detailed setup for each mirror (container, tool, OS, programming languages, ...). Even though the documentation is provided by Aliyun, the configuration is mirror-agnostic. You can still apply them to the mirror that you've chosen.
 
 ## Conclusion
 
-In this article, we talked about how to set up mirrors for different softwares in China. We took Docker, Python, Homebrew, and Ruby as examples to dig into details. We also discussed various choices coming different cloud providers and universities, and compared the pros and cons of using mirrors. Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me on [Twitter](https://twitter.com/mincong_h) or [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
+In this article, we talked about how to set up mirrors for different software in China. We took Docker, Python, Homebrew, and Ruby as examples to dig into details. We also discussed various choices coming from different cloud providers and universities, and compared the pros and cons of using mirrors. Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me on [Twitter](https://twitter.com/mincong_h) or [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
 
