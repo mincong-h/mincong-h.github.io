@@ -144,8 +144,8 @@ The solutions for solving this issue are the same as the solutions for the low d
 
 The next level is the flood stage. The default value is 95%. Elasticsearch enforces a read-only index block (`index.blocks.read_only_allow_delete`) on every index that has one or more shards allocated on the node, and that has at least one disk exceeding the flood stage. This setting is the last resort to prevent nodes from running out of disk space. Depending on your Elasticsearch version, the release mechanism is different:
 
-* Before Elasticsearch 7, the index block must be released <mark>manually</mark> when the disk utilization falls below the high watermark.
-* Since Elasticsearch 7, the index block is <mark>automatically</mark> released when the disk utilization falls below the high watermark.
+* Before Elasticsearch 7.4, the index block must be released <mark>manually</mark> when the disk utilization falls below the high watermark.
+* Since Elasticsearch 7.4, the index block is <mark>automatically</mark> released when the disk utilization falls below the high watermark. This is mentioned in the 7.4 breaking changes docs under the [Allocation Changes section](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/breaking-changes-7.4.html#_auto_release_of_read_only_allow_delete_block). Special thanks to Peter Dyson for pointing this out.
 
 ![Diagram for flood-stage disk watermark](/assets/20210410-Elasticsearch-Disk-Warkermarks-Diagram.flood-stage-watermark.png)
 
