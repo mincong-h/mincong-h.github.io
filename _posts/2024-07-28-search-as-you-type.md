@@ -52,8 +52,8 @@ var request = new SearchRequest.Builder()
     .index(DEFAULT_INDEX_NAME, ICU_INDEX_NAME)
     .query(b -> b.bool(
         QueryBuilders.bool()
-            .must(eqUserOid)
-            .must(eqOrgOid)
+            .must(eqUserId)
+            .must(eqOrgId)
             .should(hasTitleMultiMatch)
             .should(hasTitleFuzzy)
             .minimumShouldMatch(String.valueOf(1))
@@ -63,6 +63,10 @@ var request = new SearchRequest.Builder()
     .size(5)
     .build();
 ```
+
+## Frontend
+
+On the front-end side, we use Vue3 in our Chrome extension. We inject the search bar as a Vue component into ChatGPT, where the search function watches the input of the search bar. When the input value is changed, a new search request is sent to the backend to search the indices in Elasticsearch to retrieve the answer.
 
 ## Going Further
 
