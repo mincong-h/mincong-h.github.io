@@ -35,11 +35,17 @@ Configuring the mappings of the index correctly is important because they can on
 
 Those shingles subfields are used to create multi-token sequences from text input, which can help improve the accuracy and relevance of search results. Shingles help in matching phrases or multi-word expressions accurately. For instance, the phrase "New York City" can be tokenized as "New York" and "York City", allowing the search engine to better understand and match the phrase. "New York" and "York City" are shingles of size 2 while "New York City" is a shingle of size 3.
 
-We also use an edge ngram field to split a word into N grams starting from the edge — the left side of the word. This is another way to improve the accuracy and relevance of search results when a user types part of the word. Using an edge ngram is also useful for highlighting, since users probably want to highlight the part of the word matching their queries.
+We also use an edge ngram field to split a word into N grams starting from the edge — the left side of the word. This is another way to improve the accuracy and relevance of search results when a user types part of the word. Using an edge ngram is also useful for highlighting since users probably want to highlight the part of the word matching their queries.
 
-## Section 2
+## Query
 
-## Section 3
+When building the search query, we use a multi-match query targeting multiple fields: the top-level text field and its subfields (shingle 2-grams, shingle 3-grams, and edge N-grams). Doing this enhances the scoring of the results because the matching bi-grams or tri-grams carry more weight than matching individual words. The presence of a specific phrase often indicates a closer match to the user's intent. It also makes the results more precise. The query would only match documents containing the exact phrase or similar combinations, reducing false positives where the words appear separately.
+
+Search-as-you-type is great. However, it only focuses on matching phrases or the prefix of a word, it does not fix the problem where a user mistypes some characters. To allow users to make a few typos, we chose the fuzzy query. A fuzzy query returns documents that contain terms similar to the search term, as measured by a Levenshtein edit distance. The fuzziness is configured to generate an edit distance based on the length of the term. When the term is short (less than 2 characters), it must match exactly; when the term is longer (3 to 5 characters), one edit is allowed; when the term is very long (more than 5), two edits are allowed.
+
+Apart from queries related to the user's input, we also need to ensure that the scope of the search results is bound to the user itself. Documents of other users or organizations shouldn't be returned. This is done using a term query, where the documents must match the given value for a specific term.
+
+Therefore, we provide a complex query: a boolean query combined with multiple conditions: a multi-match query, a fuzziness query, and some term queries. The boolean query must match all the term queries, and it should match at least one query between the multi-match query and the fuzziness query. If there are multiple matches, the ones having the highest scores will be returned since they are considered as the most relevant ones.
 
 ## Going Further
 
