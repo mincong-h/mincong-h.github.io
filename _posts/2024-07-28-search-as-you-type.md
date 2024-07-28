@@ -2,9 +2,9 @@
 article_num:         213
 layout:              post
 type:                classic
-title:               Implement a search-as-you-type feature with Elasticsearch
+title:               Implementing Search-as-you-type with Elasticsearch
 subtitle:            >
-    ... for the ChatGPT QuickSearch Extension
+    Using Chrome extension "ChatGPT QuickSearch" as an example
 
 lang:                en
 date:                2024-07-28 09:11:34 +0200
