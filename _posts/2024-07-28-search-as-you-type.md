@@ -47,6 +47,23 @@ Apart from queries related to the user's input, we also need to ensure that the 
 
 Therefore, we provide a complex query: a boolean query combined with multiple conditions: a multi-match query, a fuzziness query, and some term queries. The boolean query must match all the term queries, and it should match at least one query between the multi-match query and the fuzziness query. If there are multiple matches, the ones having the highest scores will be returned since they are considered as the most relevant ones.
 
+```java
+var request = new SearchRequest.Builder()
+    .index(DEFAULT_INDEX_NAME, ICU_INDEX_NAME)
+    .query(b -> b.bool(
+        QueryBuilders.bool()
+            .must(eqUserOid)
+            .must(eqOrgOid)
+            .should(hasTitleMultiMatch)
+            .should(hasTitleFuzzy)
+            .minimumShouldMatch(String.valueOf(1))
+            .build())
+    )
+    .highlight(highlight)
+    .size(5)
+    .build();
+```
+
 ## Going Further
 
 How to go further from here?
