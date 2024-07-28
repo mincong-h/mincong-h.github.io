@@ -27,10 +27,7 @@ wechat:              false
 
 ## Introduction
 
-Explain context here to attract people's attention... like:
-- topic: what you want to talk about?
-- audience: who are you targeting?
-- motiviation: why is it interesting for them? Or why is it important to understand this topic?
+The [`search_as_you_type`](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-as-you-type.html) field type is a text-like field that is optimized to provide out-of-the-box support for queries that serve an as-you-type completion use case. This article shares the experience of implementing this feature for the Chrome extension [ChatGPT QuickSearch](https://chromewebstore.google.com/detail/chatgpt-quicksearch/jclniokkhcjpgfijopjahldoepdikcko), a Chrome extension that allows you to quickly search the conversation history directly in ChatGPT by providing a search bar.
 
 After reading this article, you will understand:
 
