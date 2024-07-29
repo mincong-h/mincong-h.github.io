@@ -16,8 +16,6 @@ article_header:
   background_color:  "#203028"
   background_image:
     gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
-
-ads_tags: [java, elasticsearch, devops, git, api, backend]
 ---
 
 {%- assign _highlighted_categories = 'temporal:Automation, elasticsearch:Elasticsearch, java-core:Java, java-testing:Testing, java-concurrency:Concurrency, rest:RESTful APIs, git:Git' | split: ', ' -%}
