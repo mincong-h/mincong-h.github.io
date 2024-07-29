@@ -2,9 +2,9 @@
 article_num:         213
 layout:              post
 type:                classic
-title:               Implementing Search-as-you-type with Elasticsearch
+title:               Implementing Search-as-you-type in "ChatGPT QuickSearch"
 subtitle:            >
-    Using Chrome extension "ChatGPT QuickSearch" as an example
+    A technical walkthrough of the instance search solution for the Chrome extension "ChatGPT QuickSearch"
 
 lang:                en
 date:                2024-07-28 09:11:34 +0200
@@ -37,6 +37,14 @@ Those shingles subfields are used to create multi-token sequences from text inpu
 
 We also use an edge ngram field to split a word into N grams starting from the edge — the left side of the word. This is another way to improve the accuracy and relevance of search results when a user types part of the word. Using an edge ngram is also useful for highlighting since users probably want to highlight the part of the word matching their queries.
 
+```mermaid
+timeline
+    Prefix :  my_field._index_prefix : edge n-grams : e.g. "ne"
+    Word :  my_field : default : e.g. "new"
+    2-Word : my_field._2gram : two-word shingles : e.g. "new york"
+    3-Word : my_field._3gram : three-word shingles : e.g. "new york city"
+```
+
 ## Query
 
 When building the search query, we use a multi-match query targeting multiple fields: the top-level text field and its subfields (shingle 2-grams, shingle 3-grams, and edge N-grams). Doing this enhances the scoring of the results because the matching bi-grams or tri-grams carry more weight than matching individual words. The presence of a specific phrase often indicates a closer match to the user's intent. It also makes the results more precise. The query would only match documents containing the exact phrase or similar combinations, reducing false positives where the words appear separately.
@@ -68,15 +76,13 @@ var request = new SearchRequest.Builder()
 
 On the front-end side, we use Vue3 in our Chrome extension. We inject the search bar as a Vue component into ChatGPT, where the search function watches the input of the search bar. When the input value is changed, a new search request is sent to the backend to search the indices in Elasticsearch to retrieve the answer.
 
-## Going Further
-
-How to go further from here?
-
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
-Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
+In this article, we talked about the search-you-as-type solution for the Chrome Extension "ChatGPT QuickSearch", including the choice of the data types in index mappings for Elasticsearch, the configuration of the queries for the read path, and a summary of the frontend logic. Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
+
+- <https://www.elastic.co/guide/en/elasticsearch/reference/current/search-as-you-type.html>
+- 《一本书讲透 Elasticsearch》 by 杨昌玉
