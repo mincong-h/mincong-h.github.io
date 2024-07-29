@@ -18,7 +18,7 @@ article_header:
     gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
-{%- assign _highlighted_categories = 'temporal:Automation, elasticsearch:Elasticsearch, java-core:Java, java-testing:Testing, java-concurrency:Concurrency, rest:RESTful APIs, git:Git' | split: ', ' -%}
+{%- assign _highlighted_categories = 'elasticsearch:Elasticsearch, temporal:Automation, java-core:Java, java-testing:Testing, java-concurrency:Concurrency, rest:RESTful APIs, git:Git' | split: ', ' -%}
 
 {%- for _category in _highlighted_categories -%}
   {%- assign _kv = _category | split: ':' -%}
