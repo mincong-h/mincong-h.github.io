@@ -4,12 +4,14 @@ layout:            post
 title:             Testing Elasticsearch With Docker And Java High Level REST Client
 lang:                en
 date:              2020-04-05 11:22:57 +0200
+date_modified:     2024-08-03 11:00:04 +0200
 categories:        [elasticsearch, java-testing]
 tags:              [java, elasticsearch, testing, docker]
 permalink:         /2020/04/05/testing-elasticsearch-with-docker-and-java-client/
 comments:          true
 excerpt:           >
     Testing Elasticsearch with docker and Java High Level REST Client
+
 image:             /assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg
 cover:             /assets/bg-erwan-hesry-RJjY5Hpnifk-unsplash.jpg
 article_header:
@@ -102,7 +104,7 @@ Here is the code excerpt for `pom.xml`:
           </log>
           <wait>
             <time>60000</time><!-- 60 seconds max -->
-            <log>.*"message": "started".*</log>
+            <log>.*"message".*"started".*</log>
           </wait>
         </run>
       </image>
@@ -122,7 +124,7 @@ mvn docker:start
 mvn docker:stop
 ```
 
-Or running tests and see that the Elasticsearch Docker image is started before
+Or running tests and seeing that the Elasticsearch Docker image is started before
 integration tests and stopped after.
 
 ```
@@ -135,8 +137,8 @@ pulling Docker image of Elasticsearch before starting it:
 
 ![Pull Docker image](/assets/20200405-docker.png)
 
-Once done, Maven Docker plugin waits until Elasticsearch to be started and let
-Maven continue on other goals -- this is where integration tests stared with
+Once done, the Maven Docker plugin waits until Elasticsearch is started and lets
+Maven continue on other goals -- this is where integration tests started with
 Failsafe Plugin:
 
 ![Docker image started before integration tests](/assets/20200405-test.png)
@@ -145,6 +147,8 @@ Docker Maven Plugin is not the only choice to operate Elasticsearch
 in your build. You may consider using other solutions, such as
 [testcontainers](https://github.com/testcontainers/testcontainers-java) or
 managing containers in your CI scripts.
+
+Note that this Docker Maven Plugin does not support docker context as of 03 Aug 2024 ([issue](https://github.com/fabric8io/docker-maven-plugin/issues/1584)). You may encounter the following error: _"No `<dockerHost>` given, no DOCKER_HOST environment variable, no read/writable '/var/run/docker.sock' or '//./pipe/docker_engine' and no external provider like Docker machine configured"._ You need to define one of these options yourself to fix the problem. One possible solution is to define DOCKER_HOST with the value shown in the docker context. But it means that the DOCKER_HOST environment variable will override the active context, so this is only useful when you have one single context.
 
 ## Initialize Java High Level REST Client
 
@@ -174,7 +178,7 @@ Don't forget to close you client when you finish using it:
 client.close();
 ```
 
-Or do it with try-with-resources statement:
+Or do it with a try-with-resources statement:
 
 ```java
 try (var client = new RestHighLevelClient(builder)) {
@@ -269,3 +273,5 @@ on [Twitter](https://twitter.com/mincong_h) or
   <https://github.com/fabric8io/docker-maven-plugin>
 - Elastic, "Elasticsearch Reference (7.6)", _Elastic_, 2020.
   <https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html>
+- Support for Docker contexts, or a Docker socket in an alternative location
+  <https://github.com/fabric8io/docker-maven-plugin/issues/1584>
