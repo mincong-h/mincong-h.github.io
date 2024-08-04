@@ -61,6 +61,25 @@ Here is an example showing the components inside an analyzer.
 * [A tokenizer](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html) receives a stream of characters, breaks it up into individual tokens (usually individual words), and outputs a stream of tokens. For example, the white space tokenizer breaks text into tokens whenever it sees any whitespace.
 * [Token filters](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenfilters.html) accept a stream of tokens from a tokenizer and can modify tokens (e.g. lowercasing), delete tokens (e.g. remove stopwords), or add tokens (eg synonyms). 
 
+Once you have the analyzer, you can use it at different levels. You can use it at a filed level, at the index level, at the percolator level for queries, at the ingestion-pipelines level, at the search-time, etc. Here is an example where we use the analyzer at the field level. Under the mappings of your property  (your field), you specify the analyzer used for analyzing the data.
+
+```js
+{
+  "settings": {
+    // ...
+    "mappings": {
+      "properties": {
+        "content": {
+          "type": "text",
+          "analyzer": "lowercase_ascii_folding_analyzer",
+        }
+        // ...
+      }
+    }
+  }
+}
+```
+
 ## Section 2
 
 ## Section 3
