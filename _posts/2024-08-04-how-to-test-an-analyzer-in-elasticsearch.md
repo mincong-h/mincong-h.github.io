@@ -12,7 +12,7 @@ categories:          [elasticsearch]
 tags:                [elasticsearch]
 comments:            true
 excerpt:             >
-    TODO
+    Understanding how your content is processed by Elasticsearch even if you have little experience with Elasticsearch using the Analyze API.
 
 image:               /assets/patterns/pawel-czerwinski-xubOAAKUwXc-unsplash.jpg
 cover:               /assets/patterns/pawel-czerwinski-xubOAAKUwXc-unsplash.jpg
