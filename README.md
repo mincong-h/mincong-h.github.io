@@ -174,7 +174,7 @@ Username (`BS_USERNAME`) and password (`BS_PASSWORD`) are required.
 
 ### Querying Documents
 
-The search feature is powered by Blogsearch (`jimi`), a custom search solution
+The search feature is powered by Nanosearch (`nanosearch`), a custom search solution
 that I created based on Java, OpenAPI and Elasticsearch.
 
 ## Assets
