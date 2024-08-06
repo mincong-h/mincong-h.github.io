@@ -168,7 +168,7 @@ pageview:
 ## => Search
 ##############################
 search:
-  provider: jimi # "default" (default), false, "google", "custom"
+  provider: nanosearch # "default" (default), false, "google", "custom"
 
   ## Google Custom Search Engine
   google:

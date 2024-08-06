@@ -169,12 +169,12 @@ Collection Directory       | Description
 Indexing documents are done during the build process of the website, usually in
 the CI. This is powered by the custom BlogSearch plugin
 (`_plugins/hooks/site/post_write/blogsearch.rb`). To debug it, you can set
-environment variable `JIMI_ENABLED` and then build/serve the Jekyll website.
-Username (`JIMI_USERNAME`) and password (`JIMI_PASSWORD`) are required.
+environment variable `BS_ENABLED` and then build/serve the Jekyll website.
+Username (`BS_USERNAME`) and password (`BS_PASSWORD`) are required.
 
 ### Querying Documents
 
-The search feature is powered by Jimi Search (`jimi`), a custom search solution
+The search feature is powered by Nanosearch (`nanosearch`), a custom search solution
 that I created based on Java, OpenAPI and Elasticsearch.
 
 ## Assets

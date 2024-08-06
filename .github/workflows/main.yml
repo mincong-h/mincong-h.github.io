@@ -42,9 +42,9 @@ jobs:
          bundle exec jekyll build --trace --baseurl "${{ steps.pages.outputs.base_path }}"
       env:
         SERVICE_VERSION: "${{ env.SERVICE_VERSION }}"
-        JIMI_USERNAME: "${{ secrets.JIMI_USERNAME }}"
-        JIMI_PASSWORD: "${{ secrets.JIMI_PASSWORD }}"
-        JIMI_ENABLED: true
+        BS_USERNAME: "${{ secrets.BS_USERNAME }}"
+        BS_PASSWORD: "${{ secrets.BS_PASSWORD }}"
+        BS_ENABLED: true
     - name: Upload artifact
       # Automatically uploads an artifact from the './_site' directory by default
       uses: actions/upload-pages-artifact@v1
