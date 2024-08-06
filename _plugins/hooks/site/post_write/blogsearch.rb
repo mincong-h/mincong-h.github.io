@@ -16,7 +16,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
     username = ENV["JIMI_USERNAME"]
     password = ENV["JIMI_PASSWORD"]
 
-    site_info = Net::HTTP.get URI('https://search.jimidata.info')
+    site_info = Net::HTTP.get URI('https://bs.nanosearch.io')
     Jekyll.logger.info site_info
 
     # See more variables in https://jekyllrb.com/docs/variables/
@@ -28,7 +28,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
         pos = post.id.rindex('/') + 1
         postId = post.id[pos..-1]  # hack: remove prefix
-        uri = URI.parse('https://search.jimidata.info/sites/mincong.io/posts/' + postId)
+        uri = URI.parse('https://bs.nanosearch.io/sites/mincong.io/posts/' + postId)
         Jekyll.logger.info uri
 
         http = Net::HTTP.new(uri.host, uri.port)
