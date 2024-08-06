@@ -4,17 +4,17 @@ require 'json'
 
 Jekyll::Hooks.register :site, :post_write do |site|
     jekyll_env = ENV["JEKYLL_ENV"]
-    jimi_enabled_env = ENV["JIMI_ENABLED"]
-    jimi_enabled = jekyll_env == "prod" || jimi_enabled_env == "true"
+    blogsearch_enabled_env = ENV["BS_ENABLED"]
+    blogsearch_enabled = jekyll_env == "prod" || blogsearch_enabled_env == "true"
 
-    if !jimi_enabled
-        Jekyll.logger.info "Jimi search is disabled"
+    if !blogsearch_enabled
+        Jekyll.logger.info "Blogsearch is disabled"
         next
     end
 
     Jekyll.logger.info "Updating blog posts to BlogSearch..."
-    username = ENV["JIMI_USERNAME"]
-    password = ENV["JIMI_PASSWORD"]
+    username = ENV["BS_USERNAME"]
+    password = ENV["BS_PASSWORD"]
 
     site_info = Net::HTTP.get URI('https://bs.nanosearch.io')
     Jekyll.logger.info site_info
