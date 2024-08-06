@@ -37,7 +37,7 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
   function remoteSearchByQuery(query) {
     console.log(`searching: ${query}`);
     var i, j, key, keys, cur, _title;
-    const url = 'https://bs.nanosearch.io/sites/mincong.io/posts/search?' + $.param({
+    const url = 'https://bs.nanosearch.io/api/sites/mincong.io/posts/search?' + $.param({
       q: query
     });
     let start = Date.now();

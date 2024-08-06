@@ -23,8 +23,9 @@ echo "version: ${version}"
 #     (https://rubygems.org) is not accessible in the mainland China.
 docker run --rm \
   -p 4000:4000 \
-  --env "JIMI_USERNAME=${JIMI_USERNAME}" \
-  --env "JIMI_PASSWORD=${JIMI_PASSWORD}" \
+  --env "BS_ENABLED=true" \
+  --env "BS_USERNAME=${BS_USERNAME}" \
+  --env "BS_PASSWORD=${BS_PASSWORD}" \
   --env "SERVICE_VERSION=${version}" \
   --name jekyll \
   --volume "${PWD}:/srv/jekyll" \

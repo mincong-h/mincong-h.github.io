@@ -28,7 +28,7 @@ Jekyll::Hooks.register :site, :post_write do |site|
 
         pos = post.id.rindex('/') + 1
         postId = post.id[pos..-1]  # hack: remove prefix
-        uri = URI.parse('https://bs.nanosearch.io/sites/mincong.io/posts/' + postId)
+        uri = URI.parse('https://bs.nanosearch.io/api/sites/mincong.io/posts/' + postId)
         Jekyll.logger.info uri
 
         http = Net::HTTP.new(uri.host, uri.port)
