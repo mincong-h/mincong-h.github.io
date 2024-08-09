@@ -64,8 +64,8 @@ subtitle:            >
 
 lang:                en
 date:                $(date +"%Y-%m-%d %H:%M:%S %z")
-categories:          [java-core]
-tags:                []
+categories:          [elasticsearch]
+tags:                [elasticsearch]
 comments:            true
 excerpt:             >
     TODO

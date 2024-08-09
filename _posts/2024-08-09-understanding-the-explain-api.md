@@ -2,17 +2,18 @@
 article_num:         215
 layout:              post
 type:                classic
-title:               Understanding the Explain API
+title:               Understanding the Explain API in Elasticsearch
 subtitle:            >
-    Given one sentence to expand the title or explain why this article may interest your readers.
+    Better understanding your query and your data.
 
 lang:                en
 date:                2024-08-09 14:47:30 +0200
-categories:          [java-core]
-tags:                []
+categories:          [elasticsearch]
+tags:                [elasticsearch]
 comments:            true
 excerpt:             >
-    TODO
+    This article shows you how to use the Explain API to troubleshoot your query and your documents in Elasticsearch.
+
 image:               /assets/patterns/pawel-czerwinski-9xCJyDefn4k-unsplash.jpg
 cover:               /assets/patterns/pawel-czerwinski-9xCJyDefn4k-unsplash.jpg
 article_header:
@@ -23,6 +24,10 @@ article_header:
     gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 wechat:              false
 ---
+
+{% comment %}
+The target audience of this document is prospects who are interested in hiring me as a freelancer for consulting service. They run Elasticsearch as a cluster and want to better understand their documents or queries. They have difficulties to troubleshoot the queries. They don't understand why the search results don't match their expectation, and they don't know how to improve.
+{% endcomment %}
 
 ## Introduction
 
