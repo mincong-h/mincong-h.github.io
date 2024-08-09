@@ -219,3 +219,4 @@ Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), 
 
 - "Practical BM25 - Part 2: The BM25 Algorithm and its Variables", Shane Connelly, 2018. <https://www.elastic.co/blog/practical-bm25-part-2-the-bm25-algorithm-and-its-variables>
 - 10.3.3 计算相关度评分，一本书讲透Elasticsearch，杨昌玉
+- Exlain API, Elasticsearch Guide <https://www.elastic.co/guide/en/elasticsearch/reference/current/search-explain.html>
