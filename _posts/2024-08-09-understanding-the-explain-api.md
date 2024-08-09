@@ -31,30 +31,15 @@ The target audience of this document is prospects who are interested in hiring m
 
 ## Introduction
 
-Explain context here to attract people's attention... like:
-- topic: what you want to talk about?
-- audience: who are you targeting?
-- motiviation: why is it interesting for them? Or why is it important to understand this topic?
+Elasticsearch is a complex search engine. It has a lot of capabilities under the hook. When you enter a query, you may find the results irrelevant to your query. It seems obvious that some documents should be part of the result, or they should be ranked higher in the list. However, you are frustrated about the ranking, or even worse, you don't see what you want in the list. In this article, we are going discuss the Explain API of Elasticsearch and see how it can help you troubleshoot the read path of your system.
 
 After reading this article, you will understand:
 
-(choose one of the following structures)
+* Why do you want to use the Explain API?
+* What does it show you in the HTTP response?
+* The scoring algorithm BM25
+* Other considerations around troubleshooting
 
-dive deep:
-
-* Some prequisites
-* Some general concepts
-* Some specific concepts to dig deeper
-* How to go further from this article
-
-different dimensions (broad):
-
-* section 1
-* section 2
-* section 3
-* How to go further from this article
-
-... then specify some information about the context, such as framework version, language version.
 Now, let's get started!
 
 ## Section 1
