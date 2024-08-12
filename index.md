@@ -18,6 +18,78 @@ article_header:
     gradient:        "linear-gradient(135deg, rgba(0, 0, 0, .6), rgba(0, 0, 0, .4))"
 ---
 
+<div class="article__content">
+  <h1>Services</h1>
+  <p>Hi, I am a software engineer with 11 years of experience working on different projects in France and China. I can help you with different aspects of your system, from software development to operations in production. I am looking for freelance opportunities, especially missions related to Elasticsearch. If you are interested, please contact me at <code>mincong.h[at]gmail.com</code>.</p>
+</div>
+
+<div class="layout--articles">
+  <section class="my-5">
+    <div class="article-list grid grid--p-3">
+      <div class="cell cell--12 cell--md-6 cell--lg-4">
+        <div class="card card--flat">
+          <div class="card__content">
+            <header>
+              <h2 class="card__header">Software Development</h2>
+            </header>
+            <p>Developing tailored software solutions that meet your unique business requirements in Java, Go, Typescript, or Python.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cell cell--12 cell--md-6 cell--lg-4">
+        <div class="card card--flat">
+          <div class="card__content">
+            <header>
+              <h2 class="card__header">Database Management</h2>
+            </header>
+            <p>Expert management and optimization of databases, with a focus on Elasticsearch and MongoDB. I ensure your data is secure, accessible, and performant.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cell cell--12 cell--md-6 cell--lg-4">
+        <div class="card card--flat">
+          <div class="card__content">
+            <header>
+              <h2 class="card__header">CI/CD</h2>
+            </header>
+            <p>Automate the process of software lifecycle development with GitHub, GitLab or other solutions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cell cell--12 cell--md-6 cell--lg-4">
+        <div class="card card--flat">
+          <div class="card__content">
+            <header>
+              <h2 class="card__header">Infrastructure</h2>
+            </header>
+            <p>Design and implement cloud-based infrastructure that scales with your business. I am a Certified Kubernetes Administrator (CKA) and have experience with AWS, GCP, Azure, and Alibaba Cloud.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cell cell--12 cell--md-6 cell--lg-4">
+        <div class="card card--flat">
+          <div class="card__content">
+            <header>
+              <h2 class="card__header">SRE</h2>
+            </header>
+            <p>Ensure the site reliability of your system. Design and implement metrics, alerts, dashboards, logs, APM, and other technologies to observe your system. Participate in the 24/7 on-call, incident commanding, and post-mortem.</p>
+          </div>
+        </div>
+      </div>
+      <div class="cell cell--12 cell--md-6 cell--lg-4">
+        <div class="card card--flat">
+          <div class="card__content">
+            <header>
+              <h2 class="card__header">Documentation</h2>
+            </header>
+            <p>Design and write documentation for knowledge sharing and operational guidelines for the whole team, from newcomers, seasoned participants, and core team members.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
 {%- assign _highlighted_categories = 'elasticsearch:Elasticsearch, temporal:Automation, java-core:Java, java-testing:Testing, java-concurrency:Concurrency, rest:RESTful APIs, git:Git' | split: ', ' -%}
 
 {%- for _category in _highlighted_categories -%}
