@@ -122,14 +122,15 @@ curl -s localhost:9200/cs.conv-metadata.icu/_analyze/ -H "Content-Type: applicat
 }
 ```
 
-## Going Further
+## Read Path
 
-How to go further from here?
+On the writ path, we're going to query both indices when sending a request to the Elasticsearch cluster. Therefore, if any keyword matches one index, the result will be returned. We keep the fields identical on both indices in the Elasticsearch mappings. Therefore, the search request can query 2 indices in the same time. Here is the result
+
+![screenshot](/assets/2024-06-03-search-bar-with-chinese-input.png)
 
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
-Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
+In this article, we talked about how to support Chinese content in Elasticsearch by using the ICU plugin. We went through the motivation, the technical problems, the overview of the solution and each part of it. Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
