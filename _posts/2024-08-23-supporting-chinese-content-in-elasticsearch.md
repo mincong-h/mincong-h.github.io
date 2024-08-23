@@ -82,7 +82,7 @@ docker exec elasticsearch bin/elasticsearch-plugin install analysis-icu
 
 To test whether the analyzer works as expected, we are going to use the Elasticsearch Analyzer API to send test data and evaluate the result. Here is an example using the mark 巴黎春天 (Printemps):
 
-```json
+```bash
 curl -s localhost:9200/cs.conv-metadata.icu/_analyze/ -H "Content-Type: application/json" -d '{
   "analyzer": "icu_with_edge_ngram",
   "text": "巴黎春天"
