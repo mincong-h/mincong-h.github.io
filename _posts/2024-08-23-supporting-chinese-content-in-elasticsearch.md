@@ -12,7 +12,7 @@ categories:          [elasticsearch]
 tags:                [elasticsearch]
 comments:            true
 excerpt:             >
-    TODO
+    This article discusses how to support Chinese content in Elasticsearch using the Internaltional Components for Unicode (ICU) plugin.
 
 image:               /assets/wind_knight-HKxqlQiFu-A-unsplash.jpg
 cover:               /assets/wind_knight-HKxqlQiFu-A-unsplash.jpg
