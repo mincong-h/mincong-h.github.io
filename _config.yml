@@ -268,6 +268,11 @@ collections:
     my_label:  文章类别
     permalink: /cn/categories/:name/
     output:    true
+  
+  en_projects:
+    my_label:  Projects
+    permalink: /en/projects/:name/
+    output:    true
 
   # Series are a collection that contains several articles. A series explains
   # one target topic from different angles. It is usually about a framework or
