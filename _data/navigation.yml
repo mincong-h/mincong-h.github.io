@@ -35,6 +35,14 @@ header:
     urls:
       en      : /en/series/
       zh      : /cn/series/
+  
+  - titles:
+      en      : &EN       Projects
+      zh-Hans : &ZH_HANS  项目
+      zh      : *ZH_HANS
+    urls:
+      en      : /en/projects/
+      zh      : /cn/projects/
 
   - titles:
       # @start locale config
