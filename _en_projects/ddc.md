@@ -11,7 +11,7 @@ categories:          []
 tags:                [go, temporal, cicd]
 comments:            true
 excerpt:             >
-    Handling the internal software development lifecycle (SDLC)
+    Unify the existing CI/CD tools and provide a consistent experience for all internal engineers across all environments.
 
 image:               /assets/marcin-jozwiak-kGoPcmpPT7c-unsplash.jpg
 cover:               /assets/marcin-jozwiak-kGoPcmpPT7c-unsplash.jpg

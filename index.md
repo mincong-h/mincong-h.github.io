@@ -90,6 +90,24 @@ article_header:
   </section>
 </div>
 
+<div class="article__content">
+  <h2>Projects</h2>
+  <p>Here are some projects that I participated in the past.</p>
+</div>
+
+<div class="layout--articles">
+  <section class="my-5">
+    {%- include article-list.html
+            articles=site.en_projects
+            type='grid'
+            size='md'
+            cover_type='background'
+            limit='6'
+            with_date='true'
+    -%}
+  </section>
+</div>
+
 {%- assign _highlighted_categories = 'elasticsearch:Elasticsearch, temporal:Automation, java-core:Java, java-testing:Testing, java-concurrency:Concurrency, rest:RESTful APIs, git:Git' | split: ', ' -%}
 
 {%- for _category in _highlighted_categories -%}
