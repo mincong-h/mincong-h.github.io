@@ -20,7 +20,10 @@ article_header:
 
 <div class="article__content">
   <h1>Services</h1>
-  <p>Hi, I am a software engineer with 11 years of experience working on different projects in France and China. I can help you with different aspects of your system, from software development to operations in production. I am looking for freelance opportunities, especially missions related to Elasticsearch. If you are interested, please contact me at <code>mincong.h[at]gmail.com</code>.</p>
+  <p>Hi, I am a software engineer with 11 years of experience working on
+different projects in France and China. I can help you with different aspects of
+your system, from software development to operations in production. I am looking
+for new opportunities, especially missions related to Elasticsearch or GenAI. If you are interested, please contact me at <code>mincong.h[at]gmail.com</code>.</p>
 </div>
 
 <div class="layout--articles">
