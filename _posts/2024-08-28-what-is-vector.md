@@ -9,7 +9,7 @@ subtitle:            >
 lang:                en
 date:                2024-08-28 17:39:12 +0200
 categories:          [elasticsearch]
-tags:                [elasticsearch]
+tags:                [ai, elasticsearch]
 comments:            true
 excerpt:             >
     TODO
@@ -93,7 +93,7 @@ Recently I had the chance widness the updates from Elasticsearch and MongoDB, so
 
 ## Vector in Elasticsearch
 
-You can store vectors in Elasticsearch. If you are interested in the product aspects of Vector Search in Elasticsearch, you can see this page: [What is vector search?](https://www.elastic.co/what-is/vector-search). In this section, we are more focused on the technical side. In the latest version of Elasticsearch, you can use a `dense_vector` field to store dense vectors of numeric values. Dense vector fields are primarily used for k-nearest neighbor (kNN) search.
+You can store vectors in Elasticsearch. If you are interested in the product aspects of Vector Search in Elasticsearch, you can see this page: [What is vector search?](https://www.elastic.co/what-is/vector-search). In this section, we are more focused on the technical side. In the latest version of Elasticsearch, you can use a `dense_vector` field to store dense vectors of numeric values. Dense vector fields are primarily used for k-nearest neighbor (kNN) search. Here are examples about how to set up and use vectors in Elasticsearch. First of all, you need to declare the type of field as a `dense_vector` with the number of dimensions.
 
 ```sh
 PUT my-index
@@ -110,7 +110,11 @@ PUT my-index
     }
   }
 }
+```
 
+And then you'll need to put the document into the index with the vector. In these two documents, the vector is the embedding of the text, probably pre-processed by a LLM.
+
+```sh
 PUT my-index/_doc/1
 {
   "my_text" : "text1",
@@ -121,6 +125,103 @@ PUT my-index/_doc/2
 {
   "my_text" : "text2",
   "my_vector" : [-0.5, 10, 10]
+}
+```
+
+Then on the read path, you can use a KNN search to find the K nearest neighbors of a given vector. You can also combine a full-text search with a vector search to perform a hybrid search.
+
+Here is an example provided by the Opster team in their article [How to set up vector search in elasticsearch?](https://opster.com/guides/elasticsearch/operations/how-to-set-up-vector-search-in-elasticsearch/#Simple-k-NN-search), where you can query for a given vector to find the K nearest ones. In this case the. target vector is `[0.1, 3.2, 2.1]` and K=2. The number of candidates refer to the mamimum number of vector candidates in each shard to be compared.
+
+```sh
+POST my-index/_search
+{
+  "_source": false,
+  "fields": [ "price" ],
+  "knn": {
+    "field": "title_vector",
+    "query_vector": [0.1, 3.2, 2.1],
+    "k": 2,
+    "num_candidates": 100
+  }
+}
+```
+
+After finding K candidates from each shard, the coordinator node will merge all short-local results and return a global result as a final result to the user. (Diagram created by Opster)
+
+![diagram from opster](/assets/opster-Nearest-neighbor-search-accuracy-using-num_candidates-1.png)
+
+Documents are ranked by the vector field similarity to the query vector. There are different algorithms for calculating the vector similarity: `l2_norm`, `dot_product`, `cosine`, and `max_inner_product`. See [official documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html).
+
+In the paragraph above, we talk about vector search. This is great for finding information  when you are more or less clear what you are looking for. Now let's talk about hybrid search, a combination of full-text search and vector search.
+
+The motivation behind hybrid search is quite clear: users often have a precise idea of what they want in certain aspects of their query, but they may be less certain about others. For example, in an e-commerce scenario, a user might want to buy products from a specific marketplace, within a particular category, and at a fixed price range. However, they might be more flexible with the search query used to describe the product.
+
+```mermaid
+flowchart TB
+    hybrid_search
+    full_text_search
+    vector_search
+    subgraph platform
+        subgraph UK
+            uk_iphone["iphone_15"]
+            uk_macbook["macbook"]
+        end
+        subgraph FR
+            t_shirt
+            pen
+            subgraph ep [Electronic Products]
+                fr_macbook["macbook"]
+                subgraph knn [Vectors]
+                    direction LR
+                    fr_iphone["iphone_15"]
+                    iphone_15_pro
+                    iphone_14
+                    iphone_13
+                    samsung_galaxy
+                end
+            end
+        end
+    end
+
+    hybrid_search --> full_text_search
+    hybrid_search --> vector_search
+    full_text_search --"define boundary"--> ep
+    vector_search --"find similar products"--> knn
+```
+
+## Vector in MongoDB
+
+MongoDB annonced their support for vectors recently. You can see their introduction to [Vector Search](https://www.mongodb.com/products/platform/atlas-vector-search) here. According to MongoDB's documentation, the vector field must contain an array of numbers of the BSON double data type for querying using the `$vectorSearch` pipeline stage. You must index the vector field as the vector type inside the fields array. The following syntax defines the vector field type:
+
+```js
+{
+  "fields":[
+    {
+      "type": "vector",
+      "path": <field-to-index>,
+      "numDimensions": <number-of-dimensions>,
+      "similarity": "euclidean | cosine | dotProduct"
+    },
+    ...
+  ]
+}
+```
+
+From user's perspective, this is very similar to the configuration shown in Elasticsearch. The field "numDimensions" defines the number of dimensions in the vector, and the similarity is the default algorithm used for comparing the similarity of vectors when searching for top K-nearest neighbors.
+
+Once the data are persisted into MongoDB, you can perform a `$vectorSearch` query to search the information for the given index. MongoDB supports two types of vector searches: ANN Search and ENN Search. For ANN search, Atlas Vector Search finds vector embeddings in your data that are closest to the vector embedding in your query based on their proximity in multi-dimensional space and based on the number of neighbors that it considers. For ENN search, Atlas Vector Search exhaustively searches all the indexed vector embeddings by calculating the distance between all the embeddings and finds the exact nearest neighbor for the vector embedding in your query. This is computationally intensive.
+
+```js
+{
+  "$vectorSearch": {
+    "exact": true | false,
+    "filter": {<filter-specification>},
+    "index": "<index-name>",
+    "limit": <number-of-results>,
+    "numCandidates": <number-of-candidates>,
+    "path": "<field-to-search>",
+    "queryVector": [<array-of-numbers>]
+  }
 }
 ```
 
@@ -140,3 +241,6 @@ on [Twitter](https://twitter.com/mincong_h) or
 - <https://en.wikipedia.org/wiki/Vector_database>
 - <https://www.ibm.com/think/topics/vector-embedding>
 - <https://www.mongodb.com/docs/atlas/atlas-vector-search/vector-search-overview/>
+- <https://www.elastic.co/search-labs/blog/elasticsearch-vector-large-scale-part1>
+- <https://opster.com/guides/elasticsearch/operations/how-to-set-up-vector-search-in-elasticsearch/>
+- <https://www.mongodb.com/docs/atlas/atlas-vector-search/vector-search-stage/>
