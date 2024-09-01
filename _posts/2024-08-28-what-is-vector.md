@@ -64,30 +64,30 @@ Vectors belong to a larger category of _tensors_. In machine learning (ML), "ten
 
 If you want to convert text into vectors, you would typically interact with the LLM at a specific stage in the following process.
 
-* **Tokenization:** The tax is first tokenized, which means breaking down into text, into smaller units. Tokens are usually words or sub-words. This is the first step, but it's not yet the factorization process. 
-* **Embedding (Vectorization):** After tokenization, the test is passed through an **embedding layer**. This is where the interaction with the LLM happens. The LLM takes the tokens and converts them into dense numerical representations—**vectors**. These vectors are high dimensional (e.g. 768 dimensions in the case of BERT or GBT-3's default embeddings), and contain semantic information about the text.
+* **Tokenization:** The text is first tokenized, which means breaking down into text, into smaller units. Tokens are usually words or sub-words. This is the first step, but it's not yet the factorization process. 
+* **Embedding (Vectorization):** After tokenization, the text is passed through an **embedding layer**. This is where the interaction with the LLM happens. The LLM takes the tokens and converts them into dense numerical representations—**vectors**. These vectors are high dimensional (e.g. 768 dimensions in the case of BERT or GBT-3's default embeddings), and contain semantic information about the text.
 
-Here is an example from Anshu's article [Understanding the Fundamental Limitations of Vector-Based Retrieval for Building LLM-powered Chatbot](https://medium.com/thirdai-blog/understanding-the-fundamental-limitations-of-vector-based-retrieval-for-building-llm-powered-48bb7b5a57b3), where a corpus of text documents being broken down into smaller blocks of text (chunk). Each trunk is then fed to a trained language model like BERT or GPT to generate vector representation, also known as embedding. The embedding is then stored into the vector database.
+Here is an example from Anshu's article [Understanding the Fundamental Limitations of Vector-Based Retrieval for Building LLM-powered Chatbot](https://medium.com/thirdai-blog/understanding-the-fundamental-limitations-of-vector-based-retrieval-for-building-llm-powered-48bb7b5a57b3), where a corpus of text documents being broken down into smaller blocks of text (chunks). Each trunk is then fed to a trained language model like BERT or GPT to generate vector representation, also known as embedding. The embedding is then stored in the vector database.
 
 ![LLMs: text to embedding by Anshu from Medium](/assets/1_uWM0FHzDxtZRCX3K_6WFQA.webp)
 
-However, any changes or update to the LLM require reindexing everything in the vector database. You need the exact same for querying, changing dimensions is not allowed. So you can imagine the cost of using LLM to power your solution.
+However, any changes or updates to the LLM require reindexing everything in the vector database. You need the exact same for querying, changing dimensions is not allowed. So you can imagine the cost of using LLM to power your solution.
 
 ## Why (not) using vector?
 
 Vectors can be used to determine the similarity of different objects. You can convert any kind of data from text, image, and audio data to unstructured data into vectors. Then, determine their semantic similarity by measuring the distance between vectors. The K-nearest neighbors (KNN) are the ones that are the most similar to the vector that you are looking for.
 
-This is useful for finding words that are similar to each other even if their representation are completely different. For example, "king" and "queen" are similar but they look different. The word "king" in English and "roi" in French are also similar. This kind of sementic similarity is difficult to achieve in traditional full-text search, yet, They are very useful for many activities such as recruiting, e-commerce, etc.
+This is useful for finding words that are similar to each other even if their representation are completely different. For example, "king" and "queen" are similar but they look different. The word "king" in English and "roi" in French are also similar. This kind of semantic similarity is difficult to achieve in traditional full-text search, yet, They are very useful for many activities such as recruiting, e-commerce, etc.
 
-There are also cases that you don't want to use vectors. When you know precisely what are you searching for, you want to ensure the searching criteria are precise and strictly applied by the database / search engine. You dont want any irrelevant results to appear, even if they look similar. For example, if you are looking for Kings in France, you don't want any kings  from England even if they are similar. You want exact matches in this case.
+There are also cases that you don't want to use vectors. When you know precisely what are you searching for, you want to ensure the search criteria are precise and strictly applied by the database / search engine. You dont want any irrelevant results to appear, even if they look similar. For example, if you are looking for Kings in France, you don't want any kings  from England even if they are similar. You want exact matches in this case.
 
 ## Vector Database
 
-A vector database is a specific kind of database that saves information in a form of multi-dimensional factors representing certain characteristic or qualities. According to the article [The Top 5 Vector Databases](https://www.datacamp.com/blog/the-top-5-vector-databases) by Moez Ali, there are a lot of vector databases in the market. They are either dedicated vector database or existing databases that support vector search.
+A vector database is a specific kind of database that saves information in the form of multi-dimensional factors representing certain characteristic or qualities. According to the article [The Top 5 Vector Databases](https://www.datacamp.com/blog/the-top-5-vector-databases) by Moez Ali, there are a lot of vector databases in the market. They are either dedicated vector database or existing databases that support vector search.
 
 ![Vector databases from https://www.datacamp.com/blog/the-top-5-vector-databases](/assets/image_c9031ee72f.png)
 
-It plays a crucial role in finding similar assets by querying for neighboring factors. Vector databases are typically used to power vector search use cases like visual, semantic and multimodal search. These kinds of search can be used at a stand-alone search query or a hybrid search by combining it with a full-text search.
+It plays a crucial role in finding similar assets by querying for neighboring factors. Vector databases are typically used to power vector search use cases like visual, semantic, and multimodal search. These kinds of search can be used at a stand-alone search query or a hybrid search by combining it with a full-text search.
 
 Recently I had the chance widness the updates from Elasticsearch and MongoDB, so I'm going to explore those engines and show you how they store vectors there.
 
@@ -112,7 +112,7 @@ PUT my-index
 }
 ```
 
-And then you'll need to put the document into the index with the vector. In these two documents, the vector is the embedding of the text, probably pre-processed by a LLM.
+Then you'll need to put the document into the index with the vector. In these two documents, the vector is the embedding of the text, probably pre-processed by a LLM.
 
 ```sh
 PUT my-index/_doc/1
@@ -152,7 +152,7 @@ After finding K candidates from each shard, the coordinator node will merge all 
 
 Documents are ranked by the vector field similarity to the query vector. There are different algorithms for calculating the vector similarity: `l2_norm`, `dot_product`, `cosine`, and `max_inner_product`. See [official documentation](https://www.elastic.co/guide/en/elasticsearch/reference/current/dense-vector.html).
 
-In the paragraph above, we talk about vector search. This is great for finding information  when you are more or less clear what you are looking for. Now let's talk about hybrid search, a combination of full-text search and vector search.
+In the paragraph above, we talk about vector search. This is great for finding information  when you are more or less clear about what you are looking for. Now let's talk about hybrid search, a combination of full-text search and vector search.
 
 The motivation behind hybrid search is quite clear: users often have a precise idea of what they want in certain aspects of their query, but they may be less certain about others. For example, in an e-commerce scenario, a user might want to buy products from a specific marketplace, within a particular category, and at a fixed price range. However, they might be more flexible with the search query used to describe the product.
 
@@ -189,11 +189,11 @@ flowchart TB
     vector_search --"find similar products"--> knn
 ```
 
-Elastic is also building the Elasticsearch Relevance Engine (ESRE), designed to power artificial intelligence-based search applications. Use ESRE to apply semantic search with superior relevance out of the box (without domain adaptation), integrate with external large language models (LLMs), implement hybrid search, and use third-party or your own transformer models. Here is an example of the GenAI architecture with Google Cloud and Elasticsearch for the retail, presented by Delphin Barankanira during the Meetup ElasticFR 91 on June 23, 2024 (video: <https://youtu.be/Uti0fB5HpRY?si=E0_7g3Ja24zpD3sM>)
+Elastic is also building the Elasticsearch Relevance Engine (ESRE), designed to power artificial intelligence-based search applications. Use ESRE to apply semantic search with superior relevance out of the box (without domain adaptation), integrate with external large language models (LLMs), implement hybrid search, and use third-party or your own transformer models. Here is an example of the GenAI architecture with Google Cloud and Elasticsearch for Retail, presented by Delphin Barankanira during the Meetup ElasticFR 91 on June 23, 2024 (video: <https://youtu.be/Uti0fB5HpRY?si=E0_7g3Ja24zpD3sM>)
 
 ![Entreprise GenAI Architecture for retail](/assets/20240901-meetup-elastic-fr-91.png)
 
-In this architecture, you can see how LLM is integrated into the database of the retailer company to provide a sementic search experience. Not only the system allows users ask questions and use the LLM to provide relevant answers, it allows the retail company to check the availability of the products using hybrid search and control the access using role-based-access-control (RBAC) via the LDAP. This becomes the relevant context and is then used by the VertexAI, developed by Google to provide the final answer to the customer.
+In this architecture, you can see how LLM is integrated into the database of the retailer company to provide a semantic search experience. Not only does the system allow users to ask questions and use the LLM to provide relevant answers, it also allows the retail company to check the availability of the products using hybrid search and control the access using role-based-access-control (RBAC) via the LDAP. This becomes the relevant context and is then used by the VertexAI, developed by Google to provide the final answer to the customer.
 
 ## Vector in MongoDB
 
@@ -213,7 +213,7 @@ MongoDB annonced their support for vectors recently. You can see their introduct
 }
 ```
 
-From user's perspective, this is very similar to the configuration shown in Elasticsearch. The field "numDimensions" defines the number of dimensions in the vector, and the similarity is the default algorithm used for comparing the similarity of vectors when searching for top K-nearest neighbors.
+From the user's perspective, this is very similar to the configuration shown in Elasticsearch. The field "numDimensions" defines the number of dimensions in the vector, and the similarity is the default algorithm used for comparing the similarity of vectors when searching for top K-nearest neighbors.
 
 Once the data are persisted into MongoDB, you can perform a `$vectorSearch` query to search the information for the given index. MongoDB supports two types of vector searches: ANN Search and ENN Search. For ANN search, Atlas Vector Search finds vector embeddings in your data that are closest to the vector embedding in your query based on their proximity in multi-dimensional space and based on the number of neighbors that it considers. For ENN search, Atlas Vector Search exhaustively searches all the indexed vector embeddings by calculating the distance between all the embeddings and finds the exact nearest neighbor for the vector embedding in your query. This is computationally intensive.
 
@@ -241,10 +241,10 @@ If you were interested in knowing more, you can register to MongoDB's online cou
 
 After learning these concepts, it means me realize several things as a normal software engineer with little AI knowledge:
 
-1. AI Engineers are Software Engineers. Most of the hard work for AI projects is handled by LLM or databases, which respectively handle the produciton of vectors and the storage of vectors. Therefore, as an AI engineer in a company, your role is mainly to choose how to integrate LLM and vectors into the existing system architecture to better fit the business requirements.
+1. AI Engineers are Software Engineers. Most of the hard work for AI projects is handled by LLM or databases, which respectively handle the production of vectors and the storage of vectors. Therefore, as an AI engineer in a company, your role is mainly to choose how to integrate LLM and vectors into the existing system architecture to better fit the business requirements.
 2. Using AI sounds extremely expensive. You have to call a LLM as the encoder for creating the vectors, both for the existing data and the user queries. The vectors have to be produced by the same LLM otherwise the queries in the database will fail. So you have to choose a LLM model, e.g. `gpt-4o` and stick with it. Then, when a new LLM model is chosen (because it's newer, more cost-effective, etc), you will have to stop the world and replace everything again in your database.
-3. Not all the applications need sementic search. Sementic search is a revolutional tool for domains where users cannot precisely define what they want. This is due to the lack of knowledge for the things that they are looking for, or the flexibility of the scope that they can allow in their queries, etc. It's typically useful for e-commerce, recruiting, content management. But in other cases, it may not be that important.
-4. Companies owning the data are the kings. As you can see, the vectors are used as the embeddings of the existing data. So if you don't have data, then it's hard to get an opportunities to leverage LLM for business.
+3. Not all the applications need semantic search. Semantic search is a revolutionary tool for domains where users cannot precisely define what they want. This is due to the lack of knowledge of the things that they are looking for, the flexibility of the scope that they can allow in their queries, etc. It's typically useful for e-commerce, recruiting, content management. But in other cases, it may not be that important.
+4. Companies owning the data are the kings. As you can see, the vectors are used as the embeddings of the existing data. So if you don't have data, then it's hard to get opportunities to leverage LLM for business.
 
 ## Conclusion
 
