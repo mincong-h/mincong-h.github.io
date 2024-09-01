@@ -189,6 +189,12 @@ flowchart TB
     vector_search --"find similar products"--> knn
 ```
 
+Elastic is also building the Elasticsearch Relevance Engine (ESRE), designed to power artificial intelligence-based search applications. Use ESRE to apply semantic search with superior relevance out of the box (without domain adaptation), integrate with external large language models (LLMs), implement hybrid search, and use third-party or your own transformer models. Here is an example of the GenAI architecture with Google Cloud and Elasticsearch for the retail, presented by Delphin Barankanira during the Meetup ElasticFR 91 on June 23, 2024 (video: <https://youtu.be/Uti0fB5HpRY?si=E0_7g3Ja24zpD3sM>)
+
+![Entreprise GenAI Architecture for retail](/assets/20240901-meetup-elastic-fr-91.png)
+
+In this architecture, you can see how LLM is integrated into the database of the retailer company to provide a sementic search experience. Not only the system allows users ask questions and use the LLM to provide relevant answers, it allows the retail company to check the availability of the products using hybrid search and control the access using role-based-access-control (RBAC) via the LDAP. This becomes the relevant context and is then used by the VertexAI, developed by Google to provide the final answer to the customer.
+
 ## Vector in MongoDB
 
 MongoDB annonced their support for vectors recently. You can see their introduction to [Vector Search](https://www.mongodb.com/products/platform/atlas-vector-search) here. According to MongoDB's documentation, the vector field must contain an array of numbers of the BSON double data type for querying using the `$vectorSearch` pipeline stage. You must index the vector field as the vector type inside the fields array. The following syntax defines the vector field type:
@@ -225,14 +231,24 @@ Once the data are persisted into MongoDB, you can perform a `$vectorSearch` quer
 }
 ```
 
-## Going Further
+But most of the time, you probably want to use a hybrid search, which is the combination of full-text search and vector search and fuses the results of both sides. In MongoDB, this is called Reciprocal Rank Fusion, which relies on the rank of the documents and their score to compute the final results. To calculate the fusion score, they apply a formula to every result in the search stage. The `rank` is the position of the search result, the `k` is the weight or priority to each of the search stages. Finally, it calculates the per-stage value by summing the `rank` and the `k` value together then computing the reciprocal. This can be seen in the table below, where the 3 documents A, B, and C and each of them is ranked differently in the text search (Atlas Search) and the vector search (Atlas Vector Search).
 
-How to go further from here?
+![Using MongoDB for hybrid search](/assets/20240901-mongodb.png)
+
+If you were interested in knowing more, you can register to MongoDB's online course [Using Vector Search for Semantic Search](https://learn.mongodb.com/courses/using-vector-search-for-semantic-search), which is a free 1.75 hours course to teach you how to build a semantic search feature with Atlas Vector Search.
+
+## Thoughts
+
+After learning these concepts, it means me realize several things as a normal software engineer with little AI knowledge:
+
+1. AI Engineers are Software Engineers. Most of the hard work for AI projects is handled by LLM or databases, which respectively handle the produciton of vectors and the storage of vectors. Therefore, as an AI engineer in a company, your role is mainly to choose how to integrate LLM and vectors into the existing system architecture to better fit the business requirements.
+2. Using AI sounds extremely expensive. You have to call a LLM as the encoder for creating the vectors, both for the existing data and the user queries. The vectors have to be produced by the same LLM otherwise the queries in the database will fail. So you have to choose a LLM model, e.g. `gpt-4o` and stick with it. Then, when a new LLM model is chosen (because it's newer, more cost-effective, etc), you will have to stop the world and replace everything again in your database.
+3. Not all the applications need sementic search. Sementic search is a revolutional tool for domains where users cannot precisely define what they want. This is due to the lack of knowledge for the things that they are looking for, or the flexibility of the scope that they can allow in their queries, etc. It's typically useful for e-commerce, recruiting, content management. But in other cases, it may not be that important.
+4. Companies owning the data are the kings. As you can see, the vectors are used as the embeddings of the existing data. So if you don't have data, then it's hard to get an opportunities to leverage LLM for business.
 
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
-Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
+In this article, we discuss the introduction to vectors and how it is used in Elasticsearch and MongoDB. Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
@@ -242,5 +258,7 @@ on [Twitter](https://twitter.com/mincong_h) or
 - <https://www.ibm.com/think/topics/vector-embedding>
 - <https://www.mongodb.com/docs/atlas/atlas-vector-search/vector-search-overview/>
 - <https://www.elastic.co/search-labs/blog/elasticsearch-vector-large-scale-part1>
+- <https://www.elastic.co/elasticsearch/elasticsearch-relevance-engine>
 - <https://opster.com/guides/elasticsearch/operations/how-to-set-up-vector-search-in-elasticsearch/>
 - <https://www.mongodb.com/docs/atlas/atlas-vector-search/vector-search-stage/>
+- <https://youtu.be/Uti0fB5HpRY?si=E0_7g3Ja24zpD3sM> Meetup ElasticFR #91 - Advancing Enterprise and OSS with Google Cloud's GenAI and Elastic
