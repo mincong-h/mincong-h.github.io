@@ -9,10 +9,10 @@ subtitle:            >
 lang:                en
 date:                2024-08-28 17:39:12 +0200
 categories:          [elasticsearch]
-tags:                [ai, elasticsearch]
+tags:                [ai, elasticsearch, mongodb]
 comments:            true
 excerpt:             >
-    TODO
+    This article discusses what is vector in the world of AI, its definition, vectorization, the motivation of using it, the usage of vector in Elasticsearch and MongoDB, and some personal thoughts.
 
 image:               /assets/mika-baumeister-Wpnoqo2plFA-unsplash.jpg
 cover:               /assets/mika-baumeister-Wpnoqo2plFA-unsplash.jpg
