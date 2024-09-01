@@ -29,6 +29,8 @@ wechat:              false
 
 Recently, I heard about this technology several times on different occasions. It makes me wonder what a vector is and how it is useful in artificial intelligence (AI). This is a study note that will help me to understand this technology better, so the content may not be accurate. But I hope that it can help you to understand this technology as well. In this article, we are going to explore the definition of a vector, the motivation for using vectors in different databases, and the use cases of vectors in different industries. Now, let's get started!
 
+_PS: special thanks to [cy-moi](https://github.com/cy-moi) for reviewing this post._
+
 ## Definition
 
 According to Wikipedia, vectors are mathematical representations of data in a high-dimensional space. In this space, each dimension corresponds to a feature of the data, with the number of dimensions ranging from a few hundred to tens of thousands, depending on the complexity of the data being represented. A vector's position in the space represents its characteristics. Words. phrases, or entire documents, as well as images, audio, and other types of data can all be vectorized.
@@ -89,7 +91,9 @@ A vector database is a specific kind of database that saves information in the f
 
 It plays a crucial role in finding similar assets by querying for neighboring factors. Vector databases are typically used to power vector search use cases like visual, semantic, and multimodal search. These kinds of search can be used at a stand-alone search query or a hybrid search by combining it with a full-text search.
 
-Recently I had the chance widness the updates from Elasticsearch and MongoDB, so I'm going to explore those engines and show you how they store vectors there.
+To search vectors efficiently, there are several indexing methods available to organize and optimize the search processing. The most common indexing methods include Partitioning Trees (e.g. KD-Tree), Hashing Techniques (e.g. Locality-Sensitive Hashing - LSH), graph-based indexes (e.g. Hierarchical Navigable Small World graphs - HNSW), and product Quantization (PQ). These methods also determine how the vectors are stord in the index, which can be tree-based, graph-based or hashing. Then, when searching the vectors, an Approximate Nearest Neighbor (ANN) search is usually applied, to balance speed and accuracy when looking for the results.
+
+Recently I had the chance widness the vector-related feature updates from Elasticsearch and MongoDB, so I'm going to explore those engines and show you how they store vectors there.
 
 ## Vector in Elasticsearch
 
