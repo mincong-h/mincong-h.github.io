@@ -5,7 +5,7 @@ title:             Improve Blog Ranking in Google Search
 subtitle:          Simple SEO improvements that I used for this site.
 lang:              en
 date:              2018-07-21 06:37:11 +0200
-date_modified:     2021-07-15 21:25:05 +0200
+date_modified:     2024-09-02 08:57:07 +0200
 categories:        [jekyll]
 tags:              [search, seo, google-search-console, google-analytics, jekyll]
 permalink:         /2018/07/21/improve-the-search-presence/
@@ -55,6 +55,10 @@ Notice that robots can ignore your `/robots.txt`. Especially malware robots
 that scan the web for security vulnerabilities, and email address harvesters
 used by spammers will pay no attention. For more information, visit
 <http://www.robotstxt.org> or [Google Search: Robots.txt Specifications][5].
+
+There are tools like <https://www.websiteplanet.com/webtools/robots-txt/> which
+allows you to analyze your `robots.txt` file and see if there are any errors or
+warnings for free.
 
 ## Submit a Sitemap File
 
