@@ -12,7 +12,7 @@ categories:          [authentication]
 tags:                [authentication, java, javascript]
 comments:            true
 excerpt:             >
-    TODO
+    This article shares the key notes for implementing a "Sign-in with Google" mechanism for a web application based on OAuth 2.0.
 
 image:               /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg
 cover:               /assets/bg-willian-justen-de-vasconcellos-3fX0FvA-2us-unsplash.jpg
@@ -106,13 +106,13 @@ The backend authorization service receives the ID token sent by the web applicat
 
 Service is not only responsible for handling the ID token sent by Google. It is also a central place for granting access tokens, refresh tokens, and handle all kinds of authorization logic in the OAuth flow. When the frontend sends an HTTP request with the authorization header, the header is decoded by the authorizer to verify the access token and all the fields there. Note that this is not directly related to "Sign in with Google", it is how I implement the OAuth logic with my custom authorizer. The similar services should be AWS Cognito or Google Identity Platform.
 
-As a developer, you need to design your jwt token. You need to define the roles, the scope of access, expiry, subject, issuer, and other types of information that you want to store in a token.
+As a developer, you need to design your jwt token. You need to define the roles, the scope of access, expiry, subject, issuer, and other types of information that you want to store in a token. You also need to design the public responses when the authorization fails.
 
 ## Backend Resource
 
 Backend resource APIs are the actual services for handling CRUD of different resources. They do not contain any logic related to authorization. But they should declaration instructions (such as via annotations) to let the authorizor to grant or deny access to the resource. For example, some resources are restricted for administrators, while other resources are open for any registered users. This can be related to the scope of the token, or other information.
 
-For example, in the spring framework, you can use preauthorized, secured or roles allowed to define role-based access control (RBAC) for your RESTful APIs. 
+For example, in the spring framework, you can use preauthorized, secured or roles allowed to define role-based access control (RBAC) for your RESTful APIs.
 
 ```java
 @RolesAllowed("ROLE_ADMIN")
@@ -122,15 +122,42 @@ public ResponseEntity<String> getAdminData() {
 }
 ```
 
-## Going Further
+## Google Identity
 
-How to go further from here?
+You need to create a project in Google Cloud to configure the OAuth 2.0 Client IDs. The configuration is unique per application. The application can have type: web application, android, chrome extension, iOS, desktop app, etc. In my case, I am interested in web application. The client ID is registered in both the frontend and the backend, which are used for sending requests to Google Identity. The frontend sends a request to Google when user clicks the "Sign-in with Google" button. The backend sends a request to Google when the ID token and other tokens (such as the CSRF token) is received by the backend to a double-verification.
+
+```mermaid
+graph TB;
+    subgraph MyApp
+        subgraph WebApp
+            WebApp_library[JS library]
+            WebApp_clientId[client ID]
+        end
+        subgraph Backend
+            Backend_library[Java library]
+            Backend_clientId[client ID]
+        end
+    end
+
+    WebApp == 1 - Sign in Request ==> GoogleIdentity
+    GoogleIdentity -- 2 - ID token --> WebApp
+    WebApp -- 3 - ID token --> Backend
+    Backend == 4 - Verification Request ==> GoogleIdentity
+    Backend -- 5 - JWT token<br>and user info --> WebApp
+    GoogleIdentity -- 6 - User Info --> Backend
+```
+
+There are two pieces of information that are essentials in the Google Cloud: the Authorized JavaScript origins and the Authorized redirect URIs.
+
+* **Authorized JavaScript origins** define the HTTP origins that host your web application. It should point to your local development environment, staging environment, and production environment. In my case, I put `http://localhost`, `http://localhost:5173` (webpack server), `https://cs.nanosearch.io` which are the dev and prod environments. Note that the `http://localhost` is a special expression for defining an origin for localhost.
+* **Authorized redirect URIs** define to which path users will be redirected after they have authenticated with Google. The path will be appended with the authorization code for access, and must have a protocol. It can’t contain URL fragments, relative paths, or wildcards, and can’t be a public IP address. In my case, I put `http://localhost:8080/api/v1/auth/google/verify-token`, and `https://cs.nanosearch.io/api/v1/auth/google/verify-token`.
 
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
-Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
+In this article, we discussed some of the important components in a "Sign-in with Google" flow for a web application, including the frontend application, the backend authorization service, the actual backend resources, and the Google Identity. Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
 
 ## References
+
+* <https://developers.google.com/identity/gsi/web/guides/offerings>
