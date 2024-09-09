@@ -143,8 +143,8 @@ graph TB;
     GoogleIdentity -- 2 - ID token --> WebApp
     WebApp -- 3 - ID token --> Backend
     Backend == 4 - Verification Request ==> GoogleIdentity
-    Backend -- 5 - JWT token<br>and user info --> WebApp
-    GoogleIdentity -- 6 - User Info --> Backend
+    GoogleIdentity -- 5 - User Info --> Backend
+    Backend -- 6 - JWT token<br>and user info --> WebApp
 ```
 
 Two pieces of information are essentials in the Google Cloud: the Authorized JavaScript origins and the Authorized redirect URIs.
