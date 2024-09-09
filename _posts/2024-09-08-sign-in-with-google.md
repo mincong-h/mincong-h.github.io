@@ -100,9 +100,27 @@ The web application follows the guide [Sign In With Google for web](https://deve
 
 ## Backend Authorization
 
-The backend authorization service receives the ID token sent by the web application. It sends to Google Identity another request to verify the ID token validity. This method is recommanded by Google in their article [Verify the Google ID token on your server side](https://developers.google.com/identity/gsi/web/guides/verify-google-id-token). Once the token is verified, we can receive the user information from Google, such as the user email, family name, first name, locale, and picture. These pieces of information can be persisted in database. Here is a screenshot showing the interactions between the backend and Google using Datadog:
+The backend authorization service receives the ID token sent by the web application. It sends to Google Identity another request to verify the ID token validity. This method is recommanded by Google in their article [Verify the Google ID token on your server side](https://developers.google.com/identity/gsi/web/guides/verify-google-id-token). Once the token is verified, we can receive the user information from Google, such as the user email, family name, first name, locale, and picture. These pieces of information can be persisted in database. Here is a screenshot showing the interactions between the backend and Google using Datadog: First of all, the backend receives the token verification request submitted by the frontend. Then, it sends a request to Google Identity to verify the token. Once the token is verified, Google returns the user information, which is persisted into MongoDB.
 
 ![Authorization](/assets/2024/Screenshot-2024-09-08-auth-datadog.png)
+
+Service is not only responsible for handling the ID token sent by Google. It is also a central place for granting access tokens, refresh tokens, and handle all kinds of authorization logic in the OAuth flow. When the frontend sends an HTTP request with the authorization header, the header is decoded by the authorizer to verify the access token and all the fields there. Note that this is not directly related to "Sign in with Google", it is how I implement the OAuth logic with my custom authorizer. The similar services should be AWS Cognito or Google Identity Platform.
+
+As a developer, you need to design your jwt token. You need to define the roles, the scope of access, expiry, subject, issuer, and other types of information that you want to store in a token.
+
+## Backend Resource
+
+Backend resource APIs are the actual services for handling CRUD of different resources. They do not contain any logic related to authorization. But they should declaration instructions (such as via annotations) to let the authorizor to grant or deny access to the resource. For example, some resources are restricted for administrators, while other resources are open for any registered users. This can be related to the scope of the token, or other information.
+
+For example, in the spring framework, you can use preauthorized, secured or roles allowed to define role-based access control (RBAC) for your RESTful APIs. 
+
+```java
+@RolesAllowed("ROLE_ADMIN")
+@GetMapping("/admin/data")
+public ResponseEntity<String> getAdminData() {
+    return ResponseEntity.ok("Admin Data");
+}
+```
 
 ## Going Further
 
