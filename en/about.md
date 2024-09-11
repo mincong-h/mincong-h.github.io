@@ -10,10 +10,10 @@ redirect_from:  /about/
     alt="Mincong Huang's Gravatar" />
 </p>
 
-Hi, welcome to my blog! I'm a software engineer at [Datadog](https://www.datadoghq.com/). I write blog posts
+Hi, welcome to my blog! I'm a software engineer at [Composable](https://becomposable.com/). I write blog posts
 in my free time. My blogs are bits and pieces of my tech journey. Most of them
-are related to Java. Hope you enjoy them! My opionions are my own, not
-Datadog's. This blog is powered by [Jekyll](https://jekyllrb.com/), a simple, blog-aware, static sites
+are related to software development and operations for a SaaS business. Hope you enjoy them! My opionions are my own, not
+Composable's. This blog is powered by [Jekyll](https://jekyllrb.com/), a simple, blog-aware, static sites
 solution.
 
 <div class="layout--articles">

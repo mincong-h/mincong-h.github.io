@@ -19,11 +19,8 @@ article_header:
 ---
 
 <div class="article__content">
-  <h1>Services</h1>
-  <p>Hi, I am a software engineer with 11 years of experience working on
-different projects in France and China. I can help you with different aspects of
-your system, from software development to operations in production. I am looking
-for new opportunities, especially missions related to Elasticsearch or GenAI. If you are interested, please contact me at <code>mincong.h[at]gmail.com</code>.</p>
+  <h1>About Me</h1>
+  <p>Hi, I am a software engineer at <a href="https://becomposable.com/" target="_blank">Composable</a>, helping companies to automate and augment their business processes with LLMs. I have 11 years of experience working on different projects, mainly in France. My blog posts are bits and pieces of my tech journey. Most of them are related to software development and operations for a SaaS business. Hope you enjoy them!</p>
 </div>
 
 <div class="layout--articles">
