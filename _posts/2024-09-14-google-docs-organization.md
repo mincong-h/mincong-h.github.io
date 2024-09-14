@@ -14,8 +14,8 @@ comments:            true
 excerpt:             >
     TODO
 
-image:               /assets/bg-coffee-84624_1280.jpg
-cover:               /assets/bg-coffee-84624_1280.jpg
+image:               /assets/2024/pawel-czerwinski-fpZZEV0uQwA-unsplash.jpg
+cover:               /assets/2024/pawel-czerwinski-fpZZEV0uQwA-unsplash.jpg
 article_header:
   type:              overlay
   theme:             dark
