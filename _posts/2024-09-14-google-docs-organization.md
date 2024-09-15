@@ -36,15 +36,15 @@ I think everyone should assume that documentation is not done overnight: instead
 ```mermaid
 timeline
     title Evoluation of Chatsearch (CS)
-    section L0 <br> Single document
+    section L0 - Single document
         CS Chatsearch Business Plan : Self
-    section L1 <br> 1-level directory
+    section L1 - 1-level directory
         CS Architecture : CS User Research : CS Operations
-    section L2 <br> 2-level directory
+    section L2 - 2-level directory
         CS WebApp : CS Choosing UI Framework : CS Authentication in frontend
         CS User Survey : CS User Interview 1 : CS User Interview 2 : CS User Survey 1 : CS User Survey 2
-        CS User Experience : CS Welcome Email : CS User Onboarding Proess
-        CS Browser Extension : CS Browser Extension UI : CS Browser Extension - Data Sync : CS Browser Extension in CWS
+        CS User Experience : CS Welcome Email : CS User Onboarding Process
+        CS Browser Extension : CS Browser Extension UI : CS Browser Extension - Data Sync : CS Browser Extension in Chrome Web Store
 ```
 
 ## Section 2
