@@ -38,22 +38,28 @@ Here, I am using the ChatGPT QuickSearch Extension as an example (internally, it
 ```mermaid
 timeline
     title Evoluation of Chatsearch (CS)
-    section L0 - Single document
+    section L0 - Single Document
         CS Chatsearch Business Plan : Self
-    section L1 - 1-level directory
+    section L1 - One-Level Directory
         CS Architecture : CS User Research : CS Operations
-    section L2 - 2-level directory
+    section L2 - Two-Level Directory
         CS WebApp : CS Choosing UI Framework : CS Authentication in frontend
         CS User Survey : CS User Interview 1 : CS User Interview 2 : CS User Survey 1 : CS User Survey 2
         CS User Experience : CS Welcome Email : CS User Onboarding Process
         CS Browser Extension : CS Browser Extension UI : CS Browser Extension - Data Sync : CS Browser Extension in Chrome Web Store
 ```
 
-## L0 - Single Document
+### L0 - Single Document
 
 In the single-document pattern, you write everything in the same document. This is a standalone document containing all kinds of information related to your project. It works well when you have a limited amount of information related to this project. Perhaps you are a newcomer for the project and your current interest is limited since you are just learning. Perhaps you have an idea, so you want to describe the motivation, the problems and potential solutions, but you are not ready to implement it yet. Perhaps you want to understand the organization of the team, so you describe the structure and roles in a document. These kinds of information fit perfectly in single documentation. You don’t need a directory or an even more complex structure because one document is simple enough. If the situation evolves, you just need to add more paragraphs into that document. When the document grows a lot, like more than 5 to 10 pages, perhaps one single document does not fit it anymore. You will need a more complex structure to adapt the growth of your project.
 
-## Section 3
+### L1 - One-Level Directory
+
+A one-level directory is a directory containing multiple documents, ideally more than three documents. Each document represents different aspects of the software. For example, one can be a getting-started guide while another explains the architecture from a technical standpoint, and the last one is an operational guide. All content inside this directory should be built around the same topic so that the content is highly cohesive. People will naturally be interested. If you think about your content from the readers’ respective, you typically have different kinds of readers for your documents: some readers may be product owners, some may be support engineers, sales engineers, or developers. Because their roles are different, so are their interests. Therefore, you can write your document by providing content that is highly relevant to some users. It makes the target audience clear. This will better attract their attention and provide more effective communication. Using a single document is not suitable anymore because people will be confused when navigating through the document and having a hard time to understand which part matters to them. For example, a getting-started guide is typically for users who start using your software, an operational guide (runbook) is typically for software engineers and devops who run the software, and a roadmap is typically for stakeholders of the project (managers, core team, etc).
+
+### L2 - Two-Level Framework
+
+Over time, the one-level directory structure probably won’t fit anymore because every aspect of your software grows and more people are joining the team. Your software may also become more complex. In this case, you can categorize them into different categories, and for each category, you create a separated directory for it. For example, if you have multiple requests for comments (RFCs), you can put them under the RFCs directory. If you have multiple operational guides, you can create another one called “operations” for running the service in production. You can create another directory for your users, talking about getting started with the software and how to be familiar with the core concepts. You can also create another one about the organization, including roadmap, OKRs, discussions etc.
 
 ## Going Further
 
