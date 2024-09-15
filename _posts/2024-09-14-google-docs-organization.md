@@ -33,6 +33,20 @@ As a developer, you probably need to write a lot of documentation. You need to w
 
 I think everyone should assume that documentation is not done overnight: instead, it grows with your software. At the beginning, the project was small, so there was little documentation to write. When the project becomes more complex, so does the documentation. Because people are not machines, they read docs rather than code. Therefore, it is crucial to think about the evolution of the documentation and adapt the structure of the documentation accordingly to the growth of the project. If you set up something too complex at the beginning, it will be over-thinking, but if you don’t evolve overtime, then documentation would “lag” behind and cannot fit the purpose and the complexity of your project anymore. Over the last years, I have been using a 3-level framework, which is working pretty well for me. L0 is writing documentation in a single document; L1 is to put multiple documents into a directory; and L2 is to put multiple documents into a two-level directory, either the top-level directory or the subdirectories. This sounds extremely easy, right? Now, let’s explore each of them individually.
 
+```mermaid
+timeline
+    title Evoluation of Chatsearch (CS)
+    section L0 <br> Single document
+        CS Chatsearch Business Plan : Self
+    section L1 <br> 1-level directory
+        CS Architecture : CS User Research : CS Operations
+    section L2 <br> 2-level directory
+        CS WebApp : CS Choosing UI Framework : CS Authentication in frontend
+        CS User Survey : CS User Interview 1 : CS User Interview 2 : CS User Survey 1 : CS User Survey 2
+        CS User Experience : CS Welcome Email : CS User Onboarding Proess
+        CS Browser Extension : CS Browser Extension UI : CS Browser Extension - Data Sync : CS Browser Extension in CWS
+```
+
 ## Section 2
 
 ## Section 3
