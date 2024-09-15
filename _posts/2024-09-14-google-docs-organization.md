@@ -33,6 +33,8 @@ As a developer, you probably need to write a lot of documentation. You need to w
 
 I think everyone should assume that documentation is not done overnight: instead, it grows with your software. At the beginning, the project was small, so there was little documentation to write. When the project becomes more complex, so does the documentation. Because people are not machines, they read docs rather than code. Therefore, it is crucial to think about the evolution of the documentation and adapt the structure of the documentation accordingly to the growth of the project. If you set up something too complex at the beginning, it will be over-thinking, but if you don’t evolve overtime, then documentation would “lag” behind and cannot fit the purpose and the complexity of your project anymore. Over the last years, I have been using a 3-level framework, which is working pretty well for me. L0 is writing documentation in a single document; L1 is to put multiple documents into a directory; and L2 is to put multiple documents into a two-level directory, either the top-level directory or the subdirectories. This sounds extremely easy, right? Now, let’s explore each of them individually.
 
+Here, I am using the ChatGPT QuickSearch Extension as an example (internally, it's called Chatsearch).
+
 ```mermaid
 timeline
     title Evoluation of Chatsearch (CS)
@@ -47,7 +49,9 @@ timeline
         CS Browser Extension : CS Browser Extension UI : CS Browser Extension - Data Sync : CS Browser Extension in Chrome Web Store
 ```
 
-## Section 2
+## L0 - Single Document
+
+In the single-document pattern, you write everything in the same document. This is a standalone document containing all kinds of information related to your project. It works well when you have a limited amount of information related to this project. Perhaps you are a newcomer for the project and your current interest is limited since you are just learning. Perhaps you have an idea, so you want to describe the motivation, the problems and potential solutions, but you are not ready to implement it yet. Perhaps you want to understand the organization of the team, so you describe the structure and roles in a document. These kinds of information fit perfectly in single documentation. You don’t need a directory or an even more complex structure because one document is simple enough. If the situation evolves, you just need to add more paragraphs into that document. When the document grows a lot, like more than 5 to 10 pages, perhaps one single document does not fit it anymore. You will need a more complex structure to adapt the growth of your project.
 
 ## Section 3
 
