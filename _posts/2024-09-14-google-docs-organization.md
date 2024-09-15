@@ -8,8 +8,8 @@ subtitle:            >
 
 lang:                en
 date:                2024-09-14 17:48:27 +0200
-categories:          [elasticsearch]
-tags:                [elasticsearch]
+categories:          [documentation]
+tags:                [documentation]
 comments:            true
 excerpt:             >
     TODO
@@ -27,33 +27,11 @@ wechat:              false
 
 ## Introduction
 
-Explain context here to attract people's attention... like:
-- topic: what you want to talk about?
-- audience: who are you targeting?
-- motiviation: why is it interesting for them? Or why is it important to understand this topic?
+As a developer, you probably need to write a lot of documentation. You need to write  specifications to architect your solution. You need to write release notes to share new changes with other people. You need to write manuals for users to get started and understand the features of your software. You need to write an operational guide to allow the team to operate the software effectively. You also need to write reference documentation to dive deep into each configuration exposed to the external API. It’s a lot of time and effort to manage them. Therefore, it is important to have some sort of framework to allow you to manage this effectively. Today, I’m going to share with you my thoughts and experience about managing and scaling documents in Google Docs.
 
-After reading this article, you will understand:
+## The 3-Level Framework
 
-(choose one of the following structures)
-
-dive deep:
-
-* Some prequisites
-* Some general concepts
-* Some specific concepts to dig deeper
-* How to go further from this article
-
-different dimensions (broad):
-
-* section 1
-* section 2
-* section 3
-* How to go further from this article
-
-... then specify some information about the context, such as framework version, language version.
-Now, let's get started!
-
-## Section 1
+I think everyone should assume that documentation is not done overnight: instead, it grows with your software. At the beginning, the project was small, so there was little documentation to write. When the project becomes more complex, so does the documentation. Because people are not machines, they read docs rather than code. Therefore, it is crucial to think about the evolution of the documentation and adapt the structure of the documentation accordingly to the growth of the project. If you set up something too complex at the beginning, it will be over-thinking, but if you don’t evolve overtime, then documentation would “lag” behind and cannot fit the purpose and the complexity of your project anymore. Over the last years, I have been using a 3-level framework, which is working pretty well for me. L0 is writing documentation in a single document; L1 is to put multiple documents into a directory; and L2 is to put multiple documents into a two-level directory, either the top-level directory or the subdirectories. This sounds extremely easy, right? Now, let’s explore each of them individually.
 
 ## Section 2
 
