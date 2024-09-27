@@ -12,7 +12,8 @@ categories:          [documentation]
 tags:                [documentation]
 comments:            true
 excerpt:             >
-    TODO
+    This article discusses how to organize Google docs by adapting a 3-level framework, to use one
+    single doc, one-level directory or two-level directory in Google Drive.
 
 image:               /assets/2024/pawel-czerwinski-fpZZEV0uQwA-unsplash.jpg
 cover:               /assets/2024/pawel-czerwinski-fpZZEV0uQwA-unsplash.jpg
@@ -65,15 +66,10 @@ Over time, the one-level directory structure probably won’t fit anymore becaus
 
 What if the project is becoming even more complex? I would argue that a three-level directory is too complex for a project. If your project’s complexity goes beyond two levels, it probably means that you want to find another solution rather than making your documentation structure more complex. For example, you may consider creating another software in the microservice architecture. Or, re-architecturing your software into multiple layers so that you can move some of the pieces together into a higher-level layer or a lower-level layer, so that it can be either closer to the business or closer to the infrastructure. Growing the complexity into directories (as 3 levels) would be too complex and people would have a hard time finding information that they need. The only exception may be for archive purposes. When you want to collect data related to a short-term project, such as a research or an incident report, you may want to put evidence into a third-level directory where people can find them if needed. This is mainly for archive purpose.
 
-## Going Further
-
-How to go further from here?
-
 ## Conclusion
 
-What did we talk in this article? Take notes from introduction again.
+In this article, we discussed how to organize the work in Google Docs using a multi-level
+structure and change the structure based on the complexity of the project.
 Interested to know more? You can subscribe to [the feed of my blog](/feed.xml), follow me
 on [Twitter](https://twitter.com/mincong_h) or
 [GitHub](https://github.com/mincong-h/). Hope you enjoy this article, see you the next time!
-
-## References
