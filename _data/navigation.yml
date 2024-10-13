@@ -21,6 +21,14 @@ site:
 
 header:
   - titles:
+      en      : &EN       Training
+      zh-Hans : &ZH_HANS  培训
+      zh      : *ZH_HANS
+    urls:
+      en      : /esigelec/
+      zh      : /esigelec/
+
+  - titles:
       en      : &EN       Categories
       zh-Hans : &ZH_HANS  分类
       zh      : *ZH_HANS
