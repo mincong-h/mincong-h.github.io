@@ -43,10 +43,10 @@ Or run via Docker:
 
 ```sh
 # full generation
-./docker-serve.sh
+./docker-jekyll.sh serve
 
 # incremental generation
-./docker-serve.sh --incremental
+./docker-jekyll.sh serve --incremental
 ```
 
 ## Generators
