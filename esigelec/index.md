@@ -1,5 +1,5 @@
 ---
-layout:         simple_page
+layout:         post
 title:          Software Containerization and Orchestration
 subtitle: >
   Welcome to the world of containers!
