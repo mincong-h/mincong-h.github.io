@@ -73,5 +73,6 @@ Chapter 4 | 7 Nov, 2024 | not available yet | [assignment](https://github.com/mi
 Chapter 5 | 20 Nov 2024 | not available yet | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-5.md)
 
 Other resources:
-* GitHub: [mincong-classroom](https://github.com/mincong-classroom/)
+
+* GitHub: organization [mincong-classroom](https://github.com/mincong-classroom/), classroom invitation <https://classroom.github.com/a/Wo093iKD>
 * DockerHub: [mincongclassroom](https://hub.docker.com/u/mincongclassroom)
