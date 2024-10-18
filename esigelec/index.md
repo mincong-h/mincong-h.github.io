@@ -4,6 +4,9 @@ title:          Software Containerization and Orchestration
 subtitle: >
   Welcome to the world of containers!
 
+excerpt: >
+  Welcome to the world of containers!
+
 image:               /assets/william-william-NndKt2kF1L4-unsplash.jpg
 cover:               /assets/william-william-NndKt2kF1L4-unsplash.jpg
 article_header:
