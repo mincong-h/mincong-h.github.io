@@ -5,7 +5,7 @@ subtitle: >
   Welcome to the world of containers!
 
 excerpt: >
-  Welcome to the world of containers!
+  Welcome to the world of containers! In this course, we will learn how to containerize your applications with Docker, automate the release process with GitHub Actions, and run them with Kubernetes.
 
 image:               /assets/william-william-NndKt2kF1L4-unsplash.jpg
 cover:               /assets/william-william-NndKt2kF1L4-unsplash.jpg
