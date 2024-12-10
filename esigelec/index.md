@@ -67,13 +67,13 @@ timeline
 
 ## Quick Links
 
-Chapter | Date |  Slides | Assignment
-:--- | ---: | :--- | :---
-Chapter 1 | 21 Oct, 2024 | [slides](/esigelec/1/) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-1.md)
-Chapter 2 | 23 Oct, 2024 | [slides](/esigelec/2/) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-2.md)
-Chapter 3 | 28 Oct, 2024 | [slides](/esigelec/3/) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-3.md)
-Chapter 4 | 7 Nov, 2024 | [slides](/esigelec/4/) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-4.md)
-Chapter 5 | 20 Nov 2024 | [slides](/esigelec/5/) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-5.md)
+Chapter   |         Date |  Slides | Assignment
+:-------- | -----------: | :------ | :---------
+Chapter 1 | 21 Oct, 2024 | -       | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-1.md)
+Chapter 2 | 23 Oct, 2024 | -       | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-2.md)
+Chapter 3 | 28 Oct, 2024 | -       | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-3.md)
+Chapter 4 |  7 Nov, 2024 | -       | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-4.md)
+Chapter 5 | 20 Nov, 2024 | -       | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-5.md)
 
 Other resources:
 
