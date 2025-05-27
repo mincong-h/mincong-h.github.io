@@ -21,7 +21,7 @@ jobs:
       JEKYLL_ENV: production
     steps:
     - name: Checkout source code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         persist-credentials: false
     - name: Set service version
