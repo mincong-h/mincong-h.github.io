@@ -20,7 +20,7 @@ article_header:
 
 <div class="article__content">
   <h1>About Me</h1>
-  <p>Hi, I am a software engineer at <a href="https://becomposable.com/" target="_blank">Composable</a>, helping companies to automate and augment their business processes with LLMs. I have 11 years of experience working on different projects, mainly in France. My blog posts are bits and pieces of my tech journey. Most of them are related to software development and operations for a SaaS business. Hope you enjoy them!</p>
+  <p>Hi, I am a software engineer at <a href="https://vertesiahq.com/" target="_blank">Vertesia</a>, helping companies to automate and augment their business processes with LLMs. I have 11 years of experience working on different projects, mainly in France. My blog posts are bits and pieces of my tech journey. Most of them are related to software development and operations for a SaaS business. Hope you enjoy them!</p>
 </div>
 
 <div class="layout--articles">
