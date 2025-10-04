@@ -1,0 +1,321 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: config-server
+  template:
+    metadata:
+      labels:
+        app: config-server
+    spec:
+      containers:
+        - name: config-server
+          image: springcommunity/spring-petclinic-config-server
+          env:
+            - name: SPRING_CLOUD_DISCOVERY_ENABLED
+              value: "false"
+          ports:
+            - containerPort: 8888
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server
+spec:
+  type: ClusterIP
+  selector:
+    app: config-server
+  ports:
+    - protocol: TCP
+      port: 8888
+      targetPort: 8888
+---
+# Specific configuration for API Gateway in Kubernetes
+#
+# Because Kubernetes has native support for service discovery, so the Spring discovery-service is
+# not necessary.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-gateway-config
+data:
+  application.yml: |
+    spring:
+      application:
+        name: api-gateway
+      config:
+        import: optional:configserver:http://config-server:8888
+      cloud:
+        gateway:
+          default-filters:
+            - name: CircuitBreaker
+              args:
+                name: defaultCircuitBreaker
+                fallbackUri: forward:/fallback
+            - name: Retry
+              args:
+                retries: 1
+                statuses: SERVICE_UNAVAILABLE
+                methods: POST
+          routes:
+            - id: vets-service
+              uri: http://vets-service:8083
+              predicates:
+                - Path=/api/vet/**
+              filters:
+                - StripPrefix=2
+            - id: visits-service
+              uri: http://visits-service:8082
+              predicates:
+                - Path=/api/visit/**
+              filters:
+                - StripPrefix=2
+            - id: customers-service
+              uri: http://customers-service:8081
+              predicates:
+                - Path=/api/customer/**
+              filters:
+                - StripPrefix=2
+            - id: genai-service
+              uri: http://genai-service
+              predicates:
+                - Path=/api/genai/**
+              filters:
+                - StripPrefix=2
+                - CircuitBreaker=name=genaiCircuitBreaker,fallbackUri=/fallback
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+        - name: main
+          # note: don't use the official image because it has some issues in the frontend
+          # image: springcommunity/spring-petclinic-api-gateway
+          image: mincongclassroom/spring-petclinic-api-gateway:bcf6d05
+          env:
+            - name: SPRING_CONFIG_LOCATION
+              value: file:/workspace/config/application.yml
+            - name: SPRING_CLOUD_DISCOVERY_ENABLED
+              value: "false"
+            # - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_GATEWAY
+            #   value: "DEBUG"
+            # - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_WEB
+            #   value: "DEBUG"
+            # - name: LOGGING_LEVEL_REACTOR_NETTY
+            #   value: "DEBUG"
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          volumeMounts:
+            - name: config-volume
+              mountPath: /workspace/config # specific path for Spring application
+          ports:
+            - containerPort: 8080
+      volumes:
+        - name: config-volume
+          configMap:
+            name: api-gateway-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-gateway
+spec:
+  type: ClusterIP
+  selector:
+    app: api-gateway
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customers-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: customers-service
+  template:
+    metadata:
+      labels:
+        app: customers-service
+    spec:
+      containers:
+        - name: main
+          image: springcommunity/spring-petclinic-customers-service
+          env:
+            - name: SPRING_CLOUD_DISCOVERY_ENABLED
+              value: "false"
+          ports:
+            - containerPort: 8081
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: customers-service
+spec:
+  type: ClusterIP
+  selector:
+    app: customers-service
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: visits-service
+spec:
+  selector:
+    matchLabels:
+      app: visits-service
+  template:
+    metadata:
+      labels:
+        app: visits-service
+    spec:
+      containers:
+        - name: main
+          image: springcommunity/spring-petclinic-visits-service
+          env:
+            - name: SPRING_CLOUD_DISCOVERY_ENABLED
+              value: "false"
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          ports:
+            - containerPort: 8082
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: visits-service
+spec:
+  type: ClusterIP
+  selector:
+    app: visits-service
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8082
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vets-service
+spec:
+  selector:
+    matchLabels:
+      app: vets-service
+  template:
+    metadata:
+      labels:
+        app: vets-service
+    spec:
+      containers:
+        - name: main
+          image: springcommunity/spring-petclinic-vets-service
+          env:
+            - name: SPRING_CLOUD_DISCOVERY_ENABLED
+              value: "false"
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          ports:
+            - containerPort: 8083
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vets-service
+spec:
+  type: ClusterIP
+  selector:
+    app: vets-service
+  ports:
+    - protocol: TCP
+      port: 8083
+      targetPort: 8083
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tracing-server
+spec:
+  selector:
+    matchLabels:
+      app: tracing-server
+  template:
+    metadata:
+      labels:
+        app: tracing-server
+    spec:
+      containers:
+        - name: main
+          image: openzipkin/zipkin
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          ports:
+            - containerPort: 9411
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tracing-server
+spec:
+  type: ClusterIP
+  selector:
+    app: tracing-server
+  ports:
+    - protocol: TCP
+      port: 9411
+      targetPort: 9411
