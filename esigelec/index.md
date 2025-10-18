@@ -73,7 +73,7 @@ Chapter 1 | 20 Oct, 2025 | [slides](/esigelec/1) | [assignment](https://github.c
 Chapter 2 | 21 Oct, 2025 | [slides](/esigelec/2) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-2.md)
 Chapter 3 | 28 Oct, 2025 | [slides](/esigelec/3) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-3.md)
 Chapter 4 | 29 Oct, 2025 | [slides](/esigelec/4) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-4.md)
-Chapter 5 | 30 Oct, 2025 | [slides](/esigeiec/5) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-5.md)
+Chapter 5 | 30 Oct, 2025 | [slides](/esigelec/5) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-5.md)
 
 Other resources:
 
