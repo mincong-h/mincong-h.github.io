@@ -1,6 +1,6 @@
 ---
 layout:         post
-title:          Software Containerization and Orchestration
+title:          Kubernetes
 subtitle: >
   Welcome to the world of containers!
 
