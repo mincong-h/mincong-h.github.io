@@ -8,8 +8,8 @@ subtitle:            >
 
 lang:                en
 date:                2025-10-21 17:30:22 +0200
-categories:          [kubernetes]
-tags:                [kubernetes]
+categories:          [kubernetes, java]
+tags:                [kubernetes, java]
 comments:            true
 excerpt:             >
     This post reflects on a 20-hour Kubernetes course I recently taught at ESIGELEC, where engineering students explored containerization, Kubernetes fundamentals, and real-world collaboration using the Spring Pet Clinic project. It shares insights into the redesigned curriculum, hands-on labs, and lessons learned from focusing deeply on Kubernetes and team-based learning.
