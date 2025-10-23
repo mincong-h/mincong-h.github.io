@@ -14,8 +14,8 @@ comments:            true
 excerpt:             >
     This post reflects on a 20-hour Kubernetes course I recently taught at ESIGELEC, where engineering students explored containerization, Kubernetes fundamentals, and real-world collaboration using the Spring Pet Clinic project. It shares insights into the redesigned curriculum, hands-on labs, and lessons learned from focusing deeply on Kubernetes and team-based learning.
 
-image:               /assets/bg-coffee-84624_1280.jpg
-cover:               /assets/bg-coffee-84624_1280.jpg
+image:               /assets/esigelec.jpeg
+cover:               /assets/esigelec.jpeg
 article_header:
   type:              overlay
   theme:             dark
@@ -25,6 +25,7 @@ article_header:
 wechat:              false
 ---
 
+## Introduction
 
 Recently, I taught a course on Kubernetes at ESIGELEC. This is a 20-hour module for 25 engineering students majoring in the Digital Services Engineering (Ingenieurie des Services du Numerique). I want to create this document to outline some thoughts on this module.
 
