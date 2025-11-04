@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-server
+  labels:
+    app: hello-server
+spec:
+  containers:
+  - name: main
+    image: mincongclassroom/hello-server:123
+    ports:
+    - containerPort: 8090
+    resources:
+      limits:
+        memory: "64Mi"
+        cpu: "250m"
+      requests:
+        memory: "32Mi"
+        cpu: "100m"
