@@ -8,14 +8,6 @@ show_title: false
   // Handle SPA routing for ESIGELEC slides (/esigelec/{chapter}/*)
   (function() {
     var path = window.location.pathname;
-    // Match latest slide paths like /esigelec/1/*, /esigelec/2/*, etc.
-    var matchLatest = path.match(/^\/esigelec\/(\d)\/.+/);
-    if (matchLatest) {
-      // Redirect to the base path (e.g., /esigelec/1/)
-      var chapter = matchLatest[1];
-      var basePath = '/esigelec/' + chapter + '/';
-      window.location.replace(basePath);
-    }
 
     // Match archive slide paths like /esigelec/2025/1/*, /esigelec/2025/2/*, etc.
     var matchArchive = path.match(/^\/esigelec\/(\d{4})\/(\d)\/.+/);
@@ -24,6 +16,16 @@ show_title: false
       var year = matchArchive[1];
       var chapter = matchArchive[2];
       var basePath = '/esigelec/' + year + '/' + chapter + '/';
+      window.location.replace(basePath);
+      return;
+    }
+
+    // Match latest slide paths like /esigelec/1/*, /esigelec/2/*, etc.
+    var matchLatest = path.match(/^\/esigelec\/(\d)\/.+/);
+    if (matchLatest) {
+      // Redirect to the base path (e.g., /esigelec/1/)
+      var chapter = matchLatest[1];
+      var basePath = '/esigelec/' + chapter + '/';
       window.location.replace(basePath);
     }
   })();
