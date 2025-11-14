@@ -3,6 +3,29 @@ layout: page
 title: 404
 show_title: false
 ---
+
+<script>
+  // Handle SPA routing for ESIGELEC slides (/esigelec/{chapter}/*)
+  (function() {
+    var path = window.location.pathname;
+    // Match latest slide paths like /esigelec/1/*, /esigelec/2/*, etc.
+    var matchLatest = path.match(/^\/esigelec\/(\d)\/.+/);
+    if (matchLatest) {
+      // Redirect to the base path (e.g., /esigelec/1/)
+      var basePath = '/esigelec/' + matchLatest[1] + '/';
+      window.location.replace(basePath);
+    }
+
+    // Match archive slide paths like /esigelec/2025/1/*, /esigelec/2025/2/*, etc.
+    var matchArchive = path.match(/^\/esigelec\/(\d{4})\/(\d)\/.+/);
+    if (matchArchive) {
+      // Redirect to the base path (e.g., /esigelec/2025/1/)
+      var basePath = '/esigelec/' + matchArchive[1] + '/' + matchArchive[2] + '/';
+      window.location.replace(basePath);
+    }
+  })();
+</script>
+
 <div class="layout--404">
   <div class="sign">
     <h1>404</h1>
