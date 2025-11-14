@@ -240,6 +240,10 @@ defaults:
       show_edit_on_github: false
       show_subscribe: true
       pageview: true
+  - scope:
+      path: "esigelec/1"
+    values:
+      layout: null
 
 ## => Plugins
 ##############################
