@@ -12,7 +12,8 @@ show_title: false
     var matchLatest = path.match(/^\/esigelec\/(\d)\/.+/);
     if (matchLatest) {
       // Redirect to the base path (e.g., /esigelec/1/)
-      var basePath = '/esigelec/' + matchLatest[1] + '/';
+      var chapter = matchLatest[1];
+      var basePath = '/esigelec/' + chapter + '/';
       window.location.replace(basePath);
     }
 
@@ -20,7 +21,9 @@ show_title: false
     var matchArchive = path.match(/^\/esigelec\/(\d{4})\/(\d)\/.+/);
     if (matchArchive) {
       // Redirect to the base path (e.g., /esigelec/2025/1/)
-      var basePath = '/esigelec/' + matchArchive[1] + '/' + matchArchive[2] + '/';
+      var year = matchArchive[1];
+      var chapter = matchArchive[2];
+      var basePath = '/esigelec/' + year + '/' + chapter + '/';
       window.location.replace(basePath);
     }
   })();
