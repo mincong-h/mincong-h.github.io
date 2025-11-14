@@ -24,3 +24,5 @@ package-lock.json
 _site/
 .jekyll-metadata
 .jekyll-cache/
+
+.claude/
