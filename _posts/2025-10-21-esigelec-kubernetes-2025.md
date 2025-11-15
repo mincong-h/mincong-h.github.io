@@ -27,9 +27,21 @@ wechat:              false
 
 ## Introduction
 
-Recently, I taught a course on Kubernetes at ESIGELEC. This is a 20-hour module for 25 engineering students majoring in the Digital Services Engineering (Ingenieurie des Services du Numerique). I want to create this document to outline some thoughts on this module.
+Recently, I taught a course on Kubernetes at ESIGELEC. This is a 20-hour module for 25 engineering students majoring in the Digital Services Engineering (Ingenieurie des Services du Numerique). It was such as privilege for me to be able to go back to school and share my passion about infrastructure with student. In this blog post, I would like to outline some thoughts on this module.
 
-This module lasts for 20 hours. It consists of five chapters, each lasting 4 hours, including 1 hour of lecture and 3 hours of lap session. In this module, we discuss containerizing applications with Docker, the key components of a Kubernetes cluster, and then delve deeper into workload deployment, networking, configuration, and storage.
+## The Program
+
+This module lasts for 20 hours. It consists of five chapters, each lasting 4 hours, including 1 hour of lecture and 3 hours of lap session. In this module, we discuss containerizing applications with Docker, the key components of a Kubernetes cluster, and then dive deep into workload deployment, networking, configuration, and storage.
+
+1. **Containerization with Docker.** In this part, they learn how to create Docker images for Java application. They learn how to package a Java application as a JAR, what is Java Runtime Environment (JRE). Then, they learn concepts related to Docker Runtime, Docker Registry, Docker CLI, Docker Desktop, Dockerfile.
+2. **Kubernetes Overview.** In this part, they learn the key components of Kubernetes, including the API server, etcd, scheduler, controller manager, kubelet, kube-proxy etc; the command line tool `kubectl`. Then, they start developing Pods in the Lab Session.
+3. **Deployment in Kubernetes.** This part is focused on the workloads. We talked about deployment and operational challenges in companies, and how Kubernetes answers some of those challenges using ReplicaSet and Deployment.
+4. **Networking in Kubernetes.** This part discusses different networking components in Kubernetes to adapt different use-cases in a Kubernetes cluster. We also mention namespace, an efficient way to provide isolation in Kubernetes.
+5. **Configuration and Storage.** Finally, this part discusses different ways to configure the resources in the cluster, for standalone or share configuration, for sensitive and non-sensitive information. And also different kinds of storage solutions.
+
+Through this program, students have a better understanding of the challenges in regard to the operations related to their software. It does not only applies to Kubernetes, but also other kinds of orchestration services (Google Cloud Run, AWS App Runner, AWS ECS, ...). To access the full program, please visit <https://mincong.io/esigelec/2025>
+
+In the following paragraphs, I would like to share some of the changes compared to last year.
 
 ## Spring Pet Clinic
 
@@ -49,6 +61,10 @@ Beyond the technology learning, it is more important for students to understand 
 ## Incident with Docker Hub
 
 Doing the first chapter, containerization with Docker, we had some bad luck. We rely on Docker Hub for the lab's Docker images, but it was down twice on the same day. Their service experienced a major outage that day, affecting multiple services. The first time was during the lecture, and the second was later that evening. As a consequence, students cannot really pull the base images or publish the Docker images they built. The root cause of the outage was likely the AWS SEV-0 outage in us-east-1, which broke half of the internet. As an immediate remediation, we switched from Docker Hub to AWS Elastic Container Registry (ECR), so that students can pull the images. Later in the evening, since the Docker Hub still wasn’t fully recovered, I decided to replicate all the students’ homework to GitHub Container Registry (GHCR), so that they can pull directly from GitHub for the subsequent lab sessions.
+
+## GenAI
+
+In the lab session 5, students have opportunity to play with the OpenAI vis the GenAI service `spring-petclinic-genai-service`. They were asked to set up the application (Deployment), the networking (Service), and configure the AI service so that it can communicate with OpenAI and retrieve information from other microservices running in the cluster. It gives them a first opportunity to explore AI integration in the company.
 
 ## Conclusion
 
