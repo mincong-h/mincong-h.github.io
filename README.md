@@ -185,6 +185,12 @@ When adding a new image to the website, you need to register its metadata in
 - <https://unsplash.com> Beasutiful free images & pictures
 - <https://pixabay.com> 2.6 million+ strunning free images to use anywhere
 
+## Environment Variables
+
+Name | Example | Description
+--- | --- | ---
+`BLOG_HOME` | `/Users/mincong/github/mincong-h.github.io` | The path to the Git root directory of this blog. This is similar to `$JAVA_HOME`. It allows other programs to locate this website. It helps import content, such as Slides generated outside of the website. Define it in a rc file (`~/.zshrc` or `~/.bashrc`).
+
 ## Social Network Sharing
 
 Website | Preview Tool
