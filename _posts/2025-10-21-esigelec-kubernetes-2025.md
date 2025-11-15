@@ -4,7 +4,7 @@ layout:              post
 type:                classic
 title:               ESIGELEC Kubernetes 2025 Recap
 subtitle:            >
-    Designing and evolving a Kubernetes course for engineer students.
+    Designing and evolving a Kubernetes course for engineering students.
 
 lang:                en
 date:                2025-10-21 17:30:22 +0200
@@ -27,19 +27,19 @@ wechat:              false
 
 ## Introduction
 
-Recently, I taught a course on Kubernetes at ESIGELEC. This is a 20-hour module for 25 engineering students majoring in the Digital Services Engineering (Ingenieurie des Services du Numerique). It was such as privilege for me to be able to go back to school and share my passion about infrastructure with student. In this blog post, I would like to outline some thoughts on this module.
+Recently, I taught a course on Kubernetes at ESIGELEC. This is a 20-hour module for 25 engineering students majoring in the Digital Services Engineering (Ingenieurie des Services du Numerique). It was such a privilege for me to be able to go back to school and share my passion for infrastructure with students. In this blog post, I would like to outline some thoughts on this module.
 
 ## The Program
 
 This module lasts for 20 hours. It consists of five chapters, each lasting 4 hours, including 1 hour of lecture and 3 hours of lap session. In this module, we discuss containerizing applications with Docker, the key components of a Kubernetes cluster, and then dive deep into workload deployment, networking, configuration, and storage.
 
-1. **Containerization with Docker.** In this part, they learn how to create Docker images for Java application. They learn how to package a Java application as a JAR, what is Java Runtime Environment (JRE). Then, they learn concepts related to Docker Runtime, Docker Registry, Docker CLI, Docker Desktop, Dockerfile.
+1. **Containerization with Docker.** In this part, they learned how to create Docker images for Java applications. They learned how to package a Java application as a JAR, and what the Java Runtime Environment (JRE) is. Then, they learn concepts related to Docker Runtime, Docker Registry, Docker CLI, Docker Desktop, and Dockerfile.
 2. **Kubernetes Overview.** In this part, they learn the key components of Kubernetes, including the API server, etcd, scheduler, controller manager, kubelet, kube-proxy etc; the command line tool `kubectl`. Then, they start developing Pods in the Lab Session.
-3. **Deployment in Kubernetes.** This part is focused on the workloads. We talked about deployment and operational challenges in companies, and how Kubernetes answers some of those challenges using ReplicaSet and Deployment.
-4. **Networking in Kubernetes.** This part discusses different networking components in Kubernetes to adapt different use-cases in a Kubernetes cluster. We also mention namespace, an efficient way to provide isolation in Kubernetes.
-5. **Configuration and Storage.** Finally, this part discusses different ways to configure the resources in the cluster, for standalone or share configuration, for sensitive and non-sensitive information. And also different kinds of storage solutions.
+3. **Deployment in Kubernetes.**This part focuses on workloads. **We discussed deployment and operational challenges in companies and how Kubernetes addresses some of these challenges using ReplicaSets and Deployments. **
+4. **Networking in Kubernetes.** This part discusses different networking components in Kubernetes to adapt to different use cases in a Kubernetes cluster. We also mention namespace, an efficient way to provide isolation in Kubernetes.
+5. **Configuration and Storage.** Finally, this part discusses different ways to configure the resources in the cluster, for standalone or share configuration, for sensitive and non-sensitive information. Additionally, various types of storage solutions.
 
-Through this program, students have a better understanding of the challenges in regard to the operations related to their software. It does not only applies to Kubernetes, but also other kinds of orchestration services (Google Cloud Run, AWS App Runner, AWS ECS, ...). To access the full program, please visit <https://mincong.io/esigelec/2025>
+Through this program, students gain a better understanding of the challenges associated with software operations. It not only applies to Kubernetes, but also other kinds of orchestration services (Google Cloud Run, AWS App Runner, AWS ECS, ...). To access the whole program, please visit <https://mincong.io/esigelec/2025>
 
 In the following paragraphs, I would like to share some of the changes compared to last year.
 
@@ -52,6 +52,7 @@ This year, we changed the lab materials. We switched from a homemade “Weekend 
 In this module, I tried to teach each important knowledge 3 times. The piece of knowledge is firstly described in the lecture using definitions, examples, and diagrams. Then, the knowledge is practiced through the lab session. It is usually represented as a task to develop a new feature or to troubleshoot a predefined problem. Finally, we recall the same concept at the beginning of the next chapter during the lab correction.
 
 ## Focus on Kubernetes
+
 Compared to last year, the module's content has been narrowed to Kubernetes. Last year, the module was called “Software Containerization and Orchestration”. It consisted of 4 hours in the containers, 6 hours in CI/CD, and then 12 hours in Kubernetes. It was too broad to go further into any topic. Before exploring any intermediate-level concept, we need to go through the basics. But we cannot do that because of the time constraints. That’s why this year I decided to replace the CI/CD part with Kubernetes, so that we can entirely focus on one single topic. Thanks to this decision, we can spend time on Kubernetes topics such as networking, configuration, secret management, storage, and isolation.
 
 ## Team collaboration within Kubernetes
@@ -64,7 +65,7 @@ Doing the first chapter, containerization with Docker, we had some bad luck. We 
 
 ## GenAI
 
-In the lab session 5, students have opportunity to play with the OpenAI vis the GenAI service `spring-petclinic-genai-service`. They were asked to set up the application (Deployment), the networking (Service), and configure the AI service so that it can communicate with OpenAI and retrieve information from other microservices running in the cluster. It gives them a first opportunity to explore AI integration in the company.
+In Lab Session 5, students have the opportunity to interact with OpenAI via the GenAI service `spring-petclinic-genai-service`. They were asked to set up the application (Deployment), the networking (Service), and configure the AI service so that it can communicate with OpenAI and retrieve information from other microservices running in the cluster. It provides them with a first opportunity to explore AI integration within the company.
 
 ## Conclusion
 
