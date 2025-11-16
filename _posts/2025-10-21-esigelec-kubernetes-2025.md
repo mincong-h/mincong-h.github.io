@@ -51,9 +51,11 @@ For example, here is the project made by the team "south-1", where they were abl
 
 <p align="center">
 
-![Spring Pet Clinic started with team's logo](/assets/2025/south-1-petclinic.png)
+  <img alt="Spring Pet Clinic started with team's logo"
+       src="/assets/2025/south-1-petclinic.png">
 
-![Spring Pet Clinic with email support](/assets/2025/south-1-email-support.png)
+  <img alt="Spring Pet Clinic with email support"
+       src="/assets/2025/south-1-email-support.png">
 
 </p>
 
@@ -81,7 +83,8 @@ For example, here is the final result from the team "west-1", where they queried
 
 <p align="center">
 
-![GenAI service successfully configured by the team "west-1"](/assets/2025/esigelec-k8s-assignment-genai-west-1.png)
+  <img alt="GenAI service successfully configured by the team west-1"
+       src="/assets/2025/esigelec-k8s-assignment-genai-west-1.png">
 
 </p>
 
