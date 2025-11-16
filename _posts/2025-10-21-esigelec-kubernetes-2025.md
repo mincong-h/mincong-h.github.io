@@ -41,6 +41,8 @@ This module lasts for 20 hours. It consists of five chapters, each lasting 4 hou
 
 Through this program, students gain a better understanding of the challenges associated with software operations. It not only applies to Kubernetes, but also other kinds of orchestration services (Google Cloud Run, AWS App Runner, AWS ECS, ...). To access the whole program, please visit <https://mincong.io/esigelec/2025>
 
+## Changes
+
 In the following paragraphs, I would like to share some of the changes compared to last year.
 
 ### Spring Pet Clinic
