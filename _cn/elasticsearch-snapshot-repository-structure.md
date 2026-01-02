@@ -24,11 +24,6 @@ article_header:
 wechat:              true
 ---
 
-<!--
-  Replace asset link with following on Chinese Platforms:
-  https://github.com/mincong-h/mincong-h.github.io/raw/master/
- -->
-
 ## 前言
 
 如果你在生产线上使用 Elasticsearch 集群，那么我相信你一定听说过 Elasticsearch 的快照和恢复功能（snapshot and restore），因为它是保证集群数据不丢失的重要手段。网上有很多资料关于如何使用 Elasticsearch 快照，可是关于快照底层原理的文章却很少。今天，我想和大家来探讨一下 Elasticsearch 快照仓库（snapshot repository）的内部结构。明白这个结构，它能使我们对 Elasticsearch 快照功能有更好的了解，也能在生产线出问题的时候，提供更多排除故障的思路。

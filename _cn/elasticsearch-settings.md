@@ -24,11 +24,6 @@ article_header:
 wechat:              true
 ---
 
-<!--
-  Replace asset link with following on Chinese Platforms:
-  https://github.com/mincong-h/mincong-h.github.io/raw/master/
- -->
-
 ## 前言
 
 如果你正在使用 Elasticsearch 集群，你一定离不开对它的配置。无论你的应用场景是什么、无论你在公司任职哪个职位，只要你使用到了 Elasticsearch，那么总是需要对它的配置有一定的了解，通过调整它们来更好地实现你的需求。可是另一方面，Elasticsearch 的配置有如此之多，让人有些无从下手。所以我想写这篇文章，跟大家分析一下如何快速明白 Elasticsearch 的常见设置。阅读本文后，你会明白：

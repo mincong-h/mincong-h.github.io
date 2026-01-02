@@ -63,7 +63,7 @@ twitter:
 ## => GitHub Repository (if the site is hosted by GitHub)
 ##############################
 repository: mincong-h/mincong-h.github.io
-repository_tree: master
+repository_tree: main
 
 
 ## => Paths

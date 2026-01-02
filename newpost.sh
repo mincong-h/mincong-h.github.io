@@ -206,10 +206,6 @@ EOF
 
 function append_content_cn {
   cat << EOF >> "$1"
-<!--
-  Replace asset link with following on Chinese Platforms:
-  https://github.com/mincong-h/mincong-h.github.io/raw/master/
- -->
 
 ## 前言
 

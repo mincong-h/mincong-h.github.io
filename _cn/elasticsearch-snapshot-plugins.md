@@ -24,11 +24,6 @@ article_header:
 wechat:              true
 ---
 
-<!--
-  Replace asset link with following on Chinese Platforms:
-  https://github.com/mincong-h/mincong-h.github.io/raw/master/
- -->
-
 ## 前言
 
 Elasticsearch 的快照与恢复功能是 Elasticsearch 集群的重要组成部分。它的存在为数据可靠性提供了强有力的保障。在这篇文章中，让我们一起看看 Elasticsearch 中官方几个快照插件的相关信息。

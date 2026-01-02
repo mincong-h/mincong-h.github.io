@@ -24,11 +24,6 @@ article_header:
 wechat:              true
 ---
 
-<!--
-  Replace asset link with following on Chinese Platforms:
-  https://github.com/mincong-h/mincong-h.github.io/raw/master/
- -->
-
 ## 前言
 
 本文是对于在 Medium 平台上由 Netflix Technology Blog 首发的博文 [Elasticsearch Indexing Strategy in Asset Management Platform (AMP)](https://netflixtechblog.medium.com/elasticsearch-indexing-strategy-in-asset-management-platform-amp-99332231e541 "Medium") 的翻译。原文作者为 [Burak Bacioglu](https://www.linkedin.com/in/burakbacioglu/ "Burak Bacioglu") 和 [Meenakshi Jindal](https://www.linkedin.com/in/meenakshijindal/ "Meenakshi Jindal")。翻译如有不当之处，欢迎大家在评论区指正，我将尽快修复。

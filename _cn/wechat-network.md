@@ -25,11 +25,6 @@ article_header:
 wechat:              true
 ---
 
-<!--
-  Replace asset link with following on Chinese Platforms:
-  https://github.com/mincong-h/mincong-h.github.io/raw/master/
- -->
-
 ## 前言
 
 如果你在中国出生或居住，那么你对微信一定不陌生。微信是一款由腾讯开发的中国即时通讯、社交媒体和移动支付应用。但你是否曾经想过：使用微信时，网络层面会发生什么？它与服务器之间有哪些交互？为什么作为海外华人，使用微信有时会很慢？在本文中，我们将探讨这些问题，重点关注网络部分。在这篇文章中，我将使用我的个人账户进行测试，并记录观察到的现象。
