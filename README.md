@@ -35,8 +35,9 @@ gem install bundler
 # by this blog using bundler
 bundle install
 
-# run Jekyll
-jekyll serve
+# run Jekyll (use `bundle exec` so the versions
+# pinned in Gemfile.lock are used)
+bundle exec jekyll serve
 ```
 
 Or run via Docker:
