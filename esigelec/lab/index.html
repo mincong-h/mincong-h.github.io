@@ -14,37 +14,24 @@ subtitle: >
 
 <style>
   .lab-teams { margin-top: 1rem; }
-  .lab-teams__hint {
-    padding: .75rem 1rem;
-    margin-bottom: 1.5rem;
-    border-left: 4px solid #2f81f7;
-    background: #f2f7ff;
-    border-radius: 4px;
-    font-size: .95rem;
-  }
-  .lab-teams__hint code { white-space: nowrap; }
   .lab-teams__picker { margin-bottom: 1.5rem; }
   .lab-teams__picker-label {
     display: block;
     font-weight: 600;
     margin-bottom: .5rem;
   }
-  .lab-teams__chips { display: flex; flex-wrap: wrap; gap: .5rem; }
-  .lab-teams__chip {
-    display: inline-block;
-    padding: .3rem .9rem;
-    border: 1px solid #d0d7de;
-    border-radius: 999px;
-    text-decoration: none;
-    color: #24292f;
-    text-transform: capitalize;
-    transition: all .15s ease;
-  }
-  .lab-teams__chip:hover { border-color: #2f81f7; }
-  .lab-teams__chip--active {
-    background: #24292f;
-    border-color: #24292f;
+  /* The team picker reuses the archive tag-button styling
+     (.site-tags .tag-button in _sass/components/_tags.scss). Teams use the
+     "tag-button-1" variant for a light-pink rest state. Page-specific tweaks:
+     capitalised names, and a red (main-color-1) selected state that replaces
+     the theme's orange accent (main-color-2). */
+  #lab-teams-chips .tag-button { text-transform: capitalize; }
+  #lab-teams-chips .tag-button.focus,
+  #lab-teams-chips .tag-button.active,
+  #lab-teams-chips .tag-button:active {
     color: #fff;
+    background-color: #fc4d50;
+    box-shadow: 0 0 0 2px rgba(252, 77, 80, .4);
   }
   .lab-teams__error {
     padding: 1rem;
@@ -117,14 +104,9 @@ subtitle: >
 </style>
 
 <div class="lab-teams" id="lab-teams">
-  <div class="lab-teams__hint">
-    Add <code>?team=&lt;your-team&gt;</code> to the URL to see your resources —
-    for example <code>/esigelec/lab?team=red</code>. Or pick your team below.
-  </div>
-
   <div class="lab-teams__picker">
     <span class="lab-teams__picker-label">Teams</span>
-    <div class="lab-teams__chips" id="lab-teams-chips"></div>
+    <div class="site-tags" id="lab-teams-chips"></div>
   </div>
 
   <div id="lab-teams-content"></div>
@@ -173,14 +155,16 @@ subtitle: >
 
     var selected = (getParam('team') || '').trim().toLowerCase();
 
-    // Render the team picker chips.
+    // Render the team picker with the same markup/classes as the archive tag
+    // buttons (_includes/tags.html). The selected team gets the "focus" class,
+    // which the theme renders as the highlighted/selected state.
     var chipsHtml = teams.map(function (name) {
-      var active = name.toLowerCase() === selected ? ' lab-teams__chip--active' : '';
-      return '<a class="lab-teams__chip' + active + '" href="?team=' +
-        encodeURIComponent(name) + '">' + esc(name) + '</a>';
+      var focus = name.toLowerCase() === selected ? ' focus' : '';
+      return '<li><a class="button button--pill tag-button tag-button-1' + focus + '" href="?team=' +
+        encodeURIComponent(name) + '"><span>' + esc(name) + '</span></a></li>';
     }).join('');
     document.getElementById('lab-teams-chips').innerHTML =
-      chipsHtml || '<em>No teams configured yet.</em>';
+      chipsHtml ? '<ul class="menu">' + chipsHtml + '</ul>' : '<em>No teams configured yet.</em>';
 
     var content = document.getElementById('lab-teams-content');
 
