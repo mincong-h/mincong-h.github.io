@@ -1,0 +1,43 @@
+# Teams for the ESIGELEC "Containers" lab, consumed by /esigelec/lab.
+#
+# The page /esigelec/lab reads the "team" query parameter (e.g. ?team=red) and
+# shows the resources assigned to that team. Every resource URL is DERIVED from
+# the team name, so this file only needs the list of team names.
+#
+#   git repository : https://github.com/<git_org>/k8s-<team>
+#   docker repo    : <docker_namespace>/<service>-<team>
+#   k8s label      : team=<team>
+
+docker_namespace: mincongclassroom
+git_org: mincong-classroom
+
+# ⚠️  PLACEHOLDER — CHANGE ME  ⚠️
+# Student names are deliberately NOT published on this public site to avoid
+# disclosing sensitive information. Every team therefore shows the SAME
+# placeholder members below; give each team its real roster privately (e.g. in
+# class). The page displays a warning next to these names so nobody mistakes
+# them for the real ones.
+placeholder_members:
+  - Alice DOE
+  - Bob SMITH
+
+# Docker/Kubernetes workloads that every team ships, in display order. The team
+# name is appended to each id to form the per-team image name.
+services:
+  - id: spring-petclinic
+    name: Spring PetClinic Monolith
+  - id: spring-petclinic-api-gateway
+    name: Spring PetClinic Microservices - API Gateway
+  - id: spring-petclinic-customers-service
+    name: Spring PetClinic Microservices - Customers Service
+  - id: spring-petclinic-vets-service
+    name: Spring PetClinic Microservices - Veterinarians Service
+
+# Team names only — resources are derived from each name.
+teams:
+  - red
+  - blue
+  - green
+  - yellow
+  - orange
+  - purple

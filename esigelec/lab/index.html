@@ -1,0 +1,243 @@
+---
+layout: page
+title: Lab Resources
+subtitle: >
+  Find the resources assigned to your team for the ESIGELEC "Containers" lab.
+---
+
+{%- comment -%}
+  This page reads the "team" query parameter (e.g. /esigelec/lab?team=red) and
+  renders the resources assigned to that team. Team data lives in
+  _data/esigelec_teams.yml and is embedded below as JSON; the per-team resource
+  URLs are derived in JavaScript so the data file stays minimal.
+{%- endcomment -%}
+
+<style>
+  .lab-teams { margin-top: 1rem; }
+  .lab-teams__hint {
+    padding: .75rem 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #2f81f7;
+    background: #f2f7ff;
+    border-radius: 4px;
+    font-size: .95rem;
+  }
+  .lab-teams__hint code { white-space: nowrap; }
+  .lab-teams__picker { margin-bottom: 1.5rem; }
+  .lab-teams__picker-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: .5rem;
+  }
+  .lab-teams__chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .lab-teams__chip {
+    display: inline-block;
+    padding: .3rem .9rem;
+    border: 1px solid #d0d7de;
+    border-radius: 999px;
+    text-decoration: none;
+    color: #24292f;
+    text-transform: capitalize;
+    transition: all .15s ease;
+  }
+  .lab-teams__chip:hover { border-color: #2f81f7; }
+  .lab-teams__chip--active {
+    background: #24292f;
+    border-color: #24292f;
+    color: #fff;
+  }
+  .lab-teams__error {
+    padding: 1rem;
+    border-radius: 6px;
+    background: #fff5f5;
+    border: 1px solid #ffc9c9;
+    color: #b02a37;
+  }
+  .lab-teams__warn {
+    display: flex;
+    gap: .5rem;
+    align-items: flex-start;
+    padding: .5rem .75rem;
+    margin-bottom: .6rem;
+    background: #fff8e1;
+    border: 1px solid #ffe08a;
+    border-radius: 6px;
+    font-size: .85rem;
+    line-height: 1.4;
+    color: #7a5b00;
+  }
+  .lab-teams__warn-icon { flex: none; }
+  .lab-teams__card {
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .lab-teams__card-title {
+    margin: 0;
+    padding: .75rem 1rem;
+    background: #f6f8fa;
+    border-bottom: 1px solid #d0d7de;
+    font-size: 1.05rem;
+    text-transform: capitalize;
+  }
+  .lab-table { width: 100%; border-collapse: collapse; margin: 0; }
+  .lab-table th, .lab-table td {
+    padding: .6rem 1rem;
+    border-bottom: 1px solid #eaecef;
+    text-align: left;
+    vertical-align: top;
+    font-size: .95rem;
+  }
+  .lab-table tr:last-child th, .lab-table tr:last-child td { border-bottom: none; }
+  .lab-table th {
+    width: 200px;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #57606a;
+  }
+  .lab-table code, .lab-teams code {
+    background: rgba(175,184,193,.2);
+    padding: .15em .4em;
+    border-radius: 4px;
+    font-size: .9em;
+  }
+  .lab-table ul { margin: 0; padding-left: 1.2rem; }
+  .lab-table__scroll { overflow-x: auto; }
+  .lab-subtable { width: 100%; border-collapse: collapse; min-width: 520px; }
+  .lab-subtable th, .lab-subtable td {
+    padding: .5rem .75rem;
+    border-bottom: 1px solid #eaecef;
+    text-align: left;
+    font-size: .9rem;
+  }
+  .lab-subtable thead th {
+    width: auto;
+    background: #f6f8fa;
+    color: #57606a;
+    white-space: nowrap;
+  }
+</style>
+
+<div class="lab-teams" id="lab-teams">
+  <div class="lab-teams__hint">
+    Add <code>?team=&lt;your-team&gt;</code> to the URL to see your resources —
+    for example <code>/esigelec/lab?team=red</code>. Or pick your team below.
+  </div>
+
+  <div class="lab-teams__picker">
+    <span class="lab-teams__picker-label">Teams</span>
+    <div class="lab-teams__chips" id="lab-teams-chips"></div>
+  </div>
+
+  <div id="lab-teams-content"></div>
+</div>
+
+<script>
+  (function () {
+    var LAB_DATA = {{ site.data.esigelec_teams | jsonify }};
+
+    // Build the full resource set for a team from the minimal data file.
+    // Members are the shared placeholder — real rosters are never published.
+    function buildTeam(name) {
+      return {
+        name: name,
+        members: LAB_DATA.placeholder_members || [],
+        k8sLabels: { team: name },
+        gitRepo: 'https://github.com/' + LAB_DATA.git_org + '/k8s-' + name,
+        dockerRepos: (LAB_DATA.services || []).map(function (svc) {
+          var id = svc.id + '-' + name;
+          var repoUrl = LAB_DATA.docker_namespace + '/' + id;
+          return {
+            id: id,
+            name: svc.name + ' (' + name + ')',
+            repoUrl: repoUrl,
+            webUrl: 'https://hub.docker.com/r/' + repoUrl
+          };
+        })
+      };
+    }
+
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+      });
+    }
+
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+
+    var teams = LAB_DATA.teams || [];
+    var byName = {};
+    teams.forEach(function (name) { byName[name.toLowerCase()] = name; });
+
+    var selected = (getParam('team') || '').trim().toLowerCase();
+
+    // Render the team picker chips.
+    var chipsHtml = teams.map(function (name) {
+      var active = name.toLowerCase() === selected ? ' lab-teams__chip--active' : '';
+      return '<a class="lab-teams__chip' + active + '" href="?team=' +
+        encodeURIComponent(name) + '">' + esc(name) + '</a>';
+    }).join('');
+    document.getElementById('lab-teams-chips').innerHTML =
+      chipsHtml || '<em>No teams configured yet.</em>';
+
+    var content = document.getElementById('lab-teams-content');
+
+    if (!selected) {
+      content.innerHTML = '<p>Select your team above to view your resources.</p>';
+      return;
+    }
+
+    if (!byName[selected]) {
+      content.innerHTML = '<div class="lab-teams__error"><strong>Unknown team ' +
+        '&ldquo;' + esc(selected) + '&rdquo;.</strong> Please pick your team ' +
+        'from the list above.</div>';
+      return;
+    }
+
+    var team = buildTeam(byName[selected]);
+
+    var membersWarnHtml =
+      '<div class="lab-teams__warn">' +
+        '<span class="lab-teams__warn-icon">&#9888;&#65039;</span>' +
+        '<span>Placeholder names &mdash; real rosters are not published on this ' +
+        'public page. Ask your instructor for your team&rsquo;s actual members.</span>' +
+      '</div>';
+    var membersHtml = membersWarnHtml + (team.members.length
+      ? '<ul>' + team.members.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('') + '</ul>'
+      : '<em>No members listed.</em>');
+
+    var labelsHtml = Object.keys(team.k8sLabels).map(function (k) {
+      return '<code>' + esc(k) + ': ' + esc(team.k8sLabels[k]) + '</code>';
+    }).join(' ');
+
+    var dockerRowsHtml = team.dockerRepos.map(function (r) {
+      return '<tr>' +
+        '<td>' + esc(r.name) + '</td>' +
+        '<td><code>' + esc(r.repoUrl) + '</code></td>' +
+        '<td><a href="' + esc(r.webUrl) + '" target="_blank" rel="noopener">Docker Hub &#8599;</a></td>' +
+        '</tr>';
+    }).join('');
+
+    content.innerHTML =
+      '<div class="lab-teams__card">' +
+        '<h2 class="lab-teams__card-title">Team ' + esc(team.name) + '</h2>' +
+        '<table class="lab-table">' +
+          '<tr><th>Team</th><td><code>' + esc(team.name) + '</code></td></tr>' +
+          '<tr><th>Members</th><td>' + membersHtml + '</td></tr>' +
+          '<tr><th>Kubernetes labels</th><td>' + labelsHtml + '</td></tr>' +
+          '<tr><th>Git repository</th><td>' +
+            '<a href="' + esc(team.gitRepo) + '" target="_blank" rel="noopener">' +
+            esc(team.gitRepo) + '</a></td></tr>' +
+          '<tr><th>Docker repositories</th><td>' +
+            '<div class="lab-table__scroll"><table class="lab-subtable">' +
+              '<thead><tr><th>Service</th><th>Repository</th><th>Link</th></tr></thead>' +
+              '<tbody>' + dockerRowsHtml + '</tbody>' +
+            '</table></div>' +
+          '</td></tr>' +
+        '</table>' +
+      '</div>';
+  })();
+</script>
