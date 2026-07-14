@@ -53,6 +53,20 @@ subtitle: >
     border: 1px solid #ffc9c9;
     color: #b02a37;
   }
+  .lab-teams__warn {
+    display: flex;
+    gap: .5rem;
+    align-items: flex-start;
+    padding: .5rem .75rem;
+    margin-bottom: .6rem;
+    background: #fff8e1;
+    border: 1px solid #ffe08a;
+    border-radius: 6px;
+    font-size: .85rem;
+    line-height: 1.4;
+    color: #7a5b00;
+  }
+  .lab-teams__warn-icon { flex: none; }
   .lab-teams__card {
     border: 1px solid #d0d7de;
     border-radius: 8px;
@@ -124,11 +138,11 @@ subtitle: >
     var LAB_DATA = {{ site.data.esigelec_teams | jsonify }};
 
     // Build the full resource set for a team from the minimal data file.
-    function buildTeam(team) {
-      var name = team.name;
+    // Members are the shared placeholder — real rosters are never published.
+    function buildTeam(name) {
       return {
         name: name,
-        members: team.members || [],
+        members: LAB_DATA.placeholder_members || [],
         k8sLabels: { team: name },
         gitRepo: 'https://github.com/' + LAB_DATA.git_org + '/k8s-' + name,
         dockerRepos: (LAB_DATA.services || []).map(function (svc) {
@@ -156,15 +170,15 @@ subtitle: >
 
     var teams = LAB_DATA.teams || [];
     var byName = {};
-    teams.forEach(function (t) { byName[t.name.toLowerCase()] = t; });
+    teams.forEach(function (name) { byName[name.toLowerCase()] = name; });
 
     var selected = (getParam('team') || '').trim().toLowerCase();
 
     // Render the team picker chips.
-    var chipsHtml = teams.map(function (t) {
-      var active = t.name.toLowerCase() === selected ? ' lab-teams__chip--active' : '';
+    var chipsHtml = teams.map(function (name) {
+      var active = name.toLowerCase() === selected ? ' lab-teams__chip--active' : '';
       return '<a class="lab-teams__chip' + active + '" href="?team=' +
-        encodeURIComponent(t.name) + '">' + esc(t.name) + '</a>';
+        encodeURIComponent(name) + '">' + esc(name) + '</a>';
     }).join('');
     document.getElementById('lab-teams-chips').innerHTML =
       chipsHtml || '<em>No teams configured yet.</em>';
@@ -185,9 +199,15 @@ subtitle: >
 
     var team = buildTeam(byName[selected]);
 
-    var membersHtml = team.members.length
+    var membersWarnHtml =
+      '<div class="lab-teams__warn">' +
+        '<span class="lab-teams__warn-icon">&#9888;&#65039;</span>' +
+        '<span>Placeholder names &mdash; real rosters are not published on this ' +
+        'public page. Ask your instructor for your team&rsquo;s actual members.</span>' +
+      '</div>';
+    var membersHtml = membersWarnHtml + (team.members.length
       ? '<ul>' + team.members.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('') + '</ul>'
-      : '<em>No members listed.</em>';
+      : '<em>No members listed.</em>');
 
     var labelsHtml = Object.keys(team.k8sLabels).map(function (k) {
       return '<code>' + esc(k) + ': ' + esc(team.k8sLabels[k]) + '</code>';
