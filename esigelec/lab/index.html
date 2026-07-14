@@ -103,20 +103,17 @@ subtitle: >
     font-size: .9em;
   }
   .lab-table ul { margin: 0; padding-left: 1.2rem; }
-  .lab-table__scroll { overflow-x: auto; }
-  .lab-subtable { width: 100%; border-collapse: collapse; min-width: 520px; }
-  .lab-subtable th, .lab-subtable td {
-    padding: .5rem .75rem;
-    border-bottom: 1px solid #eaecef;
-    text-align: left;
-    font-size: .9rem;
-  }
-  .lab-subtable thead th {
+  .lab-table__section {
     width: auto;
     background: #f6f8fa;
     color: #57606a;
-    white-space: nowrap;
+    white-space: normal;
+    font-size: .78rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
   }
+  .lab-table__docker-th { white-space: normal; }
+  .lab-table__sep { color: #8c959f; margin: 0 .35rem; }
 </style>
 
 <div class="lab-teams" id="lab-teams">
@@ -150,7 +147,9 @@ subtitle: >
           var repoUrl = LAB_DATA.docker_namespace + '/' + id;
           return {
             id: id,
-            name: svc.name + ' (' + name + ')',
+            // Raw service name; rendered without the team suffix, split on
+            // " - " so the family and the component sit on separate lines.
+            name: svc.name,
             repoUrl: repoUrl,
             webUrl: 'https://hub.docker.com/r/' + repoUrl
           };
@@ -213,13 +212,17 @@ subtitle: >
       return '<code>' + esc(k) + ': ' + esc(team.k8sLabels[k]) + '</code>';
     }).join(' ');
 
-    var dockerRowsHtml = team.dockerRepos.map(function (r) {
-      return '<tr>' +
-        '<td>' + esc(r.name) + '</td>' +
-        '<td><code>' + esc(r.repoUrl) + '</code></td>' +
-        '<td><a href="' + esc(r.webUrl) + '" target="_blank" rel="noopener">Docker Hub &#8599;</a></td>' +
-        '</tr>';
-    }).join('');
+    var dockerRowsHtml =
+      '<tr><th colspan="2" class="lab-table__section">Docker repositories</th></tr>' +
+      team.dockerRepos.map(function (r) {
+        return '<tr>' +
+          '<th class="lab-table__docker-th">' + esc(r.name).split(' - ').join('<br>') + '</th>' +
+          '<td><code>' + esc(r.repoUrl) + '</code>' +
+          '<span class="lab-table__sep">&middot;</span>' +
+          '<a href="' + esc(r.webUrl) + '" target="_blank" rel="noopener">Docker Hub &#8599;</a>' +
+          '</td>' +
+          '</tr>';
+      }).join('');
 
     content.innerHTML =
       '<div class="lab-teams__card">' +
@@ -231,12 +234,7 @@ subtitle: >
           '<tr><th>Git repository</th><td>' +
             '<a href="' + esc(team.gitRepo) + '" target="_blank" rel="noopener">' +
             esc(team.gitRepo) + '</a></td></tr>' +
-          '<tr><th>Docker repositories</th><td>' +
-            '<div class="lab-table__scroll"><table class="lab-subtable">' +
-              '<thead><tr><th>Service</th><th>Repository</th><th>Link</th></tr></thead>' +
-              '<tbody>' + dockerRowsHtml + '</tbody>' +
-            '</table></div>' +
-          '</td></tr>' +
+          dockerRowsHtml +
         '</table>' +
       '</div>';
   })();
