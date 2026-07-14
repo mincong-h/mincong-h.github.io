@@ -1,0 +1,31 @@
+# Teams for the ESIGELEC "Containers" lab, consumed by /esigelec/lab.
+#
+# The page /esigelec/lab reads the "team" query parameter (e.g. ?team=red) and
+# shows the resources assigned to that team. Every resource URL below (Git
+# repository, Docker repositories and Kubernetes labels) is DERIVED from the
+# team name, so to add a team you only need to add its name and members here.
+#
+#   git repository : https://github.com/<git_org>/k8s-<team>
+#   docker repo    : <docker_namespace>/<service>-<team>
+#   k8s label      : team=<team>
+
+docker_namespace: mincongclassroom
+git_org: mincong-classroom
+
+# Docker/Kubernetes workloads that every team ships, in display order. The team
+# name is appended to each id to form the per-team image name.
+services:
+  - id: spring-petclinic
+    name: Spring PetClinic Monolith
+  - id: spring-petclinic-api-gateway
+    name: Spring PetClinic Microservices - API Gateway
+  - id: spring-petclinic-customers-service
+    name: Spring PetClinic Microservices - Customers Service
+  - id: spring-petclinic-vets-service
+    name: Spring PetClinic Microservices - Veterinarians Service
+
+teams:
+  - name: red
+    members:
+      - Alice DOE
+      - Bob SMITH
