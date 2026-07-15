@@ -24,7 +24,12 @@ Jekyll theme written by Tian Qi ([kitian616](https://github.com/kitian616)).
 
 ## Install and Run
 
-Install required Jekyll plugins, then run Jekyll:
+Running with `bundle` directly is the recommended way: it is faster and more
+lightweight than Docker, and it matches what the CI does when deploying
+(see `.github/workflows/main.yml`), so what you see locally is what gets
+published.
+
+This blog is built with Ruby 3.2 (see `.ruby-version`).
 
 ```sh
 # if `bundle` command is not available
@@ -38,9 +43,16 @@ bundle install
 # run Jekyll (use `bundle exec` so the versions
 # pinned in Gemfile.lock are used)
 bundle exec jekyll serve
+
+# incremental generation (faster rebuilds)
+bundle exec jekyll serve --incremental
 ```
 
-Or run via Docker:
+The site is then served on <http://localhost:4000>.
+
+Alternatively, run via Docker. This needs no local Ruby toolchain, but it is
+slower and the image ships its own Ruby, which may not match the version used
+by the CI:
 
 ```sh
 # full generation
