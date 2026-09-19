@@ -36,8 +36,18 @@ services:
 # Team names only — resources are derived from each name.
 teams:
   - red
-  - blue
-  - green
-  - yellow
   - orange
+  - yellow
+  - green
+  - blue
   - purple
+  - pink
+  - brown
+  - black
+  - white
+  - cyan
+  - magenta
+  - gold
+  - silver
+  - navy
+  - olive
