@@ -66,5 +66,5 @@ Chapter 5 | 30 Oct, 2026 | [slides](/esigelec/5) | [assignment](https://github.c
 
 Other resources:
 
-* GitHub: organization [mincong-classroom](https://github.com/mincong-classroom/), classroom invitation <https://classroom.github.com/a/l38CNSR0>
+* GitHub: organization [mincong-classroom](https://github.com/mincong-classroom/)
 * DockerHub: [mincongclassroom](https://hub.docker.com/u/mincongclassroom)
