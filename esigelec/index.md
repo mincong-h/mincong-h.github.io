@@ -58,13 +58,13 @@ timeline
 
 Chapter   |         Date |  Slides | Assignment
 :-------- | -----------: | :------ | :---------
-Chapter 1 | 20 Oct, 2025 | [slides](/esigelec/1) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-1.md)
-Chapter 2 | 21 Oct, 2025 | [slides](/esigelec/2) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-2.md)
-Chapter 3 | 28 Oct, 2025 | [slides](/esigelec/3) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-3.md)
-Chapter 4 | 29 Oct, 2025 | [slides](/esigelec/4) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-4.md)
-Chapter 5 | 30 Oct, 2025 | [slides](/esigelec/5) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-5.md)
+Chapter 1 | 22 Oct, 2026 | [slides](/esigelec/1) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-1.md)
+Chapter 2 | 23 Oct, 2026 | [slides](/esigelec/2) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-2.md)
+Chapter 3 | 28 Oct, 2026 | [slides](/esigelec/3) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-3.md)
+Chapter 4 | 29 Oct, 2026 | [slides](/esigelec/4) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-4.md)
+Chapter 5 | 30 Oct, 2026 | [slides](/esigelec/5) | [assignment](https://github.com/mincong-classroom/containers/blob/main/docs/lab-5.md)
 
 Other resources:
 
-* GitHub: organization [mincong-classroom](https://github.com/mincong-classroom/), classroom invitation <https://classroom.github.com/a/l38CNSR0>
+* GitHub: organization [mincong-classroom](https://github.com/mincong-classroom/)
 * DockerHub: [mincongclassroom](https://hub.docker.com/u/mincongclassroom)
