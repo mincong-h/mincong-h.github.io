@@ -197,6 +197,12 @@ markdown    : kramdown
 highlighter : rouge
 permalink   : /en/:title/
 
+# The slides under esigelec/ are built by Slidev, which names a shared chunk
+# "_plugin-vue_export-helper-<hash>.js". Jekyll skips the files starting with "_"
+# unless they are included, and the slides don't load without it.
+include:
+  - _plugin-vue_export-helper-*.js
+
 exclude:
   - CHANGELOG.md
   - HOW_TO_RELEASE.md
