@@ -5,20 +5,56 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Containerization with Docker - Slidev</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=PT+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" type="text/css">
+<link rel="preload" as="image" href="/esigelec/1/assets/milad-fakurian-UiiHVEyxtyA-unsplash.jpg">
+<link rel="preload" as="image" href="/esigelec/1/assets/oxana-v-qoAIlAmLJBU-unsplash.jpg">
+<link rel="preload" as="image" href="/esigelec/1/assets/Screenshot-2024-09-29-what-is-a-container.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-kubernetes.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-openshift.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-aws-ecs.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-aws-lambda.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-google-cloud-run.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-docker.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-jenkins.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-github.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/docker-compose-example.webp">
+<link rel="preload" as="image" href="/esigelec/1/assets/devops-sdlc.jpg">
+<link rel="preload" as="image" href="/esigelec/1/assets/amazon-prime.jpeg">
+<link rel="preload" as="image" href="/esigelec/1/assets/containerized-applications.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-containerd.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-cri-o.svg">
+<link rel="preload" as="image" href="/esigelec/1/assets/logo-mirantis.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/docker-architecture.webp">
+<link rel="preload" as="image" href="/esigelec/1/assets/docker-layers.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/azure-registry-elements.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/taxonomy-of-docker-terms-and-concepts.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/2024-07-23-dockerhub-recent-tags.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/2024-07-23-dockerhub-tags.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/2024-07-23-dockerhub-digest.png">
+<link rel="preload" as="image" href="/esigelec/1/assets/Screenshot-spring-petclinic-monolith.png">
+<link rel="preload" as="image" href="https://placehold.co/800x450?text=Screenshot:+the+invitation+email">
+<link rel="preload" as="image" href="https://placehold.co/800x450?text=Screenshot:+the+invitation+page">
+<link rel="preload" as="image" href="https://placehold.co/800x450?text=Screenshot:+the+repository+k8s-red">
 <link rel="icon" href="https://cdn.jsdelivr.net/gh/slidevjs/slidev/assets/favicon.png">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta property="slidev:version" content="52.1.0">
+<meta property="slidev:version" content="53.0.0">
 <meta name="description" content="&quot;Course &quot;Kubernetes&quot;\nChapter 1: Containerization with Docker\n&quot;">
 <meta name="author" content="&quot;Mincong HUANG&quot;">
 <meta property="og:title" content="Containerization with Docker - Slidev">
-<meta property="og:description" content="&quot;Course &quot;Kubernetes&quot;\nChapter 1: Containerization with Docker\n&quot;">  <script type="module" crossorigin src="/esigelec/1/assets/index-D-kjp2Ik.js"></script>
-  <link rel="modulepreload" crossorigin href="/esigelec/1/assets/modules/vue-BrgteP_S.js">
-  <link rel="modulepreload" crossorigin href="/esigelec/1/assets/modules/shiki-B300Tlqe.js">
-  <link rel="stylesheet" crossorigin href="/esigelec/1/assets/modules/shiki-CozCpemh.css">
-  <link rel="stylesheet" crossorigin href="/esigelec/1/assets/index-C8VxI3E7.css">
+<meta property="og:description" content="&quot;Course &quot;Kubernetes&quot;\nChapter 1: Containerization with Docker\n&quot;">  <script type="module" crossorigin src="/esigelec/1/assets/index-D8pESMFN.js"></script>
+  <link rel="modulepreload" crossorigin href="/esigelec/1/assets/rolldown-runtime-Dd_uD5pT.js">
+  <link rel="modulepreload" crossorigin href="/esigelec/1/assets/modules/shiki-BVKeiuqU.js">
+  <link rel="modulepreload" crossorigin href="/esigelec/1/assets/utils-NTJCnNVp.js">
+  <link rel="modulepreload" crossorigin href="/esigelec/1/assets/slidev/env-DIEiufkL.js">
+  <link rel="modulepreload" crossorigin href="/esigelec/1/assets/preload-helper-GISpSkUz.js">
+  <link rel="modulepreload" crossorigin href="/esigelec/1/assets/_plugin-vue_export-helper-BDNMzG2s.js">
+  <link rel="modulepreload" crossorigin href="/esigelec/1/assets/modules/vue-BawySSAN.js">
+  <link rel="modulepreload" crossorigin href="/esigelec/1/assets/slidev/useClicks-BM9xVR8u.js">
+  <link rel="stylesheet" crossorigin href="/esigelec/1/assets/modules/shiki-BrmBd2_v.css">
+  <link rel="stylesheet" crossorigin href="/esigelec/1/assets/index-BWL6eu_v.css">
 </head>
 <body>
-<div id="app"></div>
-<div id="mermaid-rendering-container"></div>
+  <div id="app"></div>
+  <div id="mermaid-rendering-container"></div>
+  
 </body>
 </html>
