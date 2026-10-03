@@ -88,7 +88,7 @@ data:
               filters:
                 - StripPrefix=2
             - id: genai-service
-              uri: http://genai-service
+              uri: http://genai-service:8084
               predicates:
                 - Path=/api/genai/**
               filters:
@@ -112,7 +112,7 @@ spec:
         - name: main
           # note: don't use the official image because it has some issues in the frontend
           # image: springcommunity/spring-petclinic-api-gateway
-          image: mincongclassroom/spring-petclinic-api-gateway:bcf6d05
+          image: mincongclassroom/spring-petclinic-api-gateway:2026.0-rc1
           env:
             - name: SPRING_CONFIG_LOCATION
               value: file:/workspace/config/application.yml
