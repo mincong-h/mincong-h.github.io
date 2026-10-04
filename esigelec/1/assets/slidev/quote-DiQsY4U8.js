@@ -1,0 +1,1 @@
+import{B as e,U as t,v as n,x as r}from"../modules/shiki-BVKeiuqU.js";import{it as i}from"../index-CgAch53c.js";var a={class:`slidev-layout quote`},o={class:`my-auto`},s={__name:`quote`,setup(s){let{$slidev:c,$nav:l,$clicksContext:u,$clicks:d,$page:f,$renderContext:p,$frontmatter:m}=i();return(i,s)=>(e(),r(`div`,a,[n(`div`,o,[t(i.$slots,`default`)])]))}};export{s as t};

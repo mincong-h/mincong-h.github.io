@@ -1,0 +1,16 @@
+import{$ as e,B as t,C as n,D as r,G as i,S as a,bt as o,et as s,v as c,vt as l,x as u,y as d}from"./modules/shiki-BVKeiuqU.js";import{it as f,rt as p}from"./index-uAQ9Ou4G.js";import{t as m}from"./slidev/default-BtKQLMjL.js";import{t as h}from"./slidev/CodeBlockWrapper-Cx28xvft.js";var g={__name:`chapter-2.md__slidev_30`,setup(g){let{$slidev:_,$nav:v,$clicksContext:y,$clicks:b,$page:x,$renderContext:S,$frontmatter:C}=f();return y.setup(),(f,g)=>{let _=h,v=i(`click`);return t(),d(m,o(r(l(p)(l(C),29))),{default:e(()=>[g[2]||=c(`h1`,null,[c(`code`,null,`kubectl explain`)],-1),g[3]||=c(`p`,null,`documents the fields of a manifest`,-1),n(_,{title:``,ranges:[]},{default:e(()=>[...g[0]||=[c(`pre`,{class:`shiki shiki-themes vitesse-dark vitesse-light slidev-code`,style:{"--shiki-dark":`#dbd7caee`,"--shiki-light":`#393a34`,"--shiki-dark-bg":`#121212`,"--shiki-light-bg":`#ffffff`}},[c(`code`,{class:`language-sh`},[c(`span`,{class:`line`},[c(`span`,{style:{"--shiki-dark":`#80A665`,"--shiki-light":`#59873A`}},`kubectl`),c(`span`,{style:{"--shiki-dark":`#C98A7D`,"--shiki-light":`#B56959`}},` explain`),c(`span`,{style:{"--shiki-dark":`#DBD7CAEE`,"--shiki-light":`#393A34`}},` [TYPE].`),c(`span`,{style:{"--shiki-dark":`#666666`,"--shiki-light":`#999999`}},`[`),c(`span`,{style:{"--shiki-dark":`#DBD7CAEE`,"--shiki-light":`#393A34`}},`FIELD`),c(`span`,{style:{"--shiki-dark":`#666666`,"--shiki-light":`#999999`}},`]`),c(`span`,{style:{"--shiki-dark":`#DBD7CAEE`,"--shiki-light":`#393A34`}},`.`),c(`span`,{style:{"--shiki-dark":`#666666`,"--shiki-light":`#999999`}},`[`),c(`span`,{style:{"--shiki-dark":`#DBD7CAEE`,"--shiki-light":`#393A34`}},`FIELD`),c(`span`,{style:{"--shiki-dark":`#666666`,"--shiki-light":`#999999`}},`]`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,{style:{"--shiki-dark":`#758575DD`,"--shiki-light":`#A0ADA0`}},`# e.g. kubectl explain pod.spec.containers.ports`)])])],-1)]]),_:1}),s((t(),u(`div`,null,[n(_,{title:``,ranges:[]},{default:e(()=>[...g[1]||=[c(`pre`,{class:`shiki shiki-themes vitesse-dark vitesse-light slidev-code`,style:{"--shiki-dark":`#dbd7caee`,"--shiki-light":`#393a34`,"--shiki-dark-bg":`#121212`,"--shiki-light-bg":`#ffffff`}},[c(`code`,{class:`language-text`},[c(`span`,{class:`line`},[c(`span`,null,`KIND:       Pod`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,null,`VERSION:    v1`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,null,`FIELD: ports <[]ContainerPort>`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,null,`DESCRIPTION:`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,null,`    List of ports to expose from the container. [...]`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,null,`FIELDS:`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,null,`  containerPort   <integer> -required-`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,null,`    Number of port to expose on the pod's IP address. [...]`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,null,`  protocol        <string>`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,null,`  enum: SCTP, TCP, UDP`)]),a(`
+`),c(`span`,{class:`line`},[c(`span`,null,`    Protocol for port. Must be UDP, TCP, or SCTP. Defaults to "TCP".`)])])],-1)]]),_:1})])),[[v]])]),_:1},16)}}};export{g as default};
