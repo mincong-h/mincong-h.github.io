@@ -44,7 +44,7 @@ spec:
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: api-gateway-config
+  name: petclinic-config
 data:
   application.yml: |
     spring:
@@ -111,7 +111,7 @@ spec:
           image: mincongclassroom/spring-petclinic-api-gateway:2026.0-rc1
           env:
             - name: SPRING_CONFIG_LOCATION
-              value: file:/workspace/config/application.yml
+              value: file:/config/application.yml
             - name: SPRING_CLOUD_DISCOVERY_ENABLED
               value: "false"
             - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_GATEWAY
@@ -128,14 +128,14 @@ spec:
               cpu: 500m
               memory: 512Mi
           volumeMounts:
-            - name: config-volume
-              mountPath: /workspace/config # specific path for Spring application
+            - name: petclinic-config
+              mountPath: /config
           ports:
             - containerPort: 8080
       volumes:
-        - name: config-volume
+        - name: petclinic-config
           configMap:
-            name: api-gateway-config
+            name: petclinic-config
 ---
 apiVersion: v1
 kind: Service

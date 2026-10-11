@@ -1,99 +1,71 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: config-server
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: config-server
-  template:
-    metadata:
-      labels:
-        app: config-server
-    spec:
-      containers:
-        - name: config-server
-          image: springcommunity/spring-petclinic-config-server
-          env:
-            - name: SPRING_CLOUD_DISCOVERY_ENABLED
-              value: "false"
-          ports:
-            - containerPort: 8888
-          resources:
-            requests:
-              cpu: 250m
-              memory: 256Mi
-            limits:
-              cpu: 500m
-              memory: 512Mi
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: config-server
-spec:
-  type: ClusterIP
-  selector:
-    app: config-server
-  ports:
-    - protocol: TCP
-      port: 8888
-      targetPort: 8888
----
-# Specific configuration for API Gateway in Kubernetes
+# Configuration of the PetClinic services
 #
-# Because Kubernetes has native support for service discovery, so the Spring discovery-service is
-# not necessary.
+# Outside of Kubernetes, the services get it from a config server, which reads it from a Git
+# repository. Here, they read it from this ConfigMap, mounted as the file /config/application.yml.
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: api-gateway-config
+  name: petclinic-config
 data:
   application.yml: |
+    server:
+      port: 8080
+    management:
+      tracing:
+        sampling:
+          probability: 1
+        export:
+          zipkin:
+            endpoint: http://tracing-server/api/v2/spans
     spring:
-      application:
-        name: api-gateway
-      config:
-        import: optional:configserver:http://config-server:8888
+      # The scripts that create and fill the database of a service
+      sql:
+        init:
+          schema-locations: classpath*:db/hsqldb/schema.sql
+          data-locations: classpath*:db/hsqldb/data.sql
+      jpa:
+        open-in-view: false
+        hibernate:
+          ddl-auto: none
       cloud:
+        # Kubernetes finds the Pods behind the name of a Service, and balances the load between
+        # them: no discovery server, and no load balancer in the services.
+        discovery:
+          enabled: false
+        loadbalancer:
+          enabled: false
+        # The routes of the API Gateway, which the other services ignore. They call each Service
+        # by its name, without a port: the Services listen on the port 80, the default port of
+        # HTTP.
         gateway:
-          default-filters:
-            - name: CircuitBreaker
-              args:
-                name: defaultCircuitBreaker
-                fallbackUri: forward:/fallback
-            - name: Retry
-              args:
-                retries: 1
-                statuses: SERVICE_UNAVAILABLE
-                methods: POST
-          routes:
-            - id: vets-service
-              uri: http://vets-service:8083
-              predicates:
-                - Path=/api/vet/**
-              filters:
-                - StripPrefix=2
-            - id: visits-service
-              uri: http://visits-service:8082
-              predicates:
-                - Path=/api/visit/**
-              filters:
-                - StripPrefix=2
-            - id: customers-service
-              uri: http://customers-service:8081
-              predicates:
-                - Path=/api/customer/**
-              filters:
-                - StripPrefix=2
-            - id: genai-service
-              uri: http://genai-service:8084
-              predicates:
-                - Path=/api/genai/**
-              filters:
-                - StripPrefix=2
-                - CircuitBreaker=name=genaiCircuitBreaker,fallbackUri=/fallback
+          server:
+            webflux:
+              routes:
+                - id: vets-service
+                  uri: http://vets-service
+                  predicates:
+                    - Path=/api/vet/**
+                  filters:
+                    - StripPrefix=2
+                - id: visits-service
+                  uri: http://visits-service
+                  predicates:
+                    - Path=/api/visit/**
+                  filters:
+                    - StripPrefix=2
+                - id: customers-service
+                  uri: http://customers-service
+                  predicates:
+                    - Path=/api/customer/**
+                  filters:
+                    - StripPrefix=2
+                - id: genai-service
+                  uri: http://genai-service
+                  predicates:
+                    - Path=/api/genai/**
+                  filters:
+                    - StripPrefix=2
+                    - CircuitBreaker=name=genaiCircuitBreaker,fallbackUri=/fallback
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -110,14 +82,10 @@ spec:
     spec:
       containers:
         - name: main
-          # note: don't use the official image because it has some issues in the frontend
-          # image: springcommunity/spring-petclinic-api-gateway
-          image: mincongclassroom/spring-petclinic-api-gateway:2026.0-rc1
+          image: mincongclassroom/spring-petclinic-api-gateway:2026.0-rc6
           env:
-            - name: SPRING_CONFIG_LOCATION
-              value: file:/workspace/config/application.yml
-            - name: SPRING_CLOUD_DISCOVERY_ENABLED
-              value: "false"
+            - name: SPRING_PROFILES_ACTIVE
+              value: kubernetes
             # - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_GATEWAY
             #   value: "DEBUG"
             # - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_WEB
@@ -132,14 +100,14 @@ spec:
               cpu: 500m
               memory: 512Mi
           volumeMounts:
-            - name: config-volume
-              mountPath: /workspace/config # specific path for Spring application
+            - name: petclinic-config
+              mountPath: /config
           ports:
             - containerPort: 8080
       volumes:
-        - name: config-volume
+        - name: petclinic-config
           configMap:
-            name: api-gateway-config
+            name: petclinic-config
 ---
 apiVersion: v1
 kind: Service
@@ -151,7 +119,7 @@ spec:
     app: api-gateway
   ports:
     - protocol: TCP
-      port: 8080
+      port: 80
       targetPort: 8080
 ---
 apiVersion: apps/v1
@@ -170,12 +138,12 @@ spec:
     spec:
       containers:
         - name: main
-          image: springcommunity/spring-petclinic-customers-service
+          image: mincongclassroom/spring-petclinic-customers-service:2026.0-rc6
           env:
-            - name: SPRING_CLOUD_DISCOVERY_ENABLED
-              value: "false"
+            - name: SPRING_PROFILES_ACTIVE
+              value: kubernetes
           ports:
-            - containerPort: 8081
+            - containerPort: 8080
           resources:
             requests:
               cpu: 250m
@@ -183,6 +151,13 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
+          volumeMounts:
+            - name: petclinic-config
+              mountPath: /config
+      volumes:
+        - name: petclinic-config
+          configMap:
+            name: petclinic-config
 ---
 apiVersion: v1
 kind: Service
@@ -194,8 +169,8 @@ spec:
     app: customers-service
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 8081
+      port: 80
+      targetPort: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -212,10 +187,10 @@ spec:
     spec:
       containers:
         - name: main
-          image: springcommunity/spring-petclinic-visits-service
+          image: mincongclassroom/spring-petclinic-visits-service:2026.0-rc6
           env:
-            - name: SPRING_CLOUD_DISCOVERY_ENABLED
-              value: "false"
+            - name: SPRING_PROFILES_ACTIVE
+              value: kubernetes
           resources:
             requests:
               cpu: 250m
@@ -224,7 +199,14 @@ spec:
               cpu: 500m
               memory: 512Mi
           ports:
-            - containerPort: 8082
+            - containerPort: 8080
+          volumeMounts:
+            - name: petclinic-config
+              mountPath: /config
+      volumes:
+        - name: petclinic-config
+          configMap:
+            name: petclinic-config
 ---
 apiVersion: v1
 kind: Service
@@ -236,8 +218,8 @@ spec:
     app: visits-service
   ports:
     - protocol: TCP
-      port: 8082
-      targetPort: 8082
+      port: 80
+      targetPort: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -254,10 +236,10 @@ spec:
     spec:
       containers:
         - name: main
-          image: springcommunity/spring-petclinic-vets-service
+          image: mincongclassroom/spring-petclinic-vets-service:2026.0-rc6
           env:
-            - name: SPRING_CLOUD_DISCOVERY_ENABLED
-              value: "false"
+            - name: SPRING_PROFILES_ACTIVE
+              value: kubernetes
           resources:
             requests:
               cpu: 250m
@@ -266,7 +248,14 @@ spec:
               cpu: 500m
               memory: 512Mi
           ports:
-            - containerPort: 8083
+            - containerPort: 8080
+          volumeMounts:
+            - name: petclinic-config
+              mountPath: /config
+      volumes:
+        - name: petclinic-config
+          configMap:
+            name: petclinic-config
 ---
 apiVersion: v1
 kind: Service
@@ -278,8 +267,8 @@ spec:
     app: vets-service
   ports:
     - protocol: TCP
-      port: 8083
-      targetPort: 8083
+      port: 80
+      targetPort: 8080
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -317,5 +306,5 @@ spec:
     app: tracing-server
   ports:
     - protocol: TCP
-      port: 9411
+      port: 80
       targetPort: 9411
