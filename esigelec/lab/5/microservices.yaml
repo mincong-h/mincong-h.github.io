@@ -53,43 +53,49 @@ data:
       config:
         import: optional:configserver:http://config-server:8888
       cloud:
+        # The API Gateway calls the services by the name of their Service, which Kubernetes
+        # resolves: no load balancer in the gateway
+        loadbalancer:
+          enabled: false
         gateway:
-          default-filters:
-            - name: CircuitBreaker
-              args:
-                name: defaultCircuitBreaker
-                fallbackUri: forward:/fallback
-            - name: Retry
-              args:
-                retries: 1
-                statuses: SERVICE_UNAVAILABLE
-                methods: POST
-          routes:
-            - id: vets-service
-              uri: http://vets-service
-              predicates:
-                - Path=/api/vet/**
-              filters:
-                - StripPrefix=2
-            - id: visits-service
-              uri: http://visits-service
-              predicates:
-                - Path=/api/visit/**
-              filters:
-                - StripPrefix=2
-            - id: customers-service
-              uri: http://customers-service
-              predicates:
-                - Path=/api/customer/**
-              filters:
-                - StripPrefix=2
-            - id: genai-service
-              uri: http://genai-service
-              predicates:
-                - Path=/api/genai/**
-              filters:
-                - StripPrefix=2
-                - CircuitBreaker=name=genaiCircuitBreaker,fallbackUri=/fallback
+          server:
+            webflux:
+              default-filters:
+                - name: CircuitBreaker
+                  args:
+                    name: defaultCircuitBreaker
+                    fallbackUri: forward:/fallback
+                - name: Retry
+                  args:
+                    retries: 1
+                    statuses: SERVICE_UNAVAILABLE
+                    methods: POST
+              routes:
+                - id: vets-service
+                  uri: http://vets-service
+                  predicates:
+                    - Path=/api/vet/**
+                  filters:
+                    - StripPrefix=2
+                - id: visits-service
+                  uri: http://visits-service
+                  predicates:
+                    - Path=/api/visit/**
+                  filters:
+                    - StripPrefix=2
+                - id: customers-service
+                  uri: http://customers-service
+                  predicates:
+                    - Path=/api/customer/**
+                  filters:
+                    - StripPrefix=2
+                - id: genai-service
+                  uri: http://genai-service
+                  predicates:
+                    - Path=/api/genai/**
+                  filters:
+                    - StripPrefix=2
+                    - CircuitBreaker=name=genaiCircuitBreaker,fallbackUri=/fallback
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -108,7 +114,7 @@ spec:
         - name: main
           # note: don't use the official image because it has some issues in the frontend
           # image: springcommunity/spring-petclinic-api-gateway
-          image: mincongclassroom/spring-petclinic-api-gateway:2026.0-rc1
+          image: mincongclassroom/spring-petclinic-api-gateway:2026.0
           env:
             - name: SPRING_CONFIG_LOCATION
               value: file:/config/application.yml
