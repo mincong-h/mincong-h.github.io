@@ -10,11 +10,32 @@ data:
   application.yml: |
     server:
       port: 8080
+      # The access log of a service: one line for each HTTP request that it receives, in the
+      # logs of its container, which starts with "AccessLog" as the one of the API Gateway. The
+      # API Gateway has another web server: see its Deployment.
+      tomcat:
+        accesslog:
+          enabled: true
+          directory: /dev
+          prefix: stdout
+          suffix: ""
+          file-date-format: ""
+          buffered: false
+          pattern: "AccessLog: %h %l %u %t \"%r\" %s %b %{ms}T"
     management:
+      # What a service tells about itself under the path /actuator, such as its health and
+      # its metrics: everything
+      endpoints:
+        web:
+          exposure:
+            include: "*"
+      # The traces of the requests, sent to the Tracing Server. Disabled as long as no Tracing
+      # Server runs: otherwise, each service logs an error when it fails to send them.
       tracing:
         sampling:
           probability: 1
         export:
+          enabled: false
           zipkin:
             endpoint: http://tracing-server/api/v2/spans
     spring:
@@ -32,6 +53,14 @@ data:
         # them: no discovery server, and no load balancer in the services.
         discovery:
           enabled: false
+          # The GenAI service, which Lab 5 adds, looks up the Customers Service with the discovery
+          # client of Spring Cloud: without a discovery server, its address is written here. It
+          # is the only lookup of the stack: the other calls go to the name of a Service.
+          client:
+            simple:
+              instances:
+                customers-service:
+                  - uri: http://customers-service
         loadbalancer:
           enabled: false
         # The routes of the API Gateway, which the other services ignore. They call each Service
@@ -59,13 +88,6 @@ data:
                     - Path=/api/customer/**
                   filters:
                     - StripPrefix=2
-                - id: genai-service
-                  uri: http://genai-service
-                  predicates:
-                    - Path=/api/genai/**
-                  filters:
-                    - StripPrefix=2
-                    - CircuitBreaker=name=genaiCircuitBreaker,fallbackUri=/fallback
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -82,10 +104,13 @@ spec:
     spec:
       containers:
         - name: main
-          image: mincongclassroom/spring-petclinic-api-gateway:2026.0-rc6
+          image: mincongclassroom/spring-petclinic-api-gateway:2026.0
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: kubernetes
+            # The access log of the gateway: an option of its web server, Netty
+            - name: JAVA_TOOL_OPTIONS
+              value: -Dreactor.netty.http.server.accessLogEnabled=true
             # - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_CLOUD_GATEWAY
             #   value: "DEBUG"
             # - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_WEB
@@ -138,7 +163,7 @@ spec:
     spec:
       containers:
         - name: main
-          image: mincongclassroom/spring-petclinic-customers-service:2026.0-rc6
+          image: mincongclassroom/spring-petclinic-customers-service:2026.0
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: kubernetes
@@ -187,7 +212,7 @@ spec:
     spec:
       containers:
         - name: main
-          image: mincongclassroom/spring-petclinic-visits-service:2026.0-rc6
+          image: mincongclassroom/spring-petclinic-visits-service:2026.0
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: kubernetes
@@ -236,7 +261,7 @@ spec:
     spec:
       containers:
         - name: main
-          image: mincongclassroom/spring-petclinic-vets-service:2026.0-rc6
+          image: mincongclassroom/spring-petclinic-vets-service:2025.0
           env:
             - name: SPRING_PROFILES_ACTIVE
               value: kubernetes
@@ -269,42 +294,3 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8080
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: tracing-server
-spec:
-  selector:
-    matchLabels:
-      app: tracing-server
-  template:
-    metadata:
-      labels:
-        app: tracing-server
-    spec:
-      containers:
-        - name: main
-          image: openzipkin/zipkin
-          resources:
-            requests:
-              cpu: 250m
-              memory: 256Mi
-            limits:
-              cpu: 500m
-              memory: 512Mi
-          ports:
-            - containerPort: 9411
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: tracing-server
-spec:
-  type: ClusterIP
-  selector:
-    app: tracing-server
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 9411
