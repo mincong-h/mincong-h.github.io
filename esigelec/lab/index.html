@@ -124,6 +124,11 @@ subtitle: >
         members: LAB_DATA.placeholder_members || [],
         k8sLabels: { team: name },
         gitRepo: 'https://github.com/' + LAB_DATA.git_org + '/k8s-' + name,
+        // SSH needs a key added to GitHub; HTTPS works when the network blocks SSH.
+        gitClones: [
+          { name: 'HTTPS', command: 'git clone https://github.com/' + LAB_DATA.git_org + '/k8s-' + name + '.git' },
+          { name: 'SSH', command: 'git clone git@github.com:' + LAB_DATA.git_org + '/k8s-' + name + '.git' }
+        ],
         dockerRepos: (LAB_DATA.services || []).map(function (svc) {
           var id = svc.id + '-' + name;
           var repoUrl = LAB_DATA.docker_namespace + '/' + id;
@@ -196,6 +201,12 @@ subtitle: >
       return '<code>' + esc(k) + ': ' + esc(team.k8sLabels[k]) + '</code>';
     }).join(' ');
 
+    var cloneRowsHtml =
+      '<tr><th colspan="2" class="lab-table__section">Clone the Git repository</th></tr>' +
+      team.gitClones.map(function (c) {
+        return '<tr><th>' + esc(c.name) + '</th><td><code>' + esc(c.command) + '</code></td></tr>';
+      }).join('');
+
     var dockerRowsHtml =
       '<tr><th colspan="2" class="lab-table__section">Docker repositories</th></tr>' +
       team.dockerRepos.map(function (r) {
@@ -218,6 +229,7 @@ subtitle: >
           '<tr><th>Git repository</th><td>' +
             '<a href="' + esc(team.gitRepo) + '" target="_blank" rel="noopener">' +
             esc(team.gitRepo) + '</a></td></tr>' +
+          cloneRowsHtml +
           dockerRowsHtml +
         '</table>' +
       '</div>';

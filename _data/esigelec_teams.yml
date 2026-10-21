@@ -5,6 +5,8 @@
 # the team name, so this file only needs the list of team names.
 #
 #   git repository : https://github.com/<git_org>/k8s-<team>
+#   git clone      : https://github.com/<git_org>/k8s-<team>.git (HTTPS)
+#                    git@github.com:<git_org>/k8s-<team>.git (SSH)
 #   docker repo    : <docker_namespace>/<service>-<team>
 #   k8s label      : team=<team>
 
