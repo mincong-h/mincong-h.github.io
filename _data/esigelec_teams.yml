@@ -26,12 +26,6 @@ placeholder_members:
 services:
   - id: spring-petclinic
     name: Spring PetClinic Monolith
-  - id: spring-petclinic-api-gateway
-    name: Spring PetClinic Microservices - API Gateway
-  - id: spring-petclinic-customers-service
-    name: Spring PetClinic Microservices - Customers Service
-  - id: spring-petclinic-vets-service
-    name: Spring PetClinic Microservices - Veterinarians Service
 
 # Team names only — resources are derived from each name.
 teams:
