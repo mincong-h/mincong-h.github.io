@@ -5,6 +5,8 @@
 # the team name, so this file only needs the list of team names.
 #
 #   git repository : https://github.com/<git_org>/k8s-<team>
+#   git clone      : https://github.com/<git_org>/k8s-<team>.git (HTTPS)
+#                    git@github.com:<git_org>/k8s-<team>.git (SSH)
 #   docker repo    : <docker_namespace>/<service>-<team>
 #   k8s label      : team=<team>
 
@@ -26,12 +28,6 @@ placeholder_members:
 services:
   - id: spring-petclinic
     name: Spring PetClinic Monolith
-  - id: spring-petclinic-api-gateway
-    name: Spring PetClinic Microservices - API Gateway
-  - id: spring-petclinic-customers-service
-    name: Spring PetClinic Microservices - Customers Service
-  - id: spring-petclinic-vets-service
-    name: Spring PetClinic Microservices - Veterinarians Service
 
 # Team names only — resources are derived from each name.
 teams:
