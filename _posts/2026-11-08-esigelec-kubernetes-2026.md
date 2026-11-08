@@ -43,17 +43,53 @@ Through this program, students gain a better understanding of the challenges ass
 
 ## Changes
 
-This article will show some updates about this module: what has been taught and changed since last year. There are several changes around the teaching material, the approach we use, the slide (the lecture), and the lab session. 
+### Spring Pet Clinic Adoption
 
+Here is the architecture of the official version, run with Docker Compose, compared to the version of the course, run in Kubernetes. The parts in orange are the ones that Kubernetes replaces, and the part in green is the server that I added:
 
-About the teaching material, this year we continue to use the Spring PetClinic project from the Spring open source community as the principal teaching material for the course. We use both the monolith version and the microservices option to show the evolution of the architecture from monolith to microservices. We deployed the spring-petclinic-microservices into Kubernetes using related concepts like service deployment, config map, and others.
+```mermaid
+---
+title: "Spring PetClinic Microservices: the official version and the version of the course"
+config:
+  flowchart:
+    nodeSpacing: 20
+    rankSpacing: 40
+---
+flowchart TB
+    subgraph course["Course: Kubernetes"]
+        direction TB
+        c_gw["api-gateway<br>+ About page"]
+        c_svc["customers-service<br>vets-service<br>visits-service"]
+        c_team["team-info-server<br>in Go"]
+        c_cm[/"petclinic-config<br>ConfigMap"/]
+        c_gw -- "http#58;//customers-service<br>Service, CoreDNS" --> c_svc
+        c_gw -- "http#58;//team-info.classroom" --> c_team
+        c_svc -. "mounted at /config" .-> c_cm
+    end
 
-On top of that we also have a new service called a team info server, which serves as a satellite service to interact with the main services. The goal is to help them understand some corner cases about the application and help them troubleshoot. For example they have to configure some environment variable otherwise the server won't start. They can use this material to understand the exchanges between namespaces and to understand things related to the load balancing mechanism when there are multiple pods.
+    subgraph official["Official: Docker Compose"]
+        direction TB
+        o_gw["api-gateway"]
+        o_svc["customers-service<br>vets-service<br>visits-service"]
+        o_disc["discovery-server<br>Eureka"]
+        o_conf["config-server<br>Git repository"]
+        o_gw -- "lb://customers-service<br>Spring Cloud LoadBalancer" --> o_svc
+        o_gw -. "look up" .-> o_disc
+        o_svc -. register .-> o_disc
+        o_svc -. configuration .-> o_conf
+    end
 
-The benefit of using the team info server is that it's a lightweight Go server whose size is significantly smaller than a Java container, which is only about 10 MB. By using that, it is possible to start the container quickly. It is especially interesting for students who are using their desktop because some of them have limited memory, like 8 GB or 16 GB, which is quite different from the school's computer. It is also, I think, an opportunity to show them that different services can be in different languages and they don't have to stick to one programming language inside the microservice architecture. 
+    classDef replaced fill:#ffe8cc,stroke:#e8590c,color:#000
+    classDef added fill:#d3f9d8,stroke:#2b8a3e,color:#000
+    class o_disc,o_conf,c_cm replaced
+    class c_team added
+    linkStyle 0,3 stroke:#e8590c,stroke-width:2px
+    linkStyle 1 stroke:#2b8a3e,stroke-width:2px
+```
 
+On the Spring PetClinic Microservices side, I made some patches to run the stack in Kubernetes. Because Kubernetes is not a supported platform by default.
 
-Then on the Spring PetClinic microservices side, we did a patch version to integrate something that is not supported by the official image, for example, support for Kubernetes. We had to edit a new profile called Kubernetes, which is alongside the existing one, which is Docker. There are two profiles and then we activate the Kubernetes profile directly.
+We had to edit a new profile called Kubernetes, which is alongside the existing one, which is Docker. There are two profiles and then we activate the Kubernetes profile directly.
 
 In the Kubernetes profile the load balancer provided by Spring is disabled. It is replaced by the native Kubernetes service for load balancing. For the discovery side it is also disabled. We don't use the discovery server from Spring and we use the discovery system from Kubernetes directly, which is based on the CoreDNS containers.
 
@@ -62,6 +98,14 @@ For the configuration we also disable the config server, which now relies on the
 
 
 In the Spring PetClinic API gateway for the frontend, we added a new page called the About page, which allows the team to show the information relevant to their team, which facilitates the integration. 
+
+### Go Server
+
+About the teaching material, this year we continue to use the Spring PetClinic project from the Spring open source community as the principal teaching material for the course. We use both the monolith version and the microservices option to show the evolution of the architecture from monolith to microservices. We deployed the spring-petclinic-microservices into Kubernetes using related concepts like service deployment, config map, and others.
+
+On top of that we also have a new service called a team info server, which serves as a satellite service to interact with the main services. The goal is to help them understand some corner cases about the application and help them troubleshoot. For example they have to configure some environment variable otherwise the server won't start. They can use this material to understand the exchanges between namespaces and to understand things related to the load balancing mechanism when there are multiple pods.
+
+The benefit of using the team info server is that it's a lightweight Go server whose size is significantly smaller than a Java container, which is only about 10 MB. By using that, it is possible to start the container quickly. It is especially interesting for students who are using their desktop because some of them have limited memory, like 8 GB or 16 GB, which is quite different from the school's computer. It is also, I think, an opportunity to show them that different services can be in different languages and they don't have to stick to one programming language inside the microservice architecture. 
 
 
 
