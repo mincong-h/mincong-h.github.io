@@ -58,10 +58,10 @@ config:
 flowchart TB
     subgraph course["Course: Kubernetes"]
         direction TB
-        c_gw["api-gateway<br>+ About page"]
-        c_svc["Microservices<br><span style='color:#868e96'>customers-service<br>vets-service<br>visits-service</span>"]
-        c_team["team-info-server<br>in Go"]
-        c_cm["petclinic-config<br>ConfigMap"]
+        c_gw["api-gateway<br><span style='color:#868e96 !important'>+ About page</span>"]
+        c_svc["Microservices<br><span style='color:#868e96 !important'>customers-service<br>vets-service<br>visits-service</span>"]
+        c_team["team-info-server<br><span style='color:#868e96 !important'>in Go</span>"]
+        c_cm["petclinic-config<br><span style='color:#868e96 !important'>ConfigMap</span>"]
         c_gw -- "http#58;//customers-service<br>Service, CoreDNS" --> c_svc
         c_gw -- "http#58;//team-info.classroom" --> c_team
         c_svc -. "mounted at /config" .-> c_cm
@@ -70,9 +70,9 @@ flowchart TB
     subgraph official["Official: Docker Compose"]
         direction TB
         o_gw["api-gateway"]
-        o_svc["Microservices<br><span style='color:#868e96'>customers-service<br>vets-service<br>visits-service</span>"]
-        o_disc["discovery-server<br>Eureka"]
-        o_conf["config-server<br>Git repository"]
+        o_svc["Microservices<br><span style='color:#868e96 !important'>customers-service<br>vets-service<br>visits-service</span>"]
+        o_disc["discovery-server<br><span style='color:#868e96 !important'>Eureka</span>"]
+        o_conf["config-server<br><span style='color:#868e96 !important'>Git repository</span>"]
         o_gw -- "lb://customers-service<br>Spring Cloud LoadBalancer" --> o_svc
         o_gw -. "look up" .-> o_disc
         o_svc -. register .-> o_disc
