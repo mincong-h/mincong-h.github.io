@@ -87,29 +87,43 @@ flowchart TB
     linkStyle 1 stroke:#2b8a3e,stroke-width:2px
 ```
 
-On the Spring PetClinic Microservices side, I made some patches to run the stack in Kubernetes. Because Kubernetes is not a supported platform by default.
+On the Spring PetClinic Microservices side, I made some patches to run the stack in Kubernetes. Because Kubernetes is not a supported platform by this project.
 
-We had to edit a new profile called Kubernetes, which is alongside the existing one, which is Docker. There are two profiles and then we activate the Kubernetes profile directly.
-
-In the Kubernetes profile the load balancer provided by Spring is disabled. It is replaced by the native Kubernetes service for load balancing. For the discovery side it is also disabled. We don't use the discovery server from Spring and we use the discovery system from Kubernetes directly, which is based on the CoreDNS containers.
-
-For the configuration we also disable the config server, which now relies on the config map. In the Spring demo they use the config server to centralize configuration and allow them to reload remotely and handle it in a centralized way. In Kubernetes we simulate similar behavior using a config map, which is shared between multiple microservices and mounted as a volume. By doing so we kind of understand the benefit of using Kubernetes and having some support from the ecosystem natively. 
-
-
-
-In the Spring PetClinic API gateway for the frontend, we added a new page called the About page, which allows the team to show the information relevant to their team, which facilitates the integration. 
+1. We had to create a new profile called `kubernetes`, which provides an alternative to the existing one `docker`, which was mainly designed for Docker Compose. Typically, it disables the load balancer, the config server and replace them by the native Service resources and ConfigMap in Kubernetes.
+2. In the Spring PetClinic API gateway for the frontend, a new About page was added, which allows the team to practice API intergration by showing the information relevant to their team.
+3. Qdrant as an external vector database. The implementation of the GenAI service has been modified to support the external vector database Qdrant. By default, it only supports an in-memory database, and this time, to better stimulate the real use cases and understand the stateful set, I added another implementation for connecting to Qdrant.
 
 ### Go Server
 
-About the teaching material, this year we continue to use the Spring PetClinic project from the Spring open source community as the principal teaching material for the course. We use both the monolith version and the microservices option to show the evolution of the architecture from monolith to microservices. We deployed the spring-petclinic-microservices into Kubernetes using related concepts like service deployment, config map, and others.
-
-On top of that we also have a new service called a team info server, which serves as a satellite service to interact with the main services. The goal is to help them understand some corner cases about the application and help them troubleshoot. For example they have to configure some environment variable otherwise the server won't start. They can use this material to understand the exchanges between namespaces and to understand things related to the load balancing mechanism when there are multiple pods.
+On top of that we also have a new service called a team info server, which serves as a satellite service to interact with the main services. The main purpose of this server was to have a teaching material for troubleshooting. It simulates application error, container crashes, etc. This material is also used to understand the cross-namespace exchanges; observe load balancing mechanism across multiple Pods.
 
 The benefit of using the team info server is that it's a lightweight Go server whose size is significantly smaller than a Java container, which is only about 10 MB. By using that, it is possible to start the container quickly. It is especially interesting for students who are using their desktop because some of them have limited memory, like 8 GB or 16 GB, which is quite different from the school's computer. It is also, I think, an opportunity to show them that different services can be in different languages and they don't have to stick to one programming language inside the microservice architecture. 
 
+### More Relevant Content in the Lecture
 
+This year, in terms of the lecture, what we improved is that we added auto-scaling to the deployments part. Chapter 3 allows students to understand how to install the matrics server on the Kubernetes Control Plane and define auto-scaling rules based on CPU.
 
- this year, in terms of the lecture, what we improved is that we added auto-scaling to the deployments part. Chapter 3 allows students to understand how to use the matrix server and define auto-scaling rules based on CPU. They have the opportunity to use the matrix and the tracing server to observe the changes related to the scaling events.
+We also introduced the observability stack, including Grafana, Zipkin, and Promotheus. It allowed the students to understand how the microservices communicate with each other based on the traces observed in the PetClinic server; observe the scaling events and the system loads; and more.
 
-On the other hand, we also introduce the stack of observability, which was not discussed last time. It allows the student to understand how the microservices communicate with each other based on the traces observed in the PetClinic server. On the networking side, we also talk about the network policy to enforce communication between namespaces, which was not the case before. 
+On the networking side, we also talked about the network policy to enforce communication between namespaces, which was not the case last year.
+
+### Teaching Assistant
+
+The command-line interface [`mc`](https://github.com/mincong-classroom/mc) has been improved too. These command lines were used last year for grading, I mean, some of the statical without static result from last year, like checking the content of some file. It was used to manage Git-related operations in batch for all the teams, but this year we went further into this. It becomes more like a teaching assistant.
+In order of respect:
+1. It replaces GitHub Classroom to provision the team. It allows the team to register themselves, and then it uses the underlying GitHub command line `gh` to provision the team, add the team member (a student) to the team as a team member, create the team repository by cloning the repo from the public template, and manage the relationship (granting team access to those repositories).
+2. It is also used with some coding agent skill to perform an in-depth evaluation for each team. That evaluation part is valuable since it solves multiple problems. First, as a system-level course, it is hard to reproduce all the scenarios. Each team has its own specification description. Based on the `mc` command line and the coding skills, we were able to reproduce those scenarios for each team, even if there are no standard answers. It helps by giving an AI-generated screenshot for teams that didn't provide evidence for the result, so it helps asserting the correctness of the result despite the lack of evidence. Thirdly, it annotates the existing screenshot provided by the team, so it allows highlighting the important part of the screenshot, especially when there are many screenshots.
+
+### Animation in Slides
+
+With the advance of AI and coding agents, it became possible to have more advanced assistance for the lecture and the presentation.
+
+In the past, we used some diagrams to illustrate some scenarios, but those diagrams were more or less static. They were screenshots, and it was hard to maintain them because we needed to generate them separately from the site and then import them as static images into the presentation.
+
+Now, with coding agents like Claude Code, it was possible to embed the diagrams directly into the slide and also ensure that they animate in a coordinated way with the content. When we express some view, some definition of a specific topic, it can not only show the diagram to illustrate the interaction or relationship between different components, but also highlight a specific component that the teacher wants the student to focus on. It makes the whole flow more dynamic and more attractive.
+
+On the other hand, it also allows some comparison. For example, we can compare the interactive and declarative commands side by side. Whenever I click, we can show the evolution of both sides. This kind of advanced animation was not possible in the past. Thanks to a coding agent, we can do a lot more on this site to make the course and the lecture more attractive. 
+
+### AI-assisted Lab Sessions
+
 
