@@ -90,8 +90,8 @@ flowchart TB
 On the Spring PetClinic Microservices side, I made some patches to run the stack in Kubernetes. Because Kubernetes is not a supported platform by this project.
 
 1. We had to create a new profile called `kubernetes`, which provides an alternative to the existing one `docker`, which was mainly designed for Docker Compose. Typically, it disables the load balancer, the config server and replace them by the native Service resources and ConfigMap in Kubernetes.
-2. In the Spring PetClinic API gateway for the frontend, a new About page was added, which allows the team to practice API intergration by showing the information relevant to their team.
-3. Qdrant as an external vector database. The implementation of the GenAI service has been modified to support the external vector database Qdrant. By default, it only supports an in-memory database, and this time, to better stimulate the real use cases and understand the stateful set, I added another implementation for connecting to Qdrant.
+2. In the Spring PetClinic API gateway for the frontend, a new About page was added, which allows the team to practice API integration by showing the information relevant to their team.
+3. Qdrant as an external vector database. The implementation of the GenAI service has been modified to support the external vector database Qdrant. By default, it only supports an in-memory database, and this time, to better simulate the real use cases and understand the stateful set, I added another implementation for connecting to Qdrant.
 
 ### Go Server
 
@@ -101,9 +101,9 @@ The benefit of using the team info server is that it's a lightweight Go server w
 
 ### More Relevant Content in the Lecture
 
-This year, in terms of the lecture, what we improved is that we added auto-scaling to the deployments part. Chapter 3 allows students to understand how to install the matrics server on the Kubernetes Control Plane and define auto-scaling rules based on CPU.
+This year, in terms of the lecture, what we improved is that we added auto-scaling to the deployments part. Chapter 3 allows students to understand how to install the metrics server on the Kubernetes Control Plane and define auto-scaling rules based on CPU.
 
-We also introduced the observability stack, including Grafana, Zipkin, and Promotheus. It allowed the students to understand how the microservices communicate with each other based on the traces observed in the PetClinic server; observe the scaling events and the system loads; and more.
+We also introduced the observability stack, including Grafana, Zipkin, and Prometheus. It allowed the students to understand how the microservices communicate with each other based on the traces observed in the PetClinic server; observe the scaling events and the system loads; and more.
 
 On the networking side, we also talked about the network policy to enforce communication between namespaces, which was not the case last year.
 
