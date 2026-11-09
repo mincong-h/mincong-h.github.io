@@ -59,9 +59,9 @@ flowchart TB
     subgraph course["Course: Kubernetes"]
         direction TB
         c_gw["api-gateway<br>+ About page"]
-        c_svc["customers-service<br>vets-service<br>visits-service"]
+        c_svc["Microservices<br><span style='color:#868e96'>customers-service<br>vets-service<br>visits-service</span>"]
         c_team["team-info-server<br>in Go"]
-        c_cm[/"petclinic-config<br>ConfigMap"/]
+        c_cm["petclinic-config<br>ConfigMap"]
         c_gw -- "http#58;//customers-service<br>Service, CoreDNS" --> c_svc
         c_gw -- "http#58;//team-info.classroom" --> c_team
         c_svc -. "mounted at /config" .-> c_cm
@@ -70,7 +70,7 @@ flowchart TB
     subgraph official["Official: Docker Compose"]
         direction TB
         o_gw["api-gateway"]
-        o_svc["customers-service<br>vets-service<br>visits-service"]
+        o_svc["Microservices<br><span style='color:#868e96'>customers-service<br>vets-service<br>visits-service</span>"]
         o_disc["discovery-server<br>Eureka"]
         o_conf["config-server<br>Git repository"]
         o_gw -- "lb://customers-service<br>Spring Cloud LoadBalancer" --> o_svc
