@@ -95,7 +95,6 @@ Here is the architecture of the official version, run with Docker Compose, compa
 
 ```mermaid
 ---
-title: "Figure 1: Spring PetClinic Microservices: the official version and the version of the course"
 config:
   flowchart:
     nodeSpacing: 20
@@ -132,6 +131,12 @@ flowchart TB
     linkStyle 3 stroke:#e8590c,stroke-width:2px
     linkStyle 0,1 stroke:#2b8a3e,stroke-width:2px
 ```
+
+<p align="center">
+
+  <figcaption>Figure 1: Spring PetClinic Microservices: the official version and the version of the course</figcaption>
+
+</p>
 
 On the Spring PetClinic Microservices side, I made some patches to run the stack in Kubernetes. Because Kubernetes is not a supported platform by this project.
 
