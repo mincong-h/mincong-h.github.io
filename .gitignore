@@ -25,4 +25,6 @@ _site/
 .jekyll-metadata
 .jekyll-cache/
 
-.claude/
+# Keep the local Claude Code settings out of Git, but share the project skills.
+.claude/*
+!/.claude/skills/
