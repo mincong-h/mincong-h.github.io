@@ -45,11 +45,11 @@ Through this program, students gain a better understanding of the challenges ass
 
 ### Spring Pet Clinic Adoption
 
-Here is the architecture of the official version, run with Docker Compose, compared to the version of the course, run in Kubernetes. The parts in orange are the ones that Kubernetes replaces, and the part in green is the server that I added:
+Here is the architecture of the official version, run with Docker Compose, compared to the version of the course, run in Kubernetes. The parts in orange are the ones that Kubernetes replaces. The parts in green are new in the version of the course (the ConfigMap, the HTTP calls through a Service, and the server that I added):
 
 ```mermaid
 ---
-title: "Spring PetClinic Microservices: the official version and the version of the course"
+title: "Figure 1: Spring PetClinic Microservices: the official version and the version of the course"
 config:
   flowchart:
     nodeSpacing: 20
@@ -81,10 +81,10 @@ flowchart TB
 
     classDef replaced fill:#ffe8cc,stroke:#e8590c,color:#000
     classDef added fill:#d3f9d8,stroke:#2b8a3e,color:#000
-    class o_disc,o_conf,c_cm replaced
-    class c_team added
-    linkStyle 0,3 stroke:#e8590c,stroke-width:2px
-    linkStyle 1 stroke:#2b8a3e,stroke-width:2px
+    class o_disc,o_conf replaced
+    class c_team,c_cm added
+    linkStyle 3 stroke:#e8590c,stroke-width:2px
+    linkStyle 0,1 stroke:#2b8a3e,stroke-width:2px
 ```
 
 On the Spring PetClinic Microservices side, I made some patches to run the stack in Kubernetes. Because Kubernetes is not a supported platform by this project.
