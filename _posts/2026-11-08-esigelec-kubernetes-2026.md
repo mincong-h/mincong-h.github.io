@@ -31,6 +31,23 @@ wechat:              false
   .article__content code.language-mermaid[data-processed] {
     border: 1px solid #d0d7de;
   }
+
+  /*
+   * The caption of a figure is centered and narrower than the text, so that it reads as a part of
+   * the figure. The browser moves each <figcaption> out of its <p align="center">: select it alone.
+   */
+  .article__content figcaption {
+    margin-left: 15%;
+    margin-right: 15%;
+    text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    .article__content figcaption {
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+  }
 </style>
 
 ## Introduction
