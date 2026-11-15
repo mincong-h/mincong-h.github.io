@@ -247,7 +247,6 @@ Here is the architecture of the PetClinic at the end of Lab 5. The parts in gree
 
 ```mermaid
 ---
-title: "Figure 6: The Spring PetClinic in Lab 5, with the GenAI service and Qdrant in green"
 config:
   flowchart:
     nodeSpacing: 25
@@ -274,6 +273,12 @@ flowchart TB
     class genai,qdrant added
     linkStyle 3,4,5,6 stroke:#2b8a3e,stroke-width:2px
 ```
+
+<p align="center">
+
+  <figcaption>Figure 6: The Spring PetClinic in Lab 5, with the GenAI service and Qdrant in green</figcaption>
+
+</p>
 
 The first step for them is to install the Spring GenAI service into the Kubernetes cluster alongside all the existing services. By doing so, they review and practice what they learned in the previous lecture about: declaring a deployment and a service; modifying the config map; understanding the routing of the API gateway; troubleshooting the interactions with the trace server Zipkin; and more. It is an efficient way for them to go through what we learn from chapter 2 to chapter 5.
 
