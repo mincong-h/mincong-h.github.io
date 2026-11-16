@@ -48,27 +48,6 @@ wechat:              false
       margin-right: 5%;
     }
   }
-
-  /*
-   * An excerpt from the report of a team, like a quotation in a newspaper: italic and indented,
-   * with the size and the color of the text, instead of the smaller gray text and the bar of the theme.
-   */
-  .article__content blockquote.excerpt {
-    margin-left: 2em;
-    margin-right: 2em;
-    padding-left: 0;
-    border-left: none;
-    font-size: inherit;
-    color: inherit;
-    font-style: italic;
-  }
-
-  @media (max-width: 600px) {
-    .article__content blockquote.excerpt {
-      margin-left: 1em;
-      margin-right: 1em;
-    }
-  }
 </style>
 
 ## Introduction
@@ -299,7 +278,6 @@ Here is an excerpt of their analysis, from their report of Lab 4:
 
 > - Blocked request: the packets of classroom are dropped silently, so the client waits until its timeout ("download timed out"). A broken Service answers quickly with "Connection refused" (Exercise 5), and the 404 of Customers shows that a reachable service answers. Before the policy, the same calls from classroom worked, so the policy is the only change.
 > - Who enforces it: the Kubernetes API only stores the NetworkPolicy. The network plugin (CNI) of the cluster, kindnet here, applies it on the nodes. The blocking seen above shows that kindnet enforces the policies; with a CNI that does not, the policy would be accepted with no effect.
-{: .excerpt}
 
 > **Writing hint**
 >
