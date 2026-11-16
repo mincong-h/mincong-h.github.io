@@ -54,11 +54,13 @@ wechat:              false
 
 In the end of October, I had the privilege to go to ESIGELEC, an engineering school in Saint-Étienne-du-Rouvray, Normandy, France, to share knowledge about Kubernetes with about 20 students. This is a 20-hour module for the students majoring in the Digital Services Engineering (Ingénieurie des Services du Numérique). In this article, I want to recapitulate the program of this course, the changes compared to last year, and some highlights from the students.
 
+<!--
 > **Writing hint**
 >
 > - **What:** who you are, for a reader who doesn't know you: a software engineer who teaches this module at ESIGELEC for the second year (the [2025 recap](/en/esigelec-kubernetes-2025/)). Then what the reader will find: the program, the student highlights, and how AI helps to teach and to grade. The introduction says "about 20 students": it's 21. The front matter is still the one of 2025: the same `image`, `subtitle` and `excerpt`, and the excerpt says "lessons learned" and "redesigned curriculum". The plugin `jekyll-seo-tag` turns `image` and `excerpt` into the preview card on LinkedIn, so the 2 recaps would show the same card.
 > - **Why:** the post is public and shared on LinkedIn, so it reaches 4 kinds of readers: the director of a school or the head of a department who may hire you, engineering students, your colleagues, and the professionals of your network and of their network. Most of them decide from the card and the first 2 lines whether to click. A card identical to last year's looks like an old post.
 > - **How:** 2 or 3 sentences: who you are, the course in numbers, what the post shows. A new `excerpt` of 1 or 2 sentences that names the highlights (GenAI, observability, troubleshooting, AI-assisted grading), and a new `image` from this year, e.g. Figure 9, or a photo of the class with the consent of the students. LinkedIn shows the card at about 1.91:1 (1200 × 627 px), while `esigelec.jpeg` is 3:1 (2000 × 667 px).
+-->
 
 ## Program
 
@@ -72,22 +74,26 @@ This module lasts for 20 hours. It consists of five chapters, each lasting 4 hou
 
 Through this program, students gain a better understanding of the challenges associated with software operations. It not only applies to Kubernetes, but also other kinds of orchestration services (Google Cloud Run, AWS App Runner, AWS ECS, …). To access the whole program, please visit <https://mincong.io/esigelec/2026>
 
+<!--
 > **Writing hint**
 >
 > - **What:** a few numbers at the end of this section: 20 hours, 21 students in 13 teams, 5 chapters and 226 slides, 31 lab exercises, 284 commits by the students. The growth from 2025 shows a course that is maintained: 207 to 226 slides, 24 to 31 exercises. Also: everything runs on the students' own laptops, Windows or macOS, with the Kubernetes cluster of Docker Desktop.
 > - **Why:** a director first wants the format and the scale: hours, group size, topics. A student wants to know what they will be able to do after 20 hours. The public slides of the year (mincong.io/esigelec/2026, draft PR #174) let both judge the material by themselves, and a director can do it before contacting you. And no Kubernetes cluster to rent in the cloud means no infrastructure budget for the school.
 > - **How:** a short list of numbers, without sentences around them, then one sentence that points to the public slides.
+-->
 
 ## Highlights
 
 Here are some highlights and changes from this year. It's either some improvements I did this year or some highlights from the student that I think are worth sharing with you.
 
+<!--
 > **Writing hint for the whole section "Highlights"**
 >
 > - **Readers:** 4 kinds, coming from LinkedIn: 1) the director of a school or the head of a department who may hire you, in France or abroad; 2) engineering students, at ESIGELEC or elsewhere, including the 21 students of this year, who will look for their team; 3) your colleagues; 4) the professionals of your network and of their network. They scroll: they look at the figures, read the headings and the captions, and maybe one sentence per section.
 > - **Message:** for a director, "If I hire Mincong, my students will practice what the industry asks for (Kubernetes, observability, GenAI, security), they will learn to analyze rather than copy commands, and the course comes with modern material and a fair evaluation." For a student, "In this course, I would build, break and fix a real system, with the tools of 2026." For a colleague or another professional, "This course teaches what we do at work."
 > - **How:** one section = one skill, one figure, and one or two sentences of proof. Put the strongest sections first: GenAI and Qdrant, then Troubleshooting Stories and Observability. The sentence above can say what the students achieved this year rather than "changes from this year". Keep the tone positive: what didn't work stays in the course repository.
 > - **Public post:** credit the students by the color of their team, not by name, and tag them on LinkedIn only if they agree. The figures show no names and no private URLs: I masked the repository of purple, and the owners in Figure 9 are the demo data of the PetClinic. The paths such as `k8s-green/docs/lab-3.md` in these hints point to the private repositories of the teams: they're for you, not links for the readers.
+-->
 
 ### Spring Pet Clinic Adoption
 
@@ -144,11 +150,14 @@ On the Spring PetClinic Microservices side, I made some patches to run the stack
 2. In the Spring PetClinic API gateway for the frontend, a new About page was added, which allows the team to practice API integration by showing the information relevant to their team.
 3. Qdrant as an external vector database. The implementation of the GenAI service has been modified to support the external vector database Qdrant. By default, it only supports an in-memory database, and this time, to better simulate the real use cases and understand the stateful set, I added another implementation for connecting to Qdrant.
 
+<!--
 > **Writing hint**
 >
 > - **What:** the students measured the cost of microservices themselves in Lab 3: 8 teams compared the memory of the monolith and of the microservices, and found 3 to 4 times more for the microservices, e.g. red 352 Mi against 1116 Mi, purple 424 Mi against 1285 Mi, cyan 284 Mi against 1073 Mi. Point 3 (Qdrant) can move to the subsection on Qdrant of "GenAI and Qdrant".
 > - **Why:** Spring PetClinic is the reference application of the Spring community, so the students work on a realistic system rather than a toy, and every Java developer of your network knows it. And measuring a trade-off with numbers is the judgment that companies expect from an engineer: microservices aren't free.
 > - **How:** one sentence after the list, with the 3 pairs of numbers. Keep Figure 1 as the only visual of this section.
+
+-->
 
 ### Team Info
 
@@ -178,15 +187,19 @@ For example, here is the About page of the team "purple", before and after they 
 
 Before the route, the API gateway answered 404 itself, because no route matched `/api/about/`. After the route, it forwarded the request to the Service `team-info` in the namespace `classroom`, and the page showed the information of the team. Thanks to this Team-Info integration, a student learns the route configuration in Spring and then network troubleshooting through the access logs (so they know whether the error is located in the API gateway, in the Go service, or elsewhere).
 
+<!--
 > **Writing hint**
 >
 > - **What:** you wrote this small server in Go for the course, so that each team sees its own About page through the API gateway (Figures 2 and 3). Its image is about 5 MB compressed on Docker Hub (amd64), against 284 MB for the API gateway: check it on Docker Hub, the draft says "about 10 MB". Its only failure is to refuse to start when `TEAM_ID` is invalid (the broken Pod of Lab 2), so drop "application error, container crashes, etc.". A student who went further: green dumped the iptables rules of kube-proxy in Lab 4 to see how the Service spreads the requests across the Pods: "The first rule picks the first Pod with probability 1/3; if not, the second rule picks the second Pod with probability 1/2" (`k8s-green/docs/lab-4.md:231`).
 > - **Why:** it shows that you build material for the course instead of reusing a tutorial, and that each team gets a visible, personal result, which keeps them motivated. green's iptables show students curious enough to look under the abstraction, which is how good engineers are made.
 > - **How:** replace the second paragraph with the comparison of the 2 images, keep Figures 2 and 3, then 1 or 2 sentences on green with the quote.
+-->
 
 ### Observability
 
 We also introduced the observability stack, including Grafana, Zipkin, and Prometheus. It allowed the students to understand how the microservices communicate with each other based on the traces observed in the PetClinic server; observe the scaling events and the system loads; and more.
+
+I added Observability because this course is more oriented towards Systems Engineering than Software Engineering. Also because at the AI era, software changes much faster and therefore, we need better way to observe the changes in the architecture and understand their relationship.
 
 <p align="center">
 
@@ -199,11 +212,7 @@ We also introduced the observability stack, including Grafana, Zipkin, and Prome
 
 This screenshot comes from Exercise 6 of Lab 3. The students created an outage on purpose: they scaled `vets-service` down to 0 replicas, then opened the page "Target health" of Prometheus. The green team got "3 / 3 up": the API gateway, `customers-service` and `visits-service` are UP, and `vets-service` is missing from the list. It is not marked as DOWN, because Prometheus discovers its targets from the running Pods, and there is no Pod of `vets-service` any more. In other words, the monitoring looks healthy while a service is down. 5 other teams noticed the same thing, and for the green team, it's the traces in Zipkin that revealed the outage.
 
-> **Writing hint**
->
-> - **What:** Lab 3 deploys Prometheus, Grafana and Zipkin next to the PetClinic, and the teams use them to understand the system. In Exercise 6, they stopped vets-service and noticed that Prometheus still showed "3/3 up": the target of the stopped service disappears instead of turning red. green: "So Prometheus does not report the outage as a failed target: it shows 3/3 up" (`k8s-green/docs/lab-3.md:754`); purple, red, white, gold and brown found the same. Fact to fix: this is taught in the lab; the lecture only shows the stack.
-> - **Why:** observability is a core skill of DevOps and SRE jobs, and most courses stop at the deployment. Here the students read the monitoring critically: "all green" doesn't mean "healthy". Engineers usually learn this during their first incident; your students learned it in class. The engineers of your network who lived an outage will recognize the trap at once, which makes the course credible to them.
-> - **How:** the surprise in one sentence, Figure 4, then the lesson in one sentence. The list of tools in one line.
+In the following sections, you will discover more screenshots like this because most of the evidence from their lab sessions came from observability.
 
 ### Autoscaling
 
@@ -224,11 +233,13 @@ The teaching material is also prepared for them to succeed, meaning that I lower
 
 Here, in this screenshot, you can see that the black team used a loop generator based on the BC box to run an infinite loop of `wget` to get the content from the veterinarian service. This generated an increased amount of HTTP traffic, which resulted in the auto-scaling of the deployment.
 
+<!-- 
 > **Writing hint**
 >
 > - **What:** new in 2026: a slide on the HPA in chapter 3, and Lab 3 Exercise 7, where each team adds a HorizontalPodAutoscaler to a service and sends load to it. Figure 5 shows the vets-service of black scaling out in steps up to 5 Pods while the load rises to about 13 requests per second. The team purple linked it to production: "right after the HPA spawned the new Pods, I got a short burst of HTTP 503 Service Unavailable errors. The YAML has no readiness probe" (`k8s-purple/docs/lab-3.md:1212`). Fact to fix: the Metrics Server runs in the namespace `kube-system` (deployed by `observability.yaml`), not "on the control plane".
 > - **Why:** autoscaling is how companies absorb the peaks of traffic and control their cloud bill. The students didn't only write the YAML: they watched it work on a real dashboard, and purple found on its own why new Pods need a readiness probe: a classic issue of production that your colleagues will recognize.
 > - **How:** one sentence for the concept, one for the proof with Figure 5, one for purple.
+-->
 
 ### Network Policy
 
@@ -274,16 +285,30 @@ flowchart TB
 
 </p>
 
-Here is an excerpt of their analysis, from their report of Lab 4:
+Here is an excerpt of their analysis, from their report of Lab 4 - Exercise 7:
 
+> ```sh
+> # api-gateway 80/TCP, customers-service 80/TCP
+> foreach ($ns in "classroom","default","kube-system") { foreach ($svc in "api-gateway","customers-service") {
+>   kubectl run tmp --rm -i --image=busybox --restart=Never -n $ns -- wget -S -O /dev/null -T 3 http://$svc.default.svc.cluster.local } }
+> [...]
+> # same loop:
+> # classroom    -> api-gateway: wget: download timed out   customers-service: wget: download timed out
+> # default      -> api-gateway: 200 OK                     customers-service: 404
+> # kube-system  -> api-gateway: 200 OK                     customers-service: 404
+> ```
+>
+> Analysis:
 > - Blocked request: the packets of classroom are dropped silently, so the client waits until its timeout ("download timed out"). A broken Service answers quickly with "Connection refused" (Exercise 5), and the 404 of Customers shows that a reachable service answers. Before the policy, the same calls from classroom worked, so the policy is the only change.
 > - Who enforces it: the Kubernetes API only stores the NetworkPolicy. The network plugin (CNI) of the cluster, kindnet here, applies it on the nodes. The blocking seen above shows that kindnet enforces the policies; with a CNI that does not, the policy would be accepted with no effect.
 
+<!--
 > **Writing hint**
 >
 > - **What:** 7 new slides in chapter 4 (#40 to #46) that start from business cases (personal data, card payments, SaaS, intrusion), and Lab 4 Exercise 7 with a GDPR story: block the other namespaces from reaching the PetClinic. purple and green proved it with a request from another namespace that the policy refused.
 > - **Why:** security and data protection are top concerns for companies, and GDPR makes them a legal duty in Europe. The course starts from the business reason before the YAML, so the students learn why a policy exists, not only how to write one. The message: graduates who protect data by default.
 > - **How:** the business reason in one sentence, then the exercise in one sentence. I can prepare a screenshot of the refused request of purple or green if you want a student figure here.
+-->
 
 ### GenAI
 
@@ -343,6 +368,8 @@ For example, here is the homework for the team Black, where you can see that at 
 
 #### Going Further: Hallucinations and Traces
 
+Once they have the GenAI service, they have a base for exploring more. In the lab session, we prepare some exploration so that they can go further. Some of them are mandatory, but some of them are optional, depending on the curiosity of the team and their background. They may go further or not in the discovery. I prepare several things. I ask them to understand: the prompt engineering behind the service; the use of tools; the retrieval-augmented generation; the use of memory; etc.
+
 <p align="center">
 
   <img alt="The chatbot of the team olive answers that Max visited the clinic on September 15, 2023, while the page shows visits on 2013 Jan 02 and Jan 03"
@@ -351,6 +378,8 @@ For example, here is the homework for the team Black, where you can see that at 
   <figcaption>Figure 9: The chatbot of the team "olive" invents a visit of Max on September 15, 2023, while the page shows 2 visits in January 2013</figcaption>
 
 </p>
+
+Here is a great example from the Olive team about hallucination. They prepared some visits, and you can see that the visit is from 2014. They observed that when you ask for the visits for John Coleman, it will give you visits from September 15, 2023, which is completely incorrect. This is incorrect because the chat actually never provides tools to interact with the visit service. Instead of that, it doesn't have the result. It invented a result, so this is the hallucination, which is a good example from the team to understand the limit of the model.
 
 <p align="center">
 
@@ -361,11 +390,7 @@ For example, here is the homework for the team Black, where you can see that at 
 
 </p>
 
-> **Writing hint**
->
-> - **What:** the teams studied how the assistant works (its prompt, its tools, the retrieval and its memory), and olive found 3 things. 1) The chat invented a visit of Max (Figure 9). olive read the code of the tools to understand why: the tool `listOwners` reads Customers, not Visits, so "the model invents information instead of recognizing this limit" (translated from `k8s-olive/docs/lab-5.md:587`); navy and blue reached the same conclusion. 2) The Zipkin trace (Figure 10) shows who calls whom for one question: `gpt-4o-mini` asks for the tool `listVets`, the tool queries Qdrant, then a second call to `gpt-4o-mini` writes the answer. In this trace of 17 s, the first call takes 7.9 s and the Qdrant query 3.1 s. 3) Asked "Which vets are dermatologists?", the chat named Helen Leary and Camille Martin, which is wrong, and its trace had no tool call and no Qdrant query: the model answered from the memory of the conversation. After a reset of the memory, it answered Louis Bernard, with `tool_call listvets` and `qdrant query` in the trace. olive's conclusion: "an HTTP 200 isn't enough to validate that the answer is right" (translated from `k8s-olive/docs/lab-5.md:463`).
-> - **Why:** this is the skill that companies need to run AI safely: an answer that looks right, with a status 200, can be invented. The students audited the code and the traces instead of trusting the answer. For a student, it's the difference between using an assistant and understanding it. For the professionals who work with LLMs, the invented visit and the 7.9 s of the first call are problems they know.
-> - **How:** lead with Figure 9: anyone gets it in 2 seconds. Then the explanation in one sentence, Figure 10 for the trace, and the dermatologists in 1 or 2 sentences, without a figure.
+And then the second example is here, with the trace where you can see that the team were able to find the interaction between the chat client from the GenAI service and its interaction with the LLM and also with the vector database Qdrant.
 
 #### Qdrant as an External Vector Database
 
@@ -387,6 +412,7 @@ For example, here is the homework for the team Black, where you can see that at 
 
 </p>
 
+<!--
 > **Writing hint**
 >
 > - **What:** what the reader needs first: the GenAI service finds the vets by meaning, not by keyword. Each vet is stored as a vector of 1536 numbers, computed by a model of OpenAI, and a question becomes a vector too: the closest vectors win (cosine similarity). By default, these vectors live in the memory of the Pod. Exercise 4 moves them to Qdrant, a vector database that runs as a StatefulSet of 3 Pods. The evidence:
@@ -397,6 +423,7 @@ For example, here is the homework for the team Black, where you can see that at 
 >   5. The cluster survives a failure: gold deleted the Pod of the leader, and "The term went from 1 to 2 and qdrant-1 became the leader, within 6.5 s of the deletion" (`k8s-gold/docs/lab-5.md:816`), while the chat kept answering.
 > - **Why:** a vector database is how companies give an AI assistant their own data (RAG), so the students learn the architecture behind most assistants in production. And it's the hardest kind of workload for Kubernetes: a database that keeps its data and runs as a cluster, with a StatefulSet, a volume per Pod, a headless Service and a leader elected with Raft. For a director, it shows a course that reaches an advanced topic in 20 hours, on laptops. The engineers of your network know that running a database on Kubernetes is hard.
 > - **How:** one sentence on what a vector database is, with Figure 11; one on the StatefulSet, with Figure 12; then 3 short bullets of evidence: Camille Martin, Louis Bernard, and the new leader in 6.5 s. Point 3 of "Spring Pet Clinic Adoption" can move here.
+-->
 
 ### Troubleshooting Stories
 
@@ -409,11 +436,13 @@ For example, here is the homework for the team Black, where you can see that at 
 
 </p>
 
+<!--
 > **Writing hint**
 >
 > - **What:** Lab 4 Exercise 5 asks the teams to break the Service of the Team Info Server in 2 ways: a selector that matches no Pod, then a `targetPort` where the container doesn't listen. 3 teams went beyond the expected answer. 1) black expected a timeout, got "Connection refused" in both cases (Figure 13), and found that the endpoints tell the 2 cases apart: `<none>` for the selector, the wrong port for the `targetPort` (`k8s-black/docs/lab-4.md:371`). 2) red saw the About page still answer 200 right after breaking the Service, and explained it: the API gateway reused its open connection until a restart. 3) white found that the API gateway reads its ConfigMap only at startup, and that a Pod can be Running before Spring Boot listens.
 > - **Why:** troubleshooting is what companies value most in a junior engineer, and it's the hardest skill to teach: it can't be copied from a tutorial or from an AI assistant. These 3 stories show students who observe, form a hypothesis and verify it, beyond the instructions. The message: the course trains engineers who can operate a system, not only deploy it. The engineers of your network will relate: a reused connection or a Pod that is Running before the application listens are bugs that they debug at work.
 > - **How:** one short paragraph per team, each ending with its lesson. Credit the teams by their color.
+-->
 
 ### Teaching Assistant
 
@@ -431,11 +460,13 @@ In order of respect:
 
 </p>
 
+<!--
 > **Writing hint**
 >
 > - **What:** `mc` provisions the teams on GitHub in place of GitHub Classroom, and runs the evaluation of every team: `mc eval run` starts the skills `report-lab` and `grade-lab` of the course repository with `claude -p`, one agent per team (`esigelec/EVALUATION.md`). Over 13 teams and 5 labs, the evaluator replayed or annotated 294 screenshots and 465 command outputs. 2 kinds of evidence: annotated, to point at what matters in the screenshots of a team (Figure 10, the numbered boxes), and generated, to check a result in the setup of the team (Figure 14). Each team also has its own lab page with its variables (mincong.io/esigelec/lab/?team=red). 2 facts to fix: you registered the teams yourself, from the names and GitHub usernames they gave you (`esigelec/slides/chapter-1.md`, notes of the slide "Team Registration"); and "In order of respect" was probably "In order of appearance".
 > - **Why:** a director worries about the workload of a technical course: the setup, the grading, the fairness. You bring your own tooling as a software engineer: the teams are ready on GitHub in minutes, and every team gets detailed feedback based on evidence, even though each team has its own cluster and its own names. The banner of Figure 14 and your review of the grades show AI used under control. Your colleagues and other engineers will look at the tooling itself: a CLI that runs one coding agent per team is a use of agents beyond writing code, and `mc` is public on GitHub.
 > - **How:** split the long paragraph into 3 short ones: provisioning, evaluation, evidence. If Figure 14 looks like it points at a missing screenshot of purple, keep Figure 10 only: it shows the same idea.
+-->
 
 ### Animation in Slides
 
@@ -456,16 +487,20 @@ On the other hand, it also allows some comparison. For example, we can compare t
 
 </p>
 
+<!--
 > **Writing hint**
 >
 > - **What:** Figure 15 replays the 9 clicks of the rolling update (chapter 3, slide 17). The diagrams are Mermaid code inside the Slidev deck, and each click switches to the next diagram (`<v-switch>`), in 25 places across the 5 chapters. The deck grew from 207 to 226 slides this year.
 > - **Why:** an animated diagram keeps the attention of the students on the component that you talk about, so the lecture is easier to follow. And since the slides are text versioned with Git, they're updated every year and can be adapted quickly to another school, another duration or another language: a selling point for a new school. The teachers and the colleagues who give talks can reuse the idea, since Slidev and Mermaid are open source.
 > - **How:** cut the 3 paragraphs to 2 or 3 sentences around Figure 15: static images before, one diagram per click now, and what it allows. I can make a second GIF for the comparison of the imperative and the declarative commands.
+-->
 
 ### AI-assisted Lab Sessions
 
+<!--
 > **Writing hint**
 >
 > - **What:** the rule you set this year (D12, 31 Oct): "An AI assistant gives the result in a few seconds, so a result alone doesn't tell whether the team did the work" (`esigelec/EVALUATION.md`). So the result of an exercise counts for 70%, the analysis for 15% and the evidence for 15%. In Labs 3 to 5, an observation earns its full credit with the team's own screenshot or output, which shows that the team opened Zipkin or Grafana.
 > - **Why:** every school asks how to teach and grade when the students use AI. You have a concrete, tested answer: the students may use AI, and the grade rewards what AI can't produce for them, their own analysis and evidence. The student highlights above (Figures 4, 9 and 13) are exactly the work that this rule rewards. The message: a teacher who embraces AI and keeps the learning real. Students see that they may use AI and that the grade rewards their own reasoning. Professionals face the same question when they evaluate a junior who uses AI.
 > - **How:** one sentence for the question, the 70/15/15 split as a short list, one sentence for the screenshots, and a link back to one student figure as the example.
+-->
