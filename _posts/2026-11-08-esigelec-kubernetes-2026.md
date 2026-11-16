@@ -255,23 +255,20 @@ The green team tested their NetworkPolicy from a temporary Pod in 3 namespaces. 
 ---
 config:
   flowchart:
-    nodeSpacing: 50
-    rankSpacing: 45
-    wrappingWidth: 260
+    nodeSpacing: 20
+    rankSpacing: 50
 ---
-flowchart TB
+flowchart LR
     c_tmp["classroom:tmp<br>Pod"]
-    subgraph ns_default["namespace: default"]
-        d_tmp["tmp<br>Pod"]
-        petclinic["api-gateway<br>customers-service<br><span style='color:#868e96 !important'>Services</span>"]
-        policy["petclinic-restrict-ingress<br>NetworkPolicy<br><span style='color:#868e96 !important'>protects: every Pod of default<br>allows: default, kube-system</span>"]
-    end
+    d_tmp["default:tmp<br>Pod"]
     k_tmp["kube-system:tmp<br>Pod"]
+    subgraph policy["petclinic-restrict-ingress (NetworkPolicy)"]
+        petclinic["api-gateway<br>customers-service<br><span style='color:#868e96 !important'>Services in default</span>"]
+    end
 
-    c_tmp -- "blocked:<br>download timed out" --x petclinic
+    c_tmp -- "blocked:<br>download timed out" --x policy
     d_tmp -- "allowed" --> petclinic
     k_tmp -- "allowed" --> petclinic
-    petclinic -. "protected by" .-> policy
 
     classDef blocked fill:#ffe3e3,stroke:#c92a2a,color:#000
     class c_tmp blocked
