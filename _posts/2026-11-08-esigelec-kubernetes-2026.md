@@ -197,6 +197,8 @@ We also introduced the observability stack, including Grafana, Zipkin, and Prome
 
 </p>
 
+This screenshot comes from Exercise 6 of Lab 3. The students created an outage on purpose: they scaled `vets-service` down to 0 replicas, then opened the page "Target health" of Prometheus. The green team got "3 / 3 up": the API gateway, `customers-service` and `visits-service` are UP, and `vets-service` is missing from the list. It is not marked as DOWN, because Prometheus discovers its targets from the running Pods, and there is no Pod of `vets-service` any more. In other words, the monitoring looks healthy while a service is down. 5 other teams noticed the same thing, and for the green team, it's the traces in Zipkin that revealed the outage.
+
 > **Writing hint**
 >
 > - **What:** Lab 3 deploys Prometheus, Grafana and Zipkin next to the PetClinic, and the teams use them to understand the system. In Exercise 6, they stopped vets-service and noticed that Prometheus still showed "3/3 up": the target of the stopped service disappears instead of turning red. green: "So Prometheus does not report the outage as a failed target: it shows 3/3 up" (`k8s-green/docs/lab-3.md:754`); purple, red, white, gold and brown found the same. Fact to fix: this is taught in the lab; the lecture only shows the stack.
