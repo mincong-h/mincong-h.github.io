@@ -257,6 +257,7 @@ config:
   flowchart:
     nodeSpacing: 20
     rankSpacing: 50
+    wrappingWidth: 300
 ---
 flowchart LR
     c_tmp["classroom:tmp<br>Pod"]
@@ -264,14 +265,19 @@ flowchart LR
     k_tmp["kube-system:tmp<br>Pod"]
     subgraph policy["petclinic-restrict-ingress (NetworkPolicy)"]
         petclinic["api-gateway<br>customers-service<br><span style='color:#868e96 !important'>Services in default</span>"]
+        rules["protects: every Pod of default<br>allows: default, kube-system<br>enforced by: kindnet (CNI)"]
     end
 
     c_tmp -- "blocked:<br>download timed out" --x policy
     d_tmp -- "allowed" --> petclinic
     k_tmp -- "allowed" --> petclinic
+    %% Invisible: keeps the rules in the column of the Services, inside the policy
+    k_tmp ~~~ rules
 
     classDef blocked fill:#ffe3e3,stroke:#c92a2a,color:#000
+    classDef rule fill:none,stroke:none,color:#495057
     class c_tmp blocked
+    class rules rule
     linkStyle 0 stroke:#c92a2a,stroke-width:3px
     linkStyle 1,2 stroke:#2b8a3e,stroke-width:2px
 ```
