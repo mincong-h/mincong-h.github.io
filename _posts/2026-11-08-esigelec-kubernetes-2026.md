@@ -57,9 +57,9 @@ In the end of October, I had the privilege to go to ESIGELEC, an engineering sch
 <!--
 > **Writing hint**
 >
-> - **What:** who you are, for a reader who doesn't know you: a software engineer who teaches this module at ESIGELEC for the second year (the [2025 recap](/en/esigelec-kubernetes-2025/)). Then what the reader will find: the program, the student highlights, and how AI helps to teach and to grade. The introduction says "about 20 students": it's 21. The front matter is still the one of 2025: the same `image`, `subtitle` and `excerpt`, and the excerpt says "lessons learned" and "redesigned curriculum". The plugin `jekyll-seo-tag` turns `image` and `excerpt` into the preview card on LinkedIn, so the 2 recaps would show the same card.
+> - **What:** who you are, for a reader who doesn't know you: a software engineer who teaches this module at ESIGELEC for the second year (the [2025 recap](/en/esigelec-kubernetes-2025/)). Then what the reader will find: the program, the student highlights, and the tooling that helps me to teach and to grade. The introduction says "about 20 students": it's 21. The front matter is still the one of 2025: the same `image`, `subtitle` and `excerpt`, and the excerpt says "lessons learned" and "redesigned curriculum". The plugin `jekyll-seo-tag` turns `image` and `excerpt` into the preview card on LinkedIn, so the 2 recaps would show the same card.
 > - **Why:** the post is public and shared on LinkedIn, so it reaches 4 kinds of readers: the director of a school or the head of a department who may hire you, engineering students, your colleagues, and the professionals of your network and of their network. Most of them decide from the card and the first 2 lines whether to click. A card identical to last year's looks like an old post.
-> - **How:** 2 or 3 sentences: who you are, the course in numbers, what the post shows. A new `excerpt` of 1 or 2 sentences that names the highlights (GenAI, observability, troubleshooting, AI-assisted grading), and a new `image` from this year, e.g. Figure 9, or a photo of the class with the consent of the students. LinkedIn shows the card at about 1.91:1 (1200 × 627 px), while `esigelec.jpeg` is 3:1 (2000 × 667 px).
+> - **How:** 2 or 3 sentences: who you are, the course in numbers, what the post shows. A new `excerpt` of 1 or 2 sentences that names the highlights (GenAI, observability, troubleshooting, the evaluation with `mc`), and a new `image` from this year, e.g. Figure 9, or a photo of the class with the consent of the students. LinkedIn shows the card at about 1.91:1 (1200 × 627 px), while `esigelec.jpeg` is 3:1 (2000 × 667 px).
 -->
 
 ## Program
@@ -383,7 +383,7 @@ Here is a great example from the Olive team about hallucination. They prepared s
   <img alt="The Zipkin trace of one chat question of the team olive: chat gpt-4o-mini, tool_call listvets, qdrant query, chat gpt-4o-mini"
        src="/assets/2026/olive-zipkin-genai.png">
 
-  <figcaption>Figure 10: The Zipkin trace of one question to the chatbot of the team "olive" (17 s), with the boxes added by the evaluator</figcaption>
+  <figcaption>Figure 10: The Zipkin trace of one question to the chatbot of the team "olive" (17 s), with the boxes that <code>mc</code> added to help the evaluation</figcaption>
 
 </p>
 
@@ -446,23 +446,14 @@ And then the second example is here, with the trace where you can see that the t
 The command-line interface [`mc`](https://github.com/mincong-classroom/mc) has been improved too. These command lines were used last year for grading, I mean, some of the statical without static result from last year, like checking the content of some file. It was used to manage Git-related operations in batch for all the teams, but this year we went further into this. It becomes more like a teaching assistant.
 In order of respect:
 1. It replaces GitHub Classroom to provision the team. It allows the team to register themselves, and then it uses the underlying GitHub command line `gh` to provision the team, add the team member (a student) to the team as a team member, create the team repository by cloning the repo from the public template, and manage the relationship (granting team access to those repositories).
-2. It is also used with some coding agent skill to perform an in-depth evaluation for each team. That evaluation part is valuable since it solves multiple problems. First, as a system-level course, it is hard to reproduce all the scenarios. Each team has its own specification description. Based on the `mc` command line and the coding skills, we were able to reproduce those scenarios for each team, even if there are no standard answers. It helps by giving an AI-generated screenshot for teams that didn't provide evidence for the result, so it helps asserting the correctness of the result despite the lack of evidence. Thirdly, it annotates the existing screenshot provided by the team, so it allows highlighting the important part of the screenshot, especially when there are many screenshots.
-
-<p align="center">
-
-  <img alt="Evidence generated by the evaluator for the team purple: the Veterinarians page says Veterinarian data is temporarily unavailable"
-       src="/assets/2026/purple-ai-generated-evidence.png">
-
-  <figcaption>Figure 14: Evidence generated by the evaluator for the team "purple" in Lab 3: the Veterinarians page while vets-service is down</figcaption>
-
-</p>
+2. It also helps the evaluation of each team. As a system-level course, it is hard to reproduce all the scenarios: each team has its own cluster and its own names, and there are no standard answers. That's why `mc` provides additional hints to augment the result of each team, such as boxes on a screenshot that highlight the important part (Figure 10). These hints help me to check the correctness of each result and to evaluate each team in more depth.
 
 <!--
 > **Writing hint**
 >
-> - **What:** `mc` provisions the teams on GitHub in place of GitHub Classroom, and runs the evaluation of every team: `mc eval run` starts the skills `report-lab` and `grade-lab` of the course repository with `claude -p`, one agent per team (`esigelec/EVALUATION.md`). Over 13 teams and 5 labs, the evaluator replayed or annotated 294 screenshots and 465 command outputs. 2 kinds of evidence: annotated, to point at what matters in the screenshots of a team (Figure 10, the numbered boxes), and generated, to check a result in the setup of the team (Figure 14). Each team also has its own lab page with its variables (mincong.io/esigelec/lab/?team=red). 2 facts to fix: you registered the teams yourself, from the names and GitHub usernames they gave you (`esigelec/slides/chapter-1.md`, notes of the slide "Team Registration"); and "In order of respect" was probably "In order of appearance".
-> - **Why:** a director worries about the workload of a technical course: the setup, the grading, the fairness. You bring your own tooling as a software engineer: the teams are ready on GitHub in minutes, and every team gets detailed feedback based on evidence, even though each team has its own cluster and its own names. The banner of Figure 14 and your review of the grades show AI used under control. Your colleagues and other engineers will look at the tooling itself: a CLI that runs one coding agent per team is a use of agents beyond writing code, and `mc` is public on GitHub.
-> - **How:** split the long paragraph into 3 short ones: provisioning, evaluation, evidence. If Figure 14 looks like it points at a missing screenshot of purple, keep Figure 10 only: it shows the same idea.
+> - **What:** `mc` provisions the teams on GitHub in place of GitHub Classroom, and helps the evaluation of every team with additional hints on its results, such as the boxes on the screenshot of Figure 10. Each team also has its own lab page with its variables (mincong.io/esigelec/lab/?team=red). 2 facts to fix: you registered the teams yourself, from the names and GitHub usernames they gave you (`esigelec/slides/chapter-1.md`, notes of the slide "Team Registration"); and "In order of respect" was probably "In order of appearance".
+> - **Why:** a director worries about the workload of a technical course: the setup, the grading, the fairness. You bring your own tooling as a software engineer: the teams are ready on GitHub in minutes, and every team gets detailed feedback based on evidence, even though each team has its own cluster and its own names. Your colleagues and other engineers will look at the tooling itself: `mc` is public on GitHub.
+> - **How:** split the long paragraph into 2 short ones: the provisioning, then the evaluation.
 -->
 
 ### Animation in Slides
@@ -480,24 +471,14 @@ On the other hand, it also allows some comparison. For example, we can compare t
   <img alt="Animation of the slide Deployment: Rolling Update of chapter 3: the Pods of the new version replace the Pods of the previous version, click after click"
        src="/assets/2026/slide-rolling-update.gif">
 
-  <figcaption>Figure 15: The slide "Deployment: Rolling Update" of chapter 3, click after click</figcaption>
+  <figcaption>Figure 14: The slide "Deployment: Rolling Update" of chapter 3, click after click</figcaption>
 
 </p>
 
 <!--
 > **Writing hint**
 >
-> - **What:** Figure 15 replays the 9 clicks of the rolling update (chapter 3, slide 17). The diagrams are Mermaid code inside the Slidev deck, and each click switches to the next diagram (`<v-switch>`), in 25 places across the 5 chapters. The deck grew from 207 to 226 slides this year.
+> - **What:** Figure 14 replays the 9 clicks of the rolling update (chapter 3, slide 17). The diagrams are Mermaid code inside the Slidev deck, and each click switches to the next diagram (`<v-switch>`), in 25 places across the 5 chapters. The deck grew from 207 to 226 slides this year.
 > - **Why:** an animated diagram keeps the attention of the students on the component that you talk about, so the lecture is easier to follow. And since the slides are text versioned with Git, they're updated every year and can be adapted quickly to another school, another duration or another language: a selling point for a new school. The teachers and the colleagues who give talks can reuse the idea, since Slidev and Mermaid are open source.
-> - **How:** cut the 3 paragraphs to 2 or 3 sentences around Figure 15: static images before, one diagram per click now, and what it allows. I can make a second GIF for the comparison of the imperative and the declarative commands.
--->
-
-### AI-assisted Lab Sessions
-
-<!--
-> **Writing hint**
->
-> - **What:** the rule you set this year (D12, 31 Oct): "An AI assistant gives the result in a few seconds, so a result alone doesn't tell whether the team did the work" (`esigelec/EVALUATION.md`). So the result of an exercise counts for 70%, the analysis for 15% and the evidence for 15%. In Labs 3 to 5, an observation earns its full credit with the team's own screenshot or output, which shows that the team opened Zipkin or Grafana.
-> - **Why:** every school asks how to teach and grade when the students use AI. You have a concrete, tested answer: the students may use AI, and the grade rewards what AI can't produce for them, their own analysis and evidence. The student highlights above (Figures 4, 9 and 13) are exactly the work that this rule rewards. The message: a teacher who embraces AI and keeps the learning real. Students see that they may use AI and that the grade rewards their own reasoning. Professionals face the same question when they evaluate a junior who uses AI.
-> - **How:** one sentence for the question, the 70/15/15 split as a short list, one sentence for the screenshots, and a link back to one student figure as the example.
+> - **How:** cut the 3 paragraphs to 2 or 3 sentences around Figure 14: static images before, one diagram per click now, and what it allows. I can make a second GIF for the comparison of the imperative and the declarative commands.
 -->
