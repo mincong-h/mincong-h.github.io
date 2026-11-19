@@ -422,9 +422,10 @@ The team "gold" drew the topology of Qdrant in its report:
 config:
   flowchart:
     nodeSpacing: 25
-    rankSpacing: 45
+    rankSpacing: 25
+    padding: 10
 ---
-flowchart TB
+flowchart LR
     genai["genai-service"]
     qdrant["qdrant<br><span style='color:#868e96 !important'>Service, ClusterIP<br>ports 6333 and 6334</span>"]
     headless["qdrant-headless<br><span style='color:#868e96 !important'>Service, no ClusterIP<br>port 6335</span>"]
