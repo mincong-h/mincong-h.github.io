@@ -231,7 +231,7 @@ The teaching material is also prepared for them to succeed, meaning that I lower
 
 </p>
 
-Here, in this screenshot, you can see that the black team used a loop generator based on the BC box to run an infinite loop of `wget` to get the content from the veterinarian service. This generated an increased amount of HTTP traffic, which resulted in the auto-scaling of the deployment.
+Here, in this screenshot, you can see that the black team used a loop generator based on the `busybox` image to run an infinite loop of `wget` to get the content from the veterinarian service. This generated an increased amount of HTTP traffic, which resulted in the auto-scaling of the deployment.
 
 <!-- 
 > **Writing hint**
@@ -393,12 +393,16 @@ And then the second example is here, with the trace where you can see that the t
 
 <p align="center">
 
-  <img alt="The collection vector_store of the team olive in Qdrant: points_count 8, vectors of size 1536, distance Cosine, replication_factor 3"
-       src="/assets/2026/olive-qdrant-collection-info.png">
+  <img alt="The web UI of Qdrant of the team olive: the collection vector_store lists the vets Rafael Ortega (surgery) and Linda Douglas (dentistry, surgery), each with a vector of 1536 numbers and the buttons Open Graph and Find Similar"
+       src="/assets/2026/olive-qdrant-points.png">
 
-  <figcaption>Figure 11: The collection "vector_store" of the team "olive" in Qdrant: 8 points, vectors of 1536 numbers compared with the cosine distance, and 3 replicas</figcaption>
+  <figcaption>Figure 11: The web UI of Qdrant of the team "olive": the vets of the PetClinic stored as vectors, each with a button "Find Similar"</figcaption>
 
 </p>
+
+In the GenAI part, we continue with the vector database as an example of the StatefulSet in Kubernetes. Here, we deploy the Qdrant database with three replicas. From the screenshot offered, or if team, you can see that they successfully imported the vectors into the vector database and copied to three replicas. "Find Similar" on "Helen Leary" returns "Henry Stevens" first, with a score of 0.96: both are radiologists.
+
+I choose this vector database as an example for the StatefulSet because I think this is a real-world example for companies developing a Gen AI solution. A vector database is how a company gives an AI assistant their own data using a RAG. The student learned the architecture behind most assistants in production, and it is highly relevant to the course. Since we need an example for them to play with the stateful set to understand its differences with deployment (about the deployment order, the volume attached to the pod, etc.)
 
 <p align="center">
 
@@ -409,18 +413,7 @@ And then the second example is here, with the trace where you can see that the t
 
 </p>
 
-<!--
-> **Writing hint**
->
-> - **What:** what the reader needs first: the GenAI service finds the vets by meaning, not by keyword. Each vet is stored as a vector of 1536 numbers, computed by a model of OpenAI, and a question becomes a vector too: the closest vectors win (cosine similarity). By default, these vectors live in the memory of the Pod. Exercise 4 moves them to Qdrant, a vector database that runs as a StatefulSet of 3 Pods. The evidence:
->   1. Figure 11 (olive): the collection holds 8 points of 1536 dimensions, compared with the cosine distance, and copied on 3 replicas. "Find Similar" on Helen Leary returns Henry Stevens first, with a score of 0.96: both are radiologists (`k8s-olive/docs/lab-5.md:336`).
->   2. Figure 12 (black): the Pods start one after the other, `qdrant-0`, then `qdrant-1`, then `qdrant-2`, each with its own volume of 1 GiB, which a Deployment doesn't give.
->   3. The chat reads Qdrant: asked about the cardiologists, it named Camille Martin (ID 7), a vet who exists only in the snapshot imported into Qdrant, not on the page Veterinarians (`k8s-olive/docs/lab-5.md:403`).
->   4. The data is replicated: olive inserted Louis Bernard through `qdrant-2` only, and found him on each of the 3 Pods (`k8s-olive/docs/lab-5.md:453`).
->   5. The cluster survives a failure: gold deleted the Pod of the leader, and "The term went from 1 to 2 and qdrant-1 became the leader, within 6.5 s of the deletion" (`k8s-gold/docs/lab-5.md:816`), while the chat kept answering.
-> - **Why:** a vector database is how companies give an AI assistant their own data (RAG), so the students learn the architecture behind most assistants in production. And it's the hardest kind of workload for Kubernetes: a database that keeps its data and runs as a cluster, with a StatefulSet, a volume per Pod, a headless Service and a leader elected with Raft. For a director, it shows a course that reaches an advanced topic in 20 hours, on laptops. The engineers of your network know that running a database on Kubernetes is hard.
-> - **How:** one sentence on what a vector database is, with Figure 11; one on the StatefulSet, with Figure 12; then 3 short bullets of evidence: Camille Martin, Louis Bernard, and the new leader in 6.5 s. Point 3 of "Spring Pet Clinic Adoption" can move here.
--->
+Here, from the black team, they successfully observe the order of the creation of the pod in a stateful set, where the replica 0 got created first, and then the replica 1 followed, and then the replica 2, the last replica provision, started last.
 
 ### Troubleshooting Stories
 
