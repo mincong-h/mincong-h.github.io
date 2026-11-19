@@ -59,7 +59,7 @@ In the end of October, I had the privilege to go to ESIGELEC, an engineering sch
 >
 > - **What:** who you are, for a reader who doesn't know you: a software engineer who teaches this module at ESIGELEC for the second year (the [2025 recap](/en/esigelec-kubernetes-2025/)). Then what the reader will find: the program, the student highlights, and the tooling that helps me to teach and to grade. The introduction says "about 20 students": it's 21. The front matter is still the one of 2025: the same `image`, `subtitle` and `excerpt`, and the excerpt says "lessons learned" and "redesigned curriculum". The plugin `jekyll-seo-tag` turns `image` and `excerpt` into the preview card on LinkedIn, so the 2 recaps would show the same card.
 > - **Why:** the post is public and shared on LinkedIn, so it reaches 4 kinds of readers: the director of a school or the head of a department who may hire you, engineering students, your colleagues, and the professionals of your network and of their network. Most of them decide from the card and the first 2 lines whether to click. A card identical to last year's looks like an old post.
-> - **How:** 2 or 3 sentences: who you are, the course in numbers, what the post shows. A new `excerpt` of 1 or 2 sentences that names the highlights (GenAI, observability, troubleshooting, the evaluation with `mc`), and a new `image` from this year, e.g. Figure 9, or a photo of the class with the consent of the students. LinkedIn shows the card at about 1.91:1 (1200 × 627 px), while `esigelec.jpeg` is 3:1 (2000 × 667 px).
+> - **How:** 2 or 3 sentences: who you are, the course in numbers, what the post shows. A new `excerpt` of 1 or 2 sentences that names the highlights (GenAI, observability, the evaluation with `mc`), and a new `image` from this year, e.g. Figure 9, or a photo of the class with the consent of the students. LinkedIn shows the card at about 1.91:1 (1200 × 627 px), while `esigelec.jpeg` is 3:1 (2000 × 667 px).
 -->
 
 ## Program
@@ -91,7 +91,7 @@ Here are some highlights and changes from this year. It's either some improvemen
 >
 > - **Readers:** 4 kinds, coming from LinkedIn: 1) the director of a school or the head of a department who may hire you, in France or abroad; 2) engineering students, at ESIGELEC or elsewhere, including the 21 students of this year, who will look for their team; 3) your colleagues; 4) the professionals of your network and of their network. They scroll: they look at the figures, read the headings and the captions, and maybe one sentence per section.
 > - **Message:** for a director, "If I hire Mincong, my students will practice what the industry asks for (Kubernetes, observability, GenAI, security), they will learn to analyze rather than copy commands, and the course comes with modern material and a fair evaluation." For a student, "In this course, I would build, break and fix a real system, with the tools of 2026." For a colleague or another professional, "This course teaches what we do at work."
-> - **How:** one section = one skill, one figure, and one or two sentences of proof. Put the strongest sections first: GenAI and Qdrant, then Troubleshooting Stories and Observability. The sentence above can say what the students achieved this year rather than "changes from this year". Keep the tone positive: what didn't work stays in the course repository.
+> - **How:** one section = one skill, one figure, and one or two sentences of proof. Put the strongest sections first: GenAI and Qdrant, then Observability. The sentence above can say what the students achieved this year rather than "changes from this year". Keep the tone positive: what didn't work stays in the course repository.
 > - **Public post:** credit the students by the color of their team, not by name, and tag them on LinkedIn only if they agree. The figures show no names and no private URLs: I masked the repository of purple, and the owners in Figure 9 are the demo data of the PetClinic. The paths such as `k8s-green/docs/lab-3.md` in these hints point to the private repositories of the teams: they're for you, not links for the readers.
 -->
 
@@ -453,28 +453,9 @@ flowchart TB
 
 <p align="center">
 
-  <figcaption>Figure 13: The topology of Qdrant drawn by the team "gold": the GenAI service calls the Service qdrant, the Pods find each other through the headless Service, and each Pod has its own volume</figcaption>
+  <figcaption>Figure 13: The topology of Qdrant drawn by the team "gold" (modified): the GenAI service calls the Service qdrant, the Pods find each other through the headless Service, and each Pod has its own volume</figcaption>
 
 </p>
-
-### Troubleshooting Stories
-
-<p align="center">
-
-  <img alt="The terminal of the team black: the Service team-info has no endpoints, and a temporary Pod gets Connection refused"
-       src="/assets/2026/black-broken-selector.png">
-
-  <figcaption>Figure 14: The team "black" breaks the selector of the Service team-info: no endpoints, and "Connection refused" instead of the timeout that the team expected</figcaption>
-
-</p>
-
-<!--
-> **Writing hint**
->
-> - **What:** Lab 4 Exercise 5 asks the teams to break the Service of the Team Info Server in 2 ways: a selector that matches no Pod, then a `targetPort` where the container doesn't listen. 3 teams went beyond the expected answer. 1) black expected a timeout, got "Connection refused" in both cases (Figure 14), and found that the endpoints tell the 2 cases apart: `<none>` for the selector, the wrong port for the `targetPort` (`k8s-black/docs/lab-4.md:371`). 2) red saw the About page still answer 200 right after breaking the Service, and explained it: the API gateway reused its open connection until a restart. 3) white found that the API gateway reads its ConfigMap only at startup, and that a Pod can be Running before Spring Boot listens.
-> - **Why:** troubleshooting is what companies value most in a junior engineer, and it's the hardest skill to teach: it can't be copied from a tutorial or from an AI assistant. These 3 stories show students who observe, form a hypothesis and verify it, beyond the instructions. The message: the course trains engineers who can operate a system, not only deploy it. The engineers of your network will relate: a reused connection or a Pod that is Running before the application listens are bugs that they debug at work.
-> - **How:** one short paragraph per team, each ending with its lesson. Credit the teams by their color.
--->
 
 ### Teaching Assistant
 
@@ -506,14 +487,14 @@ On the other hand, it also allows some comparison. For example, we can compare t
   <img alt="Animation of the slide Deployment: Rolling Update of chapter 3: the Pods of the new version replace the Pods of the previous version, click after click"
        src="/assets/2026/slide-rolling-update.gif">
 
-  <figcaption>Figure 15: The slide "Deployment: Rolling Update" of chapter 3, click after click</figcaption>
+  <figcaption>Figure 14: The slide "Deployment: Rolling Update" of chapter 3, click after click</figcaption>
 
 </p>
 
 <!--
 > **Writing hint**
 >
-> - **What:** Figure 15 replays the 9 clicks of the rolling update (chapter 3, slide 17). The diagrams are Mermaid code inside the Slidev deck, and each click switches to the next diagram (`<v-switch>`), in 25 places across the 5 chapters. The deck grew from 207 to 226 slides this year.
+> - **What:** Figure 14 replays the 9 clicks of the rolling update (chapter 3, slide 17). The diagrams are Mermaid code inside the Slidev deck, and each click switches to the next diagram (`<v-switch>`), in 25 places across the 5 chapters. The deck grew from 207 to 226 slides this year.
 > - **Why:** an animated diagram keeps the attention of the students on the component that you talk about, so the lecture is easier to follow. And since the slides are text versioned with Git, they're updated every year and can be adapted quickly to another school, another duration or another language: a selling point for a new school. The teachers and the colleagues who give talks can reuse the idea, since Slidev and Mermaid are open source.
-> - **How:** cut the 3 paragraphs to 2 or 3 sentences around Figure 15: static images before, one diagram per click now, and what it allows. I can make a second GIF for the comparison of the imperative and the declarative commands.
+> - **How:** cut the 3 paragraphs to 2 or 3 sentences around Figure 14: static images before, one diagram per click now, and what it allows. I can make a second GIF for the comparison of the imperative and the declarative commands.
 -->
