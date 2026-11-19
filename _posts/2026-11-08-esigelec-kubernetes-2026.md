@@ -400,9 +400,9 @@ And then the second example is here, with the trace where you can see that the t
 
 </p>
 
-In the GenAI part, we continue with the vector database as an example of the StatefulSet in Kubernetes. Here, we deploy the Qdrant database with three replicas. From the screenshot offered, or if team, you can see that they successfully imported the vectors into the vector database and copied to three replicas. "Find Similar" on "Helen Leary" returns "Henry Stevens" first, with a score of 0.96: both are radiologists.
+In the GenAI part, we continue with the vector database as an example of the StatefulSet in Kubernetes. Here, we deploy the Qdrant database with three replicas. From the screenshot above, you can see that they successfully imported the vectors into the vector database and two vectors were displayed. They also tried finding similar radiologist on "Helen Leary", which returns "Henry Stevens" first, with a score of 0.96.
 
-I choose this vector database as an example for the StatefulSet because I think this is a real-world example for companies developing a Gen AI solution. A vector database is how a company gives an AI assistant their own data using a RAG. The student learned the architecture behind most assistants in production, and it is highly relevant to the course. Since we need an example for them to play with the stateful set to understand its differences with deployment (about the deployment order, the volume attached to the pod, etc.)
+I choose this vector database as an example for the StatefulSet because I think this is a real-world example for companies developing a Gen AI solution. A vector database is how a company gives an AI assistant their own data using a RAG. The student learned the architecture behind most assistants in production, and it is highly relevant to the course. Since we need an example for them to play with the stateful set to understand its differences with deployment (about the deployment order, the volume attached to the pod, etc). It also offers un UI which is great for understanding the behavior of the system and explore the data.
 
 <p align="center">
 
