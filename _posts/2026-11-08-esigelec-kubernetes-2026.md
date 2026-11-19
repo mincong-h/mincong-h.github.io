@@ -415,6 +415,48 @@ I choose this vector database as an example for the StatefulSet because I think 
 
 Here, from the black team, they successfully observe the order of the creation of the pod in a stateful set, where the replica 0 got created first, and then the replica 1 followed, and then the replica 2, the last replica provision, started last.
 
+The team "gold" drew the topology of Qdrant in its report:
+
+```mermaid
+---
+config:
+  flowchart:
+    nodeSpacing: 25
+    rankSpacing: 45
+---
+flowchart TB
+    genai["genai-service"]
+    qdrant["qdrant<br><span style='color:#868e96 !important'>Service, ClusterIP<br>ports 6333 and 6334</span>"]
+    headless["qdrant-headless<br><span style='color:#868e96 !important'>Service, no ClusterIP<br>port 6335</span>"]
+
+    subgraph sts["qdrant (StatefulSet)"]
+        q0["qdrant-0"]
+        q1["qdrant-1"]
+        q2["qdrant-2"]
+    end
+
+    v0[("qdrant-storage-qdrant-0<br><span style='color:#868e96 !important'>PVC, 1 GiB</span>")]
+    v1[("qdrant-storage-qdrant-1<br><span style='color:#868e96 !important'>PVC, 1 GiB</span>")]
+    v2[("qdrant-storage-qdrant-2<br><span style='color:#868e96 !important'>PVC, 1 GiB</span>")]
+
+    genai -->|"gRPC 6334"| qdrant
+    qdrant --> q0
+    qdrant --> q1
+    qdrant --> q2
+    headless -.-> q0
+    headless -.-> q1
+    headless -.->|"DNS name of each Pod,<br>for the peers on 6335"| q2
+    q0 --- v0
+    q1 --- v1
+    q2 --- v2
+```
+
+<p align="center">
+
+  <figcaption>Figure 13: The topology of Qdrant drawn by the team "gold": the GenAI service calls the Service qdrant, the Pods find each other through the headless Service, and each Pod has its own volume</figcaption>
+
+</p>
+
 ### Troubleshooting Stories
 
 <p align="center">
@@ -422,14 +464,14 @@ Here, from the black team, they successfully observe the order of the creation o
   <img alt="The terminal of the team black: the Service team-info has no endpoints, and a temporary Pod gets Connection refused"
        src="/assets/2026/black-broken-selector.png">
 
-  <figcaption>Figure 13: The team "black" breaks the selector of the Service team-info: no endpoints, and "Connection refused" instead of the timeout that the team expected</figcaption>
+  <figcaption>Figure 14: The team "black" breaks the selector of the Service team-info: no endpoints, and "Connection refused" instead of the timeout that the team expected</figcaption>
 
 </p>
 
 <!--
 > **Writing hint**
 >
-> - **What:** Lab 4 Exercise 5 asks the teams to break the Service of the Team Info Server in 2 ways: a selector that matches no Pod, then a `targetPort` where the container doesn't listen. 3 teams went beyond the expected answer. 1) black expected a timeout, got "Connection refused" in both cases (Figure 13), and found that the endpoints tell the 2 cases apart: `<none>` for the selector, the wrong port for the `targetPort` (`k8s-black/docs/lab-4.md:371`). 2) red saw the About page still answer 200 right after breaking the Service, and explained it: the API gateway reused its open connection until a restart. 3) white found that the API gateway reads its ConfigMap only at startup, and that a Pod can be Running before Spring Boot listens.
+> - **What:** Lab 4 Exercise 5 asks the teams to break the Service of the Team Info Server in 2 ways: a selector that matches no Pod, then a `targetPort` where the container doesn't listen. 3 teams went beyond the expected answer. 1) black expected a timeout, got "Connection refused" in both cases (Figure 14), and found that the endpoints tell the 2 cases apart: `<none>` for the selector, the wrong port for the `targetPort` (`k8s-black/docs/lab-4.md:371`). 2) red saw the About page still answer 200 right after breaking the Service, and explained it: the API gateway reused its open connection until a restart. 3) white found that the API gateway reads its ConfigMap only at startup, and that a Pod can be Running before Spring Boot listens.
 > - **Why:** troubleshooting is what companies value most in a junior engineer, and it's the hardest skill to teach: it can't be copied from a tutorial or from an AI assistant. These 3 stories show students who observe, form a hypothesis and verify it, beyond the instructions. The message: the course trains engineers who can operate a system, not only deploy it. The engineers of your network will relate: a reused connection or a Pod that is Running before the application listens are bugs that they debug at work.
 > - **How:** one short paragraph per team, each ending with its lesson. Credit the teams by their color.
 -->
@@ -464,14 +506,14 @@ On the other hand, it also allows some comparison. For example, we can compare t
   <img alt="Animation of the slide Deployment: Rolling Update of chapter 3: the Pods of the new version replace the Pods of the previous version, click after click"
        src="/assets/2026/slide-rolling-update.gif">
 
-  <figcaption>Figure 14: The slide "Deployment: Rolling Update" of chapter 3, click after click</figcaption>
+  <figcaption>Figure 15: The slide "Deployment: Rolling Update" of chapter 3, click after click</figcaption>
 
 </p>
 
 <!--
 > **Writing hint**
 >
-> - **What:** Figure 14 replays the 9 clicks of the rolling update (chapter 3, slide 17). The diagrams are Mermaid code inside the Slidev deck, and each click switches to the next diagram (`<v-switch>`), in 25 places across the 5 chapters. The deck grew from 207 to 226 slides this year.
+> - **What:** Figure 15 replays the 9 clicks of the rolling update (chapter 3, slide 17). The diagrams are Mermaid code inside the Slidev deck, and each click switches to the next diagram (`<v-switch>`), in 25 places across the 5 chapters. The deck grew from 207 to 226 slides this year.
 > - **Why:** an animated diagram keeps the attention of the students on the component that you talk about, so the lecture is easier to follow. And since the slides are text versioned with Git, they're updated every year and can be adapted quickly to another school, another duration or another language: a selling point for a new school. The teachers and the colleagues who give talks can reuse the idea, since Slidev and Mermaid are open source.
-> - **How:** cut the 3 paragraphs to 2 or 3 sentences around Figure 14: static images before, one diagram per click now, and what it allows. I can make a second GIF for the comparison of the imperative and the declarative commands.
+> - **How:** cut the 3 paragraphs to 2 or 3 sentences around Figure 15: static images before, one diagram per click now, and what it allows. I can make a second GIF for the comparison of the imperative and the declarative commands.
 -->
