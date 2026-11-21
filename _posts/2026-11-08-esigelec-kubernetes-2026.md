@@ -12,7 +12,7 @@ categories:          [mincong-classroom, kubernetes, java, go]
 tags:                [kubernetes, java, go]
 comments:            true
 excerpt:             >
-    What 13 teams of students found in my Kubernetes course at ESIGELEC in 2026: a chatbot that invents a visit, a Prometheus that shows every target up while a service is down, and Pods that scale out under load.
+    Highlights about the 20-hour Kubernetes course at ESIGELEC: the teaching program, adoption to Spring PetClinic Microservices, students' reports about observability / security / Gen AI, and more.
 
 image:               /assets/2026/esigelec-campus.jpg
 cover:               /assets/2026/esigelec-campus.jpg
