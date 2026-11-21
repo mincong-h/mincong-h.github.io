@@ -4,7 +4,7 @@ layout:              post
 type:                classic
 title:               ESIGELEC Kubernetes 2026 Recap
 subtitle:            >
-    Designing and evolving a Kubernetes course for engineering students.
+    The 3rd edition of a Kubernetes course for engineering students.
 
 lang:                en
 date:                2026-11-08 15:05:28 +0100
