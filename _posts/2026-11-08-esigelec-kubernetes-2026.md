@@ -8,7 +8,7 @@ subtitle:            >
 
 lang:                en
 date:                2026-11-08 15:05:28 +0100
-categories:          [teaching, kubernetes, java, go]
+categories:          [mincong-classroom, kubernetes, java, go]
 tags:                [kubernetes, java, go]
 comments:            true
 excerpt:             >

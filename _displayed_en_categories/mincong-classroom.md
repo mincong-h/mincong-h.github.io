@@ -1,7 +1,7 @@
 ---
 layout:            category
-title:             Teaching
-category:          teaching
+title:             Mincong Classroom
+category:          mincong-classroom
 cover:             /assets/esigelec.jpeg
 sidebar:
   nav:             en_categories
