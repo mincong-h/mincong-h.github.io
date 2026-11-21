@@ -52,7 +52,7 @@ wechat:              false
 
 ## Introduction
 
-What can engineering students do with Kubernetes in 20 hours? This year at ESIGELEC, an engineering school in Normandy, France, my 20 students worked in 13 teams. They ran the Spring PetClinic on Kubernetes, scaled it under load, protected it with a NetworkPolicy, and connected it to a chatbot backed by a vector database. I taught this course at the end of October, for the 3rd year. In this article, I want to share the program, the highlights of the student reports, and the tools that help me to teach and to evaluate.
+What can engineering students do with Kubernetes in 20 hours? This year at ESIGELEC, an engineering school in Normandy, France, my 21 students ran the Spring PetClinic on Kubernetes, scaled it under load, turned them into microservice architecture, protected it with a NetworkPolicy, and connected it to a chatbot. In this article, I want to share the program, the highlights of the student reports, and the tools that help me to teach and to evaluate.
 
 ## Program
 
