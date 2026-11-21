@@ -428,6 +428,8 @@ On the other hand, it also allows some comparison. For example, we can compare t
 
 ## Conclusion
 
-From this article, you can see that we had a lot of fun building and learning Kubernetes for this module. Students learn a lot of concepts about Kubernetes through its architecture, deployment, and networking configuration. They also had the opportunity to explore microservices architecture through Kubernetes, practice, and observe different components' different behavior using the observability stack.
+From this article, you can see that we had a lot of fun building and learning Kubernetes in this module. The students learned the concepts of Kubernetes through its architecture, its workloads, its networking, its configuration and its storage. They also had the opportunity to explore a microservice architecture on Kubernetes, to observe the behavior of its components with the observability stack, and to connect it to a GenAI service.
 
-The highlights shown in this article demonstrates that we use real-world examples in the lab session and and helps them to understand the needs of using some concepts in the real-world.
+The highlights of this article show that we use real-world examples in the lab sessions, which help the students understand why these concepts are needed.
+
+Thank you to ESIGELEC for having me again, and to the 21 students for their work. The material of the course is public at <https://mincong.io/esigelec/2026>.
