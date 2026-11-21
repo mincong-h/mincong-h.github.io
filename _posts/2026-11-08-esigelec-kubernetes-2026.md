@@ -8,7 +8,7 @@ subtitle:            >
 
 lang:                en
 date:                2026-11-08 15:05:28 +0100
-categories:          [kubernetes, java, go]
+categories:          [teaching, kubernetes, java, go]
 tags:                [kubernetes, java, go]
 comments:            true
 excerpt:             >
