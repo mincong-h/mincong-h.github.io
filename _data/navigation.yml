@@ -125,6 +125,8 @@ en_categories:
         url:    /en/categories/java-serialization/
       - title:  Java Testing
         url:    /en/categories/java-testing/
+      - title:  Mincong Classroom
+        url:    /en/categories/mincong-classroom/
       - title:  Python
         url:    /en/categories/python/
       - title:  RESTful APIs

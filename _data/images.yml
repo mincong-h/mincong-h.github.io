@@ -1,3 +1,11 @@
+/assets/2026/esigelec-campus.jpg:
+    author:      ESIGELEC
+    url:         https://www.esigelec.fr/fr/les-locaux
+    height:      1045
+    width:       2000
+    license:     Unknown License
+    license_url: https://esigelec.fr
+
 /assets/2025/kelly-sikkema-qN_4d-A2xm8-unsplash.jpg:
     author:      Kelly Sikkema
     url:         https://unsplash.com/@kellysikkema
@@ -9,8 +17,8 @@
 /assets/esigelec.jpeg:
     author:      ESIGELEC
     url:         https://esigelec.fr
-    height:      2000
-    width:       667
+    height:      667
+    width:       2000
     license:     Unknown License
     license_url: https://esigelec.fr
 
