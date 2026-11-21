@@ -1,0 +1,250 @@
+---
+layout: page
+title: Lab Resources 2026
+subtitle: >
+  Find the resources assigned to your team for the ESIGELEC "Containers" lab.
+---
+
+{%- comment -%}
+  Archive of /esigelec/lab for the year 2026. This page reads the "team" query
+  parameter (e.g. /esigelec/2026/lab?team=red) and renders the resources
+  assigned to that team. The team data is a copy of _data/esigelec_teams.yml as
+  of 2026, embedded below as JSON, so that this page doesn't change when the
+  data file changes for the next year; the per-team resource URLs are derived
+  in JavaScript.
+{%- endcomment -%}
+
+<style>
+  .lab-teams { margin-top: 1rem; }
+  .lab-teams__picker { margin-bottom: 1.5rem; }
+  .lab-teams__picker-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: .5rem;
+  }
+  /* The team picker reuses the archive tag-button styling
+     (.site-tags .tag-button in _sass/components/_tags.scss). Teams use the
+     "tag-button-1" variant for a light-pink rest state. Page-specific tweaks:
+     capitalised names, and a red (main-color-1) selected state that replaces
+     the theme's orange accent (main-color-2). */
+  #lab-teams-chips .tag-button { text-transform: capitalize; }
+  #lab-teams-chips .tag-button.focus,
+  #lab-teams-chips .tag-button.active,
+  #lab-teams-chips .tag-button:active {
+    color: #fff;
+    background-color: #fc4d50;
+    box-shadow: 0 0 0 2px rgba(252, 77, 80, .4);
+  }
+  .lab-teams__error {
+    padding: 1rem;
+    border-radius: 6px;
+    background: #fff5f5;
+    border: 1px solid #ffc9c9;
+    color: #b02a37;
+  }
+  .lab-teams__warn {
+    display: flex;
+    gap: .5rem;
+    align-items: flex-start;
+    padding: .5rem .75rem;
+    margin-bottom: .6rem;
+    background: #fff8e1;
+    border: 1px solid #ffe08a;
+    border-radius: 6px;
+    font-size: .85rem;
+    line-height: 1.4;
+    color: #7a5b00;
+  }
+  .lab-teams__warn-icon { flex: none; }
+  .lab-teams__card {
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .lab-teams__card-title {
+    margin: 0;
+    padding: .75rem 1rem;
+    background: #f6f8fa;
+    border-bottom: 1px solid #d0d7de;
+    font-size: 1.05rem;
+    text-transform: capitalize;
+  }
+  .lab-table { width: 100%; border-collapse: collapse; margin: 0; }
+  .lab-table th, .lab-table td {
+    padding: .6rem 1rem;
+    border-bottom: 1px solid #eaecef;
+    text-align: left;
+    vertical-align: top;
+    font-size: .95rem;
+  }
+  .lab-table tr:last-child th, .lab-table tr:last-child td { border-bottom: none; }
+  .lab-table th {
+    width: 200px;
+    white-space: nowrap;
+    font-weight: 600;
+    color: #57606a;
+  }
+  .lab-table code, .lab-teams code {
+    background: rgba(175,184,193,.2);
+    padding: .15em .4em;
+    border-radius: 4px;
+    font-size: .9em;
+  }
+  .lab-table ul { margin: 0; padding-left: 1.2rem; }
+  .lab-table__section {
+    width: auto;
+    background: #f6f8fa;
+    color: #57606a;
+    white-space: normal;
+    font-size: .78rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .lab-table__docker-th { white-space: normal; }
+  .lab-table__sep { color: #8c959f; margin: 0 .35rem; }
+</style>
+
+<div class="lab-teams" id="lab-teams">
+  <div class="lab-teams__picker">
+    <span class="lab-teams__picker-label">Teams</span>
+    <div class="site-tags" id="lab-teams-chips"></div>
+  </div>
+
+  <div id="lab-teams-content"></div>
+</div>
+
+<script>
+  (function () {
+    var LAB_DATA = {
+      "docker_namespace": "mincongclassroom",
+      "git_org": "mincong-classroom",
+      "placeholder_members": ["Alice DOE", "Bob SMITH"],
+      "services": [
+        { "id": "spring-petclinic", "name": "Spring PetClinic Monolith" }
+      ],
+      "teams": [
+        "red", "orange", "yellow", "green", "blue", "purple", "pink", "brown",
+        "black", "white", "cyan", "magenta", "gold", "silver", "navy", "olive"
+      ]
+    };
+
+    // Build the full resource set for a team from the minimal data file.
+    // Members are the shared placeholder — real rosters are never published.
+    function buildTeam(name) {
+      return {
+        name: name,
+        members: LAB_DATA.placeholder_members || [],
+        k8sLabels: { team: name },
+        gitRepo: 'https://github.com/' + LAB_DATA.git_org + '/k8s-' + name,
+        // SSH needs a key added to GitHub; HTTPS works when the network blocks SSH.
+        gitClones: [
+          { name: 'HTTPS', command: 'git clone https://github.com/' + LAB_DATA.git_org + '/k8s-' + name + '.git' },
+          { name: 'SSH', command: 'git clone git@github.com:' + LAB_DATA.git_org + '/k8s-' + name + '.git' }
+        ],
+        dockerRepos: (LAB_DATA.services || []).map(function (svc) {
+          var id = svc.id + '-' + name;
+          var repoUrl = LAB_DATA.docker_namespace + '/' + id;
+          return {
+            id: id,
+            // Raw service name; rendered without the team suffix, split on
+            // " - " so the family and the component sit on separate lines.
+            name: svc.name,
+            repoUrl: repoUrl,
+            webUrl: 'https://hub.docker.com/r/' + repoUrl
+          };
+        })
+      };
+    }
+
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+      });
+    }
+
+    function getParam(name) {
+      return new URLSearchParams(window.location.search).get(name);
+    }
+
+    var teams = LAB_DATA.teams || [];
+    var byName = {};
+    teams.forEach(function (name) { byName[name.toLowerCase()] = name; });
+
+    var selected = (getParam('team') || '').trim().toLowerCase();
+
+    // Render the team picker with the same markup/classes as the archive tag
+    // buttons (_includes/tags.html). The selected team gets the "focus" class,
+    // which the theme renders as the highlighted/selected state.
+    var chipsHtml = teams.map(function (name) {
+      var focus = name.toLowerCase() === selected ? ' focus' : '';
+      return '<li><a class="button button--pill tag-button tag-button-1' + focus + '" href="?team=' +
+        encodeURIComponent(name) + '"><span>' + esc(name) + '</span></a></li>';
+    }).join('');
+    document.getElementById('lab-teams-chips').innerHTML =
+      chipsHtml ? '<ul class="menu">' + chipsHtml + '</ul>' : '<em>No teams configured yet.</em>';
+
+    var content = document.getElementById('lab-teams-content');
+
+    if (!selected) {
+      content.innerHTML = '<p>Select your team above to view your resources.</p>';
+      return;
+    }
+
+    if (!byName[selected]) {
+      content.innerHTML = '<div class="lab-teams__error"><strong>Unknown team ' +
+        '&ldquo;' + esc(selected) + '&rdquo;.</strong> Please pick your team ' +
+        'from the list above.</div>';
+      return;
+    }
+
+    var team = buildTeam(byName[selected]);
+
+    var membersWarnHtml =
+      '<div class="lab-teams__warn">' +
+        '<span class="lab-teams__warn-icon">&#9888;&#65039;</span>' +
+        '<span>Placeholder names &mdash; real rosters are not published on this ' +
+        'public page. Ask your instructor for your team&rsquo;s actual members.</span>' +
+      '</div>';
+    var membersHtml = membersWarnHtml + (team.members.length
+      ? '<ul>' + team.members.map(function (m) { return '<li>' + esc(m) + '</li>'; }).join('') + '</ul>'
+      : '<em>No members listed.</em>');
+
+    var labelsHtml = Object.keys(team.k8sLabels).map(function (k) {
+      return '<code>' + esc(k) + ': ' + esc(team.k8sLabels[k]) + '</code>';
+    }).join(' ');
+
+    var cloneRowsHtml =
+      '<tr><th colspan="2" class="lab-table__section">Clone the Git repository</th></tr>' +
+      team.gitClones.map(function (c) {
+        return '<tr><th>' + esc(c.name) + '</th><td><code>' + esc(c.command) + '</code></td></tr>';
+      }).join('');
+
+    var dockerRowsHtml =
+      '<tr><th colspan="2" class="lab-table__section">Docker repositories</th></tr>' +
+      team.dockerRepos.map(function (r) {
+        return '<tr>' +
+          '<th class="lab-table__docker-th">' + esc(r.name).split(' - ').join('<br>') + '</th>' +
+          '<td><code>' + esc(r.repoUrl) + '</code>' +
+          '<span class="lab-table__sep">&middot;</span>' +
+          '<a href="' + esc(r.webUrl) + '" target="_blank" rel="noopener">Docker Hub &#8599;</a>' +
+          '</td>' +
+          '</tr>';
+      }).join('');
+
+    content.innerHTML =
+      '<div class="lab-teams__card">' +
+        '<h2 class="lab-teams__card-title">Team ' + esc(team.name) + '</h2>' +
+        '<table class="lab-table">' +
+          '<tr><th>Team</th><td><code>' + esc(team.name) + '</code></td></tr>' +
+          '<tr><th>Members</th><td>' + membersHtml + '</td></tr>' +
+          '<tr><th>Kubernetes labels</th><td>' + labelsHtml + '</td></tr>' +
+          '<tr><th>Git repository</th><td>' +
+            '<a href="' + esc(team.gitRepo) + '" target="_blank" rel="noopener">' +
+            esc(team.gitRepo) + '</a></td></tr>' +
+          cloneRowsHtml +
+          dockerRowsHtml +
+        '</table>' +
+      '</div>';
+  })();
+</script>
