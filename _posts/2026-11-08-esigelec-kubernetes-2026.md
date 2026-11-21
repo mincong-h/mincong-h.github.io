@@ -432,4 +432,4 @@ From this article, you can see that we had a lot of fun building and learning Ku
 
 The highlights of this article show that we use real-world examples in the lab sessions, which help the students understand why these concepts are needed.
 
-Thank you to ESIGELEC for having me again, and to the 21 students for their work. It was a privilege for me to be able to go back to school again. If you are interested in seeing the teaching material of the course, it is public at <https://mincong.io/esigelec/2026>.
+Thank you to ESIGELEC for having me again, and to the 21 students for their work. It was a privilege for me to return to my former school, this time as a teacher. If you are interested in seeing the teaching material of the course, it is public at <https://mincong.io/esigelec/2026>.
