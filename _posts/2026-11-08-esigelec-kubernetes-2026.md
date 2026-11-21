@@ -12,7 +12,7 @@ categories:          [mincong-classroom, kubernetes, java, go]
 tags:                [kubernetes, java, go]
 comments:            true
 excerpt:             >
-    Highlights about the 20-hour Kubernetes course at ESIGELEC: the teaching program, adoption to Spring PetClinic Microservices, students' reports about observability / security / Gen AI, and more.
+    Highlights about the 20-hour Kubernetes course at ESIGELEC: the teaching program, the adoption of Spring PetClinic Microservices, students' reports about observability / security / GenAI, and more.
 
 image:               /assets/2026/esigelec-campus.jpg
 cover:               /assets/2026/esigelec-campus.jpg
