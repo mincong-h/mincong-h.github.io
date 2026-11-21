@@ -52,7 +52,7 @@ wechat:              false
 
 ## Introduction
 
-In the end of October, I had the privilege to go to ESIGELEC, an engineering school in Saint-Étienne-du-Rouvray, Normandy, France, to share knowledge about Kubernetes with about 20 students. This is a 20-hour module for the students majoring in the Digital Services Engineering (Ingénieurie des Services du Numérique). In this article, I want to recapitulate the program of this course, the changes compared to last year, and some highlights from the students.
+What can engineering students do with Kubernetes in 20 hours? This year at ESIGELEC, an engineering school in Normandy, France, my 20 students worked in 13 teams. They ran the Spring PetClinic on Kubernetes, scaled it under load, protected it with a NetworkPolicy, and connected it to a chatbot backed by a vector database. I taught this course at the end of October, for the 3rd year. In this article, I want to share the program, the highlights of the student reports, and the tools that help me to teach and to evaluate.
 
 ## Program
 
