@@ -12,10 +12,10 @@ categories:          [teaching, kubernetes, java, go]
 tags:                [kubernetes, java, go]
 comments:            true
 excerpt:             >
-    This post reflects on a 20-hour Kubernetes course I recently taught at ESIGELEC, where engineering students explored containerization, Kubernetes fundamentals, and real-world collaboration using the Spring Pet Clinic project. It shares insights into the redesigned curriculum, hands-on labs, and lessons learned from focusing deeply on Kubernetes and team-based learning.
+    What 13 teams of students found in my Kubernetes course at ESIGELEC in 2026: a chatbot that invents a visit, a Prometheus that shows every target up while a service is down, and Pods that scale out under load.
 
 image:               /assets/2026/esigelec-campus.jpg
-cover:               /assets/esigelec.jpeg
+cover:               /assets/2026/esigelec-campus.jpg
 article_header:
   type:              overlay
   theme:             dark
