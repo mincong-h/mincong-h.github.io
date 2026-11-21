@@ -499,3 +499,9 @@ On the other hand, it also allows some comparison. For example, we can compare t
 > - **Why:** an animated diagram keeps the attention of the students on the component that you talk about, so the lecture is easier to follow. And since the slides are text versioned with Git, they're updated every year and can be adapted quickly to another school, another duration or another language: a selling point for a new school. The teachers and the colleagues who give talks can reuse the idea, since Slidev and Mermaid are open source.
 > - **How:** cut the 3 paragraphs to 2 or 3 sentences around Figure 14: static images before, one diagram per click now, and what it allows. I can make a second GIF for the comparison of the imperative and the declarative commands.
 -->
+
+## Conclusion
+
+From this article, you can see that we had a lot of fun building and learning Kubernetes for this module. Students learn a lot of concepts about Kubernetes through its architecture, deployment, and networking configuration. They also had the opportunity to explore microservices architecture through Kubernetes, practice, and observe different components' different behavior using the observability stack.
+
+The highlights shown in this article demonstrates that we use real-world examples in the lab session and and helps them to understand the needs of using some concepts in the real-world.
