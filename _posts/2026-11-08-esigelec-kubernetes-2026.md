@@ -12,7 +12,7 @@ categories:          [mincong-classroom, kubernetes, java, go]
 tags:                [kubernetes, java, go]
 comments:            true
 excerpt:             >
-    Highlights of my Kubernetes course at ESIGELEC in 2026: the program, the Spring PetClinic on Kubernetes, and the reports of the students on GenAI, observability, autoscaling, security and service integration.
+    Highlights of my Kubernetes course at ESIGELEC in 2026: the program, the Spring PetClinic on Kubernetes, and the student reports on GenAI, observability, autoscaling, security and service integration.
 
 image:               /assets/2026/esigelec-campus.jpg
 cover:               /assets/2026/esigelec-campus.jpg
