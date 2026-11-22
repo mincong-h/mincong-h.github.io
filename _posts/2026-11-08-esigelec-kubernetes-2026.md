@@ -56,15 +56,17 @@ What can engineering students do with Kubernetes in 20 hours? This year at ESIGE
 
 ## Program
 
-This module lasts for 20 hours. It consists of five chapters, each lasting 4 hours, including 1 hour of lecture and 3 hours of lap session. In this module, we discuss containerizing applications with Docker, the key components of a Kubernetes cluster, and then dive into workload deployment, networking, configuration, and storage in greater detail.
+This module lasts for 20 hours. It consists of five chapters, each lasting 4 hours, including 1 hour of lecture and 3 hours of lab session. This year, 13 teams of 1 or 2 students did 31 exercises in the lab sessions. The labs run on the laptops of the students: Docker Desktop runs a Kubernetes cluster on each machine, so there is no cluster to rent in the cloud.
 
-* **Containerization with Docker.** In this part, students learned how to create Docker images for Java applications. They learned how to package a Java application as a JAR, and what the Java Runtime Environment (JRE) is. Then, they learn concepts related to Docker Runtime, Docker Registry, Docker CLI, Docker Desktop, and Dockerfile.
-* **Kubernetes Overview.** In this part, they learn the key components of Kubernetes, including the API server, etcd, scheduler, controller manager, kubelet, node; the command line tool `kubectl`. Then, they developped and operated Pods in the Lab Session.
-* **Deployment in Kubernetes.** This part focuses on workloads. We discussed deployment and operational challenges in companies and how Kubernetes addresses some of these challenges using ReplicaSets and Deployments. We also talked about workload scaling and microservices architecture.
-* **Networking in Kubernetes.** This part discusses different networking components in Kubernetes to adapt to different use cases in a Kubernetes cluster, including Service, Node Port, and Load Balancer. They also learned Namespace and Network Policy, concepts for isolation and control.
-* **Configuration and Storage.** Finally, this part discusses different ways to configure the resources in the cluster, for standalone or shared configuration, for sensitive and non-sensitive information. Then, we talked about Stateful Set, a powerful concept for running stateful applications.
+In this module, we discuss containerizing applications with Docker, the key components of a Kubernetes cluster, and then dive into workload deployment, networking, configuration, and storage in greater detail:
 
-Through this program, students gain a better understanding of the challenges associated with software operations. It not only applies to Kubernetes, but also other kinds of orchestration services (Google Cloud Run, AWS App Runner, AWS ECS, …). To access the whole program, please visit <https://mincong.io/esigelec/2026>
+* **Containerization with Docker.** In this part, students learned how to create Docker images for Java applications. They learned how to package a Java application as a JAR, and what the Java Runtime Environment (JRE) is. Then, they learned the concepts related to Docker Runtime, Docker Registry, Docker CLI, Docker Desktop, and Dockerfile.
+* **Kubernetes Overview.** In this part, they learned the key components of Kubernetes, including the API server, etcd, scheduler, controller manager, kubelet and node, and the command line tool `kubectl`. Then, they developed, operated and fixed Pods in the lab session.
+* **Deployment in Kubernetes.** This part focuses on workloads. We discussed deployment and operational challenges in companies and how Kubernetes addresses some of these challenges using ReplicaSets and Deployments. We also talked about deployment strategies, workload scaling and microservices architecture. In the lab session, they moved the PetClinic from its monolith to its microservices, and observed them with traces and metrics.
+* **Networking in Kubernetes.** This part discusses different networking components in Kubernetes to adapt to different use cases in a Kubernetes cluster, including the Service and its types ClusterIP, NodePort, and LoadBalancer. They also learned Namespace and Network Policy, concepts for isolation and control.
+* **Configuration and Storage.** Finally, this part discusses different ways to configure the resources in the cluster, for standalone or shared configuration, for sensitive and non-sensitive information. Then, we talked about volumes and StatefulSet, to run stateful applications. In the lab session, they deployed the chatbot of the PetClinic, and ran its vector database, Qdrant, as a StatefulSet.
+
+Through this program, students gain a better understanding of the challenges associated with software operations. It not only applies to Kubernetes, but also other kinds of orchestration services (Google Cloud Run, AWS App Runner, AWS ECS, ...). To access the whole program, please visit <https://mincong.io/esigelec/2026/>.
 
 ## Highlights
 
