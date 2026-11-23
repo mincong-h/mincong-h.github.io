@@ -408,9 +408,9 @@ flowchart LR
 
 ### Teaching Assistant
 
-The command-line interface [`mc`](https://github.com/mincong-classroom/mc) has been improved too. These command lines were used last year for grading, I mean, some of the statical without static result from last year, like checking the content of some file. It was used to manage Git-related operations in batch for all the teams, but this year we went further into this. It becomes more like a teaching assistant.
-In order of respect:
-1. It replaces GitHub Classroom to provision the team. It allows the team to register themselves, and then it uses the underlying GitHub command line `gh` to provision the team, add the team member (a student) to the team as a team member, create the team repository by cloning the repo from the public template, and manage the relationship (granting team access to those repositories).
+The command-line interface [`mc`](https://github.com/mincong-classroom/mc) has been improved too. Last year, I used it for static checks in the grading, such as checking the content of a file, and for Git operations in batch for all the teams. This year, it went further and became more like a teaching assistant. It's public on GitHub, so you can take a look at it. It helps me in 2 ways:
+
+1. It replaces GitHub Classroom to provision the teams. In the first session, each team picks a color and gives me the GitHub accounts of its members. Then `mc` uses the GitHub CLI `gh` to create the team, invite its members, create the team repository from the public template, and grant the team access to it.
 2. It also helps the evaluation of each team. As a system-level course, it is hard to reproduce all the scenarios: each team has its own cluster and its own names, and there are no standard answers. That's why `mc` provides additional hints to augment the result of each team, such as boxes on a screenshot that highlight the important part (Figure 10). These hints help me to check the correctness of each result and to evaluate each team in more depth.
 
 ### Animation in Slides
