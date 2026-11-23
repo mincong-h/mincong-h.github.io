@@ -195,6 +195,8 @@ The teaching material is also prepared for them to succeed, meaning that I lower
 
 Here, in this screenshot, you can see that the black team used a loop generator based on the `busybox` image to run an infinite loop of `wget` to get the content from the veterinarian service. This generated an increased amount of HTTP traffic, which resulted in the auto-scaling of the deployment.
 
+The students also explained what they saw. The team "purple" noticed a short burst of HTTP 503 errors right after the HPA created new Pods. Their analysis: the manifest has no readiness probe, so Kubernetes marks a new Pod as ready as soon as its process starts, while Spring Boot still needs 15 to 30 seconds. As a fix, they proposed a `readinessProbe` on `/actuator/health/readiness`.
+
 ### Network Policy
 
 On the networking side, we also talked about the network policy to enforce communication between namespaces, which was not the case last year.
