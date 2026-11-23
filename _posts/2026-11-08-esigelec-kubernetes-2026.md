@@ -324,7 +324,7 @@ Once they have the GenAI service, they have a base for exploring more. In the la
 
 </p>
 
-Here is a great example from the Olive team about hallucination. They prepared some visits, and you can see that the visit is from 2014. They observed that when you ask for the visits for John Coleman, it will give you visits from September 15, 2023, which is completely incorrect. This is incorrect because the chat actually never provides tools to interact with the visit service. Instead of that, it doesn't have the result. It invented a result, so this is the hallucination, which is a good example from the team to understand the limit of the model.
+Here is a great example of hallucination from the team "olive". They asked the chat when Max visited the clinic, and it answered September 15, 2023, for a checkup. But the page of its owner, Jean Coleman, shows 2 other visits: a rabies shot on January 2, 2013, and the neutering on January 3, 2013 (Figure 9). The team explained why with the traces. The tool `listOwners` reads the Customers Service, not the Visits Service, and the trace of the wrong answer has no call that could give this date. So the model invented an answer instead of admitting that it didn't know. It's a good example to understand the limits of a model.
 
 <p align="center">
 
