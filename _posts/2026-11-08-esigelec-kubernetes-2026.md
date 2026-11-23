@@ -131,7 +131,7 @@ The students used the PetClinic in every lab session, and they learned Kubernete
 
 ### Team Info
 
-On top of that we also have a new service called a [Team Info Server](https://github.com/mincong-classroom/team-info-server), which serves as a satellite service to interact with the main services. The main purpose of this server was to have a teaching material for troubleshooting. It simulates application error, container crashes, etc. This material is also used to understand the cross-namespace exchanges; observe load balancing mechanism across multiple Pods.
+On top of that, we also have a new service called the [Team Info Server](https://github.com/mincong-classroom/team-info-server), which serves as a satellite service to interact with the main services. The main purpose of this server is to be a teaching material for troubleshooting. It exits on purpose when the environment variable `TEAM_ID` is missing or invalid, so that the students practice fixing a Pod and setting the environment variables of a manifest. This material is also used to understand the exchanges across namespaces, and to observe the load balancing across multiple Pods.
 
 The benefit of using the team info server is that it's a lightweight Go server whose size is significantly smaller than a Java container, which is only about 5 MB. By using that, it is possible to start the container quickly. It is especially interesting for students who are using their desktop because some of them have limited memory, like 8 GB or 16 GB, which is quite different from the school's computer. It is also, I think, an opportunity to show them that different services can be in different languages and they don't have to stick to one programming language inside the microservice architecture. 
 
