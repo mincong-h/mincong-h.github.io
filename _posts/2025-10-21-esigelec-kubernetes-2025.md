@@ -8,7 +8,7 @@ subtitle:            >
 
 lang:                en
 date:                2025-10-21 17:30:22 +0200
-categories:          [kubernetes, java]
+categories:          [mincong-classroom, kubernetes, java]
 tags:                [kubernetes, java]
 comments:            true
 excerpt:             >
