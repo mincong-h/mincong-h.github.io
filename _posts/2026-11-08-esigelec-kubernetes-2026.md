@@ -56,7 +56,7 @@ What can engineering students do with Kubernetes in 20 hours? This year at ESIGE
 
 ## Program
 
-This module lasts for 20 hours. It consists of five chapters, each lasting 4 hours, including 1 hour of lecture and 3 hours of lab session. This year, 13 teams of 1 or 2 students did 31 exercises in the lab sessions. The labs run on the laptops of the students: Docker Desktop runs a Kubernetes cluster on each machine, so there is no cluster to rent in the cloud.
+This module lasts for 20 hours. It consists of five chapters, each lasting 4 hours, including 1 hour of lecture and 3 hours of lab session. This year, 13 teams of 1 or 2 students did 31 exercises in the lab sessions. The labs run on Docker Desktop: it runs a Kubernetes cluster on each machine, so there is no cluster to rent in the cloud.
 
 In this module, we discuss containerizing applications with Docker, the key components of a Kubernetes cluster, and then dive into workload deployment, networking, configuration, and storage in greater detail:
 
@@ -133,7 +133,7 @@ The students used the PetClinic in every lab session, and they learned Kubernete
 
 On top of that, we also have a new service called the [Team Info Server](https://github.com/mincong-classroom/team-info-server), which serves as a satellite service to interact with the main services. The main purpose of this server is to be a teaching material for troubleshooting. It exits on purpose when the environment variable `TEAM_ID` is missing or invalid, so that the students practice fixing a Pod and setting the environment variables of a manifest. This material is also used to understand the exchanges across namespaces, and to observe the load balancing across multiple Pods.
 
-The benefit of using the team info server is that it's a lightweight Go server whose size is significantly smaller than a Java container, which is only about 5 MB. By using that, it is possible to start the container quickly. It is especially interesting for students who are using their desktop because some of them have limited memory, like 8 GB or 16 GB, which is quite different from the school's computer. It is also, I think, an opportunity to show them that different services can be in different languages and they don't have to stick to one programming language inside the microservice architecture. 
+The benefit of using the team info server is that it's a lightweight Go server whose size is significantly smaller than a Java container, which is only about 5 MB. By using that, it is possible to start the container quickly. It is especially interesting for students who are using their desktop because some of them have limited memory, like 8 GB or 16 GB, which is quite different from the school's computer. It is also an opportunity to show them that different services can be in different languages and they don't have to stick to one programming language inside the microservice architecture. 
 
 For example, here is the About page of the team "purple", before and after they added the route to the Team Info Server in the API gateway, in Lab Session 4:
 
@@ -192,7 +192,7 @@ The students also explained what they saw. The team "purple" noticed a short bur
 
 On the networking side, we also talked about the network policy to enforce communication between namespaces, which was not the case last year.
 
-In the new slides, under the networking chapter (Chapter 4), I added 7 new slides, starting with business use cases such as personal data and card payment. They then share the motivation for network protection based on business requirements. This helps sensitize the student to security and data protection, which is a frequent request from companies, especially in Europe.
+In the new slides, under the networking chapter (Chapter 4), I added 7 new slides, starting with business use cases such as personal data protection and payment card industry (PCI). They then share the motivation for network protection based on business requirements. This helps sensitize the student to security and data protection, which is a frequent request from companies, especially in Europe.
 
 After learning the motivation, they start practicing it by defining the network policy and applying it through PetClinic, while protecting the PetClinic application as a production environment so that other namespaces in the Kubernetes cluster cannot access the data. 
 
@@ -332,7 +332,7 @@ And then the second example is here, with the trace where you can see that the t
 
 In the GenAI part, we continue with the vector database as an example of the StatefulSet in Kubernetes. Here, we deploy the Qdrant database with three replicas. From the screenshot above, you can see that they successfully imported the vectors into the vector database and two vectors were displayed. They also tried finding similar radiologist on "Helen Leary", which returns "Henry Stevens" first, with a score of 0.96.
 
-I choose this vector database as an example for the StatefulSet because I think this is a real-world example for companies developing a Gen AI solution. A vector database is how a company gives an AI assistant their own data using a RAG. The student learned the architecture behind most assistants in production, and it is highly relevant to the course. Since we need an example for them to play with the stateful set to understand its differences with deployment (about the deployment order, the volume attached to the pod, etc). It also offers un UI which is great for understanding the behavior of the system and explore the data.
+I choose this vector database as an example for the StatefulSet because I think this is a real-world example for companies developing a Gen AI solution. A vector database is how a company gives an AI assistant their own data using a RAG. The student learned the architecture behind most assistants in production, and it is highly relevant to the course. Since we need an example for them to play with the stateful set to understand its differences with deployment (about the deployment order, the volume attached to the pod, etc). It also offers an UI which is great for understanding the behavior of the system and explore the data.
 
 <p align="center">
 
@@ -390,7 +390,7 @@ flowchart LR
 
 ### Teaching Assistant
 
-The command-line interface [`mc`](https://github.com/mincong-classroom/mc) has been improved too. Last year, I used it for static checks in the grading, such as checking the content of a file, and for Git operations in batch for all the teams. This year, it went further and became more like a teaching assistant. It's public on GitHub, so you can take a look at it. It helps me in 2 ways:
+The command-line interface [`mc`](https://github.com/mincong-classroom/mc) has been improved too. Last year, I used it for static checks in the grading, such as checking the content of a file, and for Git operations in batch for all the teams. This year, it went further and became more like a teaching assistant. It helps me in 2 ways:
 
 1. It replaces GitHub Classroom to provision the teams. In the first session, each team picks a color and gives me the GitHub accounts of its members. Then `mc` uses the GitHub CLI `gh` to create the team, invite its members, create the team repository from the public template, and grant the team access to it.
 2. It also helps the evaluation of each team. As a system-level course, it is hard to reproduce all the scenarios: each team has its own cluster and its own names, and there are no standard answers. That's why `mc` provides additional hints to augment the result of each team, such as boxes on a screenshot that highlight the important part (Figure 8). These hints help me to check the correctness of each result and to evaluate each team in more depth.
