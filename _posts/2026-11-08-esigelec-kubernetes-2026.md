@@ -139,19 +139,10 @@ For example, here is the About page of the team "purple", before and after they 
 
 <p align="center">
 
-  <img alt="The About page of the team purple before the route: 404 Not Found"
-       src="/assets/2026/purple-about-page-before.png">
+  <img alt="The About page of the team purple before the route, with the warning Could not load team information and 404 Not Found, then after the route, with the team purple and 200 OK, and the requests about/ of the browser that fail, then succeed"
+       src="/assets/2026/purple-about-page.png">
 
-  <figcaption>Figure 2: The About page of the team "purple" before the route to the Team Info Server: 404 Not Found</figcaption>
-
-</p>
-
-<p align="center">
-
-  <img alt="The About page of the team purple after the route: 200 OK, with the information of the team"
-       src="/assets/2026/purple-about-page-after.png">
-
-  <figcaption>Figure 3: The About page of the team "purple" after the route to the Team Info Server: 200 OK, with the information of the team</figcaption>
+  <figcaption>Figure 2: The About page of the team "purple" before (left) and after (right) the route to the Team Info Server: 404 Not Found, then 200 OK with the information of the team</figcaption>
 
 </p>
 
@@ -168,7 +159,7 @@ I added Observability because this course is more oriented towards Systems Engin
   <img alt="Prometheus of the team green: 3/3 up while vets-service is scaled to 0"
        src="/assets/2026/green-prometheus-targets.png">
 
-  <figcaption>Figure 4: Prometheus of the team "green" while vets-service was scaled to 0: "3/3 up", and no target for vets-service</figcaption>
+  <figcaption>Figure 3: Prometheus of the team "green" while vets-service was scaled to 0: "3/3 up", and no target for vets-service</figcaption>
 
 </p>
 
@@ -189,7 +180,7 @@ The teaching material is also prepared for them to succeed, meaning that I lower
   <img alt="Grafana of the team black: vets-service goes from 1 to 2, 4, then 5 Pods"
        src="/assets/2026/black-grafana-autoscaling.png">
 
-  <figcaption>Figure 5: Grafana of the team "black" in Lab 3: vets-service scales from 1 to 2, 4, then 5 Pods (top) while the requests rise to about 13 per second (bottom right)</figcaption>
+  <figcaption>Figure 4: Grafana of the team "black" in Lab 3: vets-service scales from 1 to 2, 4, then 5 Pods (top) while the requests rise to about 13 per second (bottom right)</figcaption>
 
 </p>
 
@@ -234,7 +225,7 @@ flowchart LR
 
 <p align="center">
 
-  <figcaption>Figure 6: The NetworkPolicy of the team "green": the Pods of the namespaces default and kube-system can still call the PetClinic, but not the ones of classroom</figcaption>
+  <figcaption>Figure 5: The NetworkPolicy of the team "green": the Pods of the namespaces default and kube-system can still call the PetClinic, but not the ones of classroom</figcaption>
 
 </p>
 
@@ -294,22 +285,13 @@ flowchart TB
 
 <p align="center">
 
-  <figcaption>Figure 7: The Spring PetClinic in Lab 5, with the GenAI service and Qdrant in green</figcaption>
+  <figcaption>Figure 6: The Spring PetClinic in Lab 5, with the GenAI service and Qdrant in green</figcaption>
 
 </p>
 
 The first step for them is to install the Spring GenAI service into the Kubernetes cluster alongside all the existing services. By doing so, they review and practice what they learned in the previous lecture about: declaring a deployment and a service; modifying the config map; understanding the routing of the API gateway; troubleshooting the interactions with the trace server Zipkin; and more. It is an efficient way for them to go through what we learn from chapter 2 to chapter 5.
 
-<p align="center">
-
-  <img alt="The chat of the team black: Chat is currently unavailable, then the radiologists Henry Stevens and Helen Leary after the route"
-       src="/assets/2026/black-chat-route.png">
-
-  <figcaption>Figure 8: The chat of the team "black" in Lab 5: "Chat is currently unavailable" before the route in the API gateway, then the answer of the GenAI service after it</figcaption>
-
-</p>
-
-For example, here is the homework for the team Black, where you can see that at the beginning the chat was not available. However, after it fixes all the issues and deploys the GenAI service as a Kubernetes resource, the chat box worked again. 
+At the beginning, the chat box of the PetClinic shows "Chat is currently unavailable". Once a team fixes all the issues and deploys the GenAI service as a Kubernetes resource, the chat box works again.
 
 #### Going Further: Hallucinations and Traces
 
@@ -320,18 +302,18 @@ Once they have the GenAI service, they have a base for exploring more. In the la
   <img alt="The chatbot of the team olive answers that Max visited the clinic on September 15, 2023, while the page shows visits on 2013 Jan 02 and Jan 03"
        src="/assets/2026/olive-chat-max.png">
 
-  <figcaption>Figure 9: The chatbot of the team "olive" invents a visit of Max on September 15, 2023, while the page shows 2 visits in January 2013</figcaption>
+  <figcaption>Figure 7: The chatbot of the team "olive" invents a visit of Max on September 15, 2023, while the page shows 2 visits in January 2013</figcaption>
 
 </p>
 
-Here is a great example of hallucination from the team "olive". They asked the chat when Max visited the clinic, and it answered September 15, 2023, for a checkup. But the page of its owner, Jean Coleman, shows 2 other visits: a rabies shot on January 2, 2013, and the neutering on January 3, 2013 (Figure 9). The team explained why with the traces. The tool `listOwners` reads the Customers Service, not the Visits Service, and the trace of the wrong answer has no call that could give this date. So the model invented an answer instead of admitting that it didn't know. It's a good example to understand the limits of a model.
+Here is a great example of hallucination from the team "olive". They asked the chat when Max visited the clinic, and it answered September 15, 2023, for a checkup. But the page of its owner, Jean Coleman, shows 2 other visits: a rabies shot on January 2, 2013, and the neutering on January 3, 2013 (Figure 7). The team explained why with the traces. The tool `listOwners` reads the Customers Service, not the Visits Service, and the trace of the wrong answer has no call that could give this date. So the model invented an answer instead of admitting that it didn't know. It's a good example to understand the limits of a model.
 
 <p align="center">
 
   <img alt="The Zipkin trace of one chat question of the team olive: chat gpt-4o-mini, tool_call listvets, qdrant query, chat gpt-4o-mini"
        src="/assets/2026/olive-zipkin-genai.png">
 
-  <figcaption>Figure 10: The Zipkin trace of one question to the chatbot of the team "olive" (17 s), with the boxes that <code>mc</code> added to help the evaluation</figcaption>
+  <figcaption>Figure 8: The Zipkin trace of one question to the chatbot of the team "olive" (17 s), with the boxes that <code>mc</code> added to help the evaluation</figcaption>
 
 </p>
 
@@ -344,7 +326,7 @@ And then the second example is here, with the trace where you can see that the t
   <img alt="The web UI of Qdrant of the team olive: the collection vector_store lists the vet Rafael Ortega (surgery), with a vector of 1536 numbers and the buttons Open Graph and Find Similar, then the beginning of a second point"
        src="/assets/2026/olive-qdrant-points.png">
 
-  <figcaption>Figure 11: The web UI of Qdrant of the team "olive": the vets of the PetClinic stored as vectors, each with a button "Find Similar"</figcaption>
+  <figcaption>Figure 9: The web UI of Qdrant of the team "olive": the vets of the PetClinic stored as vectors, each with a button "Find Similar"</figcaption>
 
 </p>
 
@@ -357,7 +339,7 @@ I choose this vector database as an example for the StatefulSet because I think 
   <img alt="The terminal of the team black: the Pods qdrant-0, qdrant-1 and qdrant-2 of the StatefulSet start one after the other"
        src="/assets/2026/black-qdrant-statefulset.png">
 
-  <figcaption>Figure 12: The StatefulSet of Qdrant of the team "black": the Pods qdrant-0, qdrant-1 and qdrant-2 start one after the other</figcaption>
+  <figcaption>Figure 10: The StatefulSet of Qdrant of the team "black": the Pods qdrant-0, qdrant-1 and qdrant-2 start one after the other</figcaption>
 
 </p>
 
@@ -402,7 +384,7 @@ flowchart LR
 
 <p align="center">
 
-  <figcaption>Figure 13: The topology of Qdrant drawn by the team "gold" (modified): the GenAI service calls the Service qdrant, the Pods find each other through the headless Service, and each Pod has its own volume</figcaption>
+  <figcaption>Figure 11: The topology of Qdrant drawn by the team "gold" (modified): the GenAI service calls the Service qdrant, the Pods find each other through the headless Service, and each Pod has its own volume</figcaption>
 
 </p>
 
@@ -411,7 +393,7 @@ flowchart LR
 The command-line interface [`mc`](https://github.com/mincong-classroom/mc) has been improved too. Last year, I used it for static checks in the grading, such as checking the content of a file, and for Git operations in batch for all the teams. This year, it went further and became more like a teaching assistant. It's public on GitHub, so you can take a look at it. It helps me in 2 ways:
 
 1. It replaces GitHub Classroom to provision the teams. In the first session, each team picks a color and gives me the GitHub accounts of its members. Then `mc` uses the GitHub CLI `gh` to create the team, invite its members, create the team repository from the public template, and grant the team access to it.
-2. It also helps the evaluation of each team. As a system-level course, it is hard to reproduce all the scenarios: each team has its own cluster and its own names, and there are no standard answers. That's why `mc` provides additional hints to augment the result of each team, such as boxes on a screenshot that highlight the important part (Figure 10). These hints help me to check the correctness of each result and to evaluate each team in more depth.
+2. It also helps the evaluation of each team. As a system-level course, it is hard to reproduce all the scenarios: each team has its own cluster and its own names, and there are no standard answers. That's why `mc` provides additional hints to augment the result of each team, such as boxes on a screenshot that highlight the important part (Figure 8). These hints help me to check the correctness of each result and to evaluate each team in more depth.
 
 ### Animation in Slides
 
@@ -428,7 +410,7 @@ On the other hand, it also allows some comparison. For example, we can compare t
   <img alt="Animation of the slide Deployment: Rolling Update of chapter 3: the Pods of the new version replace the Pods of the previous version, click after click"
        src="/assets/2026/slide-rolling-update.gif">
 
-  <figcaption>Figure 14: The slide "Deployment: Rolling Update" of chapter 3, click after click</figcaption>
+  <figcaption>Figure 12: The slide "Deployment: Rolling Update" of chapter 3, click after click</figcaption>
 
 </p>
 
