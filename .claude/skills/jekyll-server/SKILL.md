@@ -14,6 +14,39 @@ How to run the blog on this machine: start, stop, build and rebuild the server, 
 option `--incremental` is safe. The server listens on http://127.0.0.1:4000. Use `bundle exec`,
 not Docker: `CLAUDE.md` explains why.
 
+## Automatic Start with Claude Code
+
+The hooks of `.claude/settings.json` start the server with Claude Code. The first session started
+at the root of the repository starts the server with a full build, and owns it: the server stops
+when this session ends. The next sessions reuse it, and leave it running when they end. A session
+in a subdirectory or in a worktree does nothing.
+
+The script `scripts/jekyll-server.sh` runs both hooks. It keeps its state in
+`.claude/jekyll-server/`, ignored by Git:
+
+File | Content
+:--- | :---
+`owner` | The PID of the Claude Code process that owns the server
+`pid` | The PID of `jekyll serve`
+`server.log` | The output of the server
+
+A Claude Code process owns the server, not a session ID, so `/clear` and `/resume` keep the server
+running. If the owner ends without its hook SessionEnd, e.g. after a crash, the next session takes
+over the server. If another server already listens on the port 4000, e.g. in a terminal, the hook
+doesn't start a server and doesn't touch the other one.
+
+Note that the server stops when its owner ends, even if other sessions are still open. To get it
+back, run `restart` in one of them: this session becomes the owner.
+
+The hook SessionStart tells each session whether it owns the server. Don't start or stop a server
+of the hook by hand: restart it with the script, which keeps its owner:
+
+```sh
+.claude/skills/jekyll-server/scripts/jekyll-server.sh restart                # full build
+.claude/skills/jekyll-server/scripts/jekyll-server.sh restart --incremental  # incremental
+.claude/skills/jekyll-server/scripts/jekyll-server.sh status
+```
+
 ## Full Build or Incremental?
 
 The command `bundle exec jekyll serve` has 2 modes:
@@ -55,7 +88,9 @@ A running server cannot switch modes: stop it and start it again.
    ```
 
    If one does, read its command with `ps -o args= -p <pid>`. Keep it if its mode fits the rule
-   above, otherwise [stop it](#stop) first.
+   above, otherwise [stop it](#stop) first. If `.claude/jekyll-server/pid` holds its PID, the hook
+   started it: use the command `restart` of the script instead, as described in
+   [Automatic Start with Claude Code](#automatic-start-with-claude-code).
 
 2. Check the dependencies with `bundle check`, and run `bundle install` if it fails. Compare
    `ruby -v` with `.ruby-version`. If that version is not installed, the active Ruby may still
@@ -89,6 +124,8 @@ A running server cannot switch modes: stop it and start it again.
 
 ## Stop
 
+- If the hook started the server (`.claude/jekyll-server/pid` holds its PID), don't stop it: its
+  owner stops it when it ends.
 - If you started the server as a background task, stop the task (TaskStop in Claude Code).
 - Otherwise, find the process with `lsof -nP -iTCP:4000 -sTCP:LISTEN`, check with
   `ps -o args= -p <pid>` that it runs `jekyll serve`, then `kill <pid>`. A server that you didn't
