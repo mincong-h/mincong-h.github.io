@@ -341,7 +341,7 @@ And then the second example is here, with the trace where you can see that the t
 
 <p align="center">
 
-  <img alt="The web UI of Qdrant of the team olive: the collection vector_store lists the vets Rafael Ortega (surgery) and Linda Douglas (dentistry, surgery), each with a vector of 1536 numbers and the buttons Open Graph and Find Similar"
+  <img alt="The web UI of Qdrant of the team olive: the collection vector_store lists the vet Rafael Ortega (surgery), with a vector of 1536 numbers and the buttons Open Graph and Find Similar, then the beginning of a second point"
        src="/assets/2026/olive-qdrant-points.png">
 
   <figcaption>Figure 11: The web UI of Qdrant of the team "olive": the vets of the PetClinic stored as vectors, each with a button "Find Similar"</figcaption>
