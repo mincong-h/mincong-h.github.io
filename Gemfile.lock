@@ -97,15 +97,12 @@ GEM
     logger (1.5.3)
     mercenary (0.4.0)
     mini_portile2 (2.8.9)
-    minitest (6.1.0)
-      drb (~> 2.0)
-      prism (>= 1.5, < 3)
+    minitest (5.27.0)
     nokogiri (1.19.5)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     pathutil (0.16.2)
       forwardable-extended (~> 2.6)
-    prism (2.1.0)
     public_suffix (7.0.5)
     racc (1.8.1)
     rake (12.3.3)
@@ -133,6 +130,7 @@ DEPENDENCIES
   bundler
   jekyll-text-theme!
   logger (~> 1.5.3)
+  minitest (~> 5.27)
   rake (~> 12.3)
 
 BUNDLED WITH

@@ -118,6 +118,15 @@ opening the PR.
   requires Ruby >= 3.2, so on Ruby 3.1 `bundle update nokogiri` silently stops
   at 1.18.x and fixes *nothing*. Verify with:
   `curl -s https://rubygems.org/api/v2/rubygems/<gem>/versions/<v>.json | jq -r .ruby_version`
+- **Check the precompiled gems too.** The v2 API above returns the `ruby` gem,
+  but on Linux, Bundler 2.3.25 installs the precompiled gem of the platform when
+  there is one, and it can require a newer Ruby. prism 2.1.0 requires Ruby >=
+  2.7, but its `x86_64-linux-gnu` gem requires Ruby >= 3.3: it broke the deploy
+  of #171, hence the minitest pin. List the Ruby version of each platform with:
+  `curl -s https://rubygems.org/api/v1/versions/<gem>.json | jq -r '.[] | select(.number=="<v>") | "\(.platform) \(.ruby_version)"'`
+- The pull requests of Dependabot have no CI: the workflow runs on `main` only.
+  The deploy after the merge is the first `bundle install` on Linux with Ruby
+  3.2, so merge them one at a time and watch each deploy.
 - Confirm the resolved version actually clears the alert's
   `first_patched_version`; "bundler updated it" is not the same as "it's fixed".
 - Jekyll 4.3.1 breaks on logger 1.6.0 (Stevenson subclass) — hence the Gemfile
